@@ -1,6 +1,5 @@
 using System.Reflection;
 using Aiursoft.Scanner;
-using Aiursoft.WebTools;
 using Aiursoft.WebTools.Models;
 
 namespace Aiursoft.ChessServer;
@@ -9,7 +8,7 @@ public class Program
 {
     public static async Task Main(string[] args)
     {
-        var app = Aiursoft.WebTools.Extends.App<Startup>(args);
+        var app = WebTools.Extends.App<Startup>(args);
         await app.RunAsync();
     }
 }
