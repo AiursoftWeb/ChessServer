@@ -34,10 +34,10 @@ public class GamesController : ControllerBase
             game.BlackKingChecked,
             links = new Dictionary<string, string>
             {
-                { "ascii", $"game/{id}/ascii"},
-                { "fen", $"game/{id}/fen"},
-                { "pgn", $"game/{id}/pgn"},
-                { "move", $"game/{id}/move"}
+                { "ascii", $"games/{id}/ascii"},
+                { "fen", $"games/{id}/fen"},
+                { "pgn", $"games/{id}/pgn"},
+                { "move-post", $"games/{id}/{{player}}/move/{{move_algebraic_notation}}"}
             }
         });
     }
@@ -64,13 +64,13 @@ public class GamesController : ControllerBase
     }
 
     [HttpPost]
-    [Route("games/{id}/move")]
-    public IActionResult Move([FromRoute]int id, [FromQuery]string move)
+    [Route("games/{id}/{player}/move/{move}")]
+    public IActionResult Move([FromRoute]int id, [FromRoute]string player, [FromRoute]string move)
     {
         var game = _database.GetOrAdd(id);
         try
         {
-            if (game.IsValidMove(move) && !game.IsEndGame)
+            if (game.IsValidMove(move) && !game.IsEndGame && game.Turn.AsChar.ToString() == player)
             {
                 game.Move(move);
                 return Ok();
