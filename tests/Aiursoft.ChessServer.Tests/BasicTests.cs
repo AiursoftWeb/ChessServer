@@ -42,4 +42,15 @@ public class BasicTests
         var response = await _http.GetAsync(_endpointUrl + url);
         response.EnsureSuccessStatusCode(); // Status Code 200-299
     }
+
+    [TestMethod]
+    [DataRow("/games/12345")]
+    [DataRow("/games/12345/ascii")]
+    [DataRow("/games/12345/fen")]
+    [DataRow("/games/12345/pgn")]
+    public async Task GetChess(string url)
+    {
+        var response = await _http.GetAsync(_endpointUrl + url);
+        response.EnsureSuccessStatusCode(); // Status Code 200-299
+    }
 }
