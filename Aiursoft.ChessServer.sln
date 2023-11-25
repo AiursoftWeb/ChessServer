@@ -7,6 +7,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{1F6B948D-79A
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aiursoft.ChessServer", "src\Aiursoft.ChessServer\Aiursoft.ChessServer.csproj", "{22E46CC4-A869-492C-88D0-05E2F7515DD1}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{5B3CA58E-61CA-4A0F-99BB-CDCA95D43D64}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aiursoft.ChessServer.Tests", "tests\Aiursoft.ChessServer.Tests\Aiursoft.ChessServer.Tests.csproj", "{7D70A645-AB40-453B-860F-96F05FE02CE8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,11 +21,19 @@ Global
 		{22E46CC4-A869-492C-88D0-05E2F7515DD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{22E46CC4-A869-492C-88D0-05E2F7515DD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{22E46CC4-A869-492C-88D0-05E2F7515DD1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D70A645-AB40-453B-860F-96F05FE02CE8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D70A645-AB40-453B-860F-96F05FE02CE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D70A645-AB40-453B-860F-96F05FE02CE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D70A645-AB40-453B-860F-96F05FE02CE8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{22E46CC4-A869-492C-88D0-05E2F7515DD1} = {1F6B948D-79AC-41CA-9C00-9A839DB56B2A}
+		{7D70A645-AB40-453B-860F-96F05FE02CE8} = {5B3CA58E-61CA-4A0F-99BB-CDCA95D43D64}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {00EE1758-7DF7-4926-AAC4-8B9CB5A6F459}
 	EndGlobalSection
 EndGlobal
