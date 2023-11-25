@@ -37,7 +37,7 @@ public class GamesController : ControllerBase
                 { "ascii", $"games/{id}/ascii"},
                 { "fen", $"games/{id}/fen"},
                 { "pgn", $"games/{id}/pgn"},
-                { "move-post", $"games/{id}/{{player}}/move/{{move_algebraic_notation}}"}
+                { "move-post", $"games/{id}/move/{{player}}/{{move_algebraic_notation}}"}
             }
         });
     }
@@ -64,7 +64,7 @@ public class GamesController : ControllerBase
     }
 
     [HttpPost]
-    [Route("games/{id}/{player}/move/{move}")]
+    [Route("games/{id}/move/{player}/{move}")]
     public IActionResult Move([FromRoute]int id, [FromRoute]string player, [FromRoute]string move)
     {
         var game = _database.GetOrAdd(id);
