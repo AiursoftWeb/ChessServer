@@ -1,6 +1,4 @@
-﻿using Microsoft.Extensions.Options;
-
-namespace Aiursoft.ChessServer.Middlewares
+﻿namespace Aiursoft.ChessServer.Middlewares
 {
     public class AllowCrossOriginMiddleware
     {

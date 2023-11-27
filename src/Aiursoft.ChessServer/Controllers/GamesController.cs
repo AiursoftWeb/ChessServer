@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Aiursoft.ChessServer.Controllers;
 
-public class GamesController : ControllerBase
+public class GamesController : Controller
 {
     private readonly InMemoryDatabase _database;
 
@@ -37,6 +37,7 @@ public class GamesController : ControllerBase
                 { "ascii", $"games/{id}/ascii"},
                 { "fen", $"games/{id}/fen"},
                 { "pgn", $"games/{id}/pgn"},
+                { "html", $"games/{id}/html"},
                 { "move-post", $"games/{id}/move/{{player}}/{{move_algebraic_notation}}"}
             }
         });
@@ -47,6 +48,12 @@ public class GamesController : ControllerBase
     {
         var game = _database.GetOrAdd(id);
         return Ok(game.ToAscii());
+    }
+    
+    [Route("games/{id}/html")]
+    public IActionResult GetHtml([FromRoute] int id)
+    {
+        return View(id);
     }
 
     [Route("games/{id}/fen")]
@@ -73,7 +80,7 @@ public class GamesController : ControllerBase
             if (game.IsValidMove(move) && !game.IsEndGame && game.Turn.AsChar.ToString() == player)
             {
                 game.Move(move);
-                return Ok();
+                return Ok(game.ToFen());
             }
             return BadRequest();
         }

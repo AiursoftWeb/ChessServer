@@ -20,13 +20,14 @@ public class Startup : IWebStartup
     {
         services.AddLibraryDependencies();
         services
-            .AddControllers()
+            .AddControllersWithViews()
             .AddApplicationPart(Assembly.GetExecutingAssembly());
     }
 
     public void Configure(WebApplication app)
     {
         app.UseMiddleware<AllowCrossOriginMiddleware>();
+        app.UseStaticFiles();
         app.UseRouting();
         app.MapDefaultControllerRoute();
     }
