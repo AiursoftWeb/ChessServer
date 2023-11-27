@@ -2,15 +2,31 @@
 
 @section Styles {
     <link href="~/chessboardjs/css/chessboard-1.0.0.min.css" rel="stylesheet"/>
+    <style>
+        .hidden {
+            display: none;
+        }
+    </style>
 }
 
-<div id="board" style="width: 400px"></div>
-<p id="status"></p>
-<p id="fen"></p>
+@* Make a responsible board based on bootstrap: (Avoid width with hardcode or overflow) *@
+@* <div id="board"></div> *@
+
+<div class="row">
+    <div class="col-md-6">
+        <div id="board" style="width: 100%"></div>
+    </div>
+    <div class="col-md-12">
+        @* Make the following p auto warp *@
+        
+        <p id="status" class="text-center text-wrap text-primary mt-1"></p>
+        <p id="fen" class="text-wrap text-muted hidden"></p>
+    </div>
+</div>
 
 @section Scripts {
     <script type="module" src="~/chess.js/dist/esm/chess.js"></script>
-    <script src="~/chessboardjs/js/chessboard-1.0.0.min.js"></script>
+    <script src="~/chessboardjs/js/chessboard-1.0.0.js"></script>
     <script type="module" src="~/site.js"></script>
     <script type="module">
         // Ask the user to enter w or b:

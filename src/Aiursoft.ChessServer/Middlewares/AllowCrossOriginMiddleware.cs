@@ -23,7 +23,7 @@
             context.Response.Headers.Add("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
             context.Response.Headers.Add("Access-Control-Allow-Headers", "Content-Type, Accept, Authorization");
 
-            if (context.Request.Method == "OPTIONS")
+            if (context.Request.Method == "OPTIONS" && !context.Response.HasStarted)
             {
                 context.Response.StatusCode = 200;
                 return;

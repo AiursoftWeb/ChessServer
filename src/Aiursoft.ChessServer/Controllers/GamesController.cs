@@ -55,7 +55,7 @@ public class GamesController : Controller
     }
     
     [Route("games/{id}/ws")]
-    public async Task<IActionResult> GetWebSocket([FromRoute] int id)
+    public async Task GetWebSocket([FromRoute] int id)
     {
         var lastReadId = _counter.GetCurrent;
         var (channel, blocker) = _database.ListenChannel(id);
@@ -84,7 +84,7 @@ public class GamesController : Controller
             }
         }
 
-        return NoContent();
+        // System.InvalidOperationException: StatusCode cannot be set because the response has already started.
     }
 
     [Route("games/{id}/ascii")]
