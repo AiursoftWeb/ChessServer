@@ -19,6 +19,7 @@ public class Startup : IWebStartup
     public void ConfigureServices(IConfiguration configuration, IWebHostEnvironment environment, IServiceCollection services)
     {
         services.AddLibraryDependencies();
+        
         services
             .AddControllersWithViews()
             .AddApplicationPart(Assembly.GetExecutingAssembly());
@@ -30,5 +31,6 @@ public class Startup : IWebStartup
         app.UseStaticFiles();
         app.UseRouting();
         app.MapDefaultControllerRoute();
+        app.UseWebSockets();
     }
 }

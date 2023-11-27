@@ -1,19 +1,12 @@
 ﻿import {Chess} from "/chess.js/dist/esm/chess.js";
 
+const statusControl = $('#status');
+const fenControl = $('#fen');
+
 const initGameBoard = function (player, gameId) {
     $.get("/games/" + gameId + "/fen", function (fen) {
-        let board = null
-        let game = new Chess(fen);
-        const refreshButton = $('#refresh');
-        const statusControl = $('#status');
-        const fenControl = $('#fen');
-        const pgnControl = $('#pgn');
-
-        function refresh(newFen) {
-            game = new Chess(newFen);
-            board.position(newFen);
-            updateStatus();
-        }
+        let board = null;
+        let game = null;
 
         // Happens when a player picks up a piece.
         function onDragStart(source, piece, position, _) {
@@ -32,27 +25,20 @@ const initGameBoard = function (player, gameId) {
             }
         }
 
-        // Happens when a player drops a piece.
         function onDrop(source, target) {
             try {
-                // see if the move is legal
                 const move = game.move({
                     from: source,
                     to: target,
-                    promotion: 'q' // NOTE: always promote to a queen for example simplicity
+                    promotion: 'q' 
                 })
-
                 if (move === null) {
                     return 'snapback'
                 }
-
-                // Get the last move and send it to server.
                 const lastMove = game.history({verbose: true}).pop().san;
-                $.post("/games/" + gameId + "/move/" + player + "/" + lastMove, function (fen) {
-                    refresh(fen);
-                });
+                $.post("/games/" + gameId + "/move/" + player + "/" + lastMove);
             } catch (e) {
-                return 'snapback'
+                return 'snapback';
             }
         }
 
@@ -61,36 +47,23 @@ const initGameBoard = function (player, gameId) {
             board.position(game.fen())
         }
 
-        function updateStatus() {
+        function updateStatusText() {
             let status;
             let moveColor = 'White';
             if (game.turn() === 'b') {
-                moveColor = 'Black'
-            }
-
-            // checkmate?
-            if (game.isCheckmate()) {
-                status = 'Game over, ' + moveColor + ' is in checkmate.'
-            }
-
-            // draw?
-            else if (game.isDraw()) {
-                status = 'Game over, drawn position'
-            }
-
-            // game still on
-            else {
-                status = moveColor + ' to move'
-
-                // check?
+                moveColor = 'Black';
+            } if (game.isCheckmate()) {
+                status = 'Game over, ' + moveColor + ' is in checkmate, and winner is ' + (game.turn() === 'w' ? 'Black' : 'White');
+            } else if (game.isDraw()) {
+                status = 'Game over, drawn position';
+            } else {
+                status = moveColor + ' to move';
                 if (game.isCheck()) {
-                    status += ', ' + moveColor + ' is in check'
+                    status += ', ' + moveColor + ' is in check';
                 }
             }
-
-            statusControl.html(status)
-            fenControl.html(game.fen())
-            pgnControl.html(game.pgn())
+            statusControl.html(status);
+            fenControl.html(game.fen());
         }
 
         const config = {
@@ -104,14 +77,26 @@ const initGameBoard = function (player, gameId) {
         };
         board = ChessBoard('board', config);
 
-        // Bind Refresh button.
-        refreshButton.click(function () {
-            $.get("/games/" + gameId + "/fen", function (fen) {
-                refresh(fen);
-            });
-        });
+        function refresh(newFen) {
+            game = new Chess(newFen);
+            board.position(newFen);
+            updateStatusText();
+        }
 
-        updateStatus();
+        refresh(fen);
+        
+        const wsScheme = window.location.protocol === "https:" ? "wss://" : "ws://";
+        const socket = new WebSocket(wsScheme + window.location.host + "/games/" + gameId + "/ws");
+        socket.onmessage = function (event) {
+            refresh(event.data);
+        };
+        
+        // Auto reconnect.
+        socket.onclose = function (event) {
+            setTimeout(function () {
+                initGameBoard(player, gameId);
+            }, 1000);
+        };
     });
 
 };

@@ -1,14 +1,24 @@
 ﻿using Aiursoft.ChessServer.Data;
+using Aiursoft.ChessServer.Models;
+using Aiursoft.ChessServer.Services;
+using Aiursoft.CSTools.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Aiursoft.ChessServer.Controllers;
 
 public class GamesController : Controller
 {
+    private readonly Counter _counter;
+    private readonly WebSocketPusher _pusher;
     private readonly InMemoryDatabase _database;
 
-    public GamesController(InMemoryDatabase database)
+    public GamesController(
+        Counter counter,
+        WebSocketPusher pusher,
+        InMemoryDatabase database)
     {
+        _counter = counter;
+        _pusher = pusher;
         _database = database;
     }
 
@@ -38,9 +48,43 @@ public class GamesController : Controller
                 { "fen", $"games/{id}/fen"},
                 { "pgn", $"games/{id}/pgn"},
                 { "html", $"games/{id}/html"},
+                {"websocket", $"games/{id}/websocket"},
                 { "move-post", $"games/{id}/move/{{player}}/{{move_algebraic_notation}}"}
             }
         });
+    }
+    
+    [Route("games/{id}/ws")]
+    public async Task<IActionResult> GetWebSocket([FromRoute] int id)
+    {
+        var lastReadId = _counter.GetCurrent;
+        var (channel, blocker) = _database.ListenChannel(id);
+        
+        await _pusher.Accept(HttpContext);
+        try
+        {
+            await Task.Factory.StartNew(_pusher.PendingClose);
+            while (_pusher.Connected)
+            {
+                await blocker.WaitAsync();
+                var nextMessages = channel
+                    .GetMessagesFrom(lastReadId)
+                    .ToList();
+                var messageToPush = nextMessages.MinBy(t => t.Id);
+                await _pusher.SendMessage(messageToPush!.Content);
+                lastReadId = messageToPush.Id;
+            }
+        }
+        finally
+        {
+            await _pusher.Close();
+            if (!channel.UnRegister(out blocker))
+            { 
+                throw new InvalidOperationException("Failed to unregister blocker!");
+            }
+        }
+
+        return NoContent();
     }
 
     [Route("games/{id}/ascii")]
@@ -80,7 +124,15 @@ public class GamesController : Controller
             if (game.IsValidMove(move) && !game.IsEndGame && game.Turn.AsChar.ToString() == player)
             {
                 game.Move(move);
-                return Ok(game.ToFen());
+                var fen = game.ToFen();
+                if (_database.Channels.TryGetValue(id, out var channel))
+                {
+                    channel.Push(new Message(fen)
+                    {
+                        Id = _counter.GetUniqueNo(),
+                    });
+                }
+                return Ok(fen);
             }
             return BadRequest();
         }
