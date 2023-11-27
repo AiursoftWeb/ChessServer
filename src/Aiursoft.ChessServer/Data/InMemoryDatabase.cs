@@ -25,10 +25,6 @@ public class InMemoryDatabase : ISingletonDependency
 
     public ChessBoard GetOrAdd(int id)
     {
-        if (!Boards.ContainsKey(id))
-        {
-            Boards.TryAdd(id, new ChessBoard());
-        }
-        return Boards[id];
+        return Boards.GetOrAdd(id, _ => new ChessBoard());
     }
 }
