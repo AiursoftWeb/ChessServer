@@ -1,4 +1,5 @@
 using System.Reflection;
+using Aiursoft.ChessServer.Middlewares;
 using Aiursoft.Scanner;
 using Aiursoft.WebTools.Models;
 
@@ -25,6 +26,7 @@ public class Startup : IWebStartup
 
     public void Configure(WebApplication app)
     {
+        app.UseMiddleware<AllowCrossOriginMiddleware>();
         app.UseRouting();
         app.MapDefaultControllerRoute();
     }
