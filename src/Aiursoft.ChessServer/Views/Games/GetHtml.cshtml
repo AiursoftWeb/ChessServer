@@ -1,27 +1,21 @@
 ﻿@model int
-@{
-    Layout = null;
-}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Game HTML</title>
-    <meta charset="utf-8"/>
+
+@section Styles {
     <link href="~/chessboardjs/css/chessboard-1.0.0.min.css" rel="stylesheet"/>
-</head>
-<body>
+}
+
 <div id="board" style="width: 400px"></div>
 <p id="status"></p>
 <p id="fen"></p>
-<script type="module" src="~/chess.js/dist/esm/chess.js"></script>
-<script src="~/jquery/dist/jquery.min.js"></script>
-<script src="~/chessboardjs/js/chessboard-1.0.0.min.js"></script>
-<script type="module" src="~/site.js"></script>
-<script type="module">
-// Ask the user to enter w or b:
-import initGameBoard from "/site.js"; 
-const player = prompt("Please enter your color (w or b):");
-initGameBoard(player, @Model);
-</script>
-</body>
-</html>
+
+@section Scripts {
+    <script type="module" src="~/chess.js/dist/esm/chess.js"></script>
+    <script src="~/chessboardjs/js/chessboard-1.0.0.min.js"></script>
+    <script type="module" src="~/site.js"></script>
+    <script type="module">
+        // Ask the user to enter w or b:
+        import initGameBoard from "/site.js"; 
+        const player = prompt("Please enter your color (w or b):");
+        initGameBoard(player, @Model);
+    </script>
+}
