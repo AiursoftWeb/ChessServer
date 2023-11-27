@@ -92,7 +92,8 @@ const initGameBoard = function (player, gameId) {
         };
         
         // Auto reconnect.
-        socket.onclose = function (event) {
+        socket.onclose = function () {
+            alert("Socket closed. Reconnecting...");
             setTimeout(function () {
                 initGameBoard(player, gameId);
             }, 1000);
