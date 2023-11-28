@@ -53,33 +53,41 @@ public class GamesController : Controller
             }
         });
     }
-    
+
     [Route("games/{id}/ws")]
     public async Task GetWebSocket([FromRoute] int id)
     {
         var lastReadId = _counter.GetCurrent;
         var (channel, blocker) = _database.ListenChannel(id);
-        
+
         await _pusher.Accept(HttpContext);
         try
         {
             await Task.Factory.StartNew(_pusher.PendingClose);
             while (_pusher.Connected)
             {
+                while (true)
+                {
+                    var nextMessages = channel
+                        .GetMessagesFrom(lastReadId);
+
+                    if (!nextMessages.Any())
+                    {
+                        break;
+                    }
+
+                    var messageToPush = nextMessages.MinBy(t => t.Id);
+                    await _pusher.SendMessage(messageToPush!.Content);
+                    lastReadId = messageToPush.Id;
+                }
                 await blocker.WaitAsync();
-                var nextMessages = channel
-                    .GetMessagesFrom(lastReadId)
-                    .ToList();
-                var messageToPush = nextMessages.MinBy(t => t.Id);
-                await _pusher.SendMessage(messageToPush!.Content);
-                lastReadId = messageToPush.Id;
             }
         }
         finally
         {
             await _pusher.Close();
             if (!channel.UnRegister(out blocker))
-            { 
+            {
                 throw new InvalidOperationException("Failed to unregister blocker!");
             }
         }
@@ -93,7 +101,7 @@ public class GamesController : Controller
         var game = _database.GetOrAdd(id);
         return Ok(game.ToAscii());
     }
-    
+
     [Route("games/{id}/html")]
     public IActionResult GetHtml([FromRoute] int id)
     {
@@ -108,7 +116,7 @@ public class GamesController : Controller
     }
 
     [Route("games/{id}/pgn")]
-    public IActionResult GetPgn([FromRoute]int id)
+    public IActionResult GetPgn([FromRoute] int id)
     {
         var game = _database.GetOrAdd(id);
         return Ok(game.ToPgn());
@@ -116,7 +124,7 @@ public class GamesController : Controller
 
     [HttpPost]
     [Route("games/{id}/move/{player}/{move}")]
-    public IActionResult Move([FromRoute]int id, [FromRoute]string player, [FromRoute]string move)
+    public IActionResult Move([FromRoute] int id, [FromRoute] string player, [FromRoute] string move)
     {
         var game = _database.GetOrAdd(id);
         try
