@@ -1,23 +1,20 @@
-﻿using Aiursoft.ChessServer.Data;
+﻿using AiurObserver;
+using Aiursoft.ChessServer.Data;
 using Aiursoft.ChessServer.Models;
 using Aiursoft.ChessServer.Services;
-using Aiursoft.CSTools.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Aiursoft.ChessServer.Controllers;
 
 public class GamesController : Controller
 {
-    private readonly Counter _counter;
     private readonly WebSocketPusher _pusher;
     private readonly InMemoryDatabase _database;
 
     public GamesController(
-        Counter counter,
         WebSocketPusher pusher,
         InMemoryDatabase database)
     {
-        _counter = counter;
         _pusher = pusher;
         _database = database;
     }
@@ -32,7 +29,7 @@ public class GamesController : Controller
     [Route("games/{id}")]
     public IActionResult GetInfo([FromRoute] int id)
     {
-        var game = _database.GetOrAdd(id);
+        var game = _database.GetOrAddBoard(id);
         return Ok(new
         {
             Turn = game.Turn.AsChar,
@@ -50,47 +47,41 @@ public class GamesController : Controller
                 { "html", $"games/{id}/html"},
                 {"websocket", $"games/{id}/websocket"},
                 { "move-post", $"games/{id}/move/{{player}}/{{move_algebraic_notation}}"}
-            }
+            },
+            Listeners = _database.GetOrAddChannel(id).GetListenerCount()
         });
     }
     
     [Route("games/{id}/ws")]
     public async Task GetWebSocket([FromRoute] int id)
     {
-        var lastReadId = _counter.GetCurrent;
-        var (channel, blocker) = _database.ListenChannel(id);
+        var channel= _database.GetOrAddChannel(id);
+        IDisposable? subscription = null;
         
         await _pusher.Accept(HttpContext);
         try
         {
             await Task.Factory.StartNew(_pusher.PendingClose);
+            subscription = channel.Subscribe(async t =>
+            {
+                await _pusher.SendMessage(t.Content);
+            });
             while (_pusher.Connected)
             {
-                await blocker.WaitAsync();
-                var nextMessages = channel
-                    .GetMessagesFrom(lastReadId)
-                    .ToList();
-                var messageToPush = nextMessages.MinBy(t => t.Id);
-                await _pusher.SendMessage(messageToPush!.Content);
-                lastReadId = messageToPush.Id;
+                await Task.Delay(int.MaxValue, HttpContext.RequestAborted);
             }
         }
         finally
         {
             await _pusher.Close();
-            if (!channel.UnRegister(out blocker))
-            { 
-                throw new InvalidOperationException("Failed to unregister blocker!");
-            }
+            subscription?.Dispose();
         }
-
-        // System.InvalidOperationException: StatusCode cannot be set because the response has already started.
     }
 
     [Route("games/{id}/ascii")]
     public IActionResult GetAscii([FromRoute] int id)
     {
-        var game = _database.GetOrAdd(id);
+        var game = _database.GetOrAddBoard(id);
         return Ok(game.ToAscii());
     }
     
@@ -103,35 +94,30 @@ public class GamesController : Controller
     [Route("games/{id}/fen")]
     public IActionResult GetFen([FromRoute] int id)
     {
-        var game = _database.GetOrAdd(id);
+        var game = _database.GetOrAddBoard(id);
         return Ok(game.ToFen());
     }
 
     [Route("games/{id}/pgn")]
     public IActionResult GetPgn([FromRoute]int id)
     {
-        var game = _database.GetOrAdd(id);
+        var game = _database.GetOrAddBoard(id);
         return Ok(game.ToPgn());
     }
 
     [HttpPost]
     [Route("games/{id}/move/{player}/{move}")]
-    public IActionResult Move([FromRoute]int id, [FromRoute]string player, [FromRoute]string move)
+    public async Task<IActionResult> Move([FromRoute]int id, [FromRoute]string player, [FromRoute]string move)
     {
-        var game = _database.GetOrAdd(id);
+        var game = _database.GetOrAddBoard(id);
         try
         {
             if (game.IsValidMove(move) && !game.IsEndGame && game.Turn.AsChar.ToString() == player)
             {
                 game.Move(move);
                 var fen = game.ToFen();
-                if (_database.Channels.TryGetValue(id, out var channel))
-                {
-                    channel.Push(new Message(fen)
-                    {
-                        Id = _counter.GetUniqueNo(),
-                    });
-                }
+                var channel = _database.GetOrAddChannel(id);
+                await channel.Push(new Message(fen));
                 return Ok(fen);
             }
             return BadRequest();

@@ -13,8 +13,8 @@ public class Game
 
 public class InMemoryDatabase : ISingletonDependency
 {
-    public ConcurrentDictionary<int, ChessBoard> Boards { get; } = new();
-    public ConcurrentDictionary<int, Channel> Channels { get; } = new();
+    private ConcurrentDictionary<int, ChessBoard> Boards { get; } = new();
+    private ConcurrentDictionary<int, Channel> Channels { get; } = new();
 
     public Game[] GetActiveGames()
     { 
@@ -25,16 +25,13 @@ public class InMemoryDatabase : ISingletonDependency
         }).ToArray();
     }
 
-    public ChessBoard GetOrAdd(int id)
+    public ChessBoard GetOrAddBoard(int id)
     {
         return Boards.GetOrAdd(id, _ => new ChessBoard());
     }
     
-    public (Channel, SemaphoreSlim) ListenChannel(int id)
+    public Channel GetOrAddChannel(int id)
     {
-        var channel = Channels.GetOrAdd(id, _ => new Channel());
-        var blocker = new SemaphoreSlim(0);
-        channel.HasNewMessageBlocker.Add(blocker);
-        return (channel, blocker);
+        return Channels.GetOrAdd(id, _ => new Channel());
     }
 }

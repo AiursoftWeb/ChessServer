@@ -1,4 +1,4 @@
-﻿using System.Collections.Concurrent;
+﻿using AiurObserver;
 
 namespace Aiursoft.ChessServer.Models;
 
@@ -9,32 +9,21 @@ public class Message
         Content = content;
     }
 
-    public int Id { get; init; }
     public string Content { get; set; }
 }
 
-public class Channel
+public class Channel : AsyncObservable<Message>
 {
-    private ConcurrentBag<Message> Messages { get; } = new();
-
-    public ConcurrentBag<SemaphoreSlim> HasNewMessageBlocker { get; } = new();
-
-    public IEnumerable<Message> GetMessagesFrom(int lastReadId)
+    public Channel()
     {
-        return Messages.Where(t => t.Id > lastReadId);
+        Messages.AddLast(new Message("placeholder"));
     }
 
-    public void Push(Message message)
+    private LinkedList<Message> Messages { get; } = new();
+
+    public async Task Push(Message message)
     {
-        Messages.Add(message);
-        foreach (var blocker in HasNewMessageBlocker)
-        {
-            blocker.Release();
-        }
-    }
-    
-    public bool UnRegister(out SemaphoreSlim blocker)
-    {
-        return HasNewMessageBlocker.TryTake(out blocker!);
+        Messages.AddLast(message);
+        await Task.WhenAll(Broadcast(message));
     }
 }
