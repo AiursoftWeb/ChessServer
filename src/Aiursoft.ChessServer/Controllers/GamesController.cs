@@ -66,7 +66,7 @@ public class GamesController : Controller
             subscription = channel.Subscribe(async t => { await _pusher.SendMessage(t.Content); });
             while (_pusher.Connected)
             {
-                await Task.Delay(int.MaxValue);
+                await Task.Delay(1000);
             }
         }
         finally
