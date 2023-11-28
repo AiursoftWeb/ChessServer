@@ -66,7 +66,14 @@ public class GamesController : Controller
             subscription = channel.Subscribe(async t => { await _pusher.SendMessage(t.Content); });
             while (_pusher.Connected)
             {
-                await Task.Delay(10 * 1000);
+                try
+                {
+                    await Task.Delay(int.MaxValue, HttpContext.RequestAborted);
+                }
+                catch (TaskCanceledException)
+                {
+                    break;
+                }
             }
         }
         finally
@@ -114,6 +121,7 @@ public class GamesController : Controller
             {
                 return BadRequest();
             }
+
             game.Move(move);
             var fen = game.ToFen();
             var channel = _database.GetOrAddChannel(id);

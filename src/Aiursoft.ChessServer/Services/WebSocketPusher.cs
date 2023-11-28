@@ -18,7 +18,14 @@ public class WebSocketPusher : IScopedDependency
 
     public async Task SendMessage(string message)
     {
-        await (_ws?.SendMessage(message) ?? throw new InvalidOperationException("WebSocket is not connected!"));
+        try
+        {
+            await (_ws?.SendMessage(message) ?? throw new InvalidOperationException("WebSocket is not connected!"));
+        }
+        catch (WebSocketException)
+        {
+            _dropped = true;
+        }
     }
 
     public async Task PendingClose()
