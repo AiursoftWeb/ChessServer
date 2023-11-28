@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Aiursoft.ChessServer.Controllers;
 
+[Route("games")]
 public class GamesController : Controller
 {
     private readonly WebSocketPusher _pusher;
@@ -19,14 +20,14 @@ public class GamesController : Controller
         _database = database;
     }
 
-    [Route("games")]
+    [Route("")]
     public IActionResult GetAll()
     {
         var games = _database.GetActiveGames();
         return Ok(games);
     }
 
-    [Route("games/{id}")]
+    [Route("{id:int}")]
     public IActionResult GetInfo([FromRoute] int id)
     {
         var game = _database.GetOrAddBoard(id);
@@ -41,31 +42,28 @@ public class GamesController : Controller
             game.BlackKingChecked,
             links = new Dictionary<string, string>
             {
-                { "ascii", $"games/{id}/ascii"},
-                { "fen", $"games/{id}/fen"},
-                { "pgn", $"games/{id}/pgn"},
-                { "html", $"games/{id}/html"},
-                {"websocket", $"games/{id}/websocket"},
-                { "move-post", $"games/{id}/move/{{player}}/{{move_algebraic_notation}}"}
+                { "ascii", $"games/{id}/ascii" },
+                { "fen", $"games/{id}/fen" },
+                { "pgn", $"games/{id}/pgn" },
+                { "html", $"games/{id}/html" },
+                { "websocket", $"games/{id}/websocket" },
+                { "move-post", $"games/{id}/move/{{player}}/{{move_algebraic_notation}}" }
             },
             Listeners = _database.GetOrAddChannel(id).GetListenerCount()
         });
     }
-    
-    [Route("games/{id}/ws")]
+
+    [Route("{id:int}/ws")]
     public async Task GetWebSocket([FromRoute] int id)
     {
-        var channel= _database.GetOrAddChannel(id);
+        var channel = _database.GetOrAddChannel(id);
         IDisposable? subscription = null;
-        
+
         await _pusher.Accept(HttpContext);
         try
         {
             await Task.Factory.StartNew(_pusher.PendingClose);
-            subscription = channel.Subscribe(async t =>
-            {
-                await _pusher.SendMessage(t.Content);
-            });
+            subscription = channel.Subscribe(async t => { await _pusher.SendMessage(t.Content); });
             while (_pusher.Connected)
             {
                 await Task.Delay(int.MaxValue, HttpContext.RequestAborted);
@@ -78,49 +76,49 @@ public class GamesController : Controller
         }
     }
 
-    [Route("games/{id}/ascii")]
+    [Route("{id:int}/ascii")]
     public IActionResult GetAscii([FromRoute] int id)
     {
         var game = _database.GetOrAddBoard(id);
         return Ok(game.ToAscii());
     }
-    
-    [Route("games/{id}/html")]
+
+    [Route("{id:int}/html")]
     public IActionResult GetHtml([FromRoute] int id)
     {
         return View(id);
     }
 
-    [Route("games/{id}/fen")]
+    [Route("{id:int}/fen")]
     public IActionResult GetFen([FromRoute] int id)
     {
         var game = _database.GetOrAddBoard(id);
         return Ok(game.ToFen());
     }
 
-    [Route("games/{id}/pgn")]
-    public IActionResult GetPgn([FromRoute]int id)
+    [Route("{id:int}/pgn")]
+    public IActionResult GetPgn([FromRoute] int id)
     {
         var game = _database.GetOrAddBoard(id);
         return Ok(game.ToPgn());
     }
 
     [HttpPost]
-    [Route("games/{id}/move/{player}/{move}")]
-    public async Task<IActionResult> Move([FromRoute]int id, [FromRoute]string player, [FromRoute]string move)
+    [Route("{id:int}/move/{player}/{move}")]
+    public async Task<IActionResult> Move([FromRoute] int id, [FromRoute] string player, [FromRoute] string move)
     {
         var game = _database.GetOrAddBoard(id);
         try
         {
-            if (game.IsValidMove(move) && !game.IsEndGame && game.Turn.AsChar.ToString() == player)
+            if (!game.IsValidMove(move) || game.IsEndGame || game.Turn.AsChar.ToString() != player)
             {
-                game.Move(move);
-                var fen = game.ToFen();
-                var channel = _database.GetOrAddChannel(id);
-                await channel.Push(new Message(fen));
-                return Ok(fen);
+                return BadRequest();
             }
-            return BadRequest();
+            game.Move(move);
+            var fen = game.ToFen();
+            var channel = _database.GetOrAddChannel(id);
+            await channel.Push(new Message(fen));
+            return Ok(fen);
         }
         catch
         {
