@@ -4,7 +4,7 @@ const statusControl = $('#status');
 const fenControl = $('#fen');
 
 const initGameBoard = function (player, gameId) {
-    $.get("/games/" + gameId + "/fen", function (fen) {
+    $.get("/games/" + gameId + ".fen", function (fen) {
         let board = null;
         let game = null;
 
@@ -86,7 +86,7 @@ const initGameBoard = function (player, gameId) {
         refresh(fen);
         
         const wsScheme = window.location.protocol === "https:" ? "wss://" : "ws://";
-        const socket = new WebSocket(wsScheme + window.location.host + "/games/" + gameId + "/ws");
+        const socket = new WebSocket(wsScheme + window.location.host + "/games/" + gameId + ".ws");
         socket.onmessage = function (event) {
             refresh(event.data);
         };
