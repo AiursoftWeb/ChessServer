@@ -11,6 +11,11 @@
 
         public async Task Invoke(HttpContext context)
         {
+            if (context.Request.Path.ToString().StartsWith("/games/img")) 
+            {
+                context.Request.Path = context.Request.Path.ToString().Substring("/games".Length);
+            }
+
             var origin = context.Request.Headers["Origin"].ToString();
             if (string.IsNullOrEmpty(origin))
             {

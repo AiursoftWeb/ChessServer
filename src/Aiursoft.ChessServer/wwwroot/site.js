@@ -1,4 +1,4 @@
-﻿import {Chess} from "/chess.js/dist/esm/chess.js";
+﻿import { Chess } from "/node_modules/chess.js/dist/esm/chess.js";
 
 const statusControl = $('#status');
 const fenControl = $('#fen');
