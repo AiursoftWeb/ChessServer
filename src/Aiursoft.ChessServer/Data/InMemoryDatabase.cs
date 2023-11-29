@@ -24,6 +24,7 @@ public class GameContext
 {
     public GameContext(Game game, int id)
     {
+        Id = id;
         Turn = game.Board.Turn.AsChar;
         Ended = game.Board.IsEndGame;
         End = game.Board.EndGame?.EndgameType;
@@ -31,7 +32,7 @@ public class GameContext
         MoveIndex = game.Board.MoveIndex;
         WhiteKingChecked = game.Board.WhiteKingChecked;
         BlackKingChecked = game.Board.BlackKingChecked;
-        links = new Dictionary<string, string>
+        Links = new Dictionary<string, string>
             {
                 { "ascii", $"games/{id}.ascii" },
                 { "fen", $"games/{id}.fen" },
@@ -42,14 +43,16 @@ public class GameContext
             };
         Listeners = game.Channel.GetListenerCount();
     }
-    public Dictionary<string, string> links { get; internal set; }
 
-    public char Turn { get; internal set; }
-    public bool Ended { get; internal set; }
-    public EndgameType? End { get; internal set; }
-    public PieceColor? Won { get; internal set; }
-    public int MoveIndex { get; internal set; }
-    public bool WhiteKingChecked { get; internal set; }
-    public bool BlackKingChecked { get; internal set; }
-    public int Listeners { get; internal set; }
+
+    public int Id { get; }
+    public Dictionary<string, string> Links { get; }
+    public char Turn { get; }
+    public bool Ended { get; }
+    public EndgameType? End { get; }
+    public PieceColor? Won { get; }
+    public int MoveIndex { get; }
+    public bool WhiteKingChecked { get; }
+    public bool BlackKingChecked { get; }
+    public int Listeners { get; }
 }
