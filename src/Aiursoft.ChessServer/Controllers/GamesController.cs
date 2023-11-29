@@ -31,26 +31,7 @@ public class GamesController : Controller
     public IActionResult GetInfo([FromRoute] int id)
     {
         var game = _database.GetOrAddGame(id);
-        return Ok(new
-        {
-            Turn = game.Board.Turn.AsChar,
-            Ended = game.Board.IsEndGame,
-            End = game.Board.EndGame?.EndgameType,
-            Won = game.Board.EndGame?.WonSide,
-            game.Board.MoveIndex,
-            game.Board.WhiteKingChecked,
-            game.Board.BlackKingChecked,
-            links = new Dictionary<string, string>
-            {
-                { "ascii", $"games/{id}.ascii" },
-                { "fen", $"games/{id}.fen" },
-                { "pgn", $"games/{id}.pgn" },
-                { "html", $"games/{id}.html" },
-                { "websocket", $"games/{id}.ws" },
-                { "move-post", $"games/{id}/move/{{player}}/{{move_algebraic_notation}}" }
-            },
-            Listeners = game.Channel.GetListenerCount()
-        });
+        return Ok(new GameContext(game, id));
     }
 
     [Route("{id:int}.ws")]
