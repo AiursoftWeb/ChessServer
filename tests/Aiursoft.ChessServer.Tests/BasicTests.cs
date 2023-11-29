@@ -54,6 +54,7 @@ public class BasicTests
         response.EnsureSuccessStatusCode(); // Status Code 200-299
     }
 
+    [TestMethod]
     [DataRow("/games/12345/move/e4")]
     [DataRow("/games/12345/move/e5")]
     [DataRow("/games/12345/move/Nf3")]
@@ -62,5 +63,14 @@ public class BasicTests
     {
         var response = await _http.PostAsync(_endpointUrl + url, new StringContent(""));
         response.EnsureSuccessStatusCode(); // Status Code 200-299
+    }
+
+    [TestMethod]
+    [DataRow("/games/12345/move/O-O")]
+    [DataRow("/games/12345/move/O-O-O")]
+    public async Task InvalidMoveChess(string url)
+    {
+        var response = await _http.PostAsync(_endpointUrl + url, new StringContent(""));
+        Assert.AreEqual(400, (int)response.StatusCode);
     }
 }
