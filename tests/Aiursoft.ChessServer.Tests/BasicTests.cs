@@ -55,10 +55,10 @@ public class BasicTests
     }
 
     [TestMethod]
-    [DataRow("/games/12345/move/w/e4")]
-    [DataRow("/games/12345/move/w/e5")]
-    [DataRow("/games/12345/move/w/Nf3")]
-    [DataRow("/games/12345/move/w/Nc3")]
+    [DataRow("/games/1/move/w/e4")]
+    [DataRow("/games/2/move/w/e5")]
+    [DataRow("/games/3/move/w/Nf3")]
+    [DataRow("/games/4/move/w/Nc3")]
     public async Task MoveChess(string url)
     {
         var response = await _http.PostAsync(_endpointUrl + url, new StringContent(""));
@@ -66,8 +66,8 @@ public class BasicTests
     }
 
     [TestMethod]
-    [DataRow("/games/12345/move/w/O-O")]
-    [DataRow("/games/12345/move/b/O-O-O")]
+    [DataRow("/games/5/move/w/O-O")]
+    [DataRow("/games/6/move/b/O-O-O")]
     public async Task InvalidMoveChess(string url)
     {
         var response = await _http.PostAsync(_endpointUrl + url, new StringContent(""));
