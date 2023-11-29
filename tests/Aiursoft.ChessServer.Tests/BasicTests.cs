@@ -56,7 +56,7 @@ public class BasicTests
 
     [TestMethod]
     [DataRow("/games/1/move/w/e4")]
-    [DataRow("/games/2/move/w/e5")]
+    [DataRow("/games/2/move/w/d4")]
     [DataRow("/games/3/move/w/Nf3")]
     [DataRow("/games/4/move/w/Nc3")]
     public async Task MoveChess(string url)
