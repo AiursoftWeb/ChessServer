@@ -18,6 +18,11 @@ public class WebSocketPusher : IScopedDependency
 
     public async Task SendMessage(string message)
     {
+        if (_dropped)
+        {
+            return;
+        }
+
         try
         {
             await (_ws?.SendMessage(message) ?? throw new InvalidOperationException("WebSocket is not connected!"));
@@ -45,7 +50,7 @@ public class WebSocketPusher : IScopedDependency
                 return;
             }
         }
-        catch (Exception e) when (!e.Message.StartsWith("The remote party closed the WebSocket connection"))
+        catch (WebSocketException)
         {
             _dropped = true;
         }
@@ -58,6 +63,8 @@ public class WebSocketPusher : IScopedDependency
             return _ws.CloseOutputAsync(WebSocketCloseStatus.NormalClosure, "Close because of error.",
                 CancellationToken.None);
         }
+
+        _dropped = true;
         
         return Task.CompletedTask;
     }

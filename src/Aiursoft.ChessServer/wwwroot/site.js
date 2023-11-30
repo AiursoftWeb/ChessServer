@@ -80,6 +80,7 @@ const initGameBoard = function (player, gameId) {
         function refresh(newFen) {
             game = new Chess(newFen);
             board.position(newFen);
+            console.log("Got fen " + newFen + ". refreshing board...");
             updateStatusText();
         }
 
