@@ -136,6 +136,11 @@ const initGameBoard = function (player, gameId) {
     function refresh(newFen) {
       game = new Chess(newFen);
       board.position(newFen);
+
+      // Hack here: Set the position again after a short delay to avoid thread conflicts.
+      setTimeout(function () {
+        board.position(newFen);
+      }, 300);
       console.log("Got fen " + newFen + ". refreshing board...");
       updateStatusText();
     }
