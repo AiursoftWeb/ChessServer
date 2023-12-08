@@ -12,8 +12,9 @@ ChessServer is just a simple chess server for [Aiursoft](https://www.aiursoft.co
 Requirements about how to run
 
 1. [.NET 7 SDK](http://dot.net/)
-2. Execute `dotnet run` to run the app
-3. Use your browser to view [http://localhost:5000](http://localhost:5000)
+2. Run `npm i` at directory `/src/Aiursoft.ChessServer/wwwroot/`
+3. Execute `dotnet run` to run the app
+4. Use your browser to view [http://localhost:5000](http://localhost:5000)
 
 ## Run in Microsoft Visual Studio
 

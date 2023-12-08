@@ -15,9 +15,28 @@
     </div>
     <div class="col-md-12">
         @* Make the following p auto warp *@
-        
+
         <p id="status" class="text-center text-wrap text-primary mt-1"></p>
         <p id="fen" class="text-wrap text-muted hidden"></p>
+    </div>
+</div>
+
+<div class="modal fade" id="chooseCharacter" tabindex="-1" aria-labelledby="chooseCharacter" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Choose your character</h5>
+            </div>
+            <div class="modal-body">
+                <button type="button" id="chooseWhite" class="btn">
+                    <img src="/img/chesspieces/wikipedia/wK.png" alt="White">
+                </button>
+                <button type="button" id="chooseBlack" class="btn">
+                    <img src="/img/chesspieces/wikipedia/bK.png" alt="Black">
+                </button>
+                <button type="button" data-bs-dismiss="modal" id="choosePeek" class="btn btn-primary">Peek~👀</button>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -26,8 +45,20 @@
     <script type="module" src="~/site.js"></script>
     <script type="module">
         // Ask the user to enter w or b:
-        import initGameBoard from "/site.js"; 
-        const player = prompt("Please enter your color (w or b):");
-        initGameBoard(player, @Model);
+        import Game from "/site.js";
+        let game = new Game(@Model);
+        game.chooseCharacter();
+
+        $("#chooseWhite").on("click", function () {
+            game.setPlayer('w');
+            game.startGame();
+        });
+        $("#chooseBlack").on("click", function () {
+            game.setPlayer('b');
+            game.startGame();
+        });
+        $('#choosePeek').on('click', function () {
+            game.startGame();
+        });
     </script>
 }
