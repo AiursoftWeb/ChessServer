@@ -1,10 +1,11 @@
-﻿using Chess;
+﻿using AiurObserver;
+using Chess;
 
 namespace Aiursoft.ChessServer.Models;
 
 public class Game
 {
-    public ChessBoard Board { get; set; } = new ChessBoard();
+    public ChessBoard Board { get; set; } = new();
 
-    public Channel Channel { get; set; } = new Channel();
+    public AsyncObservable<string> Channel { get; set; } = new ();
 }

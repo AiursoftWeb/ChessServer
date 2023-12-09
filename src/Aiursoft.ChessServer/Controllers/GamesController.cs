@@ -1,6 +1,5 @@
 ﻿using AiurObserver;
 using Aiursoft.ChessServer.Data;
-using Aiursoft.ChessServer.Models;
 using Aiursoft.ChessServer.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -41,25 +40,25 @@ public class GamesController : Controller
     public async Task GetWebSocket([FromRoute] int id)
     {
         var game = _database.GetOrAddGame(id);
-        IDisposable? subscription = null;
+        ISubscription? subscription = null;
 
         await _pusher.Accept(HttpContext);
         try
         {
             subscription = game.Channel.Subscribe(async t => 
             {
-                await _pusher.SendMessage(t.Content); 
-                _logger.LogInformation("Message was sent to client!");
+                await _pusher.SendMessage(t); 
+                _logger.LogInformation("Message was sent to client with ID: {PusherId}", _pusher.Id);
             });
 
-            _logger.LogInformation("Game {Id} registering events done. Waiting for close. Now it has {Count} subscribers", id, game.Channel.GetListenerCount());
+            _logger.LogInformation("Game {Id} registering listener {PusherId} done. Waiting for close. Now it has {Count} subscribers", id, _pusher.Id, game.Channel.GetListenerCount());
             await _pusher.PendingClose();
         }
         finally
         {
             await _pusher.Close();
-            subscription?.Dispose();
-            _logger.LogInformation("Getting game {Id} websocket connection was interrupted. Now it has {Count} subscribers", id, game.Channel.GetListenerCount());
+            subscription!.UnRegister();
+            _logger.LogInformation("Game {Id}'s pusher {PusherId} connection was interrupted. Now it has {Count} subscribers", id, _pusher.Id, game.Channel.GetListenerCount());
         }
     }
 
@@ -104,7 +103,7 @@ public class GamesController : Controller
 
             game.Board.Move(move);
             var fen = game.Board.ToFen();
-            await game.Channel.Push(new Message(fen));
+            await Task.WhenAll(game.Channel.Broadcast(fen));
             return Ok(fen);
         }
         catch

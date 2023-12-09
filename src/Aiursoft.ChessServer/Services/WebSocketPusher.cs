@@ -8,6 +8,8 @@ public class WebSocketPusher : IScopedDependency
 {
     private bool _dropped;
     private WebSocket? _ws;
+    
+    public readonly Guid Id = Guid.NewGuid();
 
     public bool Connected => !_dropped && _ws?.State == WebSocketState.Open;
 
@@ -22,7 +24,6 @@ public class WebSocketPusher : IScopedDependency
         {
             return;
         }
-
         try
         {
             await (_ws?.SendMessage(message) ?? throw new InvalidOperationException("WebSocket is not connected!"));
