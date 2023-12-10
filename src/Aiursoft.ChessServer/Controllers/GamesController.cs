@@ -1,6 +1,6 @@
 ﻿using AiurObserver;
 using Aiursoft.ChessServer.Data;
-using Aiursoft.ChessServer.Services;
+using Aiursoft.WebTools.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Aiursoft.ChessServer.Controllers;
@@ -8,14 +8,11 @@ namespace Aiursoft.ChessServer.Controllers;
 [Route("games")]
 public class GamesController : Controller
 {
-    private readonly WebSocketPusher _pusher;
     private readonly InMemoryDatabase _database;
 
     public GamesController(
-        WebSocketPusher pusher,
         InMemoryDatabase database)
     {
-        _pusher = pusher;
         _database = database;
     }
 
@@ -36,17 +33,16 @@ public class GamesController : Controller
     [Route("{id:int}.ws")]
     public async Task GetWebSocket([FromRoute] int id)
     {
-        var game = _database.GetOrAddGame(id);
-        await _pusher.Accept(HttpContext);
-        var subscription = game.Channel.Subscribe(_pusher.Send);
+        var pusher = await HttpContext.AcceptWebSocketClient();
+        var subscription = _database.GetOrAddGame(id).Channel.Subscribe(t => pusher.Send(t, HttpContext.RequestAborted));
         try
         {
-            await _pusher.Wait();
+            await pusher.Listen(HttpContext.RequestAborted);
         }
         finally
         {
-            await _pusher.Close();
-            subscription!.UnRegister();
+            await pusher.Close(HttpContext.RequestAborted);
+            subscription.UnRegister();
         }
     }
 
