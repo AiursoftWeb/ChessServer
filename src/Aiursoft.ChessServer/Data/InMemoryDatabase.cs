@@ -16,7 +16,10 @@ public class InMemoryDatabase : ISingletonDependency
 
     public Game GetOrAddGame(int id)
     {
-        return Games.GetOrAdd(id, _ => new Game());
+        lock (this)
+        {
+            return Games.GetOrAdd(id, _ => new Game());
+        }
     }
 }
 

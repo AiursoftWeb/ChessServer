@@ -78,21 +78,16 @@ public class GamesController : Controller
     public async Task<IActionResult> Move([FromRoute] int id, [FromRoute] string player, [FromRoute] string move)
     {
         var game = _database.GetOrAddGame(id);
-        try
+        lock (game.MovePieceLock)
         {
             if (!game.Board.IsValidMove(move) || game.Board.IsEndGame || game.Board.Turn.AsChar.ToString() != player)
             {
                 return BadRequest();
             }
-
             game.Board.Move(move);
-            var fen = game.Board.ToFen();
-            await Task.WhenAll(game.Channel.Broadcast(fen));
-            return Ok(fen);
         }
-        catch
-        {
-            return BadRequest();
-        }
+        var fen = game.Board.ToFen();
+        await Task.WhenAll(game.Channel.Broadcast(fen));
+        return Ok(fen);
     }
 }

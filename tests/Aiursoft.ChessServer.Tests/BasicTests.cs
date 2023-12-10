@@ -107,13 +107,12 @@ public class BasicTests
     [DataRow(11)]
     public async Task TestGameWithReconnection(int gameId)
     {
-        var socket1 = await (_endpointUrl.Replace("http", "ws") + $"/games/{gameId}.ws")
-            .ConnectAsWebSocketServer();
-        await Task.Factory.StartNew(() => socket1.Listen(CancellationToken.None));
+        var endPoint = _endpointUrl.Replace("http", "ws") + $"/games/{gameId}.ws";
+        var socket1 = await endPoint.ConnectAsWebSocketServer();
+        await Task.Factory.StartNew(() => socket1.Listen());
 
-        var socket2 = await (_endpointUrl.Replace("http", "ws") + $"/games/{gameId}.ws")
-            .ConnectAsWebSocketServer();
-        await Task.Factory.StartNew(() => socket2.Listen(CancellationToken.None));
+        var socket2 = await endPoint.ConnectAsWebSocketServer();
+        await Task.Factory.StartNew(() => socket2.Listen());
         
         await _http.PostAsync(_endpointUrl + $"/games/{gameId}/move/w/e4", new StringContent(""));
         await Task.Delay(50);
@@ -127,9 +126,8 @@ public class BasicTests
         
         await socket1.Close();
         
-        var socket3 = await (_endpointUrl.Replace("http", "ws") + $"/games/{gameId}.ws")
-            .ConnectAsWebSocketServer();
-        await Task.Factory.StartNew(() => socket3.Listen(CancellationToken.None));
+        var socket3 = await endPoint.ConnectAsWebSocketServer();
+        await Task.Factory.StartNew(() => socket3.Listen());
         
         await _http.PostAsync(_endpointUrl + $"/games/{gameId}/move/w/Nf3", new StringContent(""));
         await Task.Delay(50);
