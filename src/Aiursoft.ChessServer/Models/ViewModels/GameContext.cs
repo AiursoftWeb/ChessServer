@@ -1,5 +1,4 @@
-﻿using Aiursoft.ChessServer.Models;
-using Chess;
+﻿using Chess;
 
 namespace Aiursoft.ChessServer.Models;
 
