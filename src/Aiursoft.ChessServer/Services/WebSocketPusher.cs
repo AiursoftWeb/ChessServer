@@ -9,8 +9,6 @@ public class WebSocketPusher : IScopedDependency
     private bool _dropped;
     private WebSocket? _ws;
     
-    public readonly Guid Id = Guid.NewGuid();
-
     public bool Connected => !_dropped && _ws?.State == WebSocketState.Open;
 
     public async Task Accept(HttpContext context)
@@ -18,11 +16,11 @@ public class WebSocketPusher : IScopedDependency
         _ws = await context.WebSockets.AcceptWebSocketAsync();
     }
 
-    public async Task SendMessage(string message)
+    public async Task Send(string message)
     {
         if (_dropped)
         {
-            return;
+            throw new InvalidOperationException("WebSocket is dropped!");
         }
         try
         {
@@ -34,11 +32,11 @@ public class WebSocketPusher : IScopedDependency
         }
     }
 
-    public async Task PendingClose()
+    public async Task Wait()
     {
         try
         {
-            var buffer = new ArraySegment<byte>(new byte[4096 * 20]);
+            var buffer = new byte[1024 * 4];
             while (true)
             {
                 await (_ws?.ReceiveAsync(buffer, CancellationToken.None) ?? throw new InvalidOperationException("WebSocket is not connected!"));

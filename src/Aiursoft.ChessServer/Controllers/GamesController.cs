@@ -8,16 +8,13 @@ namespace Aiursoft.ChessServer.Controllers;
 [Route("games")]
 public class GamesController : Controller
 {
-    private readonly ILogger<GamesController> _logger;
     private readonly WebSocketPusher _pusher;
     private readonly InMemoryDatabase _database;
 
     public GamesController(
-        ILogger<GamesController> logger,
         WebSocketPusher pusher,
         InMemoryDatabase database)
     {
-        _logger = logger;
         _pusher = pusher;
         _database = database;
     }
@@ -40,25 +37,16 @@ public class GamesController : Controller
     public async Task GetWebSocket([FromRoute] int id)
     {
         var game = _database.GetOrAddGame(id);
-        ISubscription? subscription = null;
-
         await _pusher.Accept(HttpContext);
+        var subscription = game.Channel.Subscribe(_pusher.Send);
         try
         {
-            subscription = game.Channel.Subscribe(async t => 
-            {
-                await _pusher.SendMessage(t); 
-                _logger.LogInformation("Message was sent to client with ID: {PusherId}", _pusher.Id);
-            });
-
-            _logger.LogInformation("Game {Id} registering listener {PusherId} done. Waiting for close. Now it has {Count} subscribers", id, _pusher.Id, game.Channel.GetListenerCount());
-            await _pusher.PendingClose();
+            await _pusher.Wait();
         }
         finally
         {
             await _pusher.Close();
             subscription!.UnRegister();
-            _logger.LogInformation("Game {Id}'s pusher {PusherId} connection was interrupted. Now it has {Count} subscribers", id, _pusher.Id, game.Channel.GetListenerCount());
         }
     }
 
