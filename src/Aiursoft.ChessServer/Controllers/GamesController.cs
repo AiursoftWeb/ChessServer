@@ -1,4 +1,4 @@
-﻿using AiurObserver;
+﻿using Aiursoft.AiurObserver;
 using Aiursoft.ChessServer.Data;
 using Aiursoft.ChessServer.Models;
 using Aiursoft.WebTools.Services;
@@ -35,7 +35,7 @@ public class GamesController : Controller
     public async Task GetWebSocket([FromRoute] int id)
     {
         var pusher = await HttpContext.AcceptWebSocketClient();
-        var subscription = _database.GetOrAddGame(id).Channel.Subscribe(t => pusher.Send(t, HttpContext.RequestAborted));
+        var subscription = _database.GetOrAddGame(id).BoardChannel.Subscribe(t => pusher.Send(t, HttpContext.RequestAborted));
         try
         {
             await pusher.Listen(HttpContext.RequestAborted);
@@ -88,7 +88,7 @@ public class GamesController : Controller
             game.Board.Move(move);
         }
         var fen = game.Board.ToFen();
-        await Task.WhenAll(game.Channel.Broadcast(fen));
+        await game.BoardChannel.BroadcastAsync(fen);
         return Ok(fen);
     }
 }

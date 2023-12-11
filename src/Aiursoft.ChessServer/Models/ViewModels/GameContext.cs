@@ -23,7 +23,7 @@ public class GameContext
             { "websocket", $"games/{id}.ws" },
             { "move-post", $"games/{id}/move/{{player}}/{{move_algebraic_notation}}" }
         };
-        Listeners = game.Channel.GetListenerCount();
+        Listeners = game.BoardChannel.GetListenerCount();
     }
 
 
