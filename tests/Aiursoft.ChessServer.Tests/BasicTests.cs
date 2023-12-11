@@ -84,22 +84,19 @@ public class BasicTests
     [DataRow(9)]
     public async Task TestConnect(int gameId)
     {
-        var tester = new WebSocketTester();
-        var socket = new ClientWebSocket();
-        
-        await socket.ConnectAsync(new Uri(_endpointUrl.Replace("http", "ws") + $"/games/{gameId}.ws"),
-            CancellationToken.None);
-        await Task.Factory.StartNew(() => tester.Monitor(socket));
+        var endPoint = _endpointUrl.Replace("http", "ws") + $"/games/{gameId}.ws";
+        var socket = await endPoint.ConnectAsWebSocketServer();
+        await Task.Factory.StartNew(() => socket.Listen());
         
         await _http.PostAsync(_endpointUrl + $"/games/{gameId}/move/w/e4", new StringContent(""));
         await Task.Delay(50);
-        Assert.AreEqual("rnbqkbnr/pppppppp/8/8/4P3/8/PPPP1PPP/RNBQKBNR b KQkq e3 0 1", tester.LastMessage);
+        Assert.AreEqual("rnbqkbnr/pppppppp/8/8/4P3/8/PPPP1PPP/RNBQKBNR b KQkq e3 0 1", socket.LastMessage);
         
         await _http.PostAsync(_endpointUrl + $"/games/{gameId}/move/b/e5", new StringContent(""));
         await Task.Delay(50);
-        Assert.AreEqual("rnbqkbnr/pppp1ppp/8/4p3/4P3/8/PPPP1PPP/RNBQKBNR w KQkq e6 0 2", tester.LastMessage);
+        Assert.AreEqual("rnbqkbnr/pppp1ppp/8/4p3/4P3/8/PPPP1PPP/RNBQKBNR w KQkq e6 0 2", socket.LastMessage);
         
-        await socket.CloseOutputAsync(WebSocketCloseStatus.NormalClosure, string.Empty, CancellationToken.None);
+        await socket.Close();
     }
 
     [TestMethod]
