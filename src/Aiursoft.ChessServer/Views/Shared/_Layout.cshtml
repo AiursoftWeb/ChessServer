@@ -56,7 +56,7 @@ async function loadName() {
 async function promptChangeName() {
     const newName = prompt("Please enter your new name:");
     if (newName) {
-        changeName(newName);
+        await changeName(newName);
         await loadName();
     }
 }

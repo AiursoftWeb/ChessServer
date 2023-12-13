@@ -43,6 +43,10 @@ public class GamesController : Controller
         {
             await pusher.Listen(HttpContext.RequestAborted);
         }
+        catch (TaskCanceledException)
+        {
+            // Ignore. This happens when the client closes the connection.
+        }
         finally
         {
             await pusher.Close(HttpContext.RequestAborted);
