@@ -12,9 +12,10 @@
 <script type="module">
 import initGameBoard from "/scripts/chessboard.js";
 
-window.addEventListener('DOMContentLoaded', () => {
+window.addEventListener('DOMContentLoaded', async () => {
     // Ask the user to enter w or b:
     const player = prompt("Please enter your color (w or b):");
     initGameBoard(player, @Model.GameId);
 });
+
 </script>

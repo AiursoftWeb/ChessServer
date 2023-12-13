@@ -22,7 +22,7 @@ public class PlayersController : ControllerBase
     }
     
     [HttpPut]
-    [Route("{id:guid}/name/{nickname}")]
+    [Route("{id:guid}/new-name/{nickname}")]
     public IActionResult ChangeNickname([Required]Guid id, [Required]string nickname)
     {
         var me = _database.GetOrAddPlayer(id);
