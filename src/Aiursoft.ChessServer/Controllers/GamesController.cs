@@ -35,7 +35,10 @@ public class GamesController : Controller
     public async Task GetWebSocket([FromRoute] int id)
     {
         var pusher = await HttpContext.AcceptWebSocketClient();
-        var subscription = _database.GetOrAddGame(id).BoardChannel.Subscribe(t => pusher.Send(t, HttpContext.RequestAborted));
+        var subscription = _database
+            .GetOrAddGame(id)
+            .FenChangedChannel
+            .Subscribe(t => pusher.Send(t, HttpContext.RequestAborted));
         try
         {
             await pusher.Listen(HttpContext.RequestAborted);
@@ -88,7 +91,7 @@ public class GamesController : Controller
             game.Board.Move(move);
         }
         var fen = game.Board.ToFen();
-        await game.BoardChannel.BroadcastAsync(fen);
+        await game.FenChangedChannel.BroadcastAsync(fen);
         return Ok(fen);
     }
 }

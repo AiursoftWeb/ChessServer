@@ -7,7 +7,7 @@ public class Game
 {
     public ChessBoard Board { get; } = new();
 
-    public AsyncObservable<string> BoardChannel { get; } = new();
+    public AsyncObservable<string> FenChangedChannel { get; } = new();
     
     public object MovePieceLock { get; } = new();
 }

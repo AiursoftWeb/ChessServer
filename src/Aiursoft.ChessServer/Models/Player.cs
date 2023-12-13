@@ -2,6 +2,13 @@
 
 public class Player
 {
+    public Guid Id { get; }
+    
+    public Player(Guid id)
+    {
+        Id = id;
+    }
+    
     public string NickName { get; set; } = "Anonymous";
-    public Guid Id { get; set; } = Guid.NewGuid();
+    
 }
