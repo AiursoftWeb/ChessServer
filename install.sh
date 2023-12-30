@@ -15,14 +15,15 @@ install()
     
     aiur install/dotnet
     aiur install/node
+
     aiur git/clone_to $repo_path /tmp/repo
 
-    npm install --prefix /tmp/repo/src/Aiursoft.ChessServer/wwwroot/
+    npm install --prefix "/tmp/repo/src/Aiursoft.ChessServer/wwwroot/"
     aiur dotnet/publish "/tmp/repo/$proj_path" "/opt/apps/$app_name"
     aiur services/register_aspnet_service $app_name $port "/opt/apps/$app_name" $dll_name
 
     echo "Install $app_name finished! Please open http://$(hostname):$port to try!"
-    rm /tmp/repo -rf
+    sudo rm /tmp/repo -rf
 }
 
 # This will install this app under /opt/apps and register a new service with systemd.
