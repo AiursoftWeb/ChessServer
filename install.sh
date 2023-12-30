@@ -3,7 +3,14 @@ aiur() { arg="$( cut -d ' ' -f 2- <<< "$@" )" && curl -sL https://gitlab.aiursof
 app_name="chessserver"
 repo_path="https://gitlab.aiursoft.cn/aiursoft/chessserver"
 proj_path="src/Aiursoft.ChessServer/Aiursoft.ChessServer.csproj"
-dll_name="Aiursoft.ChessServer.dll"
+
+get_dll_name()
+{
+    filename=$(basename -- "$proj_path")
+    project_name="${filename/.csproj/}"
+    dll_name="$project_name.dll"
+    echo $dll_name
+}
 
 install()
 {
@@ -31,6 +38,7 @@ install()
     aiur dotnet/publish "/tmp/repo/$proj_path" "/opt/apps/$app_name"
     
     # Register the service
+    dll_name=$(get_dll_name)
     aiur services/register_aspnet_service $app_name $port "/opt/apps/$app_name" $dll_name
 
     # Clean up
