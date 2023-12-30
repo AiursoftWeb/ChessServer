@@ -7,6 +7,16 @@
 
 ChessServer is just a simple chess server for [Aiursoft](https://www.aiursoft.com) to test our new features.
 
+## Run in Ubuntu
+
+First, specify a domain name for your Ubuntu 18.04+, brand-new server.
+
+And execute the following command in the server:
+
+```bash
+curl -sL https://gitlab.aiursoft.cn/aiursoft/chessserver/-/raw/master/install.sh | sudo bash
+```
+
 ## Run locally
 
 Requirements about how to run
