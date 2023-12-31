@@ -1,68 +1,73 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-100">
+
 <head>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Aiursoft Chess Server</title>
-    <link rel="stylesheet" href="~/node_modules/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/node_modules/@@chrisoakman/chessboardjs/dist/chessboard-1.0.0.min.css" /> 
+    <link rel="stylesheet" href="~/node_modules/@@aiursoft/autodark.js/dist/css/autodark.min.css" />
+    <link rel="stylesheet" href="~/node_modules/@@chrisoakman/chessboardjs/dist/chessboard-1.0.0.min.css" />
 </head>
-<body>
-<header>
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-        <div class="container-fluid">
-            <a class="navbar-brand" asp-controller="Home" asp-action="Index">Aiursoft Chess Server</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                <ul class="navbar-nav flex-grow-1">
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" href="/">关于</a>
+
+<body class="d-flex flex-column h-100">
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand" asp-controller="Home" asp-action="Index">Aiursoft Chess Server</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                 <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/">关于</a>
                     </li>
                 </ul>
-                
-                 <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a title="Manage" id="player-nick-name" class="nav-link text-dark" href="#">未登录</a>
-                    </li>
-                </ul>
+                <div class="form-inline">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a title="Manage" id="player-nick-name" class="nav-link" href="#">未登录</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </div>
-    </nav>
-</header>
-<div class="container">
-    <main role="main" class="pb-3">
-        @RenderBody()
-    </main>
-</div>
-
-<footer class="border-top footer text-muted">
+        </nav>
+    </header>
     <div class="container">
-        &copy; @DateTime.UtcNow.Year - Aiursoft.ChessServer
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
     </div>
-</footer>
-<script type="module" src="~/node_modules/jquery/dist/jquery.min.js" defer></script>
-<script type="module" src="~/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js" defer></script>
-<script type="module" src="~/node_modules/@@chrisoakman/chessboardjs/dist/chessboard-1.0.0.min.js" defer></script>
-<script type="module">
-import { getUserName, changeName } from "/scripts/player.js";
 
-async function loadName() {
-    document.getElementById("player-nick-name").innerText = await getUserName();
-}
+    <footer class="footer mt-auto py-3">
+        <div class="container">
+            &copy; @DateTime.UtcNow.Year - Aiursoft.ChessServer
+        </div>
+    </footer>
+    <script type="module" src="~/node_modules/jquery/dist/jquery.min.js" defer></script>
+    <script type="module" src="~/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js" defer></script>
+    <script type="module" src="~/node_modules/@@chrisoakman/chessboardjs/dist/chessboard-1.0.0.min.js" defer></script>
+    <script type="module">
+        import { autoTheme } from '/node_modules/@@aiursoft/autodark.js/dist/esm/autodark.js';
+        import { getUserName, changeName } from "/scripts/player.js";
+        autoTheme()
 
-async function promptChangeName() {
-    const newName = prompt("Please enter your new name:");
-    if (newName) {
-        await changeName(newName);
+        async function loadName() {
+            document.getElementById("player-nick-name").innerText = await getUserName();
+        }
+
+        async function promptChangeName() {
+            const newName = prompt("Please enter your new name:");
+            if (newName) {
+                await changeName(newName);
+                await loadName();
+            }
+        }
+
         await loadName();
-    }
-}
-
-await loadName();
-document.getElementById("player-nick-name").addEventListener("click", promptChangeName);
-</script>
+        document.getElementById("player-nick-name").addEventListener("click", promptChangeName);
+    </script>
 </body>
+
 </html>
