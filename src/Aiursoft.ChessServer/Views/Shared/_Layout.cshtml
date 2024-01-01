@@ -4,32 +4,33 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Aiursoft Chess Server</title>
+    <title>@ViewData["Title"] - Aiursoft Chess Server</title>
     <link rel="stylesheet" href="~/node_modules/@@aiursoft/autodark.js/dist/css/autodark.min.css" />
     <link rel="stylesheet" href="~/node_modules/@@chrisoakman/chessboardjs/dist/chessboard-1.0.0.min.css" />
 </head>
 
 <body class="d-flex flex-column h-100">
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm border-bottom box-shadow mb-3">
             <div class="container">
                 <a class="navbar-brand" asp-controller="Home" asp-action="Index">Aiursoft Chess Server</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse"
-                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+                    aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                 <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="/">关于</a>
-                    </li>
-                </ul>
-                <div class="form-inline">
+                <div class="collapse navbar-collapse" id="navbarsExampleDefault">
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item">
-                            <a title="Manage" id="player-nick-name" class="nav-link" href="#">未登录</a>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/">关于</a>
                         </li>
                     </ul>
+                    <div class="form-inline">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item">
+                                <a title="Manage" id="player-nick-name" class="nav-link" href="#">未登录</a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </nav>
