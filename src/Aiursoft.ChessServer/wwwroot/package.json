@@ -1,16 +1,14 @@
 {
   "name": "wwwroot",
   "version": "1.0.0",
-  "description": "",
-  "main": "chess.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-  "license": "ISC",
+  "description": "This is a server side application. This package is used to host the static files.",
+  "author": "Anduin Xue",
+  "license": "MIT",
   "dependencies": {
-    "@aiursoft/autodark.js": "^1.0.3",
+    "@aiursoft/autodark.js": "^1.0.4",
     "@chrisoakman/chessboardjs": "^1.0.0",
-    "chess.js": "^1.0.0-beta.6"
+    "chess.js": "^1.0.0-beta.6",
+    "jquery-validation": "^1.19.5",
+    "jquery-validation-unobtrusive": "^3.2.12"
   }
 }
