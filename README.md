@@ -7,6 +7,9 @@
 
 ChessServer is just a simple chess server for [Aiursoft](https://www.aiursoft.com) to test our new features.
 
+## Try
+
+Try a running ChessServer [here](https://chess.aiursoft.cn).
 
 ## Run in Ubuntu
 
