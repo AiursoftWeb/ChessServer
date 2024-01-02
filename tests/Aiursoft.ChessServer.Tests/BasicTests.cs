@@ -64,8 +64,14 @@ public class BasicTests
     [DataRow("/games/4/move/w/Nc3")]
     public async Task MoveChess(string url)
     {
-        var response = await _http.PostAsync(_endpointUrl + url, new StringContent(""));
-        response.EnsureSuccessStatusCode(); // Status Code 200-299
+        var endPoint = _endpointUrl.Replace("http", "ws") + $"/games/{url.Split("/")[2]}.ws";
+        var socket = await endPoint.ConnectAsWebSocketServer();
+        await Task.Factory.StartNew(() => socket.Listen());
+        
+        await socket.Send(url.Split("/")[4] + url.Split("/")[5]);
+        await Task.Delay(150);
+        Assert.IsTrue(!string.IsNullOrWhiteSpace(socket.LastMessage));
+        await socket.Close();
     }
 
     [TestMethod]
@@ -73,8 +79,16 @@ public class BasicTests
     [DataRow("/games/6/move/b/O-O-O")]
     public async Task InvalidMoveChess(string url)
     {
-        var response = await _http.PostAsync(_endpointUrl + url, new StringContent(""));
-        Assert.AreEqual(400, (int)response.StatusCode);
+        var endPoint = _endpointUrl.Replace("http", "ws") + $"/games/{url.Split("/")[2]}.ws";
+        var socket = await endPoint.ConnectAsWebSocketServer();
+        await Task.Factory.StartNew(() => socket.Listen());
+        
+        await socket.Send(url.Split("/")[4] + url.Split("/")[5]);
+        await Task.Delay(150);
+        
+        // fen equal init
+        Assert.AreEqual("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1", socket.LastMessage);
+        await socket.Close();
     }
 
     [TestMethod]
@@ -87,12 +101,12 @@ public class BasicTests
         var socket = await endPoint.ConnectAsWebSocketServer();
         await Task.Factory.StartNew(() => socket.Listen());
         
-        await _http.PostAsync(_endpointUrl + $"/games/{gameId}/move/w/e4", new StringContent(""));
-        await Task.Delay(50);
+        await socket.Send("we4");
+        await Task.Delay(150);
         Assert.AreEqual("rnbqkbnr/pppppppp/8/8/4P3/8/PPPP1PPP/RNBQKBNR b KQkq e3 0 1", socket.LastMessage);
         
-        await _http.PostAsync(_endpointUrl + $"/games/{gameId}/move/b/e5", new StringContent(""));
-        await Task.Delay(50);
+        await socket.Send("be5");
+        await Task.Delay(150);
         Assert.AreEqual("rnbqkbnr/pppp1ppp/8/4p3/4P3/8/PPPP1PPP/RNBQKBNR w KQkq e6 0 2", socket.LastMessage);
         
         await socket.Close();
@@ -110,13 +124,13 @@ public class BasicTests
         var socket2 = await endPoint.ConnectAsWebSocketServer();
         await Task.Factory.StartNew(() => socket2.Listen());
         
-        await _http.PostAsync(_endpointUrl + $"/games/{gameId}/move/w/e4", new StringContent(""));
-        await Task.Delay(50);
+        await socket1.Send("we4");
+        await Task.Delay(150);
         Assert.AreEqual("rnbqkbnr/pppppppp/8/8/4P3/8/PPPP1PPP/RNBQKBNR b KQkq e3 0 1", socket1.LastMessage);
         Assert.AreEqual("rnbqkbnr/pppppppp/8/8/4P3/8/PPPP1PPP/RNBQKBNR b KQkq e3 0 1", socket2.LastMessage);
         
-        await _http.PostAsync(_endpointUrl + $"/games/{gameId}/move/b/e5", new StringContent(""));
-        await Task.Delay(50);
+        await socket2.Send("be5");
+        await Task.Delay(150);
         Assert.AreEqual("rnbqkbnr/pppp1ppp/8/4p3/4P3/8/PPPP1PPP/RNBQKBNR w KQkq e6 0 2", socket1.LastMessage);
         Assert.AreEqual("rnbqkbnr/pppp1ppp/8/4p3/4P3/8/PPPP1PPP/RNBQKBNR w KQkq e6 0 2", socket2.LastMessage);
         
@@ -125,10 +139,13 @@ public class BasicTests
         var socket3 = await endPoint.ConnectAsWebSocketServer();
         await Task.Factory.StartNew(() => socket3.Listen());
         
-        await _http.PostAsync(_endpointUrl + $"/games/{gameId}/move/w/Nf3", new StringContent(""));
-        await Task.Delay(50);
+        await socket3.Send("wNf3");
+        await Task.Delay(150);
         Assert.AreEqual("rnbqkbnr/pppp1ppp/8/4p3/4P3/8/PPPP1PPP/RNBQKBNR w KQkq e6 0 2", socket1.LastMessage);
         Assert.AreEqual("rnbqkbnr/pppp1ppp/8/4p3/4P3/5N2/PPPP1PPP/RNBQKB1R b KQkq - 1 2", socket2.LastMessage);
         Assert.AreEqual("rnbqkbnr/pppp1ppp/8/4p3/4P3/5N2/PPPP1PPP/RNBQKB1R b KQkq - 1 2", socket3.LastMessage);
+        
+        await socket3.Close();
+        await socket2.Close();
     }
 }

@@ -35,10 +35,31 @@ public class GamesController : Controller
     public async Task GetWebSocket([FromRoute] int id)
     {
         var pusher = await HttpContext.AcceptWebSocketClient();
-        var subscription = _database
-            .GetOrAddGame(id)
+        var game = _database.GetOrAddGame(id);
+        var outSub = game
             .FenChangedChannel
             .Subscribe(t => pusher.Send(t, HttpContext.RequestAborted));
+
+        var inSub = pusher.Subscribe(async message =>
+        {
+            if (message.Length < 2)
+            {
+                return;
+            }
+
+            var player = message[..1];
+            var move = message[1..];
+            lock (game.MovePieceLock)
+            {
+                if (game.Board.IsValidMove(move) && !game.Board.IsEndGame &&
+                    game.Board.Turn.AsChar.ToString() == player)
+                {
+                    game.Board.Move(move);
+                }
+            }
+            await game.FenChangedChannel.BroadcastAsync(game.Board.ToFen());
+        });
+        
         try
         {
             await pusher.Listen(HttpContext.RequestAborted);
@@ -50,7 +71,8 @@ public class GamesController : Controller
         finally
         {
             await pusher.Close(HttpContext.RequestAborted);
-            subscription.UnRegister();
+            outSub.UnRegister();
+            inSub.UnRegister();
         }
     }
 
@@ -79,23 +101,5 @@ public class GamesController : Controller
     {
         var game = _database.GetOrAddGame(id);
         return Ok(game.Board.ToPgn());
-    }
-
-    [HttpPost]
-    [Route("{id:int}/move/{player}/{move}")]
-    public async Task<IActionResult> Move([FromRoute] int id, [FromRoute] string player, [FromRoute] string move)
-    {
-        var game = _database.GetOrAddGame(id);
-        lock (game.MovePieceLock)
-        {
-            if (!game.Board.IsValidMove(move) || game.Board.IsEndGame || game.Board.Turn.AsChar.ToString() != player)
-            {
-                return BadRequest();
-            }
-            game.Board.Move(move);
-        }
-        var fen = game.Board.ToFen();
-        await game.FenChangedChannel.BroadcastAsync(fen);
-        return Ok(fen);
     }
 }

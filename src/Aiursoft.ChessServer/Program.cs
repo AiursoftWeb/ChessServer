@@ -1,6 +1,9 @@
+using System.Diagnostics.CodeAnalysis;
+
 namespace Aiursoft.ChessServer;
 
-public class Program
+[ExcludeFromCodeCoverage]
+public abstract class Program
 {
     public static async Task Main(string[] args)
     {
