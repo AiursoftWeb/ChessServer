@@ -8,7 +8,7 @@ const initGameBoard = function (player, gameId) {
             let game = null;
             const wsScheme = window.location.protocol === "https:" ? "wss://" : "ws://";
             const socket = new WebSocket(
-                `${wsScheme}${window.location.host}/games/${gameId}.ws`
+                `${wsScheme}${window.location.host}/games/${gameId}.ws?player=${player}`
             );
 
             function onDragStart(source, piece, position, _) {
@@ -36,7 +36,7 @@ const initGameBoard = function (player, gameId) {
                         return "snapback";
                     }
                     const lastMove = game.history({verbose: true}).pop().san;
-                    socket.send(player + lastMove);
+                    socket.send(lastMove);
                 } catch (e) {
                     return "snapback";
                 }

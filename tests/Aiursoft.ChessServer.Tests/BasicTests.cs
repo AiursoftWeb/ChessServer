@@ -1,4 +1,5 @@
-﻿using Aiursoft.CSTools.Tools;
+﻿using Aiursoft.AiurObserver;
+using Aiursoft.CSTools.Tools;
 using Aiursoft.WebTools.Services;
 using Microsoft.Extensions.Hosting;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -64,13 +65,14 @@ public class BasicTests
     [DataRow("/games/4/move/w/Nc3")]
     public async Task MoveChess(string url)
     {
-        var endPoint = _endpointUrl.Replace("http", "ws") + $"/games/{url.Split("/")[2]}.ws";
+        var endPoint = _endpointUrl.Replace("http", "ws") + $"/games/{url.Split("/")[2]}.ws?player={url.Split("/")[4]}";
         var socket = await endPoint.ConnectAsWebSocketServer();
+        var socketStage = socket.StageLast();
         await Task.Factory.StartNew(() => socket.Listen());
         
-        await socket.Send(url.Split("/")[4] + url.Split("/")[5]);
+        await socket.Send(url.Split("/")[5]);
         await Task.Delay(150);
-        Assert.IsTrue(!string.IsNullOrWhiteSpace(socket.LastMessage));
+        Assert.IsTrue(!string.IsNullOrWhiteSpace(socketStage.Stage));
         await socket.Close();
     }
 
@@ -79,15 +81,16 @@ public class BasicTests
     [DataRow("/games/6/move/b/O-O-O")]
     public async Task InvalidMoveChess(string url)
     {
-        var endPoint = _endpointUrl.Replace("http", "ws") + $"/games/{url.Split("/")[2]}.ws";
+        var endPoint = _endpointUrl.Replace("http", "ws") + $"/games/{url.Split("/")[2]}.ws?player={url.Split("/")[4]}";
         var socket = await endPoint.ConnectAsWebSocketServer();
+        var socketStage = socket.StageLast();
         await Task.Factory.StartNew(() => socket.Listen());
         
-        await socket.Send(url.Split("/")[4] + url.Split("/")[5]);
+        await socket.Send(url.Split("/")[5]);
         await Task.Delay(150);
         
         // fen equal init
-        Assert.AreEqual("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1", socket.LastMessage);
+        Assert.AreEqual("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1", socketStage.Stage);
         await socket.Close();
     }
 
@@ -97,17 +100,14 @@ public class BasicTests
     [DataRow(9)]
     public async Task TestConnect(int gameId)
     {
-        var endPoint = _endpointUrl.Replace("http", "ws") + $"/games/{gameId}.ws";
+        var endPoint = _endpointUrl.Replace("http", "ws") + $"/games/{gameId}.ws?player=w";
         var socket = await endPoint.ConnectAsWebSocketServer();
+        var socketStage = socket.StageLast();
         await Task.Factory.StartNew(() => socket.Listen());
         
-        await socket.Send("we4");
+        await socket.Send("e4");
         await Task.Delay(150);
-        Assert.AreEqual("rnbqkbnr/pppppppp/8/8/4P3/8/PPPP1PPP/RNBQKBNR b KQkq e3 0 1", socket.LastMessage);
-        
-        await socket.Send("be5");
-        await Task.Delay(150);
-        Assert.AreEqual("rnbqkbnr/pppp1ppp/8/4p3/4P3/8/PPPP1PPP/RNBQKBNR w KQkq e6 0 2", socket.LastMessage);
+        Assert.AreEqual("rnbqkbnr/pppppppp/8/8/4P3/8/PPPP1PPP/RNBQKBNR b KQkq e3 0 1", socketStage.Stage);
         
         await socket.Close();
     }
@@ -117,33 +117,38 @@ public class BasicTests
     [DataRow(11)]
     public async Task TestGameWithReconnection(int gameId)
     {
-        var endPoint = _endpointUrl.Replace("http", "ws") + $"/games/{gameId}.ws";
-        var socket1 = await endPoint.ConnectAsWebSocketServer();
+        var socket1 = await (_endpointUrl.Replace("http", "ws") + $"/games/{gameId}.ws?player=w")
+            .ConnectAsWebSocketServer();
+        var socket1Stage = socket1.StageLast();
         await Task.Factory.StartNew(() => socket1.Listen());
 
-        var socket2 = await endPoint.ConnectAsWebSocketServer();
+        var socket2 = await (_endpointUrl.Replace("http", "ws") + $"/games/{gameId}.ws?player=b")
+            .ConnectAsWebSocketServer();
+        var socket2Stage = socket2.StageLast();
         await Task.Factory.StartNew(() => socket2.Listen());
         
-        await socket1.Send("we4");
+        await socket1.Send("e4");
         await Task.Delay(150);
-        Assert.AreEqual("rnbqkbnr/pppppppp/8/8/4P3/8/PPPP1PPP/RNBQKBNR b KQkq e3 0 1", socket1.LastMessage);
-        Assert.AreEqual("rnbqkbnr/pppppppp/8/8/4P3/8/PPPP1PPP/RNBQKBNR b KQkq e3 0 1", socket2.LastMessage);
+        Assert.AreEqual("rnbqkbnr/pppppppp/8/8/4P3/8/PPPP1PPP/RNBQKBNR b KQkq e3 0 1", socket1Stage.Stage);
+        Assert.AreEqual("rnbqkbnr/pppppppp/8/8/4P3/8/PPPP1PPP/RNBQKBNR b KQkq e3 0 1", socket2Stage.Stage);
         
-        await socket2.Send("be5");
+        await socket2.Send("e5");
         await Task.Delay(150);
-        Assert.AreEqual("rnbqkbnr/pppp1ppp/8/4p3/4P3/8/PPPP1PPP/RNBQKBNR w KQkq e6 0 2", socket1.LastMessage);
-        Assert.AreEqual("rnbqkbnr/pppp1ppp/8/4p3/4P3/8/PPPP1PPP/RNBQKBNR w KQkq e6 0 2", socket2.LastMessage);
+        Assert.AreEqual("rnbqkbnr/pppp1ppp/8/4p3/4P3/8/PPPP1PPP/RNBQKBNR w KQkq e6 0 2", socket1Stage.Stage);
+        Assert.AreEqual("rnbqkbnr/pppp1ppp/8/4p3/4P3/8/PPPP1PPP/RNBQKBNR w KQkq e6 0 2", socket2Stage.Stage);
         
         await socket1.Close();
-        
-        var socket3 = await endPoint.ConnectAsWebSocketServer();
+
+        var socket3 = await (_endpointUrl.Replace("http", "ws") + $"/games/{gameId}.ws?player=w")
+            .ConnectAsWebSocketServer();
+        var socket3Stage = socket3.StageLast();
         await Task.Factory.StartNew(() => socket3.Listen());
         
-        await socket3.Send("wNf3");
+        await socket3.Send("Nf3");
         await Task.Delay(150);
-        Assert.AreEqual("rnbqkbnr/pppp1ppp/8/4p3/4P3/8/PPPP1PPP/RNBQKBNR w KQkq e6 0 2", socket1.LastMessage);
-        Assert.AreEqual("rnbqkbnr/pppp1ppp/8/4p3/4P3/5N2/PPPP1PPP/RNBQKB1R b KQkq - 1 2", socket2.LastMessage);
-        Assert.AreEqual("rnbqkbnr/pppp1ppp/8/4p3/4P3/5N2/PPPP1PPP/RNBQKB1R b KQkq - 1 2", socket3.LastMessage);
+        Assert.AreEqual("rnbqkbnr/pppp1ppp/8/4p3/4P3/8/PPPP1PPP/RNBQKBNR w KQkq e6 0 2", socket1Stage.Stage);
+        Assert.AreEqual("rnbqkbnr/pppp1ppp/8/4p3/4P3/5N2/PPPP1PPP/RNBQKB1R b KQkq - 1 2", socket2Stage.Stage);
+        Assert.AreEqual("rnbqkbnr/pppp1ppp/8/4p3/4P3/5N2/PPPP1PPP/RNBQKB1R b KQkq - 1 2", socket3Stage.Stage);
         
         await socket3.Close();
         await socket2.Close();

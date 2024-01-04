@@ -32,7 +32,7 @@ public class GamesController : Controller
     }
 
     [Route("{id:int}.ws")]
-    public async Task GetWebSocket([FromRoute] int id)
+    public async Task GetWebSocket([FromRoute] int id, [FromQuery]string player)
     {
         var pusher = await HttpContext.AcceptWebSocketClient();
         var game = _database.GetOrAddGame(id);
@@ -40,18 +40,14 @@ public class GamesController : Controller
             .FenChangedChannel
             .Subscribe(t => pusher.Send(t, HttpContext.RequestAborted));
 
-        var inSub = pusher.Subscribe(async message =>
+        var inSub = pusher
+            .Filter(t => !string.IsNullOrWhiteSpace(t))
+            .Subscribe(async move =>
         {
-            if (message.Length < 2)
-            {
-                return;
-            }
-
-            var player = message[..1];
-            var move = message[1..];
             lock (game.MovePieceLock)
             {
-                if (game.Board.IsValidMove(move) && !game.Board.IsEndGame &&
+                if (!game.Board.IsEndGame &&
+                    game.Board.IsValidMove(move) && 
                     game.Board.Turn.AsChar.ToString() == player)
                 {
                     game.Board.Move(move);
@@ -71,8 +67,8 @@ public class GamesController : Controller
         finally
         {
             await pusher.Close(HttpContext.RequestAborted);
-            outSub.UnRegister();
-            inSub.UnRegister();
+            outSub.Unsubscribe();
+            inSub.Unsubscribe();
         }
     }
 
