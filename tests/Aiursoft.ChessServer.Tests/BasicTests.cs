@@ -67,7 +67,8 @@ public class BasicTests
     {
         var endPoint = _endpointUrl.Replace("http", "ws") + $"/games/{url.Split("/")[2]}.ws?player={url.Split("/")[4]}";
         var socket = await endPoint.ConnectAsWebSocketServer();
-        var socketStage = socket.StageLast();
+        var socketStage = new MessageStageLast<string>();
+        socket.Subscribe(socketStage);
         await Task.Factory.StartNew(() => socket.Listen());
         
         await socket.Send(url.Split("/")[5]);
@@ -83,7 +84,8 @@ public class BasicTests
     {
         var endPoint = _endpointUrl.Replace("http", "ws") + $"/games/{url.Split("/")[2]}.ws?player={url.Split("/")[4]}";
         var socket = await endPoint.ConnectAsWebSocketServer();
-        var socketStage = socket.StageLast();
+        var socketStage = new MessageStageLast<string>();
+        socket.Subscribe(socketStage);
         await Task.Factory.StartNew(() => socket.Listen());
         
         await socket.Send(url.Split("/")[5]);
@@ -102,7 +104,8 @@ public class BasicTests
     {
         var endPoint = _endpointUrl.Replace("http", "ws") + $"/games/{gameId}.ws?player=w";
         var socket = await endPoint.ConnectAsWebSocketServer();
-        var socketStage = socket.StageLast();
+        var socketStage = new MessageStageLast<string>();
+        socket.Subscribe(socketStage);
         await Task.Factory.StartNew(() => socket.Listen());
         
         await socket.Send("e4");
@@ -119,12 +122,14 @@ public class BasicTests
     {
         var socket1 = await (_endpointUrl.Replace("http", "ws") + $"/games/{gameId}.ws?player=w")
             .ConnectAsWebSocketServer();
-        var socket1Stage = socket1.StageLast();
+        var socket1Stage = new MessageStageLast<string>();
+         socket1.Subscribe(socket1Stage);
         await Task.Factory.StartNew(() => socket1.Listen());
 
         var socket2 = await (_endpointUrl.Replace("http", "ws") + $"/games/{gameId}.ws?player=b")
             .ConnectAsWebSocketServer();
-        var socket2Stage = socket2.StageLast();
+        var socket2Stage = new MessageStageLast<string>();
+        socket2.Subscribe(socket2Stage);
         await Task.Factory.StartNew(() => socket2.Listen());
         
         await socket1.Send("e4");
@@ -141,7 +146,8 @@ public class BasicTests
 
         var socket3 = await (_endpointUrl.Replace("http", "ws") + $"/games/{gameId}.ws?player=w")
             .ConnectAsWebSocketServer();
-        var socket3Stage = socket3.StageLast();
+        var socket3Stage = new MessageStageLast<string>();
+        socket3.Subscribe(socket3Stage);
         await Task.Factory.StartNew(() => socket3.Listen());
         
         await socket3.Send("Nf3");
