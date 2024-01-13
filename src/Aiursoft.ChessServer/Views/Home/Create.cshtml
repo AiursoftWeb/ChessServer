@@ -15,7 +15,8 @@
         <div class="card mb-2 col-sm-12 px-1">
             <div class="card-body">
                 <h5 class="card-title">Create a new room</h5>
-                <form asp-controller="Home" asp-action="Create" method="post">
+                <form asp-controller="Home" asp-action="Create" method="post" asp-antiforgery="false">
+                    <div asp-validation-summary="All" class="text-danger"></div>
                     <input type="hidden" asp-for="CreatorId"/>
                     <div class="form-group">
                         <label asp-for="Message"></label>

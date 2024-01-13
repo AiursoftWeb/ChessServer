@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using Aiursoft.ChessServer.Attributes;
 using Aiursoft.ChessServer.Data;
-using Aiursoft.CSTools.Attributes;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Aiursoft.ChessServer.Controllers;
@@ -24,7 +24,7 @@ public class PlayersController : ControllerBase
     
     [HttpPut]
     [Route("{id:guid}/new-name/{nickname}")]
-    public IActionResult ChangeNickname([Required]Guid id, [Required][MaxLength(20)][ValidDomainName]string nickname)
+    public IActionResult ChangeNickname([Required]Guid id, [Required][MaxLength(20)][ValidNickName]string nickname)
     {
         if (ModelState.IsValid == false)
         {

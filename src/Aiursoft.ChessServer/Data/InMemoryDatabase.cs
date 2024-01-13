@@ -35,4 +35,12 @@ public class InMemoryDatabase : ISingletonDependency
             });
         }
     }
+    
+    public Challenge GetOrAddChallenge(int id, Player creator)
+    {
+        lock (Challenges)
+        {
+            return Challenges.GetOrAdd(id, _ => new Challenge(creator));
+        }
+    }
 }

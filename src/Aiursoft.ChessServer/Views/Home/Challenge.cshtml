@@ -1,0 +1,38 @@
+﻿@model Aiursoft.ChessServer.Models.ChallengeViewModel
+
+<div class="jumbotron">
+    <div class="container">
+        <h1 class="display-4">Waiting for joining...</h1>
+        <p class="lead">Please share the link of this room to your friend!</p>
+        @{
+            var link = $"{Context.Request.Scheme}://{Context.Request.Host}/Home/Room/{Model.RoomId}";
+        }
+        <form asp-controller="Home" asp-action="DropChallenge" asp-route-id="@Model.RoomId" method="post" class="d-inline" asp-antiforgery="false">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <input type="hidden" name="playerId" value="@Model.PlayerId"/>
+            
+            <input type="text" class="form-control" value="@link" readonly>
+            <a class="btn btn-secondary btn-lg mt-4" data-clipboard-text="@link" role="button" data-toggle="tooltip" data-placement="top" title="Copied!">
+                Copy link
+            </a>
+            <button type="submit" class="btn btn-danger btn-lg mt-4">
+                Leave
+            </button>
+        </form>
+    </div>
+</div>
+
+@section scripts
+{
+    <script src="/node_modules/clipboard/dist/clipboard.min.js"></script>
+    <script>
+        // Initialize clipboard.
+        const clipboard = new ClipboardJS('.btn');
+        
+        // Activate tooltip tool
+        $('[data-toggle="tooltip"]').tooltip({
+                trigger: 'click',
+                placement: 'bottom'
+        });
+    </script>
+}

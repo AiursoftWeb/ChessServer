@@ -1,14 +1,23 @@
-﻿namespace Aiursoft.ChessServer.Models;
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Aiursoft.ChessServer.Models;
 
 public class CreateChallengeViewModel
 {
-    public Guid CreatorId { get; set; }
+    [Required]
+    public Guid CreatorId { get; init; }
     
-    public string Message { get; set; } = "A chess room.";
+    [Required]
+    [MinLength(3)]
+    [MaxLength(20)]
+    public string Message { get; init; } = "A chess room.";
     
-    public RoleRule RoleRule { get; set; } = RoleRule.Random;
+    [Required]
+    public RoleRule RoleRule { get; init; } = RoleRule.Random;
     
-    public TimeSpan TimeLimit { get; set; } = TimeSpan.FromMinutes(10);
+    [Required]
+    public TimeSpan TimeLimit { get; init; } = TimeSpan.FromMinutes(10);
     
-    public ChallengePermission Permission { get; set; } = ChallengePermission.Public;
+    [Required]
+    public ChallengePermission Permission { get; init; } = ChallengePermission.Public;
 }

@@ -5,7 +5,7 @@
         <h1 class="display-4">Welcome challenger!</h1>
         <p class="lead">Join a room, or create a room!</p>
         <p>
-            <button class="btn btn-success btn-lg mt-4" role="button">Auto join</button>
+            <a class="btn btn-success btn-lg mt-4" role="button" id="autoButton" asp-controller="Home" asp-action="Auto" >Auto join</a>
             <a class="btn btn-secondary btn-lg mt-4" role="button" id="createButton" asp-controller="Home" asp-action="Create">Create a new room</a>
         </p>
     </div>
@@ -47,11 +47,13 @@
     <script type="module">
         import { getUserId } from "/scripts/player.js";
         const createButton = document.getElementById("createButton");
+        const autoButton = document.getElementById("autoButton");
         const playerId = getUserId();
         
         // Append player id to create button.
         if (playerId) {
             createButton.href += `?playerId=${playerId}`;
+            autoButton.href += `?playerId=${playerId}`;
         }
     </script>
 }
