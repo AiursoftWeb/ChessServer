@@ -10,7 +10,7 @@ public class InMemoryDatabase : ISingletonDependency
     
     private ConcurrentDictionary<Guid, Player> Players { get; } = new();
     
-    public ConcurrentDictionary<int, Challenge> Challenges { get; } = new();
+    private ConcurrentDictionary<int, Challenge> Challenges { get; } = new();
 
     public GameContext[] GetActiveGames()
     {
@@ -36,11 +36,66 @@ public class InMemoryDatabase : ISingletonDependency
         }
     }
     
-    public Challenge GetOrAddChallenge(int id, Player creator)
+    public IReadOnlyCollection<KeyValuePair<int, Challenge>> GetPublicChallenges()
     {
         lock (Challenges)
         {
-            return Challenges.GetOrAdd(id, _ => new Challenge(creator));
+            return Challenges
+                .Where(t => t.Value.Permission == ChallengePermission.Public)
+                .ToArray();
+        }
+    }
+    
+    public Challenge? GetChallenge(int id)
+    {
+        lock (Challenges)
+        {
+            return Challenges.GetValueOrDefault(id);
+        }
+    }
+    
+    public int? GetMyChallengeKey(Guid playerId)
+    {
+        lock (Challenges)
+        {
+            if (Challenges.All(t => t.Value.Creator.Id != playerId))
+            {
+                return null;
+            }
+            
+            return Challenges
+                .FirstOrDefault(t => t.Value.Creator.Id == playerId)
+                .Key;
+        }
+    }
+    
+    public int? GetFirstPublicChallengeKey()
+    {
+        lock (Challenges)
+        {
+            return Challenges
+                .FirstOrDefault(t => t.Value.Permission == ChallengePermission.Public)
+                .Key;
+        }
+    }
+    
+    public void DeleteChallenge(int id)
+    {
+        lock (Challenges)
+        {
+            Challenges.TryRemove(id, out _);
+        }
+    }
+    
+    public void CreateChallenge(int id, Challenge challenge)
+    {
+        lock (Challenges)
+        {
+            var result = Challenges.TryAdd(id, challenge);
+            if (!result)
+            {
+                throw new InvalidOperationException("Challenge already exists!");
+            }
         }
     }
 }

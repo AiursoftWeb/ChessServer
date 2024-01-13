@@ -4,10 +4,5 @@ namespace Aiursoft.ChessServer.Models;
 
 public class IndexViewModel
 {
-    public ConcurrentDictionary<int, Challenge> Challenges { get; }
-
-    public IndexViewModel(ConcurrentDictionary<int, Challenge> challenges)
-    {
-        Challenges = challenges;
-    }
+    public required IReadOnlyCollection<KeyValuePair<int, Challenge>> Challenges { get; init; }
 }

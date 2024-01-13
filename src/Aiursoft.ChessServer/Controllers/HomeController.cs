@@ -21,7 +21,10 @@ public class HomeController : Controller
     [HttpGet]
     public IActionResult Index()
     {
-        var model = new IndexViewModel(_database.Challenges);
+        var model = new IndexViewModel
+        {
+            Challenges = _database.GetPublicChallenges()
+        };
         return View(model);
     }
 
@@ -29,17 +32,17 @@ public class HomeController : Controller
     public IActionResult Auto(Guid playerId)
     {
         // I created a challenge. Go to my challenge.
-        var iHaveAChallenge = _database.Challenges.FirstOrDefault(t => t.Value.Creator.Id == playerId);
-        if (iHaveAChallenge.Value != null)
+        var myChallengeKey = _database.GetMyChallengeKey(playerId);
+        if (myChallengeKey != null)
         {
-            return RedirectToAction(nameof(Challenge), new { id = iHaveAChallenge.Key, playerId });
+            return RedirectToAction(nameof(Challenge), new { id = (int)myChallengeKey, playerId });
         }
         
         // Exists a public challenge. Go to that challenge.
-        var otherChallenge = _database.Challenges.FirstOrDefault(t => t.Value.Permission == ChallengePermission.Public);
-        if (otherChallenge.Value != null)
+        var otherChallenge = _database.GetFirstPublicChallengeKey();
+        if (otherChallenge != null)
         {
-            return RedirectToAction(nameof(Challenge), new { id = otherChallenge.Key, playerId });
+            return RedirectToAction(nameof(Challenge), new { id = (int)otherChallenge, playerId });
         }
         
         // Create a new challenge.
@@ -49,10 +52,10 @@ public class HomeController : Controller
     [HttpGet]
     public IActionResult Create(Guid playerId)
     {
-        var iHaveAChallenge = _database.Challenges.FirstOrDefault(t => t.Value.Creator.Id == playerId);
-        if (iHaveAChallenge.Value != null)
+        var myChallengeKey = _database.GetMyChallengeKey(playerId);
+        if (myChallengeKey != null)
         {
-            return RedirectToAction(nameof(Challenge), new { id = iHaveAChallenge.Key, playerId });
+            return RedirectToAction(nameof(Challenge), new { id = myChallengeKey, playerId });
         }
         var model = new CreateChallengeViewModel();
         return View(model);
@@ -75,20 +78,21 @@ public class HomeController : Controller
             TimeLimit = model.TimeLimit,
         };
         var roomId = _counter.GetUniqueNo();
-        _database.Challenges.TryAdd(roomId, challenge);
-        return RedirectToAction(nameof(Challenge), new { id = roomId, playerId = model.CreatorId });
+        _database.CreateChallenge(roomId, challenge);
+        return RedirectToAction(nameof(Challenge), new { id = roomId });
     }
-
+    
     [HttpGet]
-    public IActionResult Challenge(int id, Guid playerId)
+    public IActionResult Challenge(int id)
     {
-        var player = _database.GetOrAddPlayer(playerId);
-        var challenge = _database.GetOrAddChallenge(id, player);
-        var model = new ChallengeViewModel()
+        var challenge = _database.GetChallenge(id);
+        if (challenge == null)
+        {
+            return RedirectToAction(nameof(Index));
+        }
+        var model = new ChallengeViewModel
         {
             RoomId = id,
-            PlayerId = playerId,
-            IsCreator = challenge.Creator.Id == playerId,
         };
         return View(model);
     }
@@ -100,11 +104,10 @@ public class HomeController : Controller
         {
             return RedirectToAction(nameof(Challenge), new { id = model.Id, playerId = model.PlayerId });
         }
-        var player = _database.GetOrAddPlayer(model.PlayerId);
-        var challenge = _database.GetOrAddChallenge(model.Id, player);
-        if (challenge.Creator.Id == model.PlayerId)
+        var challenge = _database.GetChallenge(model.Id);
+        if (challenge != null && challenge.Creator.Id == model.PlayerId)
         {
-            _database.Challenges.TryRemove(model.Id, out _);
+            _database.DeleteChallenge(model.Id);
         }
         return RedirectToAction(nameof(Index));
     }

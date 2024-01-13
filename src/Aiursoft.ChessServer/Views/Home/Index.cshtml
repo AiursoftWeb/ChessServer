@@ -1,4 +1,5 @@
-﻿@model Aiursoft.ChessServer.Models.IndexViewModel
+﻿@using Aiursoft.ChessServer.Models
+@model Aiursoft.ChessServer.Models.IndexViewModel
 
 <div class="jumbotron">
     <div class="container">
@@ -24,7 +25,7 @@
                                 <th>Creator</th>
                                 <th>Action</th>
                             </tr>
-                            @foreach (var item in Model.Challenges)
+                            @foreach (var item in Model.Challenges.Where(t => t.Value.Permission == ChallengePermission.Public))
                             {
                                 <tr>
                                     <td>@item.Value.Message</td>

@@ -1,15 +1,16 @@
-﻿@model Aiursoft.ChessServer.Models.ChallengeViewModel
+﻿@using Aiursoft.ChessServer.Controllers
+@model Aiursoft.ChessServer.Models.ChallengeViewModel
 
 <div class="jumbotron">
     <div class="container">
         <h1 class="display-4">Waiting for joining...</h1>
         <p class="lead">Please share the link of this room to your friend!</p>
         @{
-            var link = $"{Context.Request.Scheme}://{Context.Request.Host}/Home/Room/{Model.RoomId}";
+            var link = $"{Context.Request.Scheme}://{Context.Request.Host}/Home/{nameof(HomeController.Challenge)}/{Model.RoomId}";
         }
         <form asp-controller="Home" asp-action="DropChallenge" asp-route-id="@Model.RoomId" method="post" class="d-inline" asp-antiforgery="false">
             <div asp-validation-summary="All" class="text-danger"></div>
-            <input type="hidden" name="playerId" value="@Model.PlayerId"/>
+            <input type="hidden" name="playerId" value=""/>
             
             <input type="text" class="form-control" value="@link" readonly>
             <a class="btn btn-secondary btn-lg mt-4" data-clipboard-text="@link" role="button" data-toggle="tooltip" data-placement="top" title="Copied!">
@@ -24,6 +25,12 @@
 
 @section scripts
 {
+    <script type="module">
+        import { getUserId } from "/scripts/player.js";
+        const playerId = getUserId();
+        const playerIdControl = document.querySelector('input[name="playerId"]');
+        playerIdControl.value = playerId;
+    </script>
     <script src="/node_modules/clipboard/dist/clipboard.min.js"></script>
     <script>
         // Initialize clipboard.

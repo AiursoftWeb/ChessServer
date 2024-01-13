@@ -44,4 +44,13 @@ public class Challenge
     public TimeSpan TimeLimit { get; set; } = TimeSpan.FromMinutes(10);
     
     public ChallengePermission Permission { get; set; } = ChallengePermission.Public;
+    
+    // Possible messages:
+    // Player joined: p-joined-{player-nick-name}
+    // Player left: p-left-{player-nick-name}
+    // Room dropped: room-dropped
+    // Game started: game-started
+    // Creator transferred: creator-transferred-{new-owner-player-nick-name}
+    // Settings changed: settings-changed
+    public AsyncObservable<string> ChallengeChangedChannel { get; } = new();
 }
