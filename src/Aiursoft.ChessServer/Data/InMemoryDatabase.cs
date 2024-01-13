@@ -9,6 +9,8 @@ public class InMemoryDatabase : ISingletonDependency
     private ConcurrentDictionary<int, Game> Games { get; } = new();
     
     private ConcurrentDictionary<Guid, Player> Players { get; } = new();
+    
+    public ConcurrentDictionary<int, Challenge> Challenges { get; } = new();
 
     public GameContext[] GetActiveGames()
     {

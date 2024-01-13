@@ -27,9 +27,17 @@ public enum ChallengePermission
 
 public class Challenge
 {
-    public Guid CreatorId { get; set; }
+    public Challenge(Player creator)
+    {
+        Creator = creator;
+    }
 
-    public Guid? AccepterId { get; set; } = null;
+    public Player Creator { get; set; }
+    public string Message { get; set; } = "A chess room.";
+
+    public Player? Accepter { get; set; } = null;
+    
+    public Game? Game { get; set; } = null;
     
     public RoleRule RoleRule { get; set; } = RoleRule.Random;
     

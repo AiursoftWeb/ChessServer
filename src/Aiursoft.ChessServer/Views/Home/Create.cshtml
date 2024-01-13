@@ -1,0 +1,81 @@
+@model Aiursoft.ChessServer.Models.CreateChallengeViewModel
+
+<div class="jumbotron">
+    <div class="container">
+        <h1 class="display-4">Create a new room</h1>
+        <p class="lead">Enter your room name and start a new game!</p>
+        <p>
+            <a class="btn btn-secondary btn-lg mt-4" asp-controller="Home" asp-action="Index">Back to list</a>
+        </p>
+    </div>
+</div>
+
+<div class="container mt-4" id="functions">
+    <div class="row no-gutters">
+        <div class="card mb-2 col-sm-12 px-1">
+            <div class="card-body">
+                <h5 class="card-title">Create a new room</h5>
+                <form asp-controller="Home" asp-action="Create" method="post">
+                    <input type="hidden" asp-for="CreatorId"/>
+                    <div class="form-group">
+                        <label asp-for="Message"></label>
+                        <input asp-for="Message" class="form-control"/>
+                        <span asp-validation-for="Message" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="RoleRule"></label>
+                        <select asp-for="RoleRule" class="form-control">
+                            <option value="Random">Random</option>
+                            <option value="CreatorWhite">Creator White</option>
+                            <option value="AccepterWhite">Accepter White</option>
+                        </select>
+                        <span asp-validation-for="RoleRule" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="TimeLimit"></label>
+                        <select asp-for="TimeLimit" class="form-control">
+                            <option value="00:01:00">1 minutes</option>
+                            <option value="00:03:00">3 minutes</option>
+                            <option value="00:05:00">5 minutes</option>
+                            <option value="00:10:00">10 minutes</option>
+                            <option value="00:15:00">15 minutes</option>
+                            <option value="00:30:00">30 minutes</option>
+                            <option value="01:00:00">1 hour</option>
+                            <option value="02:00:00">2 hours</option>
+                        </select>
+                        <span asp-validation-for="TimeLimit" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Permission"></label>
+                        <select asp-for="Permission" class="form-control">
+                            <option value="Public">Public</option>
+                            <option value="Unlisted">Unlisted</option>
+                        </select>
+                        <span asp-validation-for="Permission" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">Create</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts
+{
+    <script type="module">
+        import { getUserId } from "/scripts/player.js";
+        const playerId = getUserId();
+        const hiddenInput = document.querySelector("#CreatorId");
+        
+        if (playerId) {
+            hiddenInput.value = playerId;
+        }
+    </script>
+}

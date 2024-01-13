@@ -22,4 +22,4 @@ const changeName = async function (newName) {
     await fetch(`/players/${getUserId()}/new-name/${newName}`, { method: 'PUT' });
  }
 
-export { getUserName, changeName };
+export { getUserId, getUserName, changeName };
