@@ -1,6 +1,8 @@
+using Aiursoft.AiurObserver;
 using Aiursoft.ChessServer.Data;
 using Aiursoft.ChessServer.Models;
 using Aiursoft.CSTools.Services;
+using Aiursoft.WebTools.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Aiursoft.ChessServer.Controllers;
@@ -143,5 +145,31 @@ public class HomeController : Controller
             _database.DeleteChallenge(model.Id);
         }
         return RedirectToAction(nameof(Index));
+    }
+
+    public async Task ListenChallenge(int id)
+    {
+        var pusher = await HttpContext.AcceptWebSocketClient();
+        var challenge = _database.GetChallenge(id);
+        if (challenge == null)
+        {
+            return;
+        }
+        var outSub = challenge
+            .ChallengeChangedChannel
+            .Subscribe(t => pusher.Send(t, HttpContext.RequestAborted));
+        try
+        {
+            await pusher.Listen(HttpContext.RequestAborted);
+        }
+        catch (TaskCanceledException)
+        {
+            // Ignore. This happens when the client closes the connection.
+        }
+        finally
+        {
+            await pusher.Close(HttpContext.RequestAborted);
+            outSub.Unsubscribe();
+        }
     }
 }
