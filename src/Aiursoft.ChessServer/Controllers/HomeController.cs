@@ -58,6 +58,13 @@ public class HomeController : Controller
         return RedirectToAction(nameof(Create), new { playerId });
     }
     
+    /// <summary>
+    /// This action renders a page to create a new challenge.
+    ///
+    /// However, if the player has a challenge, then redirect to that challenge.
+    /// </summary>
+    /// <param name="playerId"></param>
+    /// <returns></returns>
     [HttpGet]
     public IActionResult Create(Guid playerId)
     {
@@ -73,11 +80,18 @@ public class HomeController : Controller
     [HttpPost]
     public IActionResult Create(CreateChallengeViewModel model)
     {
+        // Ensure single challenge can be created by a player.
+        var myChallengeKey = _database.GetMyChallengeKey(model.CreatorId);
+        if (myChallengeKey != null)
+        {
+            ModelState.AddModelError(nameof(model.CreatorId), "You already have a challenge!");
+        }
         if (!ModelState.IsValid)
         {
             return View(model);
         }
         
+        // Create a new challenge.
         var player = _database.GetOrAddPlayer(model.CreatorId);
         var challenge = new Challenge(player)
         {
@@ -86,11 +100,20 @@ public class HomeController : Controller
             Permission = model.Permission,
             TimeLimit = model.TimeLimit,
         };
-        var roomId = _counter.GetUniqueNo();
-        _database.CreateChallenge(roomId, challenge);
-        return RedirectToAction(nameof(Challenge), new { id = roomId });
+        var challengeId = _counter.GetUniqueNo();
+        _database.CreateChallenge(challengeId, challenge);
+        return RedirectToAction(nameof(Challenge), new { id = challengeId });
     }
     
+    /// <summary>
+    /// This action renders a page to show the details of a challenge.
+    ///
+    /// Will use JavaScript to call accept challenge API.
+    ///
+    /// Will use WebSocket to listen to the challenge changes.
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
     [HttpGet]
     public IActionResult Challenge(int id)
     {
