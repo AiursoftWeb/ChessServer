@@ -1,6 +1,4 @@
-﻿using System.Collections.Concurrent;
-
-namespace Aiursoft.ChessServer.Models;
+﻿namespace Aiursoft.ChessServer.Models;
 
 public class IndexViewModel
 {

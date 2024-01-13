@@ -6,7 +6,9 @@
         <h1 class="display-4">Welcome challenger!</h1>
         <p class="lead">Join a room, or create a room!</p>
         <p>
-            <a class="btn btn-success btn-lg mt-4" role="button" id="autoButton" asp-controller="Home" asp-action="Auto" >Auto join</a>
+            @* JS Will Append the player id to the link. *@
+            <a class="btn btn-success btn-lg mt-4" role="button" id="autoButton" asp-controller="Home" asp-action="Auto">Auto join</a>
+            @* JS Will Append the player id to the link. *@
             <a class="btn btn-secondary btn-lg mt-4" role="button" id="createButton" asp-controller="Home" asp-action="Create">Create a new room</a>
         </p>
     </div>

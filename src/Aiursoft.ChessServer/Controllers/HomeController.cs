@@ -28,6 +28,15 @@ public class HomeController : Controller
         return View(model);
     }
 
+    /// <summary>
+    /// This action will auto redirect to a challenge.
+    ///
+    /// If the player has a challenge, then go to that challenge.
+    ///
+    /// If not, then go to a public challenge. If not, then create a new challenge.
+    /// </summary>
+    /// <param name="playerId"></param>
+    /// <returns></returns>
     [HttpGet]
     public IActionResult Auto(Guid playerId)
     {
