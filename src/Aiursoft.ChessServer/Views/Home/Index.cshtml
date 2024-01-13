@@ -33,7 +33,7 @@
                                     <td>@item.Value.Message</td>
                                     <td>@item.Value.Creator.NickName</td>
                                     <td>
-                                        <button class="btn btn-sm btn-primary" data-room-id="@item.Key">Join</button>
+                                        <a class="btn btn-sm btn-primary" asp-controller="Home" asp-action="Challenge" asp-route-id="@item.Key">Join</a>
                                     </td>
                                 </tr>
                             }

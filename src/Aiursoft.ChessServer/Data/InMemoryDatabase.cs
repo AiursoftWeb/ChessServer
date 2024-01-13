@@ -73,6 +73,11 @@ public class InMemoryDatabase : ISingletonDependency
     {
         lock (Challenges)
         {
+            if (Challenges.All(t => t.Value.Permission != ChallengePermission.Public))
+            {
+                return null;
+            }
+            
             return Challenges
                 .FirstOrDefault(t => t.Value.Permission == ChallengePermission.Public)
                 .Key;

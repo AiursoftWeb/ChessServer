@@ -120,7 +120,8 @@ public class HomeController : Controller
         var challenge = _database.GetChallenge(id);
         if (challenge == null)
         {
-            return RedirectToAction(nameof(Index));
+            // Challenge not found.
+            return NotFound();
         }
         var model = new ChallengeViewModel
         {
