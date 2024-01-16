@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Aiursoft.ChessServer.Models;
+namespace Aiursoft.ChessServer.Models.ViewModels;
 
 public class DropChallengeViewModel
 {

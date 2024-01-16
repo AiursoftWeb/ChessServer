@@ -1,6 +1,7 @@
 ﻿using Aiursoft.Scanner.Abstractions;
 using System.Collections.Concurrent;
 using Aiursoft.ChessServer.Models;
+using Aiursoft.ChessServer.Models.ViewModels;
 
 namespace Aiursoft.ChessServer.Data;
 

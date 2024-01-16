@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Aiursoft.ChessServer.Models;
+namespace Aiursoft.ChessServer.Models.ViewModels;
 
 public class CreateChallengeViewModel
 {

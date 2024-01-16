@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace Aiursoft.ChessServer.Views.Shared.Components;
+namespace Aiursoft.ChessServer.Views.Shared.Components.ChessBoard;
 
 public class ChessBoard : ViewComponent
 {

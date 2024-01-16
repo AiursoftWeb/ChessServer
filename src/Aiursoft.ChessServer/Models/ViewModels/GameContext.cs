@@ -1,6 +1,6 @@
 ﻿using Chess;
 
-namespace Aiursoft.ChessServer.Models;
+namespace Aiursoft.ChessServer.Models.ViewModels;
 
 public class GameContext
 {

@@ -1,4 +1,4 @@
-﻿namespace Aiursoft.ChessServer.Models;
+﻿namespace Aiursoft.ChessServer.Models.ViewModels;
 
 public class IndexViewModel
 {
