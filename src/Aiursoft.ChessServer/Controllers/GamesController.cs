@@ -1,6 +1,5 @@
 ﻿using Aiursoft.AiurObserver;
 using Aiursoft.ChessServer.Data;
-using Aiursoft.ChessServer.Models;
 using Aiursoft.ChessServer.Models.ViewModels;
 using Aiursoft.WebTools.Services;
 using Microsoft.AspNetCore.Mvc;
