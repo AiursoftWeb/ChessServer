@@ -1,8 +1,9 @@
 ﻿using Aiursoft.AiurObserver;
+using Aiursoft.AiurObserver.WebSocket.Server;
 using Aiursoft.ChessServer.Data;
 using Aiursoft.ChessServer.Models.ViewModels;
-using Aiursoft.WebTools.Services;
 using Microsoft.AspNetCore.Mvc;
+using Aiursoft.AiurObserver.Extensions;
 
 namespace Aiursoft.ChessServer.Controllers;
 

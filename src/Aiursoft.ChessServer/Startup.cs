@@ -1,7 +1,7 @@
 ﻿using System.Reflection;
 using Aiursoft.ChessServer.Middlewares;
 using Aiursoft.Scanner;
-using Aiursoft.WebTools.Models;
+using Aiursoft.WebTools.Abstractions.Models;
 
 namespace Aiursoft.ChessServer;
 
