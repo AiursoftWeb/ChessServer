@@ -2,39 +2,25 @@
 
 namespace Aiursoft.ChessServer.Models.ViewModels;
 
-public class GameContext
+public class GameContext(Game game, int id)
 {
-    public GameContext(Game game, int id)
+    public int Id { get; } = id;
+    public Dictionary<string, string> Links { get; } = new()
     {
-        Id = id;
-        Turn = game.Board.Turn.AsChar;
-        Ended = game.Board.IsEndGame;
-        End = game.Board.EndGame?.EndgameType;
-        Won = game.Board.EndGame?.WonSide;
-        MoveIndex = game.Board.MoveIndex;
-        WhiteKingChecked = game.Board.WhiteKingChecked;
-        BlackKingChecked = game.Board.BlackKingChecked;
-        Links = new Dictionary<string, string>
-        {
-            { "ascii", $"games/{id}.ascii" },
-            { "fen", $"games/{id}.fen" },
-            { "pgn", $"games/{id}.pgn" },
-            { "html", $"games/{id}.html" },
-            { "websocket", $"games/{id}.ws" },
-            { "move-post", $"games/{id}/move/{{player}}/{{move_algebraic_notation}}" }
-        };
-        Listeners = game.FenChangedChannel.GetListenerCount();
-    }
+        { "ascii", $"games/{id}.ascii" },
+        { "fen", $"games/{id}.fen" },
+        { "pgn", $"games/{id}.pgn" },
+        { "html", $"games/{id}.html" },
+        { "websocket", $"games/{id}.ws" },
+        { "move-post", $"games/{id}/move/{{player}}/{{move_algebraic_notation}}" }
+    };
 
-
-    public int Id { get; }
-    public Dictionary<string, string> Links { get; }
-    public char Turn { get; }
-    public bool Ended { get; }
-    public EndgameType? End { get; }
-    public PieceColor? Won { get; }
-    public int MoveIndex { get; }
-    public bool WhiteKingChecked { get; }
-    public bool BlackKingChecked { get; }
-    public int Listeners { get; }
+    public char Turn { get; } = game.Board.Turn.AsChar;
+    public bool Ended { get; } = game.Board.IsEndGame;
+    public EndgameType? End { get; } = game.Board.EndGame?.EndgameType;
+    public PieceColor? Won { get; } = game.Board.EndGame?.WonSide;
+    public int MoveIndex { get; } = game.Board.MoveIndex;
+    public bool WhiteKingChecked { get; } = game.Board.WhiteKingChecked;
+    public bool BlackKingChecked { get; } = game.Board.BlackKingChecked;
+    public int Listeners { get; } = game.FenChangedChannel.GetListenerCount();
 }

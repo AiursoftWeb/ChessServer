@@ -8,25 +8,16 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Aiursoft.ChessServer.Controllers;
 
-public class HomeController : Controller
+public class HomeController(
+    Counter counter,
+    InMemoryDatabase database) : Controller
 {
-    private readonly Counter _counter;
-    private readonly InMemoryDatabase _database;
-
-    public HomeController(
-        Counter counter,
-        InMemoryDatabase database)
-    {
-        _counter = counter;
-        _database = database;
-    }
-
     [HttpGet]
     public IActionResult Index()
     {
         var model = new IndexViewModel
         {
-            Challenges = _database.GetPublicChallenges()
+            Challenges = database.GetPublicChallenges()
         };
         return View(model);
     }
@@ -44,14 +35,14 @@ public class HomeController : Controller
     public IActionResult Auto(Guid playerId)
     {
         // I created a challenge. Go to my challenge.
-        var myChallengeKey = _database.GetMyChallengeKey(playerId);
+        var myChallengeKey = database.GetMyChallengeKey(playerId);
         if (myChallengeKey != null)
         {
             return RedirectToAction(nameof(Challenge), new { id = (int)myChallengeKey, playerId });
         }
         
         // Exists a public challenge. Go to that challenge.
-        var otherChallenge = _database.GetFirstPublicChallengeKey();
+        var otherChallenge = database.GetFirstPublicChallengeKey();
         if (otherChallenge != null)
         {
             return RedirectToAction(nameof(Challenge), new { id = (int)otherChallenge, playerId });
@@ -71,7 +62,7 @@ public class HomeController : Controller
     [HttpGet]
     public IActionResult Create(Guid playerId)
     {
-        var myChallengeKey = _database.GetMyChallengeKey(playerId);
+        var myChallengeKey = database.GetMyChallengeKey(playerId);
         if (myChallengeKey != null)
         {
             return RedirectToAction(nameof(Challenge), new { id = myChallengeKey, playerId });
@@ -84,7 +75,7 @@ public class HomeController : Controller
     public IActionResult Create(CreateChallengeViewModel model)
     {
         // Ensure single challenge can be created by a player.
-        var myChallengeKey = _database.GetMyChallengeKey(model.CreatorId);
+        var myChallengeKey = database.GetMyChallengeKey(model.CreatorId);
         if (myChallengeKey != null)
         {
             ModelState.AddModelError(nameof(model.CreatorId), "You already have a challenge!");
@@ -95,7 +86,7 @@ public class HomeController : Controller
         }
         
         // Create a new challenge.
-        var player = _database.GetOrAddPlayer(model.CreatorId);
+        var player = database.GetOrAddPlayer(model.CreatorId);
         var challenge = new Challenge(player)
         {
             RoleRule = model.RoleRule,
@@ -103,8 +94,8 @@ public class HomeController : Controller
             Permission = model.Permission,
             TimeLimit = model.TimeLimit,
         };
-        var challengeId = _counter.GetUniqueNo();
-        _database.CreateChallenge(challengeId, challenge);
+        var challengeId = counter.GetUniqueNo();
+        database.CreateChallenge(challengeId, challenge);
         return RedirectToAction(nameof(Challenge), new { id = challengeId });
     }
     
@@ -120,7 +111,7 @@ public class HomeController : Controller
     [HttpGet]
     public IActionResult Challenge(int id)
     {
-        var challenge = _database.GetChallenge(id);
+        var challenge = database.GetChallenge(id);
         if (challenge == null)
         {
             // Challenge not found.
@@ -140,10 +131,10 @@ public class HomeController : Controller
         {
             return RedirectToAction(nameof(Challenge), new { id = model.Id, playerId = model.PlayerId });
         }
-        var challenge = _database.GetChallenge(model.Id);
+        var challenge = database.GetChallenge(model.Id);
         if (challenge != null && challenge.Creator.Id == model.PlayerId)
         {
-            _database.DeleteChallenge(model.Id);
+            database.DeleteChallenge(model.Id);
         }
         return RedirectToAction(nameof(Index));
     }
@@ -151,7 +142,7 @@ public class HomeController : Controller
     public async Task ListenChallenge(int id)
     {
         var pusher = await HttpContext.AcceptWebSocketClient();
-        var challenge = _database.GetChallenge(id);
+        var challenge = database.GetChallenge(id);
         if (challenge == null)
         {
             return;

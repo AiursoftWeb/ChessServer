@@ -1,25 +1,18 @@
 ﻿namespace Aiursoft.ChessServer.Middlewares
 {
-    public class AllowCrossOriginMiddleware
+    public class AllowCrossOriginMiddleware(RequestDelegate next)
     {
-        private readonly RequestDelegate _next;
-
-        public AllowCrossOriginMiddleware(RequestDelegate next)
-        {
-            _next = next;
-        }
-
         public async Task Invoke(HttpContext context)
         {
             if (context.Request.Path.ToString().StartsWith("/games/img")) 
             {
-                context.Request.Path = context.Request.Path.ToString().Substring("/games".Length);
+                context.Request.Path = context.Request.Path.ToString()["/games".Length..];
             }
 
-            var origin = context.Request.Headers["Origin"].ToString();
+            var origin = context.Request.Headers.Origin.ToString();
             if (string.IsNullOrEmpty(origin))
             {
-                await _next.Invoke(context);
+                await next.Invoke(context);
                 return;
             }
 
@@ -34,7 +27,7 @@
                 return;
             }
 
-            await _next.Invoke(context);
+            await next.Invoke(context);
         }
     }
 }

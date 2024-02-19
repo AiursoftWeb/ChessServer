@@ -6,19 +6,12 @@ using Microsoft.AspNetCore.Mvc;
 namespace Aiursoft.ChessServer.Controllers;
 
 [Route("players")]
-public class PlayersController : ControllerBase
+public class PlayersController(InMemoryDatabase database) : ControllerBase
 {
-    private readonly InMemoryDatabase _database;
-
-    public PlayersController(InMemoryDatabase database)
-    {
-        _database = database;
-    }
-    
     [Route("{id:guid}")]
     public IActionResult Me([Required]Guid id)
     {
-        var me = _database.GetOrAddPlayer(id);
+        var me = database.GetOrAddPlayer(id);
         return Ok(me);
     }
     
@@ -31,7 +24,7 @@ public class PlayersController : ControllerBase
             return BadRequest();
         }
         
-        var me = _database.GetOrAddPlayer(id);
+        var me = database.GetOrAddPlayer(id);
         me.NickName = nickname;
         return Ok();
     }

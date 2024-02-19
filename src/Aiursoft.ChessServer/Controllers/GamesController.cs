@@ -8,27 +8,19 @@ using Aiursoft.AiurObserver.Extensions;
 namespace Aiursoft.ChessServer.Controllers;
 
 [Route("games")]
-public class GamesController : Controller
+public class GamesController(InMemoryDatabase database) : Controller
 {
-    private readonly InMemoryDatabase _database;
-
-    public GamesController(
-        InMemoryDatabase database)
-    {
-        _database = database;
-    }
-
     [Route("")]
     public IActionResult GetAll()
     {
-        var games = _database.GetActiveGames();
+        var games = database.GetActiveGames();
         return Ok(games);
     }
 
     [Route("{id:int}.json")]
     public IActionResult GetInfo([FromRoute] int id)
     {
-        var game = _database.GetOrAddGame(id);
+        var game = database.GetOrAddGame(id);
         return Ok(new GameContext(game, id));
     }
 
@@ -36,7 +28,7 @@ public class GamesController : Controller
     public async Task GetWebSocket([FromRoute] int id, [FromQuery]string player)
     {
         var pusher = await HttpContext.AcceptWebSocketClient();
-        var game = _database.GetOrAddGame(id);
+        var game = database.GetOrAddGame(id);
         var outSub = game
             .FenChangedChannel
             .Subscribe(t => pusher.Send(t, HttpContext.RequestAborted));
@@ -76,7 +68,7 @@ public class GamesController : Controller
     [Route("{id:int}.ascii")]
     public IActionResult GetAscii([FromRoute] int id)
     {
-        var game = _database.GetOrAddGame(id);
+        var game = database.GetOrAddGame(id);
         return Ok(game.Board.ToAscii());
     }
 
@@ -89,14 +81,14 @@ public class GamesController : Controller
     [Route("{id:int}.fen")]
     public IActionResult GetFen([FromRoute] int id)
     {
-        var game = _database.GetOrAddGame(id);
+        var game = database.GetOrAddGame(id);
         return Ok(game.Board.ToFen());
     }
 
     [Route("{id:int}.pgn")]
     public IActionResult GetPgn([FromRoute] int id)
     {
-        var game = _database.GetOrAddGame(id);
+        var game = database.GetOrAddGame(id);
         return Ok(game.Board.ToPgn());
     }
 }

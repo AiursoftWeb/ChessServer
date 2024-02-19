@@ -2,14 +2,9 @@ using Aiursoft.AiurObserver;
 
 namespace Aiursoft.ChessServer.Models;
 
-public class Challenge
+public class Challenge(Player creator)
 {
-    public Challenge(Player creator)
-    {
-        Creator = creator;
-    }
-
-    public Player Creator { get; set; }
+    public Player Creator { get; set; } = creator;
     public string Message { get; set; } = "A chess room.";
 
     public Player? Accepter { get; set; } = null;
