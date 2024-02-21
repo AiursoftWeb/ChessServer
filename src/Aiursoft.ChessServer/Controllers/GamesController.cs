@@ -25,6 +25,7 @@ public class GamesController(InMemoryDatabase database) : Controller
     }
 
     [Route("{id:int}.ws")]
+    [EnforceWebSocket]
     public async Task GetWebSocket([FromRoute] int id, [FromQuery]string player)
     {
         var pusher = await HttpContext.AcceptWebSocketClient();
