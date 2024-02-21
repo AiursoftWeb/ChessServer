@@ -4,6 +4,7 @@ using Aiursoft.ChessServer.Data;
 using Aiursoft.ChessServer.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Aiursoft.AiurObserver.Extensions;
+using Aiursoft.WebTools.Attributes;
 
 namespace Aiursoft.ChessServer.Controllers;
 
