@@ -79,11 +79,14 @@ public class BasicTests
         while (string.IsNullOrWhiteSpace(socketStage.Stage))
         {
             await Task.Delay(150);
-            Assert.IsTrue(!string.IsNullOrWhiteSpace(socketStage.Stage));
+            if (!string.IsNullOrWhiteSpace(socketStage.Stage))
+            {
+                break;
+            }
             
             if (waitMaxTime.ElapsedMilliseconds > 5000)
             {
-                Assert.Fail("Timeout!");
+                Assert.Fail("Timeout that the server did not respond.");
             }
         }
 
