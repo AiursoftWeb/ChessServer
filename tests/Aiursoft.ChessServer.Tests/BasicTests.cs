@@ -1,4 +1,5 @@
-﻿using Aiursoft.AiurObserver.DefaultConsumers;
+﻿using System.Diagnostics;
+using Aiursoft.AiurObserver.DefaultConsumers;
 using Aiursoft.AiurObserver.WebSocket;
 using Aiursoft.CSTools.Tools;
 using Microsoft.Extensions.Hosting;
@@ -72,8 +73,20 @@ public class BasicTests
         await Task.Factory.StartNew(() => socket.Listen());
         
         await socket.Send(url.Split("/")[5]);
-        await Task.Delay(150);
-        Assert.IsTrue(!string.IsNullOrWhiteSpace(socketStage.Stage));
+        
+        var waitMaxTime = new Stopwatch();
+        waitMaxTime.Start();
+        while (string.IsNullOrWhiteSpace(socketStage.Stage))
+        {
+            await Task.Delay(150);
+            Assert.IsTrue(!string.IsNullOrWhiteSpace(socketStage.Stage));
+            
+            if (waitMaxTime.ElapsedMilliseconds > 5000)
+            {
+                Assert.Fail("Timeout!");
+            }
+        }
+
         await socket.Close();
     }
 
