@@ -1,5 +1,5 @@
-import { autoTheme } from "/node_modules/@aiursoft/autodark.js/dist/esm/autodark.js";
-import { getUserName, changeName } from "/scripts/player.js";
+import { autoTheme } from "../node_modules/@aiursoft/autodark.js/dist/esm/autodark.js";
+import { getUserName, changeName } from "./player.js";
 autoTheme();
 
 async function loadName() {

@@ -7,10 +7,10 @@ public class Challenge(Player creator)
     public Player Creator { get; set; } = creator;
     public string Message { get; set; } = "A chess room.";
 
-    public Player? Accepter { get; set; } = null;
+    public Player? Accepter { get; set; }
     
-    public int? GameId { get; set; } = null;
-    public Game? Game { get; set; } = null;
+    public int? GameId { get; set; }
+    public Game? Game { get; set; }
     
     public RoleRule RoleRule { get; set; } = RoleRule.Random;
     
