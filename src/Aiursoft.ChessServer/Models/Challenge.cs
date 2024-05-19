@@ -9,6 +9,7 @@ public class Challenge(Player creator)
 
     public Player? Accepter { get; set; } = null;
     
+    public int? GameId { get; set; } = null;
     public Game? Game { get; set; } = null;
     
     public RoleRule RoleRule { get; set; } = RoleRule.Random;

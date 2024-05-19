@@ -22,4 +22,9 @@ const changeName = async function (newName) {
     await fetch(`/players/${getUserId()}/new-name/${newName}`, { method: 'PUT' });
  }
 
-export { getUserId, getUserName, changeName };
+const acceptChallenge = async function (challengeId, playerId) {
+    // call /home/AcceptChallenge/{challengeId}?playerId={playerId} HTTP POST API:
+    await fetch(`/home/AcceptChallenge/${challengeId}?playerId=${playerId}`, { method: 'POST' });
+}
+
+export { getUserId, getUserName, changeName, acceptChallenge };

@@ -25,6 +25,20 @@ public class InMemoryDatabase : ISingletonDependency
             return Games.GetOrAdd(id, _ => new Game());
         }
     }
+
+    public (int gameId, Game game) AddNewGameAndGetId()
+    {
+        lock (Games)
+        {
+            for (var id = 1;; id++)
+            {
+                if (Games.ContainsKey(id)) continue;
+                var newGame = new Game();
+                Games.TryAdd(id, newGame);
+                return (id, newGame);
+            }
+        }
+    }
     
     public Player GetOrAddPlayer(Guid id)
     {
@@ -37,12 +51,13 @@ public class InMemoryDatabase : ISingletonDependency
         }
     }
     
-    public IReadOnlyCollection<KeyValuePair<int, Challenge>> GetPublicChallenges()
+    public IReadOnlyCollection<KeyValuePair<int, Challenge>> GetPublicUnAcceptedChallenges()
     {
         lock (Challenges)
         {
             return Challenges
                 .Where(t => t.Value.Permission == ChallengePermission.Public)
+                .Where(t => t.Value.Accepter == null)
                 .ToArray();
         }
     }

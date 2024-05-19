@@ -2,5 +2,5 @@
 
 public class ChallengeViewModel
 {
-    public int RoomId { get; init; }
+    public int ChallengeId { get; init; }
 }

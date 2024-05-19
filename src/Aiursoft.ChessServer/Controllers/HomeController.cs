@@ -4,6 +4,7 @@ using Aiursoft.ChessServer.Data;
 using Aiursoft.ChessServer.Models;
 using Aiursoft.ChessServer.Models.ViewModels;
 using Aiursoft.CSTools.Services;
+using Aiursoft.WebTools.Attributes;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Aiursoft.ChessServer.Controllers;
@@ -17,7 +18,7 @@ public class HomeController(
     {
         var model = new IndexViewModel
         {
-            Challenges = database.GetPublicChallenges()
+            Challenges = database.GetPublicUnAcceptedChallenges()
         };
         return View(model);
     }
@@ -119,7 +120,7 @@ public class HomeController(
         }
         var model = new ChallengeViewModel
         {
-            RoomId = id,
+            ChallengeId = id,
         };
         return View(model);
     }
@@ -139,6 +140,40 @@ public class HomeController(
         return RedirectToAction(nameof(Index));
     }
 
+    /// <summary>
+    /// This method accepts a challenge and updates the challenge's accepter.
+    /// </summary>
+    /// <param name="id">The ID of the challenge to accept.</param>
+    /// <param name="playerId">The ID of the player accepting the challenge.</param>
+    /// <returns>An IActionResult indicating the result of the operation.</returns>
+    [HttpPost]
+    public async Task<IActionResult> AcceptChallenge([FromRoute]int id, [FromQuery]Guid playerId)
+    {
+        var challenge = database.GetChallenge(id);
+        if (challenge == null)
+        {
+            return NotFound();
+        }
+        if (challenge.Accepter != null)
+        {
+            // Challenge already accepted.
+            return BadRequest("Challenge already accepted.");
+        }
+        if (challenge.Creator.Id == playerId)
+        {
+            // Cannot accept your own challenge.
+            return BadRequest("Cannot accept your own challenge!");
+        }
+        challenge.Accepter = database.GetOrAddPlayer(playerId);
+        var (newGameId, newGame) = database.AddNewGameAndGetId();
+        challenge.Game = newGame;
+        challenge.GameId = newGameId;
+        await challenge.ChallengeChangedChannel.BroadcastAsync("game-started-at-" + newGameId);
+        return Ok();
+    }
+
+    [Route("listen-challenge/{id:int}.ws")]
+    [EnforceWebSocket]
     public async Task ListenChallenge(int id)
     {
         var pusher = await HttpContext.AcceptWebSocketClient();
