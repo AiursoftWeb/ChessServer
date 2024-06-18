@@ -11,26 +11,52 @@ namespace Aiursoft.ChessServer.Controllers;
 [Route("games")]
 public class GamesController(InMemoryDatabase database) : Controller
 {
-    [Route("")]
-    public IActionResult GetAll()
-    {
-        var games = database.GetActiveGames();
-        return Ok(games);
-    }
-
     [Route("{id:int}.json")]
     public IActionResult GetInfo([FromRoute] int id)
     {
-        var game = database.GetOrAddGame(id);
-        return Ok(new GameContext(game, id));
+        var challenge = database.GetAcceptedChallenge(id);
+        if (challenge == null)
+        {
+            return NotFound();
+        }
+
+        return Ok(new ChallengeContext(challenge, id));
+    }
+
+    [Route("{id:int}.color")]
+    public IActionResult GetColor([FromRoute] int id, [FromQuery] string playerId)
+    {
+        var validId = Guid.TryParse(playerId, out var playerGuid);
+        if (!validId)
+        {
+            return NotFound();
+        }
+        var challenge = database.GetAcceptedChallenge(id);
+        if (challenge == null)
+        {
+            return NotFound();
+        }
+        
+        return Ok(challenge.GetPlayerColor(playerGuid));
     }
 
     [Route("{id:int}.ws")]
     [EnforceWebSocket]
-    public async Task GetWebSocket([FromRoute] int id, [FromQuery]string player)
+    public async Task GetWebSocket([FromRoute] int id, [FromQuery] string playerId)
     {
+        var validId = Guid.TryParse(playerId, out var playerGuid);
+        if (!validId)
+        {
+            return;
+        }
+        var challenge = database.GetAcceptedChallenge(id);
+        if (challenge == null)
+        {
+            return;
+        }
+
+        var game = challenge.Game;
         var pusher = await HttpContext.AcceptWebSocketClient();
-        var game = database.GetOrAddGame(id);
         var outSub = game
             .FenChangedChannel
             .Subscribe(t => pusher.Send(t, HttpContext.RequestAborted));
@@ -38,19 +64,20 @@ public class GamesController(InMemoryDatabase database) : Controller
         var inSub = pusher
             .Filter(t => !string.IsNullOrWhiteSpace(t))
             .Subscribe(async move =>
-        {
-            lock (game.MovePieceLock)
             {
-                if (!game.Board.IsEndGame &&
-                    game.Board.IsValidMove(move) && 
-                    game.Board.Turn.AsChar.ToString() == player)
+                lock (game.MovePieceLock)
                 {
-                    game.Board.Move(move);
+                    if (!game.Board.IsEndGame &&
+                        game.Board.IsValidMove(move) &&
+                        challenge.GetTurnPlayer().Id == playerGuid)
+                    {
+                        game.Board.Move(move);
+                    }
                 }
-            }
-            await game.FenChangedChannel.BroadcastAsync(game.Board.ToFen());
-        });
-        
+
+                await game.FenChangedChannel.BroadcastAsync(game.Board.ToFen());
+            });
+
         try
         {
             await pusher.Listen(HttpContext.RequestAborted);
@@ -70,27 +97,48 @@ public class GamesController(InMemoryDatabase database) : Controller
     [Route("{id:int}.ascii")]
     public IActionResult GetAscii([FromRoute] int id)
     {
-        var game = database.GetOrAddGame(id);
+        var game = database.GetAcceptedChallenge(id)?.Game;
+        if (game == null)
+        {
+            return NotFound();
+        }
+
         return Ok(game.Board.ToAscii());
     }
 
     [Route("{id:int}.html")]
     public IActionResult GetHtml([FromRoute] int id)
     {
+        var game = database.GetAcceptedChallenge(id)?.Game;
+        if (game == null)
+        {
+            return NotFound();
+        }
+
         return View(id);
     }
 
     [Route("{id:int}.fen")]
     public IActionResult GetFen([FromRoute] int id)
     {
-        var game = database.GetOrAddGame(id);
+        var game = database.GetAcceptedChallenge(id)?.Game;
+        if (game == null)
+        {
+            return NotFound();
+        }
+
         return Ok(game.Board.ToFen());
     }
 
     [Route("{id:int}.pgn")]
     public IActionResult GetPgn([FromRoute] int id)
     {
-        var game = database.GetOrAddGame(id);
+        var game = database.GetAcceptedChallenge(id)?.Game;
+        if (game == null)
+        {
+            return NotFound();
+        }
+
         return Ok(game.Board.ToPgn());
     }
 }

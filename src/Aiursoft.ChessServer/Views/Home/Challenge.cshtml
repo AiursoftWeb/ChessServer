@@ -55,16 +55,14 @@
             console.log('WebSocket is open now.');
             
             // Accept the challenge
-            acceptChallenge(@Model.ChallengeId, getUserId());
+            acceptChallenge(@Model.ChallengeId);
         });
 
         socket.onmessage = function (event) {
-            // alert(event.data);
-            // May get data like: game-started-at-{newGameId}
-            if (event.data.startsWith('game-started-at-')) {
-                const gameId = event.data.replace('game-started-at-', '');
-                const gameIdNumber = parseInt(gameId);
-                if (gameIdNumber) {
+            // May get data like: game-started
+            if (event.data.startsWith('game-started')) {
+                const gameId = @Model.ChallengeId;
+                if (gameId) {
                     window.location.href = `/games/${gameId}.html`;
                 }
             }

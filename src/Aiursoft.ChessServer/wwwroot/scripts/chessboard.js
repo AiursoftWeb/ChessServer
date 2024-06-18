@@ -1,6 +1,6 @@
 ﻿import {Chess} from "../node_modules/chess.js/dist/esm/chess.js";
 
-const initGameBoard = function (player, gameId) {
+const initGameBoard = function (color, player, gameId) {
     fetch(`/games/${gameId}.fen`)
         .then(response => response.text())
         .then(fen => {
@@ -8,11 +8,11 @@ const initGameBoard = function (player, gameId) {
             let game = null;
             const wsScheme = window.location.protocol === "https:" ? "wss://" : "ws://";
             const socket = new WebSocket(
-                `${wsScheme}${window.location.host}/games/${gameId}.ws?player=${player}`
+                `${wsScheme}${window.location.host}/games/${gameId}.ws?playerId=${player}`
             );
 
             function onDragStart(source, piece, position, _) {
-                if (game.turn() !== player) {
+                if (game.turn() !== color) {
                     return false;
                 }
 
@@ -46,8 +46,6 @@ const initGameBoard = function (player, gameId) {
                 board.position(game.fen());
             }
 
-            const statusControl = document.getElementById("status");
-
             function updateStatusText() {
                 let status;
                 let moveColor = "White";
@@ -68,7 +66,7 @@ const initGameBoard = function (player, gameId) {
             }
 
             const config = {
-                orientation: player === "w" ? "white" : "black",
+                orientation: color === "w" ? "white" : color === "b" ? "black" : /*spectator*/ "white",
                 draggable: true,
                 dragoffBoard: "snapback",
                 position: fen,
@@ -77,6 +75,9 @@ const initGameBoard = function (player, gameId) {
                 onDrop: onDrop
             };
             board = ChessBoard("board", config);
+            const statusControl = document.getElementById("status");
+            const roleControl = document.getElementById("role");
+            roleControl.innerHTML = `You are ${color === "w" ? "White" : color === "b" ? "Black" : "Spectator"} player.`;
 
             function refresh(newFen) {
                 game = new Chess(newFen);

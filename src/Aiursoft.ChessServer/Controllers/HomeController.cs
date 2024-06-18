@@ -18,9 +18,19 @@ public class HomeController(
     {
         var model = new IndexViewModel
         {
-            Challenges = database.GetPublicUnAcceptedChallenges()
+            Challenges = database.GetPublicOpenChallenges()
         };
         return View(model);
+    }
+    
+    [HttpGet]
+    public IActionResult Watch()
+    {
+        var model = new IndexViewModel
+        {
+            Challenges = database.GetOnGoingOpenChallenges()
+        };
+        return View(nameof(Index), model);
     }
 
     /// <summary>
@@ -36,7 +46,7 @@ public class HomeController(
     public IActionResult Auto(Guid playerId)
     {
         // I created a challenge. Go to my challenge.
-        var myChallengeKey = database.GetMyChallengeKey(playerId);
+        var myChallengeKey = database.GetMyOpenChallenge(playerId);
         if (myChallengeKey != null)
         {
             return RedirectToAction(nameof(Challenge), new { id = (int)myChallengeKey });
@@ -63,9 +73,10 @@ public class HomeController(
     [HttpGet]
     public IActionResult Create(Guid playerId)
     {
-        var myChallengeKey = database.GetMyChallengeKey(playerId);
+        var myChallengeKey = database.GetMyOpenChallenge(playerId);
         if (myChallengeKey != null)
         {
+            // This player already has a challenge. Redirect to that challenge.
             return RedirectToAction(nameof(Challenge), new { id = myChallengeKey, playerId });
         }
         var model = new CreateChallengeViewModel();
@@ -76,7 +87,7 @@ public class HomeController(
     public IActionResult Create(CreateChallengeViewModel model)
     {
         // Ensure single challenge can be created by a player.
-        var myChallengeKey = database.GetMyChallengeKey(model.CreatorId);
+        var myChallengeKey = database.GetMyOpenChallenge(model.CreatorId);
         if (myChallengeKey != null)
         {
             ModelState.AddModelError(nameof(model.CreatorId), "You already have a challenge!");
@@ -88,13 +99,12 @@ public class HomeController(
         
         // Create a new challenge.
         var player = database.GetOrAddPlayer(model.CreatorId);
-        var challenge = new Challenge(player)
-        {
-            RoleRule = model.RoleRule,
-            Message = model.Message,
-            Permission = model.Permission,
-            TimeLimit = model.TimeLimit,
-        };
+        var challenge = new Challenge(
+            creator: player, 
+            message: model.Message, 
+            roleRule: model.RoleRule,
+            timeLimit: model.TimeLimit,
+            permission: model.Permission);
         var challengeId = counter.GetUniqueNo();
         database.CreateChallenge(challengeId, challenge);
         return RedirectToAction(nameof(Challenge), new { id = challengeId });
@@ -118,6 +128,13 @@ public class HomeController(
             // Challenge not found.
             return NotFound();
         }
+
+        if (challenge is AcceptedChallenge)
+        {
+            // Challenge already accepted.
+            return RedirectToAction(nameof(GamesController.GetHtml), "Games", new { id });
+        }
+        
         var model = new ChallengeViewModel
         {
             ChallengeId = id,
@@ -149,26 +166,14 @@ public class HomeController(
     [HttpPost]
     public async Task<IActionResult> AcceptChallenge([FromRoute]int id, [FromQuery]Guid playerId)
     {
-        var challenge = database.GetChallenge(id);
-        if (challenge == null)
+        try
         {
-            return NotFound();
+            await database.PatchChallengeAsAcceptedAsync(id, playerId);
         }
-        if (challenge.Accepter != null)
+        catch (InvalidOperationException e)
         {
-            // Challenge already accepted.
-            return BadRequest("Challenge already accepted.");
+            return BadRequest(e.Message);
         }
-        if (challenge.Creator.Id == playerId)
-        {
-            // Cannot accept your own challenge.
-            return BadRequest("Cannot accept your own challenge!");
-        }
-        challenge.Accepter = database.GetOrAddPlayer(playerId);
-        var (newGameId, newGame) = database.AddNewGameAndGetId();
-        challenge.Game = newGame;
-        challenge.GameId = newGameId;
-        await challenge.ChallengeChangedChannel.BroadcastAsync("game-started-at-" + newGameId);
         return Ok();
     }
 

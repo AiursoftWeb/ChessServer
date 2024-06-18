@@ -19,12 +19,23 @@ const getUserName = async function () {
 
 const changeName = async function (newName) {
     // call /players/{id}/{new-name} HTTP PUT API:
-    await fetch(`/players/${getUserId()}/new-name/${newName}`, { method: 'PUT' });
- }
-
-const acceptChallenge = async function (challengeId, playerId) {
-    // call /home/AcceptChallenge/{challengeId}?playerId={playerId} HTTP POST API:
-    await fetch(`/home/AcceptChallenge/${challengeId}?playerId=${playerId}`, { method: 'POST' });
+    await fetch(`/players/${getUserId()}/new-name/${newName}`, {method: 'PUT'});
 }
 
-export { getUserId, getUserName, changeName, acceptChallenge };
+const getAcceptedChallenge = async function (challengeId) {
+    const response = await fetch(`/games/${challengeId}.json`);
+    return await response.json();
+}
+
+const acceptChallenge = async function (challengeId) {
+    const playerId = getUserId();
+    await fetch(`/home/AcceptChallenge/${challengeId}?playerId=${playerId}`, {method: 'POST'});
+}
+
+const getPlayerColor = async function (challengeId) {
+    const playerId = getUserId();
+    const response = await fetch(`/games/${challengeId}.color?playerId=${playerId}`);
+    return await response.text();
+}
+
+export {getUserId, getUserName, changeName, getAcceptedChallenge, acceptChallenge, getPlayerColor};

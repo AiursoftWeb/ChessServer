@@ -3,8 +3,27 @@
 <div class="container mt-5">
     <main role="main" class="pb-3">
         <div class="row">
-        <vc:chess-board game-id="@Model"></vc:chess-board>
+            <div class="col-md-12">
+                <h5 id="versus-info" class="text-center text-wrap text-primary mt-1"></h5>
+            </div>
+            <div class="col-md-6">
+                @* Board *@
+                <vc:chess-board game-id="@Model"></vc:chess-board>
+            </div>
+            <div class="col-md-6">
+                @* Chat *@
+            </div>
         </div>
     </main>
 </div>
 
+@section scripts
+{
+    <script type="module">
+        import { getAcceptedChallenge } from "/scripts/player.js";
+
+        const challenge = await getAcceptedChallenge(@Model);
+        const message = `${challenge.creator} VS ${challenge.accepter}`;
+        document.getElementById('versus-info').innerText = message;
+    </script>
+}
