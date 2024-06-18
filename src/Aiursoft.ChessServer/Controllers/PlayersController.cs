@@ -17,11 +17,11 @@ public class PlayersController(InMemoryDatabase database) : ControllerBase
     
     [HttpPut]
     [Route("{id:guid}/new-name/{nickname}")]
-    public IActionResult ChangeNickname([Required]Guid id, [Required][MaxLength(20)][ValidNickName]string nickname)
+    public IActionResult ChangeNickname([Required]Guid id, [Required][MaxLength(40)][ValidNickName]string nickname)
     {
         if (ModelState.IsValid == false)
         {
-            return BadRequest();
+            return BadRequest("Only numbers, alphabet and underline are allowed in nickname. Max length is 40.");
         }
         
         var me = database.GetOrAddPlayer(id);

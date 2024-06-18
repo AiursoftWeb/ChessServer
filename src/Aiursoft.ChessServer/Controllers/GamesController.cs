@@ -4,6 +4,7 @@ using Aiursoft.ChessServer.Data;
 using Aiursoft.ChessServer.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Aiursoft.AiurObserver.Extensions;
+using Aiursoft.ChessServer.Attributes;
 using Aiursoft.WebTools.Attributes;
 
 namespace Aiursoft.ChessServer.Controllers;
@@ -24,13 +25,14 @@ public class GamesController(InMemoryDatabase database) : Controller
     }
 
     [Route("{id:int}.color")]
-    public IActionResult GetColor([FromRoute] int id, [FromQuery] string playerId)
+    public IActionResult GetColor([FromRoute] int id, [FromQuery][IsGuid] string playerId)
     {
-        var validId = Guid.TryParse(playerId, out var playerGuid);
-        if (!validId)
+        if (!ModelState.IsValid)
         {
-            return NotFound();
+            return BadRequest(ModelState);
         }
+        
+        var playerGuid = Guid.Parse(playerId);
         var challenge = database.GetAcceptedChallenge(id);
         if (challenge == null)
         {
@@ -42,22 +44,21 @@ public class GamesController(InMemoryDatabase database) : Controller
 
     [Route("{id:int}.ws")]
     [EnforceWebSocket]
-    public async Task GetWebSocket([FromRoute] int id, [FromQuery] string playerId)
+    public async Task GetWebSocket([FromRoute] int id, [FromQuery][IsGuid] string playerId)
     {
-        var validId = Guid.TryParse(playerId, out var playerGuid);
-        if (!validId)
+        if (!ModelState.IsValid)
         {
             return;
         }
+        var playerGuid = Guid.Parse(playerId);
         var challenge = database.GetAcceptedChallenge(id);
         if (challenge == null)
         {
             return;
         }
 
-        var game = challenge.Game;
         var pusher = await HttpContext.AcceptWebSocketClient();
-        var outSub = game
+        var outSub = challenge.Game
             .FenChangedChannel
             .Subscribe(t => pusher.Send(t, HttpContext.RequestAborted));
 
@@ -65,17 +66,17 @@ public class GamesController(InMemoryDatabase database) : Controller
             .Filter(t => !string.IsNullOrWhiteSpace(t))
             .Subscribe(async move =>
             {
-                lock (game.MovePieceLock)
+                lock (challenge.Game.MovePieceLock)
                 {
-                    if (!game.Board.IsEndGame &&
-                        game.Board.IsValidMove(move) &&
+                    if (!challenge.Game.Board.IsEndGame &&
+                        challenge.Game.Board.IsValidMove(move) &&
                         challenge.GetTurnPlayer().Id == playerGuid)
                     {
-                        game.Board.Move(move);
+                        challenge.Game.Board.Move(move);
                     }
                 }
 
-                await game.FenChangedChannel.BroadcastAsync(game.Board.ToFen());
+                await challenge.Game.FenChangedChannel.BroadcastAsync(challenge.Game.Board.ToFen());
             });
 
         try

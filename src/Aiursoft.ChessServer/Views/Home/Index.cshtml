@@ -7,9 +7,9 @@
         <p class="lead">Join a room, or create a room!</p>
         <p>
             @* JS Will Append the player id to the link. *@
-            <a class="btn btn-success btn-lg mt-4" role="button" id="autoButton" asp-controller="Home" asp-action="Auto">Auto join</a>
+            <a class="btn btn-success btn-lg mt-4" role="button" id="autoButton" asp-controller="Challenges" asp-action="Auto">Auto join</a>
             @* JS Will Append the player id to the link. *@
-            <a class="btn btn-secondary btn-lg mt-4" role="button" id="createButton" asp-controller="Home" asp-action="Create">Create a new room</a>
+            <a class="btn btn-secondary btn-lg mt-4" role="button" id="createButton" asp-controller="Challenges" asp-action="Create">Create a new room</a>
         </p>
     </div>
 </div>
@@ -35,7 +35,7 @@
                                     <td>@item.Value.Creator.NickName</td>
                                     <td>@((item.Value as AcceptedChallenge)?.Accepter.NickName)
                                     <td>
-                                        <a class="btn btn-sm btn-primary" asp-controller="Home" asp-action="Challenge" asp-route-id="@item.Key">Join</a>
+                                        <a class="btn btn-sm btn-primary" asp-controller="Challenges" asp-action="Challenge" asp-route-id="@item.Key">Join</a>
                                     </td>
                                 </tr>
                             }

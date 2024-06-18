@@ -18,8 +18,10 @@ const getUserName = async function () {
 }
 
 const changeName = async function (newName) {
-    // call /players/{id}/{new-name} HTTP PUT API:
-    await fetch(`/players/${getUserId()}/new-name/${newName}`, {method: 'PUT'});
+    const response = await fetch(`/players/${getUserId()}/new-name/${newName}`, {method: 'PUT'});
+    if (!response.ok) {
+        alert(`Failed to change your name. ${await response.text()}`);
+    }
 }
 
 const getAcceptedChallenge = async function (challengeId) {
@@ -29,7 +31,7 @@ const getAcceptedChallenge = async function (challengeId) {
 
 const acceptChallenge = async function (challengeId) {
     const playerId = getUserId();
-    await fetch(`/home/AcceptChallenge/${challengeId}?playerId=${playerId}`, {method: 'POST'});
+    await fetch(`/challenge/accept/${challengeId}?playerId=${playerId}`, {method: 'POST'});
 }
 
 const getPlayerColor = async function (challengeId) {
