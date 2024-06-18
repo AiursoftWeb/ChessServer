@@ -39,14 +39,14 @@ public class HomeController(
         var myChallengeKey = database.GetMyChallengeKey(playerId);
         if (myChallengeKey != null)
         {
-            return RedirectToAction(nameof(Challenge), new { id = (int)myChallengeKey, playerId });
+            return RedirectToAction(nameof(Challenge), new { id = (int)myChallengeKey });
         }
         
         // Exists a public challenge. Go to that challenge.
         var otherChallenge = database.GetFirstPublicChallengeKey();
         if (otherChallenge != null)
         {
-            return RedirectToAction(nameof(Challenge), new { id = (int)otherChallenge, playerId });
+            return RedirectToAction(nameof(Challenge), new { id = (int)otherChallenge });
         }
         
         // Create a new challenge.
