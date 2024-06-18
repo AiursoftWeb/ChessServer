@@ -5,7 +5,9 @@
 [![Test Coverage](https://gitlab.aiursoft.cn/aiursoft/ChessServer/badges/master/coverage.svg)](https://gitlab.aiursoft.cn/aiursoft/ChessServer/-/pipelines)
 [![ManHours](https://manhours.aiursoft.cn/r/gitlab.aiursoft.cn/aiursoft/ChessServer.svg)](https://gitlab.aiursoft.cn/aiursoft/ChessServer/-/commits/master?ref_type=heads)
 
-ChessServer is just a simple chess server for [Aiursoft](https://www.aiursoft.com) to test our new features.
+ChessServer is just a simple chess server. Based on WebSocket. Can be played with sharing link with friends. No sign up required.
+
+![overview](./screenshot.png)
 
 ## Try
 
