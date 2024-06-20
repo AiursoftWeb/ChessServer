@@ -7,9 +7,9 @@
         <p class="lead">Join a room, or create a room!</p>
         <p>
             @* JS Will Append the player id to the link. *@
-            <a class="btn btn-success btn-lg mt-4" role="button" id="autoButton" asp-controller="Home" asp-action="Auto">Auto join</a>
+            <a class="btn btn-success btn-lg mt-4" role="button" id="autoButton" asp-controller="Challenges" asp-action="Auto">Auto join</a>
             @* JS Will Append the player id to the link. *@
-            <a class="btn btn-secondary btn-lg mt-4" role="button" id="createButton" asp-controller="Home" asp-action="Create">Create a new room</a>
+            <a class="btn btn-secondary btn-lg mt-4" role="button" id="createButton" asp-controller="Challenges" asp-action="Create">Create a new room</a>
         </p>
     </div>
 </div>
@@ -19,21 +19,23 @@
         <div class="col-sm-12 px-1">
             <div class="card mb-2 tests-card">
                 <div class="card-body">
-                    <h5 class="card-title">Public games</h5>
+                    <h5 class="card-title">Public open games</h5>
                     <div class="table-responsive">
                         <table class="table table-striped table-hover table-sm" id="logTable">
                             <tr>
                                 <th>Room Name</th>
                                 <th>Creator</th>
+                                <th>Accepter</th>
                                 <th>Action</th>
                             </tr>
-                            @foreach (var item in Model.Challenges.Where(t => t.Value.Permission == ChallengePermission.Public))
+                            @foreach (var item in Model.Challenges)
                             {
                                 <tr>
                                     <td>@item.Value.Message</td>
                                     <td>@item.Value.Creator.NickName</td>
+                                    <td>@((item.Value as AcceptedChallenge)?.Accepter.NickName)
                                     <td>
-                                        <a class="btn btn-sm btn-primary" asp-controller="Home" asp-action="Challenge" asp-route-id="@item.Key">Join</a>
+                                        <a class="btn btn-sm btn-primary" asp-controller="Challenges" asp-action="Challenge" asp-route-id="@item.Key">Join</a>
                                     </td>
                                 </tr>
                             }

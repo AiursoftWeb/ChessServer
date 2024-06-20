@@ -1,14 +1,13 @@
-﻿@using Aiursoft.ChessServer.Controllers
-@model Aiursoft.ChessServer.Models.ViewModels.ChallengeViewModel
+﻿@model Aiursoft.ChessServer.Models.ViewModels.ChallengeViewModel
 
 <div class="jumbotron">
     <div class="container">
         <h1 class="display-4">Waiting for opponent joining...</h1>
         <p class="lead">Please share the link of this room to your friend!</p>
         @{
-            var link = $"{Context.Request.Scheme}://{Context.Request.Host}/Home/{nameof(HomeController.Challenge)}/{Model.ChallengeId}";
+            var link = $"{Context.Request.Scheme}://{Context.Request.Host}/challenge/{Model.ChallengeId}";
         }
-        <form asp-controller="Home" asp-action="DropChallenge" asp-route-id="@Model.ChallengeId" method="post" class="d-inline" asp-antiforgery="false">
+        <form asp-controller="Challenges" asp-action="Drop" asp-route-id="@Model.ChallengeId" method="post" class="d-inline" asp-antiforgery="false">
             <div asp-validation-summary="All" class="text-danger"></div>
             <input type="hidden" name="playerId" value=""/>
             
@@ -48,23 +47,19 @@
         // Listen to the channel
         const wsScheme = window.location.protocol === "https:" ? "wss://" : "ws://";
         const socket = new WebSocket(
-            `${wsScheme}${window.location.host}/listen-challenge/${@Model.ChallengeId}.ws`
+            `${wsScheme}${window.location.host}/challenge/listen/${@Model.ChallengeId}.ws`
         );
         
-        socket.addEventListener('open', function (event) {
-            console.log('WebSocket is open now.');
-            
-            // Accept the challenge
-            acceptChallenge(@Model.ChallengeId, getUserId());
+        socket.addEventListener('open', function () {
+            console.log('WebSocket is open now. Accepting challenge...');
+            acceptChallenge(@Model.ChallengeId);
         });
 
         socket.onmessage = function (event) {
-            // alert(event.data);
-            // May get data like: game-started-at-{newGameId}
-            if (event.data.startsWith('game-started-at-')) {
-                const gameId = event.data.replace('game-started-at-', '');
-                const gameIdNumber = parseInt(gameId);
-                if (gameIdNumber) {
+            // May get data like: game-started
+            if (event.data.startsWith('game-started')) {
+                const gameId = @Model.ChallengeId;
+                if (gameId) {
                     window.location.href = `/games/${gameId}.html`;
                 }
             }

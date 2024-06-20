@@ -18,3 +18,16 @@ public class ValidNickName : ValidationAttribute
         return this.IsValid(value) ? ValidationResult.Success : new ValidationResult("The " + validationContext.DisplayName + " can only contain numbers, alphabet and underline.");
     }
 }
+
+public class IsGuid : ValidationAttribute
+{
+    public override bool IsValid(object? value)
+    {
+        return value is string input && Guid.TryParse(input, out _);
+    }
+
+    protected override ValidationResult? IsValid(object? value, ValidationContext validationContext)
+    {
+        return this.IsValid(value) ? ValidationResult.Success : new ValidationResult("The " + validationContext.DisplayName + " is not a valid GUID.");
+    }
+}
