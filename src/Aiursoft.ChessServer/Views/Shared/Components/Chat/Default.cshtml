@@ -1,4 +1,6 @@
-﻿<div id="chat" class="w-100">
+﻿@model Aiursoft.ChessServer.Views.Shared.Components.Chat.ChatModel
+
+<div id="chat" class="w-100">
     <div class="container overflow-y-scroll scrollbar-width-none aspect-1-1" id="messages-box">
 
     </div>
@@ -9,86 +11,8 @@
     </form>
 
     <script type="module">
-        let messagesBox;
-        let inputMessage;
-
-        window.addEventListener("DOMContentLoaded", async () => {
-            messagesBox = document.getElementById('messages-box');
-            inputMessage = document.getElementById('inputMessage');
-
-            scrollToNewestMessage();
-
-            mockMessage();
-
-            document.getElementById("chatSendForm").onsubmit = function (e) {
-                sendNewMessage();
-                return false;
-            }
-        });
-
-
-        function sendNewMessage() {
-            let msg = inputMessage.value;
-
-            if (msg.trim() === '') {
-                return;
-            }
-
-            /* sending message */
-            appendMyNewMessage(msg);
-        }
-
-        function scrollToNewestMessage() {
-            let lastChild = messagesBox.lastElementChild;
-            if (lastChild) {
-                lastChild.scrollIntoView({ behavior: "smooth" });
-            }
-        }
-
-        function appendMyNewMessage(message) {
-            let t = document.getElementById('messageFromMe').content;
-            let txt = t.querySelector("[data-message]");
-            txt.textContent = message;
-
-            let clone = document.importNode(t, true);
-
-            messagesBox.appendChild(clone);
-            scrollToNewestMessage();
-        }
-
-        function appendOpponentNewMessage(message) {
-            let t = document.getElementById('messageFromOpponent').content;
-            let txt = t.querySelector("[data-message]");
-            txt.textContent = message;
-
-            let clone = document.importNode(t, true);
-
-            messagesBox.appendChild(clone);
-            scrollToNewestMessage();
-        }
-
-        /**
-         * this is a mock for demonstrate
-         */
-        function mockMessage() {
-            const messages = [
-                { opponent: true, message: "Hello" },
-                { opponent: false, message: "Hello" },
-                { opponent: true, message: "You lost your queen~" },
-                { opponent: false, message: "GIVE MY QUEEN BACK!🤬 GIVE MY QUEEN BACK!🤬 GIVE MY QUEEN BACK!🤬 GIVE MY QUEEN BACK!🤬 GIVE MY QUEEN BACK!🤬 GIVE MY QUEEN BACK!🤬 GIVE MY QUEEN BACK!🤬 " },
-                { opponent: true, message: "No way~" },
-                { opponent: true, message: "HAHAHAHAHAHAHAHAHAHAHAHAH" },
-                { opponent: false, message: "Ass!" },
-            ];
-
-            messages.forEach((v) => {
-                if (v.opponent) {
-                    appendOpponentNewMessage(v.message);
-                } else {
-                    appendMyNewMessage(v.message);
-                }
-            });
-        }
+        
+    
     </script>
 
     <template id="messageFromOpponent">
@@ -113,3 +37,14 @@
         </div>
     </template>
 </div>
+
+<script type="module">
+import initChat from "/scripts/chat.js";
+import { getUserId } from "/scripts/player.js";
+
+window.addEventListener('DOMContentLoaded', async () => {
+    var playerId = getUserId();
+    initChat(playerId, @Model.GameId);
+});
+
+</script>

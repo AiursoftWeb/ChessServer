@@ -55,6 +55,9 @@ public class AcceptedChallenge : Challenge
 
     public Player Accepter { get; set; }
     public Game Game { get; set; }
+    
+    public AsyncObservable<ChatMessage> ChatChannel { get; init; } = new();
+    
     public Player GetWhitePlayer() => _creatorIsWhite ? Creator : Accepter;
     public Player GetBlackPlayer() => _creatorIsWhite ? Accepter : Creator;
     
@@ -79,4 +82,17 @@ public class AcceptedChallenge : Challenge
         }
         return "m";
     }
+}
+
+public class ChatMessage(string content, Player sender)
+{
+    public string Content { get; set; } = content;
+    public Player Sender { get; set; } = sender;
+}
+
+public class ChatMessageResponse(ChatMessage message, Guid currentUserId)
+{
+    public string Content { get; set; } = message.Content;
+    public string SenderNickName { get; set; } = message.Sender.NickName;
+    public bool IsMe { get; set; } = message.Sender.Id == currentUserId;
 }

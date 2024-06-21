@@ -1,4 +1,4 @@
-﻿import {Chess} from "../node_modules/chess.js/dist/esm/chess.js";
+﻿import { Chess } from "../node_modules/chess.js/dist/esm/chess.js";
 
 const initGameBoard = function (color, player, gameId) {
     fetch(`/games/${gameId}.fen`)
@@ -132,7 +132,7 @@ const initGameBoard = function (color, player, gameId) {
 
             socket.onclose = function () {
                 setTimeout(function () {
-                    initGameBoard(player, gameId);
+                    initGameBoard(color, player, gameId);
                 }, 1000);
             };
         });

@@ -9,9 +9,6 @@ import initGameBoard from "/scripts/chessboard.js";
 import { getUserId, getPlayerColor } from "/scripts/player.js";
 
 window.addEventListener('DOMContentLoaded', async () => {
-    // Ask the user to enter w or b:
-    //const player = prompt("Please enter your color (w or b):");
-
     var playerId = getUserId();
     var playerColor = await getPlayerColor(@Model.GameId);
     initGameBoard(playerColor, playerId, @Model.GameId);
