@@ -65,6 +65,10 @@ const initGameBoard = function (color, player, gameId) {
             }
 
             function onMouseoverSquare(square, piece) {
+                if (game.turn() !== color) {
+                    return;
+                }
+                
                 var moves = game.moves({
                     square: square,
                     verbose: true
