@@ -1,0 +1,115 @@
+﻿<div id="chat" class="w-100">
+    <div class="container overflow-y-scroll scrollbar-width-none aspect-1-1" id="messages-box">
+
+    </div>
+
+    <form class="input-group input-group-sm my-2" id="chatSendForm">
+        <input type="text" class="form-control" id="inputMessage" placeholder="type message, enter to send" />
+        <button class="btn btn-primary btn-sm" type="submit">Send</button>
+    </form>
+
+    <script type="module">
+        let messagesBox;
+        let inputMessage;
+
+        window.addEventListener("DOMContentLoaded", async () => {
+            messagesBox = document.getElementById('messages-box');
+            inputMessage = document.getElementById('inputMessage');
+
+            scrollToNewestMessage();
+
+            mockMessage();
+
+            document.getElementById("chatSendForm").onsubmit = function (e) {
+                sendNewMessage();
+                return false;
+            }
+        });
+
+
+        function sendNewMessage() {
+            let msg = inputMessage.value;
+
+            if (msg.trim() === '') {
+                return;
+            }
+
+            /* sending message */
+            appendMyNewMessage(msg);
+        }
+
+        function scrollToNewestMessage() {
+            let lastChild = messagesBox.lastElementChild;
+            if (lastChild) {
+                lastChild.scrollIntoView({ behavior: "smooth" });
+            }
+        }
+
+        function appendMyNewMessage(message) {
+            let t = document.getElementById('messageFromMe').content;
+            let txt = t.querySelector("[data-message]");
+            txt.textContent = message;
+
+            let clone = document.importNode(t, true);
+
+            messagesBox.appendChild(clone);
+            scrollToNewestMessage();
+        }
+
+        function appendOpponentNewMessage(message) {
+            let t = document.getElementById('messageFromOpponent').content;
+            let txt = t.querySelector("[data-message]");
+            txt.textContent = message;
+
+            let clone = document.importNode(t, true);
+
+            messagesBox.appendChild(clone);
+            scrollToNewestMessage();
+        }
+
+        /**
+         * this is a mock for demonstrate
+         */
+        function mockMessage() {
+            const messages = [
+                { opponent: true, message: "Hello" },
+                { opponent: false, message: "Hello" },
+                { opponent: true, message: "You lost your queen~" },
+                { opponent: false, message: "GIVE MY QUEEN BACK!🤬 GIVE MY QUEEN BACK!🤬 GIVE MY QUEEN BACK!🤬 GIVE MY QUEEN BACK!🤬 GIVE MY QUEEN BACK!🤬 GIVE MY QUEEN BACK!🤬 GIVE MY QUEEN BACK!🤬 " },
+                { opponent: true, message: "No way~" },
+                { opponent: true, message: "HAHAHAHAHAHAHAHAHAHAHAHAH" },
+                { opponent: false, message: "Ass!" },
+            ];
+
+            messages.forEach((v) => {
+                if (v.opponent) {
+                    appendOpponentNewMessage(v.message);
+                } else {
+                    appendMyNewMessage(v.message);
+                }
+            });
+        }
+    </script>
+
+    <template id="messageFromOpponent">
+        <div class="row justify-content-start">
+            <div class="toast align-items-center bg-white text-black my-1 opacity-1 flex-basis-auto"
+                aria-live="assertive" aria-atomic="true">
+                <div class="d-flex">
+                    <div class="toast-body" data-message><!-- MESSAGE HERE--></div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template id="messageFromMe">
+        <div class="row justify-content-end">
+            <div class="toast align-items-center bg-primary text-white my-1 opacity-1 flex-basis-auto"
+                aria-live="assertive" aria-atomic="true">
+                <div class="d-flex">
+                    <div class="toast-body" data-message><!-- MESSAGE HERE--></div>
+                </div>
+            </div>
+        </div>
+    </template>
+</div>
