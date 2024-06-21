@@ -6,10 +6,27 @@ const initGameBoard = function (color, player, gameId) {
         .then(fen => {
             let board = null;
             let game = null;
+            let whiteSquareGrey = '#a9a9a9';
+            let blackSquareGrey = '#696969';
             const wsScheme = window.location.protocol === "https:" ? "wss://" : "ws://";
             const socket = new WebSocket(
                 `${wsScheme}${window.location.host}/games/${gameId}.ws?playerId=${player}`
             );
+
+            function removeGreySquares() {
+                $('#board .square-55d63').css('background', '');
+            }
+
+            function greySquare(square) {
+                var $square = $('#board .square-' + square);
+
+                var background = whiteSquareGrey;
+                if ($square.hasClass('black-3c85d')) {
+                    background = blackSquareGrey;
+                }
+
+                $square.css('background', background);
+            }
 
             function onDragStart(source, piece, position, _) {
                 if (game.turn() !== color) {
@@ -26,6 +43,7 @@ const initGameBoard = function (color, player, gameId) {
             }
 
             function onDrop(source, target) {
+                removeGreySquares();
                 try {
                     const move = game.move({
                         from: source,
@@ -44,6 +62,24 @@ const initGameBoard = function (color, player, gameId) {
 
             function onSnapEnd() {
                 board.position(game.fen());
+            }
+
+            function onMouseoverSquare(square, piece) {
+                var moves = game.moves({
+                    square: square,
+                    verbose: true
+                });
+                if (moves.length === 0) {
+                    return;
+                }
+                greySquare(square);
+                for (var i = 0; i < moves.length; i++) {
+                    greySquare(moves[i].to);
+                }
+            }
+
+            function onMouseoutSquare(square, piece) {
+                removeGreySquares();
             }
 
             function updateStatusText() {
@@ -72,7 +108,9 @@ const initGameBoard = function (color, player, gameId) {
                 position: fen,
                 onDragStart: onDragStart,
                 onSnapEnd: onSnapEnd,
-                onDrop: onDrop
+                onDrop: onDrop,
+                onMouseoutSquare: onMouseoutSquare,
+                onMouseoverSquare: onMouseoverSquare
             };
             board = ChessBoard("board", config);
             const statusControl = document.getElementById("status");
