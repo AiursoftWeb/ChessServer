@@ -1,7 +1,7 @@
 
 using Microsoft.AspNetCore.Mvc;
 
-namespace Aiursoft.ChessServer.Views.Shared.Components.ChessBoard;
+namespace Aiursoft.ChessServer.Views.Shared.Components.Chat;
 
 public class Chat : ViewComponent
 {
