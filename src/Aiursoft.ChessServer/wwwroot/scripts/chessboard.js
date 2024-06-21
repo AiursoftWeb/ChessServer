@@ -68,6 +68,8 @@ const initGameBoard = function (color, player, gameId) {
                 if (game.turn() !== color) {
                     return;
                 }
+
+                if (game.isGameOver()) return;
                 
                 var moves = game.moves({
                     square: square,
