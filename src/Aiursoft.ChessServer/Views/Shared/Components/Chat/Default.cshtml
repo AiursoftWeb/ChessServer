@@ -11,13 +11,13 @@
     </form>
 
     <script type="module">
-        
-    
+
+
     </script>
 
     <template id="messageFromOpponent">
         <div class="row justify-content-start">
-            <div class="toast align-items-center bg-white text-black my-1 opacity-1 flex-basis-auto"
+            <div class="toast align-items-center bg-white text-dark my-1 opacity-1 flex-basis-auto"
                 aria-live="assertive" aria-atomic="true">
                 <div class="d-flex">
                     <div class="toast-body" data-message><!-- MESSAGE HERE--></div>
@@ -39,12 +39,12 @@
 </div>
 
 <script type="module">
-import initChat from "/scripts/chat.js";
-import { getUserId } from "/scripts/player.js";
+    import initChat from "/scripts/chat.js";
+    import { getUserId } from "/scripts/player.js";
 
-window.addEventListener('DOMContentLoaded', async () => {
-    var playerId = getUserId();
-    initChat(playerId, @Model.GameId);
-});
+    window.addEventListener('DOMContentLoaded', async () => {
+        var playerId = getUserId();
+        initChat(playerId, @Model.GameId);
+    });
 
 </script>
