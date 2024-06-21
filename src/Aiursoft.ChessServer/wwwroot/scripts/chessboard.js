@@ -28,7 +28,7 @@ const initGameBoard = function (color, player, gameId) {
                 $square.css('background', background);
             }
 
-            function onDragStart(source, piece, position, _) {
+            function onDragStart(square, piece, position, _) {
                 if (game.turn() !== color) {
                     return false;
                 }
@@ -39,6 +39,17 @@ const initGameBoard = function (color, player, gameId) {
                     (game.turn() === "w" && piece.search(/^b/) !== -1) ||
                     (game.turn() === "b" && piece.search(/^w/) !== -1)) {
                     return false
+                }
+
+                const moves = game.moves({
+                    square: square,
+                    verbose: true
+                });
+                if (moves.length !== 0) {
+                    greySquare(square);
+                    for (let i = 0; i < moves.length; i++) {
+                        greySquare(moves[i].to);
+                    }
                 }
             }
 
@@ -62,26 +73,6 @@ const initGameBoard = function (color, player, gameId) {
 
             function onSnapEnd() {
                 board.position(game.fen());
-            }
-
-            function onMouseoverSquare(square, piece) {
-                if (game.turn() !== color) {
-                    return;
-                }
-
-                if (game.isGameOver()) return;
-                
-                var moves = game.moves({
-                    square: square,
-                    verbose: true
-                });
-                if (moves.length === 0) {
-                    return;
-                }
-                greySquare(square);
-                for (var i = 0; i < moves.length; i++) {
-                    greySquare(moves[i].to);
-                }
             }
 
             function onMouseoutSquare(square, piece) {
@@ -115,8 +106,7 @@ const initGameBoard = function (color, player, gameId) {
                 onDragStart: onDragStart,
                 onSnapEnd: onSnapEnd,
                 onDrop: onDrop,
-                onMouseoutSquare: onMouseoutSquare,
-                onMouseoverSquare: onMouseoverSquare
+                onMouseoutSquare: onMouseoutSquare
             };
             board = ChessBoard("board", config);
             const statusControl = document.getElementById("status");
