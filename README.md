@@ -4,6 +4,8 @@
 [![Pipeline stat](https://gitlab.aiursoft.cn/aiursoft/ChessServer/badges/master/pipeline.svg)](https://gitlab.aiursoft.cn/aiursoft/ChessServer/-/pipelines)
 [![Test Coverage](https://gitlab.aiursoft.cn/aiursoft/ChessServer/badges/master/coverage.svg)](https://gitlab.aiursoft.cn/aiursoft/ChessServer/-/pipelines)
 [![ManHours](https://manhours.aiursoft.cn/r/gitlab.aiursoft.cn/aiursoft/ChessServer.svg)](https://gitlab.aiursoft.cn/aiursoft/ChessServer/-/commits/master?ref_type=heads)
+[![Website](https://img.shields.io/website?url=https%3A%2F%2Fchess.aiursoft.cn%2F)](https://chess.aiursoft.cn)
+[![Docker](https://img.shields.io/badge/docker-latest-blue?logo=docker)](https://hub.aiursoft.cn/#!/taglist/aiursoft/chessserver)
 
 ChessServer is just a simple web-based chess server. Based on WebSocket. Can be played with sharing link with friends. No sign up required.
 
