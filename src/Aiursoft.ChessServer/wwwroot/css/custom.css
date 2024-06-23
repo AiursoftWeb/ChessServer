@@ -18,3 +18,7 @@
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
+
+.text-sm {
+  font-size: 0.7rem;
+}
