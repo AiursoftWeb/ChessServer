@@ -1,9 +1,7 @@
 ﻿@model Aiursoft.ChessServer.Views.Shared.Components.Chat.ChatModel
 
 <div id="chat" class="w-100">
-    <div class="container overflow-y-scroll scrollbar-width-none aspect-1-1" id="messages-box">
-
-    </div>
+    <div class="container overflow-y-scroll scrollbar-width-none aspect-1-1" id="messages-box"></div>
 
     <form class="input-group input-group-sm my-2" id="chatSendForm">
         <input type="text" class="form-control" id="inputMessage" placeholder="type message, enter to send" />
@@ -17,10 +15,13 @@
 
     <template id="messageFromOpponent">
         <div class="row justify-content-start">
-            <div class="toast align-items-center bg-white text-dark my-1 opacity-1 flex-basis-auto"
-                aria-live="assertive" aria-atomic="true">
-                <div class="d-flex">
-                    <div class="toast-body" data-message><!-- MESSAGE HERE--></div>
+            <div class="d-flex flex-column align-items-start">
+                <div class="text-sm" data-message-from=""><!-- MESSAGE FROM WHO --></div>
+                <div class="toast align-items-center bg-white text-dark my-1 opacity-1 flex-basis-auto"
+                    aria-live="assertive" aria-atomic="true">
+                    <div class="d-flex">
+                        <div class="toast-body" data-message><!-- MESSAGE HERE--></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -28,10 +29,13 @@
 
     <template id="messageFromMe">
         <div class="row justify-content-end">
-            <div class="toast align-items-center bg-primary text-white my-1 opacity-1 flex-basis-auto"
-                aria-live="assertive" aria-atomic="true">
-                <div class="d-flex">
-                    <div class="toast-body" data-message><!-- MESSAGE HERE--></div>
+            <div class="d-flex flex-column align-items-end">
+                <div class="text-sm" data-message-from=""><!-- MESSAGE FROM WHO --></div>
+                <div class="toast align-items-center bg-primary text-white my-1 opacity-1 flex-basis-auto"
+                    aria-live="assertive" aria-atomic="true">
+                    <div class="d-flex">
+                        <div class="toast-body" data-message><!-- MESSAGE HERE--></div>
+                    </div>
                 </div>
             </div>
         </div>
