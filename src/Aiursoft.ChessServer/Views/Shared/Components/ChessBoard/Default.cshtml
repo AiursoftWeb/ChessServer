@@ -5,13 +5,25 @@
 <p id="role" class="text-center text-wrap text-secondary mt-1"></p>
 
 <script type="module">
-import initGameBoard from "/scripts/chessboard.js";
-import { getUserId, getPlayerColor } from "/scripts/player.js";
+    import initGameBoard from "/scripts/chessboard.js";
+    import { getUserId, getPlayerColor } from "/scripts/player.js";
 
-window.addEventListener('DOMContentLoaded', async () => {
-    var playerId = getUserId();
-    var playerColor = await getPlayerColor(@Model.GameId);
-    initGameBoard(playerColor, playerId, @Model.GameId);
-});
+    window.addEventListener('DOMContentLoaded', async () => {
+        var playerId = getUserId();
+        var playerColor = await getPlayerColor(@Model.GameId);
+        initGameBoard(playerColor, playerId, @Model.GameId);
+
+        document.body.addEventListener('pointerdown', (e) => {
+            let board = document.getElementById('board');
+            if (board.contains(e.target)) {
+                document.body.style.overflow = 'hidden';
+                document.documentElement.overflow = 'hidden';
+                board.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            } else {
+                document.body.style.overflowY = '';
+                document.documentElement.overflowY = '';
+            }
+        });
+    });
 
 </script>
