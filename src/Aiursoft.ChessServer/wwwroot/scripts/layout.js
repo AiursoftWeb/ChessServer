@@ -3,7 +3,9 @@ import { getUserName, changeName } from "./player.js";
 autoTheme();
 
 async function loadName() {
-  document.getElementById("player-nick-name").innerText = await getUserName();
+  document.getElementById("player-nick-name").innerHTML = 
+      "<i class=\"fa-solid fa-user-pen mr-2\"></i>" +
+      await getUserName();
 }
 
 async function promptChangeName() {
