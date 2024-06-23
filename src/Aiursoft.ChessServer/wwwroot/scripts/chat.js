@@ -20,10 +20,7 @@
     }
 
     function scrollToNewestMessage() {
-        let lastChild = messagesBox.lastElementChild;
-        if (lastChild) {
-            lastChild.scrollIntoView({ behavior: "smooth" });
-        }
+        messagesBox.scrollTo({top: messagesBox.scrollHeight, behavior: 'smooth'});
     }
 
     function appendMyNewMessage(message) {
