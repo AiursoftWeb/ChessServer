@@ -1,4 +1,3 @@
-using System.Drawing;
 using Aiursoft.AiurObserver;
 using Aiursoft.AiurObserver.WebSocket;
 using Aiursoft.ChessServer.Data;
@@ -40,9 +39,6 @@ public class PveController(
         // Let the computer accept the challenge
         await database.PatchChallengeAsAcceptedAsync(challengeId, computerId);
         
-        // Get the accepted challenge
-        var acceptedChallenge = database.GetAcceptedChallenge(challengeId);
-        
         // Let computer respond to the player's move
         await Task.Factory.StartNew(async () =>
         {
@@ -56,8 +52,7 @@ public class PveController(
                 subscription = client.Subscribe(async fen =>
                 {
                     // When fen changes, it means someone has made a move. If it's the computer's turn, let the computer respond.
-                    var board = ChessBoard.LoadFromFen(fen);
-                    if (board.Turn == PieceColor.Black)
+                    if (ChessBoard.LoadFromFen(fen).Turn == PieceColor.Black)
                     {
                         // Wait for the UI to update
                         await Task.Delay(300);
