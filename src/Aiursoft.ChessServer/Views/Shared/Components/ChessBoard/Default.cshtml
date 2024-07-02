@@ -11,7 +11,9 @@
     window.addEventListener('DOMContentLoaded', async () => {
         var playerId = getUserId();
         var playerColor = await getPlayerColor(@Model.GameId);
-        let anduinChessBoard = new ChessBuilder(playerColor).default();
+        var statusControl = document.getElementById("status");
+        var roleControl = document.getElementById("role");
+        let anduinChessBoard = new ChessBuilder(playerColor, statusControl, roleControl).default();
         anduinChessBoard.run(playerId, @Model.GameId);
 
         document.body.addEventListener('pointerdown', (e) => {
