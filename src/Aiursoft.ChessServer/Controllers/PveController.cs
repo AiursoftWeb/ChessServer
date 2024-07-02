@@ -1,3 +1,4 @@
+using System.Drawing;
 using Aiursoft.AiurObserver;
 using Aiursoft.AiurObserver.WebSocket;
 using Aiursoft.ChessServer.Data;
@@ -6,6 +7,7 @@ using Aiursoft.CSTools.Services;
 using Microsoft.AspNetCore.Mvc;
 using Aiursoft.AiurObserver.Extensions;
 using Aiursoft.ChessServer.Services;
+using Chess;
 
 namespace Aiursoft.ChessServer.Controllers;
 
@@ -22,6 +24,7 @@ public class PveController(
         // Add a computer player
         var computerId = Guid.NewGuid();
         database.GetOrAddPlayer(computerId).NickName = "Computer";
+        //var asyncLock = new SemaphoreSlim(1, 1);
 
         // Create a challenge
         var player = database.GetOrAddPlayer(playerId);
@@ -53,7 +56,8 @@ public class PveController(
                 subscription = client.Subscribe(async fen =>
                 {
                     // When fen changes, it means someone has made a move. If it's the computer's turn, let the computer respond.
-                    if (acceptedChallenge?.GetTurnPlayer().Id == computerId)
+                    var board = ChessBoard.LoadFromFen(fen);
+                    if (board.Turn == PieceColor.Black)
                     {
                         // Wait for the UI to update
                         await Task.Delay(300);

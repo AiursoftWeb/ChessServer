@@ -21,7 +21,7 @@ public class ChessEngine
     public string GetBestMove(string fen)
     {
         _engine.AdjustPosition($"position fen {fen}");
-        return _engine.IDDFS(5, int.MaxValue)
+        return _engine.IDDFS(1, int.MaxValue)
             .BestMove
             .ToEPDString();
     }
