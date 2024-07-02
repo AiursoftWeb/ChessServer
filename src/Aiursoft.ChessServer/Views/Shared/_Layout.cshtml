@@ -40,6 +40,12 @@
                             Watch
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Pve" asp-action="New" id="against-ai-link">
+                            <i class="fa-solid fa-chalkboard-user"></i>
+                            Against AI
+                        </a>
+                    </li>
                 </ul>
                 <div class="form-inline">
                     <ul class="navbar-nav mr-auto">
@@ -77,7 +83,7 @@
 <script src="~/node_modules/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js"></script>
 <script src="~/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <script src="~/node_modules/@@chrisoakman/chessboardjs/dist/chessboard-1.0.0.min.js"></script>
-<script type="module" src="~/scripts/layout.js"></script>
+<script type="module" src="~/scripts/layout.js" asp-append-version="true"></script>
 @(await RenderSectionAsync("scripts", false))
 </body>
 
