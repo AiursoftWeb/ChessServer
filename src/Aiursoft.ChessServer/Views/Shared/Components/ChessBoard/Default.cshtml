@@ -5,13 +5,14 @@
 <p id="role" class="text-center text-wrap text-secondary mt-1"></p>
 
 <script type="module">
-    import initGameBoard from "/scripts/chessboard.js";
+    import ChessBuilder from "/scripts/chessboard/chessboard.js";
     import { getUserId, getPlayerColor } from "/scripts/player.js";
 
     window.addEventListener('DOMContentLoaded', async () => {
         var playerId = getUserId();
         var playerColor = await getPlayerColor(@Model.GameId);
-        initGameBoard(playerColor, playerId, @Model.GameId);
+        let anduinChessBoard = new ChessBuilder(playerColor).default();
+        anduinChessBoard.run(playerId, @Model.GameId);
 
         document.body.addEventListener('pointerdown', (e) => {
             let board = document.getElementById('board');
