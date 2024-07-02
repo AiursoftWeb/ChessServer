@@ -12,7 +12,7 @@ public class Startup : IWebStartup
     {
         services.AddLibraryDependencies();
 
-        services.AddSingleton<ChessEngine>();
+        services.AddTransient<ChessEngine>();
         
         services
             .AddControllersWithViews()

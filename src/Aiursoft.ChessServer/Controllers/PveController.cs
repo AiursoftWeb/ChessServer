@@ -19,7 +19,11 @@ public class PveController(
     [HttpGet]
     public async Task<IActionResult> New(Guid playerId)
     {
+        // Add a computer player
         var computerId = Guid.NewGuid();
+        database.GetOrAddPlayer(computerId).NickName = "Computer";
+
+        // Create a challenge
         var player = database.GetOrAddPlayer(playerId);
         var challenge = new Challenge(
             creator: player, 
@@ -29,9 +33,14 @@ public class PveController(
             permission: ChallengePermission.Public);
         var challengeId = counter.GetUniqueNo();
         database.CreateChallenge(challengeId, challenge);
-        database.GetOrAddPlayer(computerId).NickName = "Computer";
+        
+        // Let the computer accept the challenge
         await database.PatchChallengeAsAcceptedAsync(challengeId, computerId);
+        
+        // Get the accepted challenge
         var acceptedChallenge = database.GetAcceptedChallenge(challengeId);
+        
+        // Let computer respond to the player's move
         await Task.Factory.StartNew(async () =>
         {
             ISubscription? subscription = null;
@@ -43,9 +52,11 @@ public class PveController(
                 var client = await webSocketEndpoint.ConnectAsWebSocketServer();
                 subscription = client.Subscribe(async fen =>
                 {
+                    // When fen changes, it means someone has made a move. If it's the computer's turn, let the computer respond.
                     if (acceptedChallenge?.GetTurnPlayer().Id == computerId)
                     {
-                        await Task.Delay(200);
+                        // Wait for the UI to update
+                        await Task.Delay(300);
                         var bestMove = engine.GetBestMove(fen);
                         await client.Send(bestMove);
                     }
@@ -58,6 +69,7 @@ public class PveController(
             }
         });
         
+        // Redirect to the game page
         return RedirectToAction(nameof(GamesController.GetHtml), "Games", new { id = challengeId });
     }
 }
