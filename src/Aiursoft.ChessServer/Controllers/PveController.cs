@@ -12,6 +12,7 @@ namespace Aiursoft.ChessServer.Controllers;
 
 [Route("pve")]
 public class PveController(
+    ILogger<PveController> logger,
     ChessEngine engine,
     Counter counter,
     InMemoryDatabase database) : Controller
@@ -21,6 +22,7 @@ public class PveController(
     public async Task<IActionResult> New(Guid playerId)
     {
         // Add a computer player
+        logger.LogInformation("Creating a new PVE game for player {playerId}.", playerId);
         var computerId = Guid.NewGuid();
         database.GetOrAddPlayer(computerId).NickName = "Computer";
         //var asyncLock = new SemaphoreSlim(1, 1);
@@ -51,12 +53,17 @@ public class PveController(
                 var client = await webSocketEndpoint.ConnectAsWebSocketServer();
                 subscription = client.Subscribe(async fen =>
                 {
+                    logger.LogInformation("Computer player received fen: {fen}", fen);
+                    
                     // When fen changes, it means someone has made a move. If it's the computer's turn, let the computer respond.
                     if (ChessBoard.LoadFromFen(fen).Turn == PieceColor.Black)
                     {
+                        logger.LogInformation("The fen {fen} means it's the computer's turn. Computer is calculating the best move.", fen);
                         // Wait for the UI to update
                         await Task.Delay(300);
                         var bestMove = engine.GetBestMove(fen);
+                        
+                        logger.LogInformation("Computer calculated the best move: {bestMove}", bestMove);
                         await client.Send(bestMove);
                     }
                 });
@@ -65,6 +72,7 @@ public class PveController(
             finally
             {
                 subscription?.Unsubscribe();
+                logger.LogInformation("Computer player unsubscribed.");
             }
         });
         
