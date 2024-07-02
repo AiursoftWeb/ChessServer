@@ -66,6 +66,7 @@ public class GamesController(InMemoryDatabase database) : Controller
             .Filter(t => !string.IsNullOrWhiteSpace(t))
             .Subscribe(async move =>
             {
+                move = move.Replace("0", "O");
                 lock (challenge.Game.MovePieceLock)
                 {
                     if (!challenge.Game.Board.IsEndGame &&
