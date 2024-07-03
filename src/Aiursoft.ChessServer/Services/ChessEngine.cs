@@ -28,25 +28,19 @@ public class ChessEngine
             4 => "Hard",
             5 => "Brutal",
             6 => "Grandmaster",
-            7 => "Unbeatable",
+            7 => "Torture",
+            8 => "Unbeatable",
             _ => "Unknown"
         };
     }
 
     public string GetBestMove(string fen, int difficulty)
-        // 1: Chimpanzee
-        // 2: Easy
-        // 3: Intermediate
-        // 4: Hard
-        // 5: Brutal
-        // 6: Grandmaster
-        // 7: Unbeatable
     {
         _engine.AdjustPosition($"position fen {fen}");
         var positionClone = new Position(_engine.Game.CurrentPosition);
 
         // Depth = difficulty, 50% of chance to be difficulty + 1
-        var depth = difficulty + (new Random().Next(2) == 0 ? 1 : 0);
+        var depth = difficulty - 1 + (new Random().Next(2) == 0 ? 1 : 0);
         var result = _engine.IDDFS(depth, 10);
         _engine.Game.ResetCurrentPositionToBeforeSearchState();
 
