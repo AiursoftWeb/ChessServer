@@ -19,12 +19,12 @@ public class PveController(
 {
     [Route("new")]
     [HttpGet]
-    public async Task<IActionResult> New(Guid playerId)
+    public async Task<IActionResult> New(Guid playerId, int difficulty = 1)
     {
         // Add a computer player
         logger.LogInformation("Creating a new PVE game for player {playerId}.", playerId);
         var computerId = Guid.NewGuid();
-        database.GetOrAddPlayer(computerId).NickName = "Computer";
+        database.GetOrAddPlayer(computerId).NickName = engine.GetComputerName(difficulty) + " AI";
         //var asyncLock = new SemaphoreSlim(1, 1);
 
         // Create a challenge
@@ -61,7 +61,7 @@ public class PveController(
                         logger.LogInformation("The fen {fen} means it's the computer's turn. Computer is calculating the best move.", fen);
                         // Wait for the UI to update
                         await Task.Delay(300);
-                        var bestMove = engine.GetBestMove(fen);
+                        var bestMove = engine.GetBestMove(fen, difficulty);
                         
                         logger.LogInformation("Computer calculated the best move: {bestMove}", bestMove);
                         await client.Send(bestMove);
