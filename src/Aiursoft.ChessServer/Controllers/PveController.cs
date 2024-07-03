@@ -21,6 +21,8 @@ public class PveController(
     [HttpGet]
     public async Task<IActionResult> New(Guid playerId, int difficulty = 1)
     {
+        if (difficulty > 15) difficulty = 15;
+        
         // Add a computer player
         logger.LogInformation("Creating a new PVE game for player {playerId}.", playerId);
         var computerId = Guid.NewGuid();
