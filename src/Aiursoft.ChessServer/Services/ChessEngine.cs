@@ -1,4 +1,5 @@
 using System.Threading.Channels;
+using Chess;
 using Lynx;
 using Lynx.Model;
 
@@ -20,9 +21,13 @@ public class ChessEngine
 
     public string GetBestMove(string fen)
     {
+        var board = ChessBoard.LoadFromFen(fen);
+        
         _engine.AdjustPosition($"position fen {fen}");
-        return _engine.IDDFS(1, 10)
-            .BestMove
-            .ToEPDString();
+        var moves = _engine.IDDFS(1, 10);
+        var bestMove = moves.Moves
+            .Select(t => t.ToEPDString())
+            .FirstOrDefault(t => board.IsValidMove(t));
+        return bestMove ?? moves.BestMove.ToEPDString();
     }
 }

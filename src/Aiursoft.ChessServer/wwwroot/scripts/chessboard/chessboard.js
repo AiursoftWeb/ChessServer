@@ -16,8 +16,10 @@ import {
  * let chessBoard = new ChessBuilder().default();
  * ```
  * @param {string} color currently color, w or b
+ * @param {HTMLElement} statusControl status control element
+ * @param {HTMLElement} roleControl role control element
  */
-function ChessBuilder(color) {
+function ChessBuilder(color, statusControl, roleControl) {
   this.onDragStart = undefined;
   this.onDrop = undefined;
   this.onSnapEnd = undefined;
@@ -31,8 +33,8 @@ function ChessBuilder(color) {
     anduinChessBoard.config.onDragStart = buildOnDragStart(anduinChessBoard);
     anduinChessBoard.config.onDrop = buildOnDrop(anduinChessBoard);
     anduinChessBoard.config.onSnapEnd = buildOnSnapEnd(anduinChessBoard);
-    anduinChessBoard.statusControl = document.getElementById("status");
-    anduinChessBoard.roleControl = document.getElementById("role");
+    anduinChessBoard.statusControl = statusControl;
+    anduinChessBoard.roleControl = roleControl;
 
     return anduinChessBoard;
   };
