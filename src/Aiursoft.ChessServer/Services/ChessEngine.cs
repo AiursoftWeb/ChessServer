@@ -39,8 +39,7 @@ public class ChessEngine
         _engine.AdjustPosition($"position fen {fen}");
         var positionClone = new Position(_engine.Game.CurrentPosition);
 
-        // Depth = difficulty, 50% of chance to be difficulty + 1
-        var depth = difficulty - 1 + (new Random().Next(2) == 0 ? 1 : 0);
+        var depth = difficulty - 1;
         var result = _engine.IDDFS(depth, 10);
         _engine.Game.ResetCurrentPositionToBeforeSearchState();
 
