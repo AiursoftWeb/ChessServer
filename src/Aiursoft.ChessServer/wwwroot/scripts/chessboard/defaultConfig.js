@@ -1,5 +1,7 @@
 const WHITE_ABBREVIATION = "w";
 const BLACK_ABBREVIATION = "b";
+const WHITE = "White";
+const BLACK = "Black";
 
 const WHITE_SQUARE_GREY = "#a9a9a9";
 const BLACK_SQUARE_GREY = "#696969";
@@ -65,7 +67,7 @@ function buildOnDragStart(globalParams) {
  *
  * # example:
  * ```js
- * let onDrop = onDrop({game, socket, lastMovePair, renderTrack});
+ * let onDrop = onDrop({game, socket, lastMovePair, render});
  * ```
  *
  * @param {{game, socket}} globalParams
@@ -75,7 +77,7 @@ function buildOnDrop(globalParams) {
   const realOnDrop = (source, target) => {
     let game = globalParams.game;
     let socket = globalParams.socket;
-    let renderTrack = globalParams.renderTrack;
+    let render = globalParams.render;
 
     document.querySelectorAll("#board [data-square]").forEach((square) => {
       square.style.backgroundColor = "";
@@ -93,7 +95,7 @@ function buildOnDrop(globalParams) {
 
       if (source !== target) {
         globalParams.lastMovePair = [source, target];
-        renderTrack();
+        render();
       }
 
       const lastMove = game.history({ verbose: true }).pop().san;
@@ -198,5 +200,7 @@ export {
   BLACK_ABBREVIATION,
   WHITE_SQUARE_GREY,
   BLACK_SQUARE_GREY,
+  WHITE,
+  BLACK,
   findMove,
 };

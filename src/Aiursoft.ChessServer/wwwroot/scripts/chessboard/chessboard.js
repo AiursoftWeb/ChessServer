@@ -6,6 +6,8 @@ import {
   buildOnSnapEnd,
   WHITE_ABBREVIATION,
   BLACK_ABBREVIATION,
+  WHITE,
+  BLACK,
   findMove,
 } from "./defaultConfig.js";
 
@@ -49,6 +51,9 @@ function AnduinChessBoard(color) {
   this.statusControl = null;
   this.roleControl = null;
   this.lastMovePair = [null, null];
+  this.isWhiteCheck = false;
+  this.isBlackCheck = false;
+  this.statusText = "";
 
   this.config = {
     orientation: this.color === BLACK_ABBREVIATION ? "black" : "white",
@@ -58,6 +63,15 @@ function AnduinChessBoard(color) {
     onDragStart: null,
     onDrop: null,
     onSnapEnd: null,
+  };
+
+  /**
+   * render some styles, like highlight, red light
+   */
+  this.render = () => {
+    this.renderTrack();
+    this.renderCheck();
+    this.renderStatusText();
   };
 
   this.renderTrack = () => {
@@ -82,6 +96,37 @@ function AnduinChessBoard(color) {
             (square.style.boxShadow = "inset .2px .2px 4px 4px #f9ff49")
         );
     }
+  };
+
+  this.renderCheck = () => {
+    let checkedPosition = null;
+    if (this.isWhiteCheck) {
+      checkedPosition = this.getKingPosition(WHITE_ABBREVIATION);
+    } else if (this.isBlackCheck) {
+      checkedPosition = this.getKingPosition(BLACK_ABBREVIATION);
+    }
+
+    document.querySelectorAll("#board [data-square]").forEach((p) => {
+      p.style.backgroundImage = "";
+    });
+    if (checkedPosition !== null) {
+      document.querySelector(
+        `#board [data-square=${checkedPosition}]`
+      ).style.backgroundImage = "radial-gradient(circle, red 5%, transparent)";
+    }
+  };
+
+  this.renderStatusText = () => {
+    this.statusControl.innerHTML = this.statusText;
+  };
+
+  this.getKingPosition = (bOrW) => {
+    let pieces = []
+      .concat(...this.game.board())
+      .filter((p) => p !== null && p.type === "k" && p.color === bOrW)
+      .map((p) => p.square);
+
+    return pieces.length > 0 ? pieces[0] : null;
   };
 
   this.run = (player, gameId) => {
@@ -125,35 +170,44 @@ function AnduinChessBoard(color) {
     if (this.game !== null) {
       let [position1, position2] = findMove(this.game.fen(), newFEN);
       this.lastMovePair = [position1, position2];
-      this.renderTrack();
     }
 
     this.game = new Chess(newFEN);
     this.board.position(newFEN);
     console.log(`Got fen ${newFEN}. refreshing board...`);
 
-    this.updateStatusText();
+    this.updateStatus();
+    this.render();
   };
 
-  this.updateStatusText = () => {
-    let status;
-    let moveColor = "White";
+  this.updateStatus = () => {
+    let moveColor = WHITE;
     if (this.game.turn() === BLACK_ABBREVIATION) {
-      moveColor = "Black";
+      moveColor = BLACK;
     }
+
+    this.isWhiteCheck = null;
+    this.isBlackCheck = null;
+
+    this.statusText = `${moveColor} to move`;
+
+    if (this.game.isCheck()) {
+      this.isWhiteCheck = moveColor === WHITE;
+      this.isBlackCheck = moveColor === BLACK;
+      this.statusText += `, ${moveColor} is in check`;
+    }
+
     if (this.game.isCheckmate()) {
-      status = `Game over, ${moveColor} is in checkmate, and winner is ${
+      this.isWhiteCheck = moveColor === WHITE;
+      this.isBlackCheck = moveColor === BLACK;
+      this.statusText = `Game over, ${moveColor} is in checkmate, and winner is ${
         this.game.turn() === WHITE_ABBREVIATION ? "Black" : "White"
       }`;
-    } else if (this.game.isDraw()) {
-      status = "Game over, drawn position";
-    } else {
-      status = `${moveColor} to move`;
-      if (this.game.isCheck()) {
-        status += `, ${moveColor} is in check`;
-      }
     }
-    this.statusControl.innerHTML = status;
+
+    if (this.game.isDraw()) {
+      this.statusText = "Game over, drawn position";
+    }
   };
 }
 
