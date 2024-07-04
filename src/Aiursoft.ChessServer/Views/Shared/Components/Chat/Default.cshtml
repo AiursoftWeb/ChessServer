@@ -1,17 +1,19 @@
 ﻿@model Aiursoft.ChessServer.Views.Shared.Components.Chat.ChatModel
 
-<div id="chat" class="w-100">
+<div id="chat" class="w-100 position-relative">
+    <div class="position-absolute d-flex justify-content-center w-100">
+        <div class="btn-group btn-group-sm" id="newMessageTip" role="group" hidden=true aria-label="Basic example">
+            <span type="button" class="btn btn-small btn-success shadow" disabled></span>
+            <button type="button" class="btn btn-small btn-success shadow" data-close><i
+                    class="fa-solid fa-x"></i></button>
+        </div>
+    </div>
     <div class="container overflow-y-scroll scrollbar-width-none aspect-1-1" id="messages-box"></div>
 
     <form class="input-group input-group-sm my-2" id="chatSendForm">
         <input type="text" class="form-control" id="inputMessage" placeholder="type message, enter to send" />
         <button class="btn btn-primary btn-sm" type="submit" style="border-radius: 0 10px 10px 0;">Send</button>
     </form>
-
-    <script type="module">
-
-
-    </script>
 
     <template id="messageFromOpponent">
         <div class="row justify-content-start">
