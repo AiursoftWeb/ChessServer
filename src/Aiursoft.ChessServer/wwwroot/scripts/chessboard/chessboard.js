@@ -6,6 +6,7 @@ import {
   buildOnSnapEnd,
   WHITE_ABBREVIATION,
   BLACK_ABBREVIATION,
+  findMove,
 } from "./defaultConfig.js";
 
 /**
@@ -47,6 +48,7 @@ function AnduinChessBoard(color) {
   this.socket = null;
   this.statusControl = null;
   this.roleControl = null;
+  this.lastMovePair = [null, null];
 
   this.config = {
     orientation: this.color === BLACK_ABBREVIATION ? "black" : "white",
@@ -56,6 +58,30 @@ function AnduinChessBoard(color) {
     onDragStart: null,
     onDrop: null,
     onSnapEnd: null,
+  };
+
+  this.renderTrack = () => {
+    if (this.lastMovePair[0] !== null && this.lastMovePair[1] !== null) {
+      let allSquares = Array.from(
+        document.querySelectorAll(`#board [data-square]`)
+      );
+      allSquares
+        .filter((square) => {
+          let sq = square.getAttribute("data-square");
+          return sq !== this.lastMovePair[0] && sq !== this.lastMovePair[1];
+        })
+        .forEach((square) => (square.style.boxShadow = ""));
+
+      allSquares
+        .filter((square) => {
+          let sq = square.getAttribute("data-square");
+          return sq === this.lastMovePair[0] || sq === this.lastMovePair[1];
+        })
+        .forEach(
+          (square) =>
+            (square.style.boxShadow = "inset .2px .2px 4px 4px #f9ff49")
+        );
+    }
   };
 
   this.run = (player, gameId) => {
@@ -96,6 +122,12 @@ function AnduinChessBoard(color) {
   };
 
   this.refresh = (newFEN) => {
+    if (this.game !== null) {
+      let [position1, position2] = findMove(this.game.fen(), newFEN);
+      this.lastMovePair = [position1, position2];
+      this.renderTrack();
+    }
+
     this.game = new Chess(newFEN);
     this.board.position(newFEN);
     console.log(`Got fen ${newFEN}. refreshing board...`);
