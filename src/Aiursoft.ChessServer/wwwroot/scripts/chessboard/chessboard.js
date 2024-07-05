@@ -4,6 +4,7 @@ import {
   buildOnDragStart,
   buildOnDrop,
   buildOnSnapEnd,
+  buildOnChange,
   WHITE_ABBREVIATION,
   BLACK_ABBREVIATION,
   WHITE,
@@ -22,7 +23,7 @@ import {
  * @param {HTMLElement} statusControl status control element
  * @param {HTMLElement} roleControl role control element
  */
-function ChessBuilder(color, statusControl, roleControl) {
+function ChessBuilder(color, statusControl, roleControl, soundControl) {
   this.onDragStart = undefined;
   this.onDrop = undefined;
   this.onSnapEnd = undefined;
@@ -36,8 +37,10 @@ function ChessBuilder(color, statusControl, roleControl) {
     anduinChessBoard.config.onDragStart = buildOnDragStart(anduinChessBoard);
     anduinChessBoard.config.onDrop = buildOnDrop(anduinChessBoard);
     anduinChessBoard.config.onSnapEnd = buildOnSnapEnd(anduinChessBoard);
+    anduinChessBoard.config.onChange = buildOnChange(anduinChessBoard);
     anduinChessBoard.statusControl = statusControl;
     anduinChessBoard.roleControl = roleControl;
+    anduinChessBoard.soundControl = soundControl;
 
     return anduinChessBoard;
   };
@@ -50,6 +53,7 @@ function AnduinChessBoard(color) {
   this.socket = null;
   this.statusControl = null;
   this.roleControl = null;
+  this.soundControl = null;
   this.lastMovePair = [null, null];
   this.isWhiteCheck = false;
   this.isBlackCheck = false;
@@ -65,16 +69,44 @@ function AnduinChessBoard(color) {
     onSnapEnd: null,
   };
 
+  this._initSound = () => {
+    if (this.soundControl === null) {
+      return;
+    }
+
+    this.soundControl.muted = true;
+
+    const activeSound = () => {
+      if (this.soundControl.played.length === 0) {
+        this.soundControl.play();
+      } else {
+        document.body.removeEventListener("click", activeSound);
+      }
+    };
+
+    document.body.addEventListener("click", activeSound);
+  };
+
+  this._playSound = () => {
+    if (this.soundControl !== null) {
+      this.soundControl.currentTime = 0;
+      this.soundControl.muted = false;
+      setTimeout(() => {
+        this.soundControl.muted = true;
+      }, 1500);
+    }
+  };
+
   /**
    * render some styles, like highlight, red light
    */
   this.render = () => {
-    this.renderTrack();
-    this.renderCheck();
-    this.renderStatusText();
+    this._renderTrack();
+    this._renderCheck();
+    this._renderStatusText();
   };
 
-  this.renderTrack = () => {
+  this._renderTrack = () => {
     if (this.lastMovePair[0] !== null && this.lastMovePair[1] !== null) {
       let allSquares = Array.from(
         document.querySelectorAll(`#board [data-square]`)
@@ -98,12 +130,12 @@ function AnduinChessBoard(color) {
     }
   };
 
-  this.renderCheck = () => {
+  this._renderCheck = () => {
     let checkedPosition = null;
     if (this.isWhiteCheck) {
-      checkedPosition = this.getKingPosition(WHITE_ABBREVIATION);
+      checkedPosition = this._getKingPosition(WHITE_ABBREVIATION);
     } else if (this.isBlackCheck) {
-      checkedPosition = this.getKingPosition(BLACK_ABBREVIATION);
+      checkedPosition = this._getKingPosition(BLACK_ABBREVIATION);
     }
 
     document.querySelectorAll("#board [data-square]").forEach((p) => {
@@ -116,11 +148,11 @@ function AnduinChessBoard(color) {
     }
   };
 
-  this.renderStatusText = () => {
+  this._renderStatusText = () => {
     this.statusControl.innerHTML = this.statusText;
   };
 
-  this.getKingPosition = (bOrW) => {
+  this._getKingPosition = (bOrW) => {
     let pieces = []
       .concat(...this.game.board())
       .filter((p) => p !== null && p.type === "k" && p.color === bOrW)
@@ -138,6 +170,8 @@ function AnduinChessBoard(color) {
         : "Spectator"
     } player.`;
 
+    this._initSound();
+
     const completeInit = (fen) => {
       this.config.position = fen;
 
@@ -150,7 +184,7 @@ function AnduinChessBoard(color) {
       this.board = ChessBoard("board", this.config);
 
       this.socket.onmessage = (event) => {
-        this.refresh(event.data);
+        this._refresh(event.data);
       };
       this.socket.onclose = () => {
         setTimeout(() => {
@@ -158,7 +192,7 @@ function AnduinChessBoard(color) {
         }, 1000);
       };
 
-      this.refresh(fen);
+      this._refresh(fen);
     };
 
     fetch(`/games/${gameId}.fen`)
@@ -166,7 +200,7 @@ function AnduinChessBoard(color) {
       .then(completeInit);
   };
 
-  this.refresh = (newFEN) => {
+  this._refresh = (newFEN) => {
     if (this.game !== null) {
       let [position1, position2] = findMove(this.game.fen(), newFEN);
       this.lastMovePair = [position1, position2];
@@ -176,11 +210,11 @@ function AnduinChessBoard(color) {
     this.board.position(newFEN);
     console.log(`Got fen ${newFEN}. refreshing board...`);
 
-    this.updateStatus();
+    this._updateStatus();
     this.render();
   };
 
-  this.updateStatus = () => {
+  this._updateStatus = () => {
     let moveColor = WHITE;
     if (this.game.turn() === BLACK_ABBREVIATION) {
       moveColor = BLACK;
