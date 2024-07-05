@@ -130,7 +130,13 @@ function buildOnSnapEnd(globalParams) {
   return realOnSnapEnd;
 }
 
-function trackFEN() {}
+function buildOnChange(globalParams) {
+  const onChange = (oldPos, newPos) => {
+    globalParams._playSound();
+  };
+
+  return onChange;
+}
 
 function parseFEN(fen) {
   const parts = fen.split(" ")[0].split("/");
@@ -196,6 +202,7 @@ export {
   buildOnDragStart,
   buildOnDrop,
   buildOnSnapEnd,
+  buildOnChange,
   WHITE_ABBREVIATION,
   BLACK_ABBREVIATION,
   WHITE_SQUARE_GREY,

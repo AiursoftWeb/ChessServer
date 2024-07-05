@@ -3,6 +3,7 @@
 <div id="board" style="width: 100%" class="w-100"></div>
 <p id="status" class="text-center text-wrap text-primary mt-3"></p>
 <p id="role" class="text-center text-wrap text-secondary mt-1"></p>
+<audio src="/sounds/chess_piece_move.mp3" id="pieceMoveSound" loop></audio>
 
 <script type="module">
     import ChessBuilder from "/scripts/chessboard/chessboard.js";
@@ -13,7 +14,8 @@
         var playerColor = await getPlayerColor(@Model.GameId);
         var statusControl = document.getElementById("status");
         var roleControl = document.getElementById("role");
-        let anduinChessBoard = new ChessBuilder(playerColor, statusControl, roleControl).default();
+        const soundControl = document.getElementById('pieceMoveSound');
+        let anduinChessBoard = new ChessBuilder(playerColor, statusControl, roleControl, soundControl).default();
         anduinChessBoard.run(playerId, @Model.GameId);
 
         document.body.addEventListener('pointerdown', (e) => {
