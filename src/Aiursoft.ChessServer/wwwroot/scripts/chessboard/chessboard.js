@@ -1,5 +1,10 @@
 import { Chess } from "../../node_modules/chess.js/dist/esm/chess.js";
-
+import {
+  initSoundForMobile,
+  initSoundForPC,
+  playSoundForPC,
+  playSoundForMobile,
+} from "./sound.js";
 import {
   buildOnDragStart,
   buildOnDrop,
@@ -70,32 +75,16 @@ function AnduinChessBoard(color) {
   };
 
   this._initSound = () => {
-    if (this.soundControl === null) {
-      return;
-    }
-
-    this.soundControl.muted = true;
-
-    const activeSound = () => {
-      if (this.soundControl.played.length === 0) {
-        this.soundControl.play();
-      } else {
-        document.body.removeEventListener("click", activeSound);
-      }
-    };
-
-    document.body.addEventListener("click", activeSound);
-  };
-
-  this._playSound = () => {
-    if (this.soundControl !== null) {
-      this.soundControl.currentTime = 0;
-      this.soundControl.muted = false;
-      setTimeout(() => {
-        this.soundControl.muted = true;
-      }, 1500);
+    if (/Mobile/.test(navigator.userAgent)) {
+      initSoundForMobile.bind(this)(this);
+      this._playSound = playSoundForMobile.bind(this);
+    } else {
+      initSoundForPC.bind(this)(this);
+      this._playSound = playSoundForPC.bind(this);
     }
   };
+
+  this._playSound = () => {};
 
   /**
    * render some styles, like highlight, red light
