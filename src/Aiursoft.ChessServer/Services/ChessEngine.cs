@@ -43,7 +43,7 @@ public class ChessEngine
         var result = _engine.IDDFS(depth, 10);
         _engine.Game.ResetCurrentPositionToBeforeSearchState();
 
-        if (difficulty > 4)
+        if (ShouldUseBestMove(difficulty))
         {
             // If difficulty is higher than 5, we should use the best move
             return result.BestMove.ToEPDString(positionClone);
@@ -53,5 +53,13 @@ public class ChessEngine
             // Randomly choose one of the moves
             return result.Moves[new Random().Next(result.Moves.Count)].ToEPDString(positionClone);
         }
+    }
+    
+    private bool ShouldUseBestMove(int difficulty)
+    {
+        // For difficulties 1-6, gradually increase the probability of returning true
+        var probability = (difficulty - 1) / 5.0; // 0.0 for 1, 0.2 for 2, ..., 1.0 for 6
+        var random = new Random();
+        return random.NextDouble() < probability;
     }
 }
