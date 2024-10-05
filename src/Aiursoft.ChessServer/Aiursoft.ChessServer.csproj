@@ -15,6 +15,6 @@
     <PackageReference Include="Aiursoft.Scanner" Version="8.0.1" />
     <PackageReference Include="Aiursoft.WebTools" Version="8.0.23" />
     <PackageReference Include="Gera.Chess" Version="1.1.0" />
-    <PackageReference Include="LynxChess.Lynx" Version="1.6.0" />
+    <PackageReference Include="LynxChess.Lynx" Version="1.7.0" />
   </ItemGroup>
 </Project>
