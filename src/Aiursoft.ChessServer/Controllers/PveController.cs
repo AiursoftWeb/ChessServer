@@ -52,6 +52,10 @@ public class PveController(
                 var webSocketSchema = HttpContext.Request.Scheme == "https" ? "wss" : "ws";
                 var webSocketEndpoint =
                     $"{webSocketSchema}://{HttpContext.Request.Host}/games/{challengeId}.ws?playerId={computerId}";
+                
+                // TODO: Refactor required. Currently, PVE, the computer is also a WebSocket client connecting to localhost.
+                // This is not a good practice. The computer should be a WebSocket server that listens to the game's WebSocket.
+                // Because currently, if the user dropped, the computer will not know and will keep calculating the best move.
                 var client = await webSocketEndpoint.ConnectAsWebSocketServer();
                 subscription = client.Subscribe(async fen =>
                 {
