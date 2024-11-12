@@ -7,6 +7,7 @@ using Aiursoft.ChessServer.Models;
 using Aiursoft.ChessServer.Models.ViewModels;
 using Aiursoft.CSTools.Services;
 using Aiursoft.WebTools.Attributes;
+using Microsoft.AspNetCore.Connections;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Aiursoft.ChessServer.Controllers;
@@ -154,6 +155,10 @@ public class ChallengesController (
             await pusher.Listen(HttpContext.RequestAborted);
         }
         catch (TaskCanceledException)
+        {
+            // Ignore. This happens when the client closes the connection.
+        }
+        catch (ConnectionAbortedException)
         {
             // Ignore. This happens when the client closes the connection.
         }

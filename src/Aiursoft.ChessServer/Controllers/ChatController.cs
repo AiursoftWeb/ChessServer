@@ -6,6 +6,7 @@ using Aiursoft.ChessServer.Attributes;
 using Aiursoft.ChessServer.Data;
 using Aiursoft.ChessServer.Models;
 using Aiursoft.WebTools.Attributes;
+using Microsoft.AspNetCore.Connections;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Aiursoft.ChessServer.Controllers;
@@ -47,6 +48,10 @@ public class ChatController(InMemoryDatabase database) : ControllerBase
             await pusher.Listen(HttpContext.RequestAborted);
         }
         catch (TaskCanceledException)
+        {
+            // Ignore. This happens when the client closes the connection.
+        }
+        catch (ConnectionAbortedException)
         {
             // Ignore. This happens when the client closes the connection.
         }

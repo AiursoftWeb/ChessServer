@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Aiursoft.AiurObserver.Extensions;
 using Aiursoft.ChessServer.Attributes;
 using Aiursoft.WebTools.Attributes;
+using Microsoft.AspNetCore.Connections;
 
 namespace Aiursoft.ChessServer.Controllers;
 
@@ -85,6 +86,10 @@ public class GamesController(InMemoryDatabase database) : Controller
             await pusher.Listen(HttpContext.RequestAborted);
         }
         catch (TaskCanceledException)
+        {
+            // Ignore. This happens when the client closes the connection.
+        }
+        catch (ConnectionAbortedException)
         {
             // Ignore. This happens when the client closes the connection.
         }
