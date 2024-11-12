@@ -159,8 +159,11 @@ public class ChallengesController (
         }
         finally
         {
-            await pusher.Close(HttpContext.RequestAborted);
             outSub.Unsubscribe();
+            if (pusher.Connected)
+            {
+                await pusher.Close(HttpContext.RequestAborted);
+            }
         }
     }
 }

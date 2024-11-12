@@ -52,9 +52,12 @@ public class ChatController(InMemoryDatabase database) : ControllerBase
         }
         finally
         {
-            await pusher.Close(HttpContext.RequestAborted);
             outSub.Unsubscribe();
             inSub.Unsubscribe();
+            if (pusher.Connected)
+            {
+                await pusher.Close(HttpContext.RequestAborted);
+            }
         }
     }
 }
