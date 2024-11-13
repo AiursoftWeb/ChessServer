@@ -3,7 +3,6 @@ using Aiursoft.AiurObserver.WebSocket.Server;
 using Aiursoft.ChessServer.Data;
 using Aiursoft.ChessServer.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
-using Aiursoft.AiurObserver.Extensions;
 using Aiursoft.ChessServer.Attributes;
 using Aiursoft.WebTools.Attributes;
 using Microsoft.AspNetCore.Connections;

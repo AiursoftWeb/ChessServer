@@ -4,7 +4,6 @@ using Aiursoft.ChessServer.Data;
 using Aiursoft.ChessServer.Models;
 using Aiursoft.CSTools.Services;
 using Microsoft.AspNetCore.Mvc;
-using Aiursoft.AiurObserver.Extensions;
 using Aiursoft.ChessServer.Services;
 using Chess;
 

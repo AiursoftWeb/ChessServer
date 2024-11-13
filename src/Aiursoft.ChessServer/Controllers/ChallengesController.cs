@@ -1,5 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using Aiursoft.AiurObserver.Extensions;
+using Aiursoft.AiurObserver;
 using Aiursoft.AiurObserver.WebSocket.Server;
 using Aiursoft.ChessServer.Attributes;
 using Aiursoft.ChessServer.Data;

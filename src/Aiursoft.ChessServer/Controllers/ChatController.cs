@@ -1,6 +1,5 @@
 ﻿using System.Text.Json;
 using Aiursoft.AiurObserver;
-using Aiursoft.AiurObserver.Extensions;
 using Aiursoft.AiurObserver.WebSocket.Server;
 using Aiursoft.ChessServer.Attributes;
 using Aiursoft.ChessServer.Data;
