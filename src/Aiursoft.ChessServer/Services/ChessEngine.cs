@@ -39,9 +39,8 @@ public class ChessEngine
         _engine.AdjustPosition($"position fen {fen}");
         var positionClone = new Position(_engine.Game.CurrentPosition);
 
-        var depth = difficulty - 1;
-        var result = _engine.IDDFS(depth, 10);
-        _engine.Game.ResetCurrentPositionToBeforeSearchState();
-        return result.BestMove.ToEPDString(positionClone);
+        return _engine.BestMove(new($"go depth {difficulty}"))
+            .BestMove
+            .ToEPDString(positionClone);
     }
 }
