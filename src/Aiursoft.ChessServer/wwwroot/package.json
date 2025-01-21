@@ -7,7 +7,7 @@
   "dependencies": {
     "@aiursoft/autodark.js": "^1.2.0",
     "@chrisoakman/chessboardjs": "^1.0.0",
-    "chess.js": "^1.0.0-beta.6",
+    "chess.js": "^1.0.0",
     "clipboard": "^2.0.11",
     "jquery-validation": "^1.19.5",
     "jquery-validation-unobtrusive": "^3.2.12",
