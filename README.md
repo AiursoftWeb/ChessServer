@@ -5,7 +5,7 @@
 [![Test Coverage](https://gitlab.aiursoft.cn/aiursoft/ChessServer/badges/master/coverage.svg)](https://gitlab.aiursoft.cn/aiursoft/ChessServer/-/pipelines)
 [![ManHours](https://manhours.aiursoft.cn/r/gitlab.aiursoft.cn/aiursoft/ChessServer.svg)](https://gitlab.aiursoft.cn/aiursoft/ChessServer/-/commits/master?ref_type=heads)
 [![Website](https://img.shields.io/website?url=https%3A%2F%2Fchess.aiursoft.cn%2F)](https://chess.aiursoft.cn)
-[![Docker](https://img.shields.io/badge/docker-latest-blue?logo=docker)](https://hub.aiursoft.cn/#!/taglist/aiursoft/chessserver)
+[![Docker](https://img.shields.io/docker/pulls/aiursoft/chessserver.svg)](https://hub.docker.com/r/aiursoft/chessserver)
 
 ChessServer is just a simple web-based chess server. Based on WebSocket. Can be played with sharing link with friends. No sign up required.
 
@@ -54,7 +54,7 @@ First, install Docker [here](https://docs.docker.com/get-docker/).
 Then run the following commands in a Linux shell:
 
 ```bash
-image=hub.aiursoft.cn/aiursoft/chessserver
+image=aiursoft/chessserver
 appName=chessserver
 sudo docker pull $image
 sudo docker run -d --name $appName --restart unless-stopped -p 5000:5000 -v /var/www/$appName:/data $image
@@ -66,7 +66,7 @@ The docker image has the following context:
 
 | Properties  | Value                               |
 |-------------|-------------------------------------|
-| Image       | hub.aiursoft.cn/aiursoft/chessserver|
+| Image       | aiursoft/chessserver|
 | Ports       | 5000                                |
 | Binary path | /app                                |
 | Data path   | /data                               |
