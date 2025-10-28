@@ -1,7 +1,7 @@
-aiur() { arg="$( cut -d ' ' -f 2- <<< "$@" )" && curl -sL https://gitlab.aiursoft.cn/aiursoft/aiurscript/-/raw/master/$1.sh | sudo bash -s $arg; }
+aiur() { arg="$( cut -d ' ' -f 2- <<< "$@" )" && curl -sL https://gitlab.aiursoft.com/aiursoft/aiurscript/-/raw/master/$1.sh | sudo bash -s $arg; }
 
 app_name="chessserver"
-repo_path="https://gitlab.aiursoft.cn/aiursoft/chessserver"
+repo_path="https://gitlab.aiursoft.com/aiursoft/chessserver"
 proj_path="src/Aiursoft.ChessServer/Aiursoft.ChessServer.csproj"
 
 get_dll_name()
