@@ -7,7 +7,7 @@ using Aiursoft.ChessServer.Models;
 using Aiursoft.CSTools.Tools;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+
 using static Aiursoft.WebTools.Extends;
 // ReSharper disable StringLiteralTypo
 
@@ -78,7 +78,7 @@ public class BasicTests
     public async Task GetChess(string url)
     {
         CreateChallengeForTest(12345);
-        
+
         var response = await _http.GetAsync(_endpointUrl + url);
         response.EnsureSuccessStatusCode(); // Status Code 200-299
     }
@@ -91,15 +91,15 @@ public class BasicTests
     public async Task MoveChess(string action)
     {
         CreateChallengeForTest(12345);
-        
+
         var endPoint = _endpointUrl.Replace("http", "ws") + $"/games/12345.ws?playerId={Guid.NewGuid()}";
         var socket = await endPoint.ConnectAsWebSocketServer();
         var socketStage = new MessageStageLast<string>();
         socket.Subscribe(socketStage);
         await Task.Factory.StartNew(() => socket.Listen());
-        
+
         await socket.Send(action);
-        
+
         var waitMaxTime = new Stopwatch();
         waitMaxTime.Start();
         while (string.IsNullOrWhiteSpace(socketStage.Stage))
@@ -109,7 +109,7 @@ public class BasicTests
             {
                 break;
             }
-            
+
             if (waitMaxTime.ElapsedMilliseconds > 5000)
             {
                 Assert.Fail("Timeout that the server did not respond.");
@@ -133,17 +133,17 @@ public class BasicTests
         var socketStage = new MessageStageLast<string>();
         socket.Subscribe(socketStage);
         await Task.Factory.StartNew(() => socket.Listen());
-        
+
         await socket.Send(action);
         await Task.Delay(150);
-        
+
         // fen equal init
         Assert.AreEqual("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1", socketStage.Stage);
         await socket.Close();
     }
 
     // TODO Refactor tests!
-    
+
     // [TestMethod]
     // [DataRow(7)]
     // [DataRow(8)]
@@ -155,11 +155,11 @@ public class BasicTests
     //     var socketStage = new MessageStageLast<string>();
     //     socket.Subscribe(socketStage);
     //     await Task.Factory.StartNew(() => socket.Listen());
-    //     
+    //
     //     await socket.Send("e4");
     //     await Task.Delay(150);
     //     Assert.AreEqual("rnbqkbnr/pppppppp/8/8/4P3/8/PPPP1PPP/RNBQKBNR b KQkq e3 0 1", socketStage.Stage);
-    //     
+    //
     //     await socket.Close();
     // }
     //
@@ -179,17 +179,17 @@ public class BasicTests
     //     var socket2Stage = new MessageStageLast<string>();
     //     socket2.Subscribe(socket2Stage);
     //     await Task.Factory.StartNew(() => socket2.Listen());
-    //     
+    //
     //     await socket1.Send("e4");
     //     await Task.Delay(150);
     //     Assert.AreEqual("rnbqkbnr/pppppppp/8/8/4P3/8/PPPP1PPP/RNBQKBNR b KQkq e3 0 1", socket1Stage.Stage);
     //     Assert.AreEqual("rnbqkbnr/pppppppp/8/8/4P3/8/PPPP1PPP/RNBQKBNR b KQkq e3 0 1", socket2Stage.Stage);
-    //     
+    //
     //     await socket2.Send("e5");
     //     await Task.Delay(150);
     //     Assert.AreEqual("rnbqkbnr/pppp1ppp/8/4p3/4P3/8/PPPP1PPP/RNBQKBNR w KQkq e6 0 2", socket1Stage.Stage);
     //     Assert.AreEqual("rnbqkbnr/pppp1ppp/8/4p3/4P3/8/PPPP1PPP/RNBQKBNR w KQkq e6 0 2", socket2Stage.Stage);
-    //     
+    //
     //     await socket1.Close();
     //
     //     var socket3 = await (_endpointUrl.Replace("http", "ws") + $"/games/{gameId}.ws?player=w")
@@ -197,13 +197,13 @@ public class BasicTests
     //     var socket3Stage = new MessageStageLast<string>();
     //     socket3.Subscribe(socket3Stage);
     //     await Task.Factory.StartNew(() => socket3.Listen());
-    //     
+    //
     //     await socket3.Send("Nf3");
     //     await Task.Delay(150);
     //     Assert.AreEqual("rnbqkbnr/pppp1ppp/8/4p3/4P3/8/PPPP1PPP/RNBQKBNR w KQkq e6 0 2", socket1Stage.Stage);
     //     Assert.AreEqual("rnbqkbnr/pppp1ppp/8/4p3/4P3/5N2/PPPP1PPP/RNBQKB1R b KQkq - 1 2", socket2Stage.Stage);
     //     Assert.AreEqual("rnbqkbnr/pppp1ppp/8/4p3/4P3/5N2/PPPP1PPP/RNBQKB1R b KQkq - 1 2", socket3Stage.Stage);
-    //     
+    //
     //     await socket3.Close();
     //     await socket2.Close();
     // }
