@@ -6,7 +6,6 @@ namespace Aiursoft.ChessServer.Controllers;
 
 public class HomeController(InMemoryDatabase database) : Controller
 {
-    [HttpGet]
     public IActionResult Index()
     {
         var model = new IndexViewModel
