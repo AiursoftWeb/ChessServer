@@ -1,6 +1,6 @@
 # ChessServer
 
-[![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://gitlab.aiursoft.com/aiursoft/ChessServer/-/blob/master/LICENSE)
+[![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/AiursoftWeb/chessserver/blob/master/LICENSE)
 [![Pipeline stat](https://gitlab.aiursoft.com/aiursoft/ChessServer/badges/master/pipeline.svg)](https://gitlab.aiursoft.com/aiursoft/ChessServer/-/pipelines)
 [![Test Coverage](https://gitlab.aiursoft.com/aiursoft/ChessServer/badges/master/coverage.svg)](https://gitlab.aiursoft.com/aiursoft/ChessServer/-/pipelines)
 [![Man hours](https://manhours.aiursoft.com/r/github.com/aiursoftweb/ChessServer.svg)](https://manhours.aiursoft.com/r/github.com/aiursoftweb/ChessServer.html)
