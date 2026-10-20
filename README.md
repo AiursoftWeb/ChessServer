@@ -3,6 +3,7 @@
 [![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/AiursoftWeb/chessserver/blob/master/LICENSE)
 [![Pipeline stat](https://gitlab.aiursoft.com/aiursoft/ChessServer/badges/master/pipeline.svg)](https://gitlab.aiursoft.com/aiursoft/ChessServer/-/pipelines)
 [![Test Coverage](https://gitlab.aiursoft.com/aiursoft/ChessServer/badges/master/coverage.svg)](https://gitlab.aiursoft.com/aiursoft/ChessServer/-/pipelines)
+[![S360 compliance](https://s360.aiursoft.com/badge.svg?project=aiursoft%2Fchessserver)](https://s360.aiursoft.com/SupplyChain?tab=projects&project=aiursoft%2Fchessserver&scope=baseline&ecosystem=all)
 [![Man hours](https://manhours.aiursoft.com/r/github.com/aiursoftweb/ChessServer.svg)](https://manhours.aiursoft.com/r/github.com/aiursoftweb/ChessServer.html)
 [![Website](https://img.shields.io/website?url=https%3A%2F%2Fchess.aiursoft.com)](https://chess.aiursoft.com)
 [![Docker](https://img.shields.io/docker/pulls/aiursoft/chessserver.svg)](https://hub.docker.com/r/aiursoft/chessserver)
