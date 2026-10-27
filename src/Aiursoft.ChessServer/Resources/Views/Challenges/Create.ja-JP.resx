@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="1 hour" xml:space="preserve">
+    <value>1時間</value>
+  </data>
+  <data name="1 minute" xml:space="preserve">
+    <value>1分</value>
+  </data>
+  <data name="10 minutes" xml:space="preserve">
+    <value>10分</value>
+  </data>
+  <data name="15 minutes" xml:space="preserve">
+    <value>15分</value>
+  </data>
+  <data name="2 hours" xml:space="preserve">
+    <value>2時間</value>
+  </data>
+  <data name="3 minutes" xml:space="preserve">
+    <value>3分</value>
+  </data>
+  <data name="30 minutes" xml:space="preserve">
+    <value>30分</value>
+  </data>
+  <data name="5 minutes" xml:space="preserve">
+    <value>5分</value>
+  </data>
+  <data name="Black" xml:space="preserve">
+    <value>黒</value>
+  </data>
+  <data name="Create a challenge" xml:space="preserve">
+    <value>チャレンジを作成</value>
+  </data>
+  <data name="Create room" xml:space="preserve">
+    <value>部屋を作成</value>
+  </data>
+  <data name="Games are untimed." xml:space="preserve">
+    <value>ゲームに時間制限はありません。</value>
+  </data>
+  <data name="Public" xml:space="preserve">
+    <value>公開</value>
+  </data>
+  <data name="Random" xml:space="preserve">
+    <value>ランダム</value>
+  </data>
+  <data name="Room name" xml:space="preserve">
+    <value>ルーム名</value>
+  </data>
+  <data name="Time preference" xml:space="preserve">
+    <value>時間設定</value>
+  </data>
+  <data name="Unlisted — share the room link" xml:space="preserve">
+    <value>非公開 — ルームのリンクを共有</value>
+  </data>
+  <data name="Visibility" xml:space="preserve">
+    <value>公開範囲</value>
+  </data>
+  <data name="White" xml:space="preserve">
+    <value>白</value>
+  </data>
+  <data name="Your pieces" xml:space="preserve">
+    <value>駒の色</value>
+  </data>
+
+</root>

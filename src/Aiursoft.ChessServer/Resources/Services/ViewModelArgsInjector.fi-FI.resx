@@ -48,8 +48,17 @@
   <data name="Change Profile" xml:space="preserve">
     <value>Muokkaa profiilia</value>
   </data>
+  <data name="Chess" xml:space="preserve">
+    <value>Chess</value>
+  </data>
+  <data name="Chess room" xml:space="preserve">
+    <value>Shakkihuone</value>
+  </data>
   <data name="Click to login" xml:space="preserve">
     <value>Klikkaa kirjautuaksesi</value>
+  </data>
+  <data name="Create a challenge" xml:space="preserve">
+    <value>Luo haaste</value>
   </data>
   <data name="Create Role" xml:space="preserve">
     <value>Luo rooli</value>
@@ -122,6 +131,9 @@
   </data>
   <data name="Personal" xml:space="preserve">
     <value>Henkilökohtainen</value>
+  </data>
+  <data name="Play chess" xml:space="preserve">
+    <value>Pelaa shakkia</value>
   </data>
   <data name="Profile" xml:space="preserve">
     <value>Profiili</value>

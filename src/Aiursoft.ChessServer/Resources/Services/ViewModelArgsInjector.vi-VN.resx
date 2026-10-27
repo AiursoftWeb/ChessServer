@@ -51,8 +51,17 @@
   <data name="Change Profile" xml:space="preserve">
     <value>Thay đổi Hồ sơ</value>
   </data>
+  <data name="Chess" xml:space="preserve">
+    <value>Chess</value>
+  </data>
+  <data name="Chess room" xml:space="preserve">
+    <value>Phòng cờ vua</value>
+  </data>
   <data name="Click to login" xml:space="preserve">
     <value>Nhấp để đăng nhập</value>
+  </data>
+  <data name="Create a challenge" xml:space="preserve">
+    <value>Tạo thử thách</value>
   </data>
   <data name="Create Role" xml:space="preserve">
     <value>Tạo Vai Trò</value>
@@ -125,6 +134,9 @@
   </data>
   <data name="Personal" xml:space="preserve">
     <value>Cá nhân</value>
+  </data>
+  <data name="Play chess" xml:space="preserve">
+    <value>Chơi cờ vua</value>
   </data>
   <data name="Profile" xml:space="preserve">
     <value>Hồ sơ</value>

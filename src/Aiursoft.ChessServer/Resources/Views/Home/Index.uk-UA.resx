@@ -174,6 +174,9 @@
   <data name="Checkstyle or similar needed" xml:space="preserve">
     <value>Потрібен Checkstyle або аналогічний інструмент</value>
   </data>
+  <data name="ChessServer" xml:space="preserve">
+    <value>Шаховий сервер</value>
+  </data>
   <data name="Comes with Docker support for simplified and consistent deployments." xml:space="preserve">
     <value>Містить підтримку Docker для спрощення та узгодження розгортання.</value>
   </data>
@@ -599,6 +602,12 @@
   </data>
   <data name="Pint or similar needed" xml:space="preserve">
     <value>Потрібен Pint або аналогічний інструмент</value>
+  </data>
+  <data name="Play against the computer, challenge a friend, or watch a game." xml:space="preserve">
+    <value>Грайте проти комп’ютера, кидайте виклик другу або спостерігайте за грою.</value>
+  </data>
+  <data name="Play chess" xml:space="preserve">
+    <value>Грати в шахи</value>
   </data>
   <data name="Pre-configured /healthz and readiness probes" xml:space="preserve">
     <value>Заздалегідь налаштовані зонди /healthz та готовності</value>

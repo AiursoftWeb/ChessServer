@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Accept challenge" xml:space="preserve">
+    <value>Aceitar desafio</value>
+  </data>
+  <data name="Cancel challenge" xml:space="preserve">
+    <value>Cancelar desafio</value>
+  </data>
+  <data name="Connection closed. Refresh to reconnect." xml:space="preserve">
+    <value>Conexão encerrada. Atualize a página para se reconectar.</value>
+  </data>
+  <data name="Preferred duration: {0} minutes. Games are untimed." xml:space="preserve">
+    <value>Duração preferida: {0} minutos. As partidas não têm limite de tempo.</value>
+  </data>
+  <data name="Room link" xml:space="preserve">
+    <value>Link da sala</value>
+  </data>
+  <data name="Share this page with your opponent. Both players must sign in." xml:space="preserve">
+    <value>Compartilhe esta página com seu oponente. Ambos os jogadores precisam fazer login.</value>
+  </data>
+  <data name="Waiting for your opponent…" xml:space="preserve">
+    <value>Aguardando seu oponente…</value>
+  </data>
+
+</root>

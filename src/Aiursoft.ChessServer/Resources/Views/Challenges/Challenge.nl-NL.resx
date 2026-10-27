@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Accept challenge" xml:space="preserve">
+    <value>Uitdaging accepteren</value>
+  </data>
+  <data name="Cancel challenge" xml:space="preserve">
+    <value>Uitdaging annuleren</value>
+  </data>
+  <data name="Connection closed. Refresh to reconnect." xml:space="preserve">
+    <value>Verbinding verbroken. Vernieuw de pagina om opnieuw verbinding te maken.</value>
+  </data>
+  <data name="Preferred duration: {0} minutes. Games are untimed." xml:space="preserve">
+    <value>Voorkeursduur: {0} minuten. Partijen hebben geen tijdslimiet.</value>
+  </data>
+  <data name="Room link" xml:space="preserve">
+    <value>Link naar de kamer</value>
+  </data>
+  <data name="Share this page with your opponent. Both players must sign in." xml:space="preserve">
+    <value>Deel deze pagina met je tegenstander. Beide spelers moeten inloggen.</value>
+  </data>
+  <data name="Waiting for your opponent…" xml:space="preserve">
+    <value>Wachten op uw tegenstander…</value>
+  </data>
+
+</root>

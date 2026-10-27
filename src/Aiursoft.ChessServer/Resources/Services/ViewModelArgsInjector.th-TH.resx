@@ -51,8 +51,17 @@
   <data name="Change Profile" xml:space="preserve">
     <value>เปลี่ยนโปรไฟล์</value>
   </data>
+  <data name="Chess" xml:space="preserve">
+    <value>Chess</value>
+  </data>
+  <data name="Chess room" xml:space="preserve">
+    <value>ห้องหมากรุก</value>
+  </data>
   <data name="Click to login" xml:space="preserve">
     <value>คลิกเพื่อเข้าสู่ระบบ</value>
+  </data>
+  <data name="Create a challenge" xml:space="preserve">
+    <value>สร้างคำท้าประลอง</value>
   </data>
   <data name="Create Role" xml:space="preserve">
     <value>สร้างบทบาท</value>
@@ -125,6 +134,9 @@
   </data>
   <data name="Personal" xml:space="preserve">
     <value>ส่วนตัว</value>
+  </data>
+  <data name="Play chess" xml:space="preserve">
+    <value>เล่นหมากรุก</value>
   </data>
   <data name="Profile" xml:space="preserve">
     <value>โปรไฟล์</value>

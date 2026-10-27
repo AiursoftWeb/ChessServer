@@ -51,8 +51,17 @@
   <data name="Change Profile" xml:space="preserve">
     <value>プロフィール変更</value>
   </data>
+  <data name="Chess" xml:space="preserve">
+    <value>チェス</value>
+  </data>
+  <data name="Chess room" xml:space="preserve">
+    <value>チェスルーム</value>
+  </data>
   <data name="Click to login" xml:space="preserve">
     <value>ログインするにはクリック</value>
+  </data>
+  <data name="Create a challenge" xml:space="preserve">
+    <value>チャレンジを作成</value>
   </data>
   <data name="Create Role" xml:space="preserve">
     <value>ロールの作成</value>
@@ -125,6 +134,9 @@
   </data>
   <data name="Personal" xml:space="preserve">
     <value>個人</value>
+  </data>
+  <data name="Play chess" xml:space="preserve">
+    <value>チェスをする</value>
   </data>
   <data name="Profile" xml:space="preserve">
     <value>プロフィール</value>

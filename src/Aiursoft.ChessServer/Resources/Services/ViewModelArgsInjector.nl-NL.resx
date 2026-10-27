@@ -48,8 +48,17 @@
   <data name="Change Profile" xml:space="preserve">
     <value>Profiel wijzigen</value>
   </data>
+  <data name="Chess" xml:space="preserve">
+    <value>Schaken</value>
+  </data>
+  <data name="Chess room" xml:space="preserve">
+    <value>Schaakruimte</value>
+  </data>
   <data name="Click to login" xml:space="preserve">
     <value>Klik om in te loggen</value>
+  </data>
+  <data name="Create a challenge" xml:space="preserve">
+    <value>Maak een uitdaging aan</value>
   </data>
   <data name="Create Role" xml:space="preserve">
     <value>Rol aanmaken</value>
@@ -122,6 +131,9 @@
   </data>
   <data name="Personal" xml:space="preserve">
     <value>Persoonlijk</value>
+  </data>
+  <data name="Play chess" xml:space="preserve">
+    <value>Schaak spelen</value>
   </data>
   <data name="Profile" xml:space="preserve">
     <value>Profiel</value>
