@@ -1,9 +1,12 @@
+using Aiursoft.ChessServer.Data;
+
 namespace Aiursoft.ChessServer.Services.BackgroundJobs;
 
-public class GameClockService(IServiceScopeFactory scopeFactory, ILogger<GameClockService> logger) : BackgroundService
+public class GameClockService(IServiceScopeFactory scopeFactory, ILogger<GameClockService> logger, InMemoryDatabase database, IHostApplicationLifetime applicationLifetime) : BackgroundService
 {
     public override async Task StartAsync(CancellationToken cancellationToken)
     {
+        applicationLifetime.ApplicationStopping.Register(database.PauseClocks);
         using var scope = scopeFactory.CreateScope();
         await scope.ServiceProvider.GetRequiredService<GameSessionService>().RestoreAsync();
         await base.StartAsync(cancellationToken);

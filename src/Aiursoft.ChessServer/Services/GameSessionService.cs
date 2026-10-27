@@ -141,7 +141,7 @@ public class GameSessionService(InMemoryDatabase database, TemplateDbContext con
                 lock (room.Game.MovePieceLock)
                 {
                     Touch(room, viewer, DateTimeOffset.UtcNow);
-                    Advance(room, DateTimeOffset.UtcNow);
+                    Advance(room, database.ClockNow);
                 }
                 if (room.Game.Board.IsEndGame && !room.Archived) await StoreAsync(id, room);
                 lock (room.Game.MovePieceLock) return new ChallengeContext(room, id);
@@ -166,7 +166,7 @@ public class GameSessionService(InMemoryDatabase database, TemplateDbContext con
                 var fingerprint = $"{command.Kind}:{command.ExpectedPly}:{command.Move}";
                 var previous = room.Receipts.FirstOrDefault(r => r.Id == command.Id);
                 var color = room.GetPlayerColor(player);
-                Advance(room, DateTimeOffset.UtcNow);
+                Advance(room, database.ClockNow);
                 if (color == "m") error = "spectator";
                 else if (command.Id == Guid.Empty) error = "invalid-command";
                 else if (previous != null)
@@ -185,7 +185,7 @@ public class GameSessionService(InMemoryDatabase database, TemplateDbContext con
                             var move = command.Move?.Replace("0", "O");
                             if (room.GetTurnPlayer().Id != player || string.IsNullOrWhiteSpace(move) || move.Length > 20 || !room.Game.Board.IsValidMove(move)) { error = "illegal"; break; }
                             room.Game.Board.Move(move); room.DrawOfferedBy = null;
-                            room.UpdateClock(DateTimeOffset.UtcNow);
+                            room.UpdateClock(database.ClockNow);
                             break;
                         case "resign": Finish(room, "Resigned", DateTimeOffset.UtcNow, side); break;
                         case "abort":
@@ -237,7 +237,7 @@ public class GameSessionService(InMemoryDatabase database, TemplateDbContext con
             await room.MutationLock.WaitAsync();
             try
             {
-                room.UpdateClock(DateTimeOffset.UtcNow);
+                room.UpdateClock(database.ClockNow);
                 await StoreAsync(pair.Key, room);
             }
             finally { room.MutationLock.Release(); }
@@ -255,7 +255,7 @@ public class GameSessionService(InMemoryDatabase database, TemplateDbContext con
                 var before = RoomSnapshot.Capture(room);
                 try
                 {
-                    lock (room.Game.MovePieceLock) Advance(room, DateTimeOffset.UtcNow);
+                    lock (room.Game.MovePieceLock) Advance(room, database.ClockNow);
                     if (room.Game.Board.IsEndGame && !room.Archived)
                     {
                         await StoreAsync(pair.Key, room);

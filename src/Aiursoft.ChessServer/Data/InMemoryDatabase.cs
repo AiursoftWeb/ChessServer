@@ -8,6 +8,16 @@ public class InMemoryDatabase : ISingletonDependency
     private readonly Dictionary<int, Challenge> _challenges = new();
     private readonly object _gate = new();
     private int _nextId;
+    private long _stoppedTicks;
+    public DateTimeOffset ClockNow
+    {
+        get
+        {
+            var ticks = Volatile.Read(ref _stoppedTicks);
+            return ticks == 0 ? DateTimeOffset.UtcNow : new DateTimeOffset(ticks, TimeSpan.Zero);
+        }
+    }
+    public void PauseClocks() => Interlocked.CompareExchange(ref _stoppedTicks, DateTimeOffset.UtcNow.UtcTicks, 0);
 
     public IReadOnlyCollection<KeyValuePair<int, Challenge>> GetPublicOpenChallenges()
     {

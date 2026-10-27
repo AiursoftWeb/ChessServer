@@ -659,6 +659,23 @@ public class ChessTests : TestBase
     }
 
     [TestMethod]
+    public async Task ShutdownDrainDoesNotChargeThePlayersClock()
+    {
+        var sessions = GetService<GameSessionService>();
+        var database = GetService<InMemoryDatabase>();
+        var id = await sessions.CreateAsync(new Challenge(new Player(Guid.NewGuid()), "Shutdown drain", RoleRule.CreatorWhite,
+            TimeSpan.FromMinutes(5), ChallengePermission.Public));
+        await sessions.AcceptAsync(id, new Player(Guid.NewGuid()));
+        database.PauseClocks();
+        await sessions.CheckpointAsync();
+        var before = database.GetAcceptedChallenge(id)!.WhiteRemaining;
+        await Task.Delay(100);
+        await sessions.TickAsync();
+        await sessions.CheckpointAsync();
+        Assert.AreEqual(before, database.GetAcceptedChallenge(id)!.WhiteRemaining);
+    }
+
+    [TestMethod]
     public async Task ServerMaintenanceRestoresRemainingTimeRatherThanChargingTheOutage()
     {
         var sessions = GetService<GameSessionService>(); var creator = new Player(Guid.NewGuid());
