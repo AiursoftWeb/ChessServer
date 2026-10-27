@@ -1,0 +1,17 @@
+[Unit]
+Description=Aiursoft ChessServer Web Application
+After=network.target
+
+[Service]
+WorkingDirectory=/usr/share/aiursoft-chessserver
+ExecStart=/usr/bin/dotnet /usr/share/aiursoft-chessserver/Aiursoft.ChessServer.dll --urls http://*:5000
+Restart=always
+RestartSec=10
+KillSignal=SIGINT
+SyslogIdentifier=aiursoft-chessserver
+User=www-data
+Environment=ASPNETCORE_ENVIRONMENT=Production
+Environment=HOME=/var/lib/aiursoft-chessserver
+
+[Install]
+WantedBy=multi-user.target

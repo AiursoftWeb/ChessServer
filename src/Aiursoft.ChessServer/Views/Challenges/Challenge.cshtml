@@ -1,69 +1,24 @@
-﻿@model Aiursoft.ChessServer.Models.ViewModels.ChallengeViewModel
-
-<div class="jumbotron">
-    <div class="container">
-        <h1 class="display-4">Waiting for opponent joining...</h1>
-        <p class="lead">Please share the link of this room to your friend!</p>
-        @{
-            var link = $"{Context.Request.Scheme}://{Context.Request.Host}/challenge/{Model.ChallengeId}";
-        }
-        <form asp-controller="Challenges" asp-action="Drop" asp-route-id="@Model.ChallengeId" method="post" class="d-inline" asp-antiforgery="false">
-            <div asp-validation-summary="All" class="text-danger"></div>
-            <input type="hidden" name="playerId" value=""/>
-            
-            <input type="text" class="form-control" value="@link" readonly>
-            <a class="btn btn-secondary btn-lg mt-4" data-clipboard-text="@link" role="button" data-toggle="tooltip" data-placement="top" title="Copied!">
-                Copy link
-            </a>
-            <button type="submit" class="btn btn-danger btn-lg mt-4">
-                Leave
-            </button>
-        </form>
-    </div>
-</div>
-
-@section scripts
-{
-    <script type="module">
-        import { getUserId } from "/scripts/player.js";
-        const playerId = getUserId();
-        const playerIdControl = document.querySelector('input[name="playerId"]');
-        playerIdControl.value = playerId;
-    </script>
-    <script src="/node_modules/clipboard/dist/clipboard.min.js"></script>
-    <script>
-        // Initialize clipboard.
-        const clipboard = new ClipboardJS('.btn');
-        
-        // Activate tooltip tool
-        $('[data-toggle="tooltip"]').tooltip({
-                trigger: 'click',
-                placement: 'bottom'
-        });
-    </script>
-    <script type="module">
-        import { acceptChallenge, getUserId } from "/scripts/player.js";
-        
-        // Listen to the channel
-        const wsScheme = window.location.protocol === "https:" ? "wss://" : "ws://";
-        const socket = new WebSocket(
-            `${wsScheme}${window.location.host}/challenge/listen/${@Model.ChallengeId}.ws`
-        );
-        
-        socket.addEventListener('open', function () {
-            console.log('WebSocket is open now. Accepting challenge...');
-            acceptChallenge(@Model.ChallengeId);
-        });
-
-        socket.onmessage = function (event) {
-            // May get data like: game-started
-            if (event.data.startsWith('game-started')) {
-                const gameId = @Model.ChallengeId;
-                if (gameId) {
-                    window.location.href = `/games/${gameId}.html`;
-                }
-            }
-        };
-    
-    </script>
+@model Aiursoft.ChessServer.Models.ViewModels.RoomViewModel
+<h1 class="h3">@Model.Message</h1>
+    @if (Model.PreferredMinutes.HasValue)
+    {
+        <p class="text-muted small">@string.Format(@Localizer["Preferred duration: {0} minutes. Games are untimed."].Value, Model.PreferredMinutes)</p>
+    }
+<div id="chess-room" class="card" data-room-id="@Model.Id" data-disconnected="@Localizer["Connection closed. Refresh to reconnect."]"><div class="card-body">
+    <p>@Localizer["Share this page with your opponent. Both players must sign in."]</p>
+    <input class="form-control mb-3" aria-label="@Localizer["Room link"]" value="@($"{Context.Request.Scheme}://{Context.Request.Host}/challenge/{Model.Id}")" readonly />
+    @if (Model.IsCreator)
+    {
+        <p>@Localizer["Waiting for your opponent…"]</p>
+        <form asp-action="Drop" asp-route-id="@Model.Id" method="post"><button class="btn btn-outline-danger" type="submit">@Localizer["Cancel challenge"]</button></form>
+    }
+    else
+    {
+        <form asp-action="Accept" asp-route-id="@Model.Id" method="post"><button class="btn btn-primary" type="submit">@Localizer["Accept challenge"]</button></form>
+    }
+    <p id="connection-status" class="text-muted mt-3 mb-0" role="status"></p>
+</div></div>
+@* ReSharper disable once Razor.SectionNotResolved *@
+@section scripts {
+    <script src="~/scripts/room.js" asp-append-version="true" defer></script>
 }

@@ -1,4 +1,4 @@
-﻿namespace Aiursoft.ChessServer.Models;
+namespace Aiursoft.ChessServer.Models;
 
 public class ChatMessageResponse(ChatMessage message, Guid currentUserId)
 {

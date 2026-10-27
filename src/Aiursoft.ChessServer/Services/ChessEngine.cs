@@ -1,46 +1,58 @@
 using System.Threading.Channels;
+using Aiursoft.Scanner.Abstractions;
 using Lynx;
 using Lynx.Model;
+using Lynx.UCI.Commands.GUI;
 
 namespace Aiursoft.ChessServer.Services;
 
-public class ChessEngine
+public class ChessEngine(Random? random = null) : ISingletonDependency, IDisposable
 {
-    private readonly Engine _engine;
+    private readonly SemaphoreSlim _slots = new(2);
+    public void Dispose() => _slots.Dispose();
 
-    public ChessEngine()
+    public static (int Depth, int Milliseconds) Limits(int difficulty) => difficulty switch
     {
-        var channel = Channel.CreateUnbounded<object>(new UnboundedChannelOptions
+        1 => (1, 100),
+        2 => (2, 150),
+        3 => (3, 250),
+        4 => (4, 400),
+        5 => (5, 600),
+        6 => (6, 900),
+        7 => (7, 1300),
+        8 => (8, 2000),
+        _ => throw new ArgumentOutOfRangeException(nameof(difficulty))
+    };
+
+    public async Task<string> GetBestMoveAsync(string fen, int difficulty, CancellationToken token)
+    {
+        await _slots.WaitAsync(token);
+        try
         {
-            SingleReader = true,
-            SingleWriter = true
-        });
-        _engine = new Engine(channel.Writer);
-    }
-    
-    public string GetComputerName(int difficulty)
-    {
-        return difficulty switch
+            return await Task.Run(() =>
         {
-            1 => "Chimpanzee",
-            2 => "Easy",
-            3 => "Intermediate",
-            4 => "Hard",
-            5 => "Brutal",
-            6 => "Grandmaster",
-            7 => "Torture",
-            8 => "Unbeatable",
-            _ => "Unknown"
-        };
-    }
-
-    public string GetBestMove(string fen, int difficulty)
-    {
-        _engine.AdjustPosition($"position fen {fen}");
-        var positionClone = new Position(_engine.Game.CurrentPosition);
-
-        return _engine.BestMove(new($"go depth {difficulty}"))
-            .BestMove
-            .ToEPDString(positionClone);
+            token.ThrowIfCancellationRequested();
+            var (depth, milliseconds) = Limits(difficulty);
+            var generator = random ?? Random.Shared;
+            var randomMovePercent = difficulty switch { 1 => 100, 2 => 70, 3 => 40, 4 => 15, _ => 0 };
+            if (generator.Next(100) < randomMovePercent)
+            {
+                var board = Chess.ChessBoard.LoadFromFen(fen);
+                var moves = board.Moves();
+                if (moves.Length == 0) throw new InvalidOperationException("The game has ended.");
+                board.Move(moves[generator.Next(moves.Length)]);
+                return board.MovesToSan.Last();
+            }
+            var output = Channel.CreateBounded<object>(new BoundedChannelOptions(1) { FullMode = BoundedChannelFullMode.DropOldest });
+            using var engine = new Engine(output.Writer);
+            engine.AdjustPosition($"position fen {fen}");
+            using var position = new Position(engine.Game.CurrentPosition);
+            var constraints = TimeManager.CalculateTimeManagement(engine.Game, new GoCommand($"go depth {depth} movetime {milliseconds}"));
+            var result = engine.BestMove(in constraints, false, token, token);
+            token.ThrowIfCancellationRequested();
+            return result.BestMove.ToEPDString(position);
+        }, token);
+        }
+        finally { _slots.Release(); }
     }
 }

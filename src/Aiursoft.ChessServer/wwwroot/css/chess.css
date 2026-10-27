@@ -1,0 +1,4 @@
+.chess-messages { height: 24rem; overflow-y: auto; overflow-wrap: anywhere; }
+.chess-message { margin-block: .75rem; }
+.chess-message p { margin-bottom: 0; white-space: pre-wrap; }
+#board { max-width: 42rem; margin-inline: auto; }

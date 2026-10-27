@@ -9,6 +9,22 @@ public class Challenge(
     TimeSpan timeLimit, 
     ChallengePermission permission)
 {
+    internal CancellationTokenSource LifetimeSource { get; init; } = new();
+    public CancellationToken Lifetime => LifetimeSource.Token;
+    public DateTimeOffset LastActivity { get; set; } = DateTimeOffset.UtcNow;
+    public int? Difficulty { get; set; }
+
+    public void End()
+    {
+        LifetimeSource.Cancel();
+        ChallengeChangedChannel.RemoveAllListeners();
+        if (this is AcceptedChallenge accepted)
+        {
+            accepted.Game.FenChangedChannel.RemoveAllListeners();
+            accepted.ChatChannel.RemoveAllListeners();
+        }
+    }
+
     public Player Creator { get; set; } = creator;
     public string Message { get; set; } = message;
     

@@ -1,4 +1,4 @@
-﻿using Aiursoft.AiurObserver;
+using Aiursoft.AiurObserver;
 
 namespace Aiursoft.ChessServer.Models;
 

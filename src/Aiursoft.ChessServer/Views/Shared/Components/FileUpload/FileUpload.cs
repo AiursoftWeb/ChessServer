@@ -1,0 +1,32 @@
+using Aiursoft.ChessServer.Services.FileStorage;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ViewFeatures;
+
+namespace Aiursoft.ChessServer.Views.Shared.Components.FileUpload;
+
+public class FileUpload(StorageService storage) : ViewComponent
+{
+    public IViewComponentResult Invoke(
+        ModelExpression aspFor,
+        string subfolder,
+        int maxSizeInMb = 2000,
+        string? allowedExtensions = null,
+        bool isVault = false,
+        string? fieldName = null)
+    {
+        var uploadEndpoint = storage.GetUploadUrl(
+            subfolder.TrimEnd('/', '\\'),
+            isVault,
+            maxSizeInMb,
+            allowedExtensions);
+        return View(new FileUploadViewModel
+        {
+            AspFor = aspFor,
+            UploadEndpoint = uploadEndpoint,
+            MaxSizeInMb = maxSizeInMb,
+            AllowedExtensions = allowedExtensions,
+            IsVault = isVault,
+            FieldName = fieldName
+        });
+    }
+}

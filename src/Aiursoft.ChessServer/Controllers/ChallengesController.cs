@@ -1,174 +1,86 @@
-﻿using System.ComponentModel.DataAnnotations;
 using Aiursoft.AiurObserver;
 using Aiursoft.AiurObserver.WebSocket.Server;
-using Aiursoft.ChessServer.Attributes;
 using Aiursoft.ChessServer.Data;
 using Aiursoft.ChessServer.Models;
 using Aiursoft.ChessServer.Models.ViewModels;
-using Aiursoft.CSTools.Services;
+using Aiursoft.ChessServer.Services;
 using Aiursoft.WebTools.Attributes;
-using Microsoft.AspNetCore.Connections;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Aiursoft.ChessServer.Controllers;
 
 [Route("challenge")]
-public class ChallengesController (
-    Counter counter,
-    InMemoryDatabase database) : Controller
+public class ChallengesController(InMemoryDatabase database) : ChessController
 {
-    [Route("")]
-    [HttpGet]
-    public IActionResult Auto(Guid playerId)
+    [HttpGet("")]
+    public IActionResult Auto()
     {
-        // I created a challenge. Go to my challenge.
-        var myChallengeKey = database.GetMyOpenChallenge(playerId);
-        if (myChallengeKey != null)
-        {
-            return RedirectToAction(nameof(Challenge), new { id = (int)myChallengeKey });
-        }
-        
-        // Exists a public challenge. Go to that challenge.
-        var otherChallenge = database.GetFirstPublicChallengeKey();
-        if (otherChallenge != null)
-        {
-            return RedirectToAction(nameof(Challenge), new { id = (int)otherChallenge });
-        }
-        
-        // Create a new challenge.
-        return RedirectToAction(nameof(Create), new { playerId });
-    }
-    
-    [HttpGet]
-    [Route("create")]
-    public IActionResult Create(Guid playerId)
-    {
-        var myChallengeKey = database.GetMyOpenChallenge(playerId);
-        if (myChallengeKey != null)
-        {
-            // This player already has a challenge. Redirect to that challenge.
-            return RedirectToAction(nameof(Challenge), new { id = myChallengeKey, playerId });
-        }
-        var model = new CreateChallengeViewModel();
-        return View(model);
+        var id = database.GetMyOpenChallenge(PlayerId) ?? database.GetPublicOpenChallenges().Select(p => (int?)p.Key).FirstOrDefault();
+        return id.HasValue ? RedirectToAction(nameof(Challenge), new { id }) : RedirectToAction(nameof(Create));
     }
 
-    [HttpPost]
-    [Route("create")]
+    [HttpGet("create")]
+    public IActionResult Create() => this.StackView(new CreateChallengeViewModel());
+
+    [HttpPost("create"), ValidateAntiForgeryToken]
     public IActionResult Create(CreateChallengeViewModel model)
     {
-        // Ensure single challenge can be created by a player.
-        var myChallengeKey = database.GetMyOpenChallenge(model.CreatorId);
-        if (myChallengeKey != null)
-        {
-            ModelState.AddModelError(nameof(model.CreatorId), "You already have a challenge!");
-        }
-        if (!ModelState.IsValid)
-        {
-            return View(model);
-        }
-        
-        // Create a new challenge.
-        var player = database.GetOrAddPlayer(model.CreatorId);
-        var challenge = new Challenge(
-            creator: player, 
-            message: model.Message, 
-            roleRule: model.RoleRule,
-            timeLimit: model.TimeLimit,
-            permission: model.Permission);
-        var challengeId = counter.GetUniqueNo();
-        database.CreateChallenge(challengeId, challenge);
-        return RedirectToAction(nameof(Challenge), new { id = challengeId });
-    }
-    
-    [HttpGet]
-    [Route("{id:int}")]
-    public IActionResult Challenge(int id)
-    {
-        var challenge = database.GetChallenge(id);
-        if (challenge == null)
-        {
-            // Challenge not found.
-            return NotFound();
-        }
-
-        if (challenge is AcceptedChallenge)
-        {
-            // Challenge already accepted.
-            return RedirectToAction(nameof(GamesController.GetHtml), "Games", new { id });
-        }
-        
-        var model = new ChallengeViewModel
-        {
-            ChallengeId = id,
-        };
-        return View(model);
-    }
-    
-    [HttpPost]
-    [Route("{id:int}/drop")]
-    public IActionResult Drop([FromRoute][Required]int id, [FromForm][Required][IsGuid]string playerId)
-    {
-        if (!ModelState.IsValid)
-        {
-            return RedirectToAction(nameof(Challenge), new { id });
-        }
-        var challenge = database.GetChallenge(id);
-        if (challenge != null && challenge.Creator.Id == Guid.Parse(playerId))
-        {
-            database.DeleteChallenge(id);
-        }
-
-        return RedirectToAction(nameof(Index), "Home");
-    }
-
-    [HttpPost]
-    [Route("accept/{id:int}")]
-    public async Task<IActionResult> Accept([FromRoute]int id, [FromQuery]Guid playerId)
-    {
+        if (!ModelState.IsValid) return this.StackView(model);
         try
         {
-            await database.PatchChallengeAsAcceptedAsync(id, playerId);
+            var id = database.CreateChallenge(new Challenge(CurrentPlayer(), model.Message, model.RoleRule,
+                TimeSpan.FromMinutes(model.Minutes), model.Permission));
+            return RedirectToAction(nameof(Challenge), new { id });
         }
         catch (InvalidOperationException e)
         {
-            return BadRequest(e.Message);
+            ModelState.AddModelError(string.Empty, e.Message);
+            return this.StackView(model);
         }
-        return Ok();
     }
 
-    [EnforceWebSocket]
-    [Route("listen/{id:int}.ws")]
+    [HttpGet("{id:int}")]
+    public IActionResult Challenge(int id)
+    {
+        var room = database.GetChallenge(id);
+        if (room == null) return NotFound();
+        if (room is AcceptedChallenge) return RedirectToAction(nameof(GamesController.GetHtml), "Games", new { id });
+        return this.StackView(new RoomViewModel { Id = id, IsCreator = room.Creator.Id == PlayerId, Message = room.Message, PreferredMinutes = (int)room.TimeLimit.TotalMinutes });
+    }
+
+    [HttpPost("{id:int}/drop"), ValidateAntiForgeryToken]
+    public IActionResult Drop(int id)
+    {
+        var room = database.GetChallenge(id);
+        if (room == null) return NotFound();
+        if (room.Creator.Id != PlayerId) return Forbid();
+        database.DeleteChallenge(id);
+        return RedirectToAction("Index", "Lobby");
+    }
+
+    [HttpPost("accept/{id:int}"), ValidateAntiForgeryToken]
+    public async Task<IActionResult> Accept(int id)
+    {
+        try { await database.AcceptAsync(id, CurrentPlayer()); }
+        catch (InvalidOperationException e) { return BadRequest(e.Message); }
+        return RedirectToAction(nameof(GamesController.GetHtml), "Games", new { id });
+    }
+
+    [HttpGet("listen/{id:int}.ws"), EnforceWebSocket]
     public async Task ListenChallenge(int id)
     {
-        var pusher = await HttpContext.AcceptWebSocketClient();
-        var challenge = database.GetChallenge(id);
-        if (challenge == null)
-        {
-            return;
-        }
-        var outSub = challenge
-            .ChallengeChangedChannel
-            .Subscribe(t => pusher.Send(t, HttpContext.RequestAborted));
+        var room = database.GetChallenge(id);
+        if (room == null) { Response.StatusCode = 404; return; }
+        if (!IsSameOriginWebSocket()) { Response.StatusCode = 403; return; }
+        using var lifetime = CancellationTokenSource.CreateLinkedTokenSource(HttpContext.RequestAborted, room.Lifetime);
+        var token = lifetime.Token;
+        var client = await HttpContext.AcceptWebSocketClient();
+        var subscription = room.ChallengeChangedChannel.Subscribe(t => client.Send(t, token));
         try
         {
-            await pusher.Listen(HttpContext.RequestAborted);
+            if (database.GetAcceptedChallenge(id) != null) await client.Send("game-started", token);
+            await client.Listen(token);
         }
-        catch (TaskCanceledException)
-        {
-            // Ignore. This happens when the client closes the connection.
-        }
-        catch (ConnectionAbortedException)
-        {
-            // Ignore. This happens when the client closes the connection.
-        }
-        finally
-        {
-            outSub.Unsubscribe();
-            if (pusher.Connected)
-            {
-                await pusher.Close(HttpContext.RequestAborted);
-            }
-        }
+        finally { subscription.Unsubscribe(); await client.Close(CancellationToken.None); }
     }
 }
