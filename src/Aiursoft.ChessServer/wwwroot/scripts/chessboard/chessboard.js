@@ -4,6 +4,13 @@ export default class ChessSurface {
     constructor(color, sendMove) {
         this.color = color;
         this.sendMove = sendMove;
+        this.sound = document.getElementById('pieceMoveSound');
+        this.unlockSound = () => {
+            if (!this.sound) return;
+            this.sound.muted = true;
+            this.sound.play().then(() => { this.sound.pause(); this.sound.currentTime = 0; this.sound.muted = false; }).catch(() => { this.sound.muted = false; });
+        };
+        document.addEventListener('pointerdown', this.unlockSound, {once: true});
         this.state = null;
         this.pending = false;
         this.viewPly = 0;
@@ -42,6 +49,7 @@ export default class ChessSurface {
     }
     update(state) {
         if (this.state && this.state.Position !== state.Position && document.getElementById('promotion-dialog').open) document.getElementById('promotion-dialog').close();
+        const played = this.state && state.Moves.length > this.moves.length;
         const wasLive = this.viewPly === this.moves.length;
         this.state = state;
         this.game = new Chess(state.Position);
@@ -53,6 +61,7 @@ export default class ChessSurface {
         }
         if (wasLive) this.viewPly = this.moves.length;
         this.paint();
+        if (played && this.sound) { this.sound.currentTime = 0; this.sound.play().catch(() => {}); }
     }
     buildList() {
         const list = document.getElementById('move-list'); list.replaceChildren();
@@ -113,6 +122,7 @@ export default class ChessSurface {
     dispose() {
         document.getElementById('board').removeEventListener('pointerdown', this.pointerDown, true);
         document.removeEventListener('pointerup', this.pointerUp, true);
+        document.removeEventListener('pointerdown', this.unlockSound);
         this.observer.disconnect(); this.board.destroy();
     }
 }
