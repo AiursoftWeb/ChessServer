@@ -53,6 +53,7 @@ public class AcceptedChallenge : Challenge
             }
             if (now > LastClockUpdate) LastClockUpdate = now;
             if (Game.Board.IsEndGame) FinishedAt ??= now;
+            if (!wasEnded && Game.Board.IsEndGame) LastActivity = now;
             return !wasEnded && Game.Board.IsEndGame;
         }
     }

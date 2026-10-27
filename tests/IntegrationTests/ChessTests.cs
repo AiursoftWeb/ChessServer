@@ -367,8 +367,10 @@ public class ChessTests : TestBase
         var id = database.CreateChallenge(new Challenge(new Player(Guid.NewGuid()), "Nobody online", RoleRule.CreatorWhite, TimeSpan.FromMinutes(3), ChallengePermission.Public));
         await database.AcceptAsync(id, new Player(Guid.NewGuid()));
         var room = database.GetAcceptedChallenge(id)!;
+        room.LastActivity = DateTimeOffset.UtcNow.AddHours(-1);
         room.UpdateClock(room.LastClockUpdate.AddMinutes(4));
         await GetService<ExpiredGamesCleanupJob>().ExecuteAsync();
+        Assert.IsNotNull(database.GetAcceptedChallenge(id));
         Assert.IsTrue(room.Archived);
         Assert.AreEqual(1, GetService<TemplateDbContext>().CompletedGames.Count(g => g.Id == room.HistoryId));
         Assert.AreEqual(0, database.GetOnGoingOpenChallenges().Count);
