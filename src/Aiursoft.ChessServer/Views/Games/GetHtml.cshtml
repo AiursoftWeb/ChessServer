@@ -7,7 +7,6 @@
     <link rel="modulepreload" href="~/node_modules/chess.js/dist/esm/chess.js" asp-append-version="true" data-chess-module="rules" />
 }
 <div id="game-room" data-game-id="@Model.Id">
-    <audio src="/sounds/chess_piece_move.mp3" id="pieceMoveSound" preload="auto"></audio>
     <div id="chess-loc" hidden>
         <span data-key="connecting">@Localizer["Connecting…"]</span>
         <span data-key="connected">@Localizer["Connected"]</span>
