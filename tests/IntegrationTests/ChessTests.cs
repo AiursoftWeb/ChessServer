@@ -470,6 +470,12 @@ public class ChessTests : TestBase
         Assert.IsNull((await sessions.ExecuteAsync(id, black.Id, new GameCommand(Guid.NewGuid(), "decline-draw"))).Error);
         Assert.IsNull(GetService<InMemoryDatabase>().GetAcceptedChallenge(id)!.DrawOfferedBy);
         await sessions.ExecuteAsync(id, white.Id, new GameCommand(Guid.NewGuid(), "offer-draw"));
+        await sessions.ExecuteAsync(id, white.Id, new GameCommand(Guid.NewGuid(), "move", 0, "e4"));
+        Assert.AreEqual(white.Id, GetService<InMemoryDatabase>().GetAcceptedChallenge(id)!.DrawOfferedBy);
+        await sessions.ExecuteAsync(id, black.Id, new GameCommand(Guid.NewGuid(), "move", 1, "e5"));
+        Assert.IsNull(GetService<InMemoryDatabase>().GetAcceptedChallenge(id)!.DrawOfferedBy);
+        await sessions.ExecuteAsync(id, white.Id, new GameCommand(Guid.NewGuid(), "offer-draw"));
+        await sessions.ExecuteAsync(id, white.Id, new GameCommand(Guid.NewGuid(), "move", 2, "Nf3"));
         Assert.IsNull((await sessions.ExecuteAsync(id, black.Id, new GameCommand(Guid.NewGuid(), "accept-draw"))).Error);
         var room = GetService<InMemoryDatabase>().GetAcceptedChallenge(id)!;
         Assert.AreEqual("1/2-1/2", room.Result); Assert.AreEqual("Agreement", room.OutcomeReason);

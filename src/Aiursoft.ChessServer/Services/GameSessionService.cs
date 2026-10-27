@@ -184,7 +184,8 @@ public class GameSessionService(InMemoryDatabase database, TemplateDbContext con
                             if (room.Game.Board.MovesToSan.Count != command.ExpectedPly) { error = "stale"; break; }
                             var move = command.Move?.Replace("0", "O");
                             if (room.GetTurnPlayer().Id != player || string.IsNullOrWhiteSpace(move) || move.Length > 20 || !room.Game.Board.IsValidMove(move)) { error = "illegal"; break; }
-                            room.Game.Board.Move(move); room.DrawOfferedBy = null;
+                            room.Game.Board.Move(move);
+                            if (room.DrawOfferedBy != player) room.DrawOfferedBy = null;
                             room.UpdateClock(database.ClockNow);
                             break;
                         case "resign": Finish(room, "Resigned", DateTimeOffset.UtcNow, side); break;
