@@ -1,4 +1,8 @@
 .chess-messages { height: 24rem; overflow-y: auto; overflow-wrap: anywhere; }
 .chess-message { margin-block: .75rem; }
 .chess-message p { margin-bottom: 0; white-space: pre-wrap; }
+.chess-clock { max-width: 42rem; margin-inline: auto; display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: .6rem 1rem; border: 2px solid var(--bs-border-color); border-radius: .4rem; }
+.chess-clock-active { border-color: var(--bs-primary); background: var(--bs-primary-bg-subtle); }
+.clock-time { font-size: 1.7rem; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.clock-name { overflow-wrap: anywhere; }
 #board { max-width: 42rem; margin-inline: auto; }

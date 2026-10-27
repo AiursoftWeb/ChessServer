@@ -5,20 +5,23 @@ using Aiursoft.ChessServer.Models;
 using Aiursoft.ChessServer.Models.ViewModels;
 using Aiursoft.ChessServer.Services;
 using Aiursoft.WebTools.Attributes;
-using Chess;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Aiursoft.ChessServer.Controllers;
 
 [Route("games")]
-public class GamesController(InMemoryDatabase database, ChessEngine engine) : ChessController
+public class GamesController(InMemoryDatabase database, ChessEngine engine, GameHistoryService history) : ChessController
 {
     [HttpGet("{id:int}.json")]
     public IActionResult GetInfo(int id)
     {
         var room = database.GetAcceptedChallenge(id);
         if (room == null) return NotFound();
-        return Ok(new ChallengeContext(room, id));
+        lock (room.Game.MovePieceLock)
+        {
+            room.UpdateClock(DateTimeOffset.UtcNow);
+            return Ok(new ChallengeContext(room, id));
+        }
     }
 
     [HttpGet("{id:int}.color")]
@@ -32,7 +35,7 @@ public class GamesController(InMemoryDatabase database, ChessEngine engine) : Ch
     public IActionResult GetHtml(int id)
     {
         var room = database.GetAcceptedChallenge(id);
-        return room == null ? NotFound() : this.StackView(new RoomViewModel { Id = id, Message = room.Message, PreferredMinutes = room.Difficulty == null ? (int)room.TimeLimit.TotalMinutes : null });
+        return room == null ? NotFound() : this.StackView(new RoomViewModel { Id = id, Message = room.Message, PreferredMinutes = room.IsTimed ? (int)room.TimeLimit.TotalMinutes : null });
     }
 
     [HttpGet("{id:int}.fen")]
@@ -48,7 +51,7 @@ public class GamesController(InMemoryDatabase database, ChessEngine engine) : Ch
     {
         var room = database.GetAcceptedChallenge(id);
         if (room == null) return NotFound();
-        lock (room.Game.MovePieceLock) return Content(room.Game.Board.ToPgn());
+        lock (room.Game.MovePieceLock) return Content(room.Pgn());
     }
 
     [HttpGet("{id:int}.ascii")]
@@ -76,11 +79,13 @@ public class GamesController(InMemoryDatabase database, ChessEngine engine) : Ch
             var changed = false;
             lock (room.Game.MovePieceLock)
             {
+                room.UpdateClock(DateTimeOffset.UtcNow);
                 move = move.Replace("0", "O");
                 if (!room.Game.Board.IsEndGame && room.GetTurnPlayer().Id == playerId && room.Game.Board.IsValidMove(move))
                 {
                     room.Game.Board.Move(move);
                     room.LastActivity = DateTimeOffset.UtcNow;
+                    room.UpdateClock(room.LastActivity);
                     changed = true;
                 }
             }
@@ -88,6 +93,7 @@ public class GamesController(InMemoryDatabase database, ChessEngine engine) : Ch
             {
                 await room.Game.FenChangedChannel.BroadcastAsync(Fen(room));
                 await RespondToMove(room, token);
+                await history.SaveAsync(room);
             }
             else
             {
@@ -109,6 +115,23 @@ public class GamesController(InMemoryDatabase database, ChessEngine engine) : Ch
         }
     }
 
+    [HttpPost("{id:int}/complete"), ValidateAntiForgeryToken]
+    [RequestSizeLimit(524288)]
+    public async Task<IActionResult> Complete(int id, [FromForm] string pgn)
+    {
+        var room = database.GetAcceptedChallenge(id);
+        if (room == null) return NotFound();
+        if (room.GetPlayerColor(PlayerId) == "m") return Forbid();
+        lock (room.Game.MovePieceLock)
+        {
+            room.UpdateClock(DateTimeOffset.UtcNow);
+            if (!room.Game.Board.IsEndGame) return Conflict("This game is still in progress.");
+            if (!string.Equals(pgn?.Replace("\r\n", "\n"), room.Pgn().Replace("\r\n", "\n"), StringComparison.Ordinal)) return BadRequest("The PGN does not match this game.");
+        }
+        await history.SaveAsync(room);
+        return Ok(new { room.HistoryId });
+    }
+
     private static string Fen(AcceptedChallenge room)
     {
         lock (room.Game.MovePieceLock) return room.Game.Board.ToFen();
@@ -119,7 +142,8 @@ public class GamesController(InMemoryDatabase database, ChessEngine engine) : Ch
         string fen;
         lock (room.Game.MovePieceLock)
         {
-            if (room.Difficulty == null || room.Game.IsThinking || room.Game.Board.IsEndGame || room.Game.Board.Turn != PieceColor.Black) return;
+            room.UpdateClock(DateTimeOffset.UtcNow);
+            if (room.Difficulty == null || room.Game.IsThinking || room.Game.Board.IsEndGame || room.GetTurnPlayer().Id == room.Creator.Id) return;
             room.Game.IsThinking = true;
             fen = room.Game.Board.ToFen();
         }
@@ -128,12 +152,15 @@ public class GamesController(InMemoryDatabase database, ChessEngine engine) : Ch
             var move = await engine.GetBestMoveAsync(fen, room.Difficulty.Value, token);
             lock (room.Game.MovePieceLock)
             {
-                if (!token.IsCancellationRequested && room.Game.Board.ToFen() == fen && room.Game.Board.IsValidMove(move))
+                room.UpdateClock(DateTimeOffset.UtcNow);
+                if (!token.IsCancellationRequested && !room.Game.Board.IsEndGame && room.Game.Board.ToFen() == fen && room.Game.Board.IsValidMove(move))
                 {
                     room.Game.Board.Move(move);
                     room.LastActivity = DateTimeOffset.UtcNow;
+                    room.UpdateClock(room.LastActivity);
                 }
             }
+            await history.SaveAsync(room);
             await room.Game.FenChangedChannel.BroadcastAsync(Fen(room));
         }
         finally

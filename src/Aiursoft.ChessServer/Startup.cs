@@ -61,8 +61,8 @@ public class Startup : IWebStartup
         services.AddScheduledTaskEngine();
 
         // Background jobs
-        var gamesCleanup = services.RegisterBackgroundJob<ExpiredGamesCleanupJob>();
-        services.RegisterScheduledTask(gamesCleanup, period: TimeSpan.FromMinutes(1), startDelay: TimeSpan.FromMinutes(1));
+        services.RegisterBackgroundJob<ExpiredGamesCleanupJob>();
+        services.AddHostedService<GameClockService>();
         services.RegisterBackgroundJob<DummyJob>();
         var orphanAvatarCleanupJob = services.RegisterBackgroundJob<OrphanAvatarCleanupJob>();
 

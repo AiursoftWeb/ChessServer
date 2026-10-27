@@ -15,6 +15,6 @@ public class CreateChallengeViewModel : UiStackLayoutViewModel
     public RoleRule RoleRule { get; set; } = RoleRule.Random;
     [EnumDataType(typeof(ChallengePermission))]
     public ChallengePermission Permission { get; set; } = ChallengePermission.Public;
-    [Range(1, 120)]
+    [AllowedValues(0, 3, 5, 10, 15)]
     public int Minutes { get; set; } = 10;
 }

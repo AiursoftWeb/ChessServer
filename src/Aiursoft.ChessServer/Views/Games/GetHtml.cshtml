@@ -21,19 +21,27 @@
         <span data-key="turn">@Localizer["{0} to move"].Value</span>
         <span data-key="check">@Localizer["{0} is in check"].Value</span>
         <span data-key="winner">@Localizer["Checkmate. {0} wins."].Value</span>
+        <span data-key="unlimited">@Localizer["Unlimited"]</span>
+        <span data-key="timeout">@Localizer["Time expired. {0} wins."].Value</span>
+        <span data-key="finished">@Localizer["Game over. {0} wins."].Value</span>
+        <span data-key="saved">@Localizer["Saved to My games."]</span>
+        <span data-key="saving">@Localizer["Saving game…"]</span>
+        <span data-key="save-failed">@Localizer["Could not confirm the saved game. Retry."]</span>
         <span data-key="draw">@Localizer["Game over — draw."]</span>
     </div>
     <h1 id="versus-info" class="h3 mb-4">@Model.Message</h1>
-    @if (Model.PreferredMinutes.HasValue)
-    {
-        <p class="text-muted small">@string.Format(@Localizer["Preferred duration: {0} minutes. Games are untimed."].Value, Model.PreferredMinutes)</p>
-    }
     <div class="row g-4">
         <div class="col-lg-7"><div class="card"><div class="card-body">
+            <div id="clock-top" class="chess-clock mb-2"><span class="clock-name"></span><strong class="clock-time"></strong></div>
             <div id="board" class="w-100"></div>
+            <div id="clock-bottom" class="chess-clock mt-2"><span class="clock-name"></span><strong class="clock-time"></strong></div>
             <p id="status" class="mt-3" role="status"></p>
             <p id="role" class="text-muted"></p>
             <audio src="/sounds/chess_piece_move.mp3" id="pieceMoveSound"></audio>
+            <form id="complete-game" asp-action="Complete" asp-route-id="@Model.Id" method="post" hidden></form>
+            <p id="save-status" class="text-muted mt-2" role="status"></p>
+            <button id="retry-save" type="button" class="btn btn-outline-primary" hidden>@Localizer["Retry saving"]</button>
+            <a id="history-link" class="btn btn-primary" asp-controller="History" asp-action="Index" hidden>@Localizer["Replay"]</a>
             <a asp-action="GetPgn" asp-route-id="@Model.Id">@Localizer["Export PGN"]</a>
         </div></div></div>
         <div class="col-lg-5"><div class="card"><div class="card-body">

@@ -16,12 +16,17 @@ public class InMemoryDatabase : ISingletonDependency
 
     public IReadOnlyCollection<KeyValuePair<int, Challenge>> GetOnGoingOpenChallenges()
     {
-        lock (_gate) return _challenges.Where(p => p.Value is AcceptedChallenge && p.Value.Permission == ChallengePermission.Public).ToArray();
+        lock (_gate) return _challenges.Where(p => p.Value is AcceptedChallenge accepted && !accepted.Game.Board.IsEndGame && p.Value.Permission == ChallengePermission.Public).ToArray();
     }
 
     public int? GetMyOpenChallenge(Guid playerId)
     {
         lock (_gate) return _challenges.Where(p => p.Value.Creator.Id == playerId && p.Value is not AcceptedChallenge).Select(p => (int?)p.Key).FirstOrDefault();
+    }
+
+    public AcceptedChallenge[] GetGames()
+    {
+        lock (_gate) return _challenges.Values.OfType<AcceptedChallenge>().ToArray();
     }
 
     public Challenge? GetChallenge(int id)

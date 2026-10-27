@@ -1,0 +1,27 @@
+@model Aiursoft.ChessServer.Models.ViewModels.ReplayViewModel
+@* ReSharper disable once Razor.SectionNotResolved *@
+@section styles {
+    <link rel="stylesheet" href="~/node_modules/%40chrisoakman/chessboardjs/dist/chessboard-1.0.0.min.css" />
+    <link rel="stylesheet" href="~/css/chess.css" asp-append-version="true" />
+    <link rel="modulepreload" href="~/node_modules/chess.js/dist/esm/chess.js" asp-append-version="true" data-chess-module="rules" />
+}
+<h1 class="h3">@Model.Game.WhiteName — @Model.Game.BlackName</h1>
+<p>@Localizer["Result"]: @Model.Game.Result</p>
+<div id="replay" class="card" data-pgn-url="@Url.Action("Pgn", new { id = Model.Game.Id })" data-orientation="@(Model.IsBlack ? "black" : "white")"><div class="card-body">
+    <div id="board"></div>
+    <div class="d-flex flex-wrap justify-content-center align-items-center gap-2 mt-3">
+        <button id="replay-start" class="btn btn-outline-primary" type="button">@Localizer["Start"]</button>
+        <button id="replay-prev" class="btn btn-outline-primary" type="button">@Localizer["Previous"]</button>
+        <output id="replay-position" class="px-2" aria-live="polite"></output>
+        <button id="replay-next" class="btn btn-primary" type="button">@Localizer["Next"]</button>
+        <button id="replay-end" class="btn btn-outline-primary" type="button">@Localizer["End"]</button>
+    </div>
+    <p id="replay-error" class="text-danger mt-3" role="alert" hidden>@Localizer["Could not load this game. Refresh to try again."]</p>
+    <div class="d-flex gap-3 mt-3"><a asp-action="Pgn" asp-route-id="@Model.Game.Id">@Localizer["Export PGN"]</a><a asp-action="Index">@Localizer["My games"]</a></div>
+</div></div>
+@* ReSharper disable once Razor.SectionNotResolved *@
+@section scripts {
+    <script src="~/node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="~/node_modules/%40chrisoakman/chessboardjs/dist/chessboard-1.0.0.min.js"></script>
+    <script type="module" src="~/scripts/replay.js" asp-append-version="true"></script>
+}
