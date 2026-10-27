@@ -48,8 +48,17 @@
   <data name="Change Profile" xml:space="preserve">
     <value>Змінити профіль</value>
   </data>
+  <data name="Chess" xml:space="preserve">
+    <value>Chess</value>
+  </data>
+  <data name="Chess room" xml:space="preserve">
+    <value>Шахова кімната</value>
+  </data>
   <data name="Click to login" xml:space="preserve">
     <value>Натисніть, щоб увійти</value>
+  </data>
+  <data name="Create a challenge" xml:space="preserve">
+    <value>Створити випробування</value>
   </data>
   <data name="Create Role" xml:space="preserve">
     <value>Створити роль</value>
@@ -122,6 +131,9 @@
   </data>
   <data name="Personal" xml:space="preserve">
     <value>Особисті</value>
+  </data>
+  <data name="Play chess" xml:space="preserve">
+    <value>Грати в шахи</value>
   </data>
   <data name="Profile" xml:space="preserve">
     <value>Профіль</value>

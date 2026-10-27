@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="1 hour" xml:space="preserve">
+    <value>1 godzina</value>
+  </data>
+  <data name="1 minute" xml:space="preserve">
+    <value>1 minuta</value>
+  </data>
+  <data name="10 minutes" xml:space="preserve">
+    <value>10 minut</value>
+  </data>
+  <data name="15 minutes" xml:space="preserve">
+    <value>15 minut</value>
+  </data>
+  <data name="2 hours" xml:space="preserve">
+    <value>2 godziny</value>
+  </data>
+  <data name="3 minutes" xml:space="preserve">
+    <value>3 minuty</value>
+  </data>
+  <data name="30 minutes" xml:space="preserve">
+    <value>30 minut</value>
+  </data>
+  <data name="5 minutes" xml:space="preserve">
+    <value>5 minut</value>
+  </data>
+  <data name="Black" xml:space="preserve">
+    <value>Czarne</value>
+  </data>
+  <data name="Create a challenge" xml:space="preserve">
+    <value>Utwórz wyzwanie</value>
+  </data>
+  <data name="Create room" xml:space="preserve">
+    <value>Utwórz pokój</value>
+  </data>
+  <data name="Games are untimed." xml:space="preserve">
+    <value>Partie nie mają limitu czasu.</value>
+  </data>
+  <data name="Public" xml:space="preserve">
+    <value>Publiczny</value>
+  </data>
+  <data name="Random" xml:space="preserve">
+    <value>Losowo</value>
+  </data>
+  <data name="Room name" xml:space="preserve">
+    <value>Nazwa pokoju</value>
+  </data>
+  <data name="Time preference" xml:space="preserve">
+    <value>Preferencje dotyczące czasu</value>
+  </data>
+  <data name="Unlisted — share the room link" xml:space="preserve">
+    <value>Niepubliczny — udostępnij link do pokoju</value>
+  </data>
+  <data name="Visibility" xml:space="preserve">
+    <value>Widoczność</value>
+  </data>
+  <data name="White" xml:space="preserve">
+    <value>Białe</value>
+  </data>
+  <data name="Your pieces" xml:space="preserve">
+    <value>Twoje figury</value>
+  </data>
+
+</root>

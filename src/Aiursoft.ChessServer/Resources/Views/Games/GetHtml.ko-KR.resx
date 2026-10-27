@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="{0} is in check" xml:space="preserve">
+    <value>{0}이(가) 체크 상태입니다</value>
+  </data>
+  <data name="{0} to move" xml:space="preserve">
+    <value>{0} 차례입니다</value>
+  </data>
+  <data name="Black" xml:space="preserve">
+    <value>흑</value>
+  </data>
+  <data name="Chat" xml:space="preserve">
+    <value>채팅</value>
+  </data>
+  <data name="Checkmate. {0} wins." xml:space="preserve">
+    <value>체크메이트. {0} 승리.</value>
+  </data>
+  <data name="Connection closed. Refresh to reconnect." xml:space="preserve">
+    <value>연결이 끊겼습니다. 새로고침하여 다시 연결하세요.</value>
+  </data>
+  <data name="Export PGN" xml:space="preserve">
+    <value>PGN 내보내기</value>
+  </data>
+  <data name="Game over — draw." xml:space="preserve">
+    <value>경기 종료 — 무승부.</value>
+  </data>
+  <data name="Message" xml:space="preserve">
+    <value>메시지</value>
+  </data>
+  <data name="Preferred duration: {0} minutes. Games are untimed." xml:space="preserve">
+    <value>선호 시간: {0}분. 체스 경기는 시간 제한 없이 진행됩니다.</value>
+  </data>
+  <data name="Room unavailable. Return to the lobby." xml:space="preserve">
+    <value>방을 사용할 수 없습니다. 로비로 돌아가세요.</value>
+  </data>
+  <data name="Send" xml:space="preserve">
+    <value>전송</value>
+  </data>
+  <data name="Spectator" xml:space="preserve">
+    <value>관전자</value>
+  </data>
+  <data name="White" xml:space="preserve">
+    <value>백</value>
+  </data>
+  <data name="You are playing Black." xml:space="preserve">
+    <value>흑으로 두고 있습니다.</value>
+  </data>
+  <data name="You are playing White." xml:space="preserve">
+    <value>당신은 흰색으로 플레이하고 있습니다.</value>
+  </data>
+  <data name="You are watching this game." xml:space="preserve">
+    <value>이 경기를 관전하고 있습니다.</value>
+  </data>
+
+</root>

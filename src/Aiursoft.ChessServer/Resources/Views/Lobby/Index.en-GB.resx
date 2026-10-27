@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="1 — Beginner" xml:space="preserve">
+    <value>1 — Beginner</value>
+  </data>
+  <data name="2 — Easy" xml:space="preserve">
+    <value>2 — Easy</value>
+  </data>
+  <data name="3 — Casual" xml:space="preserve">
+    <value>3 — Casual</value>
+  </data>
+  <data name="4 — Intermediate" xml:space="preserve">
+    <value>4 — Intermediate</value>
+  </data>
+  <data name="5 — Challenging" xml:space="preserve">
+    <value>5 — Challenging</value>
+  </data>
+  <data name="6 — Hard" xml:space="preserve">
+    <value>6 — Hard</value>
+  </data>
+  <data name="7 — Expert" xml:space="preserve">
+    <value>7 — Expert</value>
+  </data>
+  <data name="8 — Strongest" xml:space="preserve">
+    <value>8 — Strongest</value>
+  </data>
+  <data name="Create a challenge" xml:space="preserve">
+    <value>Create a challenge</value>
+  </data>
+  <data name="Difficulty" xml:space="preserve">
+    <value>Difficulty</value>
+  </data>
+  <data name="No games in progress." xml:space="preserve">
+    <value>No games in progress.</value>
+  </data>
+  <data name="No open challenges." xml:space="preserve">
+    <value>No open challenges.</value>
+  </data>
+  <data name="Open challenges" xml:space="preserve">
+    <value>Open challenges</value>
+  </data>
+  <data name="Play against computer" xml:space="preserve">
+    <value>Play against the computer</value>
+  </data>
+  <data name="Play chess" xml:space="preserve">
+    <value>Play chess</value>
+  </data>
+  <data name="Play with a friend" xml:space="preserve">
+    <value>Play with a friend</value>
+  </data>
+  <data name="Start game" xml:space="preserve">
+    <value>Start game</value>
+  </data>
+  <data name="Watch a game" xml:space="preserve">
+    <value>Watch a game</value>
+  </data>
+
+</root>

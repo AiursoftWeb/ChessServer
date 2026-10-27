@@ -48,8 +48,17 @@
   <data name="Change Profile" xml:space="preserve">
     <value>تغيير الملف الشخصي</value>
   </data>
+  <data name="Chess" xml:space="preserve">
+    <value>الشطرنج</value>
+  </data>
+  <data name="Chess room" xml:space="preserve">
+    <value>غرفة الشطرنج</value>
+  </data>
   <data name="Click to login" xml:space="preserve">
     <value>انقر لتسجيل الدخول</value>
+  </data>
+  <data name="Create a challenge" xml:space="preserve">
+    <value>أنشئ تحديًا</value>
   </data>
   <data name="Create Role" xml:space="preserve">
     <value>إنشاء دور</value>
@@ -122,6 +131,9 @@
   </data>
   <data name="Personal" xml:space="preserve">
     <value>شخصي</value>
+  </data>
+  <data name="Play chess" xml:space="preserve">
+    <value>العب الشطرنج</value>
   </data>
   <data name="Profile" xml:space="preserve">
     <value>الملف الشخصي</value>

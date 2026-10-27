@@ -174,6 +174,9 @@
   <data name="Checkstyle or similar needed" xml:space="preserve">
     <value>Se necesita Checkstyle o similar</value>
   </data>
+  <data name="ChessServer" xml:space="preserve">
+    <value>Servidor de ajedrez</value>
+  </data>
   <data name="Comes with Docker support for simplified and consistent deployments." xml:space="preserve">
     <value>Viene con soporte para Docker para despliegues simplificados y consistentes.</value>
   </data>
@@ -599,6 +602,12 @@
   </data>
   <data name="Pint or similar needed" xml:space="preserve">
     <value>Se necesita Pint o similar</value>
+  </data>
+  <data name="Play against the computer, challenge a friend, or watch a game." xml:space="preserve">
+    <value>Juega contra el ordenador, desafía a un amigo o mira una partida.</value>
+  </data>
+  <data name="Play chess" xml:space="preserve">
+    <value>Jugar al ajedrez</value>
   </data>
   <data name="Pre-configured /healthz and readiness probes" xml:space="preserve">
     <value>Sondas de /healthz y estado listas preconfiguradas</value>

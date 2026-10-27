@@ -51,8 +51,17 @@
   <data name="Change Profile" xml:space="preserve">
     <value>프로필 변경</value>
   </data>
+  <data name="Chess" xml:space="preserve">
+    <value>체스</value>
+  </data>
+  <data name="Chess room" xml:space="preserve">
+    <value>체스 대국실</value>
+  </data>
   <data name="Click to login" xml:space="preserve">
     <value>로그인하려면 클릭</value>
+  </data>
+  <data name="Create a challenge" xml:space="preserve">
+    <value>도전 과제 만들기</value>
   </data>
   <data name="Create Role" xml:space="preserve">
     <value>역할 생성</value>
@@ -125,6 +134,9 @@
   </data>
   <data name="Personal" xml:space="preserve">
     <value>개인</value>
+  </data>
+  <data name="Play chess" xml:space="preserve">
+    <value>체스 두기</value>
   </data>
   <data name="Profile" xml:space="preserve">
     <value>프로필</value>
