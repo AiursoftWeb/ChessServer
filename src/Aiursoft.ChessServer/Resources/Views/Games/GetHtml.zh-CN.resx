@@ -60,8 +60,11 @@
   <data name="White" xml:space="preserve">
     <value>白方</value>
   </data>
-  <data name="You are playing {0}." xml:space="preserve">
-    <value>你正在执白/执黑棋。</value>
+  <data name="You are playing Black." xml:space="preserve">
+    <value>您执黑方。</value>
+  </data>
+  <data name="You are playing White." xml:space="preserve">
+    <value>你执白方。</value>
   </data>
   <data name="You are watching this game." xml:space="preserve">
     <value>您正在观战。</value>

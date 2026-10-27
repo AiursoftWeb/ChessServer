@@ -174,7 +174,7 @@ function AnduinChessBoard(color) {
     this.board?.destroy();
   };
   this.run = (gameId) => {
-    this.roleControl.textContent = this.color === 'm' ? text('watching', 'You are watching this game.') : format('role', 'You are playing {0}.', colorName(this.color));
+    this.roleControl.textContent = this.color === 'm' ? text('watching', 'You are watching this game.') : this.color === WHITE_ABBREVIATION ? text('playing-white', 'You are playing White.') : text('playing-black', 'You are playing Black.');
 
     this._initSound();
 
