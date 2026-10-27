@@ -11,6 +11,18 @@
         <option value="0">@Localizer["White"]</option>
         <option value="1">@Localizer["Black"]</option>
     </select>
+    <label asp-for="Minutes" class="form-label">@Localizer["Time preference"]</label>
+    <select asp-for="Minutes" class="form-select mb-2">
+        <option value="1">@Localizer["1 minute"]</option>
+        <option value="3">@Localizer["3 minutes"]</option>
+        <option value="5">@Localizer["5 minutes"]</option>
+        <option value="10">@Localizer["10 minutes"]</option>
+        <option value="15">@Localizer["15 minutes"]</option>
+        <option value="30">@Localizer["30 minutes"]</option>
+        <option value="60">@Localizer["1 hour"]</option>
+        <option value="120">@Localizer["2 hours"]</option>
+    </select>
+    <p class="text-muted small">@Localizer["Games are untimed."]</p>
     <label asp-for="Permission" class="form-label">@Localizer["Visibility"]</label>
     <select asp-for="Permission" class="form-select mb-3">
         <option value="0">@Localizer["Public"]</option>

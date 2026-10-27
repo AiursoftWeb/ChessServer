@@ -142,7 +142,7 @@ function AnduinChessBoard(color) {
   };
 
   this._renderStatusText = () => {
-    this.statusControl.innerHTML = this.statusText;
+    this.statusControl.textContent = this.statusText;
   };
 
   this._getKingPosition = (bOrW) => {
@@ -211,6 +211,7 @@ function AnduinChessBoard(color) {
   };
 
   this._refresh = (newFEN) => {
+    this.latestFen = newFEN;
     if (this.game !== null) {
       let [position1, position2] = findMove(this.game.fen(), newFEN);
       this.lastMovePair = [position1, position2];
@@ -225,7 +226,7 @@ function AnduinChessBoard(color) {
     fetch(`/games/${document.getElementById('game-room').dataset.gameId}.json`, {cache: 'no-store'})
       .then(response => response.ok ? response.json() : null)
       .then(info => {
-        if (info && this.game.fen() === newFEN) {
+        if (info && this.latestFen === newFEN) {
           this.serverEnded = info.Game.Ended;
           if (this.serverEnded && info.Game.Won === null) {
             this.statusText = text('draw', 'Game over — draw.');

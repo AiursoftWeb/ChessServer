@@ -45,6 +45,9 @@
   <data name="Message" xml:space="preserve">
     <value>消息</value>
   </data>
+  <data name="Preferred duration: {0} minutes. Games are untimed." xml:space="preserve">
+    <value>首选时长：{0} 分钟。对局不设时限。</value>
+  </data>
   <data name="Room unavailable. Return to the lobby." xml:space="preserve">
     <value>房间不可用。返回大厅。</value>
   </data>

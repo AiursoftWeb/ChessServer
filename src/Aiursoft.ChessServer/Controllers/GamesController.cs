@@ -32,7 +32,7 @@ public class GamesController(InMemoryDatabase database, ChessEngine engine) : Ch
     public IActionResult GetHtml(int id)
     {
         var room = database.GetAcceptedChallenge(id);
-        return room == null ? NotFound() : this.StackView(new RoomViewModel { Id = id, Message = room.Message });
+        return room == null ? NotFound() : this.StackView(new RoomViewModel { Id = id, Message = room.Message, PreferredMinutes = room.Difficulty == null ? (int)room.TimeLimit.TotalMinutes : null });
     }
 
     [HttpGet("{id:int}.fen")]
@@ -88,6 +88,10 @@ public class GamesController(InMemoryDatabase database, ChessEngine engine) : Ch
             {
                 await room.Game.FenChangedChannel.BroadcastAsync(Fen(room));
                 await RespondToMove(room, token);
+            }
+            else
+            {
+                await client.Send(Fen(room), token);
             }
         });
         try

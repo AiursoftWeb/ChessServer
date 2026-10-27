@@ -36,7 +36,7 @@ public class InMemoryDatabase : ISingletonDependency
         lock (_gate)
         {
             if (_challenges.Count >= 256) throw new InvalidOperationException("All rooms are busy. Please try again later.");
-            if (_challenges.Values.Any(c => c.Creator.Id == challenge.Creator.Id && c is not AcceptedChallenge))
+            if (challenge.Difficulty == null && _challenges.Values.Any(c => c.Creator.Id == challenge.Creator.Id && c is not AcceptedChallenge))
                 throw new InvalidOperationException("You already have an open challenge.");
             var id = ++_nextId;
             _challenges.Add(id, challenge);
@@ -69,14 +69,23 @@ public class InMemoryDatabase : ISingletonDependency
 
     public int RemoveExpired(DateTimeOffset now)
     {
-        KeyValuePair<int, Challenge>[] expired;
+        List<KeyValuePair<int, Challenge>> expired = [];
         lock (_gate)
         {
-            expired = _challenges.Where(p => now - p.Value.LastActivity > (p.Value is AcceptedChallenge
-                ? TimeSpan.FromMinutes(30) : TimeSpan.FromMinutes(10))).ToArray();
-            foreach (var pair in expired) _challenges.Remove(pair.Key);
+            foreach (var pair in _challenges.ToArray())
+            {
+                // Serialize the expiry decision with moves so a resumed game cannot be removed from an old timestamp.
+                var activityGate = pair.Value is AcceptedChallenge game ? game.Game.MovePieceLock : _gate;
+                lock (activityGate)
+                {
+                    var idleLimit = pair.Value is AcceptedChallenge ? TimeSpan.FromMinutes(30) : TimeSpan.FromMinutes(10);
+                    if (now - pair.Value.LastActivity <= idleLimit) continue;
+                    _challenges.Remove(pair.Key);
+                    expired.Add(pair);
+                }
+            }
         }
         foreach (var pair in expired) pair.Value.End();
-        return expired.Length;
+        return expired.Count;
     }
 }

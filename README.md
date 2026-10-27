@@ -19,6 +19,8 @@ cd ..
 dotnet run
 ```
 
+Existing Docker installations must update their persisted `/data/appsettings.json` with the new database and OIDC settings before upgrading.
+
 SQLite stores account data by default. Docker deployments should persist `/data`. Live games remain in memory and end when the application restarts.
 
 [Source](https://github.com/aiursoftweb/chessserver) · [MIT license](LICENSE)

@@ -35,12 +35,13 @@ public class ChessTests : TestBase
             ["Message"] = "A real challenge",
             ["RoleRule"] = "0",
             ["Permission"] = "1",
-            ["CreatorId"] = Guid.Empty.ToString()
+            ["CreatorId"] = Guid.Empty.ToString(), ["Minutes"] = "3"
         });
         Assert.AreEqual(HttpStatusCode.Found, response.StatusCode);
         var id = int.Parse(response.Headers.Location!.OriginalString.Split('/').Last());
         var room = GetService<InMemoryDatabase>().GetChallenge(id)!;
         Assert.AreNotEqual(Guid.Empty, room.Creator.Id);
+        Assert.AreEqual(TimeSpan.FromMinutes(3), room.TimeLimit);
         Assert.AreEqual(0, GetService<InMemoryDatabase>().GetPublicOpenChallenges().Count);
         await LoginAsAdmin();
         var drop = await PostForm($"/challenge/{id}/drop", [], tokenUrl: "/Lobby");
@@ -215,6 +216,18 @@ public class ChessTests : TestBase
         Assert.IsFalse(deadline.IsCancellationRequested);
         Assert.IsNull(database.GetChallenge(pair.Key));
         Assert.AreEqual(0, ((AcceptedChallenge)pair.Value).Game.FenChangedChannel.GetListenerCount());
+    }
+
+    [TestMethod]
+    public async Task ComputerGameCanStartWhileThePlayerWaitsForAFriend()
+    {
+        await RegisterAndLoginAsync();
+        var room = await PostForm("/challenge/create", new Dictionary<string, string> { ["Message"] = "Waiting for a friend" });
+        Assert.AreEqual(HttpStatusCode.Found, room.StatusCode);
+        var game = await PostForm("/pve/new", new Dictionary<string, string> { ["difficulty"] = "1" }, tokenUrl: "/Lobby");
+        Assert.AreEqual(HttpStatusCode.Found, game.StatusCode);
+        Assert.AreEqual(1, GetService<InMemoryDatabase>().GetPublicOpenChallenges().Count);
+        Assert.AreEqual(1, GetService<InMemoryDatabase>().GetOnGoingOpenChallenges().Count);
     }
 
     [TestMethod]

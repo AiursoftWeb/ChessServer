@@ -45,7 +45,7 @@ public class ChallengesController(InMemoryDatabase database) : ChessController
         var room = database.GetChallenge(id);
         if (room == null) return NotFound();
         if (room is AcceptedChallenge) return RedirectToAction(nameof(GamesController.GetHtml), "Games", new { id });
-        return this.StackView(new RoomViewModel { Id = id, IsCreator = room.Creator.Id == PlayerId, Message = room.Message });
+        return this.StackView(new RoomViewModel { Id = id, IsCreator = room.Creator.Id == PlayerId, Message = room.Message, PreferredMinutes = (int)room.TimeLimit.TotalMinutes });
     }
 
     [HttpPost("{id:int}/drop"), ValidateAntiForgeryToken]

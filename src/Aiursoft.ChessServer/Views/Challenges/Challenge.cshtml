@@ -1,5 +1,9 @@
 @model Aiursoft.ChessServer.Models.ViewModels.RoomViewModel
 <h1 class="h3">@Model.Message</h1>
+    @if (Model.PreferredMinutes.HasValue)
+    {
+        <p class="text-muted small">@string.Format(@Localizer["Preferred duration: {0} minutes. Games are untimed."].Value, Model.PreferredMinutes)</p>
+    }
 <div id="chess-room" class="card" data-room-id="@Model.Id" data-disconnected="@Localizer["Connection closed. Refresh to reconnect."]"><div class="card-body">
     <p>@Localizer["Share this page with your opponent. Both players must sign in."]</p>
     <input class="form-control mb-3" aria-label="@Localizer["Room link"]" value="@($"{Context.Request.Scheme}://{Context.Request.Host}/challenge/{Model.Id}")" readonly />

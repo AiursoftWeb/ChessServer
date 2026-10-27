@@ -18,7 +18,31 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Black" xml:space="preserve">
+      <data name="1 hour" xml:space="preserve">
+    <value>1 小时</value>
+  </data>
+  <data name="1 minute" xml:space="preserve">
+    <value>1分钟</value>
+  </data>
+  <data name="10 minutes" xml:space="preserve">
+    <value>10分钟</value>
+  </data>
+  <data name="15 minutes" xml:space="preserve">
+    <value>15分钟</value>
+  </data>
+  <data name="2 hours" xml:space="preserve">
+    <value>2 小时</value>
+  </data>
+  <data name="3 minutes" xml:space="preserve">
+    <value>3分钟</value>
+  </data>
+  <data name="30 minutes" xml:space="preserve">
+    <value>30分钟</value>
+  </data>
+  <data name="5 minutes" xml:space="preserve">
+    <value>5 分钟</value>
+  </data>
+  <data name="Black" xml:space="preserve">
     <value>黑方</value>
   </data>
   <data name="Create a challenge" xml:space="preserve">
@@ -26,6 +50,9 @@
   </data>
   <data name="Create room" xml:space="preserve">
     <value>创建房间</value>
+  </data>
+  <data name="Games are untimed." xml:space="preserve">
+    <value>游戏不计时。</value>
   </data>
   <data name="Public" xml:space="preserve">
     <value>公开</value>
@@ -35,6 +62,9 @@
   </data>
   <data name="Room name" xml:space="preserve">
     <value>房间名称</value>
+  </data>
+  <data name="Time preference" xml:space="preserve">
+    <value>时间偏好</value>
   </data>
   <data name="Unlisted — share the room link" xml:space="preserve">
     <value>不公开 — 分享房间链接</value>
