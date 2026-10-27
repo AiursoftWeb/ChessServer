@@ -16,7 +16,7 @@ Sign-in uses OIDC. Configure your identity provider before playing; see [Configu
 
 ## Try
 
-Try a running ChessServer [here](https://chess.aiursoft.com).
+The deployment address is [chess.aiursoft.com](https://chess.aiursoft.com); this version has not been deployed yet.
 
 ## Install with Docker
 
