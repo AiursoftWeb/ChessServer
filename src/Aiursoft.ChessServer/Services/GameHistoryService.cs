@@ -7,7 +7,7 @@ namespace Aiursoft.ChessServer.Services;
 
 public class GameHistoryService(TemplateDbContext context) : IScopedDependency
 {
-    public async Task SaveAsync(AcceptedChallenge room)
+    public async Task SaveAsync(AcceptedChallenge room, bool deferCommit = false)
     {
         await room.ArchiveLock.WaitAsync();
         try
@@ -16,23 +16,26 @@ public class GameHistoryService(TemplateDbContext context) : IScopedDependency
             CompletedGame record;
             lock (room.Game.MovePieceLock)
             {
-                room.UpdateClock(DateTimeOffset.UtcNow);
+                if (room.Game.Board.IsEndGame) room.FinishedAt ??= DateTimeOffset.UtcNow;
                 if (!room.Game.Board.IsEndGame) return;
                 record = new CompletedGame
                 {
                     Id = room.HistoryId,
                     WhiteUserId = room.GetWhitePlayer().Id.ToString(), BlackUserId = room.GetBlackPlayer().Id.ToString(),
                     WhiteName = room.GetWhitePlayer().NickName, BlackName = room.GetBlackPlayer().NickName,
-                    Result = room.Result, EndReason = room.Game.Board.EndGame!.EndgameType.ToString(),
+                    Result = room.Result, EndReason = room.OutcomeReason ?? room.Game.Board.EndGame!.EndgameType.ToString(),
                     StartedAt = room.GameStartTime, FinishedAt = room.FinishedAt!.Value.UtcDateTime, Pgn = room.Pgn()
                 };
             }
             if (!await context.CompletedGames.AnyAsync(g => g.Id == record.Id))
             {
                 context.CompletedGames.Add(record);
-                await context.SaveChangesAsync();
             }
-            room.Archived = true;
+            if (!deferCommit)
+            {
+                await context.SaveChangesAsync();
+                room.Archived = true;
+            }
         }
         finally { room.ArchiveLock.Release(); }
     }

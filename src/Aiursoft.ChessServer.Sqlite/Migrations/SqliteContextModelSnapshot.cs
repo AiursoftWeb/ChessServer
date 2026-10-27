@@ -72,6 +72,19 @@ namespace Aiursoft.ChessServer.Sqlite.Migrations
                     b.ToTable("CompletedGames");
                 });
 
+            modelBuilder.Entity("Aiursoft.ChessServer.Entities.GameSession", b =>
+                {
+                    b.Property<int>("Id")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("State")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("GameSessions");
+                });
+
             modelBuilder.Entity("Aiursoft.ChessServer.Entities.GlobalSetting", b =>
                 {
                     b.Property<string>("Key")

@@ -8,6 +8,7 @@ public class RoomViewModel : UiStackLayoutViewModel
     {
         PageTitle = "Chess room";
     }
+    public bool IsComputer { get; init; }
     public int Id { get; init; }
     public int? PreferredMinutes { get; init; }
     public bool IsCreator { get; init; }

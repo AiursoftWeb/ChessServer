@@ -7,7 +7,8 @@ public class Game
 {
     public bool IsThinking { get; set; }
 
-    public ChessBoard Board { get; } = new() { AutoEndgameRules = AutoEndgameRules.All };
+    public static ChessBoard NewBoard() => new() { AutoEndgameRules = AutoEndgameRules.All & ~AutoEndgameRules.InsufficientMaterial };
+    public ChessBoard Board { get; set; } = NewBoard();
 
     public AsyncObservable<string> FenChangedChannel { get; } = new();
     

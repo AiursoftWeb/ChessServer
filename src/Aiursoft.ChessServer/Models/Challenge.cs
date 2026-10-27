@@ -9,6 +9,8 @@ public class Challenge(
     TimeSpan timeLimit, 
     ChallengePermission permission)
 {
+    public SemaphoreSlim MutationLock { get; init; } = new(1, 1);
+    public bool IsPersisted { get; set; } = true;
     internal CancellationTokenSource LifetimeSource { get; init; } = new();
     public CancellationToken Lifetime => LifetimeSource.Token;
     public DateTimeOffset LastActivity { get; set; } = DateTimeOffset.UtcNow;

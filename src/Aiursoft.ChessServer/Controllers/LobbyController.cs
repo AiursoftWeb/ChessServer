@@ -1,4 +1,5 @@
 using Aiursoft.ChessServer.Data;
+using Aiursoft.ChessServer.Models;
 using Aiursoft.ChessServer.Models.ViewModels;
 using Aiursoft.ChessServer.Services;
 using Aiursoft.UiStack.Navigation;
@@ -12,6 +13,7 @@ public class LobbyController(InMemoryDatabase database) : ChessController
         CascadedLinksIcon = "crown", CascadedLinksOrder = 1, LinkText = "Play chess", LinkOrder = 1)]
     public IActionResult Index() => this.StackView(new LobbyViewModel
     {
+        MyGames = database.GetRooms().Where(p => p.Value is AcceptedChallenge game && !game.Game.Board.IsEndGame && game.GetPlayerColor(PlayerId) != "m").ToArray(),
         OpenChallenges = database.GetPublicOpenChallenges(),
         OngoingChallenges = database.GetOnGoingOpenChallenges()
     });

@@ -1,3 +1,4 @@
+using System.Text.Json;
 using Aiursoft.AiurObserver;
 using Aiursoft.AiurObserver.WebSocket.Server;
 using Aiursoft.ChessServer.Data;
@@ -10,18 +11,18 @@ using Microsoft.AspNetCore.Mvc;
 namespace Aiursoft.ChessServer.Controllers;
 
 [Route("games")]
-public class GamesController(InMemoryDatabase database, ChessEngine engine, GameHistoryService history) : ChessController
+public class GamesController(InMemoryDatabase database, ChessEngine engine, GameHistoryService history, GameSessionService sessions, ILogger<GamesController> logger) : ChessController
 {
-    [HttpGet("{id:int}.json")]
-    public IActionResult GetInfo(int id)
+    private sealed class SocketSendQueue
     {
-        var room = database.GetAcceptedChallenge(id);
-        if (room == null) return NotFound();
-        lock (room.Game.MovePieceLock)
-        {
-            room.UpdateClock(DateTimeOffset.UtcNow);
-            return Ok(new ChallengeContext(room, id));
-        }
+        public Task Tail { get; set; } = Task.CompletedTask;
+    }
+
+    [HttpGet("{id:int}.json")]
+    public async Task<IActionResult> GetInfo(int id)
+    {
+        var state = await sessions.StateAsync(id, PlayerId);
+        return state == null ? NotFound() : Ok(state);
     }
 
     [HttpGet("{id:int}.color")]
@@ -35,31 +36,49 @@ public class GamesController(InMemoryDatabase database, ChessEngine engine, Game
     public IActionResult GetHtml(int id)
     {
         var room = database.GetAcceptedChallenge(id);
-        return room == null ? NotFound() : this.StackView(new RoomViewModel { Id = id, Message = room.Message, PreferredMinutes = room.IsTimed ? (int)room.TimeLimit.TotalMinutes : null });
+        return room == null ? NotFound() : this.StackView(new RoomViewModel { Id = id, Message = room.Message, IsComputer = room.Difficulty != null });
     }
 
     [HttpGet("{id:int}.fen")]
-    public IActionResult GetFen(int id)
+    public async Task<IActionResult> GetFen(int id)
     {
-        var room = database.GetAcceptedChallenge(id);
-        if (room == null) return NotFound();
-        lock (room.Game.MovePieceLock) return Content(room.Game.Board.ToFen());
+        var state = await sessions.StateAsync(id, PlayerId);
+        return state == null ? NotFound() : Content(state.Position);
     }
 
     [HttpGet("{id:int}.pgn")]
-    public IActionResult GetPgn(int id)
+    public async Task<IActionResult> GetPgn(int id)
     {
-        var room = database.GetAcceptedChallenge(id);
-        if (room == null) return NotFound();
-        lock (room.Game.MovePieceLock) return Content(room.Pgn());
+        if (await sessions.StateAsync(id, PlayerId) == null) return NotFound();
+        return Content(database.GetAcceptedChallenge(id)!.Pgn());
     }
 
     [HttpGet("{id:int}.ascii")]
-    public IActionResult GetAscii(int id)
+    public async Task<IActionResult> GetAscii(int id)
+    {
+        if (await sessions.StateAsync(id, PlayerId) == null) return NotFound();
+        var room = database.GetAcceptedChallenge(id)!;
+        lock (room.Game.MovePieceLock) return Content(room.Game.Board.ToAscii());
+    }
+
+    [HttpPost("{id:int}/action"), ValidateAntiForgeryToken]
+    public async Task<IActionResult> Action(int id, [FromForm] string kind, [FromForm] Guid commandId)
     {
         var room = database.GetAcceptedChallenge(id);
         if (room == null) return NotFound();
-        lock (room.Game.MovePieceLock) return Content(room.Game.Board.ToAscii());
+        if (room.GetPlayerColor(PlayerId) == "m") return Forbid();
+        var result = await sessions.ExecuteAsync(id, PlayerId, new GameCommand(commandId, kind));
+        return result.Error == null ? Ok(result.State) : Conflict(new { result.State, result.Error });
+    }
+
+    [HttpPost("{id:int}/computer"), ValidateAntiForgeryToken]
+    public async Task<IActionResult> RetryComputer(int id)
+    {
+        var room = database.GetAcceptedChallenge(id);
+        if (room == null) return NotFound();
+        if (room.Difficulty == null || room.Creator.Id != PlayerId) return Forbid();
+        await RespondToMove(id, room, HttpContext.RequestAborted);
+        return Ok(await sessions.StateAsync(id, PlayerId));
     }
 
     [HttpGet("{id:int}.ws"), EnforceWebSocket]
@@ -68,104 +87,95 @@ public class GamesController(InMemoryDatabase database, ChessEngine engine, Game
         var room = database.GetAcceptedChallenge(id);
         if (room == null) { Response.StatusCode = 404; return; }
         if (!IsSameOriginWebSocket()) { Response.StatusCode = 403; return; }
-        var playerId = PlayerId;
         using var lifetime = CancellationTokenSource.CreateLinkedTokenSource(HttpContext.RequestAborted, room.Lifetime);
         var token = lifetime.Token;
         var client = await HttpContext.AcceptWebSocketClient();
-        var outgoing = room.Game.FenChangedChannel.Subscribe(fen => client.Send(fen, token));
-        var incoming = client.Subscribe(async move =>
+        var sendQueue = new SocketSendQueue();
+        async Task SendAfter(Task previous, string payload)
         {
-            if (move.Length > 20 || string.IsNullOrWhiteSpace(move)) return;
-            var changed = false;
-            lock (room.Game.MovePieceLock)
-            {
-                room.UpdateClock(DateTimeOffset.UtcNow);
-                move = move.Replace("0", "O");
-                if (!room.Game.Board.IsEndGame && room.GetTurnPlayer().Id == playerId && room.Game.Board.IsValidMove(move))
-                {
-                    room.Game.Board.Move(move);
-                    room.LastActivity = DateTimeOffset.UtcNow;
-                    room.UpdateClock(room.LastActivity);
-                    changed = true;
-                }
-            }
-            if (changed)
-            {
-                await room.Game.FenChangedChannel.BroadcastAsync(Fen(room));
-                await RespondToMove(room, token);
-                await history.SaveAsync(room);
-            }
-            else
-            {
-                await client.Send(Fen(room), token);
-            }
+            // Each sender observes its own failure; later sends still wait for the previous operation to finish.
+            try { await previous; } catch (Exception exception) { logger.LogDebug(exception, "The previous chess socket send failed before this update."); }
+            if (token.IsCancellationRequested) return;
+            using var deadline = CancellationTokenSource.CreateLinkedTokenSource(token);
+            deadline.CancelAfter(TimeSpan.FromSeconds(5));
+            await client.Send(payload, deadline.Token);
+        }
+        Task Send(string payload)
+        {
+            lock (sendQueue) return sendQueue.Tail = SendAfter(sendQueue.Tail, payload);
+        }
+        var outgoing = room.Game.FenChangedChannel.Subscribe(Send);
+        var incoming = client.Subscribe(async payload =>
+        {
+            if (payload.Length > 512) return;
+            GameCommand? command;
+            try { command = JsonSerializer.Deserialize<GameCommand>(payload); }
+            catch (JsonException) { return; }
+            if (command == null || command.Kind != "move") return;
+            var result = await sessions.ExecuteAsync(id, PlayerId, command);
+            await Send(JsonSerializer.Serialize(new { result.State, CommandId = command.Id, result.Error }));
+            if (result.Error == null) await RespondToMove(id, room, token);
         });
         try
         {
-            await client.Send(Fen(room), token);
-            if (room.Creator.Id == playerId) await RespondToMove(room, token);
+            await Send(JsonSerializer.Serialize(await sessions.StateAsync(id, PlayerId)));
+            if (room.Creator.Id == PlayerId) await RespondToMove(id, room, token);
             await client.Listen(token);
         }
         catch (OperationCanceledException) when (token.IsCancellationRequested) { }
         finally
         {
-            outgoing.Unsubscribe();
-            incoming.Unsubscribe();
-            await client.Close(CancellationToken.None);
+            outgoing.Unsubscribe(); incoming.Unsubscribe();
+            await lifetime.CancelAsync();
+            Task remaining;
+            lock (sendQueue) remaining = sendQueue.Tail;
+            try { await remaining; } catch (OperationCanceledException) { }
+            using var closeDeadline = new CancellationTokenSource(TimeSpan.FromSeconds(5));
+            await client.Close(closeDeadline.Token);
         }
     }
 
-    [HttpPost("{id:int}/complete"), ValidateAntiForgeryToken]
-    [RequestSizeLimit(524288)]
+    [HttpPost("{id:int}/complete"), ValidateAntiForgeryToken, RequestSizeLimit(524288)]
     public async Task<IActionResult> Complete(int id, [FromForm] string? pgn)
     {
         var room = database.GetAcceptedChallenge(id);
         if (room == null) return NotFound();
         if (room.GetPlayerColor(PlayerId) == "m") return Forbid();
-        lock (room.Game.MovePieceLock)
+        await room.MutationLock.WaitAsync();
+        try
         {
-            room.UpdateClock(DateTimeOffset.UtcNow);
             if (!room.Game.Board.IsEndGame) return Conflict("This game is still in progress.");
             if (!string.Equals(pgn?.Replace("\r\n", "\n"), room.Pgn().Replace("\r\n", "\n"), StringComparison.Ordinal)) return BadRequest("The PGN does not match this game.");
+            await history.SaveAsync(room);
+            return Ok(new { room.HistoryId });
         }
-        await history.SaveAsync(room);
-        return Ok(new { room.HistoryId });
+        finally { room.MutationLock.Release(); }
     }
 
-    private static string Fen(AcceptedChallenge room)
-    {
-        lock (room.Game.MovePieceLock) return room.Game.Board.ToFen();
-    }
-
-    private async Task RespondToMove(AcceptedChallenge room, CancellationToken token)
+    private async Task RespondToMove(int id, AcceptedChallenge room, CancellationToken token)
     {
         string fen;
+        int ply;
         lock (room.Game.MovePieceLock)
         {
-            room.UpdateClock(DateTimeOffset.UtcNow);
             if (room.Difficulty == null || room.Game.IsThinking || room.Game.Board.IsEndGame || room.GetTurnPlayer().Id == room.Creator.Id) return;
-            room.Game.IsThinking = true;
-            fen = room.Game.Board.ToFen();
+            room.Game.IsThinking = true; fen = room.Game.Board.ToFen(); ply = room.Game.Board.MovesToSan.Count;
         }
         try
         {
-            var move = await engine.GetBestMoveAsync(fen, room.Difficulty.Value, token);
-            lock (room.Game.MovePieceLock)
+            using var budget = CancellationTokenSource.CreateLinkedTokenSource(token);
+            if (room.IsTimed)
             {
-                room.UpdateClock(DateTimeOffset.UtcNow);
-                if (!token.IsCancellationRequested && !room.Game.Board.IsEndGame && room.Game.Board.ToFen() == fen && room.Game.Board.IsValidMove(move))
-                {
-                    room.Game.Board.Move(move);
-                    room.LastActivity = DateTimeOffset.UtcNow;
-                    room.UpdateClock(room.LastActivity);
-                }
+                var remaining = room.CreatorIsWhite ? room.BlackRemaining : room.WhiteRemaining;
+                budget.CancelAfter(remaining > TimeSpan.Zero ? remaining : TimeSpan.FromMilliseconds(1));
             }
-            await history.SaveAsync(room);
-            await room.Game.FenChangedChannel.BroadcastAsync(Fen(room));
+            try
+            {
+                var move = await engine.GetBestMoveAsync(fen, room.Difficulty.Value, budget.Token);
+                await sessions.ExecuteAsync(id, room.Accepter.Id, new GameCommand(Guid.NewGuid(), "move", ply, move), computer: true);
+            }
+            catch (OperationCanceledException) when (budget.IsCancellationRequested) { }
         }
-        finally
-        {
-            lock (room.Game.MovePieceLock) room.Game.IsThinking = false;
-        }
+        finally { lock (room.Game.MovePieceLock) room.Game.IsThinking = false; }
     }
 }

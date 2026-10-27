@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Aiursoft.ChessServer.Controllers;
 
 [Route("challenge")]
-public class ChallengesController(InMemoryDatabase database) : ChessController
+public class ChallengesController(InMemoryDatabase database, GameSessionService sessions) : ChessController
 {
     [HttpGet("")]
     public IActionResult Auto()
@@ -23,12 +23,12 @@ public class ChallengesController(InMemoryDatabase database) : ChessController
     public IActionResult Create() => this.StackView(new CreateChallengeViewModel());
 
     [HttpPost("create"), ValidateAntiForgeryToken]
-    public IActionResult Create(CreateChallengeViewModel model)
+    public async Task<IActionResult> Create(CreateChallengeViewModel model)
     {
         if (!ModelState.IsValid) return this.StackView(model);
         try
         {
-            var id = database.CreateChallenge(new Challenge(CurrentPlayer(), model.Message, model.RoleRule,
+            var id = await sessions.CreateAsync(new Challenge(CurrentPlayer(), model.Message, model.RoleRule,
                 model.Minutes == 0 ? TimeSpan.MaxValue : TimeSpan.FromMinutes(model.Minutes), model.Permission));
             return RedirectToAction(nameof(Challenge), new { id });
         }
@@ -49,19 +49,20 @@ public class ChallengesController(InMemoryDatabase database) : ChessController
     }
 
     [HttpPost("{id:int}/drop"), ValidateAntiForgeryToken]
-    public IActionResult Drop(int id)
+    public async Task<IActionResult> Drop(int id)
     {
         var room = database.GetChallenge(id);
         if (room == null) return NotFound();
         if (room.Creator.Id != PlayerId) return Forbid();
-        database.DeleteChallenge(id);
+        if (room is AcceptedChallenge) return BadRequest("Use the game controls to end this game.");
+        await sessions.DeleteAsync(id);
         return RedirectToAction("Index", "Lobby");
     }
 
     [HttpPost("accept/{id:int}"), ValidateAntiForgeryToken]
     public async Task<IActionResult> Accept(int id)
     {
-        try { await database.AcceptAsync(id, CurrentPlayer()); }
+        try { await sessions.AcceptAsync(id, CurrentPlayer()); }
         catch (InvalidOperationException e) { return BadRequest(e.Message); }
         return RedirectToAction(nameof(GamesController.GetHtml), "Games", new { id });
     }

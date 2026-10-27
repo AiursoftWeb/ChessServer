@@ -1,8 +1,26 @@
-.chess-messages { height: 24rem; overflow-y: auto; overflow-wrap: anywhere; }
+.chess-messages { height: 12rem; overflow-y: auto; overflow-wrap: anywhere; }
 .chess-message { margin-block: .75rem; }
 .chess-message p { margin-bottom: 0; white-space: pre-wrap; }
-.chess-clock { max-width: 42rem; margin-inline: auto; display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: .6rem 1rem; border: 2px solid var(--bs-border-color); border-radius: .4rem; }
+.chess-layout { display: grid; grid-template-columns: minmax(0, 36rem) minmax(15rem, 1fr); gap: 1.25rem; align-items: start; }
+.chess-playing-area, .chess-information { min-width: 0; }
+.chess-clock { display: flex; align-items: center; justify-content: space-between; gap: .75rem; padding: .35rem .75rem; border: 2px solid var(--bs-border-color); border-radius: .4rem; }
 .chess-clock-active { border-color: var(--bs-primary); background: var(--bs-primary-bg-subtle); }
-.clock-time { font-size: 1.7rem; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.clock-time { font-size: 1.6rem; font-variant-numeric: tabular-nums; white-space: nowrap; }
 .clock-name { overflow-wrap: anywhere; }
-#board { max-width: 42rem; margin-inline: auto; }
+#board { touch-action: none; max-width: 36rem; margin-inline: auto; }
+#board .chess-selected { box-shadow: inset 0 0 0 3px #3d8bfd; }
+#board .chess-legal { box-shadow: inset 0 0 0 3px #38a169; }
+#board .chess-last { background-image: linear-gradient(#ffe08288, #ffe08288); }
+.chess-check { background-image: radial-gradient(circle, #dc354588 20%, transparent 80%) !important; }
+.chess-move-list { max-height: 25rem; overflow-y: auto; display: grid; grid-template-columns: 2rem 1fr 1fr; gap: .2rem; align-items: center; }
+.chess-move-list button { text-align: left; font-variant-numeric: tabular-nums; }
+#promotion-dialog { border: 1px solid var(--bs-border-color); border-radius: .5rem; padding: 1.25rem; color: var(--bs-body-color); background: var(--bs-body-bg); max-width: calc(100vw - 2rem); }
+#promotion-dialog::backdrop { background: #0006; }
+#game-room [hidden] { display: none !important; }
+@media (max-width: 991px) {
+    .chess-layout { grid-template-columns: minmax(0, 1fr); }
+    .chess-playing-area { max-width: 36rem; width: 100%; margin-inline: auto; }
+    .chess-check { background-image: radial-gradient(circle, #dc354588 20%, transparent 80%) !important; }
+.chess-move-list { max-height: 10rem; }
+    .clock-time { font-size: 1.35rem; }
+}

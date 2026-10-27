@@ -1,11 +1,11 @@
-using Aiursoft.ChessServer.Data;
+using Aiursoft.ChessServer.Services;
 using Aiursoft.ChessServer.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Aiursoft.ChessServer.Controllers;
 
 [Route("pve")]
-public class PveController(InMemoryDatabase database) : ChessController
+public class PveController(GameSessionService sessions) : ChessController
 {
     [HttpPost("new"), ValidateAntiForgeryToken]
     public async Task<IActionResult> New([FromForm] int difficulty = 1, [FromForm] RoleRule roleRule = RoleRule.CreatorWhite, [FromForm] int minutes = 0)
@@ -15,10 +15,10 @@ public class PveController(InMemoryDatabase database) : ChessController
         int id;
         try
         {
-            id = database.CreateChallenge(new Challenge(CurrentPlayer(), "Play against computer", roleRule,
+            id = await sessions.CreateAsync(new Challenge(CurrentPlayer(), "Play against computer", roleRule,
                 minutes == 0 ? TimeSpan.MaxValue : TimeSpan.FromMinutes(minutes), ChallengePermission.Public)
             { Difficulty = difficulty });
-            await database.AcceptAsync(id, new Player(Guid.NewGuid()) { NickName = $"Computer — level {difficulty}" });
+            await sessions.AcceptAsync(id, new Player(Guid.NewGuid()) { NickName = $"Computer — level {difficulty}" });
         }
         catch (InvalidOperationException e) { return BadRequest(e.Message); }
         return RedirectToAction(nameof(GamesController.GetHtml), "Games", new { id });
