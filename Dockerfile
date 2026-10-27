@@ -1,33 +1,32 @@
-ARG CSPROJ_PATH="./src/Aiursoft.ChessServer"
+ARG CSPROJ_PATH="./src/Aiursoft.ChessServer/"
 ARG PROJ_NAME="Aiursoft.ChessServer"
-ARG FRONT_END_PATH="${CSPROJ_PATH}/wwwroot"
 
-# ============================
-# Prepare node modules
-# ============================
+# ============
+# Prepare NPM Environment
 FROM --platform=$BUILDPLATFORM hub.aiursoft.com/node:24-alpine AS npm-env
-ARG FRONT_END_PATH
+ARG CSPROJ_PATH
 WORKDIR /src
+# Only copy package files to take advantage of Docker cache
+COPY ${CSPROJ_PATH}wwwroot/package.json ${CSPROJ_PATH}wwwroot/package-lock.json* ${CSPROJ_PATH}wwwroot/.npmrc* /src/${CSPROJ_PATH}wwwroot/
+RUN npm install --prefix "${CSPROJ_PATH}wwwroot" --loglevel verbose
 
-# Restore
-COPY ${FRONT_END_PATH}/package*.json ./
-RUN npm install --loglevel verbose --force
-
-# Build (no need to build. Static files project)
-# COPY ${FRONT_END_PATH}/ .
-# RUN npm run build --loglevel verbose
+# Build frontend (slims node_modules to only "keep" declared packages)
+COPY ${CSPROJ_PATH}wwwroot/build.mjs /src/${CSPROJ_PATH}wwwroot/build.mjs
+RUN npm run build --prefix "${CSPROJ_PATH}wwwroot"
 
 # ============================
-# Prepare .NET binaries
-# ============================
+# Prepare Building Environment
 FROM --platform=$BUILDPLATFORM hub.aiursoft.com/aiursoft/internalimages/dotnet AS build-env
 ARG CSPROJ_PATH
 ARG PROJ_NAME
 ARG TARGETARCH
+
 WORKDIR /src
+COPY . .
+# Copy node_modules from npm-env
+COPY --from=npm-env /src/${CSPROJ_PATH}wwwroot/node_modules /src/${CSPROJ_PATH}wwwroot/node_modules
 
 # Build
-COPY . .
 RUN if [ "$TARGETARCH" = "arm64" ]; then \
         RID="linux-arm64"; \
     elif [ "$TARGETARCH" = "amd64" ]; then \
@@ -36,21 +35,21 @@ RUN if [ "$TARGETARCH" = "arm64" ]; then \
         RID="linux-$TARGETARCH"; \
     fi && \
     echo "Building for arch: $TARGETARCH, using .NET RID: $RID" && \
-    dotnet publish ${CSPROJ_PATH}/${PROJ_NAME}.csproj --configuration Release --no-self-contained --runtime $RID --output /app --configfile nuget.config
+    dotnet publish ${CSPROJ_PATH}${PROJ_NAME}.csproj --configuration Release --no-self-contained --runtime $RID --output /app --configfile nuget.config
+
+RUN cp -r ${CSPROJ_PATH}/wwwroot/* /app/wwwroot
 
 # ============================
-# Prepare runtime image
-# ============================
+# Prepare Runtime Environment
 FROM hub.aiursoft.com/aiursoft/internalimages/dotnetonlyruntime
 ARG PROJ_NAME
 WORKDIR /app
 COPY --from=build-env /app .
-COPY --from=npm-env /src ./wwwroot
 
 # Edit appsettings.json
-RUN sed -i 's/DataSource=app.db/DataSource=\/data\/app.db/g' appsettings.json && \
-    sed -i 's/\/tmp\/data/\/data/g' appsettings.json && \
-    mkdir -p /data
+RUN sed -i 's/DataSource=app.db/DataSource=\/data\/app.db/g' appsettings.json
+RUN sed -i 's/\/tmp\/data/\/data/g' appsettings.json
+RUN mkdir -p /data
 
 VOLUME /data
 EXPOSE 5000

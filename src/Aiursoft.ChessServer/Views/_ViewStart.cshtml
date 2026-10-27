@@ -1,3 +1,6 @@
 @{
-    Layout = "_Layout";
+    // Use Layout from Razor library: Aiursoft.UiStack
+    // Suppress Razor.LayoutNotResolved warning because the layout is resolved from the Razor library
+    // ReSharper disable once Razor.LayoutNotResolved
+    Layout = "~/Layout/UiStackLayout.cshtml";
 }

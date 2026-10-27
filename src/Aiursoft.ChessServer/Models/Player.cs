@@ -1,4 +1,4 @@
-﻿namespace Aiursoft.ChessServer.Models;
+namespace Aiursoft.ChessServer.Models;
 
 public class Player(Guid id)
 {

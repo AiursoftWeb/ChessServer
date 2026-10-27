@@ -1,153 +1,140 @@
-﻿using Aiursoft.AiurObserver;
+using Aiursoft.AiurObserver;
 using Aiursoft.AiurObserver.WebSocket.Server;
 using Aiursoft.ChessServer.Data;
+using Aiursoft.ChessServer.Models;
 using Aiursoft.ChessServer.Models.ViewModels;
-using Microsoft.AspNetCore.Mvc;
-using Aiursoft.ChessServer.Attributes;
+using Aiursoft.ChessServer.Services;
 using Aiursoft.WebTools.Attributes;
-using Microsoft.AspNetCore.Connections;
+using Chess;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Aiursoft.ChessServer.Controllers;
 
 [Route("games")]
-public class GamesController(InMemoryDatabase database) : Controller
+public class GamesController(InMemoryDatabase database, ChessEngine engine) : ChessController
 {
-    [Route("{id:int}.json")]
-    public IActionResult GetInfo([FromRoute] int id)
+    [HttpGet("{id:int}.json")]
+    public IActionResult GetInfo(int id)
     {
-        var challenge = database.GetAcceptedChallenge(id);
-        if (challenge == null)
-        {
-            return NotFound();
-        }
-
-        return Ok(new ChallengeContext(challenge, id));
+        var room = database.GetAcceptedChallenge(id);
+        if (room == null) return NotFound();
+        return Ok(new ChallengeContext(room, id));
     }
 
-    [Route("{id:int}.color")]
-    public IActionResult GetColor([FromRoute] int id, [FromQuery][IsGuid] string playerId)
+    [HttpGet("{id:int}.color")]
+    public IActionResult GetColor(int id)
     {
-        if (!ModelState.IsValid)
-        {
-            return BadRequest(ModelState);
-        }
-        
-        var playerGuid = Guid.Parse(playerId);
-        var challenge = database.GetAcceptedChallenge(id);
-        if (challenge == null)
-        {
-            return NotFound();
-        }
-        
-        return Ok(challenge.GetPlayerColor(playerGuid));
+        var room = database.GetAcceptedChallenge(id);
+        return room == null ? NotFound() : Content(room.GetPlayerColor(PlayerId));
     }
 
-    [Route("{id:int}.ws")]
-    [EnforceWebSocket]
-    public async Task GetWebSocket([FromRoute] int id, [FromQuery][IsGuid] string playerId)
+    [HttpGet("{id:int}.html")]
+    public IActionResult GetHtml(int id)
     {
-        if (!ModelState.IsValid)
-        {
-            return;
-        }
-        var playerGuid = Guid.Parse(playerId);
-        var challenge = database.GetAcceptedChallenge(id);
-        if (challenge == null)
-        {
-            return;
-        }
+        var room = database.GetAcceptedChallenge(id);
+        return room == null ? NotFound() : this.StackView(new RoomViewModel { Id = id, Message = room.Message });
+    }
 
-        var pusher = await HttpContext.AcceptWebSocketClient();
-        var outSub = challenge.Game
-            .FenChangedChannel
-            .Subscribe(t => pusher.Send(t, HttpContext.RequestAborted));
+    [HttpGet("{id:int}.fen")]
+    public IActionResult GetFen(int id)
+    {
+        var room = database.GetAcceptedChallenge(id);
+        if (room == null) return NotFound();
+        lock (room.Game.MovePieceLock) return Content(room.Game.Board.ToFen());
+    }
 
-        var inSub = pusher
-            .Filter(t => !string.IsNullOrWhiteSpace(t))
-            .Subscribe(async move =>
+    [HttpGet("{id:int}.pgn")]
+    public IActionResult GetPgn(int id)
+    {
+        var room = database.GetAcceptedChallenge(id);
+        if (room == null) return NotFound();
+        lock (room.Game.MovePieceLock) return Content(room.Game.Board.ToPgn());
+    }
+
+    [HttpGet("{id:int}.ascii")]
+    public IActionResult GetAscii(int id)
+    {
+        var room = database.GetAcceptedChallenge(id);
+        if (room == null) return NotFound();
+        lock (room.Game.MovePieceLock) return Content(room.Game.Board.ToAscii());
+    }
+
+    [HttpGet("{id:int}.ws"), EnforceWebSocket]
+    public async Task GetWebSocket(int id)
+    {
+        var room = database.GetAcceptedChallenge(id);
+        if (room == null) { Response.StatusCode = 404; return; }
+        if (!IsSameOriginWebSocket()) { Response.StatusCode = 403; return; }
+        var playerId = PlayerId;
+        using var lifetime = CancellationTokenSource.CreateLinkedTokenSource(HttpContext.RequestAborted, room.Lifetime);
+        var token = lifetime.Token;
+        var client = await HttpContext.AcceptWebSocketClient();
+        var outgoing = room.Game.FenChangedChannel.Subscribe(fen => client.Send(fen, token));
+        var incoming = client.Subscribe(async move =>
+        {
+            if (move.Length > 20 || string.IsNullOrWhiteSpace(move)) return;
+            var changed = false;
+            lock (room.Game.MovePieceLock)
             {
                 move = move.Replace("0", "O");
-                lock (challenge.Game.MovePieceLock)
+                if (!room.Game.Board.IsEndGame && room.GetTurnPlayer().Id == playerId && room.Game.Board.IsValidMove(move))
                 {
-                    if (!challenge.Game.Board.IsEndGame &&
-                        challenge.Game.Board.IsValidMove(move) &&
-                        challenge.GetTurnPlayer().Id == playerGuid)
-                    {
-                        challenge.Game.Board.Move(move);
-                    }
+                    room.Game.Board.Move(move);
+                    room.LastActivity = DateTimeOffset.UtcNow;
+                    changed = true;
                 }
-
-                await challenge.Game.FenChangedChannel.BroadcastAsync(challenge.Game.Board.ToFen());
-            });
-
+            }
+            if (changed)
+            {
+                await room.Game.FenChangedChannel.BroadcastAsync(Fen(room));
+                await RespondToMove(room, token);
+            }
+        });
         try
         {
-            await pusher.Listen(HttpContext.RequestAborted);
+            await client.Send(Fen(room), token);
+            if (room.Creator.Id == playerId) await RespondToMove(room, token);
+            await client.Listen(token);
         }
-        catch (TaskCanceledException)
+        catch (OperationCanceledException) when (token.IsCancellationRequested) { }
+        finally
         {
-            // Ignore. This happens when the client closes the connection.
+            outgoing.Unsubscribe();
+            incoming.Unsubscribe();
+            await client.Close(CancellationToken.None);
         }
-        catch (ConnectionAbortedException)
+    }
+
+    private static string Fen(AcceptedChallenge room)
+    {
+        lock (room.Game.MovePieceLock) return room.Game.Board.ToFen();
+    }
+
+    private async Task RespondToMove(AcceptedChallenge room, CancellationToken token)
+    {
+        string fen;
+        lock (room.Game.MovePieceLock)
         {
-            // Ignore. This happens when the client closes the connection.
+            if (room.Difficulty == null || room.Game.IsThinking || room.Game.Board.IsEndGame || room.Game.Board.Turn != PieceColor.Black) return;
+            room.Game.IsThinking = true;
+            fen = room.Game.Board.ToFen();
+        }
+        try
+        {
+            var move = await engine.GetBestMoveAsync(fen, room.Difficulty.Value, token);
+            lock (room.Game.MovePieceLock)
+            {
+                if (!token.IsCancellationRequested && room.Game.Board.ToFen() == fen && room.Game.Board.IsValidMove(move))
+                {
+                    room.Game.Board.Move(move);
+                    room.LastActivity = DateTimeOffset.UtcNow;
+                }
+            }
+            await room.Game.FenChangedChannel.BroadcastAsync(Fen(room));
         }
         finally
         {
-            outSub.Unsubscribe();
-            inSub.Unsubscribe();
-            if (pusher.Connected)
-            {
-                await pusher.Close(HttpContext.RequestAborted);
-            }
+            lock (room.Game.MovePieceLock) room.Game.IsThinking = false;
         }
-    }
-
-    [Route("{id:int}.ascii")]
-    public IActionResult GetAscii([FromRoute] int id)
-    {
-        var game = database.GetAcceptedChallenge(id)?.Game;
-        if (game == null)
-        {
-            return NotFound();
-        }
-
-        return Ok(game.Board.ToAscii());
-    }
-
-    [Route("{id:int}.html")]
-    public IActionResult GetHtml([FromRoute] int id)
-    {
-        var game = database.GetAcceptedChallenge(id)?.Game;
-        if (game == null)
-        {
-            return NotFound();
-        }
-
-        return View(id);
-    }
-
-    [Route("{id:int}.fen")]
-    public IActionResult GetFen([FromRoute] int id)
-    {
-        var game = database.GetAcceptedChallenge(id)?.Game;
-        if (game == null)
-        {
-            return NotFound();
-        }
-
-        return Ok(game.Board.ToFen());
-    }
-
-    [Route("{id:int}.pgn")]
-    public IActionResult GetPgn([FromRoute] int id)
-    {
-        var game = database.GetAcceptedChallenge(id)?.Game;
-        if (game == null)
-        {
-            return NotFound();
-        }
-
-        return Ok(game.Board.ToPgn());
     }
 }

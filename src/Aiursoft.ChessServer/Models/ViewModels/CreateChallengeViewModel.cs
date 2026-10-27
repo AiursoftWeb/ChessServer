@@ -1,23 +1,24 @@
-﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations;
+using Aiursoft.ChessServer.Models;
+using Aiursoft.UiStack.Layout;
 
 namespace Aiursoft.ChessServer.Models.ViewModels;
 
-public class CreateChallengeViewModel
+public class CreateChallengeViewModel : UiStackLayoutViewModel
 {
-    [Required]
-    public Guid CreatorId { get; init; }
-    
-    [Required]
-    [MinLength(3)]
-    [MaxLength(20)]
-    public string Message { get; init; } = "A chess room.";
-    
-    [Required]
-    public RoleRule RoleRule { get; init; } = RoleRule.Random;
-    
-    [Required]
-    public TimeSpan TimeLimit { get; init; } = TimeSpan.FromMinutes(10);
-    
-    [Required]
-    public ChallengePermission Permission { get; init; } = ChallengePermission.Public;
+    public CreateChallengeViewModel() {
+        PageTitle = "Create a challenge";
+    }
+    [Required, StringLength(80, MinimumLength = 3)]
+    public string Message { get; set;
+    } = "A chess game";
+    [EnumDataType(typeof(RoleRule))]
+    public RoleRule RoleRule { get; set;
+    } = RoleRule.Random;
+    [EnumDataType(typeof(ChallengePermission))]
+    public ChallengePermission Permission { get; set;
+    } = ChallengePermission.Public;
+    [Range(1, 180)]
+    public int Minutes { get; set;
+    } = 10;
 }

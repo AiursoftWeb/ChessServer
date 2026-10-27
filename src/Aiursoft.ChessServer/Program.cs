@@ -1,4 +1,8 @@
 using System.Diagnostics.CodeAnalysis;
+using Aiursoft.ClickhouseLoggerProvider;
+using Aiursoft.DbTools;
+using Aiursoft.ChessServer.Entities;
+using static Aiursoft.WebTools.Extends;
 
 namespace Aiursoft.ChessServer;
 
@@ -7,7 +11,11 @@ public abstract class Program
 {
     public static async Task Main(string[] args)
     {
-        var app = await WebTools.Extends.AppAsync<Startup>(args);
+        var app = await AppAsync<Startup>(args);
+        await app.Services.InitLoggingTableAsync();
+        await app.UpdateDbAsync<TemplateDbContext>();
+        await app.SeedAsync();
+        await app.CopyAvatarFileAsync();
         await app.RunAsync();
     }
 }

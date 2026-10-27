@@ -1,0 +1,41 @@
+@model Aiursoft.ChessServer.Models.ViewModels.LobbyViewModel
+<h1 class="h3 mb-4">@Localizer["Play chess"]</h1>
+<div class="row g-4">
+    <div class="col-md-6"><div class="card h-100"><div class="card-body">
+        <h2 class="h4">@Localizer["Play against computer"]</h2>
+        <form asp-controller="Pve" asp-action="New" method="post">
+            <label for="difficulty" class="form-label">@Localizer["Difficulty"]</label>
+            <select id="difficulty" name="difficulty" class="form-select mb-3">
+                <option value="1">@Localizer["1 — Beginner"]</option>
+                <option value="2">@Localizer["2 — Easy"]</option>
+                <option value="3">@Localizer["3 — Casual"]</option>
+                <option value="4">@Localizer["4 — Intermediate"]</option>
+                <option value="5">@Localizer["5 — Challenging"]</option>
+                <option value="6">@Localizer["6 — Hard"]</option>
+                <option value="7">@Localizer["7 — Expert"]</option>
+                <option value="8">@Localizer["8 — Strongest"]</option>
+            </select>
+            <button class="btn btn-primary" type="submit">@Localizer["Start game"]</button>
+        </form>
+    </div></div></div>
+    <div class="col-md-6"><div class="card h-100"><div class="card-body">
+        <h2 class="h4">@Localizer["Play with a friend"]</h2>
+        <a class="btn btn-primary" asp-controller="Challenges" asp-action="Create">@Localizer["Create a challenge"]</a>
+    </div></div></div>
+</div>
+<div class="card mt-4"><div class="card-body">
+    <h2 class="h4">@Localizer["Open challenges"]</h2>
+    @if (Model.OpenChallenges.Count == 0) { <p class="text-muted mb-0">@Localizer["No open challenges."]</p> }
+    @foreach (var room in Model.OpenChallenges)
+    {
+        <a class="d-block py-2" asp-controller="Challenges" asp-action="Challenge" asp-route-id="@room.Key">@room.Value.Creator.NickName — @room.Value.Message</a>
+    }
+</div></div>
+<div class="card"><div class="card-body">
+    <h2 class="h4">@Localizer["Watch a game"]</h2>
+    @if (Model.OngoingChallenges.Count == 0) { <p class="text-muted mb-0">@Localizer["No games in progress."]</p> }
+    @foreach (var room in Model.OngoingChallenges)
+    {
+        <a class="d-block py-2" asp-controller="Games" asp-action="GetHtml" asp-route-id="@room.Key">@room.Value.Creator.NickName — @room.Value.Message</a>
+    }
+</div></div>

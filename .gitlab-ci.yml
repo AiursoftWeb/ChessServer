@@ -159,7 +159,7 @@ pack:
         - lint
         - test
         - validate_apkg
-        # validate_docker is absent when this template has no Dockerfile. If the
+        # validate_docker is absent when this chessServer has no Dockerfile. If the
         # job exists, pack still waits for it to succeed.
         - job: validate_docker
           optional: true

@@ -52,6 +52,9 @@ function ChessBuilder(color, statusControl, roleControl, soundControl) {
 }
 
 function AnduinChessBoard(color) {
+  const text = (key, fallback) => document.querySelector(`#chess-loc [data-key="${key}"]`)?.textContent ?? fallback;
+  const format = (key, fallback, value) => text(key, fallback).replace('{0}', () => value);
+  const colorName = color => color === WHITE_ABBREVIATION ? text('white', 'White') : text('black', 'Black');
   this.color = color;
   this.game = null;
   this.board = null;
@@ -65,6 +68,7 @@ function AnduinChessBoard(color) {
   this.statusText = "";
 
   this.config = {
+    pieceTheme: "/img/chesspieces/wikipedia/{piece}.png",
     orientation: this.color === BLACK_ABBREVIATION ? "black" : "white",
     draggable: true,
     dragoffBoard: "snapback",
@@ -150,14 +154,17 @@ function AnduinChessBoard(color) {
     return pieces.length > 0 ? pieces[0] : null;
   };
 
-  this.run = (player, gameId) => {
-    this.roleControl.innerHTML = `You are ${
-      this.color === WHITE_ABBREVIATION
-        ? "White"
-        : this.color === BLACK_ABBREVIATION
-        ? "Black"
-        : "Spectator"
-    } player.`;
+  this.disposed = false;
+  this.retries = 0;
+  this.reconnectTimer = null;
+  this.dispose = () => {
+    this.disposed = true;
+    clearTimeout(this.reconnectTimer);
+    this.socket?.close();
+    this.board?.destroy();
+  };
+  this.run = (gameId) => {
+    this.roleControl.textContent = this.color === 'm' ? text('watching', 'You are watching this game.') : format('role', 'You are playing {0}.', colorName(this.color));
 
     this._initSound();
 
@@ -167,26 +174,30 @@ function AnduinChessBoard(color) {
       const wsScheme =
         window.location.protocol === "https:" ? "wss://" : "ws://";
       this.socket = new WebSocket(
-        `${wsScheme}${window.location.host}/games/${gameId}.ws?playerId=${player}`
+        `${wsScheme}${window.location.host}/games/${gameId}.ws`
       );
 
+      this.board?.destroy();
       this.board = ChessBoard("board", this.config);
 
       this.socket.onmessage = (event) => {
         this._refresh(event.data);
       };
       this.socket.onclose = () => {
-        setTimeout(() => {
-          this.run(player, gameId);
-        }, 1000);
+        if (!this.disposed && this.retries++ < 5) {
+          this.reconnectTimer = setTimeout(() => this.run(gameId), 1000 * this.retries);
+        } else {
+          this.statusControl.textContent = text('closed', 'Connection closed. Refresh to reconnect.');
+        }
       };
 
       this._refresh(fen);
     };
 
     fetch(`/games/${gameId}.fen`)
-      .then((response) => response.text())
-      .then(completeInit);
+      .then((response) => { if (!response.ok) throw new Error('Room unavailable'); return response.text(); })
+      .then(fen => { if (!this.disposed) completeInit(fen); })
+      .catch(() => { this.statusControl.textContent = text('unavailable', 'Room unavailable. Return to the lobby.'); });
   };
 
   this._refresh = (newFEN) => {
@@ -212,24 +223,22 @@ function AnduinChessBoard(color) {
     this.isWhiteCheck = null;
     this.isBlackCheck = null;
 
-    this.statusText = `${moveColor} to move`;
+    this.statusText = format('turn', '{0} to move', colorName(this.game.turn()));
 
     if (this.game.isCheck()) {
       this.isWhiteCheck = moveColor === WHITE;
       this.isBlackCheck = moveColor === BLACK;
-      this.statusText += `, ${moveColor} is in check`;
+      this.statusText += ` — ${format('check', '{0} is in check', colorName(this.game.turn()))}`;
     }
 
     if (this.game.isCheckmate()) {
       this.isWhiteCheck = moveColor === WHITE;
       this.isBlackCheck = moveColor === BLACK;
-      this.statusText = `Game over, ${moveColor} is in checkmate, and winner is ${
-        this.game.turn() === WHITE_ABBREVIATION ? "Black" : "White"
-      }`;
+      this.statusText = format('winner', 'Checkmate. {0} wins.', colorName(this.game.turn() === WHITE_ABBREVIATION ? BLACK_ABBREVIATION : WHITE_ABBREVIATION));
     }
 
     if (this.game.isDraw()) {
-      this.statusText = "Game over, drawn position";
+      this.statusText = text("draw", "Game over — draw.");
     }
   };
 }

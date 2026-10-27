@@ -1,67 +1,38 @@
-﻿using System.Text.Json;
+using System.Text.Json;
 using Aiursoft.AiurObserver;
 using Aiursoft.AiurObserver.WebSocket.Server;
-using Aiursoft.ChessServer.Attributes;
 using Aiursoft.ChessServer.Data;
 using Aiursoft.ChessServer.Models;
 using Aiursoft.WebTools.Attributes;
-using Microsoft.AspNetCore.Connections;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Aiursoft.ChessServer.Controllers;
 
 [Route("chats")]
-public class ChatController(InMemoryDatabase database) : ControllerBase
+public class ChatController(InMemoryDatabase database) : ChessController
 {
-    [Route("{id:int}.ws")]
-    [EnforceWebSocket]
-    public async Task GetWebSocket([FromRoute] int id, [FromQuery][IsGuid] string playerId)
+    [HttpGet("{id:int}.ws"), EnforceWebSocket]
+    public async Task GetWebSocket(int id)
     {
-        if (!ModelState.IsValid)
+        var room = database.GetAcceptedChallenge(id);
+        if (room == null) { Response.StatusCode = 404; return; }
+        if (!IsSameOriginWebSocket()) { Response.StatusCode = 403; return; }
+        var player = CurrentPlayer();
+        using var lifetime = CancellationTokenSource.CreateLinkedTokenSource(HttpContext.RequestAborted, room.Lifetime);
+        var client = await HttpContext.AcceptWebSocketClient();
+        var outgoing = room.ChatChannel.Subscribe(message => client.Send(
+            JsonSerializer.Serialize(new ChatMessageResponse(message, player.Id)), lifetime.Token));
+        var incoming = client.Subscribe(async message =>
         {
-            return;
-        }
-        var playerGuid = Guid.Parse(playerId);
-        var player = database.GetOrAddPlayer(playerGuid);
-        var challenge = database.GetAcceptedChallenge(id);
-        if (challenge == null)
-        {
-            return;
-        }
-
-        var pusher = await HttpContext.AcceptWebSocketClient();
-        var outSub = challenge
-            .ChatChannel
-            .Map(t => new ChatMessageResponse(t, playerGuid))
-            .Subscribe(t => pusher.Send(JsonSerializer.Serialize(t), HttpContext.RequestAborted));
-
-        var inSub = pusher
-            .Filter(t => !string.IsNullOrWhiteSpace(t))
-            .Subscribe(async message =>
-            {
-                await challenge.ChatChannel.BroadcastAsync(new ChatMessage(message, player));
-            });
-
-        try
-        {
-            await pusher.Listen(HttpContext.RequestAborted);
-        }
-        catch (TaskCanceledException)
-        {
-            // Ignore. This happens when the client closes the connection.
-        }
-        catch (ConnectionAbortedException)
-        {
-            // Ignore. This happens when the client closes the connection.
-        }
+            if (string.IsNullOrWhiteSpace(message) || message.Length > 2000) return;
+            await room.ChatChannel.BroadcastAsync(new ChatMessage(message, player));
+        });
+        try { await client.Listen(lifetime.Token); }
         finally
         {
-            outSub.Unsubscribe();
-            inSub.Unsubscribe();
-            if (pusher.Connected)
-            {
-                await pusher.Close(HttpContext.RequestAborted);
-            }
+            outgoing.Unsubscribe();
+            incoming.Unsubscribe();
+            await client.Close(CancellationToken.None);
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿using Chess;
+using Chess;
 
 namespace Aiursoft.ChessServer.Models.ViewModels;
 

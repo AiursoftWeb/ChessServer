@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Repository configuration.
-app_name="chessserver"
+app_name="chessServer"
 extra_docker_args=()
 
 set -euo pipefail

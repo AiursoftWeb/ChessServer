@@ -1,111 +1,81 @@
-﻿using Aiursoft.Scanner.Abstractions;
 using Aiursoft.ChessServer.Models;
-using Aiursoft.InMemoryKvDb.AutoCreate;
-using Aiursoft.InMemoryKvDb.ManualCreate;
+using Aiursoft.Scanner.Abstractions;
 
 namespace Aiursoft.ChessServer.Data;
 
-// ReSharper disable once ClassNeverInstantiated.Global
-public class InMemoryDatabase(
-    LruMemoryStore<Player, Guid> playersDb,
-    LruMemoryStoreManualCreated<Challenge, int> challenges) : ISingletonDependency
+public class InMemoryDatabase : ISingletonDependency
 {
-    private IEnumerable<KeyValuePair<int, Challenge>> OpenChallenges =>
-        challenges.GetAllWithKeys().Where(t => t.Value is not AcceptedChallenge);
-    
-    private IEnumerable<KeyValuePair<int, Challenge>> OnGoingChallenges =>
-        challenges.GetAllWithKeys().Where(t => t.Value is AcceptedChallenge);
-
-    public Player GetOrAddPlayer(Guid id)
-    {
-        return playersDb.GetOrAdd(id);
-    }
+    private readonly Dictionary<int, Challenge> _challenges = new();
+    private readonly object _gate = new();
+    private int _nextId;
 
     public IReadOnlyCollection<KeyValuePair<int, Challenge>> GetPublicOpenChallenges()
     {
-        return OpenChallenges
-            .Where(t => t.Value.Permission == ChallengePermission.Public)
-            .ToArray();
-    }
-    
-    public IReadOnlyCollection<KeyValuePair<int, Challenge>> GetOnGoingOpenChallenges()
-    {
-        return OnGoingChallenges
-            .Where(t => t.Value.Permission == ChallengePermission.Public)
-            .ToArray();
-    }
-    
-    public int? GetMyOpenChallenge(Guid playerId)
-    {
-        if (OpenChallenges.All(t => t.Value.Creator.Id != playerId))
-        {
-            return null;
-        }
-        
-        return OpenChallenges
-            .FirstOrDefault(t => t.Value.Creator.Id == playerId)
-            .Key;
-    }
-    
-    public Challenge? GetChallenge(int id)
-    {
-        return challenges.Get(id);
-    }
-    
-    public AcceptedChallenge? GetAcceptedChallenge(int id)
-    {
-        var challenge = GetChallenge(id);
-        return challenge as AcceptedChallenge;
+        lock (_gate) return _challenges.Where(p => p.Value is not AcceptedChallenge && p.Value.Permission == ChallengePermission.Public).ToArray();
     }
 
-    public async Task PatchChallengeAsAcceptedAsync(int id, Guid accepter)
+    public IReadOnlyCollection<KeyValuePair<int, Challenge>> GetOnGoingOpenChallenges()
     {
-        var challenge = challenges.Get(id);
-        if (challenge == null)
-        {
-            throw new InvalidOperationException("Challenge not found!");
-        }
-        if (challenge.Creator.Id == accepter)
-        {
-            throw new InvalidOperationException("Cannot accept your own challenge!");
-        }
-        if (challenge is AcceptedChallenge)
-        {
-            throw new InvalidOperationException("Challenge already accepted!");
-        }
-        
-        var newChallenge = new AcceptedChallenge(
-            creator: challenge.Creator,
-            accepter: GetOrAddPlayer(accepter),
-            message: challenge.Message,
-            roleRule: challenge.RoleRule,
-            timeLimit: challenge.TimeLimit,
-            permission: challenge.Permission,
-            challengeChangedChannel: challenge.ChallengeChangedChannel);
-        
-        challenges.AddToCache(id, newChallenge);
-        await challenges.Get(id)!.ChallengeChangedChannel.BroadcastAsync("game-started");
+        lock (_gate) return _challenges.Where(p => p.Value is AcceptedChallenge && p.Value.Permission == ChallengePermission.Public).ToArray();
     }
-    
-    public int? GetFirstPublicChallengeKey()
+
+    public int? GetMyOpenChallenge(Guid playerId)
     {
-        if (OpenChallenges.All(t => t.Value.Permission != ChallengePermission.Public))
-        {
-            return null;
-        }
-        
-        return OpenChallenges
-            .FirstOrDefault(t => t.Value.Permission == ChallengePermission.Public)
-            .Key;
+        lock (_gate) return _challenges.Where(p => p.Value.Creator.Id == playerId && p.Value is not AcceptedChallenge).Select(p => (int?)p.Key).FirstOrDefault();
     }
-    
+
+    public Challenge? GetChallenge(int id)
+    {
+        lock (_gate) return _challenges.GetValueOrDefault(id);
+    }
+
+    public AcceptedChallenge? GetAcceptedChallenge(int id) => GetChallenge(id) as AcceptedChallenge;
+
+    public int CreateChallenge(Challenge challenge)
+    {
+        lock (_gate)
+        {
+            if (_challenges.Count >= 256) throw new InvalidOperationException("All rooms are busy. Please try again later.");
+            if (_challenges.Values.Any(c => c.Creator.Id == challenge.Creator.Id && c is not AcceptedChallenge))
+                throw new InvalidOperationException("You already have an open challenge.");
+            var id = ++_nextId;
+            _challenges.Add(id, challenge);
+            return id;
+        }
+    }
+
+    public async Task AcceptAsync(int id, Player accepter)
+    {
+        AcceptedChallenge accepted;
+        lock (_gate)
+        {
+            var challenge = _challenges.GetValueOrDefault(id) ?? throw new InvalidOperationException("Challenge not found.");
+            if (challenge is AcceptedChallenge || challenge.Creator.Id == accepter.Id)
+                throw new InvalidOperationException("This challenge cannot be accepted.");
+            accepted = new AcceptedChallenge(challenge.Creator, accepter, challenge.Message, challenge.RoleRule,
+                challenge.TimeLimit, challenge.Permission, challenge.ChallengeChangedChannel) { Difficulty = challenge.Difficulty, LifetimeSource = challenge.LifetimeSource };
+            _challenges[id] = accepted;
+        }
+        await accepted.ChallengeChangedChannel.BroadcastAsync("game-started");
+    }
+
     public void DeleteChallenge(int id)
     {
-        challenges.Remove(id);
+        Challenge? removed;
+        lock (_gate) { _challenges.Remove(id, out removed); }
+        removed?.End();
     }
-    
-    public void CreateChallenge(int id, Challenge challenge)
+
+    public int RemoveExpired(DateTimeOffset now)
     {
-        challenges.AddToCache(id, challenge);
+        KeyValuePair<int, Challenge>[] expired;
+        lock (_gate)
+        {
+            expired = _challenges.Where(p => now - p.Value.LastActivity > (p.Value is AcceptedChallenge
+                ? TimeSpan.FromMinutes(30) : TimeSpan.FromMinutes(10))).ToArray();
+            foreach (var pair in expired) _challenges.Remove(pair.Key);
+        }
+        foreach (var pair in expired) pair.Value.End();
+        return expired.Length;
     }
 }
