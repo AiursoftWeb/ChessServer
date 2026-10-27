@@ -1,5 +1,116 @@
-<div class="container py-5 text-center">
-    <h1 class="display-4">@Localizer["ChessServer"]</h1>
-    <p class="lead">@Localizer["Play against the computer, challenge a friend, or watch a game."]</p>
-    <a class="btn btn-primary btn-lg" asp-controller="Lobby" asp-action="Index">@Localizer["Play chess"]</a>
-</div>
+@model Aiursoft.ChessServer.Models.HomeViewModels.IndexViewModel
+
+@* ReSharper disable once Razor.SectionNotResolved *@
+@section styles {
+    <link rel="stylesheet" href="~/styles/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/styles/marketing.css" asp-append-version="true" />
+}
+
+<vc:marketing-navbar></vc:marketing-navbar>
+
+<section class="landing-intro text-bg-dark pt-5 pt-lg-6 pb-5 pb-lg-7">
+    <div class="landing-intro-content container h-100">
+        <div class="row align-items-center h-100 g-5">
+            <div class="col-lg-5 mx-auto">
+                <span class="badge badge-subtle-primary p-1">@Localizer["Open Source"]</span>
+                <span class="badge badge-subtle-primary p-1">@Localizer["Free"]</span>
+                <span class="badge badge-subtle-primary p-1">@Localizer["MIT Licence"]</span>
+                <h1 id="main-slogan" class="my-4 text-white display-4">
+                    @Localizer["Your next move."] <span class="text-primary">@Localizer["Your next challenge."]</span>
+                </h1>
+                <p class="text-lg text-white-50">@Localizer["Play against the computer, challenge a friend, or watch a game. All in your browser."]</p>
+                <div class="my-4 d-flex gap-2 flex-wrap">
+                    <a asp-controller="Lobby" asp-action="Index" class="btn btn-primary btn-lg btn-pill">
+                        <i class="align-middle" data-lucide="play"></i> @Localizer["Play chess"]
+                    </a>
+                    <a href="#features" class="btn btn-outline-light btn-lg btn-pill">
+                        @Localizer["Explore the features"]
+                    </a>
+                </div>
+                <p class="text-white-50 small">@Localizer["Sign in with your organization account to play."]</p>
+            </div>
+            <div class="col-lg-7 mx-auto text-center">
+                <div class="landing-intro-screenshot">
+                    <img src="~/images/chess-game.png" asp-append-version="true" alt="@Localizer["ChessServer computer game"]" class="img-fluid" />
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="features" class="py-6">
+    <div class="container">
+        <div class="mb-5 text-center">
+            <span class="text-uppercase text-primary text-sm fw-medium mb-1 d-block">@Localizer["Make your move"]</span>
+            <h2 class="h1">@Localizer["A game for every kind of player."]</h2>
+        </div>
+        <div class="row">
+            <div class="col-12 col-md-6 col-lg-4 d-flex">
+                <div class="d-flex align-items-start py-3">
+                    <div class="landing-feature"><i data-lucide="cpu"></i></div>
+                    <div class="flex-grow-1">
+                        <h3 class="h4 mt-0">@Localizer["Play the computer"]</h3>
+                        <p class="fs-lg">@Localizer["Choose from eight levels, from random legal moves for beginners to deeper engine searches."]</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4 d-flex">
+                <div class="d-flex align-items-start py-3">
+                    <div class="landing-feature"><i data-lucide="users"></i></div>
+                    <div class="flex-grow-1">
+                        <h3 class="h4 mt-0">@Localizer["Challenge a friend"]</h3>
+                        <p class="fs-lg">@Localizer["Create a public or unlisted challenge, share the link, and choose your side."]</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4 d-flex">
+                <div class="d-flex align-items-start py-3">
+                    <div class="landing-feature"><i data-lucide="eye"></i></div>
+                    <div class="flex-grow-1">
+                        <h3 class="h4 mt-0">@Localizer["Watch live games"]</h3>
+                        <p class="fs-lg">@Localizer["Follow public games as they happen. Spectators can watch without changing the board."]</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4 d-flex">
+                <div class="d-flex align-items-start py-3">
+                    <div class="landing-feature"><i data-lucide="messages-square"></i></div>
+                    <div class="flex-grow-1">
+                        <h3 class="h4 mt-0">@Localizer["Chat at the board"]</h3>
+                        <p class="fs-lg">@Localizer["Talk with the players and spectators while the game unfolds."]</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4 d-flex">
+                <div class="d-flex align-items-start py-3">
+                    <div class="landing-feature"><i data-lucide="file-down"></i></div>
+                    <div class="flex-grow-1">
+                        <h3 class="h4 mt-0">@Localizer["Keep the moves"]</h3>
+                        <p class="fs-lg">@Localizer["Export the game as PGN to review the moves in your favorite chess tool."]</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4 d-flex">
+                <div class="d-flex align-items-start py-3">
+                    <div class="landing-feature"><i data-lucide="key-round"></i></div>
+                    <div class="flex-grow-1">
+                        <h3 class="h4 mt-0">@Localizer["One familiar sign-in"]</h3>
+                        <p class="fs-lg">@Localizer["Use your organization account. Your identity stays with you across games."]</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-6 bg-body-tertiary">
+    <div class="container text-center">
+        <h2 class="h1 mb-3">@Localizer["Ready for a game?"]</h2>
+        <p class="lead mb-4">@Localizer["Open the lobby to start a computer game, create a challenge, or find a game to watch."]</p>
+        <a asp-controller="Lobby" asp-action="Index" class="btn btn-primary btn-lg btn-pill">
+            <i class="align-middle" data-lucide="play"></i> @Localizer["Play chess"]
+        </a>
+    </div>
+</section>
+
+<vc:marketing-footer></vc:marketing-footer>
