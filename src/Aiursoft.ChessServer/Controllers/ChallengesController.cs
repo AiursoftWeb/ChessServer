@@ -73,12 +73,13 @@ public class ChallengesController(InMemoryDatabase database) : ChessController
         if (room == null) { Response.StatusCode = 404; return; }
         if (!IsSameOriginWebSocket()) { Response.StatusCode = 403; return; }
         using var lifetime = CancellationTokenSource.CreateLinkedTokenSource(HttpContext.RequestAborted, room.Lifetime);
+        var token = lifetime.Token;
         var client = await HttpContext.AcceptWebSocketClient();
-        var subscription = room.ChallengeChangedChannel.Subscribe(t => client.Send(t, lifetime.Token));
+        var subscription = room.ChallengeChangedChannel.Subscribe(t => client.Send(t, token));
         try
         {
-            if (database.GetAcceptedChallenge(id) != null) await client.Send("game-started", lifetime.Token);
-            await client.Listen(lifetime.Token);
+            if (database.GetAcceptedChallenge(id) != null) await client.Send("game-started", token);
+            await client.Listen(token);
         }
         finally { subscription.Unsubscribe(); await client.Close(CancellationToken.None); }
     }

@@ -1,9 +1,9 @@
-import ChessBuilder from './chessboard/chessboard.js';
+const { default: ChessBuilder } = await import(document.querySelector('[data-chess-module=board]').href);
 const id = document.getElementById('game-room').dataset.gameId;
 const [colorResponse, infoResponse] = await Promise.all([fetch(`/games/${id}.color`), fetch(`/games/${id}.json`)]);
 if (colorResponse.ok && infoResponse.ok) {
     const info = await infoResponse.json();
-    document.getElementById('versus-info').textContent = `${info.creator} vs ${info.accepter}`;
+    document.getElementById('versus-info').textContent = `${info.Creator} vs ${info.Accepter}`;
     const board = new ChessBuilder(await colorResponse.text(), document.getElementById('status'), document.getElementById('role'), document.getElementById('pieceMoveSound')).default();
     board.run(id);
     window.addEventListener('pagehide', () => board.dispose(), { once: true });

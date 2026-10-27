@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Aiursoft.ChessServer.Controllers;
 
 [Authorize]
+[ResponseCache(NoStore = true, Location = ResponseCacheLocation.None)]
 public abstract class ChessController : Controller
 {
     protected Guid PlayerId => Guid.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)!);

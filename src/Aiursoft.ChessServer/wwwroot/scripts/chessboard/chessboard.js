@@ -1,11 +1,11 @@
-import { Chess } from "../../node_modules/chess.js/dist/esm/chess.js";
-import {
+const { Chess } = await import(document.querySelector('[data-chess-module=rules]').href);
+const {
   initSoundForMobile,
   initSoundForPC,
   playSoundForPC,
   playSoundForMobile,
-} from "./sound.js";
-import {
+} = await import(document.querySelector('[data-chess-module=sound]').href);
+const {
   buildOnDragStart,
   buildOnDrop,
   buildOnSnapEnd,
@@ -15,7 +15,7 @@ import {
   WHITE,
   BLACK,
   findMove,
-} from "./defaultConfig.js";
+} = await import(document.querySelector('[data-chess-module=config]').href);
 
 /**
  * use this builder to build a chess with default configuration
@@ -157,9 +157,19 @@ function AnduinChessBoard(color) {
   this.disposed = false;
   this.retries = 0;
   this.reconnectTimer = null;
+  let previousWidth = 0;
+  this.resizeObserver = new ResizeObserver(entries => {
+    const width = entries[0].contentRect.width;
+    if (width !== previousWidth) {
+      previousWidth = width;
+      this.board?.resize();
+    }
+  });
+  this.resizeObserver.observe(document.getElementById('board').parentElement);
   this.dispose = () => {
     this.disposed = true;
     clearTimeout(this.reconnectTimer);
+    this.resizeObserver.disconnect();
     this.socket?.close();
     this.board?.destroy();
   };
@@ -212,6 +222,17 @@ function AnduinChessBoard(color) {
 
     this._updateStatus();
     this.render();
+    fetch(`/games/${document.getElementById('game-room').dataset.gameId}.json`, {cache: 'no-store'})
+      .then(response => response.ok ? response.json() : null)
+      .then(info => {
+        if (info && this.game.fen() === newFEN) {
+          this.serverEnded = info.Game.Ended;
+          if (this.serverEnded && info.Game.Won === null) {
+            this.statusText = text('draw', 'Game over — draw.');
+            this.render();
+          }
+        }
+      }).catch(() => {});
   };
 
   this._updateStatus = () => {

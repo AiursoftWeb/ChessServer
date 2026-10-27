@@ -26,7 +26,7 @@ function buildOnDragStart(globalParams) {
       return false;
     }
 
-    if (game.isGameOver()) return false;
+    if (game.isGameOver() || globalParams.serverEnded) return false;
 
     if (
       (game.turn() === WHITE_ABBREVIATION &&

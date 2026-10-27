@@ -1,7 +1,12 @@
 @model Aiursoft.ChessServer.Models.ViewModels.RoomViewModel
+@* ReSharper disable once Razor.SectionNotResolved *@
 @section styles {
-    <link rel="stylesheet" href="~/node_modules/@@chrisoakman/chessboardjs/dist/chessboard-1.0.0.min.css" />
+    <link rel="stylesheet" href="~/node_modules/%40chrisoakman/chessboardjs/dist/chessboard-1.0.0.min.css" />
     <link rel="stylesheet" href="~/css/chess.css" asp-append-version="true" />
+    <link rel="modulepreload" href="~/scripts/chessboard/chessboard.js" asp-append-version="true" data-chess-module="board" />
+    <link rel="modulepreload" href="~/scripts/chessboard/defaultConfig.js" asp-append-version="true" data-chess-module="config" />
+    <link rel="modulepreload" href="~/scripts/chessboard/sound.js" asp-append-version="true" data-chess-module="sound" />
+    <link rel="modulepreload" href="~/node_modules/chess.js/dist/esm/chess.js" asp-append-version="true" data-chess-module="rules" />
 }
 <div id="game-room" data-game-id="@Model.Id">
     <div id="chess-loc" hidden>
@@ -37,8 +42,9 @@
         </div></div></div>
     </div>
 </div>
+@* ReSharper disable once Razor.SectionNotResolved *@
 @section scripts {
     <script src="~/node_modules/jquery/dist/jquery.min.js"></script>
-    <script src="~/node_modules/@@chrisoakman/chessboardjs/dist/chessboard-1.0.0.min.js"></script>
+    <script src="~/node_modules/%40chrisoakman/chessboardjs/dist/chessboard-1.0.0.min.js"></script>
     <script type="module" src="~/scripts/game.js" asp-append-version="true"></script>
 }

@@ -15,7 +15,8 @@ public class PveController(InMemoryDatabase database) : ChessController
         try
         {
             id = database.CreateChallenge(new Challenge(CurrentPlayer(), "Play against computer", RoleRule.CreatorWhite,
-                TimeSpan.MaxValue, ChallengePermission.Public) { Difficulty = difficulty });
+                TimeSpan.MaxValue, ChallengePermission.Public)
+            { Difficulty = difficulty });
             await database.AcceptAsync(id, new Player(Guid.NewGuid()) { NickName = $"Computer — level {difficulty}" });
         }
         catch (InvalidOperationException e) { return BadRequest(e.Message); }

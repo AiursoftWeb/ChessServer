@@ -177,6 +177,9 @@
   <data name="Checkstyle or similar needed" xml:space="preserve">
     <value>需要 Checkstyle 或类似工具</value>
   </data>
+  <data name="ChessServer" xml:space="preserve">
+    <value>国际象棋服务器</value>
+  </data>
   <data name="Comes with Docker support for simplified and consistent deployments." xml:space="preserve">
     <value>自带 Docker 支持，可简化并统一部署流程。</value>
   </data>
@@ -602,6 +605,12 @@
   </data>
   <data name="Pint or similar needed" xml:space="preserve">
     <value>需要 Pint 或类似工具</value>
+  </data>
+  <data name="Play against the computer, challenge a friend, or watch a game." xml:space="preserve">
+    <value>与电脑对弈、挑战好友，或观看棋局。</value>
+  </data>
+  <data name="Play chess" xml:space="preserve">
+    <value>开始下棋</value>
   </data>
   <data name="Pre-configured /healthz and readiness probes" xml:space="preserve">
     <value>预配置的 /healthz 和就绪探针</value>

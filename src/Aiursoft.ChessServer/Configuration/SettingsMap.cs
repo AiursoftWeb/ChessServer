@@ -28,7 +28,7 @@ public class SettingsMap
             Name = Localizer["Project Name"],
             Description = Localizer["The name of the project displayed in the frontend."],
             Type = SettingType.Text,
-            DefaultValue = "Aiursoft Template"
+            DefaultValue = "ChessServer"
         },
         new GlobalSettingDefinition
         {

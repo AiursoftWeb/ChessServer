@@ -1,7 +1,7 @@
 <Project Sdk="Aiursoft.Apkg.Sdk">
   <PropertyGroup>
-    <PackageName>aiursoft-chessServer</PackageName>
-    <PackageVersion>1.0.2</PackageVersion>
+    <PackageName>aiursoft-chessserver</PackageName>
+    <PackageVersion>1.0.0</PackageVersion>
     <PackageAuthors>Anduin Xue &lt;anduin@aiursoft.com&gt;</PackageAuthors>
     <PackageDescription>Aiursoft ChessServer Web Application</PackageDescription>
     <TargetDistro>anduinos</TargetDistro>
@@ -18,8 +18,8 @@
     <PrebuildCommand Run="dotnet publish Aiursoft.ChessServer.csproj --configuration Release --no-self-contained --runtime linux-x64 --output bin/publish/" Condition="'$(Arch)' == 'amd64'" />
     <PrebuildCommand Run="dotnet publish Aiursoft.ChessServer.csproj --configuration Release --no-self-contained --runtime linux-arm64 --output bin/publish/" Condition="'$(Arch)' == 'arm64'" />
     <PrebuildCommand Run="cp -r wwwroot/* bin/publish/wwwroot/" />
-    <PrebuildCommand Run="sed -i 's|DataSource=app.db|DataSource=/var/lib/aiursoft-chessServer/app.db|g' bin/publish/appsettings.json" />
-    <PrebuildCommand Run="sed -i 's|/tmp/data|/var/lib/aiursoft-chessServer/storage|g' bin/publish/appsettings.json" />
+    <PrebuildCommand Run="sed -i 's|DataSource=app.db|DataSource=/var/lib/aiursoft-chessserver/app.db|g' bin/publish/appsettings.json" />
+    <PrebuildCommand Run="sed -i 's|/tmp/data|/var/lib/aiursoft-chessserver/storage|g' bin/publish/appsettings.json" />
   </ItemGroup>
 
   <ItemGroup>
@@ -28,8 +28,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <IncludeFolder Include="bin/publish/" Target="/usr/share/aiursoft-chessServer" />
-    <ConfFile Include="bin/publish/appsettings.json" Target="/etc/aiursoft-chessServer/appsettings.json" />
+    <IncludeFolder Include="bin/publish/" Target="/usr/share/aiursoft-chessserver" />
+    <ConfFile Include="bin/publish/appsettings.json" Target="/etc/aiursoft-chessserver/appsettings.json" />
   </ItemGroup>
 
   <ItemGroup>
@@ -37,6 +37,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <SystemdUnit Include="aiursoft-chessServer.service" AutoEnable="true" />
+    <SystemdUnit Include="aiursoft-chessserver.service" AutoEnable="true" />
   </ItemGroup>
 </Project>

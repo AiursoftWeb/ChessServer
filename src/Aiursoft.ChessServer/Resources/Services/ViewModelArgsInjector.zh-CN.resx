@@ -51,8 +51,17 @@
   <data name="Change Profile" xml:space="preserve">
     <value>修改个人资料</value>
   </data>
+  <data name="Chess" xml:space="preserve">
+    <value>Chess</value>
+  </data>
+  <data name="Chess room" xml:space="preserve">
+    <value>国际象棋房间</value>
+  </data>
   <data name="Click to login" xml:space="preserve">
     <value>点击登录</value>
+  </data>
+  <data name="Create a challenge" xml:space="preserve">
+    <value>创建挑战</value>
   </data>
   <data name="Create Role" xml:space="preserve">
     <value>创建角色</value>
@@ -125,6 +134,9 @@
   </data>
   <data name="Personal" xml:space="preserve">
     <value>个人</value>
+  </data>
+  <data name="Play chess" xml:space="preserve">
+    <value>下棋</value>
   </data>
   <data name="Profile" xml:space="preserve">
     <value>个人资料</value>

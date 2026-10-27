@@ -32,7 +32,9 @@ public class ChessTests : TestBase
         await RegisterAndLoginAsync();
         var response = await PostForm("/challenge/create", new Dictionary<string, string>
         {
-            ["Message"] = "A real challenge", ["RoleRule"] = "0", ["Permission"] = "1",
+            ["Message"] = "A real challenge",
+            ["RoleRule"] = "0",
+            ["Permission"] = "1",
             ["CreatorId"] = Guid.Empty.ToString()
         });
         Assert.AreEqual(HttpStatusCode.Found, response.StatusCode);
@@ -165,6 +167,54 @@ public class ChessTests : TestBase
             moves.Add(move);
         }
         Assert.IsGreaterThan(5, moves.Count);
+    }
+
+    [TestMethod]
+    public void RepeatedPositionFinishesTheGameInsteadOfKeepingItRunningForever()
+    {
+        var game = new Game();
+        foreach (var move in new[] { "Nf3", "Nf6", "Ng1", "Ng8", "Nf3", "Nf6", "Ng1", "Ng8" }) game.Board.Move(move);
+        Assert.IsTrue(game.Board.IsEndGame);
+    }
+
+    [TestMethod]
+    public async Task CreatingComputerGameDoesNotStartAnInternalWebSocket()
+    {
+        await RegisterAndLoginAsync();
+        var response = await PostForm("/pve/new", new Dictionary<string, string> { ["difficulty"] = "1" }, tokenUrl: "/Lobby");
+        Assert.AreEqual(HttpStatusCode.Found, response.StatusCode);
+        var room = GetService<InMemoryDatabase>().GetOnGoingOpenChallenges().Single().Value as AcceptedChallenge;
+        Assert.IsNotNull(room);
+        Assert.AreEqual(0, room.Game.FenChangedChannel.GetListenerCount());
+        Assert.IsFalse(room.Game.IsThinking);
+    }
+
+    [TestMethod]
+    public async Task ExpiringAnActiveRoomTerminatesItsRealWebSocket()
+    {
+        await RegisterAndLoginAsync();
+        var response = await PostForm("/pve/new", new Dictionary<string, string> { ["difficulty"] = "1" }, tokenUrl: "/Lobby");
+        Assert.AreEqual(HttpStatusCode.Found, response.StatusCode);
+        var database = GetService<InMemoryDatabase>();
+        var pair = database.GetOnGoingOpenChallenges().Single();
+        using var socket = new ClientWebSocket();
+        socket.Options.Cookies = Cookies;
+        socket.Options.SetRequestHeader("Origin", Http.BaseAddress!.GetLeftPart(UriPartial.Authority));
+        using var deadline = new CancellationTokenSource(TimeSpan.FromSeconds(5));
+        await socket.ConnectAsync(new UriBuilder(Http.BaseAddress) { Scheme = "ws", Path = $"/games/{pair.Key}.ws" }.Uri, deadline.Token);
+        var buffer = new byte[4096];
+        await socket.ReceiveAsync(buffer, deadline.Token);
+        pair.Value.LastActivity = DateTimeOffset.UtcNow.AddHours(-1);
+        Assert.AreEqual(1, database.RemoveExpired(DateTimeOffset.UtcNow));
+        try
+        {
+            var result = await socket.ReceiveAsync(buffer, deadline.Token);
+            Assert.AreEqual(WebSocketMessageType.Close, result.MessageType);
+        }
+        catch (WebSocketException) { /* Expiration aborts the receive loop. */ }
+        Assert.IsFalse(deadline.IsCancellationRequested);
+        Assert.IsNull(database.GetChallenge(pair.Key));
+        Assert.AreEqual(0, ((AcceptedChallenge)pair.Value).Game.FenChangedChannel.GetListenerCount());
     }
 
     [TestMethod]

@@ -32,7 +32,6 @@
     <ProjectReference Include="..\Aiursoft.ChessServer.Sqlite\Aiursoft.ChessServer.Sqlite.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Aiursoft.AiurObserver.Extensions" Version="10.0.7" />
     <PackageReference Include="Aiursoft.AiurObserver.WebSocket.Server" Version="10.0.16" />
     <PackageReference Include="Gera.Chess" Version="1.2.0" />
     <PackageReference Include="LynxChess.Lynx" Version="1.11.0" />

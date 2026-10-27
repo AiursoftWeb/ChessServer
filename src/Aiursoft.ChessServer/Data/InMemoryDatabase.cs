@@ -53,7 +53,8 @@ public class InMemoryDatabase : ISingletonDependency
             if (challenge is AcceptedChallenge || challenge.Creator.Id == accepter.Id)
                 throw new InvalidOperationException("This challenge cannot be accepted.");
             accepted = new AcceptedChallenge(challenge.Creator, accepter, challenge.Message, challenge.RoleRule,
-                challenge.TimeLimit, challenge.Permission, challenge.ChallengeChangedChannel) { Difficulty = challenge.Difficulty, LifetimeSource = challenge.LifetimeSource };
+                challenge.TimeLimit, challenge.Permission, challenge.ChallengeChangedChannel)
+            { Difficulty = challenge.Difficulty, LifetimeSource = challenge.LifetimeSource };
             _challenges[id] = accepted;
         }
         await accepted.ChallengeChangedChannel.BroadcastAsync("game-started");
