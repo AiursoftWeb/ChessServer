@@ -63,8 +63,14 @@
   <data name="Room name" xml:space="preserve">
     <value>Numele camerei</value>
   </data>
+  <data name="Time per player" xml:space="preserve">
+    <value>Timp per jucător</value>
+  </data>
   <data name="Time preference" xml:space="preserve">
     <value>Preferința de timp</value>
+  </data>
+  <data name="Unlimited" xml:space="preserve">
+    <value>Nelimitat</value>
   </data>
   <data name="Unlisted — share the room link" xml:space="preserve">
     <value>Nelistată — distribuie linkul camerei</value>

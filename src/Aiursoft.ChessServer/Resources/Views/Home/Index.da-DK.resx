@@ -33,6 +33,9 @@
   <data name="A fully responsive layout that looks great on both desktop and mobile devices." xml:space="preserve">
     <value>En fuldt responsiv layout, der ser fantastisk ud på både stationære og mobile enheder.</value>
   </data>
+  <data name="A game for every kind of player." xml:space="preserve">
+    <value>Et spil for enhver type spiller.</value>
+  </data>
   <data name="A modern, feature-rich, and highly extensible foundation for your next web application." xml:space="preserve">
     <value>En moderne, funktionsrig og meget udvidelsesparat fundament til din næste webapplikation.</value>
   </data>
@@ -171,11 +174,23 @@
   <data name="Built-in User Management" xml:space="preserve">
     <value>Indbygget brugeradministration</value>
   </data>
+  <data name="Challenge a friend" xml:space="preserve">
+    <value>Udfordr en ven</value>
+  </data>
+  <data name="Chat at the board" xml:space="preserve">
+    <value>Chat ved brættet</value>
+  </data>
   <data name="Checkstyle or similar needed" xml:space="preserve">
     <value>Checkstyle eller lignende kræves</value>
   </data>
   <data name="ChessServer" xml:space="preserve">
     <value>Skakserver</value>
+  </data>
+  <data name="ChessServer computer game" xml:space="preserve">
+    <value>ChessServer-computerspil</value>
+  </data>
+  <data name="Choose from eight levels, from random legal moves for beginners to deeper engine searches." xml:space="preserve">
+    <value>Vælg mellem otte sværhedsgrader, fra tilfældige lovlige træk for begyndere til mere omfattende søgninger med skakmotoren.</value>
   </data>
   <data name="Comes with Docker support for simplified and consistent deployments." xml:space="preserve">
     <value>Kommer med Docker-understøttelse for forenklet og konsistent implementering.</value>
@@ -206,6 +221,9 @@
   </data>
   <data name="Coverage Report" xml:space="preserve">
     <value>Dækningsoversigt</value>
+  </data>
+  <data name="Create a public or unlisted challenge, share the link, and choose your side." xml:space="preserve">
+    <value>Opret en offentlig eller ikke-opført udfordring, del linket, og vælg din side.</value>
   </data>
   <data name="Cross Platform" xml:space="preserve">
     <value>Krydssystem</value>
@@ -306,6 +324,12 @@
   <data name="Entity Framework Core included" xml:space="preserve">
     <value>Entity Framework Core inkluderet</value>
   </data>
+  <data name="Explore the features" xml:space="preserve">
+    <value>Udforsk funktionerne</value>
+  </data>
+  <data name="Export the game as PGN to review the moves in your favorite chess tool." xml:space="preserve">
+    <value>Eksportér spillet som PGN for at gennemgå træk i din foretrukne skakapplikation.</value>
+  </data>
   <data name="FAQ" xml:space="preserve">
     <value>OFTE STILLEDE SPØRGSMÅL</value>
   </data>
@@ -335,6 +359,9 @@
   </data>
   <data name="Flexible API" xml:space="preserve">
     <value>Fleksibel API</value>
+  </data>
+  <data name="Follow public games as they happen. Spectators can watch without changing the board." xml:space="preserve">
+    <value>Følg offentlige partier, mens de spilles. Tilskuere kan følge med uden at ændre på brættet.</value>
   </data>
   <data name="for any inquiries or to report issues." xml:space="preserve">
     <value>for eventuelle henvendelser eller for at rapportere problemer.</value>
@@ -489,11 +516,17 @@
   <data name="K8s / Swarm Ready" xml:space="preserve">
     <value>K8s / Swarm Klar</value>
   </data>
+  <data name="Keep the moves" xml:space="preserve">
+    <value>Gem dine træk</value>
+  </data>
   <data name="Lint Check" xml:space="preserve">
     <value>Lint-check</value>
   </data>
   <data name="Maintain High Code Quality" xml:space="preserve">
     <value>Vedligehold høj kodekvalitet</value>
+  </data>
+  <data name="Make your move" xml:space="preserve">
+    <value>Gør dit træk</value>
   </data>
   <data name="Management Dashboard" xml:space="preserve">
     <value>Administrationsdashboard</value>
@@ -582,8 +615,14 @@
   <data name="One Click Start" xml:space="preserve">
     <value>Én-klik-start</value>
   </data>
+  <data name="One familiar sign-in" xml:space="preserve">
+    <value>Ét velkendt login</value>
+  </data>
   <data name="Open Source" xml:space="preserve">
     <value>Open Source</value>
+  </data>
+  <data name="Open the lobby to start a computer game, create a challenge, or find a game to watch." xml:space="preserve">
+    <value>Åbn lobbyen for at starte et computerspil, oprette en udfordring eller finde et spil at se.</value>
   </data>
   <data name="OpenID Connect Integration" xml:space="preserve">
     <value>OpenID Connect-integration</value>
@@ -606,8 +645,14 @@
   <data name="Play against the computer, challenge a friend, or watch a game." xml:space="preserve">
     <value>Spil mod computeren, udfordr en ven, eller se et spil.</value>
   </data>
+  <data name="Play against the computer, challenge a friend, or watch a game. All in your browser." xml:space="preserve">
+    <value>Spil mod computeren, udfordr en ven, eller se et spil. Alt sammen i din browser.</value>
+  </data>
   <data name="Play chess" xml:space="preserve">
     <value>Spil skak</value>
+  </data>
+  <data name="Play the computer" xml:space="preserve">
+    <value>Spil mod computeren</value>
   </data>
   <data name="Pre-configured /healthz and readiness probes" xml:space="preserve">
     <value>Forudkonfigurerede /healthz- og readiness-prober</value>
@@ -636,6 +681,9 @@
   <data name="Read the document" xml:space="preserve">
     <value>Læs dokumentationen</value>
   </data>
+  <data name="Ready for a game?" xml:space="preserve">
+    <value>Klar til et parti?</value>
+  </data>
   <data name="Requires Laravel Socialite config" xml:space="preserve">
     <value>Kræver Laravel Socialite-konfiguration</value>
   </data>
@@ -662,6 +710,9 @@
   </data>
   <data name="Shift with confidence" xml:space="preserve">
     <value>Skift med tillid</value>
+  </data>
+  <data name="Sign in with your organization account to play." xml:space="preserve">
+    <value>Log ind med din organisationskonto for at spille.</value>
   </data>
   <data name="Simple &amp; Easy" xml:space="preserve">
     <value>Enkel &amp; Nem</value>
@@ -720,6 +771,9 @@
   <data name="Supports JetBrains Rider for easy code style fixes." xml:space="preserve">
     <value>Støtter JetBrains Rider til nemme justeringer af kodeformat.</value>
   </data>
+  <data name="Talk with the players and spectators while the game unfolds." xml:space="preserve">
+    <value>Tal med spillerne og tilskuerne, mens partiet er i gang.</value>
+  </data>
   <data name="Task Runner" xml:space="preserve">
     <value>Opdriftsudførelse</value>
   </data>
@@ -777,8 +831,14 @@
   <data name="Use it as a foundation for your SaaS, a backend for your mobile app, a corporate website, or a personal blog. The possibilities are endless." xml:space="preserve">
     <value>Brug den som fundament for din SaaS, som backend til din mobilapp, en virksomhedshjemmeside eller en personlig blog. Mulighederne er uendelige.</value>
   </data>
+  <data name="Use your organization account. Your identity stays with you across games." xml:space="preserve">
+    <value>Brug din organisationskonto. Din identitet følger dig på tværs af spil.</value>
+  </data>
   <data name="View on GitHub" xml:space="preserve">
     <value>Se på GitHub</value>
+  </data>
+  <data name="Watch live games" xml:space="preserve">
+    <value>Se livepartier</value>
   </data>
   <data name="WebApplicationFactory available" xml:space="preserve">
     <value>WebApplicationFactory tilgængelig</value>
@@ -812,6 +872,12 @@
   </data>
   <data name="Your enterprise users don&apos;t need to register repeatedly." xml:space="preserve">
     <value>Dine enterprise-brugere behøver ikke at registrere sig gentagende.</value>
+  </data>
+  <data name="Your next challenge." xml:space="preserve">
+    <value>Din næste udfordring.</value>
+  </data>
+  <data name="Your next move." xml:space="preserve">
+    <value>Dit næste træk.</value>
   </data>
   <data name="Yubikey &amp; TOTP" xml:space="preserve">
     <value>Yubikey &amp; TOTP</value>

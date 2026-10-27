@@ -36,11 +36,17 @@
   <data name="Connection closed. Refresh to reconnect." xml:space="preserve">
     <value>انقطع الاتصال. حدّث الصفحة لإعادة الاتصال.</value>
   </data>
+  <data name="Could not confirm the saved game. Retry." xml:space="preserve">
+    <value>تعذّر تأكيد حفظ اللعبة. أعد المحاولة.</value>
+  </data>
   <data name="Export PGN" xml:space="preserve">
     <value>تصدير PGN</value>
   </data>
   <data name="Game over — draw." xml:space="preserve">
     <value>انتهت المباراة — تعادل.</value>
+  </data>
+  <data name="Game over. {0} wins." xml:space="preserve">
+    <value>انتهت اللعبة. {0} هو الفائز.</value>
   </data>
   <data name="Message" xml:space="preserve">
     <value>رسالة</value>
@@ -48,14 +54,32 @@
   <data name="Preferred duration: {0} minutes. Games are untimed." xml:space="preserve">
     <value>المدة المفضلة: {0} دقيقة. لا يوجد وقت محدد للمباريات.</value>
   </data>
+  <data name="Replay" xml:space="preserve">
+    <value>إعادة العرض</value>
+  </data>
+  <data name="Retry saving" xml:space="preserve">
+    <value>إعادة محاولة الحفظ</value>
+  </data>
   <data name="Room unavailable. Return to the lobby." xml:space="preserve">
     <value>الغرفة غير متاحة. عُد إلى الردهة.</value>
+  </data>
+  <data name="Saved to My games." xml:space="preserve">
+    <value>تم الحفظ في ألعابي.</value>
+  </data>
+  <data name="Saving game…" xml:space="preserve">
+    <value>جارٍ حفظ اللعبة…</value>
   </data>
   <data name="Send" xml:space="preserve">
     <value>إرسال</value>
   </data>
   <data name="Spectator" xml:space="preserve">
     <value>متفرج</value>
+  </data>
+  <data name="Time expired. {0} wins." xml:space="preserve">
+    <value>انتهى الوقت. فاز {0}.</value>
+  </data>
+  <data name="Unlimited" xml:space="preserve">
+    <value>غير محدود</value>
   </data>
   <data name="White" xml:space="preserve">
     <value>الأبيض</value>

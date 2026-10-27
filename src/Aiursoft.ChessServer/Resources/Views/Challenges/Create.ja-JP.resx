@@ -63,8 +63,14 @@
   <data name="Room name" xml:space="preserve">
     <value>ルーム名</value>
   </data>
+  <data name="Time per player" xml:space="preserve">
+    <value>プレイヤーごとの持ち時間</value>
+  </data>
   <data name="Time preference" xml:space="preserve">
     <value>時間設定</value>
+  </data>
+  <data name="Unlimited" xml:space="preserve">
+    <value>無制限</value>
   </data>
   <data name="Unlisted — share the room link" xml:space="preserve">
     <value>非公開 — ルームのリンクを共有</value>

@@ -36,11 +36,17 @@
   <data name="Connection closed. Refresh to reconnect." xml:space="preserve">
     <value>Bağlantı kesildi. Yeniden bağlanmak için sayfayı yenileyin.</value>
   </data>
+  <data name="Could not confirm the saved game. Retry." xml:space="preserve">
+    <value>Kaydedilen oyun doğrulanamadı. Tekrar deneyin.</value>
+  </data>
   <data name="Export PGN" xml:space="preserve">
     <value>PGN&apos;yi Dışa Aktar</value>
   </data>
   <data name="Game over — draw." xml:space="preserve">
     <value>Oyun bitti — berabere.</value>
+  </data>
+  <data name="Game over. {0} wins." xml:space="preserve">
+    <value>Oyun bitti. {0} kazandı.</value>
   </data>
   <data name="Message" xml:space="preserve">
     <value>Mesaj</value>
@@ -48,14 +54,32 @@
   <data name="Preferred duration: {0} minutes. Games are untimed." xml:space="preserve">
     <value>Tercih edilen süre: {0} dakika. Oyunlarda süre sınırı yoktur.</value>
   </data>
+  <data name="Replay" xml:space="preserve">
+    <value>Tekrar oynat</value>
+  </data>
+  <data name="Retry saving" xml:space="preserve">
+    <value>Kaydetmeyi yeniden dene</value>
+  </data>
   <data name="Room unavailable. Return to the lobby." xml:space="preserve">
     <value>Oda kullanılamıyor. Lobisine geri dönün.</value>
+  </data>
+  <data name="Saved to My games." xml:space="preserve">
+    <value>Oyunlarım&apos;a kaydedildi.</value>
+  </data>
+  <data name="Saving game…" xml:space="preserve">
+    <value>Oyun kaydediliyor…</value>
   </data>
   <data name="Send" xml:space="preserve">
     <value>Gönder</value>
   </data>
   <data name="Spectator" xml:space="preserve">
     <value>İzleyici</value>
+  </data>
+  <data name="Time expired. {0} wins." xml:space="preserve">
+    <value>Süre doldu. {0} kazandı.</value>
+  </data>
+  <data name="Unlimited" xml:space="preserve">
+    <value>Sınırsız</value>
   </data>
   <data name="White" xml:space="preserve">
     <value>Beyaz</value>

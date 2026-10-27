@@ -36,11 +36,17 @@
   <data name="Connection closed. Refresh to reconnect." xml:space="preserve">
     <value>Verbinding verbroken. Vernieuw de pagina om opnieuw verbinding te maken.</value>
   </data>
+  <data name="Could not confirm the saved game. Retry." xml:space="preserve">
+    <value>Kon het opgeslagen spel niet bevestigen. Probeer het opnieuw.</value>
+  </data>
   <data name="Export PGN" xml:space="preserve">
     <value>PGN exporteren</value>
   </data>
   <data name="Game over — draw." xml:space="preserve">
     <value>Partij afgelopen — remise.</value>
+  </data>
+  <data name="Game over. {0} wins." xml:space="preserve">
+    <value>De partij is afgelopen. {0} wint.</value>
   </data>
   <data name="Message" xml:space="preserve">
     <value>Bericht</value>
@@ -48,14 +54,32 @@
   <data name="Preferred duration: {0} minutes. Games are untimed." xml:space="preserve">
     <value>Voorkeursduur: {0} minuten. Partijen hebben geen tijdslimiet.</value>
   </data>
+  <data name="Replay" xml:space="preserve">
+    <value>Opnieuw afspelen</value>
+  </data>
+  <data name="Retry saving" xml:space="preserve">
+    <value>Opnieuw proberen met opslaan</value>
+  </data>
   <data name="Room unavailable. Return to the lobby." xml:space="preserve">
     <value>Kamer niet beschikbaar. Ga terug naar de lobby.</value>
+  </data>
+  <data name="Saved to My games." xml:space="preserve">
+    <value>Opgeslagen bij Mijn games.</value>
+  </data>
+  <data name="Saving game…" xml:space="preserve">
+    <value>Spel opslaan…</value>
   </data>
   <data name="Send" xml:space="preserve">
     <value>Verzenden</value>
   </data>
   <data name="Spectator" xml:space="preserve">
     <value>Toeschouwer</value>
+  </data>
+  <data name="Time expired. {0} wins." xml:space="preserve">
+    <value>De tijd is verstreken. {0} wint.</value>
+  </data>
+  <data name="Unlimited" xml:space="preserve">
+    <value>Onbeperkt</value>
   </data>
   <data name="White" xml:space="preserve">
     <value>Wit</value>

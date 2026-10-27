@@ -123,6 +123,9 @@
   <data name="Manage" xml:space="preserve">
     <value>Quản lý</value>
   </data>
+  <data name="My games" xml:space="preserve">
+    <value>Trò chơi của tôi</value>
+  </data>
   <data name="Not Found" xml:space="preserve">
     <value>Không tìm thấy</value>
   </data>
@@ -146,6 +149,9 @@
   </data>
   <data name="Register" xml:space="preserve">
     <value>Đăng ký</value>
+  </data>
+  <data name="Replay game" xml:space="preserve">
+    <value>Xem lại ván đấu</value>
   </data>
   <data name="Role Details" xml:space="preserve">
     <value>Chi tiết Vai trò</value>

@@ -36,11 +36,17 @@
   <data name="Connection closed. Refresh to reconnect." xml:space="preserve">
     <value>연결이 끊겼습니다. 새로고침하여 다시 연결하세요.</value>
   </data>
+  <data name="Could not confirm the saved game. Retry." xml:space="preserve">
+    <value>저장된 게임을 확인할 수 없습니다. 다시 시도하세요.</value>
+  </data>
   <data name="Export PGN" xml:space="preserve">
     <value>PGN 내보내기</value>
   </data>
   <data name="Game over — draw." xml:space="preserve">
     <value>경기 종료 — 무승부.</value>
+  </data>
+  <data name="Game over. {0} wins." xml:space="preserve">
+    <value>게임 종료. {0} 승리.</value>
   </data>
   <data name="Message" xml:space="preserve">
     <value>메시지</value>
@@ -48,14 +54,32 @@
   <data name="Preferred duration: {0} minutes. Games are untimed." xml:space="preserve">
     <value>선호 시간: {0}분. 체스 경기는 시간 제한 없이 진행됩니다.</value>
   </data>
+  <data name="Replay" xml:space="preserve">
+    <value>다시 보기</value>
+  </data>
+  <data name="Retry saving" xml:space="preserve">
+    <value>저장 다시 시도</value>
+  </data>
   <data name="Room unavailable. Return to the lobby." xml:space="preserve">
     <value>방을 사용할 수 없습니다. 로비로 돌아가세요.</value>
+  </data>
+  <data name="Saved to My games." xml:space="preserve">
+    <value>내 게임에 저장되었습니다.</value>
+  </data>
+  <data name="Saving game…" xml:space="preserve">
+    <value>게임 저장 중…</value>
   </data>
   <data name="Send" xml:space="preserve">
     <value>전송</value>
   </data>
   <data name="Spectator" xml:space="preserve">
     <value>관전자</value>
+  </data>
+  <data name="Time expired. {0} wins." xml:space="preserve">
+    <value>시간이 만료되었습니다. {0} 승리.</value>
+  </data>
+  <data name="Unlimited" xml:space="preserve">
+    <value>무제한</value>
   </data>
   <data name="White" xml:space="preserve">
     <value>백</value>

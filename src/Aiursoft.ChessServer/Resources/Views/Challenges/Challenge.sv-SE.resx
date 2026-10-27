@@ -36,6 +36,9 @@
   <data name="Share this page with your opponent. Both players must sign in." xml:space="preserve">
     <value>Dela den här sidan med din motståndare. Båda spelarna måste logga in.</value>
   </data>
+  <data name="Time per player: {0} minutes." xml:space="preserve">
+    <value>Tid per spelare: {0} minuter.</value>
+  </data>
   <data name="Waiting for your opponent…" xml:space="preserve">
     <value>Väntar på din motståndare…</value>
   </data>

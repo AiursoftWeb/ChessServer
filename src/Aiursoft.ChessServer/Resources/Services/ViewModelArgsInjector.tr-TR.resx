@@ -120,6 +120,9 @@
   <data name="Manage" xml:space="preserve">
     <value>Yönet</value>
   </data>
+  <data name="My games" xml:space="preserve">
+    <value>Oyunlarım</value>
+  </data>
   <data name="Not Found" xml:space="preserve">
     <value>Bulunamadı</value>
   </data>
@@ -143,6 +146,9 @@
   </data>
   <data name="Register" xml:space="preserve">
     <value>Kayıt Ol</value>
+  </data>
+  <data name="Replay game" xml:space="preserve">
+    <value>Oyunu tekrar izle</value>
   </data>
   <data name="Role Details" xml:space="preserve">
     <value>Rol Detayları</value>

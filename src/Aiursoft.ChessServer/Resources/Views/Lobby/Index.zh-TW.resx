@@ -21,17 +21,29 @@
       <data name="1 — Beginner" xml:space="preserve">
     <value>1 — 初學者</value>
   </data>
+  <data name="10 minutes" xml:space="preserve">
+    <value>10 分鐘</value>
+  </data>
+  <data name="15 minutes" xml:space="preserve">
+    <value>15 分鐘</value>
+  </data>
   <data name="2 — Easy" xml:space="preserve">
     <value>2 — 簡單</value>
   </data>
   <data name="3 — Casual" xml:space="preserve">
     <value>3 — 休閒</value>
   </data>
+  <data name="3 minutes" xml:space="preserve">
+    <value>3 分鐘</value>
+  </data>
   <data name="4 — Intermediate" xml:space="preserve">
     <value>4 — 中級</value>
   </data>
   <data name="5 — Challenging" xml:space="preserve">
     <value>5 — 挑戰級</value>
+  </data>
+  <data name="5 minutes" xml:space="preserve">
+    <value>5 分鐘</value>
   </data>
   <data name="6 — Hard" xml:space="preserve">
     <value>6 — 困難</value>
@@ -42,11 +54,17 @@
   <data name="8 — Strongest" xml:space="preserve">
     <value>8 — 最強</value>
   </data>
+  <data name="Black" xml:space="preserve">
+    <value>黑棋</value>
+  </data>
   <data name="Create a challenge" xml:space="preserve">
     <value>建立挑戰</value>
   </data>
   <data name="Difficulty" xml:space="preserve">
     <value>難度</value>
+  </data>
+  <data name="My games" xml:space="preserve">
+    <value>我的對局</value>
   </data>
   <data name="No games in progress." xml:space="preserve">
     <value>目前沒有進行中的遊戲。</value>
@@ -66,11 +84,26 @@
   <data name="Play with a friend" xml:space="preserve">
     <value>和朋友一起玩</value>
   </data>
+  <data name="Random" xml:space="preserve">
+    <value>隨機</value>
+  </data>
   <data name="Start game" xml:space="preserve">
     <value>開始遊戲</value>
   </data>
+  <data name="Time per player" xml:space="preserve">
+    <value>每位玩家的時間</value>
+  </data>
+  <data name="Unlimited" xml:space="preserve">
+    <value>不限時</value>
+  </data>
   <data name="Watch a game" xml:space="preserve">
     <value>觀賞對戰</value>
+  </data>
+  <data name="White" xml:space="preserve">
+    <value>白棋</value>
+  </data>
+  <data name="Your pieces" xml:space="preserve">
+    <value>您的棋子</value>
   </data>
 
 </root>

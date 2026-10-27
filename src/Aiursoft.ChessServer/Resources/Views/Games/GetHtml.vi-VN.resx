@@ -36,11 +36,17 @@
   <data name="Connection closed. Refresh to reconnect." xml:space="preserve">
     <value>Kết nối đã bị ngắt. Tải lại trang để kết nối lại.</value>
   </data>
+  <data name="Could not confirm the saved game. Retry." xml:space="preserve">
+    <value>Không thể xác nhận ván cờ đã lưu. Thử lại.</value>
+  </data>
   <data name="Export PGN" xml:space="preserve">
     <value>Xuất PGN</value>
   </data>
   <data name="Game over — draw." xml:space="preserve">
     <value>Ván đấu kết thúc — hòa.</value>
+  </data>
+  <data name="Game over. {0} wins." xml:space="preserve">
+    <value>Trò chơi kết thúc. {0} thắng.</value>
   </data>
   <data name="Message" xml:space="preserve">
     <value>Tin nhắn</value>
@@ -48,14 +54,32 @@
   <data name="Preferred duration: {0} minutes. Games are untimed." xml:space="preserve">
     <value>Thời lượng mong muốn: {0} phút. Các ván đấu không giới hạn thời gian.</value>
   </data>
+  <data name="Replay" xml:space="preserve">
+    <value>Xem lại</value>
+  </data>
+  <data name="Retry saving" xml:space="preserve">
+    <value>Thử lưu lại</value>
+  </data>
   <data name="Room unavailable. Return to the lobby." xml:space="preserve">
     <value>Phòng không khả dụng. Quay lại sảnh chờ.</value>
+  </data>
+  <data name="Saved to My games." xml:space="preserve">
+    <value>Đã lưu vào Trò chơi của tôi.</value>
+  </data>
+  <data name="Saving game…" xml:space="preserve">
+    <value>Đang lưu trò chơi…</value>
   </data>
   <data name="Send" xml:space="preserve">
     <value>Gửi</value>
   </data>
   <data name="Spectator" xml:space="preserve">
     <value>Khán giả</value>
+  </data>
+  <data name="Time expired. {0} wins." xml:space="preserve">
+    <value>Đã hết thời gian. {0} thắng.</value>
+  </data>
+  <data name="Unlimited" xml:space="preserve">
+    <value>Không giới hạn</value>
   </data>
   <data name="White" xml:space="preserve">
     <value>Trắng</value>

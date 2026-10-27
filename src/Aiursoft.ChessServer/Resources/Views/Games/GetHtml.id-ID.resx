@@ -36,11 +36,17 @@
   <data name="Connection closed. Refresh to reconnect." xml:space="preserve">
     <value>Koneksi terputus. Muat ulang untuk menyambungkan kembali.</value>
   </data>
+  <data name="Could not confirm the saved game. Retry." xml:space="preserve">
+    <value>Tidak dapat mengonfirmasi permainan yang tersimpan. Coba lagi.</value>
+  </data>
   <data name="Export PGN" xml:space="preserve">
     <value>Ekspor PGN</value>
   </data>
   <data name="Game over — draw." xml:space="preserve">
     <value>Permainan berakhir — seri.</value>
+  </data>
+  <data name="Game over. {0} wins." xml:space="preserve">
+    <value>Permainan berakhir. {0} menang.</value>
   </data>
   <data name="Message" xml:space="preserve">
     <value>Pesan</value>
@@ -48,14 +54,32 @@
   <data name="Preferred duration: {0} minutes. Games are untimed." xml:space="preserve">
     <value>Durasi yang diinginkan: {0} menit. Permainan tidak dibatasi waktu.</value>
   </data>
+  <data name="Replay" xml:space="preserve">
+    <value>Putar ulang</value>
+  </data>
+  <data name="Retry saving" xml:space="preserve">
+    <value>Coba simpan lagi</value>
+  </data>
   <data name="Room unavailable. Return to the lobby." xml:space="preserve">
     <value>Ruang tidak tersedia. Kembali ke lobi.</value>
+  </data>
+  <data name="Saved to My games." xml:space="preserve">
+    <value>Disimpan ke Game saya.</value>
+  </data>
+  <data name="Saving game…" xml:space="preserve">
+    <value>Menyimpan permainan…</value>
   </data>
   <data name="Send" xml:space="preserve">
     <value>Kirim</value>
   </data>
   <data name="Spectator" xml:space="preserve">
     <value>Penonton</value>
+  </data>
+  <data name="Time expired. {0} wins." xml:space="preserve">
+    <value>Waktu habis. {0} menang.</value>
+  </data>
+  <data name="Unlimited" xml:space="preserve">
+    <value>Tanpa Batas</value>
   </data>
   <data name="White" xml:space="preserve">
     <value>Putih</value>

@@ -36,11 +36,17 @@
   <data name="Connection closed. Refresh to reconnect." xml:space="preserve">
     <value>Anslutningen har stängts. Uppdatera sidan för att återansluta.</value>
   </data>
+  <data name="Could not confirm the saved game. Retry." xml:space="preserve">
+    <value>Kunde inte bekräfta att spelet har sparats. Försök igen.</value>
+  </data>
   <data name="Export PGN" xml:space="preserve">
     <value>Exportera PGN</value>
   </data>
   <data name="Game over — draw." xml:space="preserve">
     <value>Partiet är slut — remi.</value>
+  </data>
+  <data name="Game over. {0} wins." xml:space="preserve">
+    <value>Partiet är slut. {0} vinner.</value>
   </data>
   <data name="Message" xml:space="preserve">
     <value>Meddelande</value>
@@ -48,14 +54,32 @@
   <data name="Preferred duration: {0} minutes. Games are untimed." xml:space="preserve">
     <value>Föredragen speltid: {0} minuter. Partierna har ingen tidsbegränsning.</value>
   </data>
+  <data name="Replay" xml:space="preserve">
+    <value>Spela upp igen</value>
+  </data>
+  <data name="Retry saving" xml:space="preserve">
+    <value>Försök spara igen</value>
+  </data>
   <data name="Room unavailable. Return to the lobby." xml:space="preserve">
     <value>Rummet är inte tillgängligt. Återgå till lobbyn.</value>
+  </data>
+  <data name="Saved to My games." xml:space="preserve">
+    <value>Sparat i Mina spel.</value>
+  </data>
+  <data name="Saving game…" xml:space="preserve">
+    <value>Sparar spelet…</value>
   </data>
   <data name="Send" xml:space="preserve">
     <value>Skicka</value>
   </data>
   <data name="Spectator" xml:space="preserve">
     <value>Åskådare</value>
+  </data>
+  <data name="Time expired. {0} wins." xml:space="preserve">
+    <value>Tiden är ute. {0} vinner.</value>
+  </data>
+  <data name="Unlimited" xml:space="preserve">
+    <value>Obegränsad</value>
   </data>
   <data name="White" xml:space="preserve">
     <value>Vit</value>

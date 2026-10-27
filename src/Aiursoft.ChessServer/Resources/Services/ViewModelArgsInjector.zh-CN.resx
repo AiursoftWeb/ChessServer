@@ -123,6 +123,9 @@
   <data name="Manage" xml:space="preserve">
     <value>管理</value>
   </data>
+  <data name="My games" xml:space="preserve">
+    <value>我的游戏</value>
+  </data>
   <data name="Not Found" xml:space="preserve">
     <value>未找到</value>
   </data>
@@ -146,6 +149,9 @@
   </data>
   <data name="Register" xml:space="preserve">
     <value>注册</value>
+  </data>
+  <data name="Replay game" xml:space="preserve">
+    <value>重播游戏</value>
   </data>
   <data name="Role Details" xml:space="preserve">
     <value>角色详情</value>

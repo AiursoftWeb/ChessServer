@@ -120,6 +120,9 @@
   <data name="Manage" xml:space="preserve">
     <value>Gestisci</value>
   </data>
+  <data name="My games" xml:space="preserve">
+    <value>I miei giochi</value>
+  </data>
   <data name="Not Found" xml:space="preserve">
     <value>Non trovato</value>
   </data>
@@ -143,6 +146,9 @@
   </data>
   <data name="Register" xml:space="preserve">
     <value>Registrati</value>
+  </data>
+  <data name="Replay game" xml:space="preserve">
+    <value>Rivedi la partita</value>
   </data>
   <data name="Role Details" xml:space="preserve">
     <value>Dettagli del Ruolo</value>

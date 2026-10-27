@@ -36,11 +36,17 @@
   <data name="Connection closed. Refresh to reconnect." xml:space="preserve">
     <value>Conexiunea a fost închisă. Reîmprospătați pagina pentru a vă reconecta.</value>
   </data>
+  <data name="Could not confirm the saved game. Retry." xml:space="preserve">
+    <value>Nu s-a putut confirma salvarea jocului. Încercați din nou.</value>
+  </data>
   <data name="Export PGN" xml:space="preserve">
     <value>Exportă PGN</value>
   </data>
   <data name="Game over — draw." xml:space="preserve">
     <value>Partida s-a încheiat — remiză.</value>
+  </data>
+  <data name="Game over. {0} wins." xml:space="preserve">
+    <value>Jocul s-a încheiat. {0} câștigă.</value>
   </data>
   <data name="Message" xml:space="preserve">
     <value>Mesaj</value>
@@ -48,14 +54,32 @@
   <data name="Preferred duration: {0} minutes. Games are untimed." xml:space="preserve">
     <value>Durata preferată: {0} de minute. Partidele nu au limită de timp.</value>
   </data>
+  <data name="Replay" xml:space="preserve">
+    <value>Redare</value>
+  </data>
+  <data name="Retry saving" xml:space="preserve">
+    <value>Reîncearcă salvarea</value>
+  </data>
   <data name="Room unavailable. Return to the lobby." xml:space="preserve">
     <value>Camera nu este disponibilă. Revino la lobby.</value>
+  </data>
+  <data name="Saved to My games." xml:space="preserve">
+    <value>Salvat în Jocurile mele.</value>
+  </data>
+  <data name="Saving game…" xml:space="preserve">
+    <value>Se salvează partida…</value>
   </data>
   <data name="Send" xml:space="preserve">
     <value>Trimite</value>
   </data>
   <data name="Spectator" xml:space="preserve">
     <value>Spectator</value>
+  </data>
+  <data name="Time expired. {0} wins." xml:space="preserve">
+    <value>Timpul a expirat. {0} câștigă.</value>
+  </data>
+  <data name="Unlimited" xml:space="preserve">
+    <value>Nelimitat</value>
   </data>
   <data name="White" xml:space="preserve">
     <value>Albe</value>

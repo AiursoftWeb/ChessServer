@@ -21,17 +21,29 @@
       <data name="1 — Beginner" xml:space="preserve">
     <value>1 — Débutant</value>
   </data>
+  <data name="10 minutes" xml:space="preserve">
+    <value>10 minutes</value>
+  </data>
+  <data name="15 minutes" xml:space="preserve">
+    <value>15 minutes</value>
+  </data>
   <data name="2 — Easy" xml:space="preserve">
     <value>2 — Facile</value>
   </data>
   <data name="3 — Casual" xml:space="preserve">
     <value>3 — Décontracté</value>
   </data>
+  <data name="3 minutes" xml:space="preserve">
+    <value>3 minutes</value>
+  </data>
   <data name="4 — Intermediate" xml:space="preserve">
     <value>4 — Intermédiaire</value>
   </data>
   <data name="5 — Challenging" xml:space="preserve">
     <value>5 — Difficile</value>
+  </data>
+  <data name="5 minutes" xml:space="preserve">
+    <value>5 minutes</value>
   </data>
   <data name="6 — Hard" xml:space="preserve">
     <value>6 — Difficile</value>
@@ -42,11 +54,17 @@
   <data name="8 — Strongest" xml:space="preserve">
     <value>8 — Le plus fort</value>
   </data>
+  <data name="Black" xml:space="preserve">
+    <value>Noir</value>
+  </data>
   <data name="Create a challenge" xml:space="preserve">
     <value>Créer un défi</value>
   </data>
   <data name="Difficulty" xml:space="preserve">
     <value>Difficulté</value>
+  </data>
+  <data name="My games" xml:space="preserve">
+    <value>Mes parties</value>
   </data>
   <data name="No games in progress." xml:space="preserve">
     <value>Aucune partie en cours.</value>
@@ -66,11 +84,26 @@
   <data name="Play with a friend" xml:space="preserve">
     <value>Jouer avec un ami</value>
   </data>
+  <data name="Random" xml:space="preserve">
+    <value>Aléatoire</value>
+  </data>
   <data name="Start game" xml:space="preserve">
     <value>Lancer la partie</value>
   </data>
+  <data name="Time per player" xml:space="preserve">
+    <value>Temps par joueur</value>
+  </data>
+  <data name="Unlimited" xml:space="preserve">
+    <value>Illimité</value>
+  </data>
   <data name="Watch a game" xml:space="preserve">
     <value>Regarder une partie</value>
+  </data>
+  <data name="White" xml:space="preserve">
+    <value>Blanc</value>
+  </data>
+  <data name="Your pieces" xml:space="preserve">
+    <value>Vos pièces</value>
   </data>
 
 </root>

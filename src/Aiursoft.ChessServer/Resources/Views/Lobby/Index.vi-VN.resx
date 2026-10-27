@@ -21,17 +21,29 @@
       <data name="1 — Beginner" xml:space="preserve">
     <value>1 — Người mới bắt đầu</value>
   </data>
+  <data name="10 minutes" xml:space="preserve">
+    <value>10 phút</value>
+  </data>
+  <data name="15 minutes" xml:space="preserve">
+    <value>15 phút</value>
+  </data>
   <data name="2 — Easy" xml:space="preserve">
     <value>2 — Dễ</value>
   </data>
   <data name="3 — Casual" xml:space="preserve">
     <value>3 — Bình thường</value>
   </data>
+  <data name="3 minutes" xml:space="preserve">
+    <value>3 phút</value>
+  </data>
   <data name="4 — Intermediate" xml:space="preserve">
     <value>4 — Trung cấp</value>
   </data>
   <data name="5 — Challenging" xml:space="preserve">
     <value>5 — Khó</value>
+  </data>
+  <data name="5 minutes" xml:space="preserve">
+    <value>5 phút</value>
   </data>
   <data name="6 — Hard" xml:space="preserve">
     <value>6 — Khó</value>
@@ -42,11 +54,17 @@
   <data name="8 — Strongest" xml:space="preserve">
     <value>8 — Mạnh nhất</value>
   </data>
+  <data name="Black" xml:space="preserve">
+    <value>Đen</value>
+  </data>
   <data name="Create a challenge" xml:space="preserve">
     <value>Tạo thử thách</value>
   </data>
   <data name="Difficulty" xml:space="preserve">
     <value>Độ khó</value>
+  </data>
+  <data name="My games" xml:space="preserve">
+    <value>Ván đấu của tôi</value>
   </data>
   <data name="No games in progress." xml:space="preserve">
     <value>Không có ván nào đang diễn ra.</value>
@@ -66,11 +84,26 @@
   <data name="Play with a friend" xml:space="preserve">
     <value>Chơi cùng bạn bè</value>
   </data>
+  <data name="Random" xml:space="preserve">
+    <value>Ngẫu nhiên</value>
+  </data>
   <data name="Start game" xml:space="preserve">
     <value>Bắt đầu trò chơi</value>
   </data>
+  <data name="Time per player" xml:space="preserve">
+    <value>Thời gian cho mỗi người chơi</value>
+  </data>
+  <data name="Unlimited" xml:space="preserve">
+    <value>Không giới hạn</value>
+  </data>
   <data name="Watch a game" xml:space="preserve">
     <value>Xem một ván đấu</value>
+  </data>
+  <data name="White" xml:space="preserve">
+    <value>Quân trắng</value>
+  </data>
+  <data name="Your pieces" xml:space="preserve">
+    <value>Quân cờ của bạn</value>
   </data>
 
 </root>

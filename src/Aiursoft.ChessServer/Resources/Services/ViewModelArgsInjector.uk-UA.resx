@@ -120,6 +120,9 @@
   <data name="Manage" xml:space="preserve">
     <value>Керування</value>
   </data>
+  <data name="My games" xml:space="preserve">
+    <value>Мої ігри</value>
+  </data>
   <data name="Not Found" xml:space="preserve">
     <value>Не знайдено</value>
   </data>
@@ -143,6 +146,9 @@
   </data>
   <data name="Register" xml:space="preserve">
     <value>Реєстрація</value>
+  </data>
+  <data name="Replay game" xml:space="preserve">
+    <value>Повтор гри</value>
   </data>
   <data name="Role Details" xml:space="preserve">
     <value>Деталі ролі</value>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Accept challenge" xml:space="preserve">
+    <value>चुनौती स्वीकार करें</value>
+  </data>
+  <data name="Cancel challenge" xml:space="preserve">
+    <value>चुनौती रद्द करें</value>
+  </data>
+  <data name="Connection closed. Refresh to reconnect." xml:space="preserve">
+    <value>कनेक्शन बंद हो गया है। दोबारा कनेक्ट करने के लिए पेज रीफ़्रेश करें।</value>
+  </data>
+  <data name="Room link" xml:space="preserve">
+    <value>कमरे का लिंक</value>
+  </data>
+  <data name="Share this page with your opponent. Both players must sign in." xml:space="preserve">
+    <value>यह पृष्ठ अपने प्रतिद्वंद्वी के साथ साझा करें। दोनों खिलाड़ियों को साइन इन करना होगा।</value>
+  </data>
+  <data name="Time per player: {0} minutes." xml:space="preserve">
+    <value>प्रति खिलाड़ी समय: {0} मिनट।</value>
+  </data>
+  <data name="Waiting for your opponent…" xml:space="preserve">
+    <value>आपके प्रतिद्वंद्वी की प्रतीक्षा हो रही है…</value>
+  </data>
+
+</root>

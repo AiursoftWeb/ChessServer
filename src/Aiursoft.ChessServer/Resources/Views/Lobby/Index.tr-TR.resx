@@ -21,17 +21,29 @@
       <data name="1 — Beginner" xml:space="preserve">
     <value>1 — Başlangıç Seviyesi</value>
   </data>
+  <data name="10 minutes" xml:space="preserve">
+    <value>10 dakika</value>
+  </data>
+  <data name="15 minutes" xml:space="preserve">
+    <value>15 dakika</value>
+  </data>
   <data name="2 — Easy" xml:space="preserve">
     <value>2 — Kolay</value>
   </data>
   <data name="3 — Casual" xml:space="preserve">
     <value>3 — Rahat</value>
   </data>
+  <data name="3 minutes" xml:space="preserve">
+    <value>3 dakika</value>
+  </data>
   <data name="4 — Intermediate" xml:space="preserve">
     <value>4 — Orta düzey</value>
   </data>
   <data name="5 — Challenging" xml:space="preserve">
     <value>5 — Zorlu</value>
+  </data>
+  <data name="5 minutes" xml:space="preserve">
+    <value>5 dakika</value>
   </data>
   <data name="6 — Hard" xml:space="preserve">
     <value>6 — Zor</value>
@@ -42,11 +54,17 @@
   <data name="8 — Strongest" xml:space="preserve">
     <value>8 — En Güçlü</value>
   </data>
+  <data name="Black" xml:space="preserve">
+    <value>Siyah</value>
+  </data>
   <data name="Create a challenge" xml:space="preserve">
     <value>Meydan okuması oluştur</value>
   </data>
   <data name="Difficulty" xml:space="preserve">
     <value>Zorluk</value>
+  </data>
+  <data name="My games" xml:space="preserve">
+    <value>Oyunlarım</value>
   </data>
   <data name="No games in progress." xml:space="preserve">
     <value>Devam eden oyun yok.</value>
@@ -66,11 +84,26 @@
   <data name="Play with a friend" xml:space="preserve">
     <value>Bir arkadaşınla oyna</value>
   </data>
+  <data name="Random" xml:space="preserve">
+    <value>Rastgele</value>
+  </data>
   <data name="Start game" xml:space="preserve">
     <value>Oyunu başlat</value>
   </data>
+  <data name="Time per player" xml:space="preserve">
+    <value>Oyuncu başına süre</value>
+  </data>
+  <data name="Unlimited" xml:space="preserve">
+    <value>Sınırsız</value>
+  </data>
   <data name="Watch a game" xml:space="preserve">
     <value>Bir oyunu izle</value>
+  </data>
+  <data name="White" xml:space="preserve">
+    <value>Beyaz</value>
+  </data>
+  <data name="Your pieces" xml:space="preserve">
+    <value>Taşlarınız</value>
   </data>
 
 </root>

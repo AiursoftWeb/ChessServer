@@ -33,6 +33,9 @@
   <data name="A fully responsive layout that looks great on both desktop and mobile devices." xml:space="preserve">
     <value>Адаптивный макет, который отлично выглядит как на настольных компьютерах, так и на мобильных устройствах.</value>
   </data>
+  <data name="A game for every kind of player." xml:space="preserve">
+    <value>Игра для каждого игрока.</value>
+  </data>
   <data name="A modern, feature-rich, and highly extensible foundation for your next web application." xml:space="preserve">
     <value>Современная, многофункциональная и легко расширяемая основа для вашего следующего веб-приложения.</value>
   </data>
@@ -171,11 +174,23 @@
   <data name="Built-in User Management" xml:space="preserve">
     <value>Встроенное управление пользователями</value>
   </data>
+  <data name="Challenge a friend" xml:space="preserve">
+    <value>Предложите другу сыграть</value>
+  </data>
+  <data name="Chat at the board" xml:space="preserve">
+    <value>Общайтесь прямо на доске</value>
+  </data>
   <data name="Checkstyle or similar needed" xml:space="preserve">
     <value>Требуется Checkstyle или аналог</value>
   </data>
   <data name="ChessServer" xml:space="preserve">
     <value>Шахматный сервер</value>
+  </data>
+  <data name="ChessServer computer game" xml:space="preserve">
+    <value>Компьютерная игра ChessServer</value>
+  </data>
+  <data name="Choose from eight levels, from random legal moves for beginners to deeper engine searches." xml:space="preserve">
+    <value>Выберите один из восьми уровней: от случайных допустимых ходов для начинающих до более глубокого анализа движком.</value>
   </data>
   <data name="Comes with Docker support for simplified and consistent deployments." xml:space="preserve">
     <value>Имеет поддержку Docker для упрощённого и согласованного развертывания.</value>
@@ -206,6 +221,9 @@
   </data>
   <data name="Coverage Report" xml:space="preserve">
     <value>Отчет о покрытии</value>
+  </data>
+  <data name="Create a public or unlisted challenge, share the link, and choose your side." xml:space="preserve">
+    <value>Создайте открытую или скрытую игру, поделитесь ссылкой и выберите, за какую сторону играть.</value>
   </data>
   <data name="Cross Platform" xml:space="preserve">
     <value>Кроссплатформенность</value>
@@ -306,6 +324,12 @@
   <data name="Entity Framework Core included" xml:space="preserve">
     <value>Включен Entity Framework Core</value>
   </data>
+  <data name="Explore the features" xml:space="preserve">
+    <value>Познакомьтесь с возможностями</value>
+  </data>
+  <data name="Export the game as PGN to review the moves in your favorite chess tool." xml:space="preserve">
+    <value>Экспортируйте партию в формате PGN, чтобы проанализировать ходы в вашей любимой шахматной программе.</value>
+  </data>
   <data name="FAQ" xml:space="preserve">
     <value>ЧАВО</value>
   </data>
@@ -335,6 +359,9 @@
   </data>
   <data name="Flexible API" xml:space="preserve">
     <value>Гибкая API</value>
+  </data>
+  <data name="Follow public games as they happen. Spectators can watch without changing the board." xml:space="preserve">
+    <value>Следите за публичными партиями в реальном времени. Зрители могут наблюдать за игрой, не меняя положение фигур на доске.</value>
   </data>
   <data name="for any inquiries or to report issues." xml:space="preserve">
     <value>по любым вопросам или для сообщения о проблемах.</value>
@@ -489,11 +516,17 @@
   <data name="K8s / Swarm Ready" xml:space="preserve">
     <value>Готово для K8s / Swarm</value>
   </data>
+  <data name="Keep the moves" xml:space="preserve">
+    <value>Сохраняйте ходы</value>
+  </data>
   <data name="Lint Check" xml:space="preserve">
     <value>Проверка линт-кода</value>
   </data>
   <data name="Maintain High Code Quality" xml:space="preserve">
     <value>Поддерживайте высокое качество кода</value>
+  </data>
+  <data name="Make your move" xml:space="preserve">
+    <value>Сделайте свой ход</value>
   </data>
   <data name="Management Dashboard" xml:space="preserve">
     <value>Панель управления</value>
@@ -582,8 +615,14 @@
   <data name="One Click Start" xml:space="preserve">
     <value>Одно нажатие для запуска</value>
   </data>
+  <data name="One familiar sign-in" xml:space="preserve">
+    <value>Единый привычный вход</value>
+  </data>
   <data name="Open Source" xml:space="preserve">
     <value>Открытое ПО</value>
+  </data>
+  <data name="Open the lobby to start a computer game, create a challenge, or find a game to watch." xml:space="preserve">
+    <value>Откройте лобби, чтобы начать игру с компьютером, создать вызов или найти игру для наблюдения.</value>
   </data>
   <data name="OpenID Connect Integration" xml:space="preserve">
     <value>Интеграция OpenID Connect</value>
@@ -606,8 +645,14 @@
   <data name="Play against the computer, challenge a friend, or watch a game." xml:space="preserve">
     <value>Играйте против компьютера, бросьте вызов другу или наблюдайте за игрой.</value>
   </data>
+  <data name="Play against the computer, challenge a friend, or watch a game. All in your browser." xml:space="preserve">
+    <value>Играйте против компьютера, бросьте вызов другу или наблюдайте за игрой — всё в браузере.</value>
+  </data>
   <data name="Play chess" xml:space="preserve">
     <value>Играть в шахматы</value>
+  </data>
+  <data name="Play the computer" xml:space="preserve">
+    <value>Играть с компьютером</value>
   </data>
   <data name="Pre-configured /healthz and readiness probes" xml:space="preserve">
     <value>Предварительно настроенные зонды /healthz и готовности</value>
@@ -636,6 +681,9 @@
   <data name="Read the document" xml:space="preserve">
     <value>Прочитать документацию</value>
   </data>
+  <data name="Ready for a game?" xml:space="preserve">
+    <value>Готовы сыграть?</value>
+  </data>
   <data name="Requires Laravel Socialite config" xml:space="preserve">
     <value>Требуется настройка Laravel Socialite</value>
   </data>
@@ -662,6 +710,9 @@
   </data>
   <data name="Shift with confidence" xml:space="preserve">
     <value>Смените с уверенностью</value>
+  </data>
+  <data name="Sign in with your organization account to play." xml:space="preserve">
+    <value>Войдите в аккаунт вашей организации, чтобы играть.</value>
   </data>
   <data name="Simple &amp; Easy" xml:space="preserve">
     <value>Просто и легко</value>
@@ -720,6 +771,9 @@
   <data name="Supports JetBrains Rider for easy code style fixes." xml:space="preserve">
     <value>Поддерживает JetBrains Rider для простого исправления стиля кода.</value>
   </data>
+  <data name="Talk with the players and spectators while the game unfolds." xml:space="preserve">
+    <value>Общайтесь с игроками и зрителями по ходу игры.</value>
+  </data>
   <data name="Task Runner" xml:space="preserve">
     <value>Планировщик задач</value>
   </data>
@@ -777,8 +831,14 @@
   <data name="Use it as a foundation for your SaaS, a backend for your mobile app, a corporate website, or a personal blog. The possibilities are endless." xml:space="preserve">
     <value>Используйте его как основу для вашего SaaS, бэкенд для мобильного приложения, корпоративный сайт или личный блог. Возможности безграничны.</value>
   </data>
+  <data name="Use your organization account. Your identity stays with you across games." xml:space="preserve">
+    <value>Используйте учётную запись организации. Ваша учётная запись будет доступна вам во всех играх.</value>
+  </data>
   <data name="View on GitHub" xml:space="preserve">
     <value>Просмотреть на GitHub</value>
+  </data>
+  <data name="Watch live games" xml:space="preserve">
+    <value>Смотрите трансляции партий</value>
   </data>
   <data name="WebApplicationFactory available" xml:space="preserve">
     <value>WebApplicationFactory доступен</value>
@@ -812,6 +872,12 @@
   </data>
   <data name="Your enterprise users don&apos;t need to register repeatedly." xml:space="preserve">
     <value>Вам не нужно повторно регистрировать пользователей вашей компании.</value>
+  </data>
+  <data name="Your next challenge." xml:space="preserve">
+    <value>Твой следующий вызов.</value>
+  </data>
+  <data name="Your next move." xml:space="preserve">
+    <value>Ваш следующий ход.</value>
   </data>
   <data name="Yubikey &amp; TOTP" xml:space="preserve">
     <value>Yubikey &amp; TOTP</value>
