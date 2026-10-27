@@ -29,7 +29,7 @@ public class ChallengesController(InMemoryDatabase database) : ChessController
         try
         {
             var id = database.CreateChallenge(new Challenge(CurrentPlayer(), model.Message, model.RoleRule,
-                TimeSpan.FromMinutes(model.Minutes), model.Permission));
+                model.Minutes == 0 ? TimeSpan.MaxValue : TimeSpan.FromMinutes(model.Minutes), model.Permission));
             return RedirectToAction(nameof(Challenge), new { id });
         }
         catch (InvalidOperationException e)
@@ -45,7 +45,7 @@ public class ChallengesController(InMemoryDatabase database) : ChessController
         var room = database.GetChallenge(id);
         if (room == null) return NotFound();
         if (room is AcceptedChallenge) return RedirectToAction(nameof(GamesController.GetHtml), "Games", new { id });
-        return this.StackView(new RoomViewModel { Id = id, IsCreator = room.Creator.Id == PlayerId, Message = room.Message, PreferredMinutes = (int)room.TimeLimit.TotalMinutes });
+        return this.StackView(new RoomViewModel { Id = id, IsCreator = room.Creator.Id == PlayerId, Message = room.Message, PreferredMinutes = room.TimeLimit == TimeSpan.MaxValue ? null : (int)room.TimeLimit.TotalMinutes });
     }
 
     [HttpPost("{id:int}/drop"), ValidateAntiForgeryToken]

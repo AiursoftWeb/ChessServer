@@ -45,4 +45,10 @@ public class ChallengeContext(AcceptedChallenge challenge, int id)
     public ChallengePermission Permission { get; } = challenge.Permission;
 
     public DateTime StartTime { get; } = challenge.GameStartTime;
+    public Guid HistoryId { get; } = challenge.HistoryId;
+    public bool Timed { get; } = challenge.IsTimed;
+    public double? WhiteMilliseconds { get; } = challenge.IsTimed ? challenge.WhiteRemaining.TotalMilliseconds : null;
+    public double? BlackMilliseconds { get; } = challenge.IsTimed ? challenge.BlackRemaining.TotalMilliseconds : null;
+    public string Result { get; } = challenge.Result;
+    public string? EndReason { get; } = challenge.Game.Board.EndGame?.EndgameType.ToString();
 }

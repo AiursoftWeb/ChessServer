@@ -223,17 +223,7 @@ function AnduinChessBoard(color) {
 
     this._updateStatus();
     this.render();
-    fetch(`/games/${document.getElementById('game-room').dataset.gameId}.json`, {cache: 'no-store'})
-      .then(response => response.ok ? response.json() : null)
-      .then(info => {
-        if (info && this.latestFen === newFEN) {
-          this.serverEnded = info.Game.Ended;
-          if (this.serverEnded && info.Game.Won === null) {
-            this.statusText = text('draw', 'Game over — draw.');
-            this.render();
-          }
-        }
-      }).catch(() => {});
+    window.dispatchEvent(new Event('chess-position'));
   };
 
   this._updateStatus = () => {

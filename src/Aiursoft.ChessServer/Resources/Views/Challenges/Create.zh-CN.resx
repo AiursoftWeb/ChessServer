@@ -63,8 +63,14 @@
   <data name="Room name" xml:space="preserve">
     <value>房间名称</value>
   </data>
+  <data name="Time per player" xml:space="preserve">
+    <value>每位玩家的时间</value>
+  </data>
   <data name="Time preference" xml:space="preserve">
     <value>时间偏好</value>
+  </data>
+  <data name="Unlimited" xml:space="preserve">
+    <value>不限</value>
   </data>
   <data name="Unlisted — share the room link" xml:space="preserve">
     <value>不公开 — 分享房间链接</value>
