@@ -333,6 +333,7 @@ public class ChessTests : TestBase
         Assert.IsTrue(pgn.Contains("0-1", StringComparison.Ordinal));
         var forged = await PostForm($"/games/{pair.Key}/complete", new Dictionary<string, string> { ["pgn"] = "forged result" }, tokenUrl: "/Lobby");
         Assert.AreEqual(HttpStatusCode.BadRequest, forged.StatusCode);
+        Assert.AreEqual(HttpStatusCode.BadRequest, (await PostForm($"/games/{pair.Key}/complete", [], tokenUrl: "/Lobby")).StatusCode);
         for (var attempt = 0; attempt < 2; attempt++)
         {
             var saved = await PostForm($"/games/{pair.Key}/complete", new Dictionary<string, string> { ["pgn"] = pgn.Replace("\r\n", "\n").Replace("\n", "\r\n") }, tokenUrl: "/Lobby");

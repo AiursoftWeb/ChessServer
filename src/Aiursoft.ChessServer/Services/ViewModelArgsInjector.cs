@@ -87,7 +87,7 @@ public class ViewModelArgsInjector(
     
         _ = localizer["Chess room"];
         _ = localizer["Create a challenge"];
-    
+
         _ = localizer["My games"];
         _ = localizer["Replay game"];
     }

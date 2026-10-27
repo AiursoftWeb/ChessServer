@@ -117,7 +117,7 @@ public class GamesController(InMemoryDatabase database, ChessEngine engine, Game
 
     [HttpPost("{id:int}/complete"), ValidateAntiForgeryToken]
     [RequestSizeLimit(524288)]
-    public async Task<IActionResult> Complete(int id, [FromForm] string pgn)
+    public async Task<IActionResult> Complete(int id, [FromForm] string? pgn)
     {
         var room = database.GetAcceptedChallenge(id);
         if (room == null) return NotFound();
