@@ -704,4 +704,299 @@ public class ChessTests : TestBase
         Assert.IsFalse(restored.Game.Board.IsEndGame);
         Assert.IsTrue(restored.WhiteRemaining.TotalSeconds > 264 && restored.WhiteRemaining.TotalSeconds <= 265);
     }
+    [TestMethod]
+    public async Task TimeIncrementIsAppliedExactlyOnceAndAppearsInPgn()
+    {
+        await RegisterAndLoginAsync();
+        var created = await PostForm("/pve/new", new Dictionary<string, string>
+        { ["difficulty"] = "1", ["minutes"] = "3", ["incrementSeconds"] = "2" }, tokenUrl: "/Lobby");
+        Assert.AreEqual(HttpStatusCode.Found, created.StatusCode);
+        var pair = GetService<InMemoryDatabase>().GetOnGoingOpenChallenges().Single();
+        var room = (AcceptedChallenge)pair.Value;
+        var sessions = GetService<GameSessionService>();
+        var command = new GameCommand(Guid.NewGuid(), "move", 0, "e4");
+        Assert.IsNull((await sessions.ExecuteAsync(pair.Key, room.Creator.Id, command)).Error);
+        var remaining = room.WhiteRemaining;
+        Assert.IsTrue(remaining.TotalSeconds > 181 && remaining.TotalSeconds <= 182, remaining.ToString());
+        Assert.IsNull((await sessions.ExecuteAsync(pair.Key, room.Creator.Id, command)).Error);
+        Assert.AreEqual(remaining, room.WhiteRemaining);
+        StringAssert.Contains(room.Pgn(), "[TimeControl \"180+2\"]");
+    }
+
+    [TestMethod]
+    public async Task ComputerTakebackRestoresThePositionBeforeTheHumanMove()
+    {
+        var human = new Player(Guid.NewGuid()); var computer = new Player(Guid.NewGuid());
+        var sessions = GetService<GameSessionService>();
+        var id = await sessions.CreateAsync(new Challenge(human, "Practice undo", RoleRule.CreatorWhite, TimeSpan.MaxValue, ChallengePermission.Public) { Difficulty = 1 });
+        await sessions.AcceptAsync(id, computer);
+        Assert.IsNull((await sessions.ExecuteAsync(id, human.Id, new GameCommand(Guid.NewGuid(), "move", 0, "e4"))).Error);
+        Assert.IsNull((await sessions.ExecuteAsync(id, computer.Id, new GameCommand(Guid.NewGuid(), "move", 1, "e5"), computer: true)).Error);
+        var command = new GameCommand(Guid.NewGuid(), "undo");
+        Assert.IsNull((await sessions.ExecuteAsync(id, human.Id, command)).Error);
+        Assert.AreEqual(0, GetService<InMemoryDatabase>().GetAcceptedChallenge(id)!.Game.Board.MovesToSan.Count);
+        Assert.IsNull((await sessions.ExecuteAsync(id, human.Id, command)).Error);
+        Assert.IsTrue(GetService<InMemoryDatabase>().GetAcceptedChallenge(id)!.AbortAt > DateTimeOffset.UtcNow);
+    }
+
+    [TestMethod]
+    public async Task ARematchNeedsTheOtherPlayerAndCreatesOneNewGame()
+    {
+        var white = new Player(Guid.NewGuid()); var black = new Player(Guid.NewGuid());
+        var sessions = GetService<GameSessionService>(); var database = GetService<InMemoryDatabase>();
+        var id = await sessions.CreateAsync(new Challenge(white, "Rematch", RoleRule.CreatorWhite, TimeSpan.FromMinutes(5), ChallengePermission.Unlisted));
+        await sessions.AcceptAsync(id, black);
+        await sessions.ExecuteAsync(id, white.Id, new GameCommand(Guid.NewGuid(), "resign"));
+        Assert.IsNull((await sessions.ExecuteAsync(id, white.Id, new GameCommand(Guid.NewGuid(), "offer-rematch"))).Error);
+        Assert.AreEqual(1, database.GetGames().Length);
+        var accept = new GameCommand(Guid.NewGuid(), "accept-rematch");
+        Assert.IsNull((await sessions.ExecuteAsync(id, black.Id, accept)).Error);
+        Assert.IsNull((await sessions.ExecuteAsync(id, black.Id, accept)).Error);
+        Assert.AreEqual(2, database.GetGames().Length);
+        var next = database.GetGames().Single(g => !g.Game.Board.IsEndGame);
+        Assert.AreEqual(black.Id, next.GetWhitePlayer().Id); Assert.AreEqual(white.Id, next.GetBlackPlayer().Id);
+        Assert.AreEqual(TimeSpan.FromMinutes(5), next.TimeLimit); Assert.AreEqual(ChallengePermission.Unlisted, next.Permission);
+        Assert.AreNotEqual(database.GetAcceptedChallenge(id)!.HistoryId, next.HistoryId);
+        Assert.AreEqual(1, GetService<TemplateDbContext>().CompletedGames.Count(g => g.Id == database.GetAcceptedChallenge(id)!.HistoryId));
+    }
+
+    [TestMethod]
+    [DataRow(-1, 3)]
+    [DataRow(4, 3)]
+    [DataRow(31, 3)]
+    [DataRow(2, 0)]
+    public async Task InvalidIncrementsCannotCreateEitherKindOfGame(int increment, int minutes)
+    {
+        await RegisterAndLoginAsync();
+        var pve = await PostForm("/pve/new", new Dictionary<string, string>
+        { ["difficulty"] = "1", ["minutes"] = minutes.ToString(), ["incrementSeconds"] = increment.ToString() }, tokenUrl: "/Lobby");
+        Assert.AreEqual(HttpStatusCode.BadRequest, pve.StatusCode);
+        var friend = await PostForm("/challenge/create", new Dictionary<string, string>
+        { ["Message"] = "Invalid clock", ["Minutes"] = minutes.ToString(), ["IncrementSeconds"] = increment.ToString() });
+        Assert.AreEqual(HttpStatusCode.OK, friend.StatusCode);
+        Assert.AreEqual(0, GetService<InMemoryDatabase>().GetRooms().Length);
+    }
+
+    [TestMethod]
+    public async Task IncrementCannotReviveAFlaggedClockOrRewardAnIllegalMove()
+    {
+        var sessions = GetService<GameSessionService>(); var white = new Player(Guid.NewGuid()); var black = new Player(Guid.NewGuid());
+        var id = await sessions.CreateAsync(new Challenge(white, "Flag before increment", RoleRule.CreatorWhite, TimeSpan.FromMinutes(3), ChallengePermission.Public) { IncrementSeconds = 30 });
+        await sessions.AcceptAsync(id, black);
+        var room = GetService<InMemoryDatabase>().GetAcceptedChallenge(id)!;
+        Assert.AreEqual("illegal", (await sessions.ExecuteAsync(id, white.Id, new GameCommand(Guid.NewGuid(), "move", 0, "e5"))).Error);
+        Assert.IsTrue(room.WhiteRemaining <= TimeSpan.FromMinutes(3));
+        room.WhiteRemaining = TimeSpan.FromMilliseconds(1); room.LastClockUpdate = DateTimeOffset.UtcNow.AddSeconds(-1);
+        Assert.AreEqual("ended", (await sessions.ExecuteAsync(id, white.Id, new GameCommand(Guid.NewGuid(), "move", 0, "e4"))).Error);
+        Assert.AreEqual(TimeSpan.Zero, room.WhiteRemaining); Assert.AreEqual(0, room.Game.Board.MovesToSan.Count);
+    }
+
+    [TestMethod]
+    public async Task TakebackAsBlackKeepsTheComputerOpeningAndRestoresBothClocks()
+    {
+        var sessions = GetService<GameSessionService>(); var human = new Player(Guid.NewGuid()); var computer = new Player(Guid.NewGuid());
+        var id = await sessions.CreateAsync(new Challenge(human, "Black practice", RoleRule.AccepterWhite, TimeSpan.FromMinutes(3), ChallengePermission.Public) { Difficulty = 1, IncrementSeconds = 3 });
+        await sessions.AcceptAsync(id, computer);
+        var room = GetService<InMemoryDatabase>().GetAcceptedChallenge(id)!;
+        await sessions.ExecuteAsync(id, computer.Id, new GameCommand(Guid.NewGuid(), "move", 0, "e4"), computer: true);
+        Assert.AreEqual("cannot-undo", (await sessions.ExecuteAsync(id, human.Id, new GameCommand(Guid.NewGuid(), "undo"))).Error);
+        await sessions.ExecuteAsync(id, human.Id, new GameCommand(Guid.NewGuid(), "move", 1, "e5"));
+        var clocks = room.MoveClocks[1]!;
+        await sessions.ExecuteAsync(id, computer.Id, new GameCommand(Guid.NewGuid(), "move", 2, "Nf3"), computer: true);
+        Assert.IsNull((await sessions.ExecuteAsync(id, human.Id, new GameCommand(Guid.NewGuid(), "undo"))).Error);
+        CollectionAssert.AreEqual(new[] { "e4" }, room.Game.Board.MovesToSan.ToArray());
+        Assert.AreEqual(TimeSpan.FromTicks(clocks.WhiteTicks), room.WhiteRemaining);
+        Assert.AreEqual(TimeSpan.FromTicks(clocks.BlackTicks), room.BlackRemaining);
+        Assert.AreEqual(PieceColor.Black, room.Game.Board.Turn);
+        Assert.AreEqual(1, room.MoveClocks.Count);
+    }
+
+    [TestMethod]
+    public async Task TakebackCancelsTheOldSearchAndRejectsItsMoveEvenWhenPlyMatchesAgain()
+    {
+        var sessions = GetService<GameSessionService>(); var human = new Player(Guid.NewGuid()); var computer = new Player(Guid.NewGuid());
+        var id = await sessions.CreateAsync(new Challenge(human, "Late engine response", RoleRule.CreatorWhite, TimeSpan.MaxValue, ChallengePermission.Public) { Difficulty = 1 });
+        await sessions.AcceptAsync(id, computer);
+        var room = GetService<InMemoryDatabase>().GetAcceptedChallenge(id)!;
+        await sessions.ExecuteAsync(id, human.Id, new GameCommand(Guid.NewGuid(), "move", 0, "e4"));
+        var oldRevision = room.Revision;
+        using var search = new CancellationTokenSource(); room.Game.SearchCancellation = search;
+        Assert.IsNull((await sessions.ExecuteAsync(id, human.Id, new GameCommand(Guid.NewGuid(), "undo"))).Error);
+        Assert.IsTrue(search.IsCancellationRequested); room.Game.SearchCancellation = null;
+        await sessions.ExecuteAsync(id, human.Id, new GameCommand(Guid.NewGuid(), "move", 0, "d4", room.Revision));
+        Assert.AreEqual("stale", (await sessions.ExecuteAsync(id, computer.Id, new GameCommand(Guid.NewGuid(), "move", 1, "e5", oldRevision), computer: true)).Error);
+        Assert.AreEqual(1, room.Game.Board.MovesToSan.Count);
+        Assert.IsNull((await sessions.ExecuteAsync(id, computer.Id, new GameCommand(Guid.NewGuid(), "move", 1, "d5", room.Revision), computer: true)).Error);
+    }
+
+    [TestMethod]
+    public async Task TakebackIsUnavailableToSpectatorsFriendsAndFinishedGames()
+    {
+        var sessions = GetService<GameSessionService>(); var white = new Player(Guid.NewGuid()); var black = new Player(Guid.NewGuid());
+        var id = await sessions.CreateAsync(new Challenge(white, "No human takebacks", RoleRule.CreatorWhite, TimeSpan.MaxValue, ChallengePermission.Public));
+        await sessions.AcceptAsync(id, black);
+        Assert.AreEqual("spectator", (await sessions.ExecuteAsync(id, Guid.NewGuid(), new GameCommand(Guid.NewGuid(), "undo"))).Error);
+        Assert.AreEqual("cannot-undo", (await sessions.ExecuteAsync(id, white.Id, new GameCommand(Guid.NewGuid(), "undo"))).Error);
+        await sessions.ExecuteAsync(id, white.Id, new GameCommand(Guid.NewGuid(), "resign"));
+        Assert.AreEqual("ended", (await sessions.ExecuteAsync(id, white.Id, new GameCommand(Guid.NewGuid(), "undo"))).Error);
+    }
+
+    [TestMethod]
+    public async Task SavedPracticeRestoresIncrementAndTakebackClocks()
+    {
+        var context = GetService<TemplateDbContext>(); var sessions = GetService<GameSessionService>();
+        var human = new Player(Guid.NewGuid()); var computer = new Player(Guid.NewGuid());
+        var id = await sessions.CreateAsync(new Challenge(human, "Recovered practice", RoleRule.CreatorWhite, TimeSpan.FromMinutes(5), ChallengePermission.Public) { IncrementSeconds = 5, Difficulty = 1 });
+        await sessions.AcceptAsync(id, computer);
+        await sessions.ExecuteAsync(id, human.Id, new GameCommand(Guid.NewGuid(), "move", 0, "e4"));
+        await sessions.ExecuteAsync(id, computer.Id, new GameCommand(Guid.NewGuid(), "move", 1, "e5"), computer: true);
+        var replacement = new InMemoryDatabase();
+        var recovered = new GameSessionService(replacement, context, GetService<GameHistoryService>(), NullLogger<GameSessionService>.Instance);
+        await recovered.RestoreAsync();
+        var room = replacement.GetAcceptedChallenge(id)!;
+        Assert.AreEqual(5, room.IncrementSeconds); Assert.AreEqual(2, room.MoveClocks.Count);
+        Assert.IsNull((await recovered.ExecuteAsync(id, human.Id, new GameCommand(Guid.NewGuid(), "undo"))).Error);
+        Assert.AreEqual(0, room.Game.Board.MovesToSan.Count);
+        Assert.IsTrue(room.WhiteRemaining <= TimeSpan.FromMinutes(5));
+        StringAssert.Contains(room.Pgn(), "[TimeControl \"300+5\"]");
+    }
+
+    [TestMethod]
+    public async Task RematchOffersCanBeDeclinedAndCannotBeAcceptedByTheirSender()
+    {
+        var sessions = GetService<GameSessionService>(); var white = new Player(Guid.NewGuid()); var black = new Player(Guid.NewGuid());
+        var id = await sessions.CreateAsync(new Challenge(white, "Offer consent", RoleRule.CreatorWhite, TimeSpan.MaxValue, ChallengePermission.Public));
+        await sessions.AcceptAsync(id, black);
+        Assert.AreEqual("not-ended", (await sessions.ExecuteAsync(id, white.Id, new GameCommand(Guid.NewGuid(), "offer-rematch"))).Error);
+        await sessions.ExecuteAsync(id, white.Id, new GameCommand(Guid.NewGuid(), "resign"));
+        Assert.AreEqual("spectator", (await sessions.ExecuteAsync(id, Guid.NewGuid(), new GameCommand(Guid.NewGuid(), "offer-rematch"))).Error);
+        await sessions.ExecuteAsync(id, white.Id, new GameCommand(Guid.NewGuid(), "offer-rematch"));
+        Assert.AreEqual("no-rematch", (await sessions.ExecuteAsync(id, white.Id, new GameCommand(Guid.NewGuid(), "accept-rematch"))).Error);
+        await sessions.ExecuteAsync(id, black.Id, new GameCommand(Guid.NewGuid(), "decline-rematch"));
+        Assert.IsNull(GetService<InMemoryDatabase>().GetAcceptedChallenge(id)!.RematchOfferedBy);
+        Assert.AreEqual("no-rematch", (await sessions.ExecuteAsync(id, black.Id, new GameCommand(Guid.NewGuid(), "accept-rematch"))).Error);
+        Assert.AreEqual(1, GetService<InMemoryDatabase>().GetGames().Length);
+    }
+
+    [TestMethod]
+    public async Task ConcurrentRematchAcceptsAndRestartsKeepOneSwappedGame()
+    {
+        var sessions = GetService<GameSessionService>(); var white = new Player(Guid.NewGuid()); var black = new Player(Guid.NewGuid());
+        var database = GetService<InMemoryDatabase>();
+        var id = await sessions.CreateAsync(new Challenge(white, "One rematch", RoleRule.CreatorWhite, TimeSpan.FromMinutes(3), ChallengePermission.Unlisted) { IncrementSeconds = 2 });
+        await sessions.AcceptAsync(id, black);
+        await sessions.ExecuteAsync(id, white.Id, new GameCommand(Guid.NewGuid(), "resign"));
+        await sessions.ExecuteAsync(id, white.Id, new GameCommand(Guid.NewGuid(), "offer-rematch"));
+        var saved = JsonSerializer.Deserialize<RoomSnapshot>(GetService<TemplateDbContext>().GameSessions.Single(g => g.Id == id).State!)!;
+        Assert.AreEqual(white.Id, saved.RematchOfferedBy);
+        await Task.WhenAll(Enumerable.Range(0, 6).Select(_ => sessions.ExecuteAsync(id, black.Id, new GameCommand(Guid.NewGuid(), "accept-rematch"))));
+        var nextId = database.GetAcceptedChallenge(id)!.NextGameId!.Value;
+        Assert.AreEqual(2, database.GetGames().Length);
+        var replacement = new InMemoryDatabase();
+        await new GameSessionService(replacement, GetService<TemplateDbContext>(), GetService<GameHistoryService>(), NullLogger<GameSessionService>.Instance).RestoreAsync();
+        Assert.AreEqual(nextId, replacement.GetAcceptedChallenge(id)!.NextGameId);
+        var next = replacement.GetAcceptedChallenge(nextId)!;
+        Assert.AreEqual(black.Id, next.GetWhitePlayer().Id); Assert.AreEqual(2, next.IncrementSeconds);
+        Assert.AreEqual(0, next.Game.Board.MovesToSan.Count);
+        Assert.AreEqual(TimeSpan.FromMinutes(3), next.WhiteRemaining);
+    }
+
+    [TestMethod]
+    public async Task FailedRematchCommitCannotLeaveAnOrphanGameOrAConfirmedLink()
+    {
+        await using var context = new FailingChessContext(new DbContextOptionsBuilder().UseInMemoryDatabase(Guid.NewGuid().ToString()).Options);
+        await context.Database.EnsureCreatedAsync();
+        var database = new InMemoryDatabase();
+        var sessions = new GameSessionService(database, context, new GameHistoryService(context), NullLogger<GameSessionService>.Instance);
+        var white = new Player(Guid.NewGuid()); var black = new Player(Guid.NewGuid());
+        var id = await sessions.CreateAsync(new Challenge(white, "Rematch failure", RoleRule.CreatorWhite, TimeSpan.MaxValue, ChallengePermission.Public));
+        await sessions.AcceptAsync(id, black);
+        await sessions.ExecuteAsync(id, white.Id, new GameCommand(Guid.NewGuid(), "resign"));
+        await sessions.ExecuteAsync(id, white.Id, new GameCommand(Guid.NewGuid(), "offer-rematch"));
+        var command = new GameCommand(Guid.NewGuid(), "accept-rematch"); context.FailNextSave = true;
+        await Assert.ThrowsAsync<IOException>(() => sessions.ExecuteAsync(id, black.Id, command));
+        Assert.IsNull(database.GetAcceptedChallenge(id)!.NextGameId); Assert.AreEqual(1, database.GetGames().Length);
+        Assert.AreEqual(1, context.GameSessions.Count()); Assert.AreEqual(1, context.CompletedGames.Count());
+        Assert.IsNull((await sessions.ExecuteAsync(id, black.Id, command)).Error);
+        Assert.AreEqual(2, database.GetGames().Length); Assert.AreEqual(2, context.GameSessions.Count());
+    }
+
+    [TestMethod]
+    public async Task AComputerRematchSwapsSidesAndKeepsTheDifficultyAndIncrement()
+    {
+        var sessions = GetService<GameSessionService>(); var human = new Player(Guid.NewGuid()); var computer = new Player(Guid.NewGuid());
+        var id = await sessions.CreateAsync(new Challenge(human, "Practice rematch", RoleRule.CreatorWhite, TimeSpan.FromMinutes(10), ChallengePermission.Public) { IncrementSeconds = 3, Difficulty = 2 });
+        await sessions.AcceptAsync(id, computer);
+        await sessions.ExecuteAsync(id, human.Id, new GameCommand(Guid.NewGuid(), "resign"));
+        var result = await sessions.ExecuteAsync(id, human.Id, new GameCommand(Guid.NewGuid(), "offer-rematch"));
+        Assert.IsNull(result.Error); var next = GetService<InMemoryDatabase>().GetAcceptedChallenge(result.State.NextGameId!.Value)!;
+        Assert.AreEqual(human.Id, next.GetBlackPlayer().Id); Assert.AreEqual(computer.Id, next.GetWhitePlayer().Id);
+        Assert.AreEqual(2, next.Difficulty); Assert.AreEqual(3, next.IncrementSeconds);
+    }
+
+    [TestMethod]
+    [DataRow(1)]
+    [DataRow(2)]
+    [DataRow(3)]
+    [DataRow(4)]
+    public async Task TrainingLevelsFinishAnImmediateMateRatherThanChoosingARandomBlunder(int difficulty)
+    {
+        var board = ChessBoard.LoadFromFen("7k/5Q2/6K1/8/8/8/8/8 w - - 0 1");
+        using var deadline = new CancellationTokenSource(TimeSpan.FromSeconds(10));
+        using var engine = new ChessEngine(new Random(42));
+        var move = await engine.GetBestMoveAsync(board.ToFen(), difficulty, deadline.Token);
+        Assert.IsTrue(board.IsValidMove(move)); board.Move(move);
+        Assert.IsTrue(board.IsEndGame); Assert.AreEqual(PieceColor.White, board.EndGame!.WonSide);
+    }
+
+    [TestMethod]
+    public async Task AFailedTakebackCommitKeepsTheAcceptedPositionAndCanBeRetried()
+    {
+        await using var context = new FailingChessContext(new DbContextOptionsBuilder().UseInMemoryDatabase(Guid.NewGuid().ToString()).Options);
+        await context.Database.EnsureCreatedAsync();
+        var database = new InMemoryDatabase();
+        var sessions = new GameSessionService(database, context, new GameHistoryService(context), NullLogger<GameSessionService>.Instance);
+        var human = new Player(Guid.NewGuid()); var computer = new Player(Guid.NewGuid());
+        var id = await sessions.CreateAsync(new Challenge(human, "Undo commit failure", RoleRule.CreatorWhite, TimeSpan.FromMinutes(3), ChallengePermission.Public) { Difficulty = 1, IncrementSeconds = 2 });
+        await sessions.AcceptAsync(id, computer);
+        await sessions.ExecuteAsync(id, human.Id, new GameCommand(Guid.NewGuid(), "move", 0, "e4"));
+        await sessions.ExecuteAsync(id, computer.Id, new GameCommand(Guid.NewGuid(), "move", 1, "e5"), computer: true);
+        var room = database.GetAcceptedChallenge(id)!; var position = room.Game.Board.ToFen(); var revision = room.Revision;
+        var command = new GameCommand(Guid.NewGuid(), "undo"); context.FailNextSave = true;
+        await Assert.ThrowsAsync<IOException>(() => sessions.ExecuteAsync(id, human.Id, command));
+        Assert.AreEqual(position, room.Game.Board.ToFen()); Assert.AreEqual(revision, room.Revision);
+        Assert.AreEqual(2, room.MoveClocks.Count); Assert.AreEqual(0, context.CompletedGames.Count());
+        Assert.IsNull((await sessions.ExecuteAsync(id, human.Id, command)).Error);
+        Assert.AreEqual(0, room.Game.Board.MovesToSan.Count);
+    }
+
+    [TestMethod]
+    public async Task AStaleDismissalCannotCancelANewerRematchOffer()
+    {
+        var sessions = GetService<GameSessionService>(); var white = new Player(Guid.NewGuid()); var black = new Player(Guid.NewGuid());
+        var id = await sessions.CreateAsync(new Challenge(white, "Old rematch button", RoleRule.CreatorWhite, TimeSpan.MaxValue, ChallengePermission.Public));
+        await sessions.AcceptAsync(id, black);
+        await sessions.ExecuteAsync(id, white.Id, new GameCommand(Guid.NewGuid(), "resign"));
+        var oldRevision = GetService<InMemoryDatabase>().GetAcceptedChallenge(id)!.Revision;
+        await sessions.ExecuteAsync(id, white.Id, new GameCommand(Guid.NewGuid(), "offer-rematch"));
+        Assert.AreEqual("stale", (await sessions.ExecuteAsync(id, black.Id, new GameCommand(Guid.NewGuid(), "decline-rematch", ExpectedRevision: oldRevision))).Error);
+        Assert.AreEqual(white.Id, GetService<InMemoryDatabase>().GetAcceptedChallenge(id)!.RematchOfferedBy);
+    }
+
+    [TestMethod]
+    public async Task RematchCapacityFailurePreservesTheOfferAndDoesNotReturnAnOrphanLink()
+    {
+        var sessions = GetService<GameSessionService>(); var database = GetService<InMemoryDatabase>();
+        var human = new Player(Guid.NewGuid()); var computer = new Player(Guid.NewGuid());
+        var id = await sessions.CreateAsync(new Challenge(human, "Full rooms", RoleRule.CreatorWhite, TimeSpan.MaxValue, ChallengePermission.Public) { Difficulty = 1 });
+        await sessions.AcceptAsync(id, computer);
+        await sessions.ExecuteAsync(id, human.Id, new GameCommand(Guid.NewGuid(), "resign"));
+        while (database.GetRooms().Length < 256)
+            database.CreateChallenge(new Challenge(new Player(Guid.NewGuid()), "Busy room", RoleRule.Random, TimeSpan.MaxValue, ChallengePermission.Unlisted));
+        var room = database.GetAcceptedChallenge(id)!; var revision = room.Revision;
+        Assert.AreEqual("rooms-full", (await sessions.ExecuteAsync(id, human.Id, new GameCommand(Guid.NewGuid(), "offer-rematch"))).Error);
+        Assert.IsNull(room.NextGameId); Assert.AreEqual(revision, room.Revision);
+        Assert.AreEqual(256, database.GetRooms().Length);
+    }
+
 }

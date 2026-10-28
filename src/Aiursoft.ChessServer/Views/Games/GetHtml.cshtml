@@ -18,6 +18,7 @@
         <span data-key="turn">@Localizer["{0} to move"].Value</span>
         <span data-key="winner">@Localizer["{0} wins"].Value</span>
         <span data-key="draw">@Localizer["Draw"]</span>
+        <span data-key="time-control">@Localizer["Time control: {0}"].Value</span>
         <span data-key="unlimited">@Localizer["Unlimited"]</span>
         <span data-key="thinking">@Localizer["Computer is thinking…"]</span>
         <span data-key="pending">@Localizer["Confirming your move…"]</span>
@@ -33,6 +34,13 @@
         <span data-key="illegal">@Localizer["That move cannot be played in the current position."]</span>
         <span data-key="ended">@Localizer["This game has ended."]</span>
         <span data-key="spectator">@Localizer["Only the players can perform this action."]</span>
+        <span data-key="cannot-undo">@Localizer["You can only take back your own last move in an active computer game."]</span>
+        <span data-key="not-ended">@Localizer["Finish this game before requesting a rematch."]</span>
+        <span data-key="rooms-full">@Localizer["All rooms are busy. Please try again later."]</span>
+        <span data-key="no-rematch">@Localizer["The rematch offer is no longer available."]</span>
+        <span data-key="own-rematch">@Localizer["Rematch requested. Waiting for your opponent…"]</span>
+        <span data-key="their-rematch">@Localizer["Your opponent offers a rematch with colors reversed."]</span>
+        <span data-key="undo-confirm">@Localizer["Take back your last move and the computer reply? The position and clocks will be restored."]</span>
         <span data-key="cannot-abort">@Localizer["The game has started. You can resign instead."]</span>
         <span data-key="cannot-claim">@Localizer["Your opponent can still reconnect."]</span>
         <span data-key="cannot-offer">@Localizer["A draw cannot be offered now."]</span>
@@ -63,10 +71,12 @@
             <div id="board"></div>
             <div id="clock-bottom" class="chess-clock mt-2"><span class="clock-name"></span><strong class="clock-time"></strong></div>
             <div class="d-flex flex-wrap justify-content-between gap-1 small mt-2"><span id="role" class="text-muted"></span><span id="connection-status" role="status"></span></div>
+            <p id="time-control" class="small text-muted mb-1"></p>
             <p id="status" class="my-2" role="status"></p>
             <p id="action-error" class="text-danger small" role="alert" hidden></p>
             <p id="opponent-status" class="text-muted small" hidden></p>
             <div id="game-actions" class="d-flex flex-wrap gap-2 mb-2" hidden>
+                <button class="btn btn-sm btn-outline-secondary" type="button" id="undo" hidden>@Localizer["Take back"]</button>
                 <button class="btn btn-sm btn-outline-danger" type="button" id="resign">@Localizer["Resign"]</button>
                 <button class="btn btn-sm btn-outline-secondary" type="button" id="abort">@Localizer["Abort game"]</button>
                 <button class="btn btn-sm btn-outline-secondary" type="button" data-game-action="offer-draw" id="offer-draw">@Localizer["Offer draw"]</button>
@@ -76,6 +86,11 @@
                 <span>@Localizer["Resign this game?"]</span>
                 <button class="btn btn-sm btn-danger" data-game-action="resign" type="button">@Localizer["Confirm resignation"]</button>
                 <button class="btn btn-sm btn-outline-secondary" id="cancel-resign" type="button">@Localizer["Cancel"]</button>
+            </div>
+            <div id="undo-confirmation" class="d-flex flex-wrap align-items-center gap-2 mb-2" hidden>
+                <span>@Localizer["Take back your last move and the computer reply? The position and clocks will be restored."]</span>
+                <button class="btn btn-sm btn-primary" data-game-action="undo" type="button">@Localizer["Take back"]</button>
+                <button class="btn btn-sm btn-outline-secondary" id="cancel-undo" type="button">@Localizer["Cancel"]</button>
             </div>
             <div id="draw-offer" class="mb-2" hidden><p id="draw-offer-text" class="small mb-1"></p>
                 <button class="btn btn-sm btn-primary" data-game-action="accept-draw" id="accept-draw" type="button">@Localizer["Accept draw"]</button>
@@ -91,6 +106,13 @@
                 <p id="save-status" class="text-muted small" role="status"></p>
                 <button id="retry-save" class="btn btn-sm btn-outline-primary" type="button" hidden>@Localizer["Retry saving"]</button>
                 <a id="history-link" class="btn btn-primary" asp-controller="History" asp-action="Index" hidden>@Localizer["Replay"]</a>
+                <button id="offer-rematch" class="btn btn-outline-primary" data-game-action="offer-rematch" type="button">@Localizer["Rematch"]</button>
+                <a id="next-game" class="btn btn-primary" hidden>@Localizer["Continue to rematch"]</a>
+                <div id="rematch-offer" class="mt-2" hidden>
+                    <p id="rematch-offer-text" class="small mb-1"></p>
+                    <button id="accept-rematch" class="btn btn-primary" data-game-action="accept-rematch" type="button">@Localizer["Accept rematch"]</button>
+                    <button class="btn btn-outline-secondary" data-game-action="decline-rematch" type="button">@Localizer["Dismiss offer"]</button>
+                </div>
                 <a class="btn btn-outline-primary" asp-controller="Lobby" asp-action="Index">@Localizer["Play another game"]</a>
             </div></section>
         </div>

@@ -36,8 +36,14 @@
   <data name="Accept draw" xml:space="preserve">
     <value>接受和棋</value>
   </data>
+  <data name="Accept rematch" xml:space="preserve">
+    <value>接受再来一局</value>
+  </data>
   <data name="After 90 seconds without your opponent, you may claim the result. A computer game ends after two minutes away; a game with both players away ends after ten minutes." xml:space="preserve">
     <value>对手离线 90 秒后，您可以申请判定结果。电脑对局在对手离线两分钟后结束；双方玩家均离线时，对局在十分钟后结束。</value>
+  </data>
+  <data name="All rooms are busy. Please try again later." xml:space="preserve">
+    <value>所有房间都已满，请稍后重试。</value>
   </data>
   <data name="An unplayed game ends after one minute. Leaving does not pause the clock." xml:space="preserve">
     <value>未开始的棋局将在一分钟后结束。离开不会暂停计时。</value>
@@ -84,6 +90,9 @@
   <data name="Connection closed. Refresh to reconnect." xml:space="preserve">
     <value>连接已断开。刷新页面以重新连接。</value>
   </data>
+  <data name="Continue to rematch" xml:space="preserve">
+    <value>继续再战</value>
+  </data>
   <data name="Could not complete the action. Reconnecting to the server…" xml:space="preserve">
     <value>无法完成操作。正在重新连接到服务器…</value>
   </data>
@@ -107,6 +116,9 @@
   </data>
   <data name="Export PGN" xml:space="preserve">
     <value>导出 PGN</value>
+  </data>
+  <data name="Finish this game before requesting a rematch." xml:space="preserve">
+    <value>在请求再来一局之前，请先结束这盘棋。</value>
   </data>
   <data name="Game aborted before any move" xml:space="preserve">
     <value>棋局在尚未走出任何一步之前中止</value>
@@ -171,6 +183,12 @@
   <data name="Reconnecting… Your clock keeps running." xml:space="preserve">
     <value>正在重新连接……您的棋钟仍在走。</value>
   </data>
+  <data name="Rematch" xml:space="preserve">
+    <value>再战</value>
+  </data>
+  <data name="Rematch requested. Waiting for your opponent…" xml:space="preserve">
+    <value>已请求再来一局。正在等待对手…</value>
+  </data>
   <data name="Replay" xml:space="preserve">
     <value>回放</value>
   </data>
@@ -213,6 +231,12 @@
   <data name="Stalemate" xml:space="preserve">
     <value>逼和</value>
   </data>
+  <data name="Take back" xml:space="preserve">
+    <value>悔棋</value>
+  </data>
+  <data name="Take back your last move and the computer reply? The position and clocks will be restored." xml:space="preserve">
+    <value>要撤回你上一步棋以及电脑的应招吗？棋局和双方的计时器都将恢复到之前的状态。</value>
+  </data>
   <data name="That move cannot be played in the current position." xml:space="preserve">
     <value>当前局面下无法走这一步。</value>
   </data>
@@ -225,6 +249,9 @@
   <data name="The position changed. Your board has been synchronized." xml:space="preserve">
     <value>局面已发生变化。棋盘已同步。</value>
   </data>
+  <data name="The rematch offer is no longer available." xml:space="preserve">
+    <value>再次对局请求已不可用。</value>
+  </data>
   <data name="This action could not be confirmed. Refresh to synchronize." xml:space="preserve">
     <value>无法确认此操作。请刷新页面以同步。</value>
   </data>
@@ -233,6 +260,9 @@
   </data>
   <data name="This game is still in progress. Your clock will keep running." xml:space="preserve">
     <value>本局仍在进行中。你的棋钟将继续计时。</value>
+  </data>
+  <data name="Time control: {0}" xml:space="preserve">
+    <value>时限：{0}</value>
   </data>
   <data name="Time expired" xml:space="preserve">
     <value>超时</value>
@@ -258,6 +288,9 @@
   <data name="You are watching this game." xml:space="preserve">
     <value>您正在观战。</value>
   </data>
+  <data name="You can only take back your own last move in an active computer game." xml:space="preserve">
+    <value>在正在进行的人机对弈中，你只能悔掉自己的最后一步棋。</value>
+  </data>
   <data name="You offered a draw." xml:space="preserve">
     <value>您已提出和棋。</value>
   </data>
@@ -269,6 +302,9 @@
   </data>
   <data name="Your opponent offers a draw." xml:space="preserve">
     <value>您的对手提出了和棋。</value>
+  </data>
+  <data name="Your opponent offers a rematch with colors reversed." xml:space="preserve">
+    <value>您的对手提出再赛，并交换执棋颜色。</value>
   </data>
 
 </root>

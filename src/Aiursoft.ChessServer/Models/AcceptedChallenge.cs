@@ -21,6 +21,18 @@ public class AcceptedChallenge : Challenge
     public DateTimeOffset WhiteSeenAt { get; set; } = DateTimeOffset.UtcNow;
     public DateTimeOffset BlackSeenAt { get; set; } = DateTimeOffset.UtcNow;
     public List<CommandReceipt> Receipts { get; set; } = [];
+    public List<MoveClock?> MoveClocks { get; set; } = [];
+    public Guid? RematchOfferedBy { get; set; }
+    public int? NextGameId { get; set; }
+    public int UndoPly
+    {
+        get
+        {
+            var ply = Game.Board.MovesToSan.Count - 1;
+            if ((ply % 2 == 0) != CreatorIsWhite) ply--;
+            return Difficulty != null && ply >= 0 && ply < MoveClocks.Count && MoveClocks[ply] != null ? ply : -1;
+        }
+    }
     public bool CreatorIsWhite { get => _creatorIsWhite; set => _creatorIsWhite = value; }
     public void ClearPgnCache() => _completedPgn = null;
     public bool IsTimed => TimeLimit != TimeSpan.MaxValue;
@@ -71,7 +83,7 @@ public class AcceptedChallenge : Challenge
             Game.Board.AddHeader("Black", GetBlackPlayer().NickName.Replace('"', '\'').Replace('\n', ' ').Replace('\r', ' '));
             Game.Board.AddHeader("Date", GameStartTime.ToString("yyyy.MM.dd", System.Globalization.CultureInfo.InvariantCulture));
             Game.Board.AddHeader("Result", Result);
-            Game.Board.AddHeader("TimeControl", IsTimed ? ((int)TimeLimit.TotalSeconds).ToString(System.Globalization.CultureInfo.InvariantCulture) : "-");
+            Game.Board.AddHeader("TimeControl", IsTimed ? ((int)TimeLimit.TotalSeconds).ToString(System.Globalization.CultureInfo.InvariantCulture) + (IncrementSeconds > 0 ? $"+{IncrementSeconds}" : string.Empty) : "-");
             var pgn = Game.Board.ToPgn();
             if (OutcomeReason is "Aborted" or "Abandoned" && pgn.EndsWith("1/2-1/2", StringComparison.Ordinal)) pgn = pgn[..^7] + "*";
             if (Game.Board.IsEndGame) _completedPgn = pgn;

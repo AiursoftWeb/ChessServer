@@ -56,6 +56,11 @@ public class ChallengeContext(AcceptedChallenge challenge, int id)
     public long Revision { get; } = challenge.Revision;
     public long SampledAt { get; } = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
     public bool Computer { get; } = challenge.Difficulty != null;
+    public int IncrementSeconds { get; } = challenge.IncrementSeconds;
+    public int? InitialMinutes { get; } = challenge.IsTimed ? (int)challenge.TimeLimit.TotalMinutes : null;
+    public bool CanUndo { get; } = challenge.Difficulty != null && !challenge.Game.Board.IsEndGame && challenge.UndoPly >= 0;
+    public Guid? RematchOfferedBy { get; } = challenge.RematchOfferedBy;
+    public int? NextGameId { get; } = challenge.NextGameId;
     public bool Thinking { get; } = challenge.Game.IsThinking;
     public string WhiteId { get; } = challenge.GetWhitePlayer().Id.ToString();
     public string BlackId { get; } = challenge.GetBlackPlayer().Id.ToString();
