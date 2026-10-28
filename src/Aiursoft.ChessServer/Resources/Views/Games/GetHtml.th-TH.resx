@@ -24,23 +24,101 @@
   <data name="{0} to move" xml:space="preserve">
     <value>ถึงตาของ {0}</value>
   </data>
+  <data name="{0} wins" xml:space="preserve">
+    <value>{0} ชนะ</value>
+  </data>
+  <data name="A draw cannot be offered now." xml:space="preserve">
+    <value>ขณะนี้ไม่สามารถเสนอให้เสมอกันได้</value>
+  </data>
+  <data name="Abort game" xml:space="preserve">
+    <value>ยกเลิกเกม</value>
+  </data>
+  <data name="Accept draw" xml:space="preserve">
+    <value>ยอมรับการเสมอ</value>
+  </data>
+  <data name="After 90 seconds without your opponent, you may claim the result. A computer game ends after two minutes away; a game with both players away ends after ten minutes." xml:space="preserve">
+    <value>หากคู่แข่งของคุณไม่อยู่เป็นเวลา 90 วินาที คุณสามารถขอให้ตัดสินผลการแข่งขันได้ เกมกับคอมพิวเตอร์จะสิ้นสุดลงเมื่อไม่มีผู้เล่นอยู่เป็นเวลา 2 นาที ส่วนเกมที่ผู้เล่นทั้งสองฝ่ายไม่อยู่จะสิ้นสุดลงหลังจากผ่านไป 10 นาที</value>
+  </data>
+  <data name="An unplayed game ends after one minute. Leaving does not pause the clock." xml:space="preserve">
+    <value>เกมที่ยังไม่ได้เริ่มเล่นจะจบลงหลังจากผ่านไปหนึ่งนาที การออกจากเกมไม่ได้ทำให้เวลาหยุดลง</value>
+  </data>
+  <data name="Bishop" xml:space="preserve">
+    <value>บิชอป</value>
+  </data>
   <data name="Black" xml:space="preserve">
     <value>ดำ</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>ยกเลิก</value>
   </data>
   <data name="Chat" xml:space="preserve">
     <value>แชต</value>
   </data>
+  <data name="Checkmate" xml:space="preserve">
+    <value>รุกฆาต</value>
+  </data>
   <data name="Checkmate. {0} wins." xml:space="preserve">
     <value>แพ้แล้ว {0} ชนะ</value>
+  </data>
+  <data name="Claim result" xml:space="preserve">
+    <value>ขอรับผลการแข่งขัน</value>
+  </data>
+  <data name="Computer is thinking…" xml:space="preserve">
+    <value>คอมพิวเตอร์กำลังคิด…</value>
+  </data>
+  <data name="Confirm resignation" xml:space="preserve">
+    <value>ยืนยันการยอมแพ้</value>
+  </data>
+  <data name="Confirming your move…" xml:space="preserve">
+    <value>กำลังยืนยันการเดินของคุณ…</value>
+  </data>
+  <data name="Connected" xml:space="preserve">
+    <value>เชื่อมต่อแล้ว</value>
+  </data>
+  <data name="Connecting…" xml:space="preserve">
+    <value>กำลังเชื่อมต่อ…</value>
+  </data>
+  <data name="Connection and game rules" xml:space="preserve">
+    <value>การเชื่อมต่อและกติกาเกม</value>
   </data>
   <data name="Connection closed. Refresh to reconnect." xml:space="preserve">
     <value>การเชื่อมต่อถูกตัดขาด รีเฟรชเพื่อเชื่อมต่ออีกครั้ง</value>
   </data>
+  <data name="Could not complete the action. Reconnecting to the server…" xml:space="preserve">
+    <value>ไม่สามารถดำเนินการให้เสร็จสิ้นได้ กำลังเชื่อมต่อกับเซิร์ฟเวอร์อีกครั้ง…</value>
+  </data>
   <data name="Could not confirm the saved game. Retry." xml:space="preserve">
     <value>ไม่สามารถยืนยันการบันทึกเกมได้ ลองอีกครั้ง</value>
   </data>
+  <data name="Dismiss offer" xml:space="preserve">
+    <value>ปิดข้อเสนอ</value>
+  </data>
+  <data name="Draw" xml:space="preserve">
+    <value>เสมอ</value>
+  </data>
+  <data name="Draw by agreement" xml:space="preserve">
+    <value>เสมอกันโดยความตกลง</value>
+  </data>
+  <data name="Draw by repetition" xml:space="preserve">
+    <value>เสมอจากการเดินซ้ำ</value>
+  </data>
+  <data name="Draw by the fifty-move rule" xml:space="preserve">
+    <value>เสมอตามกฎเดินครบ 50 ครั้ง</value>
+  </data>
   <data name="Export PGN" xml:space="preserve">
     <value>ส่งออก PGN</value>
+  </data>
+  <data name="Game aborted before any move" xml:space="preserve">
+    <value>ยกเลิกเกมก่อนมีการเดินหมาก</value>
+  </data>
+  <data name="Game ended because both players left" xml:space="preserve">
+    <value>เกมสิ้นสุดลงเนื่องจากผู้เล่นทั้งสองคนออกจากเกม</value>
+  </data>
+  <data name="Game ended by abandonment" xml:space="preserve">
+    <value>เกมจบลงเนื่องจากการละทิ้งการแข่งขัน</value>
+  </data>
+  <data name="Game over" xml:space="preserve">
+    <value>จบเกม</value>
   </data>
   <data name="Game over — draw." xml:space="preserve">
     <value>จบเกม — เสมอ</value>
@@ -48,17 +126,68 @@
   <data name="Game over. {0} wins." xml:space="preserve">
     <value>จบเกม {0} เป็นฝ่ายชนะ</value>
   </data>
+  <data name="Knight" xml:space="preserve">
+    <value>ม้า</value>
+  </data>
+  <data name="Lobby" xml:space="preserve">
+    <value>ล็อบบี้</value>
+  </data>
   <data name="Message" xml:space="preserve">
     <value>ข้อความ</value>
+  </data>
+  <data name="Move list" xml:space="preserve">
+    <value>รายการการเดินหมาก</value>
+  </data>
+  <data name="Moves" xml:space="preserve">
+    <value>การเดิน</value>
+  </data>
+  <data name="Neither side has sufficient mating material" xml:space="preserve">
+    <value>ทั้งสองฝ่ายไม่มีหมากเพียงพอที่จะรุกฆาต</value>
+  </data>
+  <data name="Offer draw" xml:space="preserve">
+    <value>เสนอเสมอ</value>
+  </data>
+  <data name="Only the players can perform this action." xml:space="preserve">
+    <value>เฉพาะผู้เล่นเท่านั้นที่สามารถดำเนินการนี้ได้</value>
+  </data>
+  <data name="Opponent disconnected. Reconnection time remaining: {0}s." xml:space="preserve">
+    <value>คู่แข่งตัดการเชื่อมต่อ เหลือเวลาให้เชื่อมต่ออีกครั้ง: {0} วินาที</value>
+  </data>
+  <data name="Play another game" xml:space="preserve">
+    <value>เล่นเกมอีกครั้ง</value>
   </data>
   <data name="Preferred duration: {0} minutes. Games are untimed." xml:space="preserve">
     <value>ระยะเวลาที่ต้องการ: {0} นาที เกมไม่มีการจำกัดเวลา</value>
   </data>
+  <data name="Promote pawn" xml:space="preserve">
+    <value>เลื่อนเบี้ย</value>
+  </data>
+  <data name="Queen" xml:space="preserve">
+    <value>ควีน</value>
+  </data>
+  <data name="Reconnecting… Your clock keeps running." xml:space="preserve">
+    <value>กำลังเชื่อมต่ออีกครั้ง… นาฬิกาของคุณยังเดินอยู่</value>
+  </data>
   <data name="Replay" xml:space="preserve">
     <value>เล่นซ้ำ</value>
   </data>
+  <data name="Resign" xml:space="preserve">
+    <value>ยอมแพ้</value>
+  </data>
+  <data name="Resign this game?" xml:space="preserve">
+    <value>ยอมแพ้เกมนี้หรือไม่?</value>
+  </data>
+  <data name="Resignation" xml:space="preserve">
+    <value>การยอมแพ้</value>
+  </data>
   <data name="Retry saving" xml:space="preserve">
     <value>ลองบันทึกใหม่</value>
+  </data>
+  <data name="Return to live position" xml:space="preserve">
+    <value>กลับไปยังตำแหน่งปัจจุบัน</value>
+  </data>
+  <data name="Rook" xml:space="preserve">
+    <value>รถ</value>
   </data>
   <data name="Room unavailable. Return to the lobby." xml:space="preserve">
     <value>ไม่พบห้อง กลับไปที่ล็อบบี้</value>
@@ -72,8 +201,41 @@
   <data name="Send" xml:space="preserve">
     <value>ส่ง</value>
   </data>
+  <data name="Server maintenance pauses the clocks. A player disconnecting does not." xml:space="preserve">
+    <value>การปิดปรับปรุงเซิร์ฟเวอร์จะหยุดนาฬิกา แต่การที่ผู้เล่นหลุดจากการเชื่อมต่อจะไม่หยุด</value>
+  </data>
   <data name="Spectator" xml:space="preserve">
     <value>ผู้ชม</value>
+  </data>
+  <data name="Stalemate" xml:space="preserve">
+    <value>เสมอ</value>
+  </data>
+  <data name="That move cannot be played in the current position." xml:space="preserve">
+    <value>ตานี้ไม่สามารถเล่นได้ในตำแหน่งปัจจุบัน</value>
+  </data>
+  <data name="The draw offer is no longer available." xml:space="preserve">
+    <value>ข้อเสนอเสมอไม่มีให้ใช้อีกต่อไปแล้ว</value>
+  </data>
+  <data name="The game has started. You can resign instead." xml:space="preserve">
+    <value>เกมเริ่มแล้ว คุณสามารถยอมแพ้แทนได้</value>
+  </data>
+  <data name="The position changed. Your board has been synchronized." xml:space="preserve">
+    <value>ตำแหน่งเปลี่ยนไปแล้ว กระดานของคุณได้รับการซิงค์แล้ว</value>
+  </data>
+  <data name="This action could not be confirmed. Refresh to synchronize." xml:space="preserve">
+    <value>ไม่สามารถยืนยันการดำเนินการนี้ได้ โปรดรีเฟรชเพื่อซิงโครไนซ์</value>
+  </data>
+  <data name="This game has ended." xml:space="preserve">
+    <value>เกมนี้จบลงแล้ว</value>
+  </data>
+  <data name="This game is still in progress. Your clock will keep running." xml:space="preserve">
+    <value>เกมนี้ยังดำเนินอยู่ เวลาของคุณจะยังคงเดินต่อไป</value>
+  </data>
+  <data name="Time expired" xml:space="preserve">
+    <value>หมดเวลา</value>
+  </data>
+  <data name="Time expired, but the opponent cannot checkmate." xml:space="preserve">
+    <value>หมดเวลาแล้ว แต่คู่แข่งไม่สามารถรุกฆาตได้</value>
   </data>
   <data name="Time expired. {0} wins." xml:space="preserve">
     <value>หมดเวลาแล้ว {0} เป็นฝ่ายชนะ</value>
@@ -92,6 +254,18 @@
   </data>
   <data name="You are watching this game." xml:space="preserve">
     <value>คุณกำลังรับชมเกมนี้อยู่</value>
+  </data>
+  <data name="You offered a draw." xml:space="preserve">
+    <value>คุณได้เสนอเสมอ</value>
+  </data>
+  <data name="Your opponent can still reconnect." xml:space="preserve">
+    <value>คู่แข่งของคุณยังสามารถกลับมาเชื่อมต่อได้</value>
+  </data>
+  <data name="Your opponent has not reconnected. You may claim the result or keep waiting." xml:space="preserve">
+    <value>คู่ต่อสู้ของคุณยังไม่ได้เชื่อมต่ออีกครั้ง คุณสามารถขอให้ตัดสินผลการแข่งขันหรือรอต่อไปได้</value>
+  </data>
+  <data name="Your opponent offers a draw." xml:space="preserve">
+    <value>คู่ต่อสู้ของคุณเสนอให้เสมอ</value>
   </data>
 
 </root>

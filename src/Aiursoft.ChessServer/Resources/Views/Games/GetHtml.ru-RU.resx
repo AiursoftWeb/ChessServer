@@ -24,23 +24,101 @@
   <data name="{0} to move" xml:space="preserve">
     <value>Ход {0}</value>
   </data>
+  <data name="{0} wins" xml:space="preserve">
+    <value>{0} побеждает</value>
+  </data>
+  <data name="A draw cannot be offered now." xml:space="preserve">
+    <value>Сейчас нельзя предложить ничью.</value>
+  </data>
+  <data name="Abort game" xml:space="preserve">
+    <value>Прервать игру</value>
+  </data>
+  <data name="Accept draw" xml:space="preserve">
+    <value>Принять ничью</value>
+  </data>
+  <data name="After 90 seconds without your opponent, you may claim the result. A computer game ends after two minutes away; a game with both players away ends after ten minutes." xml:space="preserve">
+    <value>Если соперник не появляется в течение 90 секунд, вы можете заявить о присуждении результата. Партия с компьютером завершается, если вы отсутствуете две минуты; партия, в которой отсутствуют оба игрока, завершается через десять минут.</value>
+  </data>
+  <data name="An unplayed game ends after one minute. Leaving does not pause the clock." xml:space="preserve">
+    <value>Партия, в которой не было сделано ни одного хода, заканчивается через одну минуту. Выход из игры не останавливает часы.</value>
+  </data>
+  <data name="Bishop" xml:space="preserve">
+    <value>Слон</value>
+  </data>
   <data name="Black" xml:space="preserve">
     <value>Чёрные</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Отмена</value>
   </data>
   <data name="Chat" xml:space="preserve">
     <value>Чат</value>
   </data>
+  <data name="Checkmate" xml:space="preserve">
+    <value>Мат</value>
+  </data>
   <data name="Checkmate. {0} wins." xml:space="preserve">
     <value>Мат. Побеждает {0}.</value>
+  </data>
+  <data name="Claim result" xml:space="preserve">
+    <value>Заявить о результате</value>
+  </data>
+  <data name="Computer is thinking…" xml:space="preserve">
+    <value>Компьютер думает…</value>
+  </data>
+  <data name="Confirm resignation" xml:space="preserve">
+    <value>Подтвердить сдачу партии</value>
+  </data>
+  <data name="Confirming your move…" xml:space="preserve">
+    <value>Подтверждаем ваш ход…</value>
+  </data>
+  <data name="Connected" xml:space="preserve">
+    <value>Подключено</value>
+  </data>
+  <data name="Connecting…" xml:space="preserve">
+    <value>Подключение…</value>
+  </data>
+  <data name="Connection and game rules" xml:space="preserve">
+    <value>Правила подключения и игры</value>
   </data>
   <data name="Connection closed. Refresh to reconnect." xml:space="preserve">
     <value>Соединение прервано. Обновите страницу, чтобы подключиться снова.</value>
   </data>
+  <data name="Could not complete the action. Reconnecting to the server…" xml:space="preserve">
+    <value>Не удалось выполнить действие. Повторное подключение к серверу…</value>
+  </data>
   <data name="Could not confirm the saved game. Retry." xml:space="preserve">
     <value>Не удалось подтвердить сохранение игры. Повторите попытку.</value>
   </data>
+  <data name="Dismiss offer" xml:space="preserve">
+    <value>Отклонить предложение</value>
+  </data>
+  <data name="Draw" xml:space="preserve">
+    <value>Ничья</value>
+  </data>
+  <data name="Draw by agreement" xml:space="preserve">
+    <value>Ничья по соглашению</value>
+  </data>
+  <data name="Draw by repetition" xml:space="preserve">
+    <value>Ничья из-за троекратного повторения позиции</value>
+  </data>
+  <data name="Draw by the fifty-move rule" xml:space="preserve">
+    <value>Ничья по правилу 50 ходов</value>
+  </data>
   <data name="Export PGN" xml:space="preserve">
     <value>Экспорт PGN</value>
+  </data>
+  <data name="Game aborted before any move" xml:space="preserve">
+    <value>Партия прервана до первого хода</value>
+  </data>
+  <data name="Game ended because both players left" xml:space="preserve">
+    <value>Игра завершилась, так как оба игрока покинули её</value>
+  </data>
+  <data name="Game ended by abandonment" xml:space="preserve">
+    <value>Игра завершена из-за отказа от продолжения</value>
+  </data>
+  <data name="Game over" xml:space="preserve">
+    <value>Игра окончена</value>
   </data>
   <data name="Game over — draw." xml:space="preserve">
     <value>Игра окончена — ничья.</value>
@@ -48,17 +126,68 @@
   <data name="Game over. {0} wins." xml:space="preserve">
     <value>Игра окончена. Побеждает {0}.</value>
   </data>
+  <data name="Knight" xml:space="preserve">
+    <value>Конь</value>
+  </data>
+  <data name="Lobby" xml:space="preserve">
+    <value>Лобби</value>
+  </data>
   <data name="Message" xml:space="preserve">
     <value>Сообщение</value>
+  </data>
+  <data name="Move list" xml:space="preserve">
+    <value>Список ходов</value>
+  </data>
+  <data name="Moves" xml:space="preserve">
+    <value>Ходы</value>
+  </data>
+  <data name="Neither side has sufficient mating material" xml:space="preserve">
+    <value>У обеих сторон недостаточно материала для мата</value>
+  </data>
+  <data name="Offer draw" xml:space="preserve">
+    <value>Предложить ничью</value>
+  </data>
+  <data name="Only the players can perform this action." xml:space="preserve">
+    <value>Это действие могут выполнять только игроки.</value>
+  </data>
+  <data name="Opponent disconnected. Reconnection time remaining: {0}s." xml:space="preserve">
+    <value>Противник отключился. До окончания времени на переподключение: {0} с.</value>
+  </data>
+  <data name="Play another game" xml:space="preserve">
+    <value>Сыграть ещё раз</value>
   </data>
   <data name="Preferred duration: {0} minutes. Games are untimed." xml:space="preserve">
     <value>Предпочтительная продолжительность: {0} мин. Игры проходят без ограничения времени.</value>
   </data>
+  <data name="Promote pawn" xml:space="preserve">
+    <value>Превращение пешки</value>
+  </data>
+  <data name="Queen" xml:space="preserve">
+    <value>Ферзь</value>
+  </data>
+  <data name="Reconnecting… Your clock keeps running." xml:space="preserve">
+    <value>Повторное подключение… Ваше время продолжает идти.</value>
+  </data>
   <data name="Replay" xml:space="preserve">
     <value>Повторить</value>
   </data>
+  <data name="Resign" xml:space="preserve">
+    <value>Сдаться</value>
+  </data>
+  <data name="Resign this game?" xml:space="preserve">
+    <value>Сдаться в этой партии?</value>
+  </data>
+  <data name="Resignation" xml:space="preserve">
+    <value>Сдача партии</value>
+  </data>
   <data name="Retry saving" xml:space="preserve">
     <value>Повторить сохранение</value>
+  </data>
+  <data name="Return to live position" xml:space="preserve">
+    <value>Вернуться к текущей позиции</value>
+  </data>
+  <data name="Rook" xml:space="preserve">
+    <value>Ладья</value>
   </data>
   <data name="Room unavailable. Return to the lobby." xml:space="preserve">
     <value>Комната недоступна. Вернитесь в лобби.</value>
@@ -72,8 +201,41 @@
   <data name="Send" xml:space="preserve">
     <value>Отправить</value>
   </data>
+  <data name="Server maintenance pauses the clocks. A player disconnecting does not." xml:space="preserve">
+    <value>Во время технического обслуживания сервера часы останавливаются. При отключении игрока — нет.</value>
+  </data>
   <data name="Spectator" xml:space="preserve">
     <value>Зритель</value>
+  </data>
+  <data name="Stalemate" xml:space="preserve">
+    <value>Пат</value>
+  </data>
+  <data name="That move cannot be played in the current position." xml:space="preserve">
+    <value>Этот ход нельзя сделать в текущей позиции.</value>
+  </data>
+  <data name="The draw offer is no longer available." xml:space="preserve">
+    <value>Предложение ничьей больше недоступно.</value>
+  </data>
+  <data name="The game has started. You can resign instead." xml:space="preserve">
+    <value>Игра уже началась. Вместо этого вы можете сдаться.</value>
+  </data>
+  <data name="The position changed. Your board has been synchronized." xml:space="preserve">
+    <value>Позиция изменилась. Ваша доска синхронизирована.</value>
+  </data>
+  <data name="This action could not be confirmed. Refresh to synchronize." xml:space="preserve">
+    <value>Не удалось подтвердить это действие. Обновите страницу для синхронизации.</value>
+  </data>
+  <data name="This game has ended." xml:space="preserve">
+    <value>Эта партия завершена.</value>
+  </data>
+  <data name="This game is still in progress. Your clock will keep running." xml:space="preserve">
+    <value>Игра ещё продолжается. Ваше время будет идти.</value>
+  </data>
+  <data name="Time expired" xml:space="preserve">
+    <value>Время истекло</value>
+  </data>
+  <data name="Time expired, but the opponent cannot checkmate." xml:space="preserve">
+    <value>Время вышло, но противник не может поставить мат.</value>
   </data>
   <data name="Time expired. {0} wins." xml:space="preserve">
     <value>Время истекло. Побеждает {0}.</value>
@@ -92,6 +254,18 @@
   </data>
   <data name="You are watching this game." xml:space="preserve">
     <value>Вы наблюдаете за этой игрой.</value>
+  </data>
+  <data name="You offered a draw." xml:space="preserve">
+    <value>Вы предложили ничью.</value>
+  </data>
+  <data name="Your opponent can still reconnect." xml:space="preserve">
+    <value>Ваш соперник ещё может подключиться.</value>
+  </data>
+  <data name="Your opponent has not reconnected. You may claim the result or keep waiting." xml:space="preserve">
+    <value>Ваш противник не подключился повторно. Вы можете заявить о победе или продолжить ждать.</value>
+  </data>
+  <data name="Your opponent offers a draw." xml:space="preserve">
+    <value>Ваш противник предлагает ничью.</value>
   </data>
 
 </root>

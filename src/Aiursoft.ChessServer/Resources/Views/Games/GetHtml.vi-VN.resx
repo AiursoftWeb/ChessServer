@@ -24,23 +24,101 @@
   <data name="{0} to move" xml:space="preserve">
     <value>Đến lượt {0} đi</value>
   </data>
+  <data name="{0} wins" xml:space="preserve">
+    <value>{0} thắng</value>
+  </data>
+  <data name="A draw cannot be offered now." xml:space="preserve">
+    <value>Hiện không thể đề nghị hòa.</value>
+  </data>
+  <data name="Abort game" xml:space="preserve">
+    <value>Hủy ván đấu</value>
+  </data>
+  <data name="Accept draw" xml:space="preserve">
+    <value>Chấp nhận hòa</value>
+  </data>
+  <data name="After 90 seconds without your opponent, you may claim the result. A computer game ends after two minutes away; a game with both players away ends after ten minutes." xml:space="preserve">
+    <value>Sau 90 giây không thấy đối thủ, bạn có thể yêu cầu xử thắng. Ván đấu với máy tính sẽ kết thúc nếu người chơi vắng mặt quá hai phút; ván đấu khi cả hai người chơi đều vắng mặt sẽ kết thúc sau mười phút.</value>
+  </data>
+  <data name="An unplayed game ends after one minute. Leaving does not pause the clock." xml:space="preserve">
+    <value>Ván cờ chưa được bắt đầu sẽ kết thúc sau một phút. Việc rời khỏi ván cờ không làm đồng hồ tạm dừng.</value>
+  </data>
+  <data name="Bishop" xml:space="preserve">
+    <value>Tượng</value>
+  </data>
   <data name="Black" xml:space="preserve">
     <value>Đen</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Hủy</value>
   </data>
   <data name="Chat" xml:space="preserve">
     <value>Trò chuyện</value>
   </data>
+  <data name="Checkmate" xml:space="preserve">
+    <value>Chiếu hết</value>
+  </data>
   <data name="Checkmate. {0} wins." xml:space="preserve">
     <value>Chiếu hết. {0} thắng.</value>
+  </data>
+  <data name="Claim result" xml:space="preserve">
+    <value>Yêu cầu kết quả</value>
+  </data>
+  <data name="Computer is thinking…" xml:space="preserve">
+    <value>Máy tính đang suy nghĩ…</value>
+  </data>
+  <data name="Confirm resignation" xml:space="preserve">
+    <value>Xác nhận đầu hàng</value>
+  </data>
+  <data name="Confirming your move…" xml:space="preserve">
+    <value>Đang xác nhận nước đi của bạn…</value>
+  </data>
+  <data name="Connected" xml:space="preserve">
+    <value>Đã kết nối</value>
+  </data>
+  <data name="Connecting…" xml:space="preserve">
+    <value>Đang kết nối…</value>
+  </data>
+  <data name="Connection and game rules" xml:space="preserve">
+    <value>Kết nối và luật chơi</value>
   </data>
   <data name="Connection closed. Refresh to reconnect." xml:space="preserve">
     <value>Kết nối đã bị ngắt. Tải lại trang để kết nối lại.</value>
   </data>
+  <data name="Could not complete the action. Reconnecting to the server…" xml:space="preserve">
+    <value>Không thể hoàn tất thao tác. Đang kết nối lại với máy chủ…</value>
+  </data>
   <data name="Could not confirm the saved game. Retry." xml:space="preserve">
     <value>Không thể xác nhận ván cờ đã lưu. Thử lại.</value>
   </data>
+  <data name="Dismiss offer" xml:space="preserve">
+    <value>Từ chối đề nghị hòa</value>
+  </data>
+  <data name="Draw" xml:space="preserve">
+    <value>Hòa</value>
+  </data>
+  <data name="Draw by agreement" xml:space="preserve">
+    <value>Ván hòa theo thỏa thuận</value>
+  </data>
+  <data name="Draw by repetition" xml:space="preserve">
+    <value>Hòa do lặp lại thế cờ</value>
+  </data>
+  <data name="Draw by the fifty-move rule" xml:space="preserve">
+    <value>Hòa theo luật 50 nước đi</value>
+  </data>
   <data name="Export PGN" xml:space="preserve">
     <value>Xuất PGN</value>
+  </data>
+  <data name="Game aborted before any move" xml:space="preserve">
+    <value>Ván đấu đã bị hủy trước khi có nước đi nào</value>
+  </data>
+  <data name="Game ended because both players left" xml:space="preserve">
+    <value>Trò chơi kết thúc vì cả hai người chơi đều đã rời đi</value>
+  </data>
+  <data name="Game ended by abandonment" xml:space="preserve">
+    <value>Ván cờ kết thúc do một bên bỏ cuộc</value>
+  </data>
+  <data name="Game over" xml:space="preserve">
+    <value>Kết thúc ván đấu</value>
   </data>
   <data name="Game over — draw." xml:space="preserve">
     <value>Ván đấu kết thúc — hòa.</value>
@@ -48,17 +126,68 @@
   <data name="Game over. {0} wins." xml:space="preserve">
     <value>Trò chơi kết thúc. {0} thắng.</value>
   </data>
+  <data name="Knight" xml:space="preserve">
+    <value>Mã</value>
+  </data>
+  <data name="Lobby" xml:space="preserve">
+    <value>Sảnh chờ</value>
+  </data>
   <data name="Message" xml:space="preserve">
     <value>Tin nhắn</value>
+  </data>
+  <data name="Move list" xml:space="preserve">
+    <value>Danh sách nước đi</value>
+  </data>
+  <data name="Moves" xml:space="preserve">
+    <value>Nước đi</value>
+  </data>
+  <data name="Neither side has sufficient mating material" xml:space="preserve">
+    <value>Cả hai bên đều không đủ quân để chiếu hết</value>
+  </data>
+  <data name="Offer draw" xml:space="preserve">
+    <value>Đề nghị hòa</value>
+  </data>
+  <data name="Only the players can perform this action." xml:space="preserve">
+    <value>Chỉ người chơi mới có thể thực hiện hành động này.</value>
+  </data>
+  <data name="Opponent disconnected. Reconnection time remaining: {0}s." xml:space="preserve">
+    <value>Đối thủ đã mất kết nối. Thời gian còn lại để kết nối lại: {0} giây.</value>
+  </data>
+  <data name="Play another game" xml:space="preserve">
+    <value>Chơi ván khác</value>
   </data>
   <data name="Preferred duration: {0} minutes. Games are untimed." xml:space="preserve">
     <value>Thời lượng mong muốn: {0} phút. Các ván đấu không giới hạn thời gian.</value>
   </data>
+  <data name="Promote pawn" xml:space="preserve">
+    <value>Phong cấp Tốt</value>
+  </data>
+  <data name="Queen" xml:space="preserve">
+    <value>Hậu</value>
+  </data>
+  <data name="Reconnecting… Your clock keeps running." xml:space="preserve">
+    <value>Đang kết nối lại… Đồng hồ của bạn vẫn tiếp tục chạy.</value>
+  </data>
   <data name="Replay" xml:space="preserve">
     <value>Xem lại</value>
   </data>
+  <data name="Resign" xml:space="preserve">
+    <value>Đầu hàng</value>
+  </data>
+  <data name="Resign this game?" xml:space="preserve">
+    <value>Bỏ cuộc ván này?</value>
+  </data>
+  <data name="Resignation" xml:space="preserve">
+    <value>Đầu hàng</value>
+  </data>
   <data name="Retry saving" xml:space="preserve">
     <value>Thử lưu lại</value>
+  </data>
+  <data name="Return to live position" xml:space="preserve">
+    <value>Quay lại vị trí hiện tại</value>
+  </data>
+  <data name="Rook" xml:space="preserve">
+    <value>Xe</value>
   </data>
   <data name="Room unavailable. Return to the lobby." xml:space="preserve">
     <value>Phòng không khả dụng. Quay lại sảnh chờ.</value>
@@ -72,8 +201,41 @@
   <data name="Send" xml:space="preserve">
     <value>Gửi</value>
   </data>
+  <data name="Server maintenance pauses the clocks. A player disconnecting does not." xml:space="preserve">
+    <value>Việc bảo trì máy chủ sẽ tạm dừng đồng hồ. Người chơi mất kết nối thì không.</value>
+  </data>
   <data name="Spectator" xml:space="preserve">
     <value>Khán giả</value>
+  </data>
+  <data name="Stalemate" xml:space="preserve">
+    <value>Tê</value>
+  </data>
+  <data name="That move cannot be played in the current position." xml:space="preserve">
+    <value>Nước đi đó không thể thực hiện ở thế cờ hiện tại.</value>
+  </data>
+  <data name="The draw offer is no longer available." xml:space="preserve">
+    <value>Đề nghị hòa không còn khả dụng.</value>
+  </data>
+  <data name="The game has started. You can resign instead." xml:space="preserve">
+    <value>Ván đấu đã bắt đầu. Bạn có thể xin thua.</value>
+  </data>
+  <data name="The position changed. Your board has been synchronized." xml:space="preserve">
+    <value>Vị trí đã thay đổi. Bàn cờ của bạn đã được đồng bộ hóa.</value>
+  </data>
+  <data name="This action could not be confirmed. Refresh to synchronize." xml:space="preserve">
+    <value>Không thể xác nhận thao tác này. Hãy làm mới để đồng bộ hóa.</value>
+  </data>
+  <data name="This game has ended." xml:space="preserve">
+    <value>Ván đấu này đã kết thúc.</value>
+  </data>
+  <data name="This game is still in progress. Your clock will keep running." xml:space="preserve">
+    <value>Ván đấu này vẫn đang diễn ra. Đồng hồ của bạn vẫn sẽ tiếp tục chạy.</value>
+  </data>
+  <data name="Time expired" xml:space="preserve">
+    <value>Đã hết thời gian</value>
+  </data>
+  <data name="Time expired, but the opponent cannot checkmate." xml:space="preserve">
+    <value>Đã hết thời gian, nhưng đối thủ không thể chiếu hết.</value>
   </data>
   <data name="Time expired. {0} wins." xml:space="preserve">
     <value>Đã hết thời gian. {0} thắng.</value>
@@ -92,6 +254,18 @@
   </data>
   <data name="You are watching this game." xml:space="preserve">
     <value>Bạn đang xem ván cờ này.</value>
+  </data>
+  <data name="You offered a draw." xml:space="preserve">
+    <value>Bạn đã đề nghị hòa.</value>
+  </data>
+  <data name="Your opponent can still reconnect." xml:space="preserve">
+    <value>Đối thủ của bạn vẫn có thể kết nối lại.</value>
+  </data>
+  <data name="Your opponent has not reconnected. You may claim the result or keep waiting." xml:space="preserve">
+    <value>Đối thủ của bạn vẫn chưa kết nối lại. Bạn có thể yêu cầu xử định kết quả hoặc tiếp tục chờ.</value>
+  </data>
+  <data name="Your opponent offers a draw." xml:space="preserve">
+    <value>Đối thủ của bạn đề nghị hòa.</value>
   </data>
 
 </root>
