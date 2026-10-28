@@ -36,6 +36,12 @@
   <data name="Share this page with your opponent. Both players must sign in." xml:space="preserve">
     <value>Comparte esta página con tu oponente. Ambos jugadores deben iniciar sesión.</value>
   </data>
+  <data name="Share this page with your opponent. They can sign in or choose a guest nickname." xml:space="preserve">
+    <value>Comparte esta página con tu oponente. Puede iniciar sesión o elegir un apodo de invitado.</value>
+  </data>
+  <data name="Time per player: {0} minutes, plus {1} seconds per move." xml:space="preserve">
+    <value>Tiempo por jugador: {0} minutos, más {1} segundos por jugada.</value>
+  </data>
   <data name="Time per player: {0} minutes." xml:space="preserve">
     <value>Tiempo por jugador: {0} minutos.</value>
   </data>

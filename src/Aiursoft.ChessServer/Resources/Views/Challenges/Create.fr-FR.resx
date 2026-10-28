@@ -24,23 +24,44 @@
   <data name="1 minute" xml:space="preserve">
     <value>1 minute</value>
   </data>
+  <data name="1 second" xml:space="preserve">
+    <value>1 seconde</value>
+  </data>
   <data name="10 minutes" xml:space="preserve">
     <value>10 minutes</value>
+  </data>
+  <data name="10 seconds" xml:space="preserve">
+    <value>10 secondes</value>
   </data>
   <data name="15 minutes" xml:space="preserve">
     <value>15 minutes</value>
   </data>
+  <data name="15 seconds" xml:space="preserve">
+    <value>15 secondes</value>
+  </data>
   <data name="2 hours" xml:space="preserve">
     <value>2 heures</value>
+  </data>
+  <data name="2 seconds" xml:space="preserve">
+    <value>2 secondes</value>
   </data>
   <data name="3 minutes" xml:space="preserve">
     <value>3 minutes</value>
   </data>
+  <data name="3 seconds" xml:space="preserve">
+    <value>3 secondes</value>
+  </data>
   <data name="30 minutes" xml:space="preserve">
     <value>30 minutes</value>
   </data>
+  <data name="30 seconds" xml:space="preserve">
+    <value>30 secondes</value>
+  </data>
   <data name="5 minutes" xml:space="preserve">
     <value>5 minutes</value>
+  </data>
+  <data name="5 seconds" xml:space="preserve">
+    <value>5 secondes</value>
   </data>
   <data name="Black" xml:space="preserve">
     <value>Noir</value>
@@ -53,6 +74,12 @@
   </data>
   <data name="Games are untimed." xml:space="preserve">
     <value>Les parties se jouent sans limite de temps.</value>
+  </data>
+  <data name="Increment per move" xml:space="preserve">
+    <value>Incrément par coup</value>
+  </data>
+  <data name="No increment" xml:space="preserve">
+    <value>Aucun incrément</value>
   </data>
   <data name="Public" xml:space="preserve">
     <value>Public</value>

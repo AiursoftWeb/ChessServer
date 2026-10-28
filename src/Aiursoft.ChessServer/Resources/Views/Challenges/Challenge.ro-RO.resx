@@ -36,6 +36,12 @@
   <data name="Share this page with your opponent. Both players must sign in." xml:space="preserve">
     <value>Distribuie această pagină adversarului tău. Ambii jucători trebuie să se conecteze.</value>
   </data>
+  <data name="Share this page with your opponent. They can sign in or choose a guest nickname." xml:space="preserve">
+    <value>Distribuiți această pagină adversarului. Acesta se poate autentifica sau poate alege o poreclă de invitat.</value>
+  </data>
+  <data name="Time per player: {0} minutes, plus {1} seconds per move." xml:space="preserve">
+    <value>Timp per jucător: {0} minute, plus {1} secunde pentru fiecare mutare.</value>
+  </data>
   <data name="Time per player: {0} minutes." xml:space="preserve">
     <value>Timp per jucător: {0} minute.</value>
   </data>

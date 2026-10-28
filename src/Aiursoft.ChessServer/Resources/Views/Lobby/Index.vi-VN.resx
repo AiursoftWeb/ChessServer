@@ -21,20 +21,38 @@
       <data name="1 — Beginner" xml:space="preserve">
     <value>1 — Người mới bắt đầu</value>
   </data>
+  <data name="1 second" xml:space="preserve">
+    <value>1 giây</value>
+  </data>
   <data name="10 minutes" xml:space="preserve">
     <value>10 phút</value>
+  </data>
+  <data name="10 seconds" xml:space="preserve">
+    <value>10 giây</value>
   </data>
   <data name="15 minutes" xml:space="preserve">
     <value>15 phút</value>
   </data>
+  <data name="15 seconds" xml:space="preserve">
+    <value>15 giây</value>
+  </data>
   <data name="2 — Easy" xml:space="preserve">
     <value>2 — Dễ</value>
+  </data>
+  <data name="2 seconds" xml:space="preserve">
+    <value>2 giây</value>
   </data>
   <data name="3 — Casual" xml:space="preserve">
     <value>3 — Bình thường</value>
   </data>
   <data name="3 minutes" xml:space="preserve">
     <value>3 phút</value>
+  </data>
+  <data name="3 seconds" xml:space="preserve">
+    <value>3 giây</value>
+  </data>
+  <data name="30 seconds" xml:space="preserve">
+    <value>30 giây</value>
   </data>
   <data name="4 — Intermediate" xml:space="preserve">
     <value>4 — Trung cấp</value>
@@ -44,6 +62,9 @@
   </data>
   <data name="5 minutes" xml:space="preserve">
     <value>5 phút</value>
+  </data>
+  <data name="5 seconds" xml:space="preserve">
+    <value>5 giây</value>
   </data>
   <data name="6 — Hard" xml:space="preserve">
     <value>6 — Khó</value>
@@ -66,11 +87,20 @@
   <data name="Difficulty" xml:space="preserve">
     <value>Độ khó</value>
   </data>
+  <data name="Guest" xml:space="preserve">
+    <value>Khách</value>
+  </data>
+  <data name="Increment per move" xml:space="preserve">
+    <value>Thời gian cộng thêm mỗi nước đi</value>
+  </data>
   <data name="My games" xml:space="preserve">
     <value>Ván đấu của tôi</value>
   </data>
   <data name="No games in progress." xml:space="preserve">
     <value>Không có ván nào đang diễn ra.</value>
+  </data>
+  <data name="No increment" xml:space="preserve">
+    <value>Không cộng thêm thời gian</value>
   </data>
   <data name="No open challenges." xml:space="preserve">
     <value>Không có thử thách nào đang mở.</value>

@@ -36,8 +36,14 @@
   <data name="Accept draw" xml:space="preserve">
     <value>Chấp nhận hòa</value>
   </data>
+  <data name="Accept rematch" xml:space="preserve">
+    <value>Chấp nhận tái đấu</value>
+  </data>
   <data name="After 90 seconds without your opponent, you may claim the result. A computer game ends after two minutes away; a game with both players away ends after ten minutes." xml:space="preserve">
     <value>Sau 90 giây không thấy đối thủ, bạn có thể yêu cầu xử thắng. Ván đấu với máy tính sẽ kết thúc nếu người chơi vắng mặt quá hai phút; ván đấu khi cả hai người chơi đều vắng mặt sẽ kết thúc sau mười phút.</value>
+  </data>
+  <data name="All rooms are busy. Please try again later." xml:space="preserve">
+    <value>Tất cả các phòng hiện đều bận. Vui lòng thử lại sau.</value>
   </data>
   <data name="An unplayed game ends after one minute. Leaving does not pause the clock." xml:space="preserve">
     <value>Ván cờ chưa được bắt đầu sẽ kết thúc sau một phút. Việc rời khỏi ván cờ không làm đồng hồ tạm dừng.</value>
@@ -84,6 +90,9 @@
   <data name="Connection closed. Refresh to reconnect." xml:space="preserve">
     <value>Kết nối đã bị ngắt. Tải lại trang để kết nối lại.</value>
   </data>
+  <data name="Continue to rematch" xml:space="preserve">
+    <value>Tiếp tục tái đấu</value>
+  </data>
   <data name="Could not complete the action. Reconnecting to the server…" xml:space="preserve">
     <value>Không thể hoàn tất thao tác. Đang kết nối lại với máy chủ…</value>
   </data>
@@ -108,6 +117,9 @@
   <data name="Export PGN" xml:space="preserve">
     <value>Xuất PGN</value>
   </data>
+  <data name="Finish this game before requesting a rematch." xml:space="preserve">
+    <value>Hãy kết thúc ván đấu này trước khi yêu cầu tái đấu.</value>
+  </data>
   <data name="Game aborted before any move" xml:space="preserve">
     <value>Ván đấu đã bị hủy trước khi có nước đi nào</value>
   </data>
@@ -117,6 +129,9 @@
   <data name="Game ended by abandonment" xml:space="preserve">
     <value>Ván cờ kết thúc do một bên bỏ cuộc</value>
   </data>
+  <data name="Game finished. Download the PGN to keep it; guest games are not saved to a personal history." xml:space="preserve">
+    <value>Ván đấu đã kết thúc. Hãy tải xuống tệp PGN để lưu lại; các ván đấu với tư cách khách không được lưu vào lịch sử cá nhân.</value>
+  </data>
   <data name="Game over" xml:space="preserve">
     <value>Kết thúc ván đấu</value>
   </data>
@@ -125,6 +140,9 @@
   </data>
   <data name="Game over. {0} wins." xml:space="preserve">
     <value>Trò chơi kết thúc. {0} thắng.</value>
+  </data>
+  <data name="Guest" xml:space="preserve">
+    <value>Khách</value>
   </data>
   <data name="Knight" xml:space="preserve">
     <value>Mã</value>
@@ -168,6 +186,12 @@
   <data name="Reconnecting… Your clock keeps running." xml:space="preserve">
     <value>Đang kết nối lại… Đồng hồ của bạn vẫn tiếp tục chạy.</value>
   </data>
+  <data name="Rematch" xml:space="preserve">
+    <value>Tái đấu</value>
+  </data>
+  <data name="Rematch requested. Waiting for your opponent…" xml:space="preserve">
+    <value>Đã yêu cầu đấu lại. Đang chờ đối thủ…</value>
+  </data>
   <data name="Replay" xml:space="preserve">
     <value>Xem lại</value>
   </data>
@@ -210,6 +234,12 @@
   <data name="Stalemate" xml:space="preserve">
     <value>Tê</value>
   </data>
+  <data name="Take back" xml:space="preserve">
+    <value>Lùi lại</value>
+  </data>
+  <data name="Take back your last move and the computer reply? The position and clocks will be restored." xml:space="preserve">
+    <value>Lùi lại nước đi cuối cùng của bạn và nước đáp trả của máy tính? Thế cờ và đồng hồ sẽ được khôi phục.</value>
+  </data>
   <data name="That move cannot be played in the current position." xml:space="preserve">
     <value>Nước đi đó không thể thực hiện ở thế cờ hiện tại.</value>
   </data>
@@ -222,6 +252,9 @@
   <data name="The position changed. Your board has been synchronized." xml:space="preserve">
     <value>Vị trí đã thay đổi. Bàn cờ của bạn đã được đồng bộ hóa.</value>
   </data>
+  <data name="The rematch offer is no longer available." xml:space="preserve">
+    <value>Lời đề nghị tái đấu không còn khả dụng.</value>
+  </data>
   <data name="This action could not be confirmed. Refresh to synchronize." xml:space="preserve">
     <value>Không thể xác nhận thao tác này. Hãy làm mới để đồng bộ hóa.</value>
   </data>
@@ -230,6 +263,9 @@
   </data>
   <data name="This game is still in progress. Your clock will keep running." xml:space="preserve">
     <value>Ván đấu này vẫn đang diễn ra. Đồng hồ của bạn vẫn sẽ tiếp tục chạy.</value>
+  </data>
+  <data name="Time control: {0}" xml:space="preserve">
+    <value>Kiểm soát thời gian: {0}</value>
   </data>
   <data name="Time expired" xml:space="preserve">
     <value>Đã hết thời gian</value>
@@ -255,6 +291,9 @@
   <data name="You are watching this game." xml:space="preserve">
     <value>Bạn đang xem ván cờ này.</value>
   </data>
+  <data name="You can only take back your own last move in an active computer game." xml:space="preserve">
+    <value>Bạn chỉ có thể đi lại nước đi cuối cùng của mình trong ván đấu với máy tính đang diễn ra.</value>
+  </data>
   <data name="You offered a draw." xml:space="preserve">
     <value>Bạn đã đề nghị hòa.</value>
   </data>
@@ -266,6 +305,9 @@
   </data>
   <data name="Your opponent offers a draw." xml:space="preserve">
     <value>Đối thủ của bạn đề nghị hòa.</value>
+  </data>
+  <data name="Your opponent offers a rematch with colors reversed." xml:space="preserve">
+    <value>Đối thủ của bạn đề nghị đấu lại, đổi màu quân cờ.</value>
   </data>
 
 </root>

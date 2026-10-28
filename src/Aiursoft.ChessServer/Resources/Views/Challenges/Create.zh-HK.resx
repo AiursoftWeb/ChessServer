@@ -24,23 +24,44 @@
   <data name="1 minute" xml:space="preserve">
     <value>1 分鐘</value>
   </data>
+  <data name="1 second" xml:space="preserve">
+    <value>一秒</value>
+  </data>
   <data name="10 minutes" xml:space="preserve">
     <value>10 分鐘</value>
+  </data>
+  <data name="10 seconds" xml:space="preserve">
+    <value>10 秒</value>
   </data>
   <data name="15 minutes" xml:space="preserve">
     <value>15分鐘</value>
   </data>
+  <data name="15 seconds" xml:space="preserve">
+    <value>15 秒</value>
+  </data>
   <data name="2 hours" xml:space="preserve">
     <value>2 小時</value>
+  </data>
+  <data name="2 seconds" xml:space="preserve">
+    <value>2 秒</value>
   </data>
   <data name="3 minutes" xml:space="preserve">
     <value>3 分鐘</value>
   </data>
+  <data name="3 seconds" xml:space="preserve">
+    <value>3 秒</value>
+  </data>
   <data name="30 minutes" xml:space="preserve">
     <value>30 分鐘</value>
   </data>
+  <data name="30 seconds" xml:space="preserve">
+    <value>30 秒</value>
+  </data>
   <data name="5 minutes" xml:space="preserve">
     <value>5 分鐘</value>
+  </data>
+  <data name="5 seconds" xml:space="preserve">
+    <value>5 秒</value>
   </data>
   <data name="Black" xml:space="preserve">
     <value>黑棋</value>
@@ -53,6 +74,12 @@
   </data>
   <data name="Games are untimed." xml:space="preserve">
     <value>遊戲不限時。</value>
+  </data>
+  <data name="Increment per move" xml:space="preserve">
+    <value>每步棋增加時間</value>
+  </data>
+  <data name="No increment" xml:space="preserve">
+    <value>不設加秒</value>
   </data>
   <data name="Public" xml:space="preserve">
     <value>公開</value>

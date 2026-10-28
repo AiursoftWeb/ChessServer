@@ -36,8 +36,14 @@
   <data name="Accept draw" xml:space="preserve">
     <value>ยอมรับการเสมอ</value>
   </data>
+  <data name="Accept rematch" xml:space="preserve">
+    <value>ยอมรับการแข่งใหม่</value>
+  </data>
   <data name="After 90 seconds without your opponent, you may claim the result. A computer game ends after two minutes away; a game with both players away ends after ten minutes." xml:space="preserve">
     <value>หากคู่แข่งของคุณไม่อยู่เป็นเวลา 90 วินาที คุณสามารถขอให้ตัดสินผลการแข่งขันได้ เกมกับคอมพิวเตอร์จะสิ้นสุดลงเมื่อไม่มีผู้เล่นอยู่เป็นเวลา 2 นาที ส่วนเกมที่ผู้เล่นทั้งสองฝ่ายไม่อยู่จะสิ้นสุดลงหลังจากผ่านไป 10 นาที</value>
+  </data>
+  <data name="All rooms are busy. Please try again later." xml:space="preserve">
+    <value>ห้องทุกห้องไม่ว่าง โปรดลองอีกครั้งในภายหลัง</value>
   </data>
   <data name="An unplayed game ends after one minute. Leaving does not pause the clock." xml:space="preserve">
     <value>เกมที่ยังไม่ได้เริ่มเล่นจะจบลงหลังจากผ่านไปหนึ่งนาที การออกจากเกมไม่ได้ทำให้เวลาหยุดลง</value>
@@ -84,6 +90,9 @@
   <data name="Connection closed. Refresh to reconnect." xml:space="preserve">
     <value>การเชื่อมต่อถูกตัดขาด รีเฟรชเพื่อเชื่อมต่ออีกครั้ง</value>
   </data>
+  <data name="Continue to rematch" xml:space="preserve">
+    <value>เล่นเกมใหม่อีกครั้งต่อ</value>
+  </data>
   <data name="Could not complete the action. Reconnecting to the server…" xml:space="preserve">
     <value>ไม่สามารถดำเนินการให้เสร็จสิ้นได้ กำลังเชื่อมต่อกับเซิร์ฟเวอร์อีกครั้ง…</value>
   </data>
@@ -108,6 +117,9 @@
   <data name="Export PGN" xml:space="preserve">
     <value>ส่งออก PGN</value>
   </data>
+  <data name="Finish this game before requesting a rematch." xml:space="preserve">
+    <value>เล่นเกมนี้ให้จบก่อนขอเล่นใหม่</value>
+  </data>
   <data name="Game aborted before any move" xml:space="preserve">
     <value>ยกเลิกเกมก่อนมีการเดินหมาก</value>
   </data>
@@ -117,6 +129,9 @@
   <data name="Game ended by abandonment" xml:space="preserve">
     <value>เกมจบลงเนื่องจากการละทิ้งการแข่งขัน</value>
   </data>
+  <data name="Game finished. Download the PGN to keep it; guest games are not saved to a personal history." xml:space="preserve">
+    <value>จบเกมแล้ว ดาวน์โหลดไฟล์ PGN เพื่อเก็บเกมนี้ไว้ เกมของผู้เยี่ยมชมจะไม่ถูกบันทึกไว้ในประวัติส่วนตัว</value>
+  </data>
   <data name="Game over" xml:space="preserve">
     <value>จบเกม</value>
   </data>
@@ -125,6 +140,9 @@
   </data>
   <data name="Game over. {0} wins." xml:space="preserve">
     <value>จบเกม {0} เป็นฝ่ายชนะ</value>
+  </data>
+  <data name="Guest" xml:space="preserve">
+    <value>ผู้มาเยือน</value>
   </data>
   <data name="Knight" xml:space="preserve">
     <value>ม้า</value>
@@ -168,6 +186,12 @@
   <data name="Reconnecting… Your clock keeps running." xml:space="preserve">
     <value>กำลังเชื่อมต่ออีกครั้ง… นาฬิกาของคุณยังเดินอยู่</value>
   </data>
+  <data name="Rematch" xml:space="preserve">
+    <value>ขอแข่งใหม่</value>
+  </data>
+  <data name="Rematch requested. Waiting for your opponent…" xml:space="preserve">
+    <value>ส่งคำขอแข่งขันใหม่แล้ว กำลังรอคู่แข่งของคุณ…</value>
+  </data>
   <data name="Replay" xml:space="preserve">
     <value>เล่นซ้ำ</value>
   </data>
@@ -210,6 +234,12 @@
   <data name="Stalemate" xml:space="preserve">
     <value>เสมอ</value>
   </data>
+  <data name="Take back" xml:space="preserve">
+    <value>ขอเดินกลับ</value>
+  </data>
+  <data name="Take back your last move and the computer reply? The position and clocks will be restored." xml:space="preserve">
+    <value>ต้องการย้อนตาก่อนหน้าของคุณและตาที่คอมพิวเตอร์ตอบกลับหรือไม่? ระบบจะคืนตำแหน่งบนกระดานและเวลาให้เหมือนเดิม</value>
+  </data>
   <data name="That move cannot be played in the current position." xml:space="preserve">
     <value>ตานี้ไม่สามารถเล่นได้ในตำแหน่งปัจจุบัน</value>
   </data>
@@ -222,6 +252,9 @@
   <data name="The position changed. Your board has been synchronized." xml:space="preserve">
     <value>ตำแหน่งเปลี่ยนไปแล้ว กระดานของคุณได้รับการซิงค์แล้ว</value>
   </data>
+  <data name="The rematch offer is no longer available." xml:space="preserve">
+    <value>ข้อเสนอขอแข่งใหม่ไม่มีผลแล้ว</value>
+  </data>
   <data name="This action could not be confirmed. Refresh to synchronize." xml:space="preserve">
     <value>ไม่สามารถยืนยันการดำเนินการนี้ได้ โปรดรีเฟรชเพื่อซิงโครไนซ์</value>
   </data>
@@ -230,6 +263,9 @@
   </data>
   <data name="This game is still in progress. Your clock will keep running." xml:space="preserve">
     <value>เกมนี้ยังดำเนินอยู่ เวลาของคุณจะยังคงเดินต่อไป</value>
+  </data>
+  <data name="Time control: {0}" xml:space="preserve">
+    <value>การควบคุมเวลา: {0}</value>
   </data>
   <data name="Time expired" xml:space="preserve">
     <value>หมดเวลา</value>
@@ -255,6 +291,9 @@
   <data name="You are watching this game." xml:space="preserve">
     <value>คุณกำลังรับชมเกมนี้อยู่</value>
   </data>
+  <data name="You can only take back your own last move in an active computer game." xml:space="preserve">
+    <value>คุณสามารถขอคืนตาเดินล่าสุดของคุณได้เฉพาะในเกมกับคอมพิวเตอร์ที่กำลังดำเนินอยู่เท่านั้น</value>
+  </data>
   <data name="You offered a draw." xml:space="preserve">
     <value>คุณได้เสนอเสมอ</value>
   </data>
@@ -266,6 +305,9 @@
   </data>
   <data name="Your opponent offers a draw." xml:space="preserve">
     <value>คู่ต่อสู้ของคุณเสนอให้เสมอ</value>
+  </data>
+  <data name="Your opponent offers a rematch with colors reversed." xml:space="preserve">
+    <value>คู่แข่งของคุณเสนอให้แข่งกันอีกครั้งโดยสลับสีหมากกัน</value>
   </data>
 
 </root>

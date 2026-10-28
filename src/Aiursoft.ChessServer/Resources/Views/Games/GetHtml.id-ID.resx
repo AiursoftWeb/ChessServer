@@ -24,23 +24,116 @@
   <data name="{0} to move" xml:space="preserve">
     <value>Giliran {0}</value>
   </data>
+  <data name="{0} wins" xml:space="preserve">
+    <value>{0} menang</value>
+  </data>
+  <data name="A draw cannot be offered now." xml:space="preserve">
+    <value>Seri tidak dapat ditawarkan sekarang.</value>
+  </data>
+  <data name="Abort game" xml:space="preserve">
+    <value>Batalkan permainan</value>
+  </data>
+  <data name="Accept draw" xml:space="preserve">
+    <value>Terima hasil remis</value>
+  </data>
+  <data name="Accept rematch" xml:space="preserve">
+    <value>Terima pertandingan ulang</value>
+  </data>
+  <data name="After 90 seconds without your opponent, you may claim the result. A computer game ends after two minutes away; a game with both players away ends after ten minutes." xml:space="preserve">
+    <value>Setelah 90 detik tanpa kehadiran lawan, Anda dapat mengklaim hasil pertandingan. Pertandingan melawan komputer berakhir setelah dua menit tidak aktif; pertandingan saat kedua pemain tidak aktif berakhir setelah sepuluh menit.</value>
+  </data>
+  <data name="All rooms are busy. Please try again later." xml:space="preserve">
+    <value>Semua ruang sedang sibuk. Silakan coba lagi nanti.</value>
+  </data>
+  <data name="An unplayed game ends after one minute. Leaving does not pause the clock." xml:space="preserve">
+    <value>Permainan yang belum dimainkan berakhir setelah satu menit. Meninggalkan permainan tidak menghentikan jam.</value>
+  </data>
+  <data name="Bishop" xml:space="preserve">
+    <value>Gajah</value>
+  </data>
   <data name="Black" xml:space="preserve">
     <value>Hitam</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Batal</value>
   </data>
   <data name="Chat" xml:space="preserve">
     <value>Obrolan</value>
   </data>
+  <data name="Checkmate" xml:space="preserve">
+    <value>Skakmat</value>
+  </data>
   <data name="Checkmate. {0} wins." xml:space="preserve">
     <value>Skakmat. {0} menang.</value>
+  </data>
+  <data name="Claim result" xml:space="preserve">
+    <value>Klaim hasil</value>
+  </data>
+  <data name="Computer is thinking…" xml:space="preserve">
+    <value>Komputer sedang berpikir…</value>
+  </data>
+  <data name="Confirm resignation" xml:space="preserve">
+    <value>Konfirmasi pengunduran diri</value>
+  </data>
+  <data name="Confirming your move…" xml:space="preserve">
+    <value>Mengonfirmasi langkah Anda…</value>
+  </data>
+  <data name="Connected" xml:space="preserve">
+    <value>Terhubung</value>
+  </data>
+  <data name="Connecting…" xml:space="preserve">
+    <value>Menghubungkan…</value>
+  </data>
+  <data name="Connection and game rules" xml:space="preserve">
+    <value>Koneksi dan aturan permainan</value>
   </data>
   <data name="Connection closed. Refresh to reconnect." xml:space="preserve">
     <value>Koneksi terputus. Muat ulang untuk menyambungkan kembali.</value>
   </data>
+  <data name="Continue to rematch" xml:space="preserve">
+    <value>Lanjutkan ke pertandingan ulang</value>
+  </data>
+  <data name="Could not complete the action. Reconnecting to the server…" xml:space="preserve">
+    <value>Tindakan tidak dapat diselesaikan. Menghubungkan kembali ke server…</value>
+  </data>
   <data name="Could not confirm the saved game. Retry." xml:space="preserve">
     <value>Tidak dapat mengonfirmasi permainan yang tersimpan. Coba lagi.</value>
   </data>
+  <data name="Dismiss offer" xml:space="preserve">
+    <value>Tolak tawaran</value>
+  </data>
+  <data name="Draw" xml:space="preserve">
+    <value>Remis</value>
+  </data>
+  <data name="Draw by agreement" xml:space="preserve">
+    <value>Seri atas kesepakatan</value>
+  </data>
+  <data name="Draw by repetition" xml:space="preserve">
+    <value>Remis karena pengulangan posisi</value>
+  </data>
+  <data name="Draw by the fifty-move rule" xml:space="preserve">
+    <value>Remis berdasarkan aturan lima puluh langkah</value>
+  </data>
   <data name="Export PGN" xml:space="preserve">
     <value>Ekspor PGN</value>
+  </data>
+  <data name="Finish this game before requesting a rematch." xml:space="preserve">
+    <value>Selesaikan permainan ini sebelum meminta pertandingan ulang.</value>
+  </data>
+  <data name="Game aborted before any move" xml:space="preserve">
+    <value>Permainan dibatalkan sebelum ada langkah yang dimainkan</value>
+  </data>
+  <data name="Game ended because both players left" xml:space="preserve">
+    <value>Permainan berakhir karena kedua pemain telah meninggalkan permainan.</value>
+  </data>
+  <data name="Game ended by abandonment" xml:space="preserve">
+    <value>Permainan berakhir karena ditinggalkan.</value>
+  </data>
+  <data name="Game finished. Download the PGN to keep it; guest games are not saved to a personal history." xml:space="preserve">
+    <value>Permainan selesai. Unduh PGN untuk menyimpannya; permainan tamu tidak disimpan dalam riwayat pribadi.</value>
+  </data>
+  <data name="Game over" xml:space="preserve">
+    <value>Permainan berakhir</value>
   </data>
   <data name="Game over — draw." xml:space="preserve">
     <value>Permainan berakhir — seri.</value>
@@ -48,17 +141,77 @@
   <data name="Game over. {0} wins." xml:space="preserve">
     <value>Permainan berakhir. {0} menang.</value>
   </data>
+  <data name="Guest" xml:space="preserve">
+    <value>Tamu</value>
+  </data>
+  <data name="Knight" xml:space="preserve">
+    <value>Kuda</value>
+  </data>
+  <data name="Lobby" xml:space="preserve">
+    <value>Lobi</value>
+  </data>
   <data name="Message" xml:space="preserve">
     <value>Pesan</value>
+  </data>
+  <data name="Move list" xml:space="preserve">
+    <value>Daftar langkah</value>
+  </data>
+  <data name="Moves" xml:space="preserve">
+    <value>Langkah</value>
+  </data>
+  <data name="Neither side has sufficient mating material" xml:space="preserve">
+    <value>Kedua pihak tidak memiliki materi yang cukup untuk melakukan skakmat.</value>
+  </data>
+  <data name="Offer draw" xml:space="preserve">
+    <value>Tawarkan remis</value>
+  </data>
+  <data name="Only the players can perform this action." xml:space="preserve">
+    <value>Hanya pemain yang dapat melakukan tindakan ini.</value>
+  </data>
+  <data name="Opponent disconnected. Reconnection time remaining: {0}s." xml:space="preserve">
+    <value>Lawan terputus. Sisa waktu untuk menyambung kembali: {0} dtk.</value>
+  </data>
+  <data name="Play another game" xml:space="preserve">
+    <value>Mainkan permainan lain</value>
   </data>
   <data name="Preferred duration: {0} minutes. Games are untimed." xml:space="preserve">
     <value>Durasi yang diinginkan: {0} menit. Permainan tidak dibatasi waktu.</value>
   </data>
+  <data name="Promote pawn" xml:space="preserve">
+    <value>Promosikan pion</value>
+  </data>
+  <data name="Queen" xml:space="preserve">
+    <value>Menteri</value>
+  </data>
+  <data name="Reconnecting… Your clock keeps running." xml:space="preserve">
+    <value>Menyambungkan kembali… Jam Anda tetap berjalan.</value>
+  </data>
+  <data name="Rematch" xml:space="preserve">
+    <value>Main ulang</value>
+  </data>
+  <data name="Rematch requested. Waiting for your opponent…" xml:space="preserve">
+    <value>Permintaan tanding ulang telah dikirim. Menunggu lawan Anda…</value>
+  </data>
   <data name="Replay" xml:space="preserve">
     <value>Putar ulang</value>
   </data>
+  <data name="Resign" xml:space="preserve">
+    <value>Menyerah</value>
+  </data>
+  <data name="Resign this game?" xml:space="preserve">
+    <value>Mengundurkan diri dari permainan ini?</value>
+  </data>
+  <data name="Resignation" xml:space="preserve">
+    <value>Menyerah</value>
+  </data>
   <data name="Retry saving" xml:space="preserve">
     <value>Coba simpan lagi</value>
+  </data>
+  <data name="Return to live position" xml:space="preserve">
+    <value>Kembali ke posisi terkini</value>
+  </data>
+  <data name="Rook" xml:space="preserve">
+    <value>Benteng</value>
   </data>
   <data name="Room unavailable. Return to the lobby." xml:space="preserve">
     <value>Ruang tidak tersedia. Kembali ke lobi.</value>
@@ -72,8 +225,53 @@
   <data name="Send" xml:space="preserve">
     <value>Kirim</value>
   </data>
+  <data name="Server maintenance pauses the clocks. A player disconnecting does not." xml:space="preserve">
+    <value>Pemeliharaan server menghentikan jam. Pemain yang terputus koneksinya tidak.</value>
+  </data>
   <data name="Spectator" xml:space="preserve">
     <value>Penonton</value>
+  </data>
+  <data name="Stalemate" xml:space="preserve">
+    <value>Remis pat</value>
+  </data>
+  <data name="Take back" xml:space="preserve">
+    <value>Batalkan langkah</value>
+  </data>
+  <data name="Take back your last move and the computer reply? The position and clocks will be restored." xml:space="preserve">
+    <value>Batalkan langkah terakhir Anda dan balasan komputer? Posisi dan jam akan dikembalikan seperti semula.</value>
+  </data>
+  <data name="That move cannot be played in the current position." xml:space="preserve">
+    <value>Langkah tersebut tidak dapat dimainkan pada posisi saat ini.</value>
+  </data>
+  <data name="The draw offer is no longer available." xml:space="preserve">
+    <value>Tawaran remis sudah tidak tersedia lagi.</value>
+  </data>
+  <data name="The game has started. You can resign instead." xml:space="preserve">
+    <value>Permainan telah dimulai. Anda dapat menyerah.</value>
+  </data>
+  <data name="The position changed. Your board has been synchronized." xml:space="preserve">
+    <value>Posisi telah berubah. Papan Anda telah disinkronkan.</value>
+  </data>
+  <data name="The rematch offer is no longer available." xml:space="preserve">
+    <value>Tawaran pertandingan ulang sudah tidak tersedia.</value>
+  </data>
+  <data name="This action could not be confirmed. Refresh to synchronize." xml:space="preserve">
+    <value>Tindakan ini tidak dapat dikonfirmasi. Muat ulang untuk menyinkronkan.</value>
+  </data>
+  <data name="This game has ended." xml:space="preserve">
+    <value>Permainan ini telah berakhir.</value>
+  </data>
+  <data name="This game is still in progress. Your clock will keep running." xml:space="preserve">
+    <value>Permainan ini masih berlangsung. Waktu Anda akan terus berjalan.</value>
+  </data>
+  <data name="Time control: {0}" xml:space="preserve">
+    <value>Kontrol waktu: {0}</value>
+  </data>
+  <data name="Time expired" xml:space="preserve">
+    <value>Waktu habis</value>
+  </data>
+  <data name="Time expired, but the opponent cannot checkmate." xml:space="preserve">
+    <value>Waktu habis, tetapi lawan tidak dapat melakukan skakmat.</value>
   </data>
   <data name="Time expired. {0} wins." xml:space="preserve">
     <value>Waktu habis. {0} menang.</value>
@@ -92,6 +290,24 @@
   </data>
   <data name="You are watching this game." xml:space="preserve">
     <value>Anda sedang menonton permainan ini.</value>
+  </data>
+  <data name="You can only take back your own last move in an active computer game." xml:space="preserve">
+    <value>Anda hanya dapat membatalkan langkah terakhir Anda sendiri dalam permainan melawan komputer yang sedang berlangsung.</value>
+  </data>
+  <data name="You offered a draw." xml:space="preserve">
+    <value>Anda menawarkan remis.</value>
+  </data>
+  <data name="Your opponent can still reconnect." xml:space="preserve">
+    <value>Lawan Anda masih dapat terhubung kembali.</value>
+  </data>
+  <data name="Your opponent has not reconnected. You may claim the result or keep waiting." xml:space="preserve">
+    <value>Lawan Anda belum tersambung kembali. Anda dapat mengklaim hasil pertandingan atau terus menunggu.</value>
+  </data>
+  <data name="Your opponent offers a draw." xml:space="preserve">
+    <value>Lawan Anda menawarkan remis.</value>
+  </data>
+  <data name="Your opponent offers a rematch with colors reversed." xml:space="preserve">
+    <value>Lawan Anda menawarkan pertandingan ulang dengan warna yang ditukar.</value>
   </data>
 
 </root>

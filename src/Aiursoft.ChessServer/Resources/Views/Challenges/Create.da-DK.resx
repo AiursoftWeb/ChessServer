@@ -24,23 +24,44 @@
   <data name="1 minute" xml:space="preserve">
     <value>1 minut</value>
   </data>
+  <data name="1 second" xml:space="preserve">
+    <value>1 sekund</value>
+  </data>
   <data name="10 minutes" xml:space="preserve">
     <value>10 minutter</value>
+  </data>
+  <data name="10 seconds" xml:space="preserve">
+    <value>10 sekunder</value>
   </data>
   <data name="15 minutes" xml:space="preserve">
     <value>15 minutter</value>
   </data>
+  <data name="15 seconds" xml:space="preserve">
+    <value>15 sekunder</value>
+  </data>
   <data name="2 hours" xml:space="preserve">
     <value>2 timer</value>
+  </data>
+  <data name="2 seconds" xml:space="preserve">
+    <value>2 sekunder</value>
   </data>
   <data name="3 minutes" xml:space="preserve">
     <value>3 minutter</value>
   </data>
+  <data name="3 seconds" xml:space="preserve">
+    <value>3 sekunder</value>
+  </data>
   <data name="30 minutes" xml:space="preserve">
     <value>30 minutter</value>
   </data>
+  <data name="30 seconds" xml:space="preserve">
+    <value>30 sekunder</value>
+  </data>
   <data name="5 minutes" xml:space="preserve">
     <value>5 minutter</value>
+  </data>
+  <data name="5 seconds" xml:space="preserve">
+    <value>5 sekunder</value>
   </data>
   <data name="Black" xml:space="preserve">
     <value>Sort</value>
@@ -53,6 +74,12 @@
   </data>
   <data name="Games are untimed." xml:space="preserve">
     <value>Spillene er uden tidsbegrænsning.</value>
+  </data>
+  <data name="Increment per move" xml:space="preserve">
+    <value>Tillæg pr. træk</value>
+  </data>
+  <data name="No increment" xml:space="preserve">
+    <value>Intet tillæg</value>
   </data>
   <data name="Public" xml:space="preserve">
     <value>Offentlig</value>

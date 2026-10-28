@@ -36,6 +36,12 @@
   <data name="Share this page with your opponent. Both players must sign in." xml:space="preserve">
     <value>이 페이지를 상대방과 공유하세요. 두 플레이어 모두 로그인해야 합니다.</value>
   </data>
+  <data name="Share this page with your opponent. They can sign in or choose a guest nickname." xml:space="preserve">
+    <value>이 페이지를 상대에게 공유하세요. 상대는 로그인하거나 게스트 닉네임을 선택할 수 있습니다.</value>
+  </data>
+  <data name="Time per player: {0} minutes, plus {1} seconds per move." xml:space="preserve">
+    <value>플레이어당 시간: {0}분, 한 수를 둘 때마다 {1}초 추가.</value>
+  </data>
   <data name="Time per player: {0} minutes." xml:space="preserve">
     <value>플레이어당 시간: {0}분.</value>
   </data>

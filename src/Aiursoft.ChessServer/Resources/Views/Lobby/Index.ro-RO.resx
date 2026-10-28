@@ -21,20 +21,38 @@
       <data name="1 — Beginner" xml:space="preserve">
     <value>1 — Începător</value>
   </data>
+  <data name="1 second" xml:space="preserve">
+    <value>1 secundă</value>
+  </data>
   <data name="10 minutes" xml:space="preserve">
     <value>10 minute</value>
+  </data>
+  <data name="10 seconds" xml:space="preserve">
+    <value>10 secunde</value>
   </data>
   <data name="15 minutes" xml:space="preserve">
     <value>15 minute</value>
   </data>
+  <data name="15 seconds" xml:space="preserve">
+    <value>15 secunde</value>
+  </data>
   <data name="2 — Easy" xml:space="preserve">
     <value>2 — Ușor</value>
+  </data>
+  <data name="2 seconds" xml:space="preserve">
+    <value>2 secunde</value>
   </data>
   <data name="3 — Casual" xml:space="preserve">
     <value>3 — Ocazional</value>
   </data>
   <data name="3 minutes" xml:space="preserve">
     <value>3 minute</value>
+  </data>
+  <data name="3 seconds" xml:space="preserve">
+    <value>3 secunde</value>
+  </data>
+  <data name="30 seconds" xml:space="preserve">
+    <value>30 de secunde</value>
   </data>
   <data name="4 — Intermediate" xml:space="preserve">
     <value>4 — Intermediar</value>
@@ -44,6 +62,9 @@
   </data>
   <data name="5 minutes" xml:space="preserve">
     <value>5 minute</value>
+  </data>
+  <data name="5 seconds" xml:space="preserve">
+    <value>5 secunde</value>
   </data>
   <data name="6 — Hard" xml:space="preserve">
     <value>6 — Greu</value>
@@ -57,17 +78,29 @@
   <data name="Black" xml:space="preserve">
     <value>Negru</value>
   </data>
+  <data name="Continue game" xml:space="preserve">
+    <value>Continuă jocul</value>
+  </data>
   <data name="Create a challenge" xml:space="preserve">
     <value>Creează o provocare</value>
   </data>
   <data name="Difficulty" xml:space="preserve">
     <value>Dificultate</value>
   </data>
+  <data name="Guest" xml:space="preserve">
+    <value>Oaspete</value>
+  </data>
+  <data name="Increment per move" xml:space="preserve">
+    <value>Increment per mutare</value>
+  </data>
   <data name="My games" xml:space="preserve">
     <value>Partidele mele</value>
   </data>
   <data name="No games in progress." xml:space="preserve">
     <value>Niciun joc în desfășurare.</value>
+  </data>
+  <data name="No increment" xml:space="preserve">
+    <value>Fără increment</value>
   </data>
   <data name="No open challenges." xml:space="preserve">
     <value>Nu există provocări deschise.</value>
@@ -101,6 +134,9 @@
   </data>
   <data name="White" xml:space="preserve">
     <value>Albe</value>
+  </data>
+  <data name="Your current games" xml:space="preserve">
+    <value>Jocurile tale curente</value>
   </data>
   <data name="Your pieces" xml:space="preserve">
     <value>Piesele tale</value>

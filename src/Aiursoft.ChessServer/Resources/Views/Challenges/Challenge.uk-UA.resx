@@ -36,6 +36,12 @@
   <data name="Share this page with your opponent. Both players must sign in." xml:space="preserve">
     <value>Поділіться цією сторінкою зі своїм суперником. Обидва гравці мають увійти в систему.</value>
   </data>
+  <data name="Share this page with your opponent. They can sign in or choose a guest nickname." xml:space="preserve">
+    <value>Поділіться цією сторінкою зі своїм суперником. Він може увійти в обліковий запис або вибрати гостьове ім’я.</value>
+  </data>
+  <data name="Time per player: {0} minutes, plus {1} seconds per move." xml:space="preserve">
+    <value>Час на гравця: {0} хвилин і ще {1} секунд за хід.</value>
+  </data>
   <data name="Time per player: {0} minutes." xml:space="preserve">
     <value>Час на гравця: {0} хвилин.</value>
   </data>

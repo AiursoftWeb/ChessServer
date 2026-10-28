@@ -24,23 +24,116 @@
   <data name="{0} to move" xml:space="preserve">
     <value>Rândul lui {0} să mute</value>
   </data>
+  <data name="{0} wins" xml:space="preserve">
+    <value>{0} câștigă</value>
+  </data>
+  <data name="A draw cannot be offered now." xml:space="preserve">
+    <value>Nu se poate propune remiză acum.</value>
+  </data>
+  <data name="Abort game" xml:space="preserve">
+    <value>Anulează partida</value>
+  </data>
+  <data name="Accept draw" xml:space="preserve">
+    <value>Acceptă remiza</value>
+  </data>
+  <data name="Accept rematch" xml:space="preserve">
+    <value>Acceptă revanșa</value>
+  </data>
+  <data name="After 90 seconds without your opponent, you may claim the result. A computer game ends after two minutes away; a game with both players away ends after ten minutes." xml:space="preserve">
+    <value>După 90 de secunde fără ca adversarul să fie prezent, poți revendica rezultatul. O partidă împotriva calculatorului se încheie după două minute de absență; o partidă în care ambii jucători sunt absenți se încheie după zece minute.</value>
+  </data>
+  <data name="All rooms are busy. Please try again later." xml:space="preserve">
+    <value>Toate camerele sunt ocupate. Încercați din nou mai târziu.</value>
+  </data>
+  <data name="An unplayed game ends after one minute. Leaving does not pause the clock." xml:space="preserve">
+    <value>O partidă nejucată se încheie după un minut. Plecarea nu oprește cronometrul.</value>
+  </data>
+  <data name="Bishop" xml:space="preserve">
+    <value>Nebun</value>
+  </data>
   <data name="Black" xml:space="preserve">
     <value>Negru</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Anulează</value>
   </data>
   <data name="Chat" xml:space="preserve">
     <value>Chat</value>
   </data>
+  <data name="Checkmate" xml:space="preserve">
+    <value>Șah mat</value>
+  </data>
   <data name="Checkmate. {0} wins." xml:space="preserve">
     <value>Șah mat. {0} câștigă.</value>
+  </data>
+  <data name="Claim result" xml:space="preserve">
+    <value>Revendică rezultatul</value>
+  </data>
+  <data name="Computer is thinking…" xml:space="preserve">
+    <value>Computerul se gândește…</value>
+  </data>
+  <data name="Confirm resignation" xml:space="preserve">
+    <value>Confirmă renunțarea</value>
+  </data>
+  <data name="Confirming your move…" xml:space="preserve">
+    <value>Se confirmă mutarea ta…</value>
+  </data>
+  <data name="Connected" xml:space="preserve">
+    <value>Conectat</value>
+  </data>
+  <data name="Connecting…" xml:space="preserve">
+    <value>Se conectează…</value>
+  </data>
+  <data name="Connection and game rules" xml:space="preserve">
+    <value>Reguli privind conexiunea și jocul</value>
   </data>
   <data name="Connection closed. Refresh to reconnect." xml:space="preserve">
     <value>Conexiunea a fost închisă. Reîmprospătați pagina pentru a vă reconecta.</value>
   </data>
+  <data name="Continue to rematch" xml:space="preserve">
+    <value>Continuă rejocul</value>
+  </data>
+  <data name="Could not complete the action. Reconnecting to the server…" xml:space="preserve">
+    <value>Acțiunea nu a putut fi finalizată. Reconectare la server…</value>
+  </data>
   <data name="Could not confirm the saved game. Retry." xml:space="preserve">
     <value>Nu s-a putut confirma salvarea jocului. Încercați din nou.</value>
   </data>
+  <data name="Dismiss offer" xml:space="preserve">
+    <value>Respinge oferta</value>
+  </data>
+  <data name="Draw" xml:space="preserve">
+    <value>Remiză</value>
+  </data>
+  <data name="Draw by agreement" xml:space="preserve">
+    <value>Remiză prin acord</value>
+  </data>
+  <data name="Draw by repetition" xml:space="preserve">
+    <value>Egalitate prin repetiție</value>
+  </data>
+  <data name="Draw by the fifty-move rule" xml:space="preserve">
+    <value>Remiză conform regulii celor cincizeci de mutări</value>
+  </data>
   <data name="Export PGN" xml:space="preserve">
     <value>Exportă PGN</value>
+  </data>
+  <data name="Finish this game before requesting a rematch." xml:space="preserve">
+    <value>Încheie acest joc înainte de a solicita o revanșă.</value>
+  </data>
+  <data name="Game aborted before any move" xml:space="preserve">
+    <value>Partidă întreruptă înainte de prima mutare</value>
+  </data>
+  <data name="Game ended because both players left" xml:space="preserve">
+    <value>Partida s-a încheiat deoarece ambii jucători au părăsit-o</value>
+  </data>
+  <data name="Game ended by abandonment" xml:space="preserve">
+    <value>Partida s-a încheiat prin abandon</value>
+  </data>
+  <data name="Game finished. Download the PGN to keep it; guest games are not saved to a personal history." xml:space="preserve">
+    <value>Partida s-a încheiat. Descărcați fișierul PGN pentru a o păstra; partidele invitaților nu se salvează în istoricul personal.</value>
+  </data>
+  <data name="Game over" xml:space="preserve">
+    <value>Partida terminată</value>
   </data>
   <data name="Game over — draw." xml:space="preserve">
     <value>Partida s-a încheiat — remiză.</value>
@@ -48,17 +141,77 @@
   <data name="Game over. {0} wins." xml:space="preserve">
     <value>Jocul s-a încheiat. {0} câștigă.</value>
   </data>
+  <data name="Guest" xml:space="preserve">
+    <value>Vizitator</value>
+  </data>
+  <data name="Knight" xml:space="preserve">
+    <value>Cal</value>
+  </data>
+  <data name="Lobby" xml:space="preserve">
+    <value>Sală de așteptare</value>
+  </data>
   <data name="Message" xml:space="preserve">
     <value>Mesaj</value>
+  </data>
+  <data name="Move list" xml:space="preserve">
+    <value>Lista de mutări</value>
+  </data>
+  <data name="Moves" xml:space="preserve">
+    <value>Mute</value>
+  </data>
+  <data name="Neither side has sufficient mating material" xml:space="preserve">
+    <value>Niciuna dintre părți nu are suficiente piese pentru a da mat</value>
+  </data>
+  <data name="Offer draw" xml:space="preserve">
+    <value>Propune remiză</value>
+  </data>
+  <data name="Only the players can perform this action." xml:space="preserve">
+    <value>Doar jucătorii pot efectua această acțiune.</value>
+  </data>
+  <data name="Opponent disconnected. Reconnection time remaining: {0}s." xml:space="preserve">
+    <value>Adversarul s-a deconectat. Timp rămas pentru reconectare: {0}s.</value>
+  </data>
+  <data name="Play another game" xml:space="preserve">
+    <value>Joacă o altă partidă</value>
   </data>
   <data name="Preferred duration: {0} minutes. Games are untimed." xml:space="preserve">
     <value>Durata preferată: {0} de minute. Partidele nu au limită de timp.</value>
   </data>
+  <data name="Promote pawn" xml:space="preserve">
+    <value>Promovează pionul</value>
+  </data>
+  <data name="Queen" xml:space="preserve">
+    <value>Regină</value>
+  </data>
+  <data name="Reconnecting… Your clock keeps running." xml:space="preserve">
+    <value>Reconectare… Ceasul tău continuă să meargă.</value>
+  </data>
+  <data name="Rematch" xml:space="preserve">
+    <value>Revansă</value>
+  </data>
+  <data name="Rematch requested. Waiting for your opponent…" xml:space="preserve">
+    <value>Cerere de rejucare trimisă. Se așteaptă răspunsul adversarului…</value>
+  </data>
   <data name="Replay" xml:space="preserve">
     <value>Redare</value>
   </data>
+  <data name="Resign" xml:space="preserve">
+    <value>Renunță</value>
+  </data>
+  <data name="Resign this game?" xml:space="preserve">
+    <value>Renunțați la acest joc?</value>
+  </data>
+  <data name="Resignation" xml:space="preserve">
+    <value>Abandon</value>
+  </data>
   <data name="Retry saving" xml:space="preserve">
     <value>Reîncearcă salvarea</value>
+  </data>
+  <data name="Return to live position" xml:space="preserve">
+    <value>Reveniți la poziția curentă</value>
+  </data>
+  <data name="Rook" xml:space="preserve">
+    <value>Turn</value>
   </data>
   <data name="Room unavailable. Return to the lobby." xml:space="preserve">
     <value>Camera nu este disponibilă. Revino la lobby.</value>
@@ -72,8 +225,53 @@
   <data name="Send" xml:space="preserve">
     <value>Trimite</value>
   </data>
+  <data name="Server maintenance pauses the clocks. A player disconnecting does not." xml:space="preserve">
+    <value>Mentenanța serverului oprește ceasurile. Deconectarea unui jucător nu le oprește.</value>
+  </data>
   <data name="Spectator" xml:space="preserve">
     <value>Spectator</value>
+  </data>
+  <data name="Stalemate" xml:space="preserve">
+    <value>Pat</value>
+  </data>
+  <data name="Take back" xml:space="preserve">
+    <value>Retrage</value>
+  </data>
+  <data name="Take back your last move and the computer reply? The position and clocks will be restored." xml:space="preserve">
+    <value>Anulați ultima mutare și răspunsul calculatorului? Poziția și ceasurile vor fi restabilite.</value>
+  </data>
+  <data name="That move cannot be played in the current position." xml:space="preserve">
+    <value>Această mutare nu poate fi jucată în poziția actuală.</value>
+  </data>
+  <data name="The draw offer is no longer available." xml:space="preserve">
+    <value>Oferta de remiză nu mai este disponibilă.</value>
+  </data>
+  <data name="The game has started. You can resign instead." xml:space="preserve">
+    <value>Jocul a început. Poți abandona partida.</value>
+  </data>
+  <data name="The position changed. Your board has been synchronized." xml:space="preserve">
+    <value>Poziția s-a schimbat. Tabla ta a fost sincronizată.</value>
+  </data>
+  <data name="The rematch offer is no longer available." xml:space="preserve">
+    <value>Oferta de rejoc nu mai este disponibilă.</value>
+  </data>
+  <data name="This action could not be confirmed. Refresh to synchronize." xml:space="preserve">
+    <value>Această acțiune nu a putut fi confirmată. Reîmprospătați pagina pentru sincronizare.</value>
+  </data>
+  <data name="This game has ended." xml:space="preserve">
+    <value>Acest joc s-a încheiat.</value>
+  </data>
+  <data name="This game is still in progress. Your clock will keep running." xml:space="preserve">
+    <value>Partida este încă în desfășurare. Timpul tău va continua să curgă.</value>
+  </data>
+  <data name="Time control: {0}" xml:space="preserve">
+    <value>Controlul timpului: {0}</value>
+  </data>
+  <data name="Time expired" xml:space="preserve">
+    <value>Timpul a expirat</value>
+  </data>
+  <data name="Time expired, but the opponent cannot checkmate." xml:space="preserve">
+    <value>Timpul a expirat, dar adversarul nu poate da mat.</value>
   </data>
   <data name="Time expired. {0} wins." xml:space="preserve">
     <value>Timpul a expirat. {0} câștigă.</value>
@@ -92,6 +290,24 @@
   </data>
   <data name="You are watching this game." xml:space="preserve">
     <value>Urmăriți această partidă.</value>
+  </data>
+  <data name="You can only take back your own last move in an active computer game." xml:space="preserve">
+    <value>Poți anula doar ultima ta mutare într-o partidă activă împotriva calculatorului.</value>
+  </data>
+  <data name="You offered a draw." xml:space="preserve">
+    <value>Ați propus remiză.</value>
+  </data>
+  <data name="Your opponent can still reconnect." xml:space="preserve">
+    <value>Adversarul tău se mai poate reconecta.</value>
+  </data>
+  <data name="Your opponent has not reconnected. You may claim the result or keep waiting." xml:space="preserve">
+    <value>Adversarul tău nu s-a reconectat. Poți revendica rezultatul sau poți continua să aștepți.</value>
+  </data>
+  <data name="Your opponent offers a draw." xml:space="preserve">
+    <value>Adversarul tău propune remiză.</value>
+  </data>
+  <data name="Your opponent offers a rematch with colors reversed." xml:space="preserve">
+    <value>Adversarul tău propune o revanșă cu culorile inversate.</value>
   </data>
 
 </root>

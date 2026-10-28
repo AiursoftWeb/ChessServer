@@ -36,8 +36,14 @@
   <data name="Accept draw" xml:space="preserve">
     <value>Accept draw</value>
   </data>
+  <data name="Accept rematch" xml:space="preserve">
+    <value>Accept rematch</value>
+  </data>
   <data name="After 90 seconds without your opponent, you may claim the result. A computer game ends after two minutes away; a game with both players away ends after ten minutes." xml:space="preserve">
     <value>After 90 seconds without your opponent, you may claim the result. A computer game ends after two minutes away; a game with both players away ends after ten minutes.</value>
+  </data>
+  <data name="All rooms are busy. Please try again later." xml:space="preserve">
+    <value>All rooms are busy. Please try again later.</value>
   </data>
   <data name="An unplayed game ends after one minute. Leaving does not pause the clock." xml:space="preserve">
     <value>A game that has not started ends after one minute. Leaving does not pause the clock.</value>
@@ -84,6 +90,9 @@
   <data name="Connection closed. Refresh to reconnect." xml:space="preserve">
     <value>Connection closed. Refresh to reconnect.</value>
   </data>
+  <data name="Continue to rematch" xml:space="preserve">
+    <value>Continue to a rematch</value>
+  </data>
   <data name="Could not complete the action. Reconnecting to the server…" xml:space="preserve">
     <value>Could not complete the action. Reconnecting to the server…</value>
   </data>
@@ -108,6 +117,9 @@
   <data name="Export PGN" xml:space="preserve">
     <value>Export PGN</value>
   </data>
+  <data name="Finish this game before requesting a rematch." xml:space="preserve">
+    <value>Finish this game before requesting a rematch.</value>
+  </data>
   <data name="Game aborted before any move" xml:space="preserve">
     <value>Game abandoned before any moves</value>
   </data>
@@ -117,6 +129,9 @@
   <data name="Game ended by abandonment" xml:space="preserve">
     <value>Game ended by abandonment</value>
   </data>
+  <data name="Game finished. Download the PGN to keep it; guest games are not saved to a personal history." xml:space="preserve">
+    <value>Game finished. Download the PGN to keep it; guest games are not saved to a personal history.</value>
+  </data>
   <data name="Game over" xml:space="preserve">
     <value>Game over</value>
   </data>
@@ -125,6 +140,9 @@
   </data>
   <data name="Game over. {0} wins." xml:space="preserve">
     <value>Game over. {0} wins.</value>
+  </data>
+  <data name="Guest" xml:space="preserve">
+    <value>Guest</value>
   </data>
   <data name="Knight" xml:space="preserve">
     <value>Knight</value>
@@ -168,6 +186,12 @@
   <data name="Reconnecting… Your clock keeps running." xml:space="preserve">
     <value>Reconnecting… Your clock keeps running.</value>
   </data>
+  <data name="Rematch" xml:space="preserve">
+    <value>Rematch</value>
+  </data>
+  <data name="Rematch requested. Waiting for your opponent…" xml:space="preserve">
+    <value>Rematch requested. Waiting for your opponent…</value>
+  </data>
   <data name="Replay" xml:space="preserve">
     <value>Replay</value>
   </data>
@@ -210,6 +234,12 @@
   <data name="Stalemate" xml:space="preserve">
     <value>Stalemate</value>
   </data>
+  <data name="Take back" xml:space="preserve">
+    <value>Take back</value>
+  </data>
+  <data name="Take back your last move and the computer reply? The position and clocks will be restored." xml:space="preserve">
+    <value>Take back your last move and the computer reply? The position and clocks will be restored.</value>
+  </data>
   <data name="That move cannot be played in the current position." xml:space="preserve">
     <value>That move cannot be played in the current position.</value>
   </data>
@@ -222,6 +252,9 @@
   <data name="The position changed. Your board has been synchronized." xml:space="preserve">
     <value>The position has changed. Your board has been synchronised.</value>
   </data>
+  <data name="The rematch offer is no longer available." xml:space="preserve">
+    <value>The rematch offer is no longer available.</value>
+  </data>
   <data name="This action could not be confirmed. Refresh to synchronize." xml:space="preserve">
     <value>This action could not be confirmed. Refresh to synchronise.</value>
   </data>
@@ -230,6 +263,9 @@
   </data>
   <data name="This game is still in progress. Your clock will keep running." xml:space="preserve">
     <value>This game is still in progress. Your clock will keep running.</value>
+  </data>
+  <data name="Time control: {0}" xml:space="preserve">
+    <value>Time control: {0}</value>
   </data>
   <data name="Time expired" xml:space="preserve">
     <value>Time expired</value>
@@ -255,6 +291,9 @@
   <data name="You are watching this game." xml:space="preserve">
     <value>You are watching this game.</value>
   </data>
+  <data name="You can only take back your own last move in an active computer game." xml:space="preserve">
+    <value>You can only take back your own last move in an active game against the computer.</value>
+  </data>
   <data name="You offered a draw." xml:space="preserve">
     <value>You offered a draw.</value>
   </data>
@@ -266,6 +305,9 @@
   </data>
   <data name="Your opponent offers a draw." xml:space="preserve">
     <value>Your opponent offers a draw.</value>
+  </data>
+  <data name="Your opponent offers a rematch with colors reversed." xml:space="preserve">
+    <value>Your opponent offers a rematch with the colours reversed.</value>
   </data>
 
 </root>

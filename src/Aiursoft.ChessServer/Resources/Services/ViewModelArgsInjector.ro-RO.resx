@@ -135,6 +135,9 @@
   <data name="Personal" xml:space="preserve">
     <value>Personal</value>
   </data>
+  <data name="Play as a guest" xml:space="preserve">
+    <value>Joacă în calitate de vizitator</value>
+  </data>
   <data name="Play chess" xml:space="preserve">
     <value>Joacă șah</value>
   </data>
@@ -158,6 +161,9 @@
   </data>
   <data name="Settings" xml:space="preserve">
     <value>Setări</value>
+  </data>
+  <data name="Sign in to save your games and replay them later." xml:space="preserve">
+    <value>Conectează-te pentru a-ți salva jocurile și a le juca din nou mai târziu.</value>
   </data>
   <data name="Sign out" xml:space="preserve">
     <value>Deconectare</value>

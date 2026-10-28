@@ -138,6 +138,9 @@
   <data name="Personal" xml:space="preserve">
     <value>Cá nhân</value>
   </data>
+  <data name="Play as a guest" xml:space="preserve">
+    <value>Chơi với tư cách khách</value>
+  </data>
   <data name="Play chess" xml:space="preserve">
     <value>Chơi cờ vua</value>
   </data>
@@ -161,6 +164,9 @@
   </data>
   <data name="Settings" xml:space="preserve">
     <value>Cài đặt</value>
+  </data>
+  <data name="Sign in to save your games and replay them later." xml:space="preserve">
+    <value>Đăng nhập để lưu trò chơi và chơi lại sau này.</value>
   </data>
   <data name="Sign out" xml:space="preserve">
     <value>Đăng xuất</value>

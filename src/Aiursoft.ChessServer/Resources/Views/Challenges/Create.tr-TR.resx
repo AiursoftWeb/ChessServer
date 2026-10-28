@@ -24,23 +24,44 @@
   <data name="1 minute" xml:space="preserve">
     <value>1 dakika</value>
   </data>
+  <data name="1 second" xml:space="preserve">
+    <value>1 saniye</value>
+  </data>
   <data name="10 minutes" xml:space="preserve">
     <value>10 dakika</value>
+  </data>
+  <data name="10 seconds" xml:space="preserve">
+    <value>10 saniye</value>
   </data>
   <data name="15 minutes" xml:space="preserve">
     <value>15 dakika</value>
   </data>
+  <data name="15 seconds" xml:space="preserve">
+    <value>15 saniye</value>
+  </data>
   <data name="2 hours" xml:space="preserve">
     <value>2 saat</value>
+  </data>
+  <data name="2 seconds" xml:space="preserve">
+    <value>2 saniye</value>
   </data>
   <data name="3 minutes" xml:space="preserve">
     <value>3 dakika</value>
   </data>
+  <data name="3 seconds" xml:space="preserve">
+    <value>3 saniye</value>
+  </data>
   <data name="30 minutes" xml:space="preserve">
     <value>30 dakika</value>
   </data>
+  <data name="30 seconds" xml:space="preserve">
+    <value>30 saniye</value>
+  </data>
   <data name="5 minutes" xml:space="preserve">
     <value>5 dakika</value>
+  </data>
+  <data name="5 seconds" xml:space="preserve">
+    <value>5 saniye</value>
   </data>
   <data name="Black" xml:space="preserve">
     <value>Siyah</value>
@@ -53,6 +74,12 @@
   </data>
   <data name="Games are untimed." xml:space="preserve">
     <value>Oyunlarda süre sınırı yoktur.</value>
+  </data>
+  <data name="Increment per move" xml:space="preserve">
+    <value>Her hamlede ek süre</value>
+  </data>
+  <data name="No increment" xml:space="preserve">
+    <value>Artış yok</value>
   </data>
   <data name="Public" xml:space="preserve">
     <value>Herkese açık</value>

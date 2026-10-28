@@ -189,6 +189,12 @@
   <data name="ChessServer computer game" xml:space="preserve">
     <value>ChessServer bilgisayar oyunu</value>
   </data>
+  <data name="Choose a nickname to play, or sign in to save your games." xml:space="preserve">
+    <value>Oynamak için bir takma ad seçin veya oyunlarınızı kaydetmek için oturum açın.</value>
+  </data>
+  <data name="Choose from eight levels, from beginner practice to deeper engine searches." xml:space="preserve">
+    <value>Başlangıç seviyesinde alıştırmadan motorun daha derin aramalarına kadar sekiz seviyeden birini seçin.</value>
+  </data>
   <data name="Choose from eight levels, from random legal moves for beginners to deeper engine searches." xml:space="preserve">
     <value>Yeni başlayanlar için rastgele yasal hamlelerden motorun daha derin analizlerine kadar sekiz seviyeden birini seçin.</value>
   </data>

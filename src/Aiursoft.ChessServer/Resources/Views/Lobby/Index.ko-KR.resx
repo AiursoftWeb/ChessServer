@@ -21,20 +21,38 @@
       <data name="1 — Beginner" xml:space="preserve">
     <value>1 — 초급자</value>
   </data>
+  <data name="1 second" xml:space="preserve">
+    <value>1초</value>
+  </data>
   <data name="10 minutes" xml:space="preserve">
     <value>10분</value>
+  </data>
+  <data name="10 seconds" xml:space="preserve">
+    <value>10초</value>
   </data>
   <data name="15 minutes" xml:space="preserve">
     <value>15분</value>
   </data>
+  <data name="15 seconds" xml:space="preserve">
+    <value>15초</value>
+  </data>
   <data name="2 — Easy" xml:space="preserve">
     <value>2 — 쉬움</value>
+  </data>
+  <data name="2 seconds" xml:space="preserve">
+    <value>2초</value>
   </data>
   <data name="3 — Casual" xml:space="preserve">
     <value>3 — 보통</value>
   </data>
   <data name="3 minutes" xml:space="preserve">
     <value>3분</value>
+  </data>
+  <data name="3 seconds" xml:space="preserve">
+    <value>3초</value>
+  </data>
+  <data name="30 seconds" xml:space="preserve">
+    <value>30초</value>
   </data>
   <data name="4 — Intermediate" xml:space="preserve">
     <value>4 — 중급</value>
@@ -44,6 +62,9 @@
   </data>
   <data name="5 minutes" xml:space="preserve">
     <value>5분</value>
+  </data>
+  <data name="5 seconds" xml:space="preserve">
+    <value>5초</value>
   </data>
   <data name="6 — Hard" xml:space="preserve">
     <value>6 — 어려움</value>
@@ -66,11 +87,20 @@
   <data name="Difficulty" xml:space="preserve">
     <value>난이도</value>
   </data>
+  <data name="Guest" xml:space="preserve">
+    <value>게스트</value>
+  </data>
+  <data name="Increment per move" xml:space="preserve">
+    <value>1회 착수 시 추가 시간</value>
+  </data>
   <data name="My games" xml:space="preserve">
     <value>내 게임</value>
   </data>
   <data name="No games in progress." xml:space="preserve">
     <value>진행 중인 게임이 없습니다.</value>
+  </data>
+  <data name="No increment" xml:space="preserve">
+    <value>추가 시간 없음</value>
   </data>
   <data name="No open challenges." xml:space="preserve">
     <value>열린 대전이 없습니다.</value>

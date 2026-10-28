@@ -189,6 +189,12 @@
   <data name="ChessServer computer game" xml:space="preserve">
     <value>Jocul de șah ChessServer împotriva calculatorului</value>
   </data>
+  <data name="Choose a nickname to play, or sign in to save your games." xml:space="preserve">
+    <value>Alege o poreclă pentru a juca sau autentifică-te pentru a-ți salva partidele.</value>
+  </data>
+  <data name="Choose from eight levels, from beginner practice to deeper engine searches." xml:space="preserve">
+    <value>Alege dintre opt niveluri, de la exerciții pentru începători până la căutări mai aprofundate ale motorului de șah.</value>
+  </data>
   <data name="Choose from eight levels, from random legal moves for beginners to deeper engine searches." xml:space="preserve">
     <value>Alege dintre opt niveluri, de la mutări legale aleatorii pentru începători până la analize mai aprofundate ale motorului de șah.</value>
   </data>

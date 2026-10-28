@@ -21,20 +21,38 @@
       <data name="1 — Beginner" xml:space="preserve">
     <value>1 — مبتدئ</value>
   </data>
+  <data name="1 second" xml:space="preserve">
+    <value>ثانية واحدة</value>
+  </data>
   <data name="10 minutes" xml:space="preserve">
     <value>10 دقائق</value>
+  </data>
+  <data name="10 seconds" xml:space="preserve">
+    <value>١٠ ثوانٍ</value>
   </data>
   <data name="15 minutes" xml:space="preserve">
     <value>١٥ دقيقة</value>
   </data>
+  <data name="15 seconds" xml:space="preserve">
+    <value>١٥ ثانية</value>
+  </data>
   <data name="2 — Easy" xml:space="preserve">
     <value>٢ — سهل</value>
+  </data>
+  <data name="2 seconds" xml:space="preserve">
+    <value>ثانيتان</value>
   </data>
   <data name="3 — Casual" xml:space="preserve">
     <value>3 — عادي</value>
   </data>
   <data name="3 minutes" xml:space="preserve">
     <value>3 دقائق</value>
+  </data>
+  <data name="3 seconds" xml:space="preserve">
+    <value>٣ ثوانٍ</value>
+  </data>
+  <data name="30 seconds" xml:space="preserve">
+    <value>30 ثانية</value>
   </data>
   <data name="4 — Intermediate" xml:space="preserve">
     <value>4 — متوسط</value>
@@ -44,6 +62,9 @@
   </data>
   <data name="5 minutes" xml:space="preserve">
     <value>٥ دقائق</value>
+  </data>
+  <data name="5 seconds" xml:space="preserve">
+    <value>٥ ثوانٍ</value>
   </data>
   <data name="6 — Hard" xml:space="preserve">
     <value>6 — صعب</value>
@@ -66,11 +87,20 @@
   <data name="Difficulty" xml:space="preserve">
     <value>مستوى الصعوبة</value>
   </data>
+  <data name="Guest" xml:space="preserve">
+    <value>ضيف</value>
+  </data>
+  <data name="Increment per move" xml:space="preserve">
+    <value>الزيادة الزمنية لكل نقلة</value>
+  </data>
   <data name="My games" xml:space="preserve">
     <value>ألعابي</value>
   </data>
   <data name="No games in progress." xml:space="preserve">
     <value>لا توجد مباريات جارية.</value>
+  </data>
+  <data name="No increment" xml:space="preserve">
+    <value>بدون زيادة</value>
   </data>
   <data name="No open challenges." xml:space="preserve">
     <value>لا توجد تحديات مفتوحة.</value>

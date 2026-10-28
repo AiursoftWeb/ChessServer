@@ -138,6 +138,9 @@
   <data name="Personal" xml:space="preserve">
     <value>Personal</value>
   </data>
+  <data name="Play as a guest" xml:space="preserve">
+    <value>Jugar como invitado</value>
+  </data>
   <data name="Play chess" xml:space="preserve">
     <value>Jugar al ajedrez</value>
   </data>
@@ -161,6 +164,9 @@
   </data>
   <data name="Settings" xml:space="preserve">
     <value>Configuración</value>
+  </data>
+  <data name="Sign in to save your games and replay them later." xml:space="preserve">
+    <value>Inicia sesión para guardar tus partidas y volver a jugar más tarde.</value>
   </data>
   <data name="Sign out" xml:space="preserve">
     <value>Cerrar sesión</value>

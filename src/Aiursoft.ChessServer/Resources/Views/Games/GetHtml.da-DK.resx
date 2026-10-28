@@ -24,23 +24,116 @@
   <data name="{0} to move" xml:space="preserve">
     <value>{0} skal spille</value>
   </data>
+  <data name="{0} wins" xml:space="preserve">
+    <value>{0} vinder</value>
+  </data>
+  <data name="A draw cannot be offered now." xml:space="preserve">
+    <value>Der kan ikke tilbydes remis nu.</value>
+  </data>
+  <data name="Abort game" xml:space="preserve">
+    <value>Afbryd spil</value>
+  </data>
+  <data name="Accept draw" xml:space="preserve">
+    <value>Acceptér remis</value>
+  </data>
+  <data name="Accept rematch" xml:space="preserve">
+    <value>Accepter revanchekampen</value>
+  </data>
+  <data name="After 90 seconds without your opponent, you may claim the result. A computer game ends after two minutes away; a game with both players away ends after ten minutes." xml:space="preserve">
+    <value>Når din modstander har været væk i 90 sekunder, kan du kræve et resultat. Et spil mod computeren afsluttes, når spilleren har været væk i to minutter; et spil, hvor begge spillere er væk, afsluttes efter ti minutter.</value>
+  </data>
+  <data name="All rooms are busy. Please try again later." xml:space="preserve">
+    <value>Alle rum er optaget. Prøv igen senere.</value>
+  </data>
+  <data name="An unplayed game ends after one minute. Leaving does not pause the clock." xml:space="preserve">
+    <value>Et spil, der ikke er blevet spillet, slutter efter ét minut. At forlade spillet sætter ikke uret på pause.</value>
+  </data>
+  <data name="Bishop" xml:space="preserve">
+    <value>Løber</value>
+  </data>
   <data name="Black" xml:space="preserve">
     <value>Sort</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Annuller</value>
   </data>
   <data name="Chat" xml:space="preserve">
     <value>Chat</value>
   </data>
+  <data name="Checkmate" xml:space="preserve">
+    <value>Skakmat</value>
+  </data>
   <data name="Checkmate. {0} wins." xml:space="preserve">
     <value>Skakmat. {0} vinder.</value>
+  </data>
+  <data name="Claim result" xml:space="preserve">
+    <value>Gør krav på resultatet</value>
+  </data>
+  <data name="Computer is thinking…" xml:space="preserve">
+    <value>Computeren tænker…</value>
+  </data>
+  <data name="Confirm resignation" xml:space="preserve">
+    <value>Bekræft afbud</value>
+  </data>
+  <data name="Confirming your move…" xml:space="preserve">
+    <value>Bekræfter dit træk…</value>
+  </data>
+  <data name="Connected" xml:space="preserve">
+    <value>Tilsluttet</value>
+  </data>
+  <data name="Connecting…" xml:space="preserve">
+    <value>Opretter forbindelse…</value>
+  </data>
+  <data name="Connection and game rules" xml:space="preserve">
+    <value>Forbindelse og spilleregler</value>
   </data>
   <data name="Connection closed. Refresh to reconnect." xml:space="preserve">
     <value>Forbindelsen er afbrudt. Opdater siden for at oprette forbindelse igen.</value>
   </data>
+  <data name="Continue to rematch" xml:space="preserve">
+    <value>Fortsæt til revanchekamp</value>
+  </data>
+  <data name="Could not complete the action. Reconnecting to the server…" xml:space="preserve">
+    <value>Handlingen kunne ikke fuldføres. Genopretter forbindelsen til serveren…</value>
+  </data>
   <data name="Could not confirm the saved game. Retry." xml:space="preserve">
     <value>Kunne ikke bekræfte det gemte spil. Prøv igen.</value>
   </data>
+  <data name="Dismiss offer" xml:space="preserve">
+    <value>Afvis tilbud</value>
+  </data>
+  <data name="Draw" xml:space="preserve">
+    <value>Remis</value>
+  </data>
+  <data name="Draw by agreement" xml:space="preserve">
+    <value>Remis efter aftale</value>
+  </data>
+  <data name="Draw by repetition" xml:space="preserve">
+    <value>Remis ved gentagelse</value>
+  </data>
+  <data name="Draw by the fifty-move rule" xml:space="preserve">
+    <value>Remis efter 50-træksreglen</value>
+  </data>
   <data name="Export PGN" xml:space="preserve">
     <value>Eksportér PGN</value>
+  </data>
+  <data name="Finish this game before requesting a rematch." xml:space="preserve">
+    <value>Afslut dette spil, før du anmoder om en revanchekamp.</value>
+  </data>
+  <data name="Game aborted before any move" xml:space="preserve">
+    <value>Partiet blev afbrudt, før der blev trukket et træk</value>
+  </data>
+  <data name="Game ended because both players left" xml:space="preserve">
+    <value>Partiet sluttede, fordi begge spillere forlod det</value>
+  </data>
+  <data name="Game ended by abandonment" xml:space="preserve">
+    <value>Partiet blev afsluttet på grund af udeblivelse.</value>
+  </data>
+  <data name="Game finished. Download the PGN to keep it; guest games are not saved to a personal history." xml:space="preserve">
+    <value>Spillet er slut. Download PGN-filen for at gemme det; gæstespil gemmes ikke i en personlig spilhistorik.</value>
+  </data>
+  <data name="Game over" xml:space="preserve">
+    <value>Spillet er slut</value>
   </data>
   <data name="Game over — draw." xml:space="preserve">
     <value>Partiet er slut — remis.</value>
@@ -48,17 +141,77 @@
   <data name="Game over. {0} wins." xml:space="preserve">
     <value>Spillet er slut. {0} vinder.</value>
   </data>
+  <data name="Guest" xml:space="preserve">
+    <value>Gæst</value>
+  </data>
+  <data name="Knight" xml:space="preserve">
+    <value>Springer</value>
+  </data>
+  <data name="Lobby" xml:space="preserve">
+    <value>Lobby</value>
+  </data>
   <data name="Message" xml:space="preserve">
     <value>Besked</value>
+  </data>
+  <data name="Move list" xml:space="preserve">
+    <value>Trækliste</value>
+  </data>
+  <data name="Moves" xml:space="preserve">
+    <value>Træk</value>
+  </data>
+  <data name="Neither side has sufficient mating material" xml:space="preserve">
+    <value>Ingen af spillerne har tilstrækkeligt materiale til at sætte modstanderen skakmat</value>
+  </data>
+  <data name="Offer draw" xml:space="preserve">
+    <value>Tilbyd remis</value>
+  </data>
+  <data name="Only the players can perform this action." xml:space="preserve">
+    <value>Kun spillerne kan udføre denne handling.</value>
+  </data>
+  <data name="Opponent disconnected. Reconnection time remaining: {0}s." xml:space="preserve">
+    <value>Modstanderen er blevet afbrudt. Tid tilbage til genoprettelse af forbindelsen: {0}s.</value>
+  </data>
+  <data name="Play another game" xml:space="preserve">
+    <value>Spil et nyt spil</value>
   </data>
   <data name="Preferred duration: {0} minutes. Games are untimed." xml:space="preserve">
     <value>Foretrukken varighed: {0} minutter. Partierne er uden tidsbegrænsning.</value>
   </data>
+  <data name="Promote pawn" xml:space="preserve">
+    <value>Forfrem bonde</value>
+  </data>
+  <data name="Queen" xml:space="preserve">
+    <value>Dronning</value>
+  </data>
+  <data name="Reconnecting… Your clock keeps running." xml:space="preserve">
+    <value>Genopretter forbindelsen… Dit ur fortsætter med at gå.</value>
+  </data>
+  <data name="Rematch" xml:space="preserve">
+    <value>Omkamp</value>
+  </data>
+  <data name="Rematch requested. Waiting for your opponent…" xml:space="preserve">
+    <value>Omkamp anmodet. Venter på din modstander…</value>
+  </data>
   <data name="Replay" xml:space="preserve">
     <value>Afspil igen</value>
   </data>
+  <data name="Resign" xml:space="preserve">
+    <value>Giv op</value>
+  </data>
+  <data name="Resign this game?" xml:space="preserve">
+    <value>Vil du opgive dette parti?</value>
+  </data>
+  <data name="Resignation" xml:space="preserve">
+    <value>Opgivet</value>
+  </data>
   <data name="Retry saving" xml:space="preserve">
     <value>Prøv at gemme igen</value>
+  </data>
+  <data name="Return to live position" xml:space="preserve">
+    <value>Vend tilbage til den aktuelle stilling</value>
+  </data>
+  <data name="Rook" xml:space="preserve">
+    <value>Tårn</value>
   </data>
   <data name="Room unavailable. Return to the lobby." xml:space="preserve">
     <value>Rummet er ikke tilgængeligt. Vend tilbage til lobbyen.</value>
@@ -72,8 +225,53 @@
   <data name="Send" xml:space="preserve">
     <value>Send</value>
   </data>
+  <data name="Server maintenance pauses the clocks. A player disconnecting does not." xml:space="preserve">
+    <value>Servervedligeholdelse sætter urene på pause. Det gør en spillers afbrydelse ikke.</value>
+  </data>
   <data name="Spectator" xml:space="preserve">
     <value>Tilskuer</value>
+  </data>
+  <data name="Stalemate" xml:space="preserve">
+    <value>Patt</value>
+  </data>
+  <data name="Take back" xml:space="preserve">
+    <value>Tag tilbage</value>
+  </data>
+  <data name="Take back your last move and the computer reply? The position and clocks will be restored." xml:space="preserve">
+    <value>Vil du tage dit seneste træk og computerens svartræk tilbage? Stillingen og urene bliver gendannet.</value>
+  </data>
+  <data name="That move cannot be played in the current position." xml:space="preserve">
+    <value>Det træk kan ikke spilles i den aktuelle stilling.</value>
+  </data>
+  <data name="The draw offer is no longer available." xml:space="preserve">
+    <value>Tegningstilbuddet er ikke længere tilgængeligt.</value>
+  </data>
+  <data name="The game has started. You can resign instead." xml:space="preserve">
+    <value>Spillet er startet. Du kan i stedet opgive.</value>
+  </data>
+  <data name="The position changed. Your board has been synchronized." xml:space="preserve">
+    <value>Positionen er ændret. Dit bræt er blevet synkroniseret.</value>
+  </data>
+  <data name="The rematch offer is no longer available." xml:space="preserve">
+    <value>Tilbuddet om revanche er ikke længere tilgængeligt.</value>
+  </data>
+  <data name="This action could not be confirmed. Refresh to synchronize." xml:space="preserve">
+    <value>Denne handling kunne ikke bekræftes. Opdater siden for at synkronisere.</value>
+  </data>
+  <data name="This game has ended." xml:space="preserve">
+    <value>Dette spil er slut.</value>
+  </data>
+  <data name="This game is still in progress. Your clock will keep running." xml:space="preserve">
+    <value>Partiet er stadig i gang. Dit ur fortsætter med at gå.</value>
+  </data>
+  <data name="Time control: {0}" xml:space="preserve">
+    <value>Tidskontrol: {0}</value>
+  </data>
+  <data name="Time expired" xml:space="preserve">
+    <value>Tiden er udløbet</value>
+  </data>
+  <data name="Time expired, but the opponent cannot checkmate." xml:space="preserve">
+    <value>Tiden er udløbet, men modstanderen kan ikke sætte dig skakmat.</value>
   </data>
   <data name="Time expired. {0} wins." xml:space="preserve">
     <value>Tiden er udløbet. {0} vinder.</value>
@@ -92,6 +290,24 @@
   </data>
   <data name="You are watching this game." xml:space="preserve">
     <value>Du ser denne kamp.</value>
+  </data>
+  <data name="You can only take back your own last move in an active computer game." xml:space="preserve">
+    <value>Du kan kun fortryde dit eget seneste træk i et aktivt spil mod computeren.</value>
+  </data>
+  <data name="You offered a draw." xml:space="preserve">
+    <value>Du har tilbudt remis.</value>
+  </data>
+  <data name="Your opponent can still reconnect." xml:space="preserve">
+    <value>Din modstander kan stadig genoprette forbindelsen.</value>
+  </data>
+  <data name="Your opponent has not reconnected. You may claim the result or keep waiting." xml:space="preserve">
+    <value>Din modstander er ikke vendt tilbage. Du kan gøre krav på resultatet eller vente videre.</value>
+  </data>
+  <data name="Your opponent offers a draw." xml:space="preserve">
+    <value>Din modstander tilbyder remis.</value>
+  </data>
+  <data name="Your opponent offers a rematch with colors reversed." xml:space="preserve">
+    <value>Din modstander tilbyder en revanchekamp med ombyttede farver.</value>
   </data>
 
 </root>
