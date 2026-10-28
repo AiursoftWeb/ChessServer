@@ -13,6 +13,10 @@ public class RoomSnapshot
     public long TimeTicks { get; set; }
     public ChallengePermission Permission { get; set; }
     public int? Difficulty { get; set; }
+    public int IncrementSeconds { get; set; }
+    public List<MoveClock?> MoveClocks { get; set; } = [];
+    public Guid? RematchOfferedBy { get; set; }
+    public int? NextGameId { get; set; }
     public DateTimeOffset Activity { get; set; }
     public Guid HistoryId { get; set; }
     public bool CreatorWhite { get; set; }
@@ -34,7 +38,7 @@ public class RoomSnapshot
     {
         var snapshot = new RoomSnapshot { CreatorId = room.Creator.Id, CreatorName = room.Creator.NickName,
             Message = room.Message, Rule = room.RoleRule, TimeTicks = room.TimeLimit.Ticks, Permission = room.Permission,
-            Difficulty = room.Difficulty, Activity = room.LastActivity };
+            Difficulty = room.Difficulty, IncrementSeconds = room.IncrementSeconds, Activity = room.LastActivity };
         if (room is not AcceptedChallenge accepted) return snapshot;
         lock (accepted.Game.MovePieceLock)
         {
@@ -47,6 +51,8 @@ public class RoomSnapshot
             snapshot.Winner = accepted.Game.Board.EndGame?.WonSide?.AsChar.ToString();
             snapshot.OutcomeReason = accepted.OutcomeReason; snapshot.DrawOfferedBy = accepted.DrawOfferedBy;
             snapshot.Revision = accepted.Revision; snapshot.Receipts = accepted.Receipts.ToList();
+            snapshot.MoveClocks = accepted.MoveClocks.ToList(); snapshot.RematchOfferedBy = accepted.RematchOfferedBy;
+            snapshot.NextGameId = accepted.NextGameId;
         }
         return snapshot;
     }
@@ -55,7 +61,7 @@ public class RoomSnapshot
     {
         var creator = new Player(CreatorId) { NickName = CreatorName };
         var room = new Challenge(creator, Message, Rule, TimeSpan.FromTicks(TimeTicks), Permission)
-            { Difficulty = Difficulty, LastActivity = Activity };
+            { Difficulty = Difficulty, IncrementSeconds = IncrementSeconds, LastActivity = Activity };
         if (AccepterId == null) return room;
         var accepted = new AcceptedChallenge(creator, new Player(AccepterId.Value) { NickName = AccepterName! }, Message,
             Rule, room.TimeLimit, Permission, room.ChallengeChangedChannel) { Difficulty = Difficulty };
@@ -81,6 +87,8 @@ public class RoomSnapshot
             room.LastClockUpdate = ClockAt; room.GameStartTime = StartedAt; room.FinishedAt = FinishedAt;
             room.LastActivity = Activity; room.OutcomeReason = OutcomeReason; room.DrawOfferedBy = DrawOfferedBy;
             room.Revision = Revision; room.Receipts = Receipts.ToList();
+            room.IncrementSeconds = IncrementSeconds; room.MoveClocks = MoveClocks.ToList();
+            room.RematchOfferedBy = RematchOfferedBy; room.NextGameId = NextGameId;
         }
     }
 }

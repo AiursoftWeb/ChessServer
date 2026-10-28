@@ -1,4 +1,5 @@
 using System.Text.Json;
+using Aiursoft.AiurObserver;
 using Aiursoft.ChessServer.Data;
 using Aiursoft.ChessServer.Entities;
 using Aiursoft.ChessServer.Models;
@@ -40,13 +41,18 @@ public class GameSessionService(InMemoryDatabase database, TemplateDbContext con
         }
     }
 
-    private async Task StoreAsync(int id, Challenge room)
+    private async Task StageAsync(int id, Challenge room)
     {
         var row = await context.GameSessions.FindAsync(id);
         if (row == null) { row = new GameSession { Id = id }; context.GameSessions.Add(row); }
         row.State = JsonSerializer.Serialize(RoomSnapshot.Capture(room));
         // The shared scoped context commits the session and any new completed record together.
         if (room is AcceptedChallenge accepted) await history.SaveAsync(accepted, deferCommit: true);
+    }
+
+    private async Task StoreAsync(int id, Challenge room)
+    {
+        await StageAsync(id, room);
         await context.SaveChangesAsync();
         room.IsPersisted = true;
         if (room is AcceptedChallenge checkpointed)
@@ -153,6 +159,8 @@ public class GameSessionService(InMemoryDatabase database, TemplateDbContext con
 
     public async Task<(ChallengeContext State, string? Error)> ExecuteAsync(int id, Guid player, GameCommand command, bool computer = false)
     {
+        if (command.Kind is "offer-rematch" or "accept-rematch" or "decline-rematch")
+            return await RematchAsync(id, player, command);
         var room = database.GetAcceptedChallenge(id) ?? throw new InvalidOperationException("Game not found.");
         await room.MutationLock.WaitAsync();
         try
@@ -163,7 +171,7 @@ public class GameSessionService(InMemoryDatabase database, TemplateDbContext con
                 string? error = null;
                 lock (room.Game.MovePieceLock)
                 {
-                var fingerprint = $"{command.Kind}:{command.ExpectedPly}:{command.Move}";
+                var fingerprint = Fingerprint(command);
                 var previous = room.Receipts.FirstOrDefault(r => r.Id == command.Id);
                 var color = room.GetPlayerColor(player);
                 Advance(room, database.ClockNow);
@@ -178,15 +186,37 @@ public class GameSessionService(InMemoryDatabase database, TemplateDbContext con
                 {
                     var side = color == "w" ? PieceColor.White : PieceColor.Black;
                     if (!computer) Touch(room, player, DateTimeOffset.UtcNow);
-                    switch (command.Kind)
+                    if (command.ExpectedRevision != null && command.ExpectedRevision != room.Revision) error = "stale";
+                    else switch (command.Kind)
                     {
                         case "move":
                             if (room.Game.Board.MovesToSan.Count != command.ExpectedPly) { error = "stale"; break; }
                             var move = command.Move?.Replace("0", "O");
                             if (room.GetTurnPlayer().Id != player || string.IsNullOrWhiteSpace(move) || move.Length > 20 || !room.Game.Board.IsValidMove(move)) { error = "illegal"; break; }
+                            while (room.MoveClocks.Count < room.Game.Board.MovesToSan.Count) room.MoveClocks.Add(null);
+                            room.MoveClocks.Add(new MoveClock(room.WhiteRemaining.Ticks, room.BlackRemaining.Ticks));
                             room.Game.Board.Move(move);
+                            if (room.IsTimed)
+                            {
+                                if (side == PieceColor.White) room.WhiteRemaining += TimeSpan.FromSeconds(room.IncrementSeconds);
+                                else room.BlackRemaining += TimeSpan.FromSeconds(room.IncrementSeconds);
+                            }
                             if (room.DrawOfferedBy != player) room.DrawOfferedBy = null;
                             room.UpdateClock(database.ClockNow);
+                            break;
+                        case "undo":
+                            var undoPly = room.UndoPly;
+                            if (computer || room.Difficulty == null || room.Creator.Id != player || undoPly < 0) { error = "cannot-undo"; break; }
+                            var clocks = room.MoveClocks[undoPly]!;
+                            var board = Game.NewBoard();
+                            foreach (var san in room.Game.Board.MovesToSan.Take(undoPly)) board.Move(san);
+                            room.Game.SearchCancellation?.Cancel();
+                            room.Game.Board = board; room.ClearPgnCache();
+                            room.WhiteRemaining = TimeSpan.FromTicks(clocks.WhiteTicks); room.BlackRemaining = TimeSpan.FromTicks(clocks.BlackTicks);
+                            room.LastClockUpdate = database.ClockNow;
+                            if (undoPly == 0) room.AbortAt = database.ClockNow.AddMinutes(1);
+                            room.MoveClocks.RemoveRange(undoPly, room.MoveClocks.Count - undoPly);
+                            room.DrawOfferedBy = null; room.OutcomeReason = null;
                             break;
                         case "resign": Finish(room, "Resigned", DateTimeOffset.UtcNow, side); break;
                         case "abort":
@@ -226,6 +256,83 @@ public class GameSessionService(InMemoryDatabase database, TemplateDbContext con
                 return (result, error);
             }
             catch { before.Apply(room); context.ChangeTracker.Clear(); throw; }
+        }
+        finally { room.MutationLock.Release(); }
+    }
+
+    private static string Fingerprint(GameCommand command) => $"{command.Kind}:{command.ExpectedPly}:{command.Move}"
+        + (command.ExpectedRevision is { } revision ? $":{revision}" : string.Empty);
+
+    private async Task<(ChallengeContext State, string? Error)> RematchAsync(int id, Guid player, GameCommand command)
+    {
+        var room = database.GetAcceptedChallenge(id) ?? throw new InvalidOperationException("Game not found.");
+        await room.MutationLock.WaitAsync();
+        var nextId = (int?)null;
+        var before = RoomSnapshot.Capture(room);
+        try
+        {
+            string? error = null;
+            var create = false;
+            lock (room.Game.MovePieceLock)
+            {
+                var previous = room.Receipts.FirstOrDefault(r => r.Id == command.Id);
+                var fingerprint = Fingerprint(command);
+                if (room.GetPlayerColor(player) == "m" || room.Difficulty != null && room.Creator.Id != player) error = "spectator";
+                else if (command.Id == Guid.Empty || previous != null && previous.Fingerprint != fingerprint) error = "invalid-command";
+                else if (!room.Game.Board.IsEndGame) error = "not-ended";
+                else if (previous == null && room.NextGameId == null && command.ExpectedRevision != null && command.ExpectedRevision != room.Revision) error = "stale";
+                else if (previous == null && room.NextGameId == null)
+                {
+                    switch (command.Kind)
+                    {
+                        case "offer-rematch":
+                            if (room.Difficulty != null || room.RematchOfferedBy != null && room.RematchOfferedBy != player) create = true;
+                            else room.RematchOfferedBy = player;
+                            break;
+                        case "accept-rematch":
+                            if (room.RematchOfferedBy == null || room.RematchOfferedBy == player) error = "no-rematch";
+                            else create = true;
+                            break;
+                        case "decline-rematch": room.RematchOfferedBy = null; break;
+                    }
+                    if (error == null)
+                    {
+                        room.Revision++; room.LastActivity = DateTimeOffset.UtcNow;
+                        room.Receipts.Add(new CommandReceipt(command.Id, fingerprint));
+                        if (room.Receipts.Count > 128) room.Receipts.RemoveAt(0);
+                    }
+                }
+            }
+            if (error == null)
+            {
+                if (create)
+                {
+                    var next = new AcceptedChallenge(room.Creator, room.Accepter, room.Message,
+                        room.CreatorIsWhite ? RoleRule.AccepterWhite : RoleRule.CreatorWhite, room.TimeLimit,
+                        room.Permission, new AsyncObservable<string>())
+                    { Difficulty = room.Difficulty, IncrementSeconds = room.IncrementSeconds, IsPersisted = false };
+                    try { nextId = database.CreateChallenge(next); }
+                    catch (InvalidOperationException)
+                    {
+                        before.Apply(room);
+                        return (new ChallengeContext(room, id), "rooms-full");
+                    }
+                    room.NextGameId = nextId; room.RematchOfferedBy = null;
+                    // Commit both the old room's link and the new room in one transaction before exposing either.
+                    await StageAsync(id, room);
+                    await StoreAsync(nextId.Value, next);
+                }
+                else await StoreAsync(id, room);
+            }
+            var result = new ChallengeContext(room, id);
+            if (error == null) await NotifyAsync(room, result);
+            return (result, error);
+        }
+        catch
+        {
+            before.Apply(room); context.ChangeTracker.Clear();
+            if (nextId != null) database.DeleteChallenge(nextId.Value);
+            throw;
         }
         finally { room.MutationLock.Release(); }
     }

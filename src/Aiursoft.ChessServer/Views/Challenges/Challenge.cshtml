@@ -2,7 +2,7 @@
 <h1 class="h3">@Model.Message</h1>
     @if (Model.PreferredMinutes.HasValue)
     {
-        <p class="text-muted small">@string.Format(@Localizer["Time per player: {0} minutes."].Value, Model.PreferredMinutes)</p>
+        <p class="text-muted small">@string.Format(@Localizer["Time per player: {0} minutes, plus {1} seconds per move."].Value, Model.PreferredMinutes, Model.IncrementSeconds)</p>
     }
 <div id="chess-room" class="card" data-room-id="@Model.Id" data-disconnected="@Localizer["Connection closed. Refresh to reconnect."]"><div class="card-body">
     <p>@Localizer["Share this page with your opponent. Both players must sign in."]</p>

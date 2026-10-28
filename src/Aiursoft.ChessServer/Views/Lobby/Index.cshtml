@@ -39,6 +39,17 @@
         <option value="10">@Localizer["10 minutes"]</option>
         <option value="15">@Localizer["15 minutes"]</option>
             </select>
+    <label for="incrementSeconds" class="form-label">@Localizer["Increment per move"]</label>
+    <select id="incrementSeconds" name="incrementSeconds" class="form-select mb-3" data-time-increment>
+        <option value="0">@Localizer["No increment"]</option>
+        <option value="1">@Localizer["1 second"]</option>
+        <option value="2">@Localizer["2 seconds"]</option>
+        <option value="3">@Localizer["3 seconds"]</option>
+        <option value="5">@Localizer["5 seconds"]</option>
+        <option value="10">@Localizer["10 seconds"]</option>
+        <option value="15">@Localizer["15 seconds"]</option>
+        <option value="30">@Localizer["30 seconds"]</option>
+    </select>
             <button class="btn btn-primary" type="submit">@Localizer["Start game"]</button>
         </form>
     </div></div></div>
@@ -63,3 +74,8 @@
         <a class="d-block py-2" asp-controller="Games" asp-action="GetHtml" asp-route-id="@room.Key">@room.Value.Creator.NickName — @room.Value.Message</a>
     }
 </div></div>
+
+@* ReSharper disable once Razor.SectionNotResolved *@
+@section scripts {
+    <script type="module" src="~/scripts/time-control.js" asp-append-version="true"></script>
+}

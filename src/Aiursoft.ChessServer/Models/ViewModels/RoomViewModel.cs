@@ -11,6 +11,7 @@ public class RoomViewModel : UiStackLayoutViewModel
     public bool IsComputer { get; init; }
     public int Id { get; init; }
     public int? PreferredMinutes { get; init; }
+    public int IncrementSeconds { get; init; }
     public bool IsCreator { get; init; }
     public string Message { get; init; } = "";
 }

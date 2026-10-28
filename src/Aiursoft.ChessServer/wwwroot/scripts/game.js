@@ -14,7 +14,7 @@ function sendPending() {
     socket.send(JSON.stringify(pending)); lastSend = performance.now();
 }
 function sendMove(move, ply) {
-    pending = {Id: crypto.randomUUID(), Kind: 'move', ExpectedPly: ply, Move: move};
+    pending = {Id: crypto.randomUUID(), Kind: 'move', ExpectedPly: ply, Move: move, ExpectedRevision: state.Revision};
     sessionStorage.setItem(pendingKey, JSON.stringify(pending));
     sendPending(); render();
 }
@@ -22,7 +22,9 @@ function apply(info) {
     if (!info || stopped) return;
     if (state && (info.Revision < state.Revision || info.Revision === state.Revision && info.SampledAt < state.SampledAt)) return;
     const justEnded = !state?.Game.Ended && info.Game.Ended;
+    const acceptedRematch = !!state?.RematchOfferedBy && !state.NextGameId && !!info.NextGameId;
     const previousMoves = state?.Moves.length ?? 0;
+    if (info.Moves.length < previousMoves) clearPending();
     state = info; sampledAt = performance.now();
     surface.update(info);
     if (info.Moves.length > previousMoves) element('pieceMoveSound').play().catch(() => {});
@@ -30,6 +32,7 @@ function apply(info) {
     element('role').textContent = text(color === 'w' ? 'playing-white' : color === 'b' ? 'playing-black' : 'watching');
     if (info.Game.Ended) { if (element('promotion-dialog').open) element('promotion-dialog').close(); clearPending(); if (!saved && !saving && element('retry-save').hidden) saveGame(); }
     render();
+    if (acceptedRematch && color !== 'm') location.assign(`/games/${info.NextGameId}.html`);
     if (justEnded) element('game-result').scrollIntoView({block: 'nearest', behavior: 'smooth'});
 }
 function render() {
@@ -44,11 +47,15 @@ function render() {
         const seconds = Math.ceil(Math.max(0, ms - (active ? elapsed : 0)) / 1000);
         clock.querySelector('.clock-time').textContent = state.Timed ? `${Math.floor(seconds / 60)}:${String(seconds % 60).padStart(2, '0')}` : text('unlimited');
     }
+    element('time-control').textContent = state.Timed ? format('time-control', `${state.InitialMinutes}+${state.IncrementSeconds}`) : text('unlimited');
     const participant = color !== 'm';
     element('game-actions').hidden = ended || !participant;
     element('abort').hidden = state.Moves.length !== 0;
+    element('undo').hidden = !state.Computer || !participant;
+    element('undo').disabled = !state.CanUndo || actionBusy || !!pending;
     element('offer-draw').hidden = state.Computer || !!state.DrawOfferedBy;
     element('resign-confirmation').hidden ||= ended;
+    element('undo-confirmation').hidden ||= ended;
     const offeredByMe = state.DrawOfferedBy === (color === 'w' ? state.WhiteId : state.BlackId);
     element('draw-offer').hidden = ended || !state.DrawOfferedBy || !participant;
     element('draw-offer-text').textContent = text(offeredByMe ? 'own-offer' : 'their-offer');
@@ -61,6 +68,13 @@ function render() {
     element('status').textContent = ended ? text('ended') : pending ? text('pending') : state.Computer && state.Game.Turn !== color && participant ? text('thinking') : format('turn', text(state.Game.Turn === 'w' ? 'white' : 'black'));
     element('game-result').hidden = !ended;
     element('game-policy').hidden = ended;
+    element('offer-rematch').hidden = !participant || !!state.RematchOfferedBy || !!state.NextGameId;
+    const ownRematch = state.RematchOfferedBy === (color === 'w' ? state.WhiteId : state.BlackId);
+    element('rematch-offer').hidden = !ended || !participant || !state.RematchOfferedBy || !!state.NextGameId;
+    element('rematch-offer-text').textContent = text(ownRematch ? 'own-rematch' : 'their-rematch');
+    element('accept-rematch').hidden = ownRematch;
+    element('next-game').hidden = !participant || !state.NextGameId;
+    if (participant && state.NextGameId) element('next-game').href = `/games/${state.NextGameId}.html`;
     if (ended) {
         element('result-title').textContent = state.Result === '*' ? text(state.EndReason === 'Abandoned' ? 'Abandoned' : 'Aborted') : state.Result === '1/2-1/2' ? text('draw') : format('winner', text(state.Result === '1-0' ? 'white' : 'black'));
         const reason = text(state.EndReason);
@@ -87,16 +101,17 @@ async function saveGame() {
 }
 let pendingAction = null;
 async function action(kind) {
-    if (actionBusy || state?.Game.Ended) return;
+    if (actionBusy || !state || state.Game.Ended && !kind.endsWith('rematch')) return;
     actionBusy = true;
-    if (pendingAction?.kind !== kind) pendingAction = {kind, commandId: crypto.randomUUID()};
+    if (pendingAction?.kind !== kind) pendingAction = {kind, commandId: crypto.randomUUID(), expectedRevision: state.Revision};
     try {
         const response = await post(`/games/${id}/action`, pendingAction);
         const result = await response.json();
         apply(result.State ?? result);
         element('action-error').hidden = response.ok;
         if (!response.ok) element('action-error').textContent = text(result.Error);
-        pendingAction = null; element('resign-confirmation').hidden = true;
+        pendingAction = null; element('resign-confirmation').hidden = true; element('undo-confirmation').hidden = true;
+        if (response.ok && state?.NextGameId && kind.endsWith('rematch')) location.assign(`/games/${state.NextGameId}.html`);
     } catch { element('action-error').textContent = text('error'); element('action-error').hidden = false; }
     finally { actionBusy = false; }
 }
@@ -145,6 +160,8 @@ const heartbeat = setInterval(poll, 1000), clock = setInterval(render, 100);
 element('resign').onclick = () => { element('resign-confirmation').hidden = false; };
 element('cancel-resign').onclick = () => { element('resign-confirmation').hidden = true; };
 element('abort').onclick = () => action('abort');
+element('undo').onclick = () => { element('undo-confirmation').hidden = false; };
+element('cancel-undo').onclick = () => { element('undo-confirmation').hidden = true; };
 document.querySelectorAll('[data-game-action]').forEach(button => { button.onclick = () => action(button.dataset.gameAction); });
 element('retry-save').onclick = saveGame;
 window.addEventListener('beforeunload', event => { if (state && !state.Game.Ended && color !== 'm') { event.preventDefault(); event.returnValue = text('leave'); } });

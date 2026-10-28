@@ -62,12 +62,12 @@ public class GamesController(InMemoryDatabase database, ChessEngine engine, Game
     }
 
     [HttpPost("{id:int}/action"), ValidateAntiForgeryToken]
-    public async Task<IActionResult> Action(int id, [FromForm] string kind, [FromForm] Guid commandId)
+    public async Task<IActionResult> Action(int id, [FromForm] string kind, [FromForm] Guid commandId, [FromForm] long? expectedRevision = null)
     {
         var room = database.GetAcceptedChallenge(id);
         if (room == null) return NotFound();
         if (room.GetPlayerColor(PlayerId) == "m") return Forbid();
-        var result = await sessions.ExecuteAsync(id, PlayerId, new GameCommand(commandId, kind));
+        var result = await sessions.ExecuteAsync(id, PlayerId, new GameCommand(commandId, kind, ExpectedRevision: expectedRevision));
         return result.Error == null ? Ok(result.State) : Conflict(new { result.State, result.Error });
     }
 
@@ -156,14 +156,17 @@ public class GamesController(InMemoryDatabase database, ChessEngine engine, Game
     {
         string fen;
         int ply;
+        long revision;
+        using var search = CancellationTokenSource.CreateLinkedTokenSource(token, room.Lifetime);
         lock (room.Game.MovePieceLock)
         {
             if (room.Difficulty == null || room.Game.IsThinking || room.Game.Board.IsEndGame || room.GetTurnPlayer().Id == room.Creator.Id) return;
-            room.Game.IsThinking = true; fen = room.Game.Board.ToFen(); ply = room.Game.Board.MovesToSan.Count;
+            room.Game.IsThinking = true; room.Game.SearchCancellation = search;
+            fen = room.Game.Board.ToFen(); ply = room.Game.Board.MovesToSan.Count; revision = room.Revision;
         }
         try
         {
-            using var budget = CancellationTokenSource.CreateLinkedTokenSource(token);
+            using var budget = CancellationTokenSource.CreateLinkedTokenSource(search.Token);
             if (room.IsTimed)
             {
                 var remaining = room.CreatorIsWhite ? room.BlackRemaining : room.WhiteRemaining;
@@ -172,10 +175,16 @@ public class GamesController(InMemoryDatabase database, ChessEngine engine, Game
             try
             {
                 var move = await engine.GetBestMoveAsync(fen, room.Difficulty.Value, budget.Token);
-                await sessions.ExecuteAsync(id, room.Accepter.Id, new GameCommand(Guid.NewGuid(), "move", ply, move), computer: true);
+                await sessions.ExecuteAsync(id, room.Accepter.Id, new GameCommand(Guid.NewGuid(), "move", ply, move, revision), computer: true);
             }
             catch (OperationCanceledException) when (budget.IsCancellationRequested) { }
         }
-        finally { lock (room.Game.MovePieceLock) room.Game.IsThinking = false; }
+        finally
+        {
+            lock (room.Game.MovePieceLock)
+            {
+                if (room.Game.SearchCancellation == search) { room.Game.IsThinking = false; room.Game.SearchCancellation = null; }
+            }
+        }
     }
 }
