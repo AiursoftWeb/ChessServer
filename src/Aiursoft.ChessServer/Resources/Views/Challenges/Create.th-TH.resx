@@ -24,23 +24,44 @@
   <data name="1 minute" xml:space="preserve">
     <value>1 นาที</value>
   </data>
+  <data name="1 second" xml:space="preserve">
+    <value>1 วินาที</value>
+  </data>
   <data name="10 minutes" xml:space="preserve">
     <value>10 นาที</value>
+  </data>
+  <data name="10 seconds" xml:space="preserve">
+    <value>10 วินาที</value>
   </data>
   <data name="15 minutes" xml:space="preserve">
     <value>15 นาที</value>
   </data>
+  <data name="15 seconds" xml:space="preserve">
+    <value>15 วินาที</value>
+  </data>
   <data name="2 hours" xml:space="preserve">
     <value>2 ชั่วโมง</value>
+  </data>
+  <data name="2 seconds" xml:space="preserve">
+    <value>2 วินาที</value>
   </data>
   <data name="3 minutes" xml:space="preserve">
     <value>3 นาที</value>
   </data>
+  <data name="3 seconds" xml:space="preserve">
+    <value>3 วินาที</value>
+  </data>
   <data name="30 minutes" xml:space="preserve">
     <value>30 นาที</value>
   </data>
+  <data name="30 seconds" xml:space="preserve">
+    <value>30 วินาที</value>
+  </data>
   <data name="5 minutes" xml:space="preserve">
     <value>5 นาที</value>
+  </data>
+  <data name="5 seconds" xml:space="preserve">
+    <value>5 วินาที</value>
   </data>
   <data name="Black" xml:space="preserve">
     <value>สีดำ</value>
@@ -53,6 +74,12 @@
   </data>
   <data name="Games are untimed." xml:space="preserve">
     <value>เกมไม่มีการจำกัดเวลา</value>
+  </data>
+  <data name="Increment per move" xml:space="preserve">
+    <value>เวลาเพิ่มต่อการเดินหมาก</value>
+  </data>
+  <data name="No increment" xml:space="preserve">
+    <value>ไม่มีเวลาเพิ่มต่อการเดิน</value>
   </data>
   <data name="Public" xml:space="preserve">
     <value>สาธารณะ</value>

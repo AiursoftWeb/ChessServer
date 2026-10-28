@@ -36,6 +36,12 @@
   <data name="Share this page with your opponent. Both players must sign in." xml:space="preserve">
     <value>Поделитесь этой страницей с соперником. Оба игрока должны войти в систему.</value>
   </data>
+  <data name="Share this page with your opponent. They can sign in or choose a guest nickname." xml:space="preserve">
+    <value>Поделитесь этой страницей с противником. Он может войти в аккаунт или выбрать гостевой никнейм.</value>
+  </data>
+  <data name="Time per player: {0} minutes, plus {1} seconds per move." xml:space="preserve">
+    <value>Время на игрока: {0} мин., плюс {1} сек. на ход.</value>
+  </data>
   <data name="Time per player: {0} minutes." xml:space="preserve">
     <value>Время на игрока: {0} мин.</value>
   </data>

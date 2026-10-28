@@ -189,6 +189,12 @@
   <data name="ChessServer computer game" xml:space="preserve">
     <value>Комп’ютерна гра ChessServer</value>
   </data>
+  <data name="Choose a nickname to play, or sign in to save your games." xml:space="preserve">
+    <value>Виберіть псевдонім для гри або увійдіть в обліковий запис, щоб зберігати свої партії.</value>
+  </data>
+  <data name="Choose from eight levels, from beginner practice to deeper engine searches." xml:space="preserve">
+    <value>Оберіть один із восьми рівнів: від тренувань для початківців до глибшого аналізу рушієм.</value>
+  </data>
   <data name="Choose from eight levels, from random legal moves for beginners to deeper engine searches." xml:space="preserve">
     <value>Оберіть один із восьми рівнів: від випадкових дозволених ходів для початківців до глибшого аналізу рушієм.</value>
   </data>

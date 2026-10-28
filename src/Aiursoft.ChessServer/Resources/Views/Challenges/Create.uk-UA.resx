@@ -24,23 +24,44 @@
   <data name="1 minute" xml:space="preserve">
     <value>1 хвилина</value>
   </data>
+  <data name="1 second" xml:space="preserve">
+    <value>1 секунда</value>
+  </data>
   <data name="10 minutes" xml:space="preserve">
     <value>10 хвилин</value>
+  </data>
+  <data name="10 seconds" xml:space="preserve">
+    <value>10 секунд</value>
   </data>
   <data name="15 minutes" xml:space="preserve">
     <value>15 хвилин</value>
   </data>
+  <data name="15 seconds" xml:space="preserve">
+    <value>15 секунд</value>
+  </data>
   <data name="2 hours" xml:space="preserve">
     <value>2 години</value>
+  </data>
+  <data name="2 seconds" xml:space="preserve">
+    <value>2 секунди</value>
   </data>
   <data name="3 minutes" xml:space="preserve">
     <value>3 хвилини</value>
   </data>
+  <data name="3 seconds" xml:space="preserve">
+    <value>3 секунди</value>
+  </data>
   <data name="30 minutes" xml:space="preserve">
     <value>30 хвилин</value>
   </data>
+  <data name="30 seconds" xml:space="preserve">
+    <value>30 секунд</value>
+  </data>
   <data name="5 minutes" xml:space="preserve">
     <value>5 хвилин</value>
+  </data>
+  <data name="5 seconds" xml:space="preserve">
+    <value>5 секунд</value>
   </data>
   <data name="Black" xml:space="preserve">
     <value>Чорні</value>
@@ -53,6 +74,12 @@
   </data>
   <data name="Games are untimed." xml:space="preserve">
     <value>Партії проходять без обмеження часу.</value>
+  </data>
+  <data name="Increment per move" xml:space="preserve">
+    <value>Додаток часу за хід</value>
+  </data>
+  <data name="No increment" xml:space="preserve">
+    <value>Без додаткового часу</value>
   </data>
   <data name="Public" xml:space="preserve">
     <value>Публічна</value>

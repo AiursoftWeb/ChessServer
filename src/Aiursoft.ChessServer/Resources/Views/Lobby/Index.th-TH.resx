@@ -21,20 +21,38 @@
       <data name="1 — Beginner" xml:space="preserve">
     <value>1 — มือใหม่</value>
   </data>
+  <data name="1 second" xml:space="preserve">
+    <value>1 วินาที</value>
+  </data>
   <data name="10 minutes" xml:space="preserve">
     <value>10 นาที</value>
+  </data>
+  <data name="10 seconds" xml:space="preserve">
+    <value>10 วินาที</value>
   </data>
   <data name="15 minutes" xml:space="preserve">
     <value>15 นาที</value>
   </data>
+  <data name="15 seconds" xml:space="preserve">
+    <value>15 วินาที</value>
+  </data>
   <data name="2 — Easy" xml:space="preserve">
     <value>2 — ง่าย</value>
+  </data>
+  <data name="2 seconds" xml:space="preserve">
+    <value>2 วินาที</value>
   </data>
   <data name="3 — Casual" xml:space="preserve">
     <value>3 — ระดับทั่วไป</value>
   </data>
   <data name="3 minutes" xml:space="preserve">
     <value>3 นาที</value>
+  </data>
+  <data name="3 seconds" xml:space="preserve">
+    <value>3 วินาที</value>
+  </data>
+  <data name="30 seconds" xml:space="preserve">
+    <value>30 วินาที</value>
   </data>
   <data name="4 — Intermediate" xml:space="preserve">
     <value>4 — ระดับปานกลาง</value>
@@ -44,6 +62,9 @@
   </data>
   <data name="5 minutes" xml:space="preserve">
     <value>5 นาที</value>
+  </data>
+  <data name="5 seconds" xml:space="preserve">
+    <value>5 วินาที</value>
   </data>
   <data name="6 — Hard" xml:space="preserve">
     <value>6 — ยาก</value>
@@ -66,11 +87,20 @@
   <data name="Difficulty" xml:space="preserve">
     <value>ระดับความยาก</value>
   </data>
+  <data name="Guest" xml:space="preserve">
+    <value>ผู้เยี่ยมชม</value>
+  </data>
+  <data name="Increment per move" xml:space="preserve">
+    <value>เวลาเพิ่มต่อการเดินแต่ละครั้ง</value>
+  </data>
   <data name="My games" xml:space="preserve">
     <value>เกมของฉัน</value>
   </data>
   <data name="No games in progress." xml:space="preserve">
     <value>ไม่มีเกมที่กำลังดำเนินอยู่</value>
+  </data>
+  <data name="No increment" xml:space="preserve">
+    <value>ไม่มีเวลาเพิ่ม</value>
   </data>
   <data name="No open challenges." xml:space="preserve">
     <value>ไม่มีคำท้าทายที่เปิดอยู่</value>

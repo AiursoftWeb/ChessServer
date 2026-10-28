@@ -24,23 +24,44 @@
   <data name="1 minute" xml:space="preserve">
     <value>1 minuut</value>
   </data>
+  <data name="1 second" xml:space="preserve">
+    <value>1 seconde</value>
+  </data>
   <data name="10 minutes" xml:space="preserve">
     <value>10 minuten</value>
+  </data>
+  <data name="10 seconds" xml:space="preserve">
+    <value>10 seconden</value>
   </data>
   <data name="15 minutes" xml:space="preserve">
     <value>15 minuten</value>
   </data>
+  <data name="15 seconds" xml:space="preserve">
+    <value>15 seconden</value>
+  </data>
   <data name="2 hours" xml:space="preserve">
     <value>2 uur</value>
+  </data>
+  <data name="2 seconds" xml:space="preserve">
+    <value>2 seconden</value>
   </data>
   <data name="3 minutes" xml:space="preserve">
     <value>3 minuten</value>
   </data>
+  <data name="3 seconds" xml:space="preserve">
+    <value>3 seconden</value>
+  </data>
   <data name="30 minutes" xml:space="preserve">
     <value>30 minuten</value>
   </data>
+  <data name="30 seconds" xml:space="preserve">
+    <value>30 seconden</value>
+  </data>
   <data name="5 minutes" xml:space="preserve">
     <value>5 minuten</value>
+  </data>
+  <data name="5 seconds" xml:space="preserve">
+    <value>5 seconden</value>
   </data>
   <data name="Black" xml:space="preserve">
     <value>Zwart</value>
@@ -53,6 +74,12 @@
   </data>
   <data name="Games are untimed." xml:space="preserve">
     <value>Partijen hebben geen tijdslimiet.</value>
+  </data>
+  <data name="Increment per move" xml:space="preserve">
+    <value>Tijdstoename per zet</value>
+  </data>
+  <data name="No increment" xml:space="preserve">
+    <value>Geen tijdsvermeerdering</value>
   </data>
   <data name="Public" xml:space="preserve">
     <value>Openbaar</value>

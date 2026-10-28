@@ -36,8 +36,14 @@
   <data name="Accept draw" xml:space="preserve">
     <value>무승부 수락</value>
   </data>
+  <data name="Accept rematch" xml:space="preserve">
+    <value>재대결 수락</value>
+  </data>
   <data name="After 90 seconds without your opponent, you may claim the result. A computer game ends after two minutes away; a game with both players away ends after ten minutes." xml:space="preserve">
     <value>상대가 90초 동안 자리를 비우면 경기 결과를 선언할 수 있습니다. 컴퓨터와의 대국은 상대가 2분 동안 자리를 비우면 종료되고, 두 플레이어가 모두 자리를 비운 대국은 10분 후 종료됩니다.</value>
+  </data>
+  <data name="All rooms are busy. Please try again later." xml:space="preserve">
+    <value>모든 방이 사용 중입니다. 나중에 다시 시도해 주세요.</value>
   </data>
   <data name="An unplayed game ends after one minute. Leaving does not pause the clock." xml:space="preserve">
     <value>한 번도 진행되지 않은 게임은 1분 후 종료됩니다. 나가더라도 시계는 멈추지 않습니다.</value>
@@ -84,6 +90,9 @@
   <data name="Connection closed. Refresh to reconnect." xml:space="preserve">
     <value>연결이 끊겼습니다. 새로고침하여 다시 연결하세요.</value>
   </data>
+  <data name="Continue to rematch" xml:space="preserve">
+    <value>재대결 계속하기</value>
+  </data>
   <data name="Could not complete the action. Reconnecting to the server…" xml:space="preserve">
     <value>작업을 완료하지 못했습니다. 서버에 다시 연결하는 중…</value>
   </data>
@@ -108,6 +117,9 @@
   <data name="Export PGN" xml:space="preserve">
     <value>PGN 내보내기</value>
   </data>
+  <data name="Finish this game before requesting a rematch." xml:space="preserve">
+    <value>재경기를 요청하기 전에 이 게임을 끝내세요.</value>
+  </data>
   <data name="Game aborted before any move" xml:space="preserve">
     <value>첫 수를 두기 전에 대국이 중단되었습니다</value>
   </data>
@@ -117,6 +129,9 @@
   <data name="Game ended by abandonment" xml:space="preserve">
     <value>기권으로 게임이 종료되었습니다</value>
   </data>
+  <data name="Game finished. Download the PGN to keep it; guest games are not saved to a personal history." xml:space="preserve">
+    <value>게임이 종료되었습니다. 보관하려면 PGN을 다운로드하세요. 게스트 게임은 개인 게임 기록에 저장되지 않습니다.</value>
+  </data>
   <data name="Game over" xml:space="preserve">
     <value>게임 종료</value>
   </data>
@@ -125,6 +140,9 @@
   </data>
   <data name="Game over. {0} wins." xml:space="preserve">
     <value>게임 종료. {0} 승리.</value>
+  </data>
+  <data name="Guest" xml:space="preserve">
+    <value>게스트</value>
   </data>
   <data name="Knight" xml:space="preserve">
     <value>나이트</value>
@@ -168,6 +186,12 @@
   <data name="Reconnecting… Your clock keeps running." xml:space="preserve">
     <value>재연결 중… 게임 시계는 계속 돌아갑니다.</value>
   </data>
+  <data name="Rematch" xml:space="preserve">
+    <value>다시 대국</value>
+  </data>
+  <data name="Rematch requested. Waiting for your opponent…" xml:space="preserve">
+    <value>재대결을 요청했습니다. 상대방을 기다리는 중…</value>
+  </data>
   <data name="Replay" xml:space="preserve">
     <value>다시 보기</value>
   </data>
@@ -210,6 +234,12 @@
   <data name="Stalemate" xml:space="preserve">
     <value>패</value>
   </data>
+  <data name="Take back" xml:space="preserve">
+    <value>무르기</value>
+  </data>
+  <data name="Take back your last move and the computer reply? The position and clocks will be restored." xml:space="preserve">
+    <value>마지막 수와 컴퓨터의 응수를 되돌릴까요? 기물의 위치와 시계가 복원됩니다.</value>
+  </data>
   <data name="That move cannot be played in the current position." xml:space="preserve">
     <value>현재 포지션에서는 해당 수를 둘 수 없습니다.</value>
   </data>
@@ -222,6 +252,9 @@
   <data name="The position changed. Your board has been synchronized." xml:space="preserve">
     <value>기물 배치가 변경되었습니다. 체스판이 동기화되었습니다.</value>
   </data>
+  <data name="The rematch offer is no longer available." xml:space="preserve">
+    <value>재대국 제안을 더 이상 사용할 수 없습니다.</value>
+  </data>
   <data name="This action could not be confirmed. Refresh to synchronize." xml:space="preserve">
     <value>이 작업을 확인할 수 없습니다. 새로고침하여 동기화하세요.</value>
   </data>
@@ -230,6 +263,9 @@
   </data>
   <data name="This game is still in progress. Your clock will keep running." xml:space="preserve">
     <value>이 게임은 아직 진행 중입니다. 시계는 계속 작동합니다.</value>
+  </data>
+  <data name="Time control: {0}" xml:space="preserve">
+    <value>시간 설정: {0}</value>
   </data>
   <data name="Time expired" xml:space="preserve">
     <value>시간 초과</value>
@@ -255,6 +291,9 @@
   <data name="You are watching this game." xml:space="preserve">
     <value>이 경기를 관전하고 있습니다.</value>
   </data>
+  <data name="You can only take back your own last move in an active computer game." xml:space="preserve">
+    <value>컴퓨터와 진행 중인 게임에서 자신이 둔 마지막 수만 되돌릴 수 있습니다.</value>
+  </data>
   <data name="You offered a draw." xml:space="preserve">
     <value>무승부를 제안했습니다.</value>
   </data>
@@ -266,6 +305,9 @@
   </data>
   <data name="Your opponent offers a draw." xml:space="preserve">
     <value>상대가 무승부를 제안했습니다.</value>
+  </data>
+  <data name="Your opponent offers a rematch with colors reversed." xml:space="preserve">
+    <value>상대가 백과 흑을 바꿔 재대국을 제안했습니다.</value>
   </data>
 
 </root>

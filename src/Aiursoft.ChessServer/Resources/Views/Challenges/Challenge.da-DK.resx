@@ -36,6 +36,12 @@
   <data name="Share this page with your opponent. Both players must sign in." xml:space="preserve">
     <value>Del denne side med din modstander. Begge spillere skal logge ind.</value>
   </data>
+  <data name="Share this page with your opponent. They can sign in or choose a guest nickname." xml:space="preserve">
+    <value>Del denne side med din modstander. Vedkommende kan logge ind eller vælge et gæstenavn.</value>
+  </data>
+  <data name="Time per player: {0} minutes, plus {1} seconds per move." xml:space="preserve">
+    <value>Tid pr. spiller: {0} minutter plus {1} sekunder pr. træk.</value>
+  </data>
   <data name="Time per player: {0} minutes." xml:space="preserve">
     <value>Tid pr. spiller: {0} minutter.</value>
   </data>

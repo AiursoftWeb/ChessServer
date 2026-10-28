@@ -192,6 +192,12 @@
   <data name="ChessServer computer game" xml:space="preserve">
     <value>ChessServer computer game</value>
   </data>
+  <data name="Choose a nickname to play, or sign in to save your games." xml:space="preserve">
+    <value>Choose a nickname to play, or sign in to save your games.</value>
+  </data>
+  <data name="Choose from eight levels, from beginner practice to deeper engine searches." xml:space="preserve">
+    <value>Choose from eight levels, from beginner practice to more in-depth engine searches.</value>
+  </data>
   <data name="Choose from eight levels, from random legal moves for beginners to deeper engine searches." xml:space="preserve">
     <value>Choose from eight levels, from random legal moves for beginners to deeper engine searches.</value>
   </data>

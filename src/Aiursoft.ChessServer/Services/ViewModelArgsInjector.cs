@@ -90,6 +90,8 @@ public class ViewModelArgsInjector(
 
         _ = localizer["My games"];
         _ = localizer["Replay game"];
+    
+        _ = localizer["Play as a guest"];
     }
 
     public void InjectSimple(

@@ -189,6 +189,12 @@
   <data name="ChessServer computer game" xml:space="preserve">
     <value>Gra komputerowa ChessServer</value>
   </data>
+  <data name="Choose a nickname to play, or sign in to save your games." xml:space="preserve">
+    <value>Wybierz pseudonim, aby zagrać, lub zaloguj się, aby zapisywać swoje partie.</value>
+  </data>
+  <data name="Choose from eight levels, from beginner practice to deeper engine searches." xml:space="preserve">
+    <value>Wybierz jeden z ośmiu poziomów trudności — od ćwiczeń dla początkujących po głębszą analizę pozycji przez silnik szachowy.</value>
+  </data>
   <data name="Choose from eight levels, from random legal moves for beginners to deeper engine searches." xml:space="preserve">
     <value>Wybierz jeden z ośmiu poziomów trudności — od losowych legalnych ruchów dla początkujących po głębsze analizy silnika.</value>
   </data>

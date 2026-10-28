@@ -189,6 +189,12 @@
   <data name="ChessServer computer game" xml:space="preserve">
     <value>Permainan catur ChessServer</value>
   </data>
+  <data name="Choose a nickname to play, or sign in to save your games." xml:space="preserve">
+    <value>Pilih nama panggilan untuk bermain, atau masuk untuk menyimpan permainan Anda.</value>
+  </data>
+  <data name="Choose from eight levels, from beginner practice to deeper engine searches." xml:space="preserve">
+    <value>Pilih dari delapan level, mulai dari latihan untuk pemula hingga pencarian mesin yang lebih mendalam.</value>
+  </data>
   <data name="Choose from eight levels, from random legal moves for beginners to deeper engine searches." xml:space="preserve">
     <value>Pilih dari delapan tingkat, mulai dari langkah legal acak untuk pemula hingga pencarian mesin yang lebih mendalam.</value>
   </data>

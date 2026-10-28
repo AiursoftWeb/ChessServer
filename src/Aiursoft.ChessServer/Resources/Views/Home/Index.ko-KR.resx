@@ -189,6 +189,12 @@
   <data name="ChessServer computer game" xml:space="preserve">
     <value>ChessServer 컴퓨터 게임</value>
   </data>
+  <data name="Choose a nickname to play, or sign in to save your games." xml:space="preserve">
+    <value>닉네임을 선택해 플레이하거나 로그인하여 대국 기록을 저장하세요.</value>
+  </data>
+  <data name="Choose from eight levels, from beginner practice to deeper engine searches." xml:space="preserve">
+    <value>초보자 연습부터 더 깊이 있는 엔진 탐색까지, 8단계 중에서 선택할 수 있습니다.</value>
+  </data>
   <data name="Choose from eight levels, from random legal moves for beginners to deeper engine searches." xml:space="preserve">
     <value>초보자를 위한 무작위 합법 수부터 엔진의 더 깊은 탐색까지, 8가지 난이도 중에서 선택하세요.</value>
   </data>

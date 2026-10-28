@@ -21,20 +21,38 @@
       <data name="1 — Beginner" xml:space="preserve">
     <value>1 — Початківець</value>
   </data>
+  <data name="1 second" xml:space="preserve">
+    <value>1 секунда</value>
+  </data>
   <data name="10 minutes" xml:space="preserve">
     <value>10 хвилин</value>
+  </data>
+  <data name="10 seconds" xml:space="preserve">
+    <value>10 секунд</value>
   </data>
   <data name="15 minutes" xml:space="preserve">
     <value>15 хвилин</value>
   </data>
+  <data name="15 seconds" xml:space="preserve">
+    <value>15 секунд</value>
+  </data>
   <data name="2 — Easy" xml:space="preserve">
     <value>2 — Легкий</value>
+  </data>
+  <data name="2 seconds" xml:space="preserve">
+    <value>2 секунди</value>
   </data>
   <data name="3 — Casual" xml:space="preserve">
     <value>3 — Невимушений</value>
   </data>
   <data name="3 minutes" xml:space="preserve">
     <value>3 хвилини</value>
+  </data>
+  <data name="3 seconds" xml:space="preserve">
+    <value>3 секунди</value>
+  </data>
+  <data name="30 seconds" xml:space="preserve">
+    <value>30 секунд</value>
   </data>
   <data name="4 — Intermediate" xml:space="preserve">
     <value>4 — Середній</value>
@@ -44,6 +62,9 @@
   </data>
   <data name="5 minutes" xml:space="preserve">
     <value>5 хвилин</value>
+  </data>
+  <data name="5 seconds" xml:space="preserve">
+    <value>5 секунд</value>
   </data>
   <data name="6 — Hard" xml:space="preserve">
     <value>6 — Важко</value>
@@ -57,17 +78,29 @@
   <data name="Black" xml:space="preserve">
     <value>Чорні</value>
   </data>
+  <data name="Continue game" xml:space="preserve">
+    <value>Продовжити гру</value>
+  </data>
   <data name="Create a challenge" xml:space="preserve">
     <value>Створити виклик</value>
   </data>
   <data name="Difficulty" xml:space="preserve">
     <value>Складність</value>
   </data>
+  <data name="Guest" xml:space="preserve">
+    <value>Гість</value>
+  </data>
+  <data name="Increment per move" xml:space="preserve">
+    <value>Додатковий час за кожен хід</value>
+  </data>
   <data name="My games" xml:space="preserve">
     <value>Мої партії</value>
   </data>
   <data name="No games in progress." xml:space="preserve">
     <value>Ігри не тривають.</value>
+  </data>
+  <data name="No increment" xml:space="preserve">
+    <value>Без додавання часу</value>
   </data>
   <data name="No open challenges." xml:space="preserve">
     <value>Немає відкритих викликів.</value>
@@ -101,6 +134,9 @@
   </data>
   <data name="White" xml:space="preserve">
     <value>Білі</value>
+  </data>
+  <data name="Your current games" xml:space="preserve">
+    <value>Ваші поточні партії</value>
   </data>
   <data name="Your pieces" xml:space="preserve">
     <value>Ваші фігури</value>

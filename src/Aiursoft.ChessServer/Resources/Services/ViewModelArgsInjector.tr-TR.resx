@@ -135,6 +135,9 @@
   <data name="Personal" xml:space="preserve">
     <value>Kişisel</value>
   </data>
+  <data name="Play as a guest" xml:space="preserve">
+    <value>Misafir olarak oyna</value>
+  </data>
   <data name="Play chess" xml:space="preserve">
     <value>Satranç oyna</value>
   </data>
@@ -158,6 +161,9 @@
   </data>
   <data name="Settings" xml:space="preserve">
     <value>Ayarlar</value>
+  </data>
+  <data name="Sign in to save your games and replay them later." xml:space="preserve">
+    <value>Oyunlarınızı kaydedip daha sonra tekrar oynamak için giriş yapın.</value>
   </data>
   <data name="Sign out" xml:space="preserve">
     <value>Çıkış Yap</value>

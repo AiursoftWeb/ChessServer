@@ -24,23 +24,44 @@
   <data name="1 minute" xml:space="preserve">
     <value>1 minut</value>
   </data>
+  <data name="1 second" xml:space="preserve">
+    <value>1 secundă</value>
+  </data>
   <data name="10 minutes" xml:space="preserve">
     <value>10 minute</value>
+  </data>
+  <data name="10 seconds" xml:space="preserve">
+    <value>10 secunde</value>
   </data>
   <data name="15 minutes" xml:space="preserve">
     <value>15 minute</value>
   </data>
+  <data name="15 seconds" xml:space="preserve">
+    <value>15 secunde</value>
+  </data>
   <data name="2 hours" xml:space="preserve">
     <value>2 ore</value>
+  </data>
+  <data name="2 seconds" xml:space="preserve">
+    <value>2 secunde</value>
   </data>
   <data name="3 minutes" xml:space="preserve">
     <value>3 minute</value>
   </data>
+  <data name="3 seconds" xml:space="preserve">
+    <value>3 secunde</value>
+  </data>
   <data name="30 minutes" xml:space="preserve">
     <value>30 de minute</value>
   </data>
+  <data name="30 seconds" xml:space="preserve">
+    <value>30 de secunde</value>
+  </data>
   <data name="5 minutes" xml:space="preserve">
     <value>5 minute</value>
+  </data>
+  <data name="5 seconds" xml:space="preserve">
+    <value>5 secunde</value>
   </data>
   <data name="Black" xml:space="preserve">
     <value>Negru</value>
@@ -53,6 +74,12 @@
   </data>
   <data name="Games are untimed." xml:space="preserve">
     <value>Partidele nu sunt cronometrate.</value>
+  </data>
+  <data name="Increment per move" xml:space="preserve">
+    <value>Increment per mutare</value>
+  </data>
+  <data name="No increment" xml:space="preserve">
+    <value>Fără increment</value>
   </data>
   <data name="Public" xml:space="preserve">
     <value>Public</value>

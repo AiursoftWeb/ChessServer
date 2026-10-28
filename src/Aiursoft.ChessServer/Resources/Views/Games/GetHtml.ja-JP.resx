@@ -36,8 +36,14 @@
   <data name="Accept draw" xml:space="preserve">
     <value>引き分けを承諾</value>
   </data>
+  <data name="Accept rematch" xml:space="preserve">
+    <value>再戦を受け入れる</value>
+  </data>
   <data name="After 90 seconds without your opponent, you may claim the result. A computer game ends after two minutes away; a game with both players away ends after ten minutes." xml:space="preserve">
     <value>対戦相手が90秒間不在の場合、対局結果を確定できます。コンピューターとの対局は2分間不在で終了し、両プレイヤーが不在の場合は10分間で終了します。</value>
+  </data>
+  <data name="All rooms are busy. Please try again later." xml:space="preserve">
+    <value>すべてのルームが使用中です。しばらくしてからもう一度お試しください。</value>
   </data>
   <data name="An unplayed game ends after one minute. Leaving does not pause the clock." xml:space="preserve">
     <value>未対局のゲームは1分後に終了します。退出しても時計は止まりません。</value>
@@ -84,6 +90,9 @@
   <data name="Connection closed. Refresh to reconnect." xml:space="preserve">
     <value>接続が切断されました。再接続するには更新してください。</value>
   </data>
+  <data name="Continue to rematch" xml:space="preserve">
+    <value>再戦に進む</value>
+  </data>
   <data name="Could not complete the action. Reconnecting to the server…" xml:space="preserve">
     <value>操作を完了できませんでした。サーバーに再接続しています…</value>
   </data>
@@ -108,6 +117,9 @@
   <data name="Export PGN" xml:space="preserve">
     <value>PGNをエクスポート</value>
   </data>
+  <data name="Finish this game before requesting a rematch." xml:space="preserve">
+    <value>再戦を申し込む前に、この対局を終局させてください。</value>
+  </data>
   <data name="Game aborted before any move" xml:space="preserve">
     <value>着手前に対局が中止されました</value>
   </data>
@@ -117,6 +129,9 @@
   <data name="Game ended by abandonment" xml:space="preserve">
     <value>放棄により対局終了</value>
   </data>
+  <data name="Game finished. Download the PGN to keep it; guest games are not saved to a personal history." xml:space="preserve">
+    <value>ゲームが終了しました。保存するにはPGNをダウンロードしてください。ゲストゲームは個人の対局履歴に保存されません。</value>
+  </data>
   <data name="Game over" xml:space="preserve">
     <value>対局終了</value>
   </data>
@@ -125,6 +140,9 @@
   </data>
   <data name="Game over. {0} wins." xml:space="preserve">
     <value>対局終了。{0}の勝ちです。</value>
+  </data>
+  <data name="Guest" xml:space="preserve">
+    <value>ゲスト</value>
   </data>
   <data name="Knight" xml:space="preserve">
     <value>ナイト</value>
@@ -168,6 +186,12 @@
   <data name="Reconnecting… Your clock keeps running." xml:space="preserve">
     <value>再接続中です…対局時計は進み続けます。</value>
   </data>
+  <data name="Rematch" xml:space="preserve">
+    <value>再戦</value>
+  </data>
+  <data name="Rematch requested. Waiting for your opponent…" xml:space="preserve">
+    <value>再戦を申し込みました。相手の応答を待っています…</value>
+  </data>
   <data name="Replay" xml:space="preserve">
     <value>リプレイ</value>
   </data>
@@ -210,6 +234,12 @@
   <data name="Stalemate" xml:space="preserve">
     <value>ステイルメイト</value>
   </data>
+  <data name="Take back" xml:space="preserve">
+    <value>取り消す</value>
+  </data>
+  <data name="Take back your last move and the computer reply? The position and clocks will be restored." xml:space="preserve">
+    <value>直前の指し手とコンピューターの応手を取り消しますか？局面と時計は元の状態に戻ります。</value>
+  </data>
   <data name="That move cannot be played in the current position." xml:space="preserve">
     <value>その手は現在の局面では指せません。</value>
   </data>
@@ -222,6 +252,9 @@
   <data name="The position changed. Your board has been synchronized." xml:space="preserve">
     <value>局面が変わりました。盤面が同期されました。</value>
   </data>
+  <data name="The rematch offer is no longer available." xml:space="preserve">
+    <value>再戦の申し込みは受け付けられなくなりました。</value>
+  </data>
   <data name="This action could not be confirmed. Refresh to synchronize." xml:space="preserve">
     <value>この操作を確認できませんでした。同期するには再読み込みしてください。</value>
   </data>
@@ -230,6 +263,9 @@
   </data>
   <data name="This game is still in progress. Your clock will keep running." xml:space="preserve">
     <value>この対局はまだ進行中です。あなたの持ち時間はそのまま減り続けます。</value>
+  </data>
+  <data name="Time control: {0}" xml:space="preserve">
+    <value>持ち時間：{0}</value>
   </data>
   <data name="Time expired" xml:space="preserve">
     <value>時間切れ</value>
@@ -255,6 +291,9 @@
   <data name="You are watching this game." xml:space="preserve">
     <value>このゲームを観戦しています。</value>
   </data>
+  <data name="You can only take back your own last move in an active computer game." xml:space="preserve">
+    <value>対局中のコンピューターとのゲームでのみ、自分の直前の手を取り消せます。</value>
+  </data>
   <data name="You offered a draw." xml:space="preserve">
     <value>引き分けを申し出ました。</value>
   </data>
@@ -266,6 +305,9 @@
   </data>
   <data name="Your opponent offers a draw." xml:space="preserve">
     <value>対戦相手が引き分けを提案しています。</value>
+  </data>
+  <data name="Your opponent offers a rematch with colors reversed." xml:space="preserve">
+    <value>対戦相手から、先後を入れ替えて再戦する申し出がありました。</value>
   </data>
 
 </root>

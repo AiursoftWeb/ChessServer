@@ -24,23 +24,116 @@
   <data name="{0} to move" xml:space="preserve">
     <value>Хід {0}</value>
   </data>
+  <data name="{0} wins" xml:space="preserve">
+    <value>Переможець: {0}</value>
+  </data>
+  <data name="A draw cannot be offered now." xml:space="preserve">
+    <value>Наразі запропонувати нічию не можна.</value>
+  </data>
+  <data name="Abort game" xml:space="preserve">
+    <value>Перервати гру</value>
+  </data>
+  <data name="Accept draw" xml:space="preserve">
+    <value>Прийняти нічию</value>
+  </data>
+  <data name="Accept rematch" xml:space="preserve">
+    <value>Прийняти реванш</value>
+  </data>
+  <data name="After 90 seconds without your opponent, you may claim the result. A computer game ends after two minutes away; a game with both players away ends after ten minutes." xml:space="preserve">
+    <value>Якщо суперник не з’являється протягом 90 секунд, ви можете заявити про результат. Партія з комп’ютером завершується, якщо гравець відсутній протягом двох хвилин; партія, у якій відсутні обидва гравці, завершується через десять хвилин.</value>
+  </data>
+  <data name="All rooms are busy. Please try again later." xml:space="preserve">
+    <value>Усі кімнати зайняті. Спробуйте ще раз пізніше.</value>
+  </data>
+  <data name="An unplayed game ends after one minute. Leaving does not pause the clock." xml:space="preserve">
+    <value>Гра, у якій не зроблено жодного ходу, завершується через одну хвилину. Вихід із гри не зупиняє годинник.</value>
+  </data>
+  <data name="Bishop" xml:space="preserve">
+    <value>Слон</value>
+  </data>
   <data name="Black" xml:space="preserve">
     <value>Чорні</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Скасувати</value>
   </data>
   <data name="Chat" xml:space="preserve">
     <value>Чат</value>
   </data>
+  <data name="Checkmate" xml:space="preserve">
+    <value>Мат</value>
+  </data>
   <data name="Checkmate. {0} wins." xml:space="preserve">
     <value>Мат. Перемагає {0}.</value>
+  </data>
+  <data name="Claim result" xml:space="preserve">
+    <value>Заявити результат</value>
+  </data>
+  <data name="Computer is thinking…" xml:space="preserve">
+    <value>Комп’ютер думає…</value>
+  </data>
+  <data name="Confirm resignation" xml:space="preserve">
+    <value>Підтвердити відставку</value>
+  </data>
+  <data name="Confirming your move…" xml:space="preserve">
+    <value>Підтвердження вашого ходу…</value>
+  </data>
+  <data name="Connected" xml:space="preserve">
+    <value>Підключено</value>
+  </data>
+  <data name="Connecting…" xml:space="preserve">
+    <value>Підключення…</value>
+  </data>
+  <data name="Connection and game rules" xml:space="preserve">
+    <value>Правила підключення та гри</value>
   </data>
   <data name="Connection closed. Refresh to reconnect." xml:space="preserve">
     <value>З’єднання розірвано. Оновіть сторінку, щоб підключитися знову.</value>
   </data>
+  <data name="Continue to rematch" xml:space="preserve">
+    <value>Продовжити матч-реванш</value>
+  </data>
+  <data name="Could not complete the action. Reconnecting to the server…" xml:space="preserve">
+    <value>Не вдалося виконати дію. Повторне підключення до сервера…</value>
+  </data>
   <data name="Could not confirm the saved game. Retry." xml:space="preserve">
     <value>Не вдалося підтвердити збереження гри. Спробуйте ще раз.</value>
   </data>
+  <data name="Dismiss offer" xml:space="preserve">
+    <value>Відхилити пропозицію</value>
+  </data>
+  <data name="Draw" xml:space="preserve">
+    <value>Нічия</value>
+  </data>
+  <data name="Draw by agreement" xml:space="preserve">
+    <value>Нічия за згодою</value>
+  </data>
+  <data name="Draw by repetition" xml:space="preserve">
+    <value>Нічия через триразове повторення позиції</value>
+  </data>
+  <data name="Draw by the fifty-move rule" xml:space="preserve">
+    <value>Нічия за правилом 50 ходів</value>
+  </data>
   <data name="Export PGN" xml:space="preserve">
     <value>Експортувати PGN</value>
+  </data>
+  <data name="Finish this game before requesting a rematch." xml:space="preserve">
+    <value>Завершіть цю гру, перш ніж запросити реванш.</value>
+  </data>
+  <data name="Game aborted before any move" xml:space="preserve">
+    <value>Гру перервано до першого ходу</value>
+  </data>
+  <data name="Game ended because both players left" xml:space="preserve">
+    <value>Гру завершено, оскільки обидва гравці залишили її</value>
+  </data>
+  <data name="Game ended by abandonment" xml:space="preserve">
+    <value>Гру завершено через неявку суперника</value>
+  </data>
+  <data name="Game finished. Download the PGN to keep it; guest games are not saved to a personal history." xml:space="preserve">
+    <value>Гру завершено. Завантажте файл PGN, щоб зберегти її; партії гостей не зберігаються в особистій історії.</value>
+  </data>
+  <data name="Game over" xml:space="preserve">
+    <value>Гру завершено</value>
   </data>
   <data name="Game over — draw." xml:space="preserve">
     <value>Гру завершено — нічия.</value>
@@ -48,17 +141,77 @@
   <data name="Game over. {0} wins." xml:space="preserve">
     <value>Кінець гри. {0} переміг.</value>
   </data>
+  <data name="Guest" xml:space="preserve">
+    <value>Гість</value>
+  </data>
+  <data name="Knight" xml:space="preserve">
+    <value>Кінь</value>
+  </data>
+  <data name="Lobby" xml:space="preserve">
+    <value>Лобі</value>
+  </data>
   <data name="Message" xml:space="preserve">
     <value>Повідомлення</value>
+  </data>
+  <data name="Move list" xml:space="preserve">
+    <value>Список ходів</value>
+  </data>
+  <data name="Moves" xml:space="preserve">
+    <value>Ходи</value>
+  </data>
+  <data name="Neither side has sufficient mating material" xml:space="preserve">
+    <value>Жодна зі сторін не має достатньо фігур для постановки мату</value>
+  </data>
+  <data name="Offer draw" xml:space="preserve">
+    <value>Запропонувати нічию</value>
+  </data>
+  <data name="Only the players can perform this action." xml:space="preserve">
+    <value>Лише гравці можуть виконати цю дію.</value>
+  </data>
+  <data name="Opponent disconnected. Reconnection time remaining: {0}s." xml:space="preserve">
+    <value>Суперник від’єднався. Час до його повторного підключення: {0} с.</value>
+  </data>
+  <data name="Play another game" xml:space="preserve">
+    <value>Зіграти ще одну партію</value>
   </data>
   <data name="Preferred duration: {0} minutes. Games are untimed." xml:space="preserve">
     <value>Бажана тривалість: {0} хвилин. Ігри проходять без обмеження часу.</value>
   </data>
+  <data name="Promote pawn" xml:space="preserve">
+    <value>Перетворити пішака</value>
+  </data>
+  <data name="Queen" xml:space="preserve">
+    <value>Ферзь</value>
+  </data>
+  <data name="Reconnecting… Your clock keeps running." xml:space="preserve">
+    <value>Повторне підключення… Ваш час продовжує спливати.</value>
+  </data>
+  <data name="Rematch" xml:space="preserve">
+    <value>Матч-реванш</value>
+  </data>
+  <data name="Rematch requested. Waiting for your opponent…" xml:space="preserve">
+    <value>Запит на реванш надіслано. Очікуємо на суперника…</value>
+  </data>
   <data name="Replay" xml:space="preserve">
     <value>Повторити</value>
   </data>
+  <data name="Resign" xml:space="preserve">
+    <value>Здатися</value>
+  </data>
+  <data name="Resign this game?" xml:space="preserve">
+    <value>Здатися в цій партії?</value>
+  </data>
+  <data name="Resignation" xml:space="preserve">
+    <value>Здача</value>
+  </data>
   <data name="Retry saving" xml:space="preserve">
     <value>Повторити збереження</value>
+  </data>
+  <data name="Return to live position" xml:space="preserve">
+    <value>Повернутися до поточної позиції</value>
+  </data>
+  <data name="Rook" xml:space="preserve">
+    <value>Тура</value>
   </data>
   <data name="Room unavailable. Return to the lobby." xml:space="preserve">
     <value>Кімната недоступна. Поверніться до холу.</value>
@@ -72,8 +225,53 @@
   <data name="Send" xml:space="preserve">
     <value>Надіслати</value>
   </data>
+  <data name="Server maintenance pauses the clocks. A player disconnecting does not." xml:space="preserve">
+    <value>Обслуговування сервера призупиняє годинники. Від&apos;єднання гравця — ні.</value>
+  </data>
   <data name="Spectator" xml:space="preserve">
     <value>Глядач</value>
+  </data>
+  <data name="Stalemate" xml:space="preserve">
+    <value>Пат</value>
+  </data>
+  <data name="Take back" xml:space="preserve">
+    <value>Скасувати останній хід</value>
+  </data>
+  <data name="Take back your last move and the computer reply? The position and clocks will be restored." xml:space="preserve">
+    <value>Скасувати ваш останній хід і відповідь комп’ютера? Позицію та час на годинниках буде відновлено.</value>
+  </data>
+  <data name="That move cannot be played in the current position." xml:space="preserve">
+    <value>Цей хід неможливо зробити в поточній позиції.</value>
+  </data>
+  <data name="The draw offer is no longer available." xml:space="preserve">
+    <value>Пропозиція нічиєї більше недоступна.</value>
+  </data>
+  <data name="The game has started. You can resign instead." xml:space="preserve">
+    <value>Гру розпочато. Натомість ви можете здатися.</value>
+  </data>
+  <data name="The position changed. Your board has been synchronized." xml:space="preserve">
+    <value>Позицію змінено. Вашу дошку синхронізовано.</value>
+  </data>
+  <data name="The rematch offer is no longer available." xml:space="preserve">
+    <value>Пропозиція на реванш більше недоступна.</value>
+  </data>
+  <data name="This action could not be confirmed. Refresh to synchronize." xml:space="preserve">
+    <value>Не вдалося підтвердити цю дію. Оновіть сторінку, щоб синхронізувати дані.</value>
+  </data>
+  <data name="This game has ended." xml:space="preserve">
+    <value>Цю гру завершено.</value>
+  </data>
+  <data name="This game is still in progress. Your clock will keep running." xml:space="preserve">
+    <value>Гра ще триває. Ваш час продовжуватиме спливати.</value>
+  </data>
+  <data name="Time control: {0}" xml:space="preserve">
+    <value>Контроль часу: {0}</value>
+  </data>
+  <data name="Time expired" xml:space="preserve">
+    <value>Час вичерпано</value>
+  </data>
+  <data name="Time expired, but the opponent cannot checkmate." xml:space="preserve">
+    <value>Час вичерпано, але суперник не може поставити мат.</value>
   </data>
   <data name="Time expired. {0} wins." xml:space="preserve">
     <value>Час вичерпано. Перемагає {0}.</value>
@@ -92,6 +290,24 @@
   </data>
   <data name="You are watching this game." xml:space="preserve">
     <value>Ви спостерігаєте за цією грою.</value>
+  </data>
+  <data name="You can only take back your own last move in an active computer game." xml:space="preserve">
+    <value>Ви можете скасувати лише свій останній хід у поточній грі з комп’ютером.</value>
+  </data>
+  <data name="You offered a draw." xml:space="preserve">
+    <value>Ви запропонували нічию.</value>
+  </data>
+  <data name="Your opponent can still reconnect." xml:space="preserve">
+    <value>Ваш суперник ще може відновити з’єднання.</value>
+  </data>
+  <data name="Your opponent has not reconnected. You may claim the result or keep waiting." xml:space="preserve">
+    <value>Ваш суперник не під’єднався знову. Ви можете заявити про перемогу або продовжити чекати.</value>
+  </data>
+  <data name="Your opponent offers a draw." xml:space="preserve">
+    <value>Ваш суперник пропонує нічию.</value>
+  </data>
+  <data name="Your opponent offers a rematch with colors reversed." xml:space="preserve">
+    <value>Ваш суперник пропонує зіграти реванш, помінявшись кольорами.</value>
   </data>
 
 </root>

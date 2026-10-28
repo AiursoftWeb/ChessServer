@@ -24,23 +24,44 @@
   <data name="1 minute" xml:space="preserve">
     <value>1 phút</value>
   </data>
+  <data name="1 second" xml:space="preserve">
+    <value>1 giây</value>
+  </data>
   <data name="10 minutes" xml:space="preserve">
     <value>10 phút</value>
+  </data>
+  <data name="10 seconds" xml:space="preserve">
+    <value>10 giây</value>
   </data>
   <data name="15 minutes" xml:space="preserve">
     <value>15 phút</value>
   </data>
+  <data name="15 seconds" xml:space="preserve">
+    <value>15 giây</value>
+  </data>
   <data name="2 hours" xml:space="preserve">
     <value>2 giờ</value>
+  </data>
+  <data name="2 seconds" xml:space="preserve">
+    <value>2 giây</value>
   </data>
   <data name="3 minutes" xml:space="preserve">
     <value>3 phút</value>
   </data>
+  <data name="3 seconds" xml:space="preserve">
+    <value>3 giây</value>
+  </data>
   <data name="30 minutes" xml:space="preserve">
     <value>30 phút</value>
   </data>
+  <data name="30 seconds" xml:space="preserve">
+    <value>30 giây</value>
+  </data>
   <data name="5 minutes" xml:space="preserve">
     <value>5 phút</value>
+  </data>
+  <data name="5 seconds" xml:space="preserve">
+    <value>5 giây</value>
   </data>
   <data name="Black" xml:space="preserve">
     <value>Đen</value>
@@ -53,6 +74,12 @@
   </data>
   <data name="Games are untimed." xml:space="preserve">
     <value>Các ván đấu không giới hạn thời gian.</value>
+  </data>
+  <data name="Increment per move" xml:space="preserve">
+    <value>Số giây cộng thêm sau mỗi nước đi</value>
+  </data>
+  <data name="No increment" xml:space="preserve">
+    <value>Không cộng thêm thời gian</value>
   </data>
   <data name="Public" xml:space="preserve">
     <value>Công khai</value>

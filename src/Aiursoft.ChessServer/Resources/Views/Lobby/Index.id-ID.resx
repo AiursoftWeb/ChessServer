@@ -21,20 +21,38 @@
       <data name="1 — Beginner" xml:space="preserve">
     <value>1 — Pemula</value>
   </data>
+  <data name="1 second" xml:space="preserve">
+    <value>1 detik</value>
+  </data>
   <data name="10 minutes" xml:space="preserve">
     <value>10 menit</value>
+  </data>
+  <data name="10 seconds" xml:space="preserve">
+    <value>10 detik</value>
   </data>
   <data name="15 minutes" xml:space="preserve">
     <value>15 menit</value>
   </data>
+  <data name="15 seconds" xml:space="preserve">
+    <value>15 detik</value>
+  </data>
   <data name="2 — Easy" xml:space="preserve">
     <value>2 — Mudah</value>
+  </data>
+  <data name="2 seconds" xml:space="preserve">
+    <value>2 detik</value>
   </data>
   <data name="3 — Casual" xml:space="preserve">
     <value>3 — Santai</value>
   </data>
   <data name="3 minutes" xml:space="preserve">
     <value>3 menit</value>
+  </data>
+  <data name="3 seconds" xml:space="preserve">
+    <value>3 detik</value>
+  </data>
+  <data name="30 seconds" xml:space="preserve">
+    <value>30 detik</value>
   </data>
   <data name="4 — Intermediate" xml:space="preserve">
     <value>4 — Menengah</value>
@@ -44,6 +62,9 @@
   </data>
   <data name="5 minutes" xml:space="preserve">
     <value>5 menit</value>
+  </data>
+  <data name="5 seconds" xml:space="preserve">
+    <value>5 detik</value>
   </data>
   <data name="6 — Hard" xml:space="preserve">
     <value>6 — Sulit</value>
@@ -57,17 +78,29 @@
   <data name="Black" xml:space="preserve">
     <value>Hitam</value>
   </data>
+  <data name="Continue game" xml:space="preserve">
+    <value>Lanjutkan permainan</value>
+  </data>
   <data name="Create a challenge" xml:space="preserve">
     <value>Buat tantangan</value>
   </data>
   <data name="Difficulty" xml:space="preserve">
     <value>Tingkat kesulitan</value>
   </data>
+  <data name="Guest" xml:space="preserve">
+    <value>Tamu</value>
+  </data>
+  <data name="Increment per move" xml:space="preserve">
+    <value>Penambahan waktu per langkah</value>
+  </data>
   <data name="My games" xml:space="preserve">
     <value>Pertandingan Saya</value>
   </data>
   <data name="No games in progress." xml:space="preserve">
     <value>Tidak ada permainan yang sedang berlangsung.</value>
+  </data>
+  <data name="No increment" xml:space="preserve">
+    <value>Tanpa penambahan waktu</value>
   </data>
   <data name="No open challenges." xml:space="preserve">
     <value>Tidak ada tantangan yang terbuka.</value>
@@ -101,6 +134,9 @@
   </data>
   <data name="White" xml:space="preserve">
     <value>Putih</value>
+  </data>
+  <data name="Your current games" xml:space="preserve">
+    <value>Pertandingan Anda saat ini</value>
   </data>
   <data name="Your pieces" xml:space="preserve">
     <value>Bidak Anda</value>

@@ -36,8 +36,14 @@
   <data name="Accept draw" xml:space="preserve">
     <value>Aceitar empate</value>
   </data>
+  <data name="Accept rematch" xml:space="preserve">
+    <value>Aceitar revanche</value>
+  </data>
   <data name="After 90 seconds without your opponent, you may claim the result. A computer game ends after two minutes away; a game with both players away ends after ten minutes." xml:space="preserve">
     <value>Após 90 segundos sem que seu oponente esteja presente, você pode reivindicar o resultado. Uma partida contra o computador termina após dois minutos de ausência; uma partida com os dois jogadores ausentes termina após dez minutos.</value>
+  </data>
+  <data name="All rooms are busy. Please try again later." xml:space="preserve">
+    <value>Todas as salas estão ocupadas. Tente novamente mais tarde.</value>
   </data>
   <data name="An unplayed game ends after one minute. Leaving does not pause the clock." xml:space="preserve">
     <value>Uma partida que não foi iniciada termina após um minuto. Sair não pausa o relógio.</value>
@@ -84,6 +90,9 @@
   <data name="Connection closed. Refresh to reconnect." xml:space="preserve">
     <value>Conexão encerrada. Atualize a página para se reconectar.</value>
   </data>
+  <data name="Continue to rematch" xml:space="preserve">
+    <value>Continuar para a revanche</value>
+  </data>
   <data name="Could not complete the action. Reconnecting to the server…" xml:space="preserve">
     <value>Não foi possível concluir a ação. Reconectando ao servidor…</value>
   </data>
@@ -108,6 +117,9 @@
   <data name="Export PGN" xml:space="preserve">
     <value>Exportar PGN</value>
   </data>
+  <data name="Finish this game before requesting a rematch." xml:space="preserve">
+    <value>Termine esta partida antes de pedir uma revanche.</value>
+  </data>
   <data name="Game aborted before any move" xml:space="preserve">
     <value>Partida cancelada antes de qualquer movimento</value>
   </data>
@@ -117,6 +129,9 @@
   <data name="Game ended by abandonment" xml:space="preserve">
     <value>Partida encerrada por abandono</value>
   </data>
+  <data name="Game finished. Download the PGN to keep it; guest games are not saved to a personal history." xml:space="preserve">
+    <value>Jogo encerrado. Baixe o PGN para guardá-lo; jogos de convidados não são salvos no histórico pessoal.</value>
+  </data>
   <data name="Game over" xml:space="preserve">
     <value>Fim de jogo</value>
   </data>
@@ -125,6 +140,9 @@
   </data>
   <data name="Game over. {0} wins." xml:space="preserve">
     <value>Fim de jogo. {0} venceu.</value>
+  </data>
+  <data name="Guest" xml:space="preserve">
+    <value>Convidado</value>
   </data>
   <data name="Knight" xml:space="preserve">
     <value>Cavalo</value>
@@ -168,6 +186,12 @@
   <data name="Reconnecting… Your clock keeps running." xml:space="preserve">
     <value>Reconectando… Seu relógio continua correndo.</value>
   </data>
+  <data name="Rematch" xml:space="preserve">
+    <value>Revanche</value>
+  </data>
+  <data name="Rematch requested. Waiting for your opponent…" xml:space="preserve">
+    <value>Revanche solicitada. Aguardando seu oponente…</value>
+  </data>
   <data name="Replay" xml:space="preserve">
     <value>Reproduzir</value>
   </data>
@@ -210,6 +234,12 @@
   <data name="Stalemate" xml:space="preserve">
     <value>Afogamento</value>
   </data>
+  <data name="Take back" xml:space="preserve">
+    <value>Desfazer</value>
+  </data>
+  <data name="Take back your last move and the computer reply? The position and clocks will be restored." xml:space="preserve">
+    <value>Desfazer seu último lance e a resposta do computador? A posição e os relógios serão restaurados.</value>
+  </data>
   <data name="That move cannot be played in the current position." xml:space="preserve">
     <value>Essa jogada não pode ser feita na posição atual.</value>
   </data>
@@ -222,6 +252,9 @@
   <data name="The position changed. Your board has been synchronized." xml:space="preserve">
     <value>A posição mudou. Seu tabuleiro foi sincronizado.</value>
   </data>
+  <data name="The rematch offer is no longer available." xml:space="preserve">
+    <value>A oferta de revanche não está mais disponível.</value>
+  </data>
   <data name="This action could not be confirmed. Refresh to synchronize." xml:space="preserve">
     <value>Não foi possível confirmar esta ação. Atualize a página para sincronizar.</value>
   </data>
@@ -230,6 +263,9 @@
   </data>
   <data name="This game is still in progress. Your clock will keep running." xml:space="preserve">
     <value>Esta partida ainda está em andamento. Seu relógio continuará correndo.</value>
+  </data>
+  <data name="Time control: {0}" xml:space="preserve">
+    <value>Controle de tempo: {0}</value>
   </data>
   <data name="Time expired" xml:space="preserve">
     <value>Tempo esgotado</value>
@@ -255,6 +291,9 @@
   <data name="You are watching this game." xml:space="preserve">
     <value>Você está assistindo a esta partida.</value>
   </data>
+  <data name="You can only take back your own last move in an active computer game." xml:space="preserve">
+    <value>Você só pode desfazer seu último lance em uma partida ativa contra o computador.</value>
+  </data>
   <data name="You offered a draw." xml:space="preserve">
     <value>Você ofereceu empate.</value>
   </data>
@@ -266,6 +305,9 @@
   </data>
   <data name="Your opponent offers a draw." xml:space="preserve">
     <value>Seu oponente oferece empate.</value>
+  </data>
+  <data name="Your opponent offers a rematch with colors reversed." xml:space="preserve">
+    <value>Seu oponente oferece uma revanche com as cores invertidas.</value>
   </data>
 
 </root>

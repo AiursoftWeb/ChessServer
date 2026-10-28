@@ -36,6 +36,12 @@
   <data name="Share this page with your opponent. Both players must sign in." xml:space="preserve">
     <value>Bagikan halaman ini kepada lawan Anda. Kedua pemain harus masuk.</value>
   </data>
+  <data name="Share this page with your opponent. They can sign in or choose a guest nickname." xml:space="preserve">
+    <value>Bagikan halaman ini kepada lawan Anda. Mereka dapat masuk atau memilih nama panggilan sebagai tamu.</value>
+  </data>
+  <data name="Time per player: {0} minutes, plus {1} seconds per move." xml:space="preserve">
+    <value>Waktu per pemain: {0} menit, ditambah {1} detik per langkah.</value>
+  </data>
   <data name="Time per player: {0} minutes." xml:space="preserve">
     <value>Waktu per pemain: {0} menit.</value>
   </data>

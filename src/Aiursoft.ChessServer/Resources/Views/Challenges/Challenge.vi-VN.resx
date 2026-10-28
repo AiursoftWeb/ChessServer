@@ -36,6 +36,12 @@
   <data name="Share this page with your opponent. Both players must sign in." xml:space="preserve">
     <value>Chia sẻ trang này với đối thủ của bạn. Cả hai người chơi đều phải đăng nhập.</value>
   </data>
+  <data name="Share this page with your opponent. They can sign in or choose a guest nickname." xml:space="preserve">
+    <value>Hãy chia sẻ trang này với đối thủ của bạn. Họ có thể đăng nhập hoặc chọn biệt danh khách.</value>
+  </data>
+  <data name="Time per player: {0} minutes, plus {1} seconds per move." xml:space="preserve">
+    <value>Thời gian cho mỗi người chơi: {0} phút, cộng thêm {1} giây cho mỗi nước đi.</value>
+  </data>
   <data name="Time per player: {0} minutes." xml:space="preserve">
     <value>Thời gian mỗi người chơi: {0} phút.</value>
   </data>

@@ -24,23 +24,44 @@
   <data name="1 minute" xml:space="preserve">
     <value>دقيقة واحدة</value>
   </data>
+  <data name="1 second" xml:space="preserve">
+    <value>ثانية واحدة</value>
+  </data>
   <data name="10 minutes" xml:space="preserve">
     <value>١٠ دقائق</value>
+  </data>
+  <data name="10 seconds" xml:space="preserve">
+    <value>١٠ ثوانٍ</value>
   </data>
   <data name="15 minutes" xml:space="preserve">
     <value>١٥ دقيقة</value>
   </data>
+  <data name="15 seconds" xml:space="preserve">
+    <value>١٥ ثانية</value>
+  </data>
   <data name="2 hours" xml:space="preserve">
     <value>ساعتان</value>
+  </data>
+  <data name="2 seconds" xml:space="preserve">
+    <value>ثانيتان</value>
   </data>
   <data name="3 minutes" xml:space="preserve">
     <value>٣ دقائق</value>
   </data>
+  <data name="3 seconds" xml:space="preserve">
+    <value>٣ ثوانٍ</value>
+  </data>
   <data name="30 minutes" xml:space="preserve">
     <value>٣٠ دقيقة</value>
   </data>
+  <data name="30 seconds" xml:space="preserve">
+    <value>٣٠ ثانية</value>
+  </data>
   <data name="5 minutes" xml:space="preserve">
     <value>5 دقائق</value>
+  </data>
+  <data name="5 seconds" xml:space="preserve">
+    <value>5 ثوانٍ</value>
   </data>
   <data name="Black" xml:space="preserve">
     <value>أسود</value>
@@ -53,6 +74,12 @@
   </data>
   <data name="Games are untimed." xml:space="preserve">
     <value>الألعاب غير محددة بوقت.</value>
+  </data>
+  <data name="Increment per move" xml:space="preserve">
+    <value>الزيادة الزمنية لكل نقلة</value>
+  </data>
+  <data name="No increment" xml:space="preserve">
+    <value>بدون زيادة في الوقت</value>
   </data>
   <data name="Public" xml:space="preserve">
     <value>عام</value>

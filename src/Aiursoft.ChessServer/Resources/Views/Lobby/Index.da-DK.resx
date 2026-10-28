@@ -21,20 +21,38 @@
       <data name="1 — Beginner" xml:space="preserve">
     <value>1 — Begynder</value>
   </data>
+  <data name="1 second" xml:space="preserve">
+    <value>1 sekund</value>
+  </data>
   <data name="10 minutes" xml:space="preserve">
     <value>10 minutter</value>
+  </data>
+  <data name="10 seconds" xml:space="preserve">
+    <value>10 sekunder</value>
   </data>
   <data name="15 minutes" xml:space="preserve">
     <value>15 minutter</value>
   </data>
+  <data name="15 seconds" xml:space="preserve">
+    <value>15 sekunder</value>
+  </data>
   <data name="2 — Easy" xml:space="preserve">
     <value>2 — Let</value>
+  </data>
+  <data name="2 seconds" xml:space="preserve">
+    <value>2 sekunder</value>
   </data>
   <data name="3 — Casual" xml:space="preserve">
     <value>3 — Afslappet</value>
   </data>
   <data name="3 minutes" xml:space="preserve">
     <value>3 minutter</value>
+  </data>
+  <data name="3 seconds" xml:space="preserve">
+    <value>3 sekunder</value>
+  </data>
+  <data name="30 seconds" xml:space="preserve">
+    <value>30 sekunder</value>
   </data>
   <data name="4 — Intermediate" xml:space="preserve">
     <value>4 — Mellemsvær</value>
@@ -44,6 +62,9 @@
   </data>
   <data name="5 minutes" xml:space="preserve">
     <value>5 minutter</value>
+  </data>
+  <data name="5 seconds" xml:space="preserve">
+    <value>5 sekunder</value>
   </data>
   <data name="6 — Hard" xml:space="preserve">
     <value>6 — Svær</value>
@@ -57,17 +78,29 @@
   <data name="Black" xml:space="preserve">
     <value>Sort</value>
   </data>
+  <data name="Continue game" xml:space="preserve">
+    <value>Fortsæt spillet</value>
+  </data>
   <data name="Create a challenge" xml:space="preserve">
     <value>Opret en udfordring</value>
   </data>
   <data name="Difficulty" xml:space="preserve">
     <value>Sværhedsgrad</value>
   </data>
+  <data name="Guest" xml:space="preserve">
+    <value>Gæst</value>
+  </data>
+  <data name="Increment per move" xml:space="preserve">
+    <value>Tillæg pr. træk</value>
+  </data>
   <data name="My games" xml:space="preserve">
     <value>Mine spil</value>
   </data>
   <data name="No games in progress." xml:space="preserve">
     <value>Ingen igangværende spil.</value>
+  </data>
+  <data name="No increment" xml:space="preserve">
+    <value>Intet tillæg</value>
   </data>
   <data name="No open challenges." xml:space="preserve">
     <value>Ingen åbne udfordringer.</value>
@@ -101,6 +134,9 @@
   </data>
   <data name="White" xml:space="preserve">
     <value>Hvid</value>
+  </data>
+  <data name="Your current games" xml:space="preserve">
+    <value>Dine aktuelle partier</value>
   </data>
   <data name="Your pieces" xml:space="preserve">
     <value>Dine brikker</value>

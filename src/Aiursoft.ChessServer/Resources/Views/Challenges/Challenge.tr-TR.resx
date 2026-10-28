@@ -36,6 +36,12 @@
   <data name="Share this page with your opponent. Both players must sign in." xml:space="preserve">
     <value>Bu sayfayı rakibinizle paylaşın. Her iki oyuncunun da oturum açması gerekir.</value>
   </data>
+  <data name="Share this page with your opponent. They can sign in or choose a guest nickname." xml:space="preserve">
+    <value>Bu sayfayı rakibinizle paylaşın. Oturum açabilir veya konuk takma adı seçebilirler.</value>
+  </data>
+  <data name="Time per player: {0} minutes, plus {1} seconds per move." xml:space="preserve">
+    <value>Oyuncu başına süre: {0} dakika, her hamle için ek {1} saniye.</value>
+  </data>
   <data name="Time per player: {0} minutes." xml:space="preserve">
     <value>Oyuncu başına süre: {0} dakika.</value>
   </data>
