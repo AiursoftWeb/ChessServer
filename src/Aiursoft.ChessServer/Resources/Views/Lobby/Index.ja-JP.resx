@@ -57,6 +57,9 @@
   <data name="Black" xml:space="preserve">
     <value>黒</value>
   </data>
+  <data name="Continue game" xml:space="preserve">
+    <value>ゲームを続ける</value>
+  </data>
   <data name="Create a challenge" xml:space="preserve">
     <value>チャレンジを作成</value>
   </data>
@@ -101,6 +104,9 @@
   </data>
   <data name="White" xml:space="preserve">
     <value>白</value>
+  </data>
+  <data name="Your current games" xml:space="preserve">
+    <value>現在の対局</value>
   </data>
   <data name="Your pieces" xml:space="preserve">
     <value>あなたの駒</value>

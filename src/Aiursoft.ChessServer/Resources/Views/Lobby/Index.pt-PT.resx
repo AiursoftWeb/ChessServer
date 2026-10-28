@@ -57,6 +57,9 @@
   <data name="Black" xml:space="preserve">
     <value>Preto</value>
   </data>
+  <data name="Continue game" xml:space="preserve">
+    <value>Continuar jogo</value>
+  </data>
   <data name="Create a challenge" xml:space="preserve">
     <value>Criar um desafio</value>
   </data>
@@ -101,6 +104,9 @@
   </data>
   <data name="White" xml:space="preserve">
     <value>Brancas</value>
+  </data>
+  <data name="Your current games" xml:space="preserve">
+    <value>Os seus jogos atuais</value>
   </data>
   <data name="Your pieces" xml:space="preserve">
     <value>As suas peças</value>

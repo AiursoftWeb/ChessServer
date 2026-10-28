@@ -24,23 +24,101 @@
   <data name="{0} to move" xml:space="preserve">
     <value>{0} to play</value>
   </data>
+  <data name="{0} wins" xml:space="preserve">
+    <value>{0} wins</value>
+  </data>
+  <data name="A draw cannot be offered now." xml:space="preserve">
+    <value>A draw cannot be offered at this time.</value>
+  </data>
+  <data name="Abort game" xml:space="preserve">
+    <value>Abort game</value>
+  </data>
+  <data name="Accept draw" xml:space="preserve">
+    <value>Accept draw</value>
+  </data>
+  <data name="After 90 seconds without your opponent, you may claim the result. A computer game ends after two minutes away; a game with both players away ends after ten minutes." xml:space="preserve">
+    <value>After 90 seconds without your opponent, you may claim the result. A computer game ends after two minutes away; a game with both players away ends after ten minutes.</value>
+  </data>
+  <data name="An unplayed game ends after one minute. Leaving does not pause the clock." xml:space="preserve">
+    <value>A game that has not started ends after one minute. Leaving does not pause the clock.</value>
+  </data>
+  <data name="Bishop" xml:space="preserve">
+    <value>Bishop</value>
+  </data>
   <data name="Black" xml:space="preserve">
     <value>Black</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancel</value>
   </data>
   <data name="Chat" xml:space="preserve">
     <value>Chat</value>
   </data>
+  <data name="Checkmate" xml:space="preserve">
+    <value>Checkmate</value>
+  </data>
   <data name="Checkmate. {0} wins." xml:space="preserve">
     <value>Checkmate. {0} wins.</value>
+  </data>
+  <data name="Claim result" xml:space="preserve">
+    <value>Claim result</value>
+  </data>
+  <data name="Computer is thinking…" xml:space="preserve">
+    <value>Computer is thinking…</value>
+  </data>
+  <data name="Confirm resignation" xml:space="preserve">
+    <value>Confirm resignation</value>
+  </data>
+  <data name="Confirming your move…" xml:space="preserve">
+    <value>Confirming your move…</value>
+  </data>
+  <data name="Connected" xml:space="preserve">
+    <value>Connected</value>
+  </data>
+  <data name="Connecting…" xml:space="preserve">
+    <value>Connecting…</value>
+  </data>
+  <data name="Connection and game rules" xml:space="preserve">
+    <value>Connection and game rules</value>
   </data>
   <data name="Connection closed. Refresh to reconnect." xml:space="preserve">
     <value>Connection closed. Refresh to reconnect.</value>
   </data>
+  <data name="Could not complete the action. Reconnecting to the server…" xml:space="preserve">
+    <value>Could not complete the action. Reconnecting to the server…</value>
+  </data>
   <data name="Could not confirm the saved game. Retry." xml:space="preserve">
     <value>Could not confirm the saved game. Retry.</value>
   </data>
+  <data name="Dismiss offer" xml:space="preserve">
+    <value>Dismiss offer</value>
+  </data>
+  <data name="Draw" xml:space="preserve">
+    <value>Draw</value>
+  </data>
+  <data name="Draw by agreement" xml:space="preserve">
+    <value>Draw by agreement</value>
+  </data>
+  <data name="Draw by repetition" xml:space="preserve">
+    <value>Draw by repetition</value>
+  </data>
+  <data name="Draw by the fifty-move rule" xml:space="preserve">
+    <value>Draw by the fifty-move rule</value>
+  </data>
   <data name="Export PGN" xml:space="preserve">
     <value>Export PGN</value>
+  </data>
+  <data name="Game aborted before any move" xml:space="preserve">
+    <value>Game abandoned before any moves</value>
+  </data>
+  <data name="Game ended because both players left" xml:space="preserve">
+    <value>Game ended because both players left</value>
+  </data>
+  <data name="Game ended by abandonment" xml:space="preserve">
+    <value>Game ended by abandonment</value>
+  </data>
+  <data name="Game over" xml:space="preserve">
+    <value>Game over</value>
   </data>
   <data name="Game over — draw." xml:space="preserve">
     <value>Game over — draw.</value>
@@ -48,17 +126,68 @@
   <data name="Game over. {0} wins." xml:space="preserve">
     <value>Game over. {0} wins.</value>
   </data>
+  <data name="Knight" xml:space="preserve">
+    <value>Knight</value>
+  </data>
+  <data name="Lobby" xml:space="preserve">
+    <value>Lobby</value>
+  </data>
   <data name="Message" xml:space="preserve">
     <value>Message</value>
+  </data>
+  <data name="Move list" xml:space="preserve">
+    <value>Move list</value>
+  </data>
+  <data name="Moves" xml:space="preserve">
+    <value>Moves</value>
+  </data>
+  <data name="Neither side has sufficient mating material" xml:space="preserve">
+    <value>Neither side has sufficient mating material</value>
+  </data>
+  <data name="Offer draw" xml:space="preserve">
+    <value>Offer a draw</value>
+  </data>
+  <data name="Only the players can perform this action." xml:space="preserve">
+    <value>Only the players can perform this action.</value>
+  </data>
+  <data name="Opponent disconnected. Reconnection time remaining: {0}s." xml:space="preserve">
+    <value>Opponent disconnected. Time remaining to reconnect: {0}s.</value>
+  </data>
+  <data name="Play another game" xml:space="preserve">
+    <value>Play another game</value>
   </data>
   <data name="Preferred duration: {0} minutes. Games are untimed." xml:space="preserve">
     <value>Preferred duration: {0} minutes. Games are untimed.</value>
   </data>
+  <data name="Promote pawn" xml:space="preserve">
+    <value>Promote pawn</value>
+  </data>
+  <data name="Queen" xml:space="preserve">
+    <value>Queen</value>
+  </data>
+  <data name="Reconnecting… Your clock keeps running." xml:space="preserve">
+    <value>Reconnecting… Your clock keeps running.</value>
+  </data>
   <data name="Replay" xml:space="preserve">
     <value>Replay</value>
   </data>
+  <data name="Resign" xml:space="preserve">
+    <value>Resign</value>
+  </data>
+  <data name="Resign this game?" xml:space="preserve">
+    <value>Resign from this game?</value>
+  </data>
+  <data name="Resignation" xml:space="preserve">
+    <value>Resignation</value>
+  </data>
   <data name="Retry saving" xml:space="preserve">
     <value>Retry saving</value>
+  </data>
+  <data name="Return to live position" xml:space="preserve">
+    <value>Return to live position</value>
+  </data>
+  <data name="Rook" xml:space="preserve">
+    <value>Rook</value>
   </data>
   <data name="Room unavailable. Return to the lobby." xml:space="preserve">
     <value>Room unavailable. Return to the foyer.</value>
@@ -72,8 +201,41 @@
   <data name="Send" xml:space="preserve">
     <value>Send</value>
   </data>
+  <data name="Server maintenance pauses the clocks. A player disconnecting does not." xml:space="preserve">
+    <value>Server maintenance pauses the clocks. A player disconnecting does not.</value>
+  </data>
   <data name="Spectator" xml:space="preserve">
     <value>Spectator</value>
+  </data>
+  <data name="Stalemate" xml:space="preserve">
+    <value>Stalemate</value>
+  </data>
+  <data name="That move cannot be played in the current position." xml:space="preserve">
+    <value>That move cannot be played in the current position.</value>
+  </data>
+  <data name="The draw offer is no longer available." xml:space="preserve">
+    <value>The draw offer is no longer available.</value>
+  </data>
+  <data name="The game has started. You can resign instead." xml:space="preserve">
+    <value>The game has started. You can resign instead.</value>
+  </data>
+  <data name="The position changed. Your board has been synchronized." xml:space="preserve">
+    <value>The position has changed. Your board has been synchronised.</value>
+  </data>
+  <data name="This action could not be confirmed. Refresh to synchronize." xml:space="preserve">
+    <value>This action could not be confirmed. Refresh to synchronise.</value>
+  </data>
+  <data name="This game has ended." xml:space="preserve">
+    <value>This game has ended.</value>
+  </data>
+  <data name="This game is still in progress. Your clock will keep running." xml:space="preserve">
+    <value>This game is still in progress. Your clock will keep running.</value>
+  </data>
+  <data name="Time expired" xml:space="preserve">
+    <value>Time expired</value>
+  </data>
+  <data name="Time expired, but the opponent cannot checkmate." xml:space="preserve">
+    <value>Time has expired, but the opponent cannot checkmate.</value>
   </data>
   <data name="Time expired. {0} wins." xml:space="preserve">
     <value>Time has run out. {0} wins.</value>
@@ -92,6 +254,18 @@
   </data>
   <data name="You are watching this game." xml:space="preserve">
     <value>You are watching this game.</value>
+  </data>
+  <data name="You offered a draw." xml:space="preserve">
+    <value>You offered a draw.</value>
+  </data>
+  <data name="Your opponent can still reconnect." xml:space="preserve">
+    <value>Your opponent can still reconnect.</value>
+  </data>
+  <data name="Your opponent has not reconnected. You may claim the result or keep waiting." xml:space="preserve">
+    <value>Your opponent has not reconnected. You may claim the result or keep waiting.</value>
+  </data>
+  <data name="Your opponent offers a draw." xml:space="preserve">
+    <value>Your opponent offers a draw.</value>
   </data>
 
 </root>

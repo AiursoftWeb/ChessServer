@@ -57,6 +57,9 @@
   <data name="Black" xml:space="preserve">
     <value>흑</value>
   </data>
+  <data name="Continue game" xml:space="preserve">
+    <value>게임 계속하기</value>
+  </data>
   <data name="Create a challenge" xml:space="preserve">
     <value>도전 과제 만들기</value>
   </data>
@@ -101,6 +104,9 @@
   </data>
   <data name="White" xml:space="preserve">
     <value>백색</value>
+  </data>
+  <data name="Your current games" xml:space="preserve">
+    <value>현재 진행 중인 게임</value>
   </data>
   <data name="Your pieces" xml:space="preserve">
     <value>사용할 기물</value>
