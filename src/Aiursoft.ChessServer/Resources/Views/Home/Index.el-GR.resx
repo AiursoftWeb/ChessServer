@@ -33,6 +33,9 @@
   <data name="A fully responsive layout that looks great on both desktop and mobile devices." xml:space="preserve">
     <value>Μια πλήρως ανταποκρινόμενη διάταξη που φαίνεται εξαιρετική τόσο σε επιτραπέζιους υπολογιστές όσο και σε κινητές συσκευές.</value>
   </data>
+  <data name="A game for every kind of player." xml:space="preserve">
+    <value>Ένα παιχνίδι για κάθε τύπο παίκτη.</value>
+  </data>
   <data name="A modern, feature-rich, and highly extensible foundation for your next web application." xml:space="preserve">
     <value>Μια σύγχρονη, πλούσια σε λειτουργίες και εξαιρετικά επεκτάσιμη βάση για την επόμενη εφαρμογή σας web.</value>
   </data>
@@ -171,8 +174,20 @@
   <data name="Built-in User Management" xml:space="preserve">
     <value>Ενσωματωμένη Διαχείριση Χρηστών</value>
   </data>
+  <data name="Challenge a friend" xml:space="preserve">
+    <value>Προκάλεσε έναν φίλο σε αναμέτρηση</value>
+  </data>
+  <data name="Chat at the board" xml:space="preserve">
+    <value>Συνομιλήστε στη σκακιέρα</value>
+  </data>
   <data name="Checkstyle or similar needed" xml:space="preserve">
     <value>Απαιτείται Checkstyle ή παρόμοιο</value>
+  </data>
+  <data name="ChessServer computer game" xml:space="preserve">
+    <value>Το παιχνίδι σκακιού ChessServer στον υπολογιστή</value>
+  </data>
+  <data name="Choose from eight levels, from random legal moves for beginners to deeper engine searches." xml:space="preserve">
+    <value>Επιλέξτε ανάμεσα σε οκτώ επίπεδα, από τυχαίες νόμιμες κινήσεις για αρχάριους έως βαθύτερες αναζητήσεις από τη μηχανή.</value>
   </data>
   <data name="Comes with Docker support for simplified and consistent deployments." xml:space="preserve">
     <value>Διαθέτει υποστήριξη για Docker για απλούς και συνεκτικούς τρόπους μεταφοράς.</value>
@@ -203,6 +218,9 @@
   </data>
   <data name="Coverage Report" xml:space="preserve">
     <value>Αναφορά κάλυψης</value>
+  </data>
+  <data name="Create a public or unlisted challenge, share the link, and choose your side." xml:space="preserve">
+    <value>Δημιουργήστε μια δημόσια ή μη καταχωρισμένη πρόκληση, μοιραστείτε τον σύνδεσμο και επιλέξτε πλευρά.</value>
   </data>
   <data name="Cross Platform" xml:space="preserve">
     <value>Διαπλατφορμικό</value>
@@ -303,6 +321,12 @@
   <data name="Entity Framework Core included" xml:space="preserve">
     <value>Περιλαμβάνεται το Entity Framework Core</value>
   </data>
+  <data name="Explore the features" xml:space="preserve">
+    <value>Ανακαλύψτε τις δυνατότητες</value>
+  </data>
+  <data name="Export the game as PGN to review the moves in your favorite chess tool." xml:space="preserve">
+    <value>Εξαγάγετε την παρτίδα σε μορφή PGN για να αναλύσετε τις κινήσεις στο αγαπημένο σας σκακιστικό εργαλείο.</value>
+  </data>
   <data name="FAQ" xml:space="preserve">
     <value>Συχνές Ερωτήσεις</value>
   </data>
@@ -332,6 +356,9 @@
   </data>
   <data name="Flexible API" xml:space="preserve">
     <value>Ευέλικτη API</value>
+  </data>
+  <data name="Follow public games as they happen. Spectators can watch without changing the board." xml:space="preserve">
+    <value>Παρακολουθήστε δημόσιες παρτίδες σε πραγματικό χρόνο. Οι θεατές μπορούν να τις παρακολουθούν χωρίς να επηρεάζουν τη σκακιέρα.</value>
   </data>
   <data name="for any inquiries or to report issues." xml:space="preserve">
     <value>για οποιαδήποτε ερώτηση ή για να αναφέρετε προβλήματα.</value>
@@ -486,11 +513,17 @@
   <data name="K8s / Swarm Ready" xml:space="preserve">
     <value>Έτοιμο για K8s / Swarm</value>
   </data>
+  <data name="Keep the moves" xml:space="preserve">
+    <value>Καταγράψτε τις κινήσεις</value>
+  </data>
   <data name="Lint Check" xml:space="preserve">
     <value>Ελέγχους Lint</value>
   </data>
   <data name="Maintain High Code Quality" xml:space="preserve">
     <value>Διατηρήστε Υψηλή Ποιότητα Κώδικα</value>
+  </data>
+  <data name="Make your move" xml:space="preserve">
+    <value>Κάντε την κίνησή σας</value>
   </data>
   <data name="Management Dashboard" xml:space="preserve">
     <value>Πίνακας Ελέγχου Διαχείρισης</value>
@@ -579,8 +612,14 @@
   <data name="One Click Start" xml:space="preserve">
     <value>Μία κλικ για έναρξη</value>
   </data>
+  <data name="One familiar sign-in" xml:space="preserve">
+    <value>Μία οικεία σύνδεση</value>
+  </data>
   <data name="Open Source" xml:space="preserve">
     <value>Ανοιχτού Κώδικα</value>
+  </data>
+  <data name="Open the lobby to start a computer game, create a challenge, or find a game to watch." xml:space="preserve">
+    <value>Ανοίξτε το λόμπι για να ξεκινήσετε μια παρτίδα με τον υπολογιστή, να δημιουργήσετε μια πρόκληση ή να βρείτε μια παρτίδα για να παρακολουθήσετε.</value>
   </data>
   <data name="OpenID Connect Integration" xml:space="preserve">
     <value>Ενσωμάτωση OpenID Connect</value>
@@ -599,6 +638,15 @@
   </data>
   <data name="Pint or similar needed" xml:space="preserve">
     <value>Απαιτείται το Pint ή παρόμοιο</value>
+  </data>
+  <data name="Play against the computer, challenge a friend, or watch a game. All in your browser." xml:space="preserve">
+    <value>Παίξτε ενάντια στον υπολογιστή, προκαλέστε έναν φίλο ή παρακολουθήστε μια παρτίδα. Όλα μέσα από το πρόγραμμα περιήγησής σας.</value>
+  </data>
+  <data name="Play chess" xml:space="preserve">
+    <value>Παίξτε σκάκι</value>
+  </data>
+  <data name="Play the computer" xml:space="preserve">
+    <value>Παίξτε με τον υπολογιστή</value>
   </data>
   <data name="Pre-configured /healthz and readiness probes" xml:space="preserve">
     <value>Προδιαμορφωμένοι ανιχνευτές /healthz και ετοιμότητας</value>
@@ -627,6 +675,9 @@
   <data name="Read the document" xml:space="preserve">
     <value>Διαβάστε το έγγραφο</value>
   </data>
+  <data name="Ready for a game?" xml:space="preserve">
+    <value>Έτοιμοι για μια παρτίδα;</value>
+  </data>
   <data name="Requires Laravel Socialite config" xml:space="preserve">
     <value>Απαιτεί ρύθμιση Laravel Socialite</value>
   </data>
@@ -653,6 +704,9 @@
   </data>
   <data name="Shift with confidence" xml:space="preserve">
     <value>Μετακινηθείτε με αυτοπεποίθηση</value>
+  </data>
+  <data name="Sign in with your organization account to play." xml:space="preserve">
+    <value>Συνδεθείτε με τον λογαριασμό του οργανισμού σας για να παίξετε.</value>
   </data>
   <data name="Simple &amp; Easy" xml:space="preserve">
     <value>Απλό και εύκολο</value>
@@ -711,6 +765,9 @@
   <data name="Supports JetBrains Rider for easy code style fixes." xml:space="preserve">
     <value>Υποστηρίζει το JetBrains Rider για εύκολη διόρθωση του στυλ κώδικα.</value>
   </data>
+  <data name="Talk with the players and spectators while the game unfolds." xml:space="preserve">
+    <value>Συζητήστε με τους παίκτες και τους θεατές όσο εξελίσσεται η παρτίδα.</value>
+  </data>
   <data name="Task Runner" xml:space="preserve">
     <value>Task Runner</value>
   </data>
@@ -768,8 +825,14 @@
   <data name="Use it as a foundation for your SaaS, a backend for your mobile app, a corporate website, or a personal blog. The possibilities are endless." xml:space="preserve">
     <value>Χρησιμοποιήστε το ως θεμέλιο για το SaaS σας, ως backend για την εφαρμογή του κινητού σας, ως εταιρική ιστοσελίδα ή ως προσωπικό ιστολόγιο. Οι δυνατότητες είναι ατελείωτες.</value>
   </data>
+  <data name="Use your organization account. Your identity stays with you across games." xml:space="preserve">
+    <value>Χρησιμοποιήστε τον λογαριασμό του οργανισμού σας. Η ταυτότητά σας παραμένει μαζί σας σε όλα τα παιχνίδια.</value>
+  </data>
   <data name="View on GitHub" xml:space="preserve">
     <value>Προβολή στο GitHub</value>
+  </data>
+  <data name="Watch live games" xml:space="preserve">
+    <value>Παρακολουθήστε ζωντανές παρτίδες</value>
   </data>
   <data name="WebApplicationFactory available" xml:space="preserve">
     <value>Διαθέσιμο το WebApplicationFactory</value>
@@ -803,6 +866,12 @@
   </data>
   <data name="Your enterprise users don&apos;t need to register repeatedly." xml:space="preserve">
     <value>Οι χρήστες της επιχείρησής σας δεν χρειάζεται να εγγραφούν εκ νέου.</value>
+  </data>
+  <data name="Your next challenge." xml:space="preserve">
+    <value>Η επόμενη πρόκλησή σου.</value>
+  </data>
+  <data name="Your next move." xml:space="preserve">
+    <value>Η επόμενη κίνησή σου.</value>
   </data>
   <data name="Yubikey &amp; TOTP" xml:space="preserve">
     <value>Yubikey &amp; TOTP</value>

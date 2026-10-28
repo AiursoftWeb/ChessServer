@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="{0} is in check" xml:space="preserve">
+    <value>Ο/Η {0} είναι σε σαχ.</value>
+  </data>
+  <data name="{0} to move" xml:space="preserve">
+    <value>Σειρά του/της {0} για κίνηση</value>
+  </data>
+  <data name="Black" xml:space="preserve">
+    <value>Μαύρα</value>
+  </data>
+  <data name="Chat" xml:space="preserve">
+    <value>Συνομιλία</value>
+  </data>
+  <data name="Checkmate. {0} wins." xml:space="preserve">
+    <value>Ματ. Νικητής είναι ο/η {0}.</value>
+  </data>
+  <data name="Connection closed. Refresh to reconnect." xml:space="preserve">
+    <value>Η σύνδεση διακόπηκε. Ανανεώστε τη σελίδα για να επανασυνδεθείτε.</value>
+  </data>
+  <data name="Could not confirm the saved game. Retry." xml:space="preserve">
+    <value>Δεν ήταν δυνατή η επιβεβαίωση της αποθηκευμένης παρτίδας. Δοκιμάστε ξανά.</value>
+  </data>
+  <data name="Export PGN" xml:space="preserve">
+    <value>Εξαγωγή PGN</value>
+  </data>
+  <data name="Game over — draw." xml:space="preserve">
+    <value>Το παιχνίδι έληξε — ισοπαλία.</value>
+  </data>
+  <data name="Game over. {0} wins." xml:space="preserve">
+    <value>Τέλος παιχνιδιού. Κερδίζει ο/η {0}.</value>
+  </data>
+  <data name="Message" xml:space="preserve">
+    <value>Μήνυμα</value>
+  </data>
+  <data name="Replay" xml:space="preserve">
+    <value>Επανάληψη</value>
+  </data>
+  <data name="Retry saving" xml:space="preserve">
+    <value>Επανάληψη αποθήκευσης</value>
+  </data>
+  <data name="Room unavailable. Return to the lobby." xml:space="preserve">
+    <value>Το δωμάτιο δεν είναι διαθέσιμο. Επιστρέψτε στο λόμπι.</value>
+  </data>
+  <data name="Saved to My games." xml:space="preserve">
+    <value>Αποθηκεύτηκε στα παιχνίδια μου.</value>
+  </data>
+  <data name="Saving game…" xml:space="preserve">
+    <value>Αποθήκευση παιχνιδιού…</value>
+  </data>
+  <data name="Send" xml:space="preserve">
+    <value>Αποστολή</value>
+  </data>
+  <data name="Spectator" xml:space="preserve">
+    <value>Θεατής</value>
+  </data>
+  <data name="Time expired. {0} wins." xml:space="preserve">
+    <value>Ο χρόνος έληξε. Νικητής είναι ο/η {0}.</value>
+  </data>
+  <data name="Unlimited" xml:space="preserve">
+    <value>Χωρίς περιορισμό</value>
+  </data>
+  <data name="White" xml:space="preserve">
+    <value>Λευκά</value>
+  </data>
+  <data name="You are playing Black." xml:space="preserve">
+    <value>Παίζετε με τα μαύρα.</value>
+  </data>
+  <data name="You are playing White." xml:space="preserve">
+    <value>Παίζετε με τα λευκά.</value>
+  </data>
+  <data name="You are watching this game." xml:space="preserve">
+    <value>Παρακολουθείτε αυτή την παρτίδα.</value>
+  </data>
+
+</root>
