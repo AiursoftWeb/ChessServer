@@ -262,8 +262,8 @@ public class ViewModelArgsInjector(
             toInject.Sidebar.SideAdvertisement = new SideAdvertisementViewModel
             {
                 Title = localizer["Login"],
-                Description = localizer["Login to get access to all features."],
-                Href = "/Account/Login",
+                Description = localizer["Sign in to save your games and replay them later."],
+                Href = "/Account/Login?returnUrl=" + Uri.EscapeDataString(context.Request.Path + context.Request.QueryString),
                 ButtonText = localizer["Login"]
             };
 
@@ -273,7 +273,7 @@ public class ViewModelArgsInjector(
                 new()
                 {
                     Text = localizer["Login"],
-                    Href = "/Account/Login",
+                    Href = "/Account/Login?returnUrl=" + Uri.EscapeDataString(context.Request.Path + context.Request.QueryString),
                     Icon = "user"
                 }
             };

@@ -36,6 +36,9 @@
   <data name="Share this page with your opponent. Both players must sign in." xml:space="preserve">
     <value>将此页面分享给你的对手。双方玩家都必须登录。</value>
   </data>
+  <data name="Share this page with your opponent. They can sign in or choose a guest nickname." xml:space="preserve">
+    <value>请将此页面分享给您的对手。他们可以登录，也可以选择一个访客昵称。</value>
+  </data>
   <data name="Time per player: {0} minutes, plus {1} seconds per move." xml:space="preserve">
     <value>每位玩家用时：{0}分钟，每步加时{1}秒。</value>
   </data>

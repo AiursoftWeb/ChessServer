@@ -87,6 +87,9 @@
   <data name="Difficulty" xml:space="preserve">
     <value>难度</value>
   </data>
+  <data name="Guest" xml:space="preserve">
+    <value>访客</value>
+  </data>
   <data name="Increment per move" xml:space="preserve">
     <value>每步加秒</value>
   </data>

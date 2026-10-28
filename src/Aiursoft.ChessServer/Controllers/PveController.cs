@@ -1,13 +1,14 @@
 using Aiursoft.ChessServer.Services;
 using Aiursoft.ChessServer.Models;
 using Microsoft.AspNetCore.Mvc;
+using Aiursoft.WebTools.Attributes;
 
 namespace Aiursoft.ChessServer.Controllers;
 
 [Route("pve")]
 public class PveController(GameSessionService sessions) : ChessController
 {
-    [HttpPost("new"), ValidateAntiForgeryToken]
+    [HttpPost("new"), ValidateAntiForgeryToken, LimitPerMin]
     public async Task<IActionResult> New([FromForm] int difficulty = 1, [FromForm] RoleRule roleRule = RoleRule.CreatorWhite, [FromForm] int minutes = 0, [FromForm] int incrementSeconds = 0)
     {
         if (!ModelState.IsValid) return BadRequest("Choose valid game settings.");

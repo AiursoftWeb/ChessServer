@@ -18,6 +18,58 @@ public class GameSessionService(InMemoryDatabase database, TemplateDbContext con
         catch (Exception exception) { logger.LogDebug(exception, "A disconnected chess client could not receive a committed update."); }
     }
 
+    public async Task ClaimGuestAsync(Guid guestId, Player registered)
+    {
+        foreach (var pair in database.GetRooms())
+        {
+            await pair.Value.MutationLock.WaitAsync();
+            try
+            {
+                // Accept can replace the waiting room while retaining this same mutation lock.
+                var room = database.GetChallenge(pair.Key);
+                if (room == null) continue;
+                var creator = room.Creator;
+                var accepted = room as AcceptedChallenge;
+                var accepter = accepted?.Accepter;
+                var claimCreator = creator.IsGuest && creator.Id == guestId;
+                var claimAccepter = accepter?.IsGuest == true && accepter.Id == guestId;
+                if (!claimCreator && !claimAccepter) continue;
+                // One signed-in account may not acquire both seats in the same game.
+                if (claimCreator && accepter?.Id == registered.Id || claimAccepter && creator.Id == registered.Id)
+                    throw new InvalidOperationException("This account already holds the other seat. Use a different account to continue this game.");
+                // Finishing as a guest is final: signing in later must not retroactively create personal history.
+                if (accepted is { Game.Board.IsEndGame: true, Archived: false }) await history.SaveAsync(accepted);
+                var before = RoomSnapshot.Capture(room);
+                try
+                {
+                    if (accepted != null)
+                    {
+                        lock (accepted.Game.MovePieceLock)
+                        {
+                            if (claimCreator) room.Creator = registered;
+                            if (claimAccepter) accepted.Accepter = registered;
+                            if (accepted.DrawOfferedBy == guestId) accepted.DrawOfferedBy = registered.Id;
+                            if (accepted.RematchOfferedBy == guestId) accepted.RematchOfferedBy = registered.Id;
+                            accepted.Revision++;
+                            accepted.Game.SearchCancellation?.Cancel();
+                        }
+                    }
+                    else room.Creator = registered;
+                    await StoreAsync(pair.Key, room);
+                }
+                catch
+                {
+                    if (accepted != null) before.Apply(accepted);
+                    else room.Creator = creator;
+                    context.ChangeTracker.Clear();
+                    throw;
+                }
+                if (accepted != null) await NotifyAsync(accepted, new ChallengeContext(accepted, pair.Key));
+            }
+            finally { pair.Value.MutationLock.Release(); }
+        }
+    }
+
     public async Task RestoreAsync()
     {
         database.SetNextId(await context.GameSessions.Select(g => (int?)g.Id).MaxAsync() ?? 0);
@@ -45,9 +97,11 @@ public class GameSessionService(InMemoryDatabase database, TemplateDbContext con
     {
         var row = await context.GameSessions.FindAsync(id);
         if (row == null) { row = new GameSession { Id = id }; context.GameSessions.Add(row); }
-        row.State = JsonSerializer.Serialize(RoomSnapshot.Capture(room));
         // The shared scoped context commits the session and any new completed record together.
         if (room is AcceptedChallenge accepted) await history.SaveAsync(accepted, deferCommit: true);
+        var snapshot = RoomSnapshot.Capture(room);
+        if (room is AcceptedChallenge { Game.Board.IsEndGame: true }) snapshot.HistoryFinalized = true;
+        row.State = JsonSerializer.Serialize(snapshot);
     }
 
     private async Task StoreAsync(int id, Challenge room)

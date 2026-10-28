@@ -3,10 +3,12 @@ using Aiursoft.ChessServer.Models.ViewModels;
 using Aiursoft.ChessServer.Services;
 using Aiursoft.UiStack.Navigation;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 
 namespace Aiursoft.ChessServer.Controllers;
 
+[Authorize]
 public class HistoryController(TemplateDbContext context) : ChessController
 {
     [RenderInNavBar(NavGroupName = "Features", NavGroupOrder = 1, CascadedLinksGroupName = "Chess",

@@ -162,6 +162,9 @@
   <data name="Settings" xml:space="preserve">
     <value>设置</value>
   </data>
+  <data name="Sign in to save your games and replay them later." xml:space="preserve">
+    <value>登录后即可保存您的游戏，并在之后继续游玩。</value>
+  </data>
   <data name="Sign out" xml:space="preserve">
     <value>退出登录</value>
   </data>

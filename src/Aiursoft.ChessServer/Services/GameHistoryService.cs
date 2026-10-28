@@ -7,6 +7,12 @@ namespace Aiursoft.ChessServer.Services;
 
 public class GameHistoryService(TemplateDbContext context) : IScopedDependency
 {
+    public Task<bool> BelongsToAsync(Guid historyId, Guid player)
+    {
+        var userId = player.ToString();
+        return context.CompletedGames.AnyAsync(g => g.Id == historyId && (g.WhiteUserId == userId || g.BlackUserId == userId));
+    }
+
     public async Task SaveAsync(AcceptedChallenge room, bool deferCommit = false)
     {
         await room.ArchiveLock.WaitAsync();
@@ -18,11 +24,14 @@ public class GameHistoryService(TemplateDbContext context) : IScopedDependency
             {
                 if (room.Game.Board.IsEndGame) room.FinishedAt ??= DateTimeOffset.UtcNow;
                 if (!room.Game.Board.IsEndGame) return;
+                if (room.Creator.IsGuest && (room.Difficulty != null || room.Accepter.IsGuest)) return;
                 record = new CompletedGame
                 {
                     Id = room.HistoryId,
-                    WhiteUserId = room.GetWhitePlayer().Id.ToString(), BlackUserId = room.GetBlackPlayer().Id.ToString(),
-                    WhiteName = room.GetWhitePlayer().NickName, BlackName = room.GetBlackPlayer().NickName,
+                    WhiteUserId = room.GetWhitePlayer().IsGuest ? "" : room.GetWhitePlayer().Id.ToString(),
+                    BlackUserId = room.GetBlackPlayer().IsGuest ? "" : room.GetBlackPlayer().Id.ToString(),
+                    WhiteName = room.GetWhitePlayer().NickName + (room.GetWhitePlayer().IsGuest ? " (Guest)" : ""),
+                    BlackName = room.GetBlackPlayer().NickName + (room.GetBlackPlayer().IsGuest ? " (Guest)" : ""),
                     Result = room.Result, EndReason = room.OutcomeReason ?? room.Game.Board.EndGame!.EndgameType.ToString(),
                     StartedAt = room.GameStartTime, FinishedAt = room.FinishedAt!.Value.UtcDateTime, Pgn = room.Pgn()
                 };

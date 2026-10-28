@@ -35,6 +35,7 @@ public class AcceptedChallenge : Challenge
     }
     public bool CreatorIsWhite { get => _creatorIsWhite; set => _creatorIsWhite = value; }
     public void ClearPgnCache() => _completedPgn = null;
+    public void RestorePgn(string? pgn) => _completedPgn = pgn;
     public bool IsTimed => TimeLimit != TimeSpan.MaxValue;
 
     // All clock and board changes share the move lock, including the final timeout decision.
@@ -79,8 +80,8 @@ public class AcceptedChallenge : Challenge
         {
             if (_completedPgn != null) return _completedPgn;
             foreach (var key in new[] { "White", "Black", "Date", "Result", "TimeControl" }) Game.Board.RemoveHeader(key);
-            Game.Board.AddHeader("White", GetWhitePlayer().NickName.Replace('"', '\'').Replace('\n', ' ').Replace('\r', ' '));
-            Game.Board.AddHeader("Black", GetBlackPlayer().NickName.Replace('"', '\'').Replace('\n', ' ').Replace('\r', ' '));
+            Game.Board.AddHeader("White", (GetWhitePlayer().NickName + (GetWhitePlayer().IsGuest ? " (Guest)" : "")).Replace('"', '\'').Replace('\n', ' ').Replace('\r', ' '));
+            Game.Board.AddHeader("Black", (GetBlackPlayer().NickName + (GetBlackPlayer().IsGuest ? " (Guest)" : "")).Replace('"', '\'').Replace('\n', ' ').Replace('\r', ' '));
             Game.Board.AddHeader("Date", GameStartTime.ToString("yyyy.MM.dd", System.Globalization.CultureInfo.InvariantCulture));
             Game.Board.AddHeader("Result", Result);
             Game.Board.AddHeader("TimeControl", IsTimed ? ((int)TimeLimit.TotalSeconds).ToString(System.Globalization.CultureInfo.InvariantCulture) + (IncrementSeconds > 0 ? $"+{IncrementSeconds}" : string.Empty) : "-");

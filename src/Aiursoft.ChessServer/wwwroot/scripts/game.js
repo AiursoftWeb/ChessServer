@@ -4,6 +4,7 @@ const id = root.dataset.gameId;
 const text = key => document.querySelector(`#chess-loc [data-key="${key}"]`)?.textContent ?? key;
 const format = (key, value) => text(key).replace('{0}', value);
 const element = id => document.getElementById(id);
+const playerName = (name, guest) => guest ? `${name} (${text('guest')})` : name;
 let state, color, surface, socket, stopped = false, sampledAt = 0, pending = null, retryTimer, polling = false, actionBusy = false, saving = false, saved = false, aiBusy = false;
 let lastAiAttempt = 0, lastSend = 0, reconnectAttempts = 0;
 const pendingKey = `chess-move-${id}`;
@@ -28,7 +29,7 @@ function apply(info) {
     state = info; sampledAt = performance.now();
     surface.update(info);
     if (info.Moves.length > previousMoves) element('pieceMoveSound').play().catch(() => {});
-    element('versus-info').textContent = `${info.WhitePlayer} — ${info.BlackPlayer}`;
+    element('versus-info').textContent = `${playerName(info.WhitePlayer, info.WhiteGuest)} — ${playerName(info.BlackPlayer, info.BlackGuest)}`;
     element('role').textContent = text(color === 'w' ? 'playing-white' : color === 'b' ? 'playing-black' : 'watching');
     if (info.Game.Ended) { if (element('promotion-dialog').open) element('promotion-dialog').close(); clearPending(); if (!saved && !saving && element('retry-save').hidden) saveGame(); }
     render();
@@ -42,7 +43,7 @@ function render() {
     for (const [clockId, side] of [['clock-top', color === 'b' ? 'w' : 'b'], ['clock-bottom', color === 'b' ? 'b' : 'w']]) {
         const clock = element(clockId), active = !ended && state.Game.Turn === side;
         clock.classList.toggle('chess-clock-active', active);
-        clock.querySelector('.clock-name').textContent = side === 'w' ? state.WhitePlayer : state.BlackPlayer;
+        clock.querySelector('.clock-name').textContent = side === 'w' ? playerName(state.WhitePlayer, state.WhiteGuest) : playerName(state.BlackPlayer, state.BlackGuest);
         const ms = side === 'w' ? state.WhiteMilliseconds : state.BlackMilliseconds;
         const seconds = Math.ceil(Math.max(0, ms - (active ? elapsed : 0)) / 1000);
         clock.querySelector('.clock-time').textContent = state.Timed ? `${Math.floor(seconds / 60)}:${String(seconds % 60).padStart(2, '0')}` : text('unlimited');
@@ -94,8 +95,8 @@ async function saveGame() {
         if (!pgn.ok) throw Error('PGN unavailable');
         const response = await post(`/games/${id}/complete`, {pgn: await pgn.text()});
         if (!response.ok) throw Error('Save not confirmed');
-        const info = await response.json(); saved = true; element('save-status').textContent = text('saved');
-        element('history-link').href = `/History/Replay/${info.HistoryId}`; element('history-link').hidden = false;
+        const info = await response.json(); saved = true; element('save-status').textContent = text(info.HistoryId ? 'saved' : 'guest-complete');
+        if (info.HistoryId) { element('history-link').href = `/History/Replay/${info.HistoryId}`; element('history-link').hidden = false; }
     } catch { element('save-status').textContent = text('save-failed'); element('retry-save').hidden = false; }
     finally { saving = false; }
 }
@@ -171,7 +172,7 @@ if (element('chat-form')) {
     const chat = new WebSocket(`${location.protocol === 'https:' ? 'wss:' : 'ws:'}//${location.host}/chats/${id}.ws`);
     chat.onmessage = event => {
         const message = JSON.parse(event.data), item = document.createElement('div'); item.className = 'chess-message';
-        const sender = document.createElement('strong'); sender.textContent = message.SenderNickName;
+        const sender = document.createElement('strong'); sender.textContent = playerName(message.SenderNickName, message.SenderGuest);
         const body = document.createElement('p'); body.textContent = message.Content; item.append(sender, body); messages.append(item);
         while (messages.children.length > 200) messages.firstElementChild.remove(); messages.scrollTop = messages.scrollHeight;
     };

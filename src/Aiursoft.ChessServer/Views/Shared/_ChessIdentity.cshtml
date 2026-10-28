@@ -1,0 +1,8 @@
+@inject Aiursoft.ChessServer.Services.GuestIdentity Guests
+@if (User.Identity?.IsAuthenticated != true && Guests.Read(Context) is { } guest)
+{
+    <div class="d-flex align-items-center gap-2 flex-wrap mb-3">
+        <span>@guest.NickName</span><span class="badge bg-secondary">@Localizer["Guest"]</span>
+        <a class="btn btn-sm btn-outline-primary" asp-controller="Account" asp-action="Login" asp-route-returnUrl="@(Context.Request.Path + Context.Request.QueryString)">@Localizer["Sign in to save your games"]</a>
+    </div>
+}

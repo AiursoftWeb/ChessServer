@@ -129,6 +129,9 @@
   <data name="Game ended by abandonment" xml:space="preserve">
     <value>因弃权而结束的对局</value>
   </data>
+  <data name="Game finished. Download the PGN to keep it; guest games are not saved to a personal history." xml:space="preserve">
+    <value>对局已结束。下载 PGN 文件以保存对局；访客对局不会保存到个人对局记录中。</value>
+  </data>
   <data name="Game over" xml:space="preserve">
     <value>游戏结束</value>
   </data>
@@ -137,6 +140,9 @@
   </data>
   <data name="Game over. {0} wins." xml:space="preserve">
     <value>游戏结束。{0}获胜。</value>
+  </data>
+  <data name="Guest" xml:space="preserve">
+    <value>游客</value>
   </data>
   <data name="Knight" xml:space="preserve">
     <value>马</value>

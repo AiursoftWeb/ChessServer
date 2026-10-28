@@ -1,0 +1,16 @@
+@model Aiursoft.ChessServer.Models.ViewModels.GuestViewModel
+<div class="row justify-content-center"><div class="col-md-6 col-xl-4">
+    <div class="card"><div class="card-body">
+        <h1 class="h3">@Localizer["Your nickname"]</h1>
+        <form method="post" asp-action="Index">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input asp-for="ReturnUrl" type="hidden" />
+            <label asp-for="NickName" class="visually-hidden"></label>
+            <input asp-for="NickName" class="form-control" maxlength="32" autocomplete="nickname" autofocus />
+            <span asp-validation-for="NickName" class="text-danger"></span>
+            <p class="small text-muted mt-3">@Localizer["Guests can play without an account. Sign in to save your games."]</p>
+            <button type="submit" class="btn btn-primary">@Localizer["Play as a guest"]</button>
+            <a class="btn btn-link" asp-controller="Account" asp-action="Login" asp-route-returnUrl="@Model.ReturnUrl">@Localizer["Sign in"]</a>
+        </form>
+    </div></div>
+</div></div>

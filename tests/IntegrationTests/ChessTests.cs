@@ -21,14 +21,11 @@ public class ChessTests : TestBase
     [DataRow("/Lobby")]
     [DataRow("/challenge/create")]
     [DataRow("/games/1.fen")]
-    [DataRow("/games/1.ws")]
-    [DataRow("/chats/1.ws")]
-    [DataRow("/challenge/listen/1.ws")]
-    public async Task AnonymousCannotEnterGames(string path)
+    public async Task NewVisitorsChooseANicknameBeforePlaying(string path)
     {
         var response = await Http.GetAsync(path);
         Assert.AreEqual(HttpStatusCode.Found, response.StatusCode);
-        AssertRedirect(response, "/Account/Login", exact: false);
+        AssertRedirect(response, "/Guest", exact: false);
     }
 
     [TestMethod]
@@ -133,9 +130,11 @@ public class ChessTests : TestBase
     }
 
     [TestMethod]
-    public async Task RealWebSocketPlaysAgainstComputerAndUnsubscribesOnClose()
+    [DataRow(false)]
+    [DataRow(true)]
+    public async Task RealWebSocketPlaysAgainstComputerAndUnsubscribesOnClose(bool guest)
     {
-        await RegisterAndLoginAsync();
+        if (guest) await StartGuest(); else await RegisterAndLoginAsync();
         var response = await PostForm("/pve/new", new Dictionary<string, string> { ["difficulty"] = "1" }, tokenUrl: "/Lobby");
         Assert.AreEqual(HttpStatusCode.Found, response.StatusCode);
         var id = int.Parse(response.Headers.Location!.OriginalString.Split('/').Last().Split('.')[0]);
@@ -997,6 +996,266 @@ public class ChessTests : TestBase
         Assert.AreEqual("rooms-full", (await sessions.ExecuteAsync(id, human.Id, new GameCommand(Guid.NewGuid(), "offer-rematch"))).Error);
         Assert.IsNull(room.NextGameId); Assert.AreEqual(revision, room.Revision);
         Assert.AreEqual(256, database.GetRooms().Length);
+    }
+
+    private async Task StartGuest(string name = "A guest", string returnUrl = "/Lobby")
+    {
+        var response = await PostForm("/Guest", new Dictionary<string, string> { ["NickName"] = name, ["ReturnUrl"] = returnUrl });
+        Assert.AreEqual(HttpStatusCode.Found, response.StatusCode);
+    }
+
+    private void ForgetBrowserIdentity()
+    {
+        foreach (Cookie cookie in Cookies.GetCookies(Http.BaseAddress!)) cookie.Expired = true;
+    }
+
+    [TestMethod]
+    [DataRow("/games/1.ws")]
+    [DataRow("/chats/1.ws")]
+    [DataRow("/challenge/listen/1.ws")]
+    public async Task UnknownWebSocketVisitorsCannotCreateAPlayer(string path)
+    {
+        Assert.AreEqual(HttpStatusCode.Unauthorized, (await Http.GetAsync(path)).StatusCode);
+        Assert.IsNull(Cookies.GetCookies(Http.BaseAddress!)[GuestIdentity.CookieName]);
+    }
+
+    [TestMethod]
+    [DataRow("")]
+    [DataRow("   ")]
+    [DataRow("A\r\nB")]
+    [DataRow("A nickname longer than thirty two characters")]
+    public async Task InvalidGuestNicknameDoesNotCreateAnIdentity(string name)
+    {
+        var response = await PostForm("/Guest", new Dictionary<string, string> { ["NickName"] = name });
+        Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
+        Assert.IsNull(Cookies.GetCookies(Http.BaseAddress!)[GuestIdentity.CookieName]);
+    }
+
+    [TestMethod]
+    public async Task GuestInvitationReturnsToTheRoomWithoutExternalRedirectsOrAccountPermissions()
+    {
+        await StartGuest("Alex", "/challenge/123");
+        var cookie = Cookies.GetCookies(Http.BaseAddress!)[GuestIdentity.CookieName]!;
+        Assert.IsTrue(cookie.HttpOnly);
+        var lobby = await Http.GetAsync("/Lobby");
+        Assert.AreEqual(HttpStatusCode.OK, lobby.StatusCode);
+        Assert.IsTrue((await lobby.Content.ReadAsStringAsync()).Contains("Alex", StringComparison.Ordinal));
+        AssertRedirect(await Http.GetAsync("/History"), "/Account/Login", exact: false);
+        Assert.AreEqual(HttpStatusCode.Found, (await Http.GetAsync("/Manage")).StatusCode);
+        ForgetBrowserIdentity();
+        var response = await PostForm("/Guest", new Dictionary<string, string> { ["NickName"] = "Alex", ["ReturnUrl"] = "https://example.com/" });
+        AssertRedirect(response, "/Lobby");
+    }
+
+    [TestMethod]
+    public async Task GuestRoomSurvivesRefreshButSameNicknameCannotStealItsSeat()
+    {
+        await StartGuest("Same name");
+        await PostForm("/challenge/create", new Dictionary<string, string> { ["Message"] = "Guest invitation", ["Permission"] = "1" });
+        var database = GetService<InMemoryDatabase>();
+        var waiting = database.GetRooms().Single();
+        var owner = waiting.Value.Creator.Id;
+        Assert.IsTrue(waiting.Value.Creator.IsGuest);
+        Assert.AreEqual(0, database.GetPublicOpenChallenges().Count);
+        Assert.AreEqual(HttpStatusCode.OK, (await Http.GetAsync($"/challenge/{waiting.Key}")).StatusCode);
+        Assert.AreEqual(owner, waiting.Value.Creator.Id);
+        ForgetBrowserIdentity();
+        await StartGuest("Same name");
+        var denied = await PostForm($"/challenge/{waiting.Key}/drop", [], tokenUrl: "/Lobby");
+        AssertRedirect(denied, "/Error/Code403", exact: false);
+        await PostForm($"/challenge/accept/{waiting.Key}", [], tokenUrl: "/Lobby");
+        var accepted = database.GetAcceptedChallenge(waiting.Key)!;
+        Assert.AreNotEqual(owner, accepted.Accepter.Id);
+        Assert.IsTrue(accepted.Accepter.IsGuest);
+        Assert.AreEqual(HttpStatusCode.OK, (await Http.GetAsync($"/games/{waiting.Key}.html")).StatusCode);
+    }
+
+    [TestMethod]
+    public async Task TamperedGuestCookieCannotRecoverASeat()
+    {
+        await StartGuest();
+        var cookie = Cookies.GetCookies(Http.BaseAddress!)[GuestIdentity.CookieName]!;
+        cookie.Value = "tampered";
+        AssertRedirect(await Http.GetAsync("/Lobby"), "/Guest", exact: false);
+    }
+
+    [TestMethod]
+    public async Task GuestComputerGameUsesServerClocksUndoAndRematchWithoutPersonalHistory()
+    {
+        await StartGuest();
+        await PostForm("/pve/new", new Dictionary<string, string> { ["minutes"] = "3", ["incrementSeconds"] = "2" }, tokenUrl: "/Lobby");
+        var database = GetService<InMemoryDatabase>();
+        var pair = database.GetOnGoingOpenChallenges().Single();
+        var room = (AcceptedChallenge)pair.Value;
+        var sessions = GetService<GameSessionService>();
+        var move = await sessions.ExecuteAsync(pair.Key, room.Creator.Id, new GameCommand(Guid.NewGuid(), "move", 0, "e4"));
+        Assert.IsNull(move.Error); Assert.IsTrue(room.WhiteRemaining > TimeSpan.FromMinutes(3));
+        var undo = await sessions.ExecuteAsync(pair.Key, room.Creator.Id, new GameCommand(Guid.NewGuid(), "undo"));
+        Assert.IsNull(undo.Error); Assert.AreEqual(0, room.Game.Board.MovesToSan.Count);
+        await sessions.ExecuteAsync(pair.Key, room.Creator.Id, new GameCommand(Guid.NewGuid(), "resign"));
+        Assert.IsFalse(GetService<TemplateDbContext>().CompletedGames.Any(g => g.Id == room.HistoryId));
+        var complete = await PostForm($"/games/{pair.Key}/complete", new Dictionary<string, string> { ["pgn"] = room.Pgn() }, tokenUrl: "/Lobby");
+        Assert.AreEqual(HttpStatusCode.OK, complete.StatusCode);
+        Assert.AreEqual(JsonValueKind.Null, JsonDocument.Parse(await complete.Content.ReadAsStringAsync()).RootElement.GetProperty("HistoryId").ValueKind);
+        var replay = await sessions.ExecuteAsync(pair.Key, room.Creator.Id, new GameCommand(Guid.NewGuid(), "offer-rematch"));
+        Assert.IsNull(replay.Error);
+        var next = database.GetAcceptedChallenge(room.NextGameId!.Value)!;
+        Assert.IsTrue(next.Creator.IsGuest); Assert.IsFalse(next.CreatorIsWhite);
+        Assert.IsTrue(room.Pgn().Contains("(Guest)", StringComparison.Ordinal));
+    }
+
+    [TestMethod]
+    [DataRow(true)]
+    [DataRow(false)]
+    public async Task MixedGameSavesHistoryOnlyForItsRegisteredParticipant(bool guestWhite)
+    {
+        var guest = new Player(Guid.NewGuid()) { NickName = "Alex", IsGuest = true };
+        var registered = new Player(Guid.NewGuid()) { NickName = "Alex" };
+        var room = new AcceptedChallenge(guest, registered, "Mixed", guestWhite ? RoleRule.CreatorWhite : RoleRule.AccepterWhite,
+            TimeSpan.FromMinutes(3), ChallengePermission.Public, new AsyncObservable<string>());
+        room.Game.Board.Resign(PieceColor.White);
+        await GetService<GameHistoryService>().SaveAsync(room);
+        var saved = GetService<TemplateDbContext>().CompletedGames.Single(g => g.Id == room.HistoryId);
+        Assert.AreEqual(guestWhite ? "" : registered.Id.ToString(), saved.WhiteUserId);
+        Assert.AreEqual(guestWhite ? registered.Id.ToString() : "", saved.BlackUserId);
+        Assert.AreEqual("Alex (Guest)", guestWhite ? saved.WhiteName : saved.BlackName);
+        Assert.IsFalse(new[] { saved.WhiteUserId, saved.BlackUserId }.Contains(guest.Id.ToString()));
+    }
+
+    [TestMethod]
+    public async Task SigningInClaimsTheGuestGameButRevokesTheOldGuestSeat()
+    {
+        await StartGuest();
+        var oldCookie = Cookies.GetCookies(Http.BaseAddress!)[GuestIdentity.CookieName]!.Value;
+        await PostForm("/pve/new", [], tokenUrl: "/Lobby");
+        var pair = GetService<InMemoryDatabase>().GetOnGoingOpenChallenges().Single();
+        var room = (AcceptedChallenge)pair.Value;
+        var guestId = room.Creator.Id;
+        var historyId = room.HistoryId;
+        await RegisterAndLoginAsync();
+        Assert.AreEqual(HttpStatusCode.OK, (await Http.GetAsync($"/games/{pair.Key}.html")).StatusCode);
+        Assert.AreNotEqual(guestId, room.Creator.Id); Assert.IsFalse(room.Creator.IsGuest);
+        Assert.AreEqual(historyId, room.HistoryId);
+        Assert.AreEqual("w", await (await Http.GetAsync($"/games/{pair.Key}.color")).Content.ReadAsStringAsync());
+        await GetService<GameSessionService>().ExecuteAsync(pair.Key, room.Creator.Id, new GameCommand(Guid.NewGuid(), "resign"));
+        Assert.AreEqual(HttpStatusCode.OK, (await Http.GetAsync($"/History/Replay/{historyId}")).StatusCode);
+        ForgetBrowserIdentity();
+        Cookies.Add(Http.BaseAddress!, new Cookie(GuestIdentity.CookieName, oldCookie, "/"));
+        Assert.AreEqual("m", await (await Http.GetAsync($"/games/{pair.Key}.color")).Content.ReadAsStringAsync());
+        var denied = await PostForm($"/games/{pair.Key}/action", new Dictionary<string, string> { ["kind"] = "offer-rematch", ["commandId"] = Guid.NewGuid().ToString() }, tokenUrl: "/Lobby");
+        AssertRedirect(denied, "/Error/Code403", exact: false);
+    }
+
+    [TestMethod]
+    public async Task FinishedGuestGamesStayWithoutHistoryAfterLoginAndRecovery()
+    {
+        var sessions = GetService<GameSessionService>();
+        var guest = new Player(Guid.NewGuid()) { IsGuest = true, NickName = "Finished guest" };
+        var id = await sessions.CreateAsync(new Challenge(guest, "Finished", RoleRule.CreatorWhite, TimeSpan.MaxValue, ChallengePermission.Public) { Difficulty = 1 });
+        await sessions.AcceptAsync(id, new Player(Guid.NewGuid()) { NickName = "Computer" });
+        var room = GetService<InMemoryDatabase>().GetAcceptedChallenge(id)!;
+        await sessions.ExecuteAsync(id, guest.Id, new GameCommand(Guid.NewGuid(), "resign"));
+        var pgn = room.Pgn();
+        await sessions.ClaimGuestAsync(guest.Id, new Player(Guid.NewGuid()) { NickName = "Signed in" });
+        Assert.IsFalse(GetService<TemplateDbContext>().CompletedGames.Any(g => g.Id == room.HistoryId));
+        Assert.AreEqual(pgn, room.Pgn());
+        var snapshot = JsonSerializer.Deserialize<RoomSnapshot>(GetService<TemplateDbContext>().GameSessions.Single(g => g.Id == id).State!)!;
+        var restored = (AcceptedChallenge)snapshot.Restore();
+        await GetService<GameHistoryService>().SaveAsync(restored);
+        Assert.IsFalse(GetService<TemplateDbContext>().CompletedGames.Any(g => g.Id == room.HistoryId));
+        Assert.AreEqual(pgn, restored.Pgn());
+    }
+
+    [TestMethod]
+    public async Task GuestFlagsAndSeatClaimsSurviveSessionRecovery()
+    {
+        var sessions = GetService<GameSessionService>();
+        var guest = new Player(Guid.NewGuid()) { IsGuest = true, NickName = "Guest" };
+        var registered = new Player(Guid.NewGuid());
+        var id = await sessions.CreateAsync(new Challenge(guest, "Recovery", RoleRule.CreatorWhite, TimeSpan.FromMinutes(5), ChallengePermission.Public));
+        await sessions.AcceptAsync(id, registered);
+        await sessions.ExecuteAsync(id, guest.Id, new GameCommand(Guid.NewGuid(), "offer-draw"));
+        var newcomer = new Player(Guid.NewGuid()) { NickName = "Signed in" };
+        await sessions.ClaimGuestAsync(guest.Id, newcomer);
+        var snapshot = JsonSerializer.Deserialize<RoomSnapshot>(GetService<TemplateDbContext>().GameSessions.Single(g => g.Id == id).State!)!;
+        var restored = (AcceptedChallenge)snapshot.Restore();
+        Assert.IsFalse(restored.Creator.IsGuest); Assert.AreEqual(newcomer.Id, restored.Creator.Id);
+        Assert.AreEqual(newcomer.Id, restored.DrawOfferedBy);
+        Assert.AreEqual("m", restored.GetPlayerColor(guest.Id)); Assert.AreEqual("w", restored.GetPlayerColor(newcomer.Id));
+    }
+
+    [TestMethod]
+    public async Task TwoGuestsCanAgreeADrawAndRematchWithoutSavingPersonalHistory()
+    {
+        var sessions = GetService<GameSessionService>();
+        var a = new Player(Guid.NewGuid()) { IsGuest = true, NickName = "Alex" };
+        var b = new Player(Guid.NewGuid()) { IsGuest = true, NickName = "Alex" };
+        var id = await sessions.CreateAsync(new Challenge(a, "Guests", RoleRule.CreatorWhite, TimeSpan.FromMinutes(5), ChallengePermission.Public));
+        await sessions.AcceptAsync(id, b);
+        await sessions.ExecuteAsync(id, a.Id, new GameCommand(Guid.NewGuid(), "offer-draw"));
+        await sessions.ExecuteAsync(id, b.Id, new GameCommand(Guid.NewGuid(), "accept-draw"));
+        var room = GetService<InMemoryDatabase>().GetAcceptedChallenge(id)!;
+        Assert.AreEqual("1/2-1/2", room.Result);
+        Assert.IsFalse(GetService<TemplateDbContext>().CompletedGames.Any(g => g.Id == room.HistoryId));
+        await sessions.ExecuteAsync(id, a.Id, new GameCommand(Guid.NewGuid(), "offer-rematch"));
+        Assert.IsNull(room.NextGameId);
+        await sessions.ExecuteAsync(id, b.Id, new GameCommand(Guid.NewGuid(), "accept-rematch"));
+        var next = GetService<InMemoryDatabase>().GetAcceptedChallenge(room.NextGameId!.Value)!;
+        Assert.AreEqual(b.Id, next.GetWhitePlayer().Id);
+        Assert.IsTrue(next.Creator.IsGuest && next.Accepter.IsGuest);
+    }
+
+    [TestMethod]
+    public async Task SigningInCannotTakeBothSeats()
+    {
+        var sessions = GetService<GameSessionService>();
+        var a = new Player(Guid.NewGuid()) { IsGuest = true };
+        var b = new Player(Guid.NewGuid());
+        var id = await sessions.CreateAsync(new Challenge(a, "Seats", RoleRule.CreatorWhite, TimeSpan.MaxValue, ChallengePermission.Public));
+        await sessions.AcceptAsync(id, b);
+        await Assert.ThrowsExactlyAsync<InvalidOperationException>(() => sessions.ClaimGuestAsync(a.Id, b));
+        var room = GetService<InMemoryDatabase>().GetAcceptedChallenge(id)!;
+        Assert.IsTrue(room.Creator.IsGuest); Assert.AreEqual(a.Id, room.Creator.Id);
+    }
+
+    [TestMethod]
+    public async Task SigningInAfterAGuestGameDoesNotAdvertiseASavedHistory()
+    {
+        await StartGuest();
+        await PostForm("/pve/new", [], tokenUrl: "/Lobby");
+        var pair = GetService<InMemoryDatabase>().GetOnGoingOpenChallenges().Single();
+        var room = (AcceptedChallenge)pair.Value;
+        await GetService<GameSessionService>().ExecuteAsync(pair.Key, room.Creator.Id, new GameCommand(Guid.NewGuid(), "resign"));
+        var pgn = room.Pgn();
+        await RegisterAndLoginAsync();
+        var complete = await PostForm($"/games/{pair.Key}/complete", new Dictionary<string, string> { ["pgn"] = pgn }, tokenUrl: "/Lobby");
+        Assert.AreEqual(HttpStatusCode.OK, complete.StatusCode);
+        Assert.AreEqual(JsonValueKind.Null, JsonDocument.Parse(await complete.Content.ReadAsStringAsync()).RootElement.GetProperty("HistoryId").ValueKind);
+        Assert.IsFalse(GetService<TemplateDbContext>().CompletedGames.Any(g => g.Id == room.HistoryId));
+        Assert.AreEqual(HttpStatusCode.NotFound, (await Http.GetAsync($"/History/Replay/{room.HistoryId}")).StatusCode);
+    }
+
+    [TestMethod]
+    [DataRow(false)]
+    [DataRow(true)]
+    public async Task AFailedSeatClaimKeepsGuestOwnershipAndCanBeRetried(bool accepted)
+    {
+        await using var context = new FailingChessContext(new DbContextOptionsBuilder().UseInMemoryDatabase(Guid.NewGuid().ToString()).Options);
+        await context.Database.EnsureCreatedAsync();
+        var database = new InMemoryDatabase();
+        var sessions = new GameSessionService(database, context, new GameHistoryService(context), NullLogger<GameSessionService>.Instance);
+        var guest = new Player(Guid.NewGuid()) { IsGuest = true, NickName = "Before login" };
+        var registered = new Player(Guid.NewGuid()) { NickName = "After login" };
+        var id = await sessions.CreateAsync(new Challenge(guest, "Claim failure", RoleRule.CreatorWhite, TimeSpan.MaxValue, ChallengePermission.Public));
+        if (accepted) await sessions.AcceptAsync(id, new Player(Guid.NewGuid()));
+        context.FailNextSave = true;
+        await Assert.ThrowsAsync<IOException>(() => sessions.ClaimGuestAsync(guest.Id, registered));
+        Assert.AreEqual(guest.Id, database.GetChallenge(id)!.Creator.Id);
+        Assert.IsTrue(database.GetChallenge(id)!.Creator.IsGuest);
+        Assert.IsTrue(JsonSerializer.Deserialize<RoomSnapshot>(context.GameSessions.Single(g => g.Id == id).State!)!.CreatorGuest);
+        await sessions.ClaimGuestAsync(guest.Id, registered);
+        Assert.AreEqual(registered.Id, database.GetChallenge(id)!.Creator.Id);
+        Assert.IsFalse(database.GetChallenge(id)!.Creator.IsGuest);
     }
 
 }

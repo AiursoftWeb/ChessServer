@@ -22,7 +22,7 @@ public class ChallengesController(InMemoryDatabase database, GameSessionService 
     [HttpGet("create")]
     public IActionResult Create() => this.StackView(new CreateChallengeViewModel());
 
-    [HttpPost("create"), ValidateAntiForgeryToken]
+    [HttpPost("create"), ValidateAntiForgeryToken, LimitPerMin]
     public async Task<IActionResult> Create(CreateChallengeViewModel model)
     {
         if (!ModelState.IsValid) return this.StackView(model);

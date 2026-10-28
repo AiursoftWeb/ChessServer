@@ -192,6 +192,12 @@
   <data name="ChessServer computer game" xml:space="preserve">
     <value>ChessServer 电脑游戏</value>
   </data>
+  <data name="Choose a nickname to play, or sign in to save your games." xml:space="preserve">
+    <value>选择一个昵称即可开始游戏，登录后即可保存对局。</value>
+  </data>
+  <data name="Choose from eight levels, from beginner practice to deeper engine searches." xml:space="preserve">
+    <value>可从八个难度级别中选择，从适合初学者练习的级别到更深入的引擎搜索。</value>
+  </data>
   <data name="Choose from eight levels, from random legal moves for beginners to deeper engine searches." xml:space="preserve">
     <value>提供八个难度等级供您选择，从适合初学者的随机合法走法，到更深入的引擎搜索。</value>
   </data>
