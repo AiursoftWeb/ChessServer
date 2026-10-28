@@ -9,6 +9,8 @@ namespace Aiursoft.ChessServer.Entities;
 
 public abstract class TemplateDbContext(DbContextOptions options) : IdentityDbContext<User>(options), ICanMigrate
 {
+    public DbSet<GameSession> GameSessions => Set<GameSession>();
+
     public DbSet<CompletedGame> CompletedGames => Set<CompletedGame>();
 
     public DbSet<GlobalSetting> GlobalSettings => Set<GlobalSetting>();

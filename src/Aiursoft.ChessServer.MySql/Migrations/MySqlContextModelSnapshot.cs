@@ -77,6 +77,19 @@ namespace Aiursoft.ChessServer.MySql.Migrations
                     b.ToTable("CompletedGames");
                 });
 
+            modelBuilder.Entity("Aiursoft.ChessServer.Entities.GameSession", b =>
+                {
+                    b.Property<int>("Id")
+                        .HasColumnType("int");
+
+                    b.Property<string>("State")
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("GameSessions");
+                });
+
             modelBuilder.Entity("Aiursoft.ChessServer.Entities.GlobalSetting", b =>
                 {
                     b.Property<string>("Key")

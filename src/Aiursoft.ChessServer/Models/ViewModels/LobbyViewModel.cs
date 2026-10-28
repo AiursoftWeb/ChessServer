@@ -10,4 +10,5 @@ public class LobbyViewModel : UiStackLayoutViewModel
     }
     public IReadOnlyCollection<KeyValuePair<int, Challenge>> OpenChallenges { get; init; } = [];
     public IReadOnlyCollection<KeyValuePair<int, Challenge>> OngoingChallenges { get; init; } = [];
+    public IReadOnlyCollection<KeyValuePair<int, Challenge>> MyGames { get; init; } = [];
 }

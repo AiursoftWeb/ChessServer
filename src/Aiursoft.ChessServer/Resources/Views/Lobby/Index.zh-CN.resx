@@ -57,6 +57,9 @@
   <data name="Black" xml:space="preserve">
     <value>黑方</value>
   </data>
+  <data name="Continue game" xml:space="preserve">
+    <value>继续游戏</value>
+  </data>
   <data name="Create a challenge" xml:space="preserve">
     <value>创建挑战</value>
   </data>
@@ -101,6 +104,9 @@
   </data>
   <data name="White" xml:space="preserve">
     <value>白方</value>
+  </data>
+  <data name="Your current games" xml:space="preserve">
+    <value>你当前的对局</value>
   </data>
   <data name="Your pieces" xml:space="preserve">
     <value>您的棋子</value>

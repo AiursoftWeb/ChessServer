@@ -4,56 +4,118 @@
     <link rel="stylesheet" href="~/node_modules/%40chrisoakman/chessboardjs/dist/chessboard-1.0.0.min.css" />
     <link rel="stylesheet" href="~/css/chess.css" asp-append-version="true" />
     <link rel="modulepreload" href="~/scripts/chessboard/chessboard.js" asp-append-version="true" data-chess-module="board" />
-    <link rel="modulepreload" href="~/scripts/chessboard/defaultConfig.js" asp-append-version="true" data-chess-module="config" />
-    <link rel="modulepreload" href="~/scripts/chessboard/sound.js" asp-append-version="true" data-chess-module="sound" />
     <link rel="modulepreload" href="~/node_modules/chess.js/dist/esm/chess.js" asp-append-version="true" data-chess-module="rules" />
 }
 <div id="game-room" data-game-id="@Model.Id">
     <div id="chess-loc" hidden>
-        <span data-key="closed">@Localizer["Connection closed. Refresh to reconnect."]</span>
+        <span data-key="connecting">@Localizer["Connecting…"]</span>
+        <span data-key="connected">@Localizer["Connected"]</span>
+        <span data-key="reconnecting">@Localizer["Reconnecting… Your clock keeps running."]</span>
         <span data-key="unavailable">@Localizer["Room unavailable. Return to the lobby."]</span>
-        <span data-key="white">@Localizer["White"]</span>
-        <span data-key="black">@Localizer["Black"]</span>
-        <span data-key="spectator">@Localizer["Spectator"]</span>
-        <span data-key="playing-white">@Localizer["You are playing White."]</span>
-        <span data-key="playing-black">@Localizer["You are playing Black."]</span>
+        <span data-key="white">@Localizer["White"]</span><span data-key="black">@Localizer["Black"]</span>
+        <span data-key="playing-white">@Localizer["You are playing White."]</span><span data-key="playing-black">@Localizer["You are playing Black."]</span>
         <span data-key="watching">@Localizer["You are watching this game."]</span>
         <span data-key="turn">@Localizer["{0} to move"].Value</span>
-        <span data-key="check">@Localizer["{0} is in check"].Value</span>
-        <span data-key="winner">@Localizer["Checkmate. {0} wins."].Value</span>
+        <span data-key="winner">@Localizer["{0} wins"].Value</span>
+        <span data-key="draw">@Localizer["Draw"]</span>
         <span data-key="unlimited">@Localizer["Unlimited"]</span>
-        <span data-key="timeout">@Localizer["Time expired. {0} wins."].Value</span>
-        <span data-key="finished">@Localizer["Game over. {0} wins."].Value</span>
+        <span data-key="thinking">@Localizer["Computer is thinking…"]</span>
+        <span data-key="pending">@Localizer["Confirming your move…"]</span>
         <span data-key="saved">@Localizer["Saved to My games."]</span>
         <span data-key="saving">@Localizer["Saving game…"]</span>
         <span data-key="save-failed">@Localizer["Could not confirm the saved game. Retry."]</span>
-        <span data-key="draw">@Localizer["Game over — draw."]</span>
+        <span data-key="opponent-offline">@Localizer["Opponent disconnected. Reconnection time remaining: {0}s."].Value</span>
+        <span data-key="claim-ready">@Localizer["Your opponent has not reconnected. You may claim the result or keep waiting."]</span>
+        <span data-key="own-offer">@Localizer["You offered a draw."]</span>
+        <span data-key="their-offer">@Localizer["Your opponent offers a draw."]</span>
+        <span data-key="error">@Localizer["Could not complete the action. Reconnecting to the server…"]</span>
+        <span data-key="stale">@Localizer["The position changed. Your board has been synchronized."]</span>
+        <span data-key="illegal">@Localizer["That move cannot be played in the current position."]</span>
+        <span data-key="ended">@Localizer["This game has ended."]</span>
+        <span data-key="spectator">@Localizer["Only the players can perform this action."]</span>
+        <span data-key="cannot-abort">@Localizer["The game has started. You can resign instead."]</span>
+        <span data-key="cannot-claim">@Localizer["Your opponent can still reconnect."]</span>
+        <span data-key="cannot-offer">@Localizer["A draw cannot be offered now."]</span>
+        <span data-key="no-offer">@Localizer["The draw offer is no longer available."]</span>
+        <span data-key="invalid-command">@Localizer["This action could not be confirmed. Refresh to synchronize."]</span>
+        <span data-key="Checkmate">@Localizer["Checkmate"]</span>
+        <span data-key="Resigned">@Localizer["Resignation"]</span>
+        <span data-key="Timeout">@Localizer["Time expired"]</span>
+        <span data-key="TimeoutDraw">@Localizer["Time expired, but the opponent cannot checkmate."]</span>
+        <span data-key="Agreement">@Localizer["Draw by agreement"]</span>
+        <span data-key="Aborted">@Localizer["Game aborted before any move"]</span>
+        <span data-key="Abandoned">@Localizer["Game ended because both players left"]</span>
+        <span data-key="Abandonment">@Localizer["Game ended by abandonment"]</span>
+        <span data-key="InsufficientMaterial">@Localizer["Neither side has sufficient mating material"]</span>
+        <span data-key="FiftyMoveRule">@Localizer["Draw by the fifty-move rule"]</span>
+        <span data-key="Repetition">@Localizer["Draw by repetition"]</span>
+        <span data-key="Stalemate">@Localizer["Stalemate"]</span>
+        <span data-key="other-end">@Localizer["Game over"]</span>
+        <span data-key="leave">@Localizer["This game is still in progress. Your clock will keep running."]</span>
     </div>
-    <h1 id="versus-info" class="h3 mb-4">@Model.Message</h1>
-    <div class="row g-4">
-        <div class="col-lg-7"><div class="card"><div class="card-body">
+    <div class="d-flex align-items-center justify-content-between gap-2 mb-2">
+        <h1 id="versus-info" class="h5 mb-0">@Model.Message</h1>
+        <a class="btn btn-sm btn-outline-secondary text-nowrap flex-shrink-0" asp-controller="Lobby" asp-action="Index">@Localizer["Lobby"]</a>
+    </div>
+    <div class="chess-layout">
+        <div class="chess-playing-area">
             <div id="clock-top" class="chess-clock mb-2"><span class="clock-name"></span><strong class="clock-time"></strong></div>
-            <div id="board" class="w-100"></div>
+            <div id="board"></div>
             <div id="clock-bottom" class="chess-clock mt-2"><span class="clock-name"></span><strong class="clock-time"></strong></div>
-            <p id="status" class="mt-3" role="status"></p>
-            <p id="role" class="text-muted"></p>
-            <audio src="/sounds/chess_piece_move.mp3" id="pieceMoveSound"></audio>
-            <form id="complete-game" asp-action="Complete" asp-route-id="@Model.Id" method="post" hidden></form>
-            <p id="save-status" class="text-muted mt-2" role="status"></p>
-            <button id="retry-save" type="button" class="btn btn-outline-primary" hidden>@Localizer["Retry saving"]</button>
-            <a id="history-link" class="btn btn-primary" asp-controller="History" asp-action="Index" hidden>@Localizer["Replay"]</a>
-            <a asp-action="GetPgn" asp-route-id="@Model.Id">@Localizer["Export PGN"]</a>
-        </div></div></div>
-        <div class="col-lg-5"><div class="card"><div class="card-body">
-            <h2 class="h4">@Localizer["Chat"]</h2>
-            <div id="messages-box" class="chess-messages" role="log" aria-live="polite"></div>
-            <form id="chat-form" class="d-flex gap-2 mt-3">
-                <input id="chat-input" class="form-control" maxlength="2000" aria-label="@Localizer["Message"]" autocomplete="off" />
-                <button class="btn btn-primary" type="submit">@Localizer["Send"]</button>
-            </form>
-            <p id="chat-status" class="text-muted mt-2" role="status"></p>
-        </div></div></div>
+            <div class="d-flex flex-wrap justify-content-between gap-1 small mt-2"><span id="role" class="text-muted"></span><span id="connection-status" role="status"></span></div>
+            <p id="status" class="my-2" role="status"></p>
+            <p id="action-error" class="text-danger small" role="alert" hidden></p>
+            <p id="opponent-status" class="text-muted small" hidden></p>
+            <div id="game-actions" class="d-flex flex-wrap gap-2 mb-2" hidden>
+                <button class="btn btn-sm btn-outline-danger" type="button" id="resign">@Localizer["Resign"]</button>
+                <button class="btn btn-sm btn-outline-secondary" type="button" id="abort">@Localizer["Abort game"]</button>
+                <button class="btn btn-sm btn-outline-secondary" type="button" data-game-action="offer-draw" id="offer-draw">@Localizer["Offer draw"]</button>
+                <button class="btn btn-sm btn-outline-primary" type="button" data-game-action="claim" id="claim" hidden>@Localizer["Claim result"]</button>
+            </div>
+            <div id="resign-confirmation" class="d-flex flex-wrap align-items-center gap-2 mb-2" hidden>
+                <span>@Localizer["Resign this game?"]</span>
+                <button class="btn btn-sm btn-danger" data-game-action="resign" type="button">@Localizer["Confirm resignation"]</button>
+                <button class="btn btn-sm btn-outline-secondary" id="cancel-resign" type="button">@Localizer["Cancel"]</button>
+            </div>
+            <div id="draw-offer" class="mb-2" hidden><p id="draw-offer-text" class="small mb-1"></p>
+                <button class="btn btn-sm btn-primary" data-game-action="accept-draw" id="accept-draw" type="button">@Localizer["Accept draw"]</button>
+                <button class="btn btn-sm btn-outline-secondary" data-game-action="decline-draw" type="button">@Localizer["Dismiss offer"]</button>
+            </div>
+            <details id="game-policy" class="small text-muted mt-2"><summary>@Localizer["Connection and game rules"]</summary>
+                <p>@Localizer["Server maintenance pauses the clocks. A player disconnecting does not."]</p>
+                <p class="mt-1">@Localizer["An unplayed game ends after one minute. Leaving does not pause the clock."]</p>
+                <p>@Localizer["After 90 seconds without your opponent, you may claim the result. A computer game ends after two minutes away; a game with both players away ends after ten minutes."]</p>
+            </details>
+            <section id="game-result" class="card mt-3" aria-live="polite" hidden><div class="card-body">
+                <h2 id="result-title" class="h4"></h2><p id="result-reason" class="mb-2"></p>
+                <p id="save-status" class="text-muted small" role="status"></p>
+                <button id="retry-save" class="btn btn-sm btn-outline-primary" type="button" hidden>@Localizer["Retry saving"]</button>
+                <a id="history-link" class="btn btn-primary" asp-controller="History" asp-action="Index" hidden>@Localizer["Replay"]</a>
+                <a class="btn btn-outline-primary" asp-controller="Lobby" asp-action="Index">@Localizer["Play another game"]</a>
+            </div></section>
+        </div>
+        <aside class="chess-information">
+            <div class="card"><div class="card-body"><h2 class="h6">@Localizer["Moves"]</h2>
+                <div id="move-list" class="chess-move-list" aria-label="@Localizer["Move list"]"></div>
+                <button id="return-live" class="btn btn-sm btn-outline-primary mt-2" type="button" hidden>@Localizer["Return to live position"]</button>
+                <a class="d-block small mt-3" asp-action="GetPgn" asp-route-id="@Model.Id">@Localizer["Export PGN"]</a>
+            </div></div>
+            @if (!Model.IsComputer)
+            {
+                <details class="card mt-3"><summary class="card-header">@Localizer["Chat"]</summary><div class="card-body">
+                    <div id="messages-box" class="chess-messages" role="log" aria-live="polite"></div>
+                    <form id="chat-form" class="d-flex gap-2 mt-2"><input id="chat-input" class="form-control" maxlength="2000" aria-label="@Localizer["Message"]" autocomplete="off" /><button class="btn btn-primary" type="submit">@Localizer["Send"]</button></form>
+                    <p id="chat-status" class="text-muted small" role="status"></p>
+                </div></details>
+            }
+        </aside>
     </div>
+    <form id="complete-game" asp-action="Complete" asp-route-id="@Model.Id" method="post" hidden></form>
+    <audio src="/sounds/chess_piece_move.mp3" id="pieceMoveSound"></audio>
+    <dialog id="promotion-dialog"><h2 class="h5">@Localizer["Promote pawn"]</h2>
+        <div class="d-flex gap-2"><button type="button" data-promotion="q" class="btn btn-outline-primary">@Localizer["Queen"]</button><button type="button" data-promotion="r" class="btn btn-outline-primary">@Localizer["Rook"]</button><button type="button" data-promotion="b" class="btn btn-outline-primary">@Localizer["Bishop"]</button><button type="button" data-promotion="n" class="btn btn-outline-primary">@Localizer["Knight"]</button></div>
+        <button id="cancel-promotion" class="btn btn-link mt-2" type="button">@Localizer["Cancel"]</button>
+    </dialog>
 </div>
 @* ReSharper disable once Razor.SectionNotResolved *@
 @section scripts {

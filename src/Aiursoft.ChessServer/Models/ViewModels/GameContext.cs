@@ -50,5 +50,16 @@ public class ChallengeContext(AcceptedChallenge challenge, int id)
     public double? WhiteMilliseconds { get; } = challenge.IsTimed ? challenge.WhiteRemaining.TotalMilliseconds : null;
     public double? BlackMilliseconds { get; } = challenge.IsTimed ? challenge.BlackRemaining.TotalMilliseconds : null;
     public string Result { get; } = challenge.Result;
-    public string? EndReason { get; } = challenge.Game.Board.EndGame?.EndgameType.ToString();
+    public string? EndReason { get; } = challenge.OutcomeReason ?? challenge.Game.Board.EndGame?.EndgameType.ToString();
+    public string Position { get; } = challenge.Game.Board.ToFen();
+    public string[] Moves { get; } = challenge.Game.Board.MovesToSan.ToArray();
+    public long Revision { get; } = challenge.Revision;
+    public long SampledAt { get; } = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
+    public bool Computer { get; } = challenge.Difficulty != null;
+    public bool Thinking { get; } = challenge.Game.IsThinking;
+    public string WhiteId { get; } = challenge.GetWhitePlayer().Id.ToString();
+    public string BlackId { get; } = challenge.GetBlackPlayer().Id.ToString();
+    public string? DrawOfferedBy { get; } = challenge.DrawOfferedBy?.ToString();
+    public double WhiteAbsentSeconds { get; } = challenge.Difficulty != null && !challenge.CreatorIsWhite ? 0 : Math.Max(0, (DateTimeOffset.UtcNow - challenge.WhiteSeenAt).TotalSeconds);
+    public double BlackAbsentSeconds { get; } = challenge.Difficulty != null && challenge.CreatorIsWhite ? 0 : Math.Max(0, (DateTimeOffset.UtcNow - challenge.BlackSeenAt).TotalSeconds);
 }

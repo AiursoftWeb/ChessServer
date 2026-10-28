@@ -3,6 +3,13 @@
     <h1 class="h3 mb-0">@Localizer["Play chess"]</h1>
     <a class="btn btn-outline-primary" asp-controller="History" asp-action="Index">@Localizer["My games"]</a>
 </div>
+@if (Model.MyGames.Count > 0)
+{
+    <div class="card mb-3"><div class="card-body"><h2 class="h5">@Localizer["Your current games"]</h2>
+        @foreach (var game in Model.MyGames)
+        { <a class="btn btn-primary me-2 mb-2" asp-controller="Games" asp-action="GetHtml" asp-route-id="@game.Key">@Localizer["Continue game"] — @game.Value.Message</a> }
+    </div></div>
+}
 <div class="row g-4">
     <div class="col-md-6"><div class="card h-100"><div class="card-body">
         <h2 class="h4">@Localizer["Play against computer"]</h2>

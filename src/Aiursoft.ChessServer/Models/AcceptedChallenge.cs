@@ -4,15 +4,25 @@ namespace Aiursoft.ChessServer.Models;
 
 public class AcceptedChallenge : Challenge
 {
-    private readonly bool _creatorIsWhite;
+    private bool _creatorIsWhite;
     private string? _completedPgn;
-    public Guid HistoryId { get; } = Guid.NewGuid();
+    public Guid HistoryId { get; set; } = Guid.NewGuid();
     public SemaphoreSlim ArchiveLock { get; } = new(1, 1);
     public bool Archived { get; set; }
-    public TimeSpan WhiteRemaining { get; private set; }
-    public TimeSpan BlackRemaining { get; private set; }
-    public DateTimeOffset LastClockUpdate { get; private set; }
-    public DateTimeOffset? FinishedAt { get; private set; }
+    public TimeSpan WhiteRemaining { get; set; }
+    public TimeSpan BlackRemaining { get; set; }
+    public DateTimeOffset LastClockUpdate { get; set; }
+    public DateTimeOffset? FinishedAt { get; set; }
+    public DateTimeOffset AbortAt { get; set; } = DateTimeOffset.UtcNow.AddMinutes(1);
+    public DateTimeOffset LastCheckpoint { get; set; } = DateTimeOffset.UtcNow;
+    public long Revision { get; set; }
+    public Guid? DrawOfferedBy { get; set; }
+    public string? OutcomeReason { get; set; }
+    public DateTimeOffset WhiteSeenAt { get; set; } = DateTimeOffset.UtcNow;
+    public DateTimeOffset BlackSeenAt { get; set; } = DateTimeOffset.UtcNow;
+    public List<CommandReceipt> Receipts { get; set; } = [];
+    public bool CreatorIsWhite { get => _creatorIsWhite; set => _creatorIsWhite = value; }
+    public void ClearPgnCache() => _completedPgn = null;
     public bool IsTimed => TimeLimit != TimeSpan.MaxValue;
 
     // All clock and board changes share the move lock, including the final timeout decision.
@@ -21,7 +31,11 @@ public class AcceptedChallenge : Challenge
         lock (Game.MovePieceLock)
         {
             var wasEnded = Game.Board.IsEndGame;
-            if (!wasEnded && IsTimed && now > LastClockUpdate)
+            if (!wasEnded && !MatingMaterial.CanMate(Game.Board.ToFen(), 'w') && !MatingMaterial.CanMate(Game.Board.ToFen(), 'b'))
+            {
+                Game.Board.Draw(); OutcomeReason = "InsufficientMaterial"; Revision++;
+            }
+            if (!Game.Board.IsEndGame && IsTimed && now > LastClockUpdate)
             {
                 var elapsed = now - LastClockUpdate;
                 if (Game.Board.Turn == Chess.PieceColor.White)
@@ -29,15 +43,22 @@ public class AcceptedChallenge : Challenge
                 else
                     BlackRemaining = elapsed >= BlackRemaining ? TimeSpan.Zero : BlackRemaining - elapsed;
                 if (WhiteRemaining == TimeSpan.Zero || BlackRemaining == TimeSpan.Zero)
-                    Game.Board.EndByTimeout(Game.Board.Turn);
+                {
+                    if (MatingMaterial.CanMate(Game.Board.ToFen(), Game.Board.Turn == Chess.PieceColor.White ? 'b' : 'w'))
+                        Game.Board.EndByTimeout(Game.Board.Turn);
+                    else Game.Board.Draw();
+                    OutcomeReason = Game.Board.EndGame!.WonSide == null ? "TimeoutDraw" : "Timeout";
+                    Revision++;
+                }
             }
             if (now > LastClockUpdate) LastClockUpdate = now;
             if (Game.Board.IsEndGame) FinishedAt ??= now;
+            if (!wasEnded && Game.Board.IsEndGame) LastActivity = now;
             return !wasEnded && Game.Board.IsEndGame;
         }
     }
 
-    public string Result => Game.Board.EndGame?.WonSide == Chess.PieceColor.White ? "1-0"
+    public string Result => OutcomeReason is "Aborted" or "Abandoned" ? "*" : Game.Board.EndGame?.WonSide == Chess.PieceColor.White ? "1-0"
         : Game.Board.EndGame?.WonSide == Chess.PieceColor.Black ? "0-1" : Game.Board.IsEndGame ? "1/2-1/2" : "*";
 
     public string Pgn()
@@ -52,6 +73,7 @@ public class AcceptedChallenge : Challenge
             Game.Board.AddHeader("Result", Result);
             Game.Board.AddHeader("TimeControl", IsTimed ? ((int)TimeLimit.TotalSeconds).ToString(System.Globalization.CultureInfo.InvariantCulture) : "-");
             var pgn = Game.Board.ToPgn();
+            if (OutcomeReason is "Aborted" or "Abandoned" && pgn.EndsWith("1/2-1/2", StringComparison.Ordinal)) pgn = pgn[..^7] + "*";
             if (Game.Board.IsEndGame) _completedPgn = pgn;
             return pgn;
         }

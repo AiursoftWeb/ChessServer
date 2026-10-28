@@ -33,6 +33,10 @@ public abstract class TestBase
             reservation.ConfigureServer(Server);
             await Server.UpdateDbAsync<TemplateDbContext>();
             await Server.SeedAsync();
+            // Each test owns its rooms; recovery must not load sessions left by a previous test host.
+            var context = Server.Services.GetRequiredService<TemplateDbContext>();
+            context.GameSessions.RemoveRange(context.GameSessions);
+            await context.SaveChangesAsync();
             await Server.StartAsync();
         }
         catch
