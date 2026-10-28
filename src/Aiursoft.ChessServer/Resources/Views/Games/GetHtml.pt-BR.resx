@@ -36,11 +36,17 @@
   <data name="Connection closed. Refresh to reconnect." xml:space="preserve">
     <value>Conexão encerrada. Atualize a página para se reconectar.</value>
   </data>
+  <data name="Could not confirm the saved game. Retry." xml:space="preserve">
+    <value>Não foi possível confirmar a partida salva. Tente novamente.</value>
+  </data>
   <data name="Export PGN" xml:space="preserve">
     <value>Exportar PGN</value>
   </data>
   <data name="Game over — draw." xml:space="preserve">
     <value>Fim de jogo — empate.</value>
+  </data>
+  <data name="Game over. {0} wins." xml:space="preserve">
+    <value>Fim de jogo. {0} venceu.</value>
   </data>
   <data name="Message" xml:space="preserve">
     <value>Mensagem</value>
@@ -48,14 +54,32 @@
   <data name="Preferred duration: {0} minutes. Games are untimed." xml:space="preserve">
     <value>Duração preferida: {0} minutos. As partidas não têm limite de tempo.</value>
   </data>
+  <data name="Replay" xml:space="preserve">
+    <value>Reproduzir</value>
+  </data>
+  <data name="Retry saving" xml:space="preserve">
+    <value>Tentar salvar novamente</value>
+  </data>
   <data name="Room unavailable. Return to the lobby." xml:space="preserve">
     <value>Sala indisponível. Volte ao lobby.</value>
+  </data>
+  <data name="Saved to My games." xml:space="preserve">
+    <value>Salvo em Meus jogos.</value>
+  </data>
+  <data name="Saving game…" xml:space="preserve">
+    <value>Salvando o jogo…</value>
   </data>
   <data name="Send" xml:space="preserve">
     <value>Enviar</value>
   </data>
   <data name="Spectator" xml:space="preserve">
     <value>Espectador</value>
+  </data>
+  <data name="Time expired. {0} wins." xml:space="preserve">
+    <value>Tempo esgotado. {0} vence.</value>
+  </data>
+  <data name="Unlimited" xml:space="preserve">
+    <value>Ilimitado</value>
   </data>
   <data name="White" xml:space="preserve">
     <value>Brancas</value>

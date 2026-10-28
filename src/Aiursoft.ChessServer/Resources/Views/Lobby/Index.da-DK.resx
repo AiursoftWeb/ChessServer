@@ -21,17 +21,29 @@
       <data name="1 — Beginner" xml:space="preserve">
     <value>1 — Begynder</value>
   </data>
+  <data name="10 minutes" xml:space="preserve">
+    <value>10 minutter</value>
+  </data>
+  <data name="15 minutes" xml:space="preserve">
+    <value>15 minutter</value>
+  </data>
   <data name="2 — Easy" xml:space="preserve">
     <value>2 — Let</value>
   </data>
   <data name="3 — Casual" xml:space="preserve">
     <value>3 — Afslappet</value>
   </data>
+  <data name="3 minutes" xml:space="preserve">
+    <value>3 minutter</value>
+  </data>
   <data name="4 — Intermediate" xml:space="preserve">
     <value>4 — Mellemsvær</value>
   </data>
   <data name="5 — Challenging" xml:space="preserve">
     <value>5 — Udfordrende</value>
+  </data>
+  <data name="5 minutes" xml:space="preserve">
+    <value>5 minutter</value>
   </data>
   <data name="6 — Hard" xml:space="preserve">
     <value>6 — Svær</value>
@@ -42,11 +54,17 @@
   <data name="8 — Strongest" xml:space="preserve">
     <value>8 — Stærkest</value>
   </data>
+  <data name="Black" xml:space="preserve">
+    <value>Sort</value>
+  </data>
   <data name="Create a challenge" xml:space="preserve">
     <value>Opret en udfordring</value>
   </data>
   <data name="Difficulty" xml:space="preserve">
     <value>Sværhedsgrad</value>
+  </data>
+  <data name="My games" xml:space="preserve">
+    <value>Mine spil</value>
   </data>
   <data name="No games in progress." xml:space="preserve">
     <value>Ingen igangværende spil.</value>
@@ -66,11 +84,26 @@
   <data name="Play with a friend" xml:space="preserve">
     <value>Spil med en ven</value>
   </data>
+  <data name="Random" xml:space="preserve">
+    <value>Tilfældig</value>
+  </data>
   <data name="Start game" xml:space="preserve">
     <value>Start spil</value>
   </data>
+  <data name="Time per player" xml:space="preserve">
+    <value>Tid pr. spiller</value>
+  </data>
+  <data name="Unlimited" xml:space="preserve">
+    <value>Ubegrænset</value>
+  </data>
   <data name="Watch a game" xml:space="preserve">
     <value>Se en kamp</value>
+  </data>
+  <data name="White" xml:space="preserve">
+    <value>Hvid</value>
+  </data>
+  <data name="Your pieces" xml:space="preserve">
+    <value>Dine brikker</value>
   </data>
 
 </root>

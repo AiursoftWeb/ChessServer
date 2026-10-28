@@ -63,8 +63,14 @@
   <data name="Room name" xml:space="preserve">
     <value>방 이름</value>
   </data>
+  <data name="Time per player" xml:space="preserve">
+    <value>플레이어당 시간</value>
+  </data>
   <data name="Time preference" xml:space="preserve">
     <value>시간 설정</value>
+  </data>
+  <data name="Unlimited" xml:space="preserve">
+    <value>무제한</value>
   </data>
   <data name="Unlisted — share the room link" xml:space="preserve">
     <value>비공개 목록 — 방 링크를 공유하세요</value>

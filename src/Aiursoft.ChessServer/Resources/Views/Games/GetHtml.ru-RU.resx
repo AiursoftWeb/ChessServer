@@ -36,11 +36,17 @@
   <data name="Connection closed. Refresh to reconnect." xml:space="preserve">
     <value>Соединение прервано. Обновите страницу, чтобы подключиться снова.</value>
   </data>
+  <data name="Could not confirm the saved game. Retry." xml:space="preserve">
+    <value>Не удалось подтвердить сохранение игры. Повторите попытку.</value>
+  </data>
   <data name="Export PGN" xml:space="preserve">
     <value>Экспорт PGN</value>
   </data>
   <data name="Game over — draw." xml:space="preserve">
     <value>Игра окончена — ничья.</value>
+  </data>
+  <data name="Game over. {0} wins." xml:space="preserve">
+    <value>Игра окончена. Побеждает {0}.</value>
   </data>
   <data name="Message" xml:space="preserve">
     <value>Сообщение</value>
@@ -48,14 +54,32 @@
   <data name="Preferred duration: {0} minutes. Games are untimed." xml:space="preserve">
     <value>Предпочтительная продолжительность: {0} мин. Игры проходят без ограничения времени.</value>
   </data>
+  <data name="Replay" xml:space="preserve">
+    <value>Повторить</value>
+  </data>
+  <data name="Retry saving" xml:space="preserve">
+    <value>Повторить сохранение</value>
+  </data>
   <data name="Room unavailable. Return to the lobby." xml:space="preserve">
     <value>Комната недоступна. Вернитесь в лобби.</value>
+  </data>
+  <data name="Saved to My games." xml:space="preserve">
+    <value>Сохранено в разделе «Мои игры».</value>
+  </data>
+  <data name="Saving game…" xml:space="preserve">
+    <value>Сохранение игры…</value>
   </data>
   <data name="Send" xml:space="preserve">
     <value>Отправить</value>
   </data>
   <data name="Spectator" xml:space="preserve">
     <value>Зритель</value>
+  </data>
+  <data name="Time expired. {0} wins." xml:space="preserve">
+    <value>Время истекло. Побеждает {0}.</value>
+  </data>
+  <data name="Unlimited" xml:space="preserve">
+    <value>Без ограничений</value>
   </data>
   <data name="White" xml:space="preserve">
     <value>Белые</value>

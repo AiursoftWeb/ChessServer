@@ -123,6 +123,9 @@
   <data name="Manage" xml:space="preserve">
     <value>관리</value>
   </data>
+  <data name="My games" xml:space="preserve">
+    <value>내 게임</value>
+  </data>
   <data name="Not Found" xml:space="preserve">
     <value>찾을 수 없음</value>
   </data>
@@ -146,6 +149,9 @@
   </data>
   <data name="Register" xml:space="preserve">
     <value>회원가입</value>
+  </data>
+  <data name="Replay game" xml:space="preserve">
+    <value>게임 다시 보기</value>
   </data>
   <data name="Role Details" xml:space="preserve">
     <value>역할 상세 정보</value>

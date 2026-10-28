@@ -33,6 +33,9 @@
   <data name="A fully responsive layout that looks great on both desktop and mobile devices." xml:space="preserve">
     <value>Tata letak yang sepenuhnya responsif dan terlihat bagus di perangkat desktop maupun seluler.</value>
   </data>
+  <data name="A game for every kind of player." xml:space="preserve">
+    <value>Game untuk setiap jenis pemain.</value>
+  </data>
   <data name="A modern, feature-rich, and highly extensible foundation for your next web application." xml:space="preserve">
     <value>Sebuah fondasi yang modern, kaya fitur, dan sangat dapat diperluas untuk aplikasi web Anda berikutnya.</value>
   </data>
@@ -171,11 +174,23 @@
   <data name="Built-in User Management" xml:space="preserve">
     <value>Manajemen Pengguna Bawaan</value>
   </data>
+  <data name="Challenge a friend" xml:space="preserve">
+    <value>Tantang teman</value>
+  </data>
+  <data name="Chat at the board" xml:space="preserve">
+    <value>Mengobrol di papan</value>
+  </data>
   <data name="Checkstyle or similar needed" xml:space="preserve">
     <value>Checkstyle atau yang serupa diperlukan</value>
   </data>
   <data name="ChessServer" xml:space="preserve">
     <value>Server Catur</value>
+  </data>
+  <data name="ChessServer computer game" xml:space="preserve">
+    <value>Permainan catur ChessServer</value>
+  </data>
+  <data name="Choose from eight levels, from random legal moves for beginners to deeper engine searches." xml:space="preserve">
+    <value>Pilih dari delapan tingkat, mulai dari langkah legal acak untuk pemula hingga pencarian mesin yang lebih mendalam.</value>
   </data>
   <data name="Comes with Docker support for simplified and consistent deployments." xml:space="preserve">
     <value>Datang dengan dukungan Docker untuk penyebaran yang disederhanakan dan konsisten.</value>
@@ -206,6 +221,9 @@
   </data>
   <data name="Coverage Report" xml:space="preserve">
     <value>Laporan Cakupan</value>
+  </data>
+  <data name="Create a public or unlisted challenge, share the link, and choose your side." xml:space="preserve">
+    <value>Buat tantangan publik atau tidak tercantum, bagikan tautannya, lalu pilih sisi Anda.</value>
   </data>
   <data name="Cross Platform" xml:space="preserve">
     <value>Multi-Platform</value>
@@ -306,6 +324,12 @@
   <data name="Entity Framework Core included" xml:space="preserve">
     <value>Entity Framework Core disertakan</value>
   </data>
+  <data name="Explore the features" xml:space="preserve">
+    <value>Jelajahi fitur-fiturnya</value>
+  </data>
+  <data name="Export the game as PGN to review the moves in your favorite chess tool." xml:space="preserve">
+    <value>Ekspor permainan dalam format PGN untuk meninjau langkah-langkahnya di alat catur favorit Anda.</value>
+  </data>
   <data name="FAQ" xml:space="preserve">
     <value>FAQ</value>
   </data>
@@ -335,6 +359,9 @@
   </data>
   <data name="Flexible API" xml:space="preserve">
     <value>API Fleksibel</value>
+  </data>
+  <data name="Follow public games as they happen. Spectators can watch without changing the board." xml:space="preserve">
+    <value>Ikuti pertandingan publik yang sedang berlangsung. Penonton dapat menyaksikan tanpa mengubah papan.</value>
   </data>
   <data name="for any inquiries or to report issues." xml:space="preserve">
     <value>untuk pertanyaan apa pun atau untuk melaporkan masalah.</value>
@@ -489,11 +516,17 @@
   <data name="K8s / Swarm Ready" xml:space="preserve">
     <value>Siap untuk K8s / Swarm</value>
   </data>
+  <data name="Keep the moves" xml:space="preserve">
+    <value>Simpan langkah-langkah permainan</value>
+  </data>
   <data name="Lint Check" xml:space="preserve">
     <value>Cek Lint</value>
   </data>
   <data name="Maintain High Code Quality" xml:space="preserve">
     <value>Jaga Kualitas Kode yang Tinggi</value>
+  </data>
+  <data name="Make your move" xml:space="preserve">
+    <value>Lakukan langkahmu</value>
   </data>
   <data name="Management Dashboard" xml:space="preserve">
     <value>Dasbor Manajemen</value>
@@ -582,8 +615,14 @@
   <data name="One Click Start" xml:space="preserve">
     <value>Satu Klik Mulai</value>
   </data>
+  <data name="One familiar sign-in" xml:space="preserve">
+    <value>Satu kali masuk dengan cara yang familiar</value>
+  </data>
   <data name="Open Source" xml:space="preserve">
     <value>Sumber Terbuka</value>
+  </data>
+  <data name="Open the lobby to start a computer game, create a challenge, or find a game to watch." xml:space="preserve">
+    <value>Buka lobi untuk memulai permainan melawan komputer, membuat tantangan, atau mencari permainan untuk ditonton.</value>
   </data>
   <data name="OpenID Connect Integration" xml:space="preserve">
     <value>Integrasi OpenID Connect</value>
@@ -606,8 +645,14 @@
   <data name="Play against the computer, challenge a friend, or watch a game." xml:space="preserve">
     <value>Bermain melawan komputer, tantang teman, atau tonton permainan.</value>
   </data>
+  <data name="Play against the computer, challenge a friend, or watch a game. All in your browser." xml:space="preserve">
+    <value>Bermain melawan komputer, tantang teman, atau tonton pertandingan. Semuanya langsung di browser Anda.</value>
+  </data>
   <data name="Play chess" xml:space="preserve">
     <value>Bermain catur</value>
+  </data>
+  <data name="Play the computer" xml:space="preserve">
+    <value>Bermain melawan komputer</value>
   </data>
   <data name="Pre-configured /healthz and readiness probes" xml:space="preserve">
     <value>Probe /healthz dan kesiapan yang telah dikonfigurasi sebelumnya</value>
@@ -636,6 +681,9 @@
   <data name="Read the document" xml:space="preserve">
     <value>Baca dokumen</value>
   </data>
+  <data name="Ready for a game?" xml:space="preserve">
+    <value>Siap untuk bermain?</value>
+  </data>
   <data name="Requires Laravel Socialite config" xml:space="preserve">
     <value>Memerlukan konfigurasi Laravel Socialite</value>
   </data>
@@ -662,6 +710,9 @@
   </data>
   <data name="Shift with confidence" xml:space="preserve">
     <value>Berpindah dengan percaya diri</value>
+  </data>
+  <data name="Sign in with your organization account to play." xml:space="preserve">
+    <value>Masuk dengan akun organisasi Anda untuk bermain.</value>
   </data>
   <data name="Simple &amp; Easy" xml:space="preserve">
     <value>Sederhana &amp; Mudah</value>
@@ -720,6 +771,9 @@
   <data name="Supports JetBrains Rider for easy code style fixes." xml:space="preserve">
     <value>Mendukung JetBrains Rider untuk perbaikan gaya kode yang mudah.</value>
   </data>
+  <data name="Talk with the players and spectators while the game unfolds." xml:space="preserve">
+    <value>Mengobrollah dengan para pemain dan penonton selama pertandingan berlangsung.</value>
+  </data>
   <data name="Task Runner" xml:space="preserve">
     <value>Task Runner</value>
   </data>
@@ -777,8 +831,14 @@
   <data name="Use it as a foundation for your SaaS, a backend for your mobile app, a corporate website, or a personal blog. The possibilities are endless." xml:space="preserve">
     <value>Gunakan sebagai fondasi untuk SaaS Anda, backend untuk aplikasi seluler Anda, situs web perusahaan, atau blog pribadi. Kemungkinannya tidak terbatas.</value>
   </data>
+  <data name="Use your organization account. Your identity stays with you across games." xml:space="preserve">
+    <value>Gunakan akun organisasi Anda. Identitas Anda tetap sama di semua permainan.</value>
+  </data>
   <data name="View on GitHub" xml:space="preserve">
     <value>Lihat di GitHub</value>
+  </data>
+  <data name="Watch live games" xml:space="preserve">
+    <value>Tonton pertandingan secara langsung</value>
   </data>
   <data name="WebApplicationFactory available" xml:space="preserve">
     <value>WebApplicationFactory tersedia</value>
@@ -812,6 +872,12 @@
   </data>
   <data name="Your enterprise users don&apos;t need to register repeatedly." xml:space="preserve">
     <value>Pengguna perusahaan Anda tidak perlu mendaftar berulang kali.</value>
+  </data>
+  <data name="Your next challenge." xml:space="preserve">
+    <value>Tantangan Anda berikutnya.</value>
+  </data>
+  <data name="Your next move." xml:space="preserve">
+    <value>Langkah Anda berikutnya.</value>
   </data>
   <data name="Yubikey &amp; TOTP" xml:space="preserve">
     <value>Yubikey &amp; TOTP</value>

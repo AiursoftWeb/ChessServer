@@ -33,6 +33,9 @@
   <data name="A fully responsive layout that looks great on both desktop and mobile devices." xml:space="preserve">
     <value>Un layout complet responsive care arată excelent atât pe dispozitive desktop, cât și pe mobile.</value>
   </data>
+  <data name="A game for every kind of player." xml:space="preserve">
+    <value>Un joc pentru fiecare tip de jucător.</value>
+  </data>
   <data name="A modern, feature-rich, and highly extensible foundation for your next web application." xml:space="preserve">
     <value>O fundație modernă, bogată în funcționalități și extrem de extensibilă pentru următoarea ta aplicație web.</value>
   </data>
@@ -171,11 +174,23 @@
   <data name="Built-in User Management" xml:space="preserve">
     <value>Gestionare Utilizatori Integrată</value>
   </data>
+  <data name="Challenge a friend" xml:space="preserve">
+    <value>Provoacă un prieten</value>
+  </data>
+  <data name="Chat at the board" xml:space="preserve">
+    <value>Discută la tabla de joc</value>
+  </data>
   <data name="Checkstyle or similar needed" xml:space="preserve">
     <value>Se necesită Checkstyle sau similar</value>
   </data>
   <data name="ChessServer" xml:space="preserve">
     <value>Server de șah</value>
+  </data>
+  <data name="ChessServer computer game" xml:space="preserve">
+    <value>Jocul de șah ChessServer împotriva calculatorului</value>
+  </data>
+  <data name="Choose from eight levels, from random legal moves for beginners to deeper engine searches." xml:space="preserve">
+    <value>Alege dintre opt niveluri, de la mutări legale aleatorii pentru începători până la analize mai aprofundate ale motorului de șah.</value>
   </data>
   <data name="Comes with Docker support for simplified and consistent deployments." xml:space="preserve">
     <value>Include suport pentru Docker pentru implementări simplificate și consistente.</value>
@@ -206,6 +221,9 @@
   </data>
   <data name="Coverage Report" xml:space="preserve">
     <value>Raport acoperire</value>
+  </data>
+  <data name="Create a public or unlisted challenge, share the link, and choose your side." xml:space="preserve">
+    <value>Creează o provocare publică sau nelistată, distribuie linkul și alege-ți culoarea.</value>
   </data>
   <data name="Cross Platform" xml:space="preserve">
     <value>Platform Cruce</value>
@@ -306,6 +324,12 @@
   <data name="Entity Framework Core included" xml:space="preserve">
     <value>Entity Framework Core inclus</value>
   </data>
+  <data name="Explore the features" xml:space="preserve">
+    <value>Explorați funcționalitățile</value>
+  </data>
+  <data name="Export the game as PGN to review the moves in your favorite chess tool." xml:space="preserve">
+    <value>Exportă partida în format PGN pentru a revedea mutările în aplicația ta de șah preferată.</value>
+  </data>
   <data name="FAQ" xml:space="preserve">
     <value>Întrebări frecvente</value>
   </data>
@@ -335,6 +359,9 @@
   </data>
   <data name="Flexible API" xml:space="preserve">
     <value>API flexibilă</value>
+  </data>
+  <data name="Follow public games as they happen. Spectators can watch without changing the board." xml:space="preserve">
+    <value>Urmărește partidele publice în timp real. Spectatorii le pot urmări fără să modifice tabla.</value>
   </data>
   <data name="for any inquiries or to report issues." xml:space="preserve">
     <value>pentru orice întrebări sau pentru a raporta probleme.</value>
@@ -489,11 +516,17 @@
   <data name="K8s / Swarm Ready" xml:space="preserve">
     <value>Gata pentru K8s / Swarm</value>
   </data>
+  <data name="Keep the moves" xml:space="preserve">
+    <value>Păstrează mutările</value>
+  </data>
   <data name="Lint Check" xml:space="preserve">
     <value>Verificare Lint</value>
   </data>
   <data name="Maintain High Code Quality" xml:space="preserve">
     <value>Menține o Calitate Ridicată a Codului</value>
+  </data>
+  <data name="Make your move" xml:space="preserve">
+    <value>Fă-ți mutarea</value>
   </data>
   <data name="Management Dashboard" xml:space="preserve">
     <value>Panou de administrare</value>
@@ -582,8 +615,14 @@
   <data name="One Click Start" xml:space="preserve">
     <value>Un Click Start</value>
   </data>
+  <data name="One familiar sign-in" xml:space="preserve">
+    <value>O singură autentificare familiară</value>
+  </data>
   <data name="Open Source" xml:space="preserve">
     <value>Open Source</value>
+  </data>
+  <data name="Open the lobby to start a computer game, create a challenge, or find a game to watch." xml:space="preserve">
+    <value>Deschideți lobby-ul pentru a începe o partidă de șah împotriva calculatorului, a crea o provocare sau a găsi o partidă pe care să o urmăriți.</value>
   </data>
   <data name="OpenID Connect Integration" xml:space="preserve">
     <value>Integrare OpenID Connect</value>
@@ -606,8 +645,14 @@
   <data name="Play against the computer, challenge a friend, or watch a game." xml:space="preserve">
     <value>Joacă împotriva calculatorului, provoacă un prieten sau urmărește o partidă.</value>
   </data>
+  <data name="Play against the computer, challenge a friend, or watch a game. All in your browser." xml:space="preserve">
+    <value>Joacă împotriva calculatorului, provoacă un prieten sau urmărește o partidă. Totul în browserul tău.</value>
+  </data>
   <data name="Play chess" xml:space="preserve">
     <value>Joacă șah</value>
+  </data>
+  <data name="Play the computer" xml:space="preserve">
+    <value>Joacă împotriva calculatorului</value>
   </data>
   <data name="Pre-configured /healthz and readiness probes" xml:space="preserve">
     <value>Probes /healthz și de stare preconfigurate</value>
@@ -636,6 +681,9 @@
   <data name="Read the document" xml:space="preserve">
     <value>Citește documentația</value>
   </data>
+  <data name="Ready for a game?" xml:space="preserve">
+    <value>Gata de o partidă?</value>
+  </data>
   <data name="Requires Laravel Socialite config" xml:space="preserve">
     <value>Necesită configurarea Laravel Socialite</value>
   </data>
@@ -662,6 +710,9 @@
   </data>
   <data name="Shift with confidence" xml:space="preserve">
     <value>Mutați cu încredere</value>
+  </data>
+  <data name="Sign in with your organization account to play." xml:space="preserve">
+    <value>Conectați-vă cu contul organizației pentru a juca.</value>
   </data>
   <data name="Simple &amp; Easy" xml:space="preserve">
     <value>Simplu &amp; Ușor</value>
@@ -720,6 +771,9 @@
   <data name="Supports JetBrains Rider for easy code style fixes." xml:space="preserve">
     <value>Suportă JetBrains Rider pentru corectarea ușoară a stilului de cod.</value>
   </data>
+  <data name="Talk with the players and spectators while the game unfolds." xml:space="preserve">
+    <value>Discutați cu jucătorii și spectatorii pe măsură ce se desfășoară partida.</value>
+  </data>
   <data name="Task Runner" xml:space="preserve">
     <value>Executor de sarcini</value>
   </data>
@@ -777,8 +831,14 @@
   <data name="Use it as a foundation for your SaaS, a backend for your mobile app, a corporate website, or a personal blog. The possibilities are endless." xml:space="preserve">
     <value>Folosește-l ca fundație pentru SaaS-ul tău, ca backend pentru aplicația ta mobilă, ca site corporativ sau ca blog personal. Posibilitățile sunt nelimitate.</value>
   </data>
+  <data name="Use your organization account. Your identity stays with you across games." xml:space="preserve">
+    <value>Folosește contul organizației tale. Identitatea ta te însoțește în toate jocurile.</value>
+  </data>
   <data name="View on GitHub" xml:space="preserve">
     <value>Vizualizează pe GitHub</value>
+  </data>
+  <data name="Watch live games" xml:space="preserve">
+    <value>Urmărește partide în direct</value>
   </data>
   <data name="WebApplicationFactory available" xml:space="preserve">
     <value>WebApplicationFactory disponibil</value>
@@ -812,6 +872,12 @@
   </data>
   <data name="Your enterprise users don&apos;t need to register repeatedly." xml:space="preserve">
     <value>Utilizatorii dvs. de enterprise nu trebuie să se înregistreze din nou.</value>
+  </data>
+  <data name="Your next challenge." xml:space="preserve">
+    <value>Următoarea ta provocare.</value>
+  </data>
+  <data name="Your next move." xml:space="preserve">
+    <value>Următoarea ta mutare.</value>
   </data>
   <data name="Yubikey &amp; TOTP" xml:space="preserve">
     <value>Yubikey &amp; TOTP</value>

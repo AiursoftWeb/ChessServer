@@ -21,17 +21,29 @@
       <data name="1 — Beginner" xml:space="preserve">
     <value>1 — Anfänger</value>
   </data>
+  <data name="10 minutes" xml:space="preserve">
+    <value>10 Minuten</value>
+  </data>
+  <data name="15 minutes" xml:space="preserve">
+    <value>15 Minuten</value>
+  </data>
   <data name="2 — Easy" xml:space="preserve">
     <value>2 — Leicht</value>
   </data>
   <data name="3 — Casual" xml:space="preserve">
     <value>3 — Gelegenheitsspieler</value>
   </data>
+  <data name="3 minutes" xml:space="preserve">
+    <value>3 Minuten</value>
+  </data>
   <data name="4 — Intermediate" xml:space="preserve">
     <value>4 — Mittelstufe</value>
   </data>
   <data name="5 — Challenging" xml:space="preserve">
     <value>5 — Anspruchsvoll</value>
+  </data>
+  <data name="5 minutes" xml:space="preserve">
+    <value>5 Minuten</value>
   </data>
   <data name="6 — Hard" xml:space="preserve">
     <value>6 — Schwer</value>
@@ -42,11 +54,17 @@
   <data name="8 — Strongest" xml:space="preserve">
     <value>8 — Am stärksten</value>
   </data>
+  <data name="Black" xml:space="preserve">
+    <value>Schwarz</value>
+  </data>
   <data name="Create a challenge" xml:space="preserve">
     <value>Herausforderung erstellen</value>
   </data>
   <data name="Difficulty" xml:space="preserve">
     <value>Schwierigkeitsgrad</value>
+  </data>
+  <data name="My games" xml:space="preserve">
+    <value>Meine Partien</value>
   </data>
   <data name="No games in progress." xml:space="preserve">
     <value>Keine laufenden Spiele.</value>
@@ -66,11 +84,26 @@
   <data name="Play with a friend" xml:space="preserve">
     <value>Mit einem Freund spielen</value>
   </data>
+  <data name="Random" xml:space="preserve">
+    <value>Zufällig</value>
+  </data>
   <data name="Start game" xml:space="preserve">
     <value>Spiel starten</value>
   </data>
+  <data name="Time per player" xml:space="preserve">
+    <value>Zeit pro Spieler</value>
+  </data>
+  <data name="Unlimited" xml:space="preserve">
+    <value>Unbegrenzt</value>
+  </data>
   <data name="Watch a game" xml:space="preserve">
     <value>Ein Spiel ansehen</value>
+  </data>
+  <data name="White" xml:space="preserve">
+    <value>Weiß</value>
+  </data>
+  <data name="Your pieces" xml:space="preserve">
+    <value>Deine Figuren</value>
   </data>
 
 </root>

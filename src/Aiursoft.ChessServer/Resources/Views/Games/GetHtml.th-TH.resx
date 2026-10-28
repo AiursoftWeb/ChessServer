@@ -36,11 +36,17 @@
   <data name="Connection closed. Refresh to reconnect." xml:space="preserve">
     <value>การเชื่อมต่อถูกตัดขาด รีเฟรชเพื่อเชื่อมต่ออีกครั้ง</value>
   </data>
+  <data name="Could not confirm the saved game. Retry." xml:space="preserve">
+    <value>ไม่สามารถยืนยันการบันทึกเกมได้ ลองอีกครั้ง</value>
+  </data>
   <data name="Export PGN" xml:space="preserve">
     <value>ส่งออก PGN</value>
   </data>
   <data name="Game over — draw." xml:space="preserve">
     <value>จบเกม — เสมอ</value>
+  </data>
+  <data name="Game over. {0} wins." xml:space="preserve">
+    <value>จบเกม {0} เป็นฝ่ายชนะ</value>
   </data>
   <data name="Message" xml:space="preserve">
     <value>ข้อความ</value>
@@ -48,14 +54,32 @@
   <data name="Preferred duration: {0} minutes. Games are untimed." xml:space="preserve">
     <value>ระยะเวลาที่ต้องการ: {0} นาที เกมไม่มีการจำกัดเวลา</value>
   </data>
+  <data name="Replay" xml:space="preserve">
+    <value>เล่นซ้ำ</value>
+  </data>
+  <data name="Retry saving" xml:space="preserve">
+    <value>ลองบันทึกใหม่</value>
+  </data>
   <data name="Room unavailable. Return to the lobby." xml:space="preserve">
     <value>ไม่พบห้อง กลับไปที่ล็อบบี้</value>
+  </data>
+  <data name="Saved to My games." xml:space="preserve">
+    <value>บันทึกไปยังเกมของฉันแล้ว</value>
+  </data>
+  <data name="Saving game…" xml:space="preserve">
+    <value>กำลังบันทึกเกม…</value>
   </data>
   <data name="Send" xml:space="preserve">
     <value>ส่ง</value>
   </data>
   <data name="Spectator" xml:space="preserve">
     <value>ผู้ชม</value>
+  </data>
+  <data name="Time expired. {0} wins." xml:space="preserve">
+    <value>หมดเวลาแล้ว {0} เป็นฝ่ายชนะ</value>
+  </data>
+  <data name="Unlimited" xml:space="preserve">
+    <value>ไม่จำกัด</value>
   </data>
   <data name="White" xml:space="preserve">
     <value>ขาว</value>

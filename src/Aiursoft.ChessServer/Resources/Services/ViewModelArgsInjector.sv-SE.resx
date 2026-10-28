@@ -120,6 +120,9 @@
   <data name="Manage" xml:space="preserve">
     <value>Hantera</value>
   </data>
+  <data name="My games" xml:space="preserve">
+    <value>Mina spel</value>
+  </data>
   <data name="Not Found" xml:space="preserve">
     <value>Inte hittat</value>
   </data>
@@ -143,6 +146,9 @@
   </data>
   <data name="Register" xml:space="preserve">
     <value>Registrera</value>
+  </data>
+  <data name="Replay game" xml:space="preserve">
+    <value>Spela om partiet</value>
   </data>
   <data name="Role Details" xml:space="preserve">
     <value>Rollinformation</value>

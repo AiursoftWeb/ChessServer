@@ -21,17 +21,29 @@
       <data name="1 — Beginner" xml:space="preserve">
     <value>1 — 초급자</value>
   </data>
+  <data name="10 minutes" xml:space="preserve">
+    <value>10분</value>
+  </data>
+  <data name="15 minutes" xml:space="preserve">
+    <value>15분</value>
+  </data>
   <data name="2 — Easy" xml:space="preserve">
     <value>2 — 쉬움</value>
   </data>
   <data name="3 — Casual" xml:space="preserve">
     <value>3 — 보통</value>
   </data>
+  <data name="3 minutes" xml:space="preserve">
+    <value>3분</value>
+  </data>
   <data name="4 — Intermediate" xml:space="preserve">
     <value>4 — 중급</value>
   </data>
   <data name="5 — Challenging" xml:space="preserve">
     <value>5 — 도전</value>
+  </data>
+  <data name="5 minutes" xml:space="preserve">
+    <value>5분</value>
   </data>
   <data name="6 — Hard" xml:space="preserve">
     <value>6 — 어려움</value>
@@ -42,11 +54,17 @@
   <data name="8 — Strongest" xml:space="preserve">
     <value>8 — 최강</value>
   </data>
+  <data name="Black" xml:space="preserve">
+    <value>흑</value>
+  </data>
   <data name="Create a challenge" xml:space="preserve">
     <value>도전 과제 만들기</value>
   </data>
   <data name="Difficulty" xml:space="preserve">
     <value>난이도</value>
+  </data>
+  <data name="My games" xml:space="preserve">
+    <value>내 게임</value>
   </data>
   <data name="No games in progress." xml:space="preserve">
     <value>진행 중인 게임이 없습니다.</value>
@@ -66,11 +84,26 @@
   <data name="Play with a friend" xml:space="preserve">
     <value>친구와 대국하기</value>
   </data>
+  <data name="Random" xml:space="preserve">
+    <value>무작위</value>
+  </data>
   <data name="Start game" xml:space="preserve">
     <value>게임 시작</value>
   </data>
+  <data name="Time per player" xml:space="preserve">
+    <value>플레이어당 시간</value>
+  </data>
+  <data name="Unlimited" xml:space="preserve">
+    <value>무제한</value>
+  </data>
   <data name="Watch a game" xml:space="preserve">
     <value>게임 관전</value>
+  </data>
+  <data name="White" xml:space="preserve">
+    <value>백색</value>
+  </data>
+  <data name="Your pieces" xml:space="preserve">
+    <value>사용할 기물</value>
   </data>
 
 </root>

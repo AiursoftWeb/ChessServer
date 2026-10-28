@@ -33,6 +33,9 @@
   <data name="A fully responsive layout that looks great on both desktop and mobile devices." xml:space="preserve">
     <value>การจัดวางที่ตอบสนองได้อย่างสมบูรณ์ ซึ่งดูดีทั้งบนเดสก์ท็อปและอุปกรณ์มือถือ</value>
   </data>
+  <data name="A game for every kind of player." xml:space="preserve">
+    <value>เกมที่เหมาะกับผู้เล่นทุกแบบ</value>
+  </data>
   <data name="A modern, feature-rich, and highly extensible foundation for your next web application." xml:space="preserve">
     <value>พื้นฐานที่ทันสมัย อุดมไปด้วยคุณสมบัติ และสามารถขยายได้สูงสำหรับเว็บแอปพลิเคชันถัดไปของคุณ</value>
   </data>
@@ -171,11 +174,23 @@
   <data name="Built-in User Management" xml:space="preserve">
     <value>การจัดการผู้ใช้ในตัว</value>
   </data>
+  <data name="Challenge a friend" xml:space="preserve">
+    <value>ท้าเพื่อนมาแข่ง</value>
+  </data>
+  <data name="Chat at the board" xml:space="preserve">
+    <value>แชตบนกระดาน</value>
+  </data>
   <data name="Checkstyle or similar needed" xml:space="preserve">
     <value>จำเป็นต้องใช้ Checkstyle หรือเครื่องมือที่คล้ายกัน</value>
   </data>
   <data name="ChessServer" xml:space="preserve">
     <value>เซิร์ฟเวอร์หมากรุก</value>
+  </data>
+  <data name="ChessServer computer game" xml:space="preserve">
+    <value>เกมคอมพิวเตอร์ ChessServer</value>
+  </data>
+  <data name="Choose from eight levels, from random legal moves for beginners to deeper engine searches." xml:space="preserve">
+    <value>เลือกระดับได้ 8 ระดับ ตั้งแต่การเดินแบบสุ่มตามกติกาสำหรับผู้เริ่มต้น ไปจนถึงการค้นหาของเอนจินที่ลึกซึ้งยิ่งขึ้น</value>
   </data>
   <data name="Comes with Docker support for simplified and consistent deployments." xml:space="preserve">
     <value>มาพร้อมการสนับสนุน Docker สำหรับการปรับใช้งานที่ง่ายและมีความสม่ำเสมอ</value>
@@ -206,6 +221,9 @@
   </data>
   <data name="Coverage Report" xml:space="preserve">
     <value>รายงานการครอบคลุม</value>
+  </data>
+  <data name="Create a public or unlisted challenge, share the link, and choose your side." xml:space="preserve">
+    <value>สร้างเกมท้าประลองแบบสาธารณะหรือแบบไม่แสดงรายการ แชร์ลิงก์ แล้วเลือกฝ่ายที่คุณต้องการเล่น</value>
   </data>
   <data name="Cross Platform" xml:space="preserve">
     <value>ข้ามแพลตฟอร์ม</value>
@@ -306,6 +324,12 @@
   <data name="Entity Framework Core included" xml:space="preserve">
     <value>รวม Entity Framework Core แล้ว</value>
   </data>
+  <data name="Explore the features" xml:space="preserve">
+    <value>สำรวจฟีเจอร์ต่าง ๆ</value>
+  </data>
+  <data name="Export the game as PGN to review the moves in your favorite chess tool." xml:space="preserve">
+    <value>ส่งออกเกมเป็นไฟล์ PGN เพื่อทบทวนการเดินหมากในเครื่องมือหมากรุกที่คุณชื่นชอบ</value>
+  </data>
   <data name="FAQ" xml:space="preserve">
     <value>คำถามที่พบบ่อย</value>
   </data>
@@ -335,6 +359,9 @@
   </data>
   <data name="Flexible API" xml:space="preserve">
     <value>API ที่ยืดหยุ่น</value>
+  </data>
+  <data name="Follow public games as they happen. Spectators can watch without changing the board." xml:space="preserve">
+    <value>ติดตามเกมสาธารณะแบบเรียลไทม์ ผู้ชมสามารถดูได้โดยไม่ต้องเปลี่ยนตัวหมากบนกระดาน</value>
   </data>
   <data name="for any inquiries or to report issues." xml:space="preserve">
     <value>สำหรับข้อสงสัยใดๆ หรือเพื่อรายงานปัญหา</value>
@@ -489,11 +516,17 @@
   <data name="K8s / Swarm Ready" xml:space="preserve">
     <value>พร้อมใช้งานกับ K8s / Swarm</value>
   </data>
+  <data name="Keep the moves" xml:space="preserve">
+    <value>เก็บบันทึกการเดินหมาก</value>
+  </data>
   <data name="Lint Check" xml:space="preserve">
     <value>ตรวจสอบลินต์</value>
   </data>
   <data name="Maintain High Code Quality" xml:space="preserve">
     <value>รักษาคุณภาพโค้ดให้อยู่ในระดับสูง</value>
+  </data>
+  <data name="Make your move" xml:space="preserve">
+    <value>ลงมือเดินหมาก</value>
   </data>
   <data name="Management Dashboard" xml:space="preserve">
     <value>แดชบอร์ดการจัดการ</value>
@@ -582,8 +615,14 @@
   <data name="One Click Start" xml:space="preserve">
     <value>เริ่มต้นด้วยคลิกเดียว</value>
   </data>
+  <data name="One familiar sign-in" xml:space="preserve">
+    <value>การเข้าสู่ระบบเพียงครั้งเดียวที่คุ้นเคย</value>
+  </data>
   <data name="Open Source" xml:space="preserve">
     <value>โอเพนซอร์ส</value>
+  </data>
+  <data name="Open the lobby to start a computer game, create a challenge, or find a game to watch." xml:space="preserve">
+    <value>เปิดล็อบบี้เพื่อเริ่มเล่นกับคอมพิวเตอร์ สร้างชาเลนจ์ หรือค้นหาเกมที่ต้องการรับชม</value>
   </data>
   <data name="OpenID Connect Integration" xml:space="preserve">
     <value>การผสานรวม OpenID Connect</value>
@@ -606,8 +645,14 @@
   <data name="Play against the computer, challenge a friend, or watch a game." xml:space="preserve">
     <value>เล่นกับคอมพิวเตอร์ ท้าประลองกับเพื่อน หรือชมเกม</value>
   </data>
+  <data name="Play against the computer, challenge a friend, or watch a game. All in your browser." xml:space="preserve">
+    <value>เล่นกับคอมพิวเตอร์ ท้าประลองกับเพื่อน หรือรับชมเกม ทั้งหมดนี้ทำได้ผ่านเบราว์เซอร์ของคุณ</value>
+  </data>
   <data name="Play chess" xml:space="preserve">
     <value>เล่นหมากรุก</value>
+  </data>
+  <data name="Play the computer" xml:space="preserve">
+    <value>เล่นกับคอมพิวเตอร์</value>
   </data>
   <data name="Pre-configured /healthz and readiness probes" xml:space="preserve">
     <value>ตั้งค่าล่วงหน้าสำหรับโพรบ /healthz และโพรบความพร้อมใช้งาน</value>
@@ -636,6 +681,9 @@
   <data name="Read the document" xml:space="preserve">
     <value>อ่านเอกสาร</value>
   </data>
+  <data name="Ready for a game?" xml:space="preserve">
+    <value>พร้อมเล่นเกมหรือยัง?</value>
+  </data>
   <data name="Requires Laravel Socialite config" xml:space="preserve">
     <value>ต้องมีการตั้งค่า Laravel Socialite</value>
   </data>
@@ -662,6 +710,9 @@
   </data>
   <data name="Shift with confidence" xml:space="preserve">
     <value>เปลี่ยนไปอย่างมั่นใจ</value>
+  </data>
+  <data name="Sign in with your organization account to play." xml:space="preserve">
+    <value>ลงชื่อเข้าใช้ด้วยบัญชีองค์กรของคุณเพื่อเล่น</value>
   </data>
   <data name="Simple &amp; Easy" xml:space="preserve">
     <value>ง่ายและสะดวก</value>
@@ -720,6 +771,9 @@
   <data name="Supports JetBrains Rider for easy code style fixes." xml:space="preserve">
     <value>รองรับ JetBrains Rider สำหรับการแก้ไขรูปแบบโค้ดอย่างง่าย</value>
   </data>
+  <data name="Talk with the players and spectators while the game unfolds." xml:space="preserve">
+    <value>พูดคุยกับผู้เล่นและผู้ชมระหว่างที่เกมกำลังดำเนินอยู่</value>
+  </data>
   <data name="Task Runner" xml:space="preserve">
     <value>ผู้จัดการงาน</value>
   </data>
@@ -777,8 +831,14 @@
   <data name="Use it as a foundation for your SaaS, a backend for your mobile app, a corporate website, or a personal blog. The possibilities are endless." xml:space="preserve">
     <value>ใช้เป็นพื้นฐานสำหรับ SaaS ของคุณ, แบ็กเอนด์สำหรับแอปมือถือ, เว็บไซต์องค์กร, หรือบล็อกส่วนตัว ความเป็นไปได้นั้นไม่มีที่สิ้นสุด</value>
   </data>
+  <data name="Use your organization account. Your identity stays with you across games." xml:space="preserve">
+    <value>ใช้บัญชีองค์กรของคุณ ตัวตนของคุณจะคงเดิมในทุกเกม</value>
+  </data>
   <data name="View on GitHub" xml:space="preserve">
     <value>ดูบน GitHub</value>
+  </data>
+  <data name="Watch live games" xml:space="preserve">
+    <value>รับชมเกมสด</value>
   </data>
   <data name="WebApplicationFactory available" xml:space="preserve">
     <value>มี WebApplicationFactory</value>
@@ -812,6 +872,12 @@
   </data>
   <data name="Your enterprise users don&apos;t need to register repeatedly." xml:space="preserve">
     <value>ผู้ใช้งานองค์กรของคุณไม่จำเป็นต้องลงทะเบียนซ้ำ</value>
+  </data>
+  <data name="Your next challenge." xml:space="preserve">
+    <value>ความท้าทายครั้งต่อไปของคุณ</value>
+  </data>
+  <data name="Your next move." xml:space="preserve">
+    <value>ตาต่อไปของคุณ</value>
   </data>
   <data name="Yubikey &amp; TOTP" xml:space="preserve">
     <value>Yubikey &amp; TOTP</value>

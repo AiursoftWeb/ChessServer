@@ -36,11 +36,17 @@
   <data name="Connection closed. Refresh to reconnect." xml:space="preserve">
     <value>Connection closed. Refresh to reconnect.</value>
   </data>
+  <data name="Could not confirm the saved game. Retry." xml:space="preserve">
+    <value>Could not confirm the saved game. Retry.</value>
+  </data>
   <data name="Export PGN" xml:space="preserve">
     <value>Export PGN</value>
   </data>
   <data name="Game over — draw." xml:space="preserve">
     <value>Game over — draw.</value>
+  </data>
+  <data name="Game over. {0} wins." xml:space="preserve">
+    <value>Game over. {0} wins.</value>
   </data>
   <data name="Message" xml:space="preserve">
     <value>Message</value>
@@ -48,14 +54,32 @@
   <data name="Preferred duration: {0} minutes. Games are untimed." xml:space="preserve">
     <value>Preferred duration: {0} minutes. Games are untimed.</value>
   </data>
+  <data name="Replay" xml:space="preserve">
+    <value>Replay</value>
+  </data>
+  <data name="Retry saving" xml:space="preserve">
+    <value>Retry saving</value>
+  </data>
   <data name="Room unavailable. Return to the lobby." xml:space="preserve">
     <value>Room unavailable. Return to the foyer.</value>
+  </data>
+  <data name="Saved to My games." xml:space="preserve">
+    <value>Saved to My games.</value>
+  </data>
+  <data name="Saving game…" xml:space="preserve">
+    <value>Saving game…</value>
   </data>
   <data name="Send" xml:space="preserve">
     <value>Send</value>
   </data>
   <data name="Spectator" xml:space="preserve">
     <value>Spectator</value>
+  </data>
+  <data name="Time expired. {0} wins." xml:space="preserve">
+    <value>Time has run out. {0} wins.</value>
+  </data>
+  <data name="Unlimited" xml:space="preserve">
+    <value>Unlimited</value>
   </data>
   <data name="White" xml:space="preserve">
     <value>White</value>

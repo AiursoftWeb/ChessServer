@@ -36,11 +36,17 @@
   <data name="Connection closed. Refresh to reconnect." xml:space="preserve">
     <value>連線已中斷。重新整理以重新連線。</value>
   </data>
+  <data name="Could not confirm the saved game. Retry." xml:space="preserve">
+    <value>無法確認已儲存的棋局。請重試。</value>
+  </data>
   <data name="Export PGN" xml:space="preserve">
     <value>匯出 PGN</value>
   </data>
   <data name="Game over — draw." xml:space="preserve">
     <value>遊戲結束 — 和局。</value>
+  </data>
+  <data name="Game over. {0} wins." xml:space="preserve">
+    <value>對局結束。{0} 獲勝。</value>
   </data>
   <data name="Message" xml:space="preserve">
     <value>訊息</value>
@@ -48,14 +54,32 @@
   <data name="Preferred duration: {0} minutes. Games are untimed." xml:space="preserve">
     <value>首選時長：{0} 分鐘。棋局沒有時間限制。</value>
   </data>
+  <data name="Replay" xml:space="preserve">
+    <value>重播</value>
+  </data>
+  <data name="Retry saving" xml:space="preserve">
+    <value>重新儲存</value>
+  </data>
   <data name="Room unavailable. Return to the lobby." xml:space="preserve">
     <value>房間無法使用。返回大廳。</value>
+  </data>
+  <data name="Saved to My games." xml:space="preserve">
+    <value>已儲存至「我的遊戲」。</value>
+  </data>
+  <data name="Saving game…" xml:space="preserve">
+    <value>正在儲存遊戲…</value>
   </data>
   <data name="Send" xml:space="preserve">
     <value>傳送</value>
   </data>
   <data name="Spectator" xml:space="preserve">
     <value>旁觀者</value>
+  </data>
+  <data name="Time expired. {0} wins." xml:space="preserve">
+    <value>時間已到。{0} 勝出。</value>
+  </data>
+  <data name="Unlimited" xml:space="preserve">
+    <value>不限</value>
   </data>
   <data name="White" xml:space="preserve">
     <value>白方</value>

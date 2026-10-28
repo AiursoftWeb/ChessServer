@@ -33,6 +33,9 @@
   <data name="A fully responsive layout that looks great on both desktop and mobile devices." xml:space="preserve">
     <value>完全響應式佈局，在桌面和行動裝置上都能呈現絕佳外觀。</value>
   </data>
+  <data name="A game for every kind of player." xml:space="preserve">
+    <value>適合各種玩家的遊戲。</value>
+  </data>
   <data name="A modern, feature-rich, and highly extensible foundation for your next web application." xml:space="preserve">
     <value>一個現代化、功能豐富且高度可擴展的基礎架構，為您的下一個網頁應用程式提供堅實根基。</value>
   </data>
@@ -171,11 +174,23 @@
   <data name="Built-in User Management" xml:space="preserve">
     <value>內建使用者管理</value>
   </data>
+  <data name="Challenge a friend" xml:space="preserve">
+    <value>挑戰朋友</value>
+  </data>
+  <data name="Chat at the board" xml:space="preserve">
+    <value>在棋盤旁聊天</value>
+  </data>
   <data name="Checkstyle or similar needed" xml:space="preserve">
     <value>需搭配 Checkstyle 或類似工具</value>
   </data>
   <data name="ChessServer" xml:space="preserve">
     <value>西洋棋伺服器</value>
+  </data>
+  <data name="ChessServer computer game" xml:space="preserve">
+    <value>ChessServer 電腦棋局</value>
+  </data>
+  <data name="Choose from eight levels, from random legal moves for beginners to deeper engine searches." xml:space="preserve">
+    <value>可從八個難度等級中選擇，從適合初學者的隨機合法走法，到更深入的引擎搜尋。</value>
   </data>
   <data name="Comes with Docker support for simplified and consistent deployments." xml:space="preserve">
     <value>內建 Docker 支援，可簡化並一致地進行部署。</value>
@@ -206,6 +221,9 @@
   </data>
   <data name="Coverage Report" xml:space="preserve">
     <value>覆蓋率報表</value>
+  </data>
+  <data name="Create a public or unlisted challenge, share the link, and choose your side." xml:space="preserve">
+    <value>建立公開或不公開列出的挑戰，分享連結，並選擇你的陣營。</value>
   </data>
   <data name="Cross Platform" xml:space="preserve">
     <value>跨平台</value>
@@ -306,6 +324,12 @@
   <data name="Entity Framework Core included" xml:space="preserve">
     <value>內建 Entity Framework Core</value>
   </data>
+  <data name="Explore the features" xml:space="preserve">
+    <value>探索各項功能</value>
+  </data>
+  <data name="Export the game as PGN to review the moves in your favorite chess tool." xml:space="preserve">
+    <value>將棋局匯出為 PGN 檔案，以便使用您慣用的西洋棋工具檢視棋步。</value>
+  </data>
   <data name="FAQ" xml:space="preserve">
     <value>常見問題</value>
   </data>
@@ -335,6 +359,9 @@
   </data>
   <data name="Flexible API" xml:space="preserve">
     <value>彈性 API</value>
+  </data>
+  <data name="Follow public games as they happen. Spectators can watch without changing the board." xml:space="preserve">
+    <value>即時追蹤公開對局。觀眾可以觀看，不會影響棋盤。</value>
   </data>
   <data name="for any inquiries or to report issues." xml:space="preserve">
     <value>如有任何疑問或回報問題。</value>
@@ -489,11 +516,17 @@
   <data name="K8s / Swarm Ready" xml:space="preserve">
     <value>K8s / Swarm 準備就緒</value>
   </data>
+  <data name="Keep the moves" xml:space="preserve">
+    <value>保存棋步</value>
+  </data>
   <data name="Lint Check" xml:space="preserve">
     <value>Lint Check</value>
   </data>
   <data name="Maintain High Code Quality" xml:space="preserve">
     <value>維持高品質程式碼</value>
+  </data>
+  <data name="Make your move" xml:space="preserve">
+    <value>輪到你出招</value>
   </data>
   <data name="Management Dashboard" xml:space="preserve">
     <value>管理儀表板</value>
@@ -582,8 +615,14 @@
   <data name="One Click Start" xml:space="preserve">
     <value>一键啟動</value>
   </data>
+  <data name="One familiar sign-in" xml:space="preserve">
+    <value>單一熟悉的登入方式</value>
+  </data>
   <data name="Open Source" xml:space="preserve">
     <value>開放原始碼</value>
+  </data>
+  <data name="Open the lobby to start a computer game, create a challenge, or find a game to watch." xml:space="preserve">
+    <value>開啟大廳即可開始電腦對弈、建立挑戰，或尋找比賽觀戰。</value>
   </data>
   <data name="OpenID Connect Integration" xml:space="preserve">
     <value>OpenID Connect 整合</value>
@@ -606,8 +645,14 @@
   <data name="Play against the computer, challenge a friend, or watch a game." xml:space="preserve">
     <value>與電腦對弈、挑戰朋友，或觀賞棋局。</value>
   </data>
+  <data name="Play against the computer, challenge a friend, or watch a game. All in your browser." xml:space="preserve">
+    <value>在瀏覽器中即可與電腦對弈、挑戰好友，或觀賞棋局。</value>
+  </data>
   <data name="Play chess" xml:space="preserve">
     <value>開始下棋</value>
+  </data>
+  <data name="Play the computer" xml:space="preserve">
+    <value>和電腦對弈</value>
   </data>
   <data name="Pre-configured /healthz and readiness probes" xml:space="preserve">
     <value>預先配置 /healthz 和就緒探針</value>
@@ -636,6 +681,9 @@
   <data name="Read the document" xml:space="preserve">
     <value>閱讀文件</value>
   </data>
+  <data name="Ready for a game?" xml:space="preserve">
+    <value>準備好來場對弈了嗎？</value>
+  </data>
   <data name="Requires Laravel Socialite config" xml:space="preserve">
     <value>需要 Laravel Socialite 設定</value>
   </data>
@@ -662,6 +710,9 @@
   </data>
   <data name="Shift with confidence" xml:space="preserve">
     <value>自信移轉</value>
+  </data>
+  <data name="Sign in with your organization account to play." xml:space="preserve">
+    <value>使用您的組織帳戶登入即可開始遊戲。</value>
   </data>
   <data name="Simple &amp; Easy" xml:space="preserve">
     <value>簡單且容易</value>
@@ -720,6 +771,9 @@
   <data name="Supports JetBrains Rider for easy code style fixes." xml:space="preserve">
     <value>支援 JetBrains Rider，輕鬆修正程式碼風格。</value>
   </data>
+  <data name="Talk with the players and spectators while the game unfolds." xml:space="preserve">
+    <value>在對局進行時，與玩家和觀眾聊天。</value>
+  </data>
   <data name="Task Runner" xml:space="preserve">
     <value>工作執行器</value>
   </data>
@@ -777,8 +831,14 @@
   <data name="Use it as a foundation for your SaaS, a backend for your mobile app, a corporate website, or a personal blog. The possibilities are endless." xml:space="preserve">
     <value>無論是作為您 SaaS 的基礎架構、行動應用程式的後端、企業網站或個人部落格，都能完美適用。可能性永無止境。</value>
   </data>
+  <data name="Use your organization account. Your identity stays with you across games." xml:space="preserve">
+    <value>使用您的組織帳戶。您的身分會在不同對局中保持一致。</value>
+  </data>
   <data name="View on GitHub" xml:space="preserve">
     <value>在 GitHub 上查看</value>
+  </data>
+  <data name="Watch live games" xml:space="preserve">
+    <value>觀賞即時對局</value>
   </data>
   <data name="WebApplicationFactory available" xml:space="preserve">
     <value>提供 WebApplicationFactory</value>
@@ -812,6 +872,12 @@
   </data>
   <data name="Your enterprise users don&apos;t need to register repeatedly." xml:space="preserve">
     <value>您的企業使用者無需重複註冊。</value>
+  </data>
+  <data name="Your next challenge." xml:space="preserve">
+    <value>迎接你的下一個挑戰。</value>
+  </data>
+  <data name="Your next move." xml:space="preserve">
+    <value>輪到你走了。</value>
   </data>
   <data name="Yubikey &amp; TOTP" xml:space="preserve">
     <value>Yubikey &amp; TOTP</value>

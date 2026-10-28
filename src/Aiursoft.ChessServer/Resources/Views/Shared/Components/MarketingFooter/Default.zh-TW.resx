@@ -24,6 +24,9 @@
   <data name="Aiursoft Template - A modern, feature-rich, and highly extensible foundation for your next web application." xml:space="preserve">
     <value>Aiursoft Template - 一個現代化、功能豐富且高度可擴展的基礎框架，為您的下一個網路應用程式奠定堅實基礎。</value>
   </data>
+  <data name="ChessServer - Play chess, challenge friends, and watch games together." xml:space="preserve">
+    <value>ChessServer－下棋、挑戰好友，並一起觀賞棋局。</value>
+  </data>
   <data name="Community" xml:space="preserve">
     <value>社群</value>
   </data>

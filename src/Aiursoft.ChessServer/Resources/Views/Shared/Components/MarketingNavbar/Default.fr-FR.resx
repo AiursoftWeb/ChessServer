@@ -30,6 +30,9 @@
   <data name="GitHub" xml:space="preserve">
     <value>GitHub</value>
   </data>
+  <data name="Play chess" xml:space="preserve">
+    <value>Jouer aux échecs</value>
+  </data>
   <data name="Source Code" xml:space="preserve">
     <value>Code source</value>
   </data>

@@ -36,11 +36,17 @@
   <data name="Connection closed. Refresh to reconnect." xml:space="preserve">
     <value>З’єднання розірвано. Оновіть сторінку, щоб підключитися знову.</value>
   </data>
+  <data name="Could not confirm the saved game. Retry." xml:space="preserve">
+    <value>Не вдалося підтвердити збереження гри. Спробуйте ще раз.</value>
+  </data>
   <data name="Export PGN" xml:space="preserve">
     <value>Експортувати PGN</value>
   </data>
   <data name="Game over — draw." xml:space="preserve">
     <value>Гру завершено — нічия.</value>
+  </data>
+  <data name="Game over. {0} wins." xml:space="preserve">
+    <value>Кінець гри. {0} переміг.</value>
   </data>
   <data name="Message" xml:space="preserve">
     <value>Повідомлення</value>
@@ -48,14 +54,32 @@
   <data name="Preferred duration: {0} minutes. Games are untimed." xml:space="preserve">
     <value>Бажана тривалість: {0} хвилин. Ігри проходять без обмеження часу.</value>
   </data>
+  <data name="Replay" xml:space="preserve">
+    <value>Повторити</value>
+  </data>
+  <data name="Retry saving" xml:space="preserve">
+    <value>Повторити збереження</value>
+  </data>
   <data name="Room unavailable. Return to the lobby." xml:space="preserve">
     <value>Кімната недоступна. Поверніться до холу.</value>
+  </data>
+  <data name="Saved to My games." xml:space="preserve">
+    <value>Збережено в розділі «Мої ігри».</value>
+  </data>
+  <data name="Saving game…" xml:space="preserve">
+    <value>Збереження гри…</value>
   </data>
   <data name="Send" xml:space="preserve">
     <value>Надіслати</value>
   </data>
   <data name="Spectator" xml:space="preserve">
     <value>Глядач</value>
+  </data>
+  <data name="Time expired. {0} wins." xml:space="preserve">
+    <value>Час вичерпано. Перемагає {0}.</value>
+  </data>
+  <data name="Unlimited" xml:space="preserve">
+    <value>Без обмежень</value>
   </data>
   <data name="White" xml:space="preserve">
     <value>Білі</value>

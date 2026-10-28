@@ -36,6 +36,9 @@
   <data name="Share this page with your opponent. Both players must sign in." xml:space="preserve">
     <value>Partagez cette page avec votre adversaire. Les deux joueurs doivent se connecter.</value>
   </data>
+  <data name="Time per player: {0} minutes." xml:space="preserve">
+    <value>Temps par joueur : {0} minutes.</value>
+  </data>
   <data name="Waiting for your opponent…" xml:space="preserve">
     <value>En attente de votre adversaire…</value>
   </data>

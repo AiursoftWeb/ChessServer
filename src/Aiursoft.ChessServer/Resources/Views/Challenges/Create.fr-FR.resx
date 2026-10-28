@@ -63,8 +63,14 @@
   <data name="Room name" xml:space="preserve">
     <value>Nom de la salle</value>
   </data>
+  <data name="Time per player" xml:space="preserve">
+    <value>Temps par joueur</value>
+  </data>
   <data name="Time preference" xml:space="preserve">
     <value>Durée souhaitée</value>
+  </data>
+  <data name="Unlimited" xml:space="preserve">
+    <value>Illimité</value>
   </data>
   <data name="Unlisted — share the room link" xml:space="preserve">
     <value>Non répertoriée — partagez le lien de la salle</value>
