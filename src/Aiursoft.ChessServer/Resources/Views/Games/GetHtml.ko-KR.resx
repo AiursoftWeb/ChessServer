@@ -24,23 +24,101 @@
   <data name="{0} to move" xml:space="preserve">
     <value>{0} 차례입니다</value>
   </data>
+  <data name="{0} wins" xml:space="preserve">
+    <value>{0} 승리</value>
+  </data>
+  <data name="A draw cannot be offered now." xml:space="preserve">
+    <value>지금은 무승부를 제안할 수 없습니다.</value>
+  </data>
+  <data name="Abort game" xml:space="preserve">
+    <value>게임 중단</value>
+  </data>
+  <data name="Accept draw" xml:space="preserve">
+    <value>무승부 수락</value>
+  </data>
+  <data name="After 90 seconds without your opponent, you may claim the result. A computer game ends after two minutes away; a game with both players away ends after ten minutes." xml:space="preserve">
+    <value>상대가 90초 동안 자리를 비우면 경기 결과를 선언할 수 있습니다. 컴퓨터와의 대국은 상대가 2분 동안 자리를 비우면 종료되고, 두 플레이어가 모두 자리를 비운 대국은 10분 후 종료됩니다.</value>
+  </data>
+  <data name="An unplayed game ends after one minute. Leaving does not pause the clock." xml:space="preserve">
+    <value>한 번도 진행되지 않은 게임은 1분 후 종료됩니다. 나가더라도 시계는 멈추지 않습니다.</value>
+  </data>
+  <data name="Bishop" xml:space="preserve">
+    <value>비숍</value>
+  </data>
   <data name="Black" xml:space="preserve">
     <value>흑</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>취소</value>
   </data>
   <data name="Chat" xml:space="preserve">
     <value>채팅</value>
   </data>
+  <data name="Checkmate" xml:space="preserve">
+    <value>체크메이트</value>
+  </data>
   <data name="Checkmate. {0} wins." xml:space="preserve">
     <value>체크메이트. {0} 승리.</value>
+  </data>
+  <data name="Claim result" xml:space="preserve">
+    <value>승리 선언</value>
+  </data>
+  <data name="Computer is thinking…" xml:space="preserve">
+    <value>컴퓨터가 생각 중…</value>
+  </data>
+  <data name="Confirm resignation" xml:space="preserve">
+    <value>기권 확인</value>
+  </data>
+  <data name="Confirming your move…" xml:space="preserve">
+    <value>수 진행 확인 중…</value>
+  </data>
+  <data name="Connected" xml:space="preserve">
+    <value>연결됨</value>
+  </data>
+  <data name="Connecting…" xml:space="preserve">
+    <value>연결 중…</value>
+  </data>
+  <data name="Connection and game rules" xml:space="preserve">
+    <value>연결 및 게임 규칙</value>
   </data>
   <data name="Connection closed. Refresh to reconnect." xml:space="preserve">
     <value>연결이 끊겼습니다. 새로고침하여 다시 연결하세요.</value>
   </data>
+  <data name="Could not complete the action. Reconnecting to the server…" xml:space="preserve">
+    <value>작업을 완료하지 못했습니다. 서버에 다시 연결하는 중…</value>
+  </data>
   <data name="Could not confirm the saved game. Retry." xml:space="preserve">
     <value>저장된 게임을 확인할 수 없습니다. 다시 시도하세요.</value>
   </data>
+  <data name="Dismiss offer" xml:space="preserve">
+    <value>제안 거절</value>
+  </data>
+  <data name="Draw" xml:space="preserve">
+    <value>무승부</value>
+  </data>
+  <data name="Draw by agreement" xml:space="preserve">
+    <value>합의 무승부</value>
+  </data>
+  <data name="Draw by repetition" xml:space="preserve">
+    <value>3회 반복으로 인한 무승부</value>
+  </data>
+  <data name="Draw by the fifty-move rule" xml:space="preserve">
+    <value>50수 규칙에 따른 무승부</value>
+  </data>
   <data name="Export PGN" xml:space="preserve">
     <value>PGN 내보내기</value>
+  </data>
+  <data name="Game aborted before any move" xml:space="preserve">
+    <value>첫 수를 두기 전에 대국이 중단되었습니다</value>
+  </data>
+  <data name="Game ended because both players left" xml:space="preserve">
+    <value>두 플레이어가 모두 떠나 게임이 종료되었습니다</value>
+  </data>
+  <data name="Game ended by abandonment" xml:space="preserve">
+    <value>기권으로 게임이 종료되었습니다</value>
+  </data>
+  <data name="Game over" xml:space="preserve">
+    <value>게임 종료</value>
   </data>
   <data name="Game over — draw." xml:space="preserve">
     <value>경기 종료 — 무승부.</value>
@@ -48,17 +126,68 @@
   <data name="Game over. {0} wins." xml:space="preserve">
     <value>게임 종료. {0} 승리.</value>
   </data>
+  <data name="Knight" xml:space="preserve">
+    <value>나이트</value>
+  </data>
+  <data name="Lobby" xml:space="preserve">
+    <value>로비</value>
+  </data>
   <data name="Message" xml:space="preserve">
     <value>메시지</value>
+  </data>
+  <data name="Move list" xml:space="preserve">
+    <value>기보 목록</value>
+  </data>
+  <data name="Moves" xml:space="preserve">
+    <value>기보</value>
+  </data>
+  <data name="Neither side has sufficient mating material" xml:space="preserve">
+    <value>양쪽 모두 체크메이트를 할 만한 기물이 충분하지 않습니다</value>
+  </data>
+  <data name="Offer draw" xml:space="preserve">
+    <value>무승부 제안</value>
+  </data>
+  <data name="Only the players can perform this action." xml:space="preserve">
+    <value>이 작업은 플레이어만 수행할 수 있습니다.</value>
+  </data>
+  <data name="Opponent disconnected. Reconnection time remaining: {0}s." xml:space="preserve">
+    <value>상대방의 연결이 끊겼습니다. 재접속까지 남은 시간: {0}초.</value>
+  </data>
+  <data name="Play another game" xml:space="preserve">
+    <value>다른 게임 하기</value>
   </data>
   <data name="Preferred duration: {0} minutes. Games are untimed." xml:space="preserve">
     <value>선호 시간: {0}분. 체스 경기는 시간 제한 없이 진행됩니다.</value>
   </data>
+  <data name="Promote pawn" xml:space="preserve">
+    <value>폰을 승격시키세요</value>
+  </data>
+  <data name="Queen" xml:space="preserve">
+    <value>퀸</value>
+  </data>
+  <data name="Reconnecting… Your clock keeps running." xml:space="preserve">
+    <value>재연결 중… 게임 시계는 계속 돌아갑니다.</value>
+  </data>
   <data name="Replay" xml:space="preserve">
     <value>다시 보기</value>
   </data>
+  <data name="Resign" xml:space="preserve">
+    <value>기권</value>
+  </data>
+  <data name="Resign this game?" xml:space="preserve">
+    <value>이 게임을 기권하시겠습니까?</value>
+  </data>
+  <data name="Resignation" xml:space="preserve">
+    <value>투항</value>
+  </data>
   <data name="Retry saving" xml:space="preserve">
     <value>저장 다시 시도</value>
+  </data>
+  <data name="Return to live position" xml:space="preserve">
+    <value>실시간 위치로 돌아가기</value>
+  </data>
+  <data name="Rook" xml:space="preserve">
+    <value>룩</value>
   </data>
   <data name="Room unavailable. Return to the lobby." xml:space="preserve">
     <value>방을 사용할 수 없습니다. 로비로 돌아가세요.</value>
@@ -72,8 +201,41 @@
   <data name="Send" xml:space="preserve">
     <value>전송</value>
   </data>
+  <data name="Server maintenance pauses the clocks. A player disconnecting does not." xml:space="preserve">
+    <value>서버 점검 중에는 시계가 멈춥니다. 플레이어가 접속을 끊어도 시계는 멈추지 않습니다.</value>
+  </data>
   <data name="Spectator" xml:space="preserve">
     <value>관전자</value>
+  </data>
+  <data name="Stalemate" xml:space="preserve">
+    <value>패</value>
+  </data>
+  <data name="That move cannot be played in the current position." xml:space="preserve">
+    <value>현재 포지션에서는 해당 수를 둘 수 없습니다.</value>
+  </data>
+  <data name="The draw offer is no longer available." xml:space="preserve">
+    <value>무승부 제안은 더 이상 유효하지 않습니다.</value>
+  </data>
+  <data name="The game has started. You can resign instead." xml:space="preserve">
+    <value>게임이 시작되었습니다. 대신 기권할 수 있습니다.</value>
+  </data>
+  <data name="The position changed. Your board has been synchronized." xml:space="preserve">
+    <value>기물 배치가 변경되었습니다. 체스판이 동기화되었습니다.</value>
+  </data>
+  <data name="This action could not be confirmed. Refresh to synchronize." xml:space="preserve">
+    <value>이 작업을 확인할 수 없습니다. 새로고침하여 동기화하세요.</value>
+  </data>
+  <data name="This game has ended." xml:space="preserve">
+    <value>이 게임은 종료되었습니다.</value>
+  </data>
+  <data name="This game is still in progress. Your clock will keep running." xml:space="preserve">
+    <value>이 게임은 아직 진행 중입니다. 시계는 계속 작동합니다.</value>
+  </data>
+  <data name="Time expired" xml:space="preserve">
+    <value>시간 초과</value>
+  </data>
+  <data name="Time expired, but the opponent cannot checkmate." xml:space="preserve">
+    <value>시간이 초과되었지만 상대는 체크메이트할 수 없습니다.</value>
   </data>
   <data name="Time expired. {0} wins." xml:space="preserve">
     <value>시간이 만료되었습니다. {0} 승리.</value>
@@ -92,6 +254,18 @@
   </data>
   <data name="You are watching this game." xml:space="preserve">
     <value>이 경기를 관전하고 있습니다.</value>
+  </data>
+  <data name="You offered a draw." xml:space="preserve">
+    <value>무승부를 제안했습니다.</value>
+  </data>
+  <data name="Your opponent can still reconnect." xml:space="preserve">
+    <value>상대방이 아직 다시 접속할 수 있습니다.</value>
+  </data>
+  <data name="Your opponent has not reconnected. You may claim the result or keep waiting." xml:space="preserve">
+    <value>상대가 아직 재접속하지 않았습니다. 결과를 확정하거나 계속 기다릴 수 있습니다.</value>
+  </data>
+  <data name="Your opponent offers a draw." xml:space="preserve">
+    <value>상대가 무승부를 제안했습니다.</value>
   </data>
 
 </root>

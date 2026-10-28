@@ -57,6 +57,9 @@
   <data name="Black" xml:space="preserve">
     <value>Đen</value>
   </data>
+  <data name="Continue game" xml:space="preserve">
+    <value>Tiếp tục ván đấu</value>
+  </data>
   <data name="Create a challenge" xml:space="preserve">
     <value>Tạo thử thách</value>
   </data>
@@ -101,6 +104,9 @@
   </data>
   <data name="White" xml:space="preserve">
     <value>Quân trắng</value>
+  </data>
+  <data name="Your current games" xml:space="preserve">
+    <value>Các ván đấu hiện tại của bạn</value>
   </data>
   <data name="Your pieces" xml:space="preserve">
     <value>Quân cờ của bạn</value>

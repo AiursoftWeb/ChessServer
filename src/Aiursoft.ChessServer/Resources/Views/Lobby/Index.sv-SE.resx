@@ -57,6 +57,9 @@
   <data name="Black" xml:space="preserve">
     <value>Svart</value>
   </data>
+  <data name="Continue game" xml:space="preserve">
+    <value>Fortsätt spelet</value>
+  </data>
   <data name="Create a challenge" xml:space="preserve">
     <value>Skapa en utmaning</value>
   </data>
@@ -101,6 +104,9 @@
   </data>
   <data name="White" xml:space="preserve">
     <value>Vit</value>
+  </data>
+  <data name="Your current games" xml:space="preserve">
+    <value>Dina pågående partier</value>
   </data>
   <data name="Your pieces" xml:space="preserve">
     <value>Dina pjäser</value>

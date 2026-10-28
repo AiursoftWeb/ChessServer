@@ -24,23 +24,101 @@
   <data name="{0} to move" xml:space="preserve">
     <value>حان دور {0} للتحرك</value>
   </data>
+  <data name="{0} wins" xml:space="preserve">
+    <value>يفوز {0}</value>
+  </data>
+  <data name="A draw cannot be offered now." xml:space="preserve">
+    <value>لا يمكن عرض التعادل الآن.</value>
+  </data>
+  <data name="Abort game" xml:space="preserve">
+    <value>إنهاء اللعبة</value>
+  </data>
+  <data name="Accept draw" xml:space="preserve">
+    <value>قبول التعادل</value>
+  </data>
+  <data name="After 90 seconds without your opponent, you may claim the result. A computer game ends after two minutes away; a game with both players away ends after ten minutes." xml:space="preserve">
+    <value>بعد مرور ٩٠ ثانية على غياب خصمك، يمكنك المطالبة بنتيجة المباراة. تنتهي المباراة ضد الكمبيوتر بعد غيابك لمدة دقيقتين، وتنتهي المباراة إذا غاب كلا اللاعبين لمدة عشر دقائق.</value>
+  </data>
+  <data name="An unplayed game ends after one minute. Leaving does not pause the clock." xml:space="preserve">
+    <value>تنتهي المباراة التي لم تبدأ بعد دقيقة واحدة. مغادرة المباراة لا توقف الساعة.</value>
+  </data>
+  <data name="Bishop" xml:space="preserve">
+    <value>فيل</value>
+  </data>
   <data name="Black" xml:space="preserve">
     <value>الأسود</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>إلغاء</value>
   </data>
   <data name="Chat" xml:space="preserve">
     <value>الدردشة</value>
   </data>
+  <data name="Checkmate" xml:space="preserve">
+    <value>كش مات</value>
+  </data>
   <data name="Checkmate. {0} wins." xml:space="preserve">
     <value>كش مات. يفوز {0}.</value>
+  </data>
+  <data name="Claim result" xml:space="preserve">
+    <value>الادعاء بالنتيجة</value>
+  </data>
+  <data name="Computer is thinking…" xml:space="preserve">
+    <value>الكمبيوتر يفكر…</value>
+  </data>
+  <data name="Confirm resignation" xml:space="preserve">
+    <value>تأكيد الاستقالة</value>
+  </data>
+  <data name="Confirming your move…" xml:space="preserve">
+    <value>جارٍ تأكيد نقلتك…</value>
+  </data>
+  <data name="Connected" xml:space="preserve">
+    <value>متصل</value>
+  </data>
+  <data name="Connecting…" xml:space="preserve">
+    <value>جارٍ الاتصال…</value>
+  </data>
+  <data name="Connection and game rules" xml:space="preserve">
+    <value>قواعد الاتصال واللعب</value>
   </data>
   <data name="Connection closed. Refresh to reconnect." xml:space="preserve">
     <value>انقطع الاتصال. حدّث الصفحة لإعادة الاتصال.</value>
   </data>
+  <data name="Could not complete the action. Reconnecting to the server…" xml:space="preserve">
+    <value>تعذّر إكمال الإجراء. جارٍ إعادة الاتصال بالخادم…</value>
+  </data>
   <data name="Could not confirm the saved game. Retry." xml:space="preserve">
     <value>تعذّر تأكيد حفظ اللعبة. أعد المحاولة.</value>
   </data>
+  <data name="Dismiss offer" xml:space="preserve">
+    <value>تجاهل العرض</value>
+  </data>
+  <data name="Draw" xml:space="preserve">
+    <value>تعادل</value>
+  </data>
+  <data name="Draw by agreement" xml:space="preserve">
+    <value>تعادل بالاتفاق</value>
+  </data>
+  <data name="Draw by repetition" xml:space="preserve">
+    <value>تعادل بالتكرار</value>
+  </data>
+  <data name="Draw by the fifty-move rule" xml:space="preserve">
+    <value>تعادل وفق قاعدة الخمسين نقلة</value>
+  </data>
   <data name="Export PGN" xml:space="preserve">
     <value>تصدير PGN</value>
+  </data>
+  <data name="Game aborted before any move" xml:space="preserve">
+    <value>أُلغيت اللعبة قبل إجراء أي نقلة</value>
+  </data>
+  <data name="Game ended because both players left" xml:space="preserve">
+    <value>انتهت المباراة بسبب مغادرة كلا اللاعبين</value>
+  </data>
+  <data name="Game ended by abandonment" xml:space="preserve">
+    <value>انتهت اللعبة بسبب الانسحاب</value>
+  </data>
+  <data name="Game over" xml:space="preserve">
+    <value>انتهت اللعبة</value>
   </data>
   <data name="Game over — draw." xml:space="preserve">
     <value>انتهت المباراة — تعادل.</value>
@@ -48,17 +126,68 @@
   <data name="Game over. {0} wins." xml:space="preserve">
     <value>انتهت اللعبة. {0} هو الفائز.</value>
   </data>
+  <data name="Knight" xml:space="preserve">
+    <value>حصان</value>
+  </data>
+  <data name="Lobby" xml:space="preserve">
+    <value>الردهة</value>
+  </data>
   <data name="Message" xml:space="preserve">
     <value>رسالة</value>
+  </data>
+  <data name="Move list" xml:space="preserve">
+    <value>قائمة النقلات</value>
+  </data>
+  <data name="Moves" xml:space="preserve">
+    <value>النقلات</value>
+  </data>
+  <data name="Neither side has sufficient mating material" xml:space="preserve">
+    <value>لا يمتلك أيٌّ من الطرفين قطعًا كافية لتحقيق كش مات</value>
+  </data>
+  <data name="Offer draw" xml:space="preserve">
+    <value>اقتراح التعادل</value>
+  </data>
+  <data name="Only the players can perform this action." xml:space="preserve">
+    <value>يمكن للاعبين فقط تنفيذ هذا الإجراء.</value>
+  </data>
+  <data name="Opponent disconnected. Reconnection time remaining: {0}s." xml:space="preserve">
+    <value>انقطع اتصال خصمك. الوقت المتبقي لإعادة الاتصال: {0} ثانية.</value>
+  </data>
+  <data name="Play another game" xml:space="preserve">
+    <value>العب مباراة أخرى</value>
   </data>
   <data name="Preferred duration: {0} minutes. Games are untimed." xml:space="preserve">
     <value>المدة المفضلة: {0} دقيقة. لا يوجد وقت محدد للمباريات.</value>
   </data>
+  <data name="Promote pawn" xml:space="preserve">
+    <value>ترقية البيدق</value>
+  </data>
+  <data name="Queen" xml:space="preserve">
+    <value>الملكة</value>
+  </data>
+  <data name="Reconnecting… Your clock keeps running." xml:space="preserve">
+    <value>جارٍ إعادة الاتصال… ساعة المباراة مستمرة في العمل.</value>
+  </data>
   <data name="Replay" xml:space="preserve">
     <value>إعادة العرض</value>
   </data>
+  <data name="Resign" xml:space="preserve">
+    <value>استسلم</value>
+  </data>
+  <data name="Resign this game?" xml:space="preserve">
+    <value>هل تريد الاستسلام في هذه المباراة؟</value>
+  </data>
+  <data name="Resignation" xml:space="preserve">
+    <value>الاستسلام</value>
+  </data>
   <data name="Retry saving" xml:space="preserve">
     <value>إعادة محاولة الحفظ</value>
+  </data>
+  <data name="Return to live position" xml:space="preserve">
+    <value>العودة إلى الوضع الحالي</value>
+  </data>
+  <data name="Rook" xml:space="preserve">
+    <value>الرخ</value>
   </data>
   <data name="Room unavailable. Return to the lobby." xml:space="preserve">
     <value>الغرفة غير متاحة. عُد إلى الردهة.</value>
@@ -72,8 +201,41 @@
   <data name="Send" xml:space="preserve">
     <value>إرسال</value>
   </data>
+  <data name="Server maintenance pauses the clocks. A player disconnecting does not." xml:space="preserve">
+    <value>تؤدي أعمال صيانة الخادم إلى إيقاف الساعتين. أما انقطاع اتصال أحد اللاعبين فلا يوقفهما.</value>
+  </data>
   <data name="Spectator" xml:space="preserve">
     <value>متفرج</value>
+  </data>
+  <data name="Stalemate" xml:space="preserve">
+    <value>تعادل بسبب الجمود</value>
+  </data>
+  <data name="That move cannot be played in the current position." xml:space="preserve">
+    <value>لا يمكن لعب هذه النقلة في الوضع الحالي.</value>
+  </data>
+  <data name="The draw offer is no longer available." xml:space="preserve">
+    <value>لم يعد عرض التعادل متاحًا.</value>
+  </data>
+  <data name="The game has started. You can resign instead." xml:space="preserve">
+    <value>بدأت المباراة. يمكنك الاستسلام بدلًا من ذلك.</value>
+  </data>
+  <data name="The position changed. Your board has been synchronized." xml:space="preserve">
+    <value>تغيّر الوضع. تمت مزامنة لوحة اللعب لديك.</value>
+  </data>
+  <data name="This action could not be confirmed. Refresh to synchronize." xml:space="preserve">
+    <value>تعذّر تأكيد هذا الإجراء. حدّث الصفحة للمزامنة.</value>
+  </data>
+  <data name="This game has ended." xml:space="preserve">
+    <value>انتهت هذه المباراة.</value>
+  </data>
+  <data name="This game is still in progress. Your clock will keep running." xml:space="preserve">
+    <value>لا تزال هذه المباراة جارية. وسيستمر وقتك في التناقص.</value>
+  </data>
+  <data name="Time expired" xml:space="preserve">
+    <value>انتهى الوقت</value>
+  </data>
+  <data name="Time expired, but the opponent cannot checkmate." xml:space="preserve">
+    <value>انتهى الوقت، لكن لا يمكن للخصم تحقيق كش مات.</value>
   </data>
   <data name="Time expired. {0} wins." xml:space="preserve">
     <value>انتهى الوقت. فاز {0}.</value>
@@ -92,6 +254,18 @@
   </data>
   <data name="You are watching this game." xml:space="preserve">
     <value>أنت تشاهد هذه المباراة.</value>
+  </data>
+  <data name="You offered a draw." xml:space="preserve">
+    <value>لقد عرضت التعادل.</value>
+  </data>
+  <data name="Your opponent can still reconnect." xml:space="preserve">
+    <value>لا يزال بإمكان خصمك إعادة الاتصال.</value>
+  </data>
+  <data name="Your opponent has not reconnected. You may claim the result or keep waiting." xml:space="preserve">
+    <value>لم يعد خصمك متصلًا. يمكنك المطالبة بالنتيجة أو مواصلة الانتظار.</value>
+  </data>
+  <data name="Your opponent offers a draw." xml:space="preserve">
+    <value>يَعرض خصمك التعادل.</value>
   </data>
 
 </root>

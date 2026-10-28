@@ -57,6 +57,9 @@
   <data name="Black" xml:space="preserve">
     <value>หมากสีดำ</value>
   </data>
+  <data name="Continue game" xml:space="preserve">
+    <value>เล่นเกมต่อ</value>
+  </data>
   <data name="Create a challenge" xml:space="preserve">
     <value>สร้างคำท้า</value>
   </data>
@@ -101,6 +104,9 @@
   </data>
   <data name="White" xml:space="preserve">
     <value>สีขาว</value>
+  </data>
+  <data name="Your current games" xml:space="preserve">
+    <value>เกมที่กำลังเล่นอยู่ของคุณ</value>
   </data>
   <data name="Your pieces" xml:space="preserve">
     <value>ตัวหมากของคุณ</value>

@@ -24,23 +24,101 @@
   <data name="{0} to move" xml:space="preserve">
     <value>輪到{0}走棋</value>
   </data>
+  <data name="{0} wins" xml:space="preserve">
+    <value>{0} 獲勝</value>
+  </data>
+  <data name="A draw cannot be offered now." xml:space="preserve">
+    <value>現在不能提出和棋。</value>
+  </data>
+  <data name="Abort game" xml:space="preserve">
+    <value>中止遊戲</value>
+  </data>
+  <data name="Accept draw" xml:space="preserve">
+    <value>接受和局</value>
+  </data>
+  <data name="After 90 seconds without your opponent, you may claim the result. A computer game ends after two minutes away; a game with both players away ends after ten minutes." xml:space="preserve">
+    <value>如對手離線 90 秒後，你可以申報賽果。與電腦對弈的遊戲在離線兩分鐘後結束；雙方玩家均離線的遊戲則在十分鐘後結束。</value>
+  </data>
+  <data name="An unplayed game ends after one minute. Leaving does not pause the clock." xml:space="preserve">
+    <value>未開始的棋局會在一分鐘後結束。離開不會暫停計時。</value>
+  </data>
+  <data name="Bishop" xml:space="preserve">
+    <value>象</value>
+  </data>
   <data name="Black" xml:space="preserve">
     <value>黑方</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>取消</value>
   </data>
   <data name="Chat" xml:space="preserve">
     <value>聊天</value>
   </data>
+  <data name="Checkmate" xml:space="preserve">
+    <value>將死</value>
+  </data>
   <data name="Checkmate. {0} wins." xml:space="preserve">
     <value>將軍，{0}勝出。</value>
+  </data>
+  <data name="Claim result" xml:space="preserve">
+    <value>申請賽果</value>
+  </data>
+  <data name="Computer is thinking…" xml:space="preserve">
+    <value>電腦正在思考…</value>
+  </data>
+  <data name="Confirm resignation" xml:space="preserve">
+    <value>確認認輸</value>
+  </data>
+  <data name="Confirming your move…" xml:space="preserve">
+    <value>正在確認你的着法…</value>
+  </data>
+  <data name="Connected" xml:space="preserve">
+    <value>已連線</value>
+  </data>
+  <data name="Connecting…" xml:space="preserve">
+    <value>連線中…</value>
+  </data>
+  <data name="Connection and game rules" xml:space="preserve">
+    <value>連線及遊戲規則</value>
   </data>
   <data name="Connection closed. Refresh to reconnect." xml:space="preserve">
     <value>連線已中斷。重新整理以重新連線。</value>
   </data>
+  <data name="Could not complete the action. Reconnecting to the server…" xml:space="preserve">
+    <value>無法完成操作。正在重新連線至伺服器…</value>
+  </data>
   <data name="Could not confirm the saved game. Retry." xml:space="preserve">
     <value>無法確認已儲存的棋局。請重試。</value>
   </data>
+  <data name="Dismiss offer" xml:space="preserve">
+    <value>撤回提議</value>
+  </data>
+  <data name="Draw" xml:space="preserve">
+    <value>和局</value>
+  </data>
+  <data name="Draw by agreement" xml:space="preserve">
+    <value>協議和棋</value>
+  </data>
+  <data name="Draw by repetition" xml:space="preserve">
+    <value>因重複局面和棋</value>
+  </data>
+  <data name="Draw by the fifty-move rule" xml:space="preserve">
+    <value>因五十回合規則和棋</value>
+  </data>
   <data name="Export PGN" xml:space="preserve">
     <value>匯出 PGN</value>
+  </data>
+  <data name="Game aborted before any move" xml:space="preserve">
+    <value>棋局未有任何棋步前已中止</value>
+  </data>
+  <data name="Game ended because both players left" xml:space="preserve">
+    <value>遊戲已結束，因為雙方玩家均已離開</value>
+  </data>
+  <data name="Game ended by abandonment" xml:space="preserve">
+    <value>因棄權而結束棋局</value>
+  </data>
+  <data name="Game over" xml:space="preserve">
+    <value>遊戲結束</value>
   </data>
   <data name="Game over — draw." xml:space="preserve">
     <value>遊戲結束 — 和局。</value>
@@ -48,17 +126,68 @@
   <data name="Game over. {0} wins." xml:space="preserve">
     <value>對局結束。{0} 獲勝。</value>
   </data>
+  <data name="Knight" xml:space="preserve">
+    <value>騎士</value>
+  </data>
+  <data name="Lobby" xml:space="preserve">
+    <value>大廳</value>
+  </data>
   <data name="Message" xml:space="preserve">
     <value>訊息</value>
+  </data>
+  <data name="Move list" xml:space="preserve">
+    <value>棋步列表</value>
+  </data>
+  <data name="Moves" xml:space="preserve">
+    <value>棋步</value>
+  </data>
+  <data name="Neither side has sufficient mating material" xml:space="preserve">
+    <value>雙方都沒有足夠的將死棋子</value>
+  </data>
+  <data name="Offer draw" xml:space="preserve">
+    <value>提出和棋</value>
+  </data>
+  <data name="Only the players can perform this action." xml:space="preserve">
+    <value>只有玩家才能執行此操作。</value>
+  </data>
+  <data name="Opponent disconnected. Reconnection time remaining: {0}s." xml:space="preserve">
+    <value>對手已中斷連線。剩餘重新連線時間：{0}秒。</value>
+  </data>
+  <data name="Play another game" xml:space="preserve">
+    <value>再玩一局</value>
   </data>
   <data name="Preferred duration: {0} minutes. Games are untimed." xml:space="preserve">
     <value>首選時長：{0} 分鐘。棋局沒有時間限制。</value>
   </data>
+  <data name="Promote pawn" xml:space="preserve">
+    <value>升變兵卒</value>
+  </data>
+  <data name="Queen" xml:space="preserve">
+    <value>后</value>
+  </data>
+  <data name="Reconnecting… Your clock keeps running." xml:space="preserve">
+    <value>重新連線中……你的棋鐘仍會繼續計時。</value>
+  </data>
   <data name="Replay" xml:space="preserve">
     <value>重播</value>
   </data>
+  <data name="Resign" xml:space="preserve">
+    <value>認輸</value>
+  </data>
+  <data name="Resign this game?" xml:space="preserve">
+    <value>認輸這局棋嗎？</value>
+  </data>
+  <data name="Resignation" xml:space="preserve">
+    <value>認輸</value>
+  </data>
   <data name="Retry saving" xml:space="preserve">
     <value>重新儲存</value>
+  </data>
+  <data name="Return to live position" xml:space="preserve">
+    <value>返回最新棋局位置</value>
+  </data>
+  <data name="Rook" xml:space="preserve">
+    <value>車</value>
   </data>
   <data name="Room unavailable. Return to the lobby." xml:space="preserve">
     <value>房間無法使用。返回大廳。</value>
@@ -72,8 +201,41 @@
   <data name="Send" xml:space="preserve">
     <value>傳送</value>
   </data>
+  <data name="Server maintenance pauses the clocks. A player disconnecting does not." xml:space="preserve">
+    <value>伺服器維護期間，棋鐘會暫停。玩家斷線則不會。</value>
+  </data>
   <data name="Spectator" xml:space="preserve">
     <value>旁觀者</value>
+  </data>
+  <data name="Stalemate" xml:space="preserve">
+    <value>和棋</value>
+  </data>
+  <data name="That move cannot be played in the current position." xml:space="preserve">
+    <value>目前的局面下不能走這一步。</value>
+  </data>
+  <data name="The draw offer is no longer available." xml:space="preserve">
+    <value>和棋提議已不再有效。</value>
+  </data>
+  <data name="The game has started. You can resign instead." xml:space="preserve">
+    <value>遊戲已開始。你可以選擇認輸。</value>
+  </data>
+  <data name="The position changed. Your board has been synchronized." xml:space="preserve">
+    <value>局勢已改變。你的棋盤已同步。</value>
+  </data>
+  <data name="This action could not be confirmed. Refresh to synchronize." xml:space="preserve">
+    <value>無法確認此操作。請重新整理以進行同步。</value>
+  </data>
+  <data name="This game has ended." xml:space="preserve">
+    <value>這局遊戲已結束。</value>
+  </data>
+  <data name="This game is still in progress. Your clock will keep running." xml:space="preserve">
+    <value>呢局遊戲仍在進行中，你的棋鐘會繼續計時。</value>
+  </data>
+  <data name="Time expired" xml:space="preserve">
+    <value>時間已到</value>
+  </data>
+  <data name="Time expired, but the opponent cannot checkmate." xml:space="preserve">
+    <value>時間已到，但對手無法將死。</value>
   </data>
   <data name="Time expired. {0} wins." xml:space="preserve">
     <value>時間已到。{0} 勝出。</value>
@@ -92,6 +254,18 @@
   </data>
   <data name="You are watching this game." xml:space="preserve">
     <value>你正在觀看這場棋局。</value>
+  </data>
+  <data name="You offered a draw." xml:space="preserve">
+    <value>你提出了和棋。</value>
+  </data>
+  <data name="Your opponent can still reconnect." xml:space="preserve">
+    <value>你的對手仍可重新連線。</value>
+  </data>
+  <data name="Your opponent has not reconnected. You may claim the result or keep waiting." xml:space="preserve">
+    <value>你的對手尚未重新連線。你可以申領賽果，或繼續等待。</value>
+  </data>
+  <data name="Your opponent offers a draw." xml:space="preserve">
+    <value>你的對手提出和棋。</value>
   </data>
 
 </root>
