@@ -4,5 +4,6 @@ public class ChatMessageResponse(ChatMessage message, Guid currentUserId)
 {
     public string Content { get; set; } = message.Content;
     public string SenderNickName { get; set; } = message.Sender.NickName;
+    public bool SenderGuest { get; set; } = message.Sender.IsGuest;
     public bool IsMe { get; set; } = message.Sender.Id == currentUserId;
 }

@@ -8,11 +8,11 @@
 [![Website](https://img.shields.io/website?url=https%3A%2F%2Fchess.aiursoft.com)](https://chess.aiursoft.com)
 [![Docker](https://img.shields.io/docker/pulls/aiursoft/chessserver.svg)](https://hub.docker.com/r/aiursoft/chessserver)
 
-ChessServer lets signed-in players play against the computer or a friend, watch games, chat, and replay their saved PGN games. Built on Aiursoft Template with eight computer difficulty levels, optional server-controlled clocks, and automatic cleanup of inactive rooms.
+ChessServer lets guests and signed-in players play against the computer or a friend, watch games, and chat. Signed-in players can replay their saved games; everyone can download PGN. Built on Aiursoft Template with eight computer difficulty levels, optional server-controlled clocks, and automatic cleanup of inactive rooms.
 
 ![screenshot](./screenshot.png)
 
-Sign-in uses OIDC. Configure your identity provider before playing; see [Configuration](#configuration).
+Play with a guest nickname, or sign in through OIDC to save your games; see [Configuration](#configuration).
 
 ## Try
 
@@ -77,6 +77,6 @@ We're also interested in your feedback on the future of this project. You can su
 
 ## Configuration
 
-Configure `AppSettings__OIDC__Authority`, `AppSettings__OIDC__ClientId`, and `AppSettings__OIDC__ClientSecret` for your identity provider. Register `https://<your-host>/signin-oidc` as its callback. Anonymous play is disabled.
+Configure `AppSettings__OIDC__Authority`, `AppSettings__OIDC__ClientId`, and `AppSettings__OIDC__ClientSecret` for your identity provider. Register `https://<your-host>/signin-oidc` as its callback. Guests can play without signing in.
 
-Existing Docker installations must update their persisted `/data/appsettings.json` with the new database and OIDC settings before upgrading. SQLite stores account data by default; live games remain in memory and end when the application restarts.
+Existing Docker installations must update their persisted `/data/appsettings.json` with the new database and OIDC settings before upgrading. SQLite stores accounts and chess sessions by default. Keep the database and data-protection keys to resume games after a restart.

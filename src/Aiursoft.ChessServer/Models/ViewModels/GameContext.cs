@@ -32,6 +32,9 @@ public class ChallengeContext(AcceptedChallenge challenge, int id)
 
     public string BlackPlayer { get; } = challenge.GetBlackPlayer().NickName;
     
+    public bool WhiteGuest { get; } = challenge.GetWhitePlayer().IsGuest;
+    public bool BlackGuest { get; } = challenge.GetBlackPlayer().IsGuest;
+
     public string Creator { get; } = challenge.Creator.NickName;
     
     public string Accepter { get; } = challenge.Accepter.NickName;

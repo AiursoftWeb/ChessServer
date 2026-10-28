@@ -147,7 +147,8 @@ public class GamesController(InMemoryDatabase database, ChessEngine engine, Game
             if (!room.Game.Board.IsEndGame) return Conflict("This game is still in progress.");
             if (!string.Equals(pgn?.Replace("\r\n", "\n"), room.Pgn().Replace("\r\n", "\n"), StringComparison.Ordinal)) return BadRequest("The PGN does not match this game.");
             await history.SaveAsync(room);
-            return Ok(new { room.HistoryId });
+            var saved = !CurrentPlayer().IsGuest && await history.BelongsToAsync(room.HistoryId, PlayerId);
+            return Ok(new { HistoryId = saved ? room.HistoryId : (Guid?)null });
         }
         finally { room.MutationLock.Release(); }
     }

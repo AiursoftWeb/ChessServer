@@ -1,4 +1,5 @@
 @model Aiursoft.ChessServer.Models.ViewModels.RoomViewModel
+<partial name="_ChessIdentity" />
 @* ReSharper disable once Razor.SectionNotResolved *@
 @section styles {
     <link rel="stylesheet" href="~/node_modules/%40chrisoakman/chessboardjs/dist/chessboard-1.0.0.min.css" />
@@ -22,6 +23,8 @@
         <span data-key="unlimited">@Localizer["Unlimited"]</span>
         <span data-key="thinking">@Localizer["Computer is thinking…"]</span>
         <span data-key="pending">@Localizer["Confirming your move…"]</span>
+        <span data-key="guest">@Localizer["Guest"]</span>
+        <span data-key="guest-complete">@Localizer["Game finished. Download the PGN to keep it; guest games are not saved to a personal history."]</span>
         <span data-key="saved">@Localizer["Saved to My games."]</span>
         <span data-key="saving">@Localizer["Saving game…"]</span>
         <span data-key="save-failed">@Localizer["Could not confirm the saved game. Retry."]</span>
