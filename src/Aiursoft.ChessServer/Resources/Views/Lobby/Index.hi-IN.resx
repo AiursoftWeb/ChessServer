@@ -21,20 +21,38 @@
       <data name="1 — Beginner" xml:space="preserve">
     <value>1 — शुरुआती</value>
   </data>
+  <data name="1 second" xml:space="preserve">
+    <value>1 सेकंड</value>
+  </data>
   <data name="10 minutes" xml:space="preserve">
     <value>10 मिनट</value>
+  </data>
+  <data name="10 seconds" xml:space="preserve">
+    <value>10 सेकंड</value>
   </data>
   <data name="15 minutes" xml:space="preserve">
     <value>15 मिनट</value>
   </data>
+  <data name="15 seconds" xml:space="preserve">
+    <value>15 सेकंड</value>
+  </data>
   <data name="2 — Easy" xml:space="preserve">
     <value>2 — आसान</value>
+  </data>
+  <data name="2 seconds" xml:space="preserve">
+    <value>2 सेकंड</value>
   </data>
   <data name="3 — Casual" xml:space="preserve">
     <value>3 — सामान्य</value>
   </data>
   <data name="3 minutes" xml:space="preserve">
     <value>3 मिनट</value>
+  </data>
+  <data name="3 seconds" xml:space="preserve">
+    <value>3 सेकंड</value>
+  </data>
+  <data name="30 seconds" xml:space="preserve">
+    <value>30 सेकंड</value>
   </data>
   <data name="4 — Intermediate" xml:space="preserve">
     <value>4 — मध्यम</value>
@@ -44,6 +62,9 @@
   </data>
   <data name="5 minutes" xml:space="preserve">
     <value>5 मिनट</value>
+  </data>
+  <data name="5 seconds" xml:space="preserve">
+    <value>5 सेकंड</value>
   </data>
   <data name="6 — Hard" xml:space="preserve">
     <value>6 — कठिन</value>
@@ -57,17 +78,29 @@
   <data name="Black" xml:space="preserve">
     <value>काला</value>
   </data>
+  <data name="Continue game" xml:space="preserve">
+    <value>खेल जारी रखें</value>
+  </data>
   <data name="Create a challenge" xml:space="preserve">
     <value>चुनौती बनाएँ</value>
   </data>
   <data name="Difficulty" xml:space="preserve">
     <value>कठिनाई</value>
   </data>
+  <data name="Guest" xml:space="preserve">
+    <value>अतिथि</value>
+  </data>
+  <data name="Increment per move" xml:space="preserve">
+    <value>प्रति चाल अतिरिक्त समय</value>
+  </data>
   <data name="My games" xml:space="preserve">
     <value>मेरे खेल</value>
   </data>
   <data name="No games in progress." xml:space="preserve">
     <value>कोई खेल जारी नहीं है।</value>
+  </data>
+  <data name="No increment" xml:space="preserve">
+    <value>कोई अतिरिक्त समय नहीं</value>
   </data>
   <data name="No open challenges." xml:space="preserve">
     <value>कोई खुली चुनौती नहीं है।</value>
@@ -101,6 +134,9 @@
   </data>
   <data name="White" xml:space="preserve">
     <value>सफ़ेद</value>
+  </data>
+  <data name="Your current games" xml:space="preserve">
+    <value>आपके मौजूदा गेम</value>
   </data>
   <data name="Your pieces" xml:space="preserve">
     <value>आपके टुकड़े</value>

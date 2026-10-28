@@ -24,23 +24,116 @@
   <data name="{0} to move" xml:space="preserve">
     <value>अगली चाल {0} की है</value>
   </data>
+  <data name="{0} wins" xml:space="preserve">
+    <value>{0} जीतता है</value>
+  </data>
+  <data name="A draw cannot be offered now." xml:space="preserve">
+    <value>अभी ड्रॉ की पेशकश नहीं की जा सकती।</value>
+  </data>
+  <data name="Abort game" xml:space="preserve">
+    <value>खेल रद्द करें</value>
+  </data>
+  <data name="Accept draw" xml:space="preserve">
+    <value>ड्रॉ स्वीकार करें</value>
+  </data>
+  <data name="Accept rematch" xml:space="preserve">
+    <value>फिर से मैच स्वीकार करें</value>
+  </data>
+  <data name="After 90 seconds without your opponent, you may claim the result. A computer game ends after two minutes away; a game with both players away ends after ten minutes." xml:space="preserve">
+    <value>आपका प्रतिद्वंद्वी 90 सेकंड तक अनुपस्थित रहे, तो आप परिणाम का दावा कर सकते हैं। कंप्यूटर के साथ खेल में दो मिनट तक अनुपस्थित रहने पर खेल समाप्त हो जाता है; दोनों खिलाड़ी दस मिनट तक अनुपस्थित रहें, तो खेल समाप्त हो जाता है।</value>
+  </data>
+  <data name="All rooms are busy. Please try again later." xml:space="preserve">
+    <value>सभी कमरे व्यस्त हैं। कृपया बाद में फिर से कोशिश करें।</value>
+  </data>
+  <data name="An unplayed game ends after one minute. Leaving does not pause the clock." xml:space="preserve">
+    <value>बिना खेले छोड़ा गया खेल एक मिनट बाद समाप्त हो जाता है। खेल छोड़ने से घड़ी नहीं रुकती।</value>
+  </data>
+  <data name="Bishop" xml:space="preserve">
+    <value>ऊँट</value>
+  </data>
   <data name="Black" xml:space="preserve">
     <value>काला</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>रद्द करें</value>
   </data>
   <data name="Chat" xml:space="preserve">
     <value>चैट</value>
   </data>
+  <data name="Checkmate" xml:space="preserve">
+    <value>शह और मात</value>
+  </data>
   <data name="Checkmate. {0} wins." xml:space="preserve">
     <value>शह और मात। {0} जीतते हैं।</value>
+  </data>
+  <data name="Claim result" xml:space="preserve">
+    <value>परिणाम का दावा करें</value>
+  </data>
+  <data name="Computer is thinking…" xml:space="preserve">
+    <value>कंप्यूटर सोच रहा है…</value>
+  </data>
+  <data name="Confirm resignation" xml:space="preserve">
+    <value>इस्तीफ़े की पुष्टि करें</value>
+  </data>
+  <data name="Confirming your move…" xml:space="preserve">
+    <value>आपकी चाल की पुष्टि की जा रही है…</value>
+  </data>
+  <data name="Connected" xml:space="preserve">
+    <value>कनेक्ट हो गया</value>
+  </data>
+  <data name="Connecting…" xml:space="preserve">
+    <value>कनेक्ट हो रहा है…</value>
+  </data>
+  <data name="Connection and game rules" xml:space="preserve">
+    <value>कनेक्शन और खेल के नियम</value>
   </data>
   <data name="Connection closed. Refresh to reconnect." xml:space="preserve">
     <value>कनेक्शन बंद हो गया है। फिर से कनेक्ट करने के लिए पेज रीफ़्रेश करें।</value>
   </data>
+  <data name="Continue to rematch" xml:space="preserve">
+    <value>रीमैच जारी रखें</value>
+  </data>
+  <data name="Could not complete the action. Reconnecting to the server…" xml:space="preserve">
+    <value>कार्रवाई पूरी नहीं हो सकी। सर्वर से फिर से कनेक्ट हो रहा है…</value>
+  </data>
   <data name="Could not confirm the saved game. Retry." xml:space="preserve">
     <value>सहेजे गए गेम की पुष्टि नहीं हो सकी। फिर से कोशिश करें।</value>
   </data>
+  <data name="Dismiss offer" xml:space="preserve">
+    <value>ऑफ़र अस्वीकार करें</value>
+  </data>
+  <data name="Draw" xml:space="preserve">
+    <value>ड्रॉ</value>
+  </data>
+  <data name="Draw by agreement" xml:space="preserve">
+    <value>सहमति से ड्रॉ</value>
+  </data>
+  <data name="Draw by repetition" xml:space="preserve">
+    <value>तीन बार एक ही स्थिति दोहरने से ड्रॉ</value>
+  </data>
+  <data name="Draw by the fifty-move rule" xml:space="preserve">
+    <value>पचास चालों के नियम के तहत ड्रॉ</value>
+  </data>
   <data name="Export PGN" xml:space="preserve">
     <value>PGN निर्यात करें</value>
+  </data>
+  <data name="Finish this game before requesting a rematch." xml:space="preserve">
+    <value>दोबारा मैच का अनुरोध करने से पहले यह खेल समाप्त करें।</value>
+  </data>
+  <data name="Game aborted before any move" xml:space="preserve">
+    <value>कोई चाल चलने से पहले खेल रद्द कर दिया गया</value>
+  </data>
+  <data name="Game ended because both players left" xml:space="preserve">
+    <value>दोनों खिलाड़ियों के चले जाने के कारण खेल समाप्त हो गया</value>
+  </data>
+  <data name="Game ended by abandonment" xml:space="preserve">
+    <value>त्याग के कारण खेल समाप्त हुआ</value>
+  </data>
+  <data name="Game finished. Download the PGN to keep it; guest games are not saved to a personal history." xml:space="preserve">
+    <value>खेल समाप्त हो गया है। इसे सुरक्षित रखने के लिए PGN डाउनलोड करें; अतिथि खेल व्यक्तिगत खेल इतिहास में सहेजे नहीं जाते।</value>
+  </data>
+  <data name="Game over" xml:space="preserve">
+    <value>खेल समाप्त</value>
   </data>
   <data name="Game over — draw." xml:space="preserve">
     <value>खेल समाप्त — मुकाबला बराबरी पर।</value>
@@ -48,14 +141,74 @@
   <data name="Game over. {0} wins." xml:space="preserve">
     <value>खेल समाप्त। {0} जीत गया।</value>
   </data>
+  <data name="Guest" xml:space="preserve">
+    <value>अतिथि</value>
+  </data>
+  <data name="Knight" xml:space="preserve">
+    <value>घोड़ा</value>
+  </data>
+  <data name="Lobby" xml:space="preserve">
+    <value>प्रतीक्षालय</value>
+  </data>
   <data name="Message" xml:space="preserve">
     <value>संदेश</value>
+  </data>
+  <data name="Move list" xml:space="preserve">
+    <value>चालों की सूची</value>
+  </data>
+  <data name="Moves" xml:space="preserve">
+    <value>चालें</value>
+  </data>
+  <data name="Neither side has sufficient mating material" xml:space="preserve">
+    <value>किसी भी पक्ष के पास मात देने के लिए पर्याप्त सामग्री नहीं है</value>
+  </data>
+  <data name="Offer draw" xml:space="preserve">
+    <value>ड्रॉ का प्रस्ताव दें</value>
+  </data>
+  <data name="Only the players can perform this action." xml:space="preserve">
+    <value>यह कार्रवाई केवल खिलाड़ी ही कर सकते हैं।</value>
+  </data>
+  <data name="Opponent disconnected. Reconnection time remaining: {0}s." xml:space="preserve">
+    <value>प्रतिद्वंद्वी का कनेक्शन टूट गया है। दोबारा कनेक्ट करने के लिए शेष समय: {0} सेकंड।</value>
+  </data>
+  <data name="Play another game" xml:space="preserve">
+    <value>एक और गेम खेलें</value>
+  </data>
+  <data name="Promote pawn" xml:space="preserve">
+    <value>प्यादे को प्रोन्नत करें</value>
+  </data>
+  <data name="Queen" xml:space="preserve">
+    <value>वज़ीर</value>
+  </data>
+  <data name="Reconnecting… Your clock keeps running." xml:space="preserve">
+    <value>पुनः कनेक्ट हो रहे हैं… आपकी घड़ी चलती रहेगी।</value>
+  </data>
+  <data name="Rematch" xml:space="preserve">
+    <value>पुनः खेल</value>
+  </data>
+  <data name="Rematch requested. Waiting for your opponent…" xml:space="preserve">
+    <value>फिर से मैच का अनुरोध किया गया। आपके प्रतिद्वंद्वी की प्रतीक्षा है…</value>
   </data>
   <data name="Replay" xml:space="preserve">
     <value>फिर से देखें</value>
   </data>
+  <data name="Resign" xml:space="preserve">
+    <value>इस्तीफ़ा दें</value>
+  </data>
+  <data name="Resign this game?" xml:space="preserve">
+    <value>क्या आप इस खेल से इस्तीफ़ा देना चाहते हैं?</value>
+  </data>
+  <data name="Resignation" xml:space="preserve">
+    <value>हार मानने से</value>
+  </data>
   <data name="Retry saving" xml:space="preserve">
     <value>सहेजने की फिर से कोशिश करें</value>
+  </data>
+  <data name="Return to live position" xml:space="preserve">
+    <value>वर्तमान स्थिति पर लौटें</value>
+  </data>
+  <data name="Rook" xml:space="preserve">
+    <value>हाथी</value>
   </data>
   <data name="Room unavailable. Return to the lobby." xml:space="preserve">
     <value>कमरा उपलब्ध नहीं है। लॉबी में लौटें।</value>
@@ -69,8 +222,53 @@
   <data name="Send" xml:space="preserve">
     <value>भेजें</value>
   </data>
+  <data name="Server maintenance pauses the clocks. A player disconnecting does not." xml:space="preserve">
+    <value>सर्वर के रखरखाव के दौरान घड़ियाँ रुक जाती हैं। किसी खिलाड़ी के डिस्कनेक्ट होने पर घड़ियाँ नहीं रुकतीं।</value>
+  </data>
   <data name="Spectator" xml:space="preserve">
     <value>दर्शक</value>
+  </data>
+  <data name="Stalemate" xml:space="preserve">
+    <value>गतिरोध</value>
+  </data>
+  <data name="Take back" xml:space="preserve">
+    <value>वापस लें</value>
+  </data>
+  <data name="Take back your last move and the computer reply? The position and clocks will be restored." xml:space="preserve">
+    <value>क्या आप अपनी पिछली चाल और कंप्यूटर की प्रतिक्रिया वापस लेना चाहते हैं? स्थिति और घड़ी पुनर्स्थापित कर दी जाएगी।</value>
+  </data>
+  <data name="That move cannot be played in the current position." xml:space="preserve">
+    <value>इस स्थिति में यह चाल नहीं चली जा सकती।</value>
+  </data>
+  <data name="The draw offer is no longer available." xml:space="preserve">
+    <value>ड्रॉ का प्रस्ताव अब उपलब्ध नहीं है।</value>
+  </data>
+  <data name="The game has started. You can resign instead." xml:space="preserve">
+    <value>खेल शुरू हो चुका है। आप इसके बजाय हार मान सकते हैं।</value>
+  </data>
+  <data name="The position changed. Your board has been synchronized." xml:space="preserve">
+    <value>स्थिति बदल गई है। आपका बोर्ड सिंक्रनाइज़ हो गया है।</value>
+  </data>
+  <data name="The rematch offer is no longer available." xml:space="preserve">
+    <value>रीमैच का प्रस्ताव अब उपलब्ध नहीं है।</value>
+  </data>
+  <data name="This action could not be confirmed. Refresh to synchronize." xml:space="preserve">
+    <value>इस कार्रवाई की पुष्टि नहीं हो सकी। सिंक्रनाइज़ करने के लिए रीफ़्रेश करें।</value>
+  </data>
+  <data name="This game has ended." xml:space="preserve">
+    <value>यह खेल समाप्त हो गया है।</value>
+  </data>
+  <data name="This game is still in progress. Your clock will keep running." xml:space="preserve">
+    <value>यह खेल अभी जारी है। आपकी घड़ी चलती रहेगी।</value>
+  </data>
+  <data name="Time control: {0}" xml:space="preserve">
+    <value>समय नियंत्रण: {0}</value>
+  </data>
+  <data name="Time expired" xml:space="preserve">
+    <value>समय समाप्त</value>
+  </data>
+  <data name="Time expired, but the opponent cannot checkmate." xml:space="preserve">
+    <value>समय समाप्त हो गया, लेकिन प्रतिद्वंद्वी मात नहीं दे सकता।</value>
   </data>
   <data name="Time expired. {0} wins." xml:space="preserve">
     <value>समय समाप्त हो गया। {0} जीत गए।</value>
@@ -89,6 +287,24 @@
   </data>
   <data name="You are watching this game." xml:space="preserve">
     <value>आप यह खेल देख रहे हैं।</value>
+  </data>
+  <data name="You can only take back your own last move in an active computer game." xml:space="preserve">
+    <value>आप सक्रिय कंप्यूटर गेम में केवल अपनी पिछली चाल वापस ले सकते हैं।</value>
+  </data>
+  <data name="You offered a draw." xml:space="preserve">
+    <value>आपने ड्रॉ का प्रस्ताव दिया।</value>
+  </data>
+  <data name="Your opponent can still reconnect." xml:space="preserve">
+    <value>आपका प्रतिद्वंद्वी अभी भी दोबारा जुड़ सकता है।</value>
+  </data>
+  <data name="Your opponent has not reconnected. You may claim the result or keep waiting." xml:space="preserve">
+    <value>आपका प्रतिद्वंद्वी अभी तक फिर से कनेक्ट नहीं हुआ है। आप परिणाम का दावा कर सकते हैं या प्रतीक्षा जारी रख सकते हैं।</value>
+  </data>
+  <data name="Your opponent offers a draw." xml:space="preserve">
+    <value>आपके प्रतिद्वंद्वी ने ड्रॉ का प्रस्ताव दिया है।</value>
+  </data>
+  <data name="Your opponent offers a rematch with colors reversed." xml:space="preserve">
+    <value>आपका प्रतिद्वंद्वी रंगों की अदला-बदली के साथ फिर से खेलने का प्रस्ताव दे रहा है।</value>
   </data>
 
 </root>

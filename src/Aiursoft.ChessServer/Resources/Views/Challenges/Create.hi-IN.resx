@@ -18,17 +18,38 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="10 minutes" xml:space="preserve">
+      <data name="1 second" xml:space="preserve">
+    <value>1 सेकंड</value>
+  </data>
+  <data name="10 minutes" xml:space="preserve">
     <value>10 मिनट</value>
+  </data>
+  <data name="10 seconds" xml:space="preserve">
+    <value>10 सेकंड</value>
   </data>
   <data name="15 minutes" xml:space="preserve">
     <value>15 मिनट</value>
   </data>
+  <data name="15 seconds" xml:space="preserve">
+    <value>15 सेकंड</value>
+  </data>
+  <data name="2 seconds" xml:space="preserve">
+    <value>2 सेकंड</value>
+  </data>
   <data name="3 minutes" xml:space="preserve">
     <value>3 मिनट</value>
   </data>
+  <data name="3 seconds" xml:space="preserve">
+    <value>3 सेकंड</value>
+  </data>
+  <data name="30 seconds" xml:space="preserve">
+    <value>30 सेकंड</value>
+  </data>
   <data name="5 minutes" xml:space="preserve">
     <value>5 मिनट</value>
+  </data>
+  <data name="5 seconds" xml:space="preserve">
+    <value>5 सेकंड</value>
   </data>
   <data name="Black" xml:space="preserve">
     <value>काले</value>
@@ -38,6 +59,12 @@
   </data>
   <data name="Create room" xml:space="preserve">
     <value>कमरा बनाएँ</value>
+  </data>
+  <data name="Increment per move" xml:space="preserve">
+    <value>हर चाल पर समय-वृद्धि</value>
+  </data>
+  <data name="No increment" xml:space="preserve">
+    <value>कोई अतिरिक्त समय नहीं</value>
   </data>
   <data name="Public" xml:space="preserve">
     <value>सार्वजनिक</value>

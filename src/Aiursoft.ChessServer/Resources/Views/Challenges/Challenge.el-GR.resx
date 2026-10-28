@@ -33,6 +33,12 @@
   <data name="Share this page with your opponent. Both players must sign in." xml:space="preserve">
     <value>Μοιραστείτε αυτή τη σελίδα με τον αντίπαλό σας. Και οι δύο παίκτες πρέπει να συνδεθούν.</value>
   </data>
+  <data name="Share this page with your opponent. They can sign in or choose a guest nickname." xml:space="preserve">
+    <value>Μοιραστείτε αυτή τη σελίδα με τον αντίπαλό σας. Μπορεί να συνδεθεί ή να επιλέξει ένα ψευδώνυμο επισκέπτη.</value>
+  </data>
+  <data name="Time per player: {0} minutes, plus {1} seconds per move." xml:space="preserve">
+    <value>Χρόνος ανά παίκτη: {0} λεπτά, συν {1} δευτερόλεπτα ανά κίνηση.</value>
+  </data>
   <data name="Time per player: {0} minutes." xml:space="preserve">
     <value>Χρόνος ανά παίκτη: {0} λεπτά.</value>
   </data>

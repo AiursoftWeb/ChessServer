@@ -186,6 +186,12 @@
   <data name="ChessServer computer game" xml:space="preserve">
     <value>ChessServer कंप्यूटर गेम</value>
   </data>
+  <data name="Choose a nickname to play, or sign in to save your games." xml:space="preserve">
+    <value>खेलने के लिए कोई उपनाम चुनें, या अपने गेम सहेजने के लिए साइन इन करें।</value>
+  </data>
+  <data name="Choose from eight levels, from beginner practice to deeper engine searches." xml:space="preserve">
+    <value>शुरुआती अभ्यास से लेकर इंजन की गहन खोज तक, आठ स्तरों में से चुनें।</value>
+  </data>
   <data name="Choose from eight levels, from random legal moves for beginners to deeper engine searches." xml:space="preserve">
     <value>शुरुआती खिलाड़ियों के लिए नियमों के अनुसार की जाने वाली यादृच्छिक चालों से लेकर इंजन की गहन खोज तक, आठ स्तरों में से चुनें।</value>
   </data>

@@ -21,20 +21,38 @@
       <data name="1 — Beginner" xml:space="preserve">
     <value>1 — Αρχάριος</value>
   </data>
+  <data name="1 second" xml:space="preserve">
+    <value>1 δευτερόλεπτο</value>
+  </data>
   <data name="10 minutes" xml:space="preserve">
     <value>10 λεπτά</value>
+  </data>
+  <data name="10 seconds" xml:space="preserve">
+    <value>10 δευτερόλεπτα</value>
   </data>
   <data name="15 minutes" xml:space="preserve">
     <value>15 λεπτά</value>
   </data>
+  <data name="15 seconds" xml:space="preserve">
+    <value>15 δευτερόλεπτα</value>
+  </data>
   <data name="2 — Easy" xml:space="preserve">
     <value>2 — Εύκολο</value>
+  </data>
+  <data name="2 seconds" xml:space="preserve">
+    <value>2 δευτερόλεπτα</value>
   </data>
   <data name="3 — Casual" xml:space="preserve">
     <value>3 — Χαλαρή</value>
   </data>
   <data name="3 minutes" xml:space="preserve">
     <value>3 λεπτά</value>
+  </data>
+  <data name="3 seconds" xml:space="preserve">
+    <value>3 δευτερόλεπτα</value>
+  </data>
+  <data name="30 seconds" xml:space="preserve">
+    <value>30 δευτερόλεπτα</value>
   </data>
   <data name="4 — Intermediate" xml:space="preserve">
     <value>4 — Μεσαίο</value>
@@ -44,6 +62,9 @@
   </data>
   <data name="5 minutes" xml:space="preserve">
     <value>5 λεπτά</value>
+  </data>
+  <data name="5 seconds" xml:space="preserve">
+    <value>5 δευτερόλεπτα</value>
   </data>
   <data name="6 — Hard" xml:space="preserve">
     <value>6 — Δύσκολο</value>
@@ -57,17 +78,29 @@
   <data name="Black" xml:space="preserve">
     <value>Μαύρα</value>
   </data>
+  <data name="Continue game" xml:space="preserve">
+    <value>Συνέχεια παιχνιδιού</value>
+  </data>
   <data name="Create a challenge" xml:space="preserve">
     <value>Δημιουργία πρόκλησης</value>
   </data>
   <data name="Difficulty" xml:space="preserve">
     <value>Δυσκολία</value>
   </data>
+  <data name="Guest" xml:space="preserve">
+    <value>Καλεσμένος</value>
+  </data>
+  <data name="Increment per move" xml:space="preserve">
+    <value>Προσαύξηση χρόνου ανά κίνηση</value>
+  </data>
   <data name="My games" xml:space="preserve">
     <value>Τα παιχνίδια μου</value>
   </data>
   <data name="No games in progress." xml:space="preserve">
     <value>Κανένα παιχνίδι σε εξέλιξη.</value>
+  </data>
+  <data name="No increment" xml:space="preserve">
+    <value>Χωρίς προσαύξηση</value>
   </data>
   <data name="No open challenges." xml:space="preserve">
     <value>Δεν υπάρχουν ανοιχτές προκλήσεις.</value>
@@ -101,6 +134,9 @@
   </data>
   <data name="White" xml:space="preserve">
     <value>Λευκά</value>
+  </data>
+  <data name="Your current games" xml:space="preserve">
+    <value>Οι τρέχουσες παρτίδες σας</value>
   </data>
   <data name="Your pieces" xml:space="preserve">
     <value>Τα κομμάτια σας</value>

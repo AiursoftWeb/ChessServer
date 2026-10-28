@@ -24,23 +24,116 @@
   <data name="{0} to move" xml:space="preserve">
     <value>Σειρά του/της {0} για κίνηση</value>
   </data>
+  <data name="{0} wins" xml:space="preserve">
+    <value>Τα {0} κερδίζουν</value>
+  </data>
+  <data name="A draw cannot be offered now." xml:space="preserve">
+    <value>Δεν μπορεί να προσφερθεί ισοπαλία τώρα.</value>
+  </data>
+  <data name="Abort game" xml:space="preserve">
+    <value>Ματαίωση παρτίδας</value>
+  </data>
+  <data name="Accept draw" xml:space="preserve">
+    <value>Αποδοχή ισοπαλίας</value>
+  </data>
+  <data name="Accept rematch" xml:space="preserve">
+    <value>Αποδοχή ρεβάνς</value>
+  </data>
+  <data name="After 90 seconds without your opponent, you may claim the result. A computer game ends after two minutes away; a game with both players away ends after ten minutes." xml:space="preserve">
+    <value>Αν ο αντίπαλός σας απουσιάζει για 90 δευτερόλεπτα, μπορείτε να διεκδικήσετε το αποτέλεσμα. Μια παρτίδα με υπολογιστή λήγει αν απουσιάζετε για δύο λεπτά· μια παρτίδα στην οποία απουσιάζουν και οι δύο παίκτες λήγει μετά από δέκα λεπτά.</value>
+  </data>
+  <data name="All rooms are busy. Please try again later." xml:space="preserve">
+    <value>Όλες οι αίθουσες είναι απασχολημένες. Δοκιμάστε ξανά αργότερα.</value>
+  </data>
+  <data name="An unplayed game ends after one minute. Leaving does not pause the clock." xml:space="preserve">
+    <value>Μια παρτίδα που δεν έχει ξεκινήσει τελειώνει μετά από ένα λεπτό. Η αποχώρηση δεν σταματά το χρονόμετρο.</value>
+  </data>
+  <data name="Bishop" xml:space="preserve">
+    <value>Αξιωματικός</value>
+  </data>
   <data name="Black" xml:space="preserve">
     <value>Μαύρα</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Ακύρωση</value>
   </data>
   <data name="Chat" xml:space="preserve">
     <value>Συνομιλία</value>
   </data>
+  <data name="Checkmate" xml:space="preserve">
+    <value>Ματ</value>
+  </data>
   <data name="Checkmate. {0} wins." xml:space="preserve">
     <value>Ματ. Νικητής είναι ο/η {0}.</value>
+  </data>
+  <data name="Claim result" xml:space="preserve">
+    <value>Διεκδίκηση αποτελέσματος</value>
+  </data>
+  <data name="Computer is thinking…" xml:space="preserve">
+    <value>Ο υπολογιστής σκέφτεται…</value>
+  </data>
+  <data name="Confirm resignation" xml:space="preserve">
+    <value>Επιβεβαίωση παραίτησης</value>
+  </data>
+  <data name="Confirming your move…" xml:space="preserve">
+    <value>Επιβεβαίωση της κίνησής σας…</value>
+  </data>
+  <data name="Connected" xml:space="preserve">
+    <value>Συνδέθηκε</value>
+  </data>
+  <data name="Connecting…" xml:space="preserve">
+    <value>Σύνδεση…</value>
+  </data>
+  <data name="Connection and game rules" xml:space="preserve">
+    <value>Σύνδεση και κανόνες παιχνιδιού</value>
   </data>
   <data name="Connection closed. Refresh to reconnect." xml:space="preserve">
     <value>Η σύνδεση διακόπηκε. Ανανεώστε τη σελίδα για να επανασυνδεθείτε.</value>
   </data>
+  <data name="Continue to rematch" xml:space="preserve">
+    <value>Συνέχεια στον επαναληπτικό αγώνα</value>
+  </data>
+  <data name="Could not complete the action. Reconnecting to the server…" xml:space="preserve">
+    <value>Δεν ήταν δυνατή η ολοκλήρωση της ενέργειας. Επανασύνδεση με τον διακομιστή…</value>
+  </data>
   <data name="Could not confirm the saved game. Retry." xml:space="preserve">
     <value>Δεν ήταν δυνατή η επιβεβαίωση της αποθηκευμένης παρτίδας. Δοκιμάστε ξανά.</value>
   </data>
+  <data name="Dismiss offer" xml:space="preserve">
+    <value>Απόρριψη προσφοράς</value>
+  </data>
+  <data name="Draw" xml:space="preserve">
+    <value>Ισοπαλία</value>
+  </data>
+  <data name="Draw by agreement" xml:space="preserve">
+    <value>Ισοπαλία κατόπιν συμφωνίας</value>
+  </data>
+  <data name="Draw by repetition" xml:space="preserve">
+    <value>Ισοπαλία λόγω επανάληψης</value>
+  </data>
+  <data name="Draw by the fifty-move rule" xml:space="preserve">
+    <value>Ισοπαλία με τον κανόνα των 50 κινήσεων</value>
+  </data>
   <data name="Export PGN" xml:space="preserve">
     <value>Εξαγωγή PGN</value>
+  </data>
+  <data name="Finish this game before requesting a rematch." xml:space="preserve">
+    <value>Ολοκληρώστε αυτή την παρτίδα πριν ζητήσετε ρεβάνς.</value>
+  </data>
+  <data name="Game aborted before any move" xml:space="preserve">
+    <value>Η παρτίδα ακυρώθηκε πριν από οποιαδήποτε κίνηση</value>
+  </data>
+  <data name="Game ended because both players left" xml:space="preserve">
+    <value>Η παρτίδα έληξε επειδή αποχώρησαν και οι δύο παίκτες</value>
+  </data>
+  <data name="Game ended by abandonment" xml:space="preserve">
+    <value>Η παρτίδα έληξε λόγω εγκατάλειψης</value>
+  </data>
+  <data name="Game finished. Download the PGN to keep it; guest games are not saved to a personal history." xml:space="preserve">
+    <value>Η παρτίδα ολοκληρώθηκε. Κατεβάστε το PGN για να το κρατήσετε· οι παρτίδες επισκεπτών δεν αποθηκεύονται στο προσωπικό ιστορικό.</value>
+  </data>
+  <data name="Game over" xml:space="preserve">
+    <value>Το παιχνίδι τελείωσε</value>
   </data>
   <data name="Game over — draw." xml:space="preserve">
     <value>Το παιχνίδι έληξε — ισοπαλία.</value>
@@ -48,14 +141,74 @@
   <data name="Game over. {0} wins." xml:space="preserve">
     <value>Τέλος παιχνιδιού. Κερδίζει ο/η {0}.</value>
   </data>
+  <data name="Guest" xml:space="preserve">
+    <value>Επισκέπτης</value>
+  </data>
+  <data name="Knight" xml:space="preserve">
+    <value>Ίππος</value>
+  </data>
+  <data name="Lobby" xml:space="preserve">
+    <value>Αίθουσα αναμονής</value>
+  </data>
   <data name="Message" xml:space="preserve">
     <value>Μήνυμα</value>
+  </data>
+  <data name="Move list" xml:space="preserve">
+    <value>Λίστα κινήσεων</value>
+  </data>
+  <data name="Moves" xml:space="preserve">
+    <value>Κινήσεις</value>
+  </data>
+  <data name="Neither side has sufficient mating material" xml:space="preserve">
+    <value>Καμία πλευρά δεν έχει επαρκές υλικό για ματ</value>
+  </data>
+  <data name="Offer draw" xml:space="preserve">
+    <value>Προσφορά ισοπαλίας</value>
+  </data>
+  <data name="Only the players can perform this action." xml:space="preserve">
+    <value>Μόνο οι παίκτες μπορούν να εκτελέσουν αυτή την ενέργεια.</value>
+  </data>
+  <data name="Opponent disconnected. Reconnection time remaining: {0}s." xml:space="preserve">
+    <value>Ο αντίπαλος αποσυνδέθηκε. Χρόνος που απομένει για επανασύνδεση: {0} δευτ.</value>
+  </data>
+  <data name="Play another game" xml:space="preserve">
+    <value>Παίξτε άλλη μία παρτίδα</value>
+  </data>
+  <data name="Promote pawn" xml:space="preserve">
+    <value>Προαγωγή πιονιού</value>
+  </data>
+  <data name="Queen" xml:space="preserve">
+    <value>Βασίλισσα</value>
+  </data>
+  <data name="Reconnecting… Your clock keeps running." xml:space="preserve">
+    <value>Επανασύνδεση… Το χρονόμετρό σας συνεχίζει να μετρά.</value>
+  </data>
+  <data name="Rematch" xml:space="preserve">
+    <value>Ρεβάνς</value>
+  </data>
+  <data name="Rematch requested. Waiting for your opponent…" xml:space="preserve">
+    <value>Αιτήθηκε επαναληπτική παρτίδα. Αναμονή για τον αντίπαλο σας…</value>
   </data>
   <data name="Replay" xml:space="preserve">
     <value>Επανάληψη</value>
   </data>
+  <data name="Resign" xml:space="preserve">
+    <value>Παραίτηση</value>
+  </data>
+  <data name="Resign this game?" xml:space="preserve">
+    <value>Να παραιτηθείτε από αυτή την παρτίδα;</value>
+  </data>
+  <data name="Resignation" xml:space="preserve">
+    <value>Παραίτηση</value>
+  </data>
   <data name="Retry saving" xml:space="preserve">
     <value>Επανάληψη αποθήκευσης</value>
+  </data>
+  <data name="Return to live position" xml:space="preserve">
+    <value>Επιστροφή στην τρέχουσα θέση</value>
+  </data>
+  <data name="Rook" xml:space="preserve">
+    <value>Πύργος</value>
   </data>
   <data name="Room unavailable. Return to the lobby." xml:space="preserve">
     <value>Το δωμάτιο δεν είναι διαθέσιμο. Επιστρέψτε στο λόμπι.</value>
@@ -69,8 +222,53 @@
   <data name="Send" xml:space="preserve">
     <value>Αποστολή</value>
   </data>
+  <data name="Server maintenance pauses the clocks. A player disconnecting does not." xml:space="preserve">
+    <value>Η συντήρηση του διακομιστή σταματά τα χρονόμετρα. Η αποσύνδεση ενός παίκτη δεν τα σταματά.</value>
+  </data>
   <data name="Spectator" xml:space="preserve">
     <value>Θεατής</value>
+  </data>
+  <data name="Stalemate" xml:space="preserve">
+    <value>Πατ</value>
+  </data>
+  <data name="Take back" xml:space="preserve">
+    <value>Αναίρεση</value>
+  </data>
+  <data name="Take back your last move and the computer reply? The position and clocks will be restored." xml:space="preserve">
+    <value>Να αναιρεθεί η τελευταία σας κίνηση και η απάντηση του υπολογιστή; Η θέση και τα χρονόμετρα θα επανέλθουν.</value>
+  </data>
+  <data name="That move cannot be played in the current position." xml:space="preserve">
+    <value>Αυτή η κίνηση δεν μπορεί να παιχτεί στη τρέχουσα θέση.</value>
+  </data>
+  <data name="The draw offer is no longer available." xml:space="preserve">
+    <value>Η προσφορά ισοπαλίας δεν είναι πλέον διαθέσιμη.</value>
+  </data>
+  <data name="The game has started. You can resign instead." xml:space="preserve">
+    <value>Η παρτίδα έχει ξεκινήσει. Μπορείτε να εγκαταλείψετε αντ’ αυτού.</value>
+  </data>
+  <data name="The position changed. Your board has been synchronized." xml:space="preserve">
+    <value>Η θέση άλλαξε. Η σκακιέρα σας συγχρονίστηκε.</value>
+  </data>
+  <data name="The rematch offer is no longer available." xml:space="preserve">
+    <value>Η πρόταση για ρεβάνς δεν είναι πλέον διαθέσιμη.</value>
+  </data>
+  <data name="This action could not be confirmed. Refresh to synchronize." xml:space="preserve">
+    <value>Δεν ήταν δυνατή η επιβεβαίωση αυτής της ενέργειας. Ανανεώστε τη σελίδα για να γίνει συγχρονισμός.</value>
+  </data>
+  <data name="This game has ended." xml:space="preserve">
+    <value>Αυτή η παρτίδα έχει τελειώσει.</value>
+  </data>
+  <data name="This game is still in progress. Your clock will keep running." xml:space="preserve">
+    <value>Η παρτίδα συνεχίζεται. Το χρονόμετρό σας θα συνεχίσει να μετρά.</value>
+  </data>
+  <data name="Time control: {0}" xml:space="preserve">
+    <value>Χρόνος σκέψης: {0}</value>
+  </data>
+  <data name="Time expired" xml:space="preserve">
+    <value>Έληξε ο χρόνος</value>
+  </data>
+  <data name="Time expired, but the opponent cannot checkmate." xml:space="preserve">
+    <value>Έληξε ο χρόνος, αλλά ο αντίπαλος δεν μπορεί να κάνει ματ.</value>
   </data>
   <data name="Time expired. {0} wins." xml:space="preserve">
     <value>Ο χρόνος έληξε. Νικητής είναι ο/η {0}.</value>
@@ -89,6 +287,24 @@
   </data>
   <data name="You are watching this game." xml:space="preserve">
     <value>Παρακολουθείτε αυτή την παρτίδα.</value>
+  </data>
+  <data name="You can only take back your own last move in an active computer game." xml:space="preserve">
+    <value>Μπορείτε να αναιρέσετε μόνο την τελευταία σας κίνηση σε μια ενεργή παρτίδα με τον υπολογιστή.</value>
+  </data>
+  <data name="You offered a draw." xml:space="preserve">
+    <value>Προσφέρατε ισοπαλία.</value>
+  </data>
+  <data name="Your opponent can still reconnect." xml:space="preserve">
+    <value>Ο αντίπαλός σας μπορεί ακόμα να επανασυνδεθεί.</value>
+  </data>
+  <data name="Your opponent has not reconnected. You may claim the result or keep waiting." xml:space="preserve">
+    <value>Ο αντίπαλός σας δεν έχει επανασυνδεθεί. Μπορείτε να διεκδικήσετε τη νίκη ή να συνεχίσετε να περιμένετε.</value>
+  </data>
+  <data name="Your opponent offers a draw." xml:space="preserve">
+    <value>Ο αντιπάλός σας προτείνει ισοπαλία.</value>
+  </data>
+  <data name="Your opponent offers a rematch with colors reversed." xml:space="preserve">
+    <value>Ο αντίπαλός σας προτείνει ρεβάνς με αντίστροφα χρώματα.</value>
   </data>
 
 </root>
