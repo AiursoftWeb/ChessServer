@@ -33,6 +33,12 @@
   <data name="Share this page with your opponent. Both players must sign in." xml:space="preserve">
     <value>Jaa tämä sivu vastustajallesi. Molempien pelaajien on kirjauduttava sisään.</value>
   </data>
+  <data name="Share this page with your opponent. They can sign in or choose a guest nickname." xml:space="preserve">
+    <value>Jaa tämä sivu vastustajallesi. Hän voi kirjautua sisään tai valita vierasnimimerkin.</value>
+  </data>
+  <data name="Time per player: {0} minutes, plus {1} seconds per move." xml:space="preserve">
+    <value>Aika pelaajakohti: {0} minuuttia, lisäksi {1} sekuntia siirtoa kohti.</value>
+  </data>
   <data name="Time per player: {0} minutes." xml:space="preserve">
     <value>Aikaa pelaajaa kohden: {0} minuuttia.</value>
   </data>

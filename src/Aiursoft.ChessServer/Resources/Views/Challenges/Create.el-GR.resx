@@ -18,17 +18,38 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="10 minutes" xml:space="preserve">
+      <data name="1 second" xml:space="preserve">
+    <value>1 δευτερόλεπτο</value>
+  </data>
+  <data name="10 minutes" xml:space="preserve">
     <value>10 λεπτά</value>
+  </data>
+  <data name="10 seconds" xml:space="preserve">
+    <value>10 δευτερόλεπτα</value>
   </data>
   <data name="15 minutes" xml:space="preserve">
     <value>15 λεπτά</value>
   </data>
+  <data name="15 seconds" xml:space="preserve">
+    <value>15 δευτερόλεπτα</value>
+  </data>
+  <data name="2 seconds" xml:space="preserve">
+    <value>2 δευτερόλεπτα</value>
+  </data>
   <data name="3 minutes" xml:space="preserve">
     <value>3 λεπτά</value>
   </data>
+  <data name="3 seconds" xml:space="preserve">
+    <value>3 δευτερόλεπτα</value>
+  </data>
+  <data name="30 seconds" xml:space="preserve">
+    <value>30 δευτερόλεπτα</value>
+  </data>
   <data name="5 minutes" xml:space="preserve">
     <value>5 λεπτά</value>
+  </data>
+  <data name="5 seconds" xml:space="preserve">
+    <value>5 δευτερόλεπτα</value>
   </data>
   <data name="Black" xml:space="preserve">
     <value>Μαύρα</value>
@@ -38,6 +59,12 @@
   </data>
   <data name="Create room" xml:space="preserve">
     <value>Δημιουργία δωματίου</value>
+  </data>
+  <data name="Increment per move" xml:space="preserve">
+    <value>Προσαύξηση χρόνου ανά κίνηση</value>
+  </data>
+  <data name="No increment" xml:space="preserve">
+    <value>Χωρίς προσαύξηση</value>
   </data>
   <data name="Public" xml:space="preserve">
     <value>Δημόσιο</value>

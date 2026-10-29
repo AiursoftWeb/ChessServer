@@ -24,23 +24,116 @@
   <data name="{0} to move" xml:space="preserve">
     <value>{0} siirtää seuraavaksi</value>
   </data>
+  <data name="{0} wins" xml:space="preserve">
+    <value>{0} voittaa</value>
+  </data>
+  <data name="A draw cannot be offered now." xml:space="preserve">
+    <value>Tasapeliä ei voi tarjota nyt.</value>
+  </data>
+  <data name="Abort game" xml:space="preserve">
+    <value>Keskeytä peli</value>
+  </data>
+  <data name="Accept draw" xml:space="preserve">
+    <value>Hyväksy tasapeli</value>
+  </data>
+  <data name="Accept rematch" xml:space="preserve">
+    <value>Hyväksy uusintaottelu</value>
+  </data>
+  <data name="After 90 seconds without your opponent, you may claim the result. A computer game ends after two minutes away; a game with both players away ends after ten minutes." xml:space="preserve">
+    <value>Jos vastustajasi ei ole paikalla 90 sekuntiin, voit vaatia tuloksen vahvistamista. Tietokonetta vastaan pelattava peli päättyy, kun vastustaja on ollut poissa kaksi minuuttia; peli, jossa molemmat pelaajat ovat poissa, päättyy kymmenen minuutin kuluttua.</value>
+  </data>
+  <data name="All rooms are busy. Please try again later." xml:space="preserve">
+    <value>Kaikki huoneet ovat varattuja. Yritä myöhemmin uudelleen.</value>
+  </data>
+  <data name="An unplayed game ends after one minute. Leaving does not pause the clock." xml:space="preserve">
+    <value>Pelaamaton peli päättyy minuutin kuluttua. Poistuminen ei pysäytä kelloa.</value>
+  </data>
+  <data name="Bishop" xml:space="preserve">
+    <value>Lähetti</value>
+  </data>
   <data name="Black" xml:space="preserve">
     <value>Musta</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Peruuta</value>
   </data>
   <data name="Chat" xml:space="preserve">
     <value>Chat</value>
   </data>
+  <data name="Checkmate" xml:space="preserve">
+    <value>Shakki ja matti</value>
+  </data>
   <data name="Checkmate. {0} wins." xml:space="preserve">
     <value>Matti! {0} voittaa.</value>
+  </data>
+  <data name="Claim result" xml:space="preserve">
+    <value>Vaadi tulosta</value>
+  </data>
+  <data name="Computer is thinking…" xml:space="preserve">
+    <value>Tietokone miettii…</value>
+  </data>
+  <data name="Confirm resignation" xml:space="preserve">
+    <value>Vahvista luovutus</value>
+  </data>
+  <data name="Confirming your move…" xml:space="preserve">
+    <value>Vahvistetaan siirtoasi…</value>
+  </data>
+  <data name="Connected" xml:space="preserve">
+    <value>Yhdistetty</value>
+  </data>
+  <data name="Connecting…" xml:space="preserve">
+    <value>Yhdistetään…</value>
+  </data>
+  <data name="Connection and game rules" xml:space="preserve">
+    <value>Yhteys ja pelisäännöt</value>
   </data>
   <data name="Connection closed. Refresh to reconnect." xml:space="preserve">
     <value>Yhteys katkesi. Päivitä sivu muodostaaksesi yhteyden uudelleen.</value>
   </data>
+  <data name="Continue to rematch" xml:space="preserve">
+    <value>Jatka uusintaotteluun</value>
+  </data>
+  <data name="Could not complete the action. Reconnecting to the server…" xml:space="preserve">
+    <value>Toimintoa ei voitu suorittaa. Yhdistetään palvelimeen uudelleen…</value>
+  </data>
   <data name="Could not confirm the saved game. Retry." xml:space="preserve">
     <value>Tallennettua peliä ei voitu vahvistaa. Yritä uudelleen.</value>
   </data>
+  <data name="Dismiss offer" xml:space="preserve">
+    <value>Hylkää tarjous</value>
+  </data>
+  <data name="Draw" xml:space="preserve">
+    <value>Tasapeli</value>
+  </data>
+  <data name="Draw by agreement" xml:space="preserve">
+    <value>Tasapeli yhteisellä sopimuksella</value>
+  </data>
+  <data name="Draw by repetition" xml:space="preserve">
+    <value>Tasapeli saman aseman toistumisen vuoksi</value>
+  </data>
+  <data name="Draw by the fifty-move rule" xml:space="preserve">
+    <value>Tasapeli 50 siirron säännön perusteella</value>
+  </data>
   <data name="Export PGN" xml:space="preserve">
     <value>Vie PGN-tiedosto</value>
+  </data>
+  <data name="Finish this game before requesting a rematch." xml:space="preserve">
+    <value>Viimeistele tämä peli ennen uuden pelin pyytämistä.</value>
+  </data>
+  <data name="Game aborted before any move" xml:space="preserve">
+    <value>Peli keskeytettiin ennen yhtäkään siirtoa</value>
+  </data>
+  <data name="Game ended because both players left" xml:space="preserve">
+    <value>Peli päättyi, koska molemmat pelaajat poistuivat</value>
+  </data>
+  <data name="Game ended by abandonment" xml:space="preserve">
+    <value>Peli päättyi keskeyttämiseen</value>
+  </data>
+  <data name="Game finished. Download the PGN to keep it; guest games are not saved to a personal history." xml:space="preserve">
+    <value>Peli päättyi. Lataa PGN-tiedosto talteen; vieraspelejä ei tallenneta henkilökohtaiseen pelihistoriaan.</value>
+  </data>
+  <data name="Game over" xml:space="preserve">
+    <value>Peli päättyi</value>
   </data>
   <data name="Game over — draw." xml:space="preserve">
     <value>Peli päättyi — tasapeli.</value>
@@ -48,14 +141,74 @@
   <data name="Game over. {0} wins." xml:space="preserve">
     <value>Peli päättyi. {0} voitti.</value>
   </data>
+  <data name="Guest" xml:space="preserve">
+    <value>Vieras</value>
+  </data>
+  <data name="Knight" xml:space="preserve">
+    <value>Ratsu</value>
+  </data>
+  <data name="Lobby" xml:space="preserve">
+    <value>Aula</value>
+  </data>
   <data name="Message" xml:space="preserve">
     <value>Viesti</value>
+  </data>
+  <data name="Move list" xml:space="preserve">
+    <value>Siirtoluettelo</value>
+  </data>
+  <data name="Moves" xml:space="preserve">
+    <value>Siirrot</value>
+  </data>
+  <data name="Neither side has sufficient mating material" xml:space="preserve">
+    <value>Kummallakaan pelaajalla ei ole riittävästi materiaalia mattia varten.</value>
+  </data>
+  <data name="Offer draw" xml:space="preserve">
+    <value>Tarjoa tasan</value>
+  </data>
+  <data name="Only the players can perform this action." xml:space="preserve">
+    <value>Vain pelaajat voivat suorittaa tämän toiminnon.</value>
+  </data>
+  <data name="Opponent disconnected. Reconnection time remaining: {0}s." xml:space="preserve">
+    <value>Vastustajan yhteys katkesi. Uudelleenyhdistämiseen jäljellä oleva aika: {0} s.</value>
+  </data>
+  <data name="Play another game" xml:space="preserve">
+    <value>Pelaa uusi peli</value>
+  </data>
+  <data name="Promote pawn" xml:space="preserve">
+    <value>Muuta sotilas toiseksi nappulaksi</value>
+  </data>
+  <data name="Queen" xml:space="preserve">
+    <value>Kuningatar</value>
+  </data>
+  <data name="Reconnecting… Your clock keeps running." xml:space="preserve">
+    <value>Yhdistetään uudelleen… Pelikellosi käy edelleen.</value>
+  </data>
+  <data name="Rematch" xml:space="preserve">
+    <value>Uusintaottelu</value>
+  </data>
+  <data name="Rematch requested. Waiting for your opponent…" xml:space="preserve">
+    <value>Uusintaottelua pyydetty. Odotetaan vastustajaa…</value>
   </data>
   <data name="Replay" xml:space="preserve">
     <value>Toista uudelleen</value>
   </data>
+  <data name="Resign" xml:space="preserve">
+    <value>Antaudu</value>
+  </data>
+  <data name="Resign this game?" xml:space="preserve">
+    <value>Luovutko tästä pelistä?</value>
+  </data>
+  <data name="Resignation" xml:space="preserve">
+    <value>Luovutus</value>
+  </data>
   <data name="Retry saving" xml:space="preserve">
     <value>Yritä tallentaa uudelleen</value>
+  </data>
+  <data name="Return to live position" xml:space="preserve">
+    <value>Palaa nykyiseen pelitilanteeseen</value>
+  </data>
+  <data name="Rook" xml:space="preserve">
+    <value>Torni</value>
   </data>
   <data name="Room unavailable. Return to the lobby." xml:space="preserve">
     <value>Huone ei ole käytettävissä. Palaa aulaan.</value>
@@ -69,8 +222,53 @@
   <data name="Send" xml:space="preserve">
     <value>Lähetä</value>
   </data>
+  <data name="Server maintenance pauses the clocks. A player disconnecting does not." xml:space="preserve">
+    <value>Palvelimen huolto pysäyttää kellot. Pelaajan yhteyden katkeaminen ei.</value>
+  </data>
   <data name="Spectator" xml:space="preserve">
     <value>Katsoja</value>
+  </data>
+  <data name="Stalemate" xml:space="preserve">
+    <value>Patti</value>
+  </data>
+  <data name="Take back" xml:space="preserve">
+    <value>Peruuta siirto</value>
+  </data>
+  <data name="Take back your last move and the computer reply? The position and clocks will be restored." xml:space="preserve">
+    <value>Peruta viimeisin siirtosi ja tietokoneen vastaus? Asema ja kellot palautetaan ennalleen.</value>
+  </data>
+  <data name="That move cannot be played in the current position." xml:space="preserve">
+    <value>Tuota siirtoä ei voi tehdä nykyisessä asemassa.</value>
+  </data>
+  <data name="The draw offer is no longer available." xml:space="preserve">
+    <value>Tasapelitarjous ei ole enää voimassa.</value>
+  </data>
+  <data name="The game has started. You can resign instead." xml:space="preserve">
+    <value>Peli on alkanut. Voit sen sijaan luovuttaa.</value>
+  </data>
+  <data name="The position changed. Your board has been synchronized." xml:space="preserve">
+    <value>Asema on muuttunut. Pelilautasi on synkronoitu.</value>
+  </data>
+  <data name="The rematch offer is no longer available." xml:space="preserve">
+    <value>Uusintaottelutarjous ei ole enää voimassa.</value>
+  </data>
+  <data name="This action could not be confirmed. Refresh to synchronize." xml:space="preserve">
+    <value>Toimintoa ei voitu vahvistaa. Päivitä sivu synkronoidaksesi tiedot.</value>
+  </data>
+  <data name="This game has ended." xml:space="preserve">
+    <value>Peli on päättynyt.</value>
+  </data>
+  <data name="This game is still in progress. Your clock will keep running." xml:space="preserve">
+    <value>Peli on yhä käynnissä. Aikasi kuluu edelleen.</value>
+  </data>
+  <data name="Time control: {0}" xml:space="preserve">
+    <value>Aikarajoitus: {0}</value>
+  </data>
+  <data name="Time expired" xml:space="preserve">
+    <value>Aika loppui</value>
+  </data>
+  <data name="Time expired, but the opponent cannot checkmate." xml:space="preserve">
+    <value>Aika loppui, mutta vastustaja ei voi shakata mattiin.</value>
   </data>
   <data name="Time expired. {0} wins." xml:space="preserve">
     <value>Aika loppui. {0} voittaa.</value>
@@ -89,6 +287,24 @@
   </data>
   <data name="You are watching this game." xml:space="preserve">
     <value>Katselet tätä peliä.</value>
+  </data>
+  <data name="You can only take back your own last move in an active computer game." xml:space="preserve">
+    <value>Voit ottaa takaisin vain oman viimeisimmän siirtosi käynnissä olevassa tietokonepelissä.</value>
+  </data>
+  <data name="You offered a draw." xml:space="preserve">
+    <value>Tarjosit tasapeliä.</value>
+  </data>
+  <data name="Your opponent can still reconnect." xml:space="preserve">
+    <value>Vastustajasi voi vielä muodostaa yhteyden uudelleen.</value>
+  </data>
+  <data name="Your opponent has not reconnected. You may claim the result or keep waiting." xml:space="preserve">
+    <value>Vastustajasi ei ole palannut peliin. Voit vaatia pelin tulosta tai jatkaa odottamista.</value>
+  </data>
+  <data name="Your opponent offers a draw." xml:space="preserve">
+    <value>Vastustajasi tarjoaa tasapeliä.</value>
+  </data>
+  <data name="Your opponent offers a rematch with colors reversed." xml:space="preserve">
+    <value>Vastustajasi tarjoaa uusintapeliä käänteisin välein.</value>
   </data>
 
 </root>
