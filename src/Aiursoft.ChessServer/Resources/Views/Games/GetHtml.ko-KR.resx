@@ -204,6 +204,9 @@
   <data name="Resignation" xml:space="preserve">
     <value>투항</value>
   </data>
+  <data name="Retry computer move" xml:space="preserve">
+    <value>컴퓨터 수 다시 시도</value>
+  </data>
   <data name="Retry saving" xml:space="preserve">
     <value>저장 다시 시도</value>
   </data>
@@ -242,6 +245,9 @@
   </data>
   <data name="That move cannot be played in the current position." xml:space="preserve">
     <value>현재 포지션에서는 해당 수를 둘 수 없습니다.</value>
+  </data>
+  <data name="The computer could not choose a move. Retry when ready." xml:space="preserve">
+    <value>컴퓨터가 다음 수를 선택하지 못했습니다. 준비되면 다시 시도하세요.</value>
   </data>
   <data name="The draw offer is no longer available." xml:space="preserve">
     <value>무승부 제안은 더 이상 유효하지 않습니다.</value>

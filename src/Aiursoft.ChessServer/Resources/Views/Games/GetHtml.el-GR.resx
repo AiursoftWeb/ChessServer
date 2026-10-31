@@ -201,6 +201,9 @@
   <data name="Resignation" xml:space="preserve">
     <value>Παραίτηση</value>
   </data>
+  <data name="Retry computer move" xml:space="preserve">
+    <value>Επανάληψη κίνησης υπολογιστή</value>
+  </data>
   <data name="Retry saving" xml:space="preserve">
     <value>Επανάληψη αποθήκευσης</value>
   </data>
@@ -239,6 +242,9 @@
   </data>
   <data name="That move cannot be played in the current position." xml:space="preserve">
     <value>Αυτή η κίνηση δεν μπορεί να παιχτεί στη τρέχουσα θέση.</value>
+  </data>
+  <data name="The computer could not choose a move. Retry when ready." xml:space="preserve">
+    <value>Ο υπολογιστής δεν μπόρεσε να επιλέξει μια κίνηση. Δοκιμάστε ξανά όταν είστε έτοιμοι.</value>
   </data>
   <data name="The draw offer is no longer available." xml:space="preserve">
     <value>Η προσφορά ισοπαλίας δεν είναι πλέον διαθέσιμη.</value>

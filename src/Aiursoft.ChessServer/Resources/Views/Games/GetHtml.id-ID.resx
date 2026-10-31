@@ -204,6 +204,9 @@
   <data name="Resignation" xml:space="preserve">
     <value>Menyerah</value>
   </data>
+  <data name="Retry computer move" xml:space="preserve">
+    <value>Coba lagi langkah komputer</value>
+  </data>
   <data name="Retry saving" xml:space="preserve">
     <value>Coba simpan lagi</value>
   </data>
@@ -242,6 +245,9 @@
   </data>
   <data name="That move cannot be played in the current position." xml:space="preserve">
     <value>Langkah tersebut tidak dapat dimainkan pada posisi saat ini.</value>
+  </data>
+  <data name="The computer could not choose a move. Retry when ready." xml:space="preserve">
+    <value>Komputer tidak dapat memilih langkah. Coba lagi saat siap.</value>
   </data>
   <data name="The draw offer is no longer available." xml:space="preserve">
     <value>Tawaran remis sudah tidak tersedia lagi.</value>

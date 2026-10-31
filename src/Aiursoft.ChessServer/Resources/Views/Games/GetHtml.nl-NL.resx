@@ -204,6 +204,9 @@
   <data name="Resignation" xml:space="preserve">
     <value>Opgegeven</value>
   </data>
+  <data name="Retry computer move" xml:space="preserve">
+    <value>Computerzet opnieuw proberen</value>
+  </data>
   <data name="Retry saving" xml:space="preserve">
     <value>Opnieuw proberen met opslaan</value>
   </data>
@@ -242,6 +245,9 @@
   </data>
   <data name="That move cannot be played in the current position." xml:space="preserve">
     <value>Die zet kan in de huidige stelling niet worden gespeeld.</value>
+  </data>
+  <data name="The computer could not choose a move. Retry when ready." xml:space="preserve">
+    <value>De computer kon geen zet kiezen. Probeer het opnieuw wanneer je klaar bent.</value>
   </data>
   <data name="The draw offer is no longer available." xml:space="preserve">
     <value>Het remisevoorstel is niet meer beschikbaar.</value>

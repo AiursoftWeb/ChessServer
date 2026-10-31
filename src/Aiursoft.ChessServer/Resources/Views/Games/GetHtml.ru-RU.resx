@@ -204,6 +204,9 @@
   <data name="Resignation" xml:space="preserve">
     <value>Сдача партии</value>
   </data>
+  <data name="Retry computer move" xml:space="preserve">
+    <value>Повторить ход компьютера</value>
+  </data>
   <data name="Retry saving" xml:space="preserve">
     <value>Повторить сохранение</value>
   </data>
@@ -242,6 +245,9 @@
   </data>
   <data name="That move cannot be played in the current position." xml:space="preserve">
     <value>Этот ход нельзя сделать в текущей позиции.</value>
+  </data>
+  <data name="The computer could not choose a move. Retry when ready." xml:space="preserve">
+    <value>Компьютер не смог выбрать ход. Повторите попытку, когда будете готовы.</value>
   </data>
   <data name="The draw offer is no longer available." xml:space="preserve">
     <value>Предложение ничьей больше недоступно.</value>

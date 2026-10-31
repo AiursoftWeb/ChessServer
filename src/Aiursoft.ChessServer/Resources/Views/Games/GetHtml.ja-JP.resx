@@ -204,6 +204,9 @@
   <data name="Resignation" xml:space="preserve">
     <value>投了</value>
   </data>
+  <data name="Retry computer move" xml:space="preserve">
+    <value>コンピューターの手を再試行</value>
+  </data>
   <data name="Retry saving" xml:space="preserve">
     <value>保存を再試行</value>
   </data>
@@ -242,6 +245,9 @@
   </data>
   <data name="That move cannot be played in the current position." xml:space="preserve">
     <value>その手は現在の局面では指せません。</value>
+  </data>
+  <data name="The computer could not choose a move. Retry when ready." xml:space="preserve">
+    <value>コンピューターが指し手を選べませんでした。準備ができたら再試行してください。</value>
   </data>
   <data name="The draw offer is no longer available." xml:space="preserve">
     <value>引き分けの申し出はすでに無効です。</value>

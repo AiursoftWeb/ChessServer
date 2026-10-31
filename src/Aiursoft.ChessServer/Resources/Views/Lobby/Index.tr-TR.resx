@@ -93,6 +93,12 @@
   <data name="Increment per move" xml:space="preserve">
     <value>Hamle başına ek süre</value>
   </data>
+  <data name="LLM — Play a language model" xml:space="preserve">
+    <value>LLM — Bir dil modeliyle oynayın</value>
+  </data>
+  <data name="Model" xml:space="preserve">
+    <value>Model</value>
+  </data>
   <data name="My games" xml:space="preserve">
     <value>Oyunlarım</value>
   </data>

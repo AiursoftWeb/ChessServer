@@ -204,6 +204,9 @@
   <data name="Resignation" xml:space="preserve">
     <value>Abandono</value>
   </data>
+  <data name="Retry computer move" xml:space="preserve">
+    <value>Reintentar movimiento de la computadora</value>
+  </data>
   <data name="Retry saving" xml:space="preserve">
     <value>Reintentar el guardado</value>
   </data>
@@ -242,6 +245,9 @@
   </data>
   <data name="That move cannot be played in the current position." xml:space="preserve">
     <value>Esa jugada no se puede realizar en la posición actual.</value>
+  </data>
+  <data name="The computer could not choose a move. Retry when ready." xml:space="preserve">
+    <value>El ordenador no ha podido elegir un movimiento. Vuelve a intentarlo cuando quieras.</value>
   </data>
   <data name="The draw offer is no longer available." xml:space="preserve">
     <value>La oferta de tablas ya no está disponible.</value>

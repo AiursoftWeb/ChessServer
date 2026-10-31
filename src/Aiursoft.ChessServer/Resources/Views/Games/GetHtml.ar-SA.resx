@@ -204,6 +204,9 @@
   <data name="Resignation" xml:space="preserve">
     <value>الاستسلام</value>
   </data>
+  <data name="Retry computer move" xml:space="preserve">
+    <value>إعادة محاولة نقلة الكمبيوتر</value>
+  </data>
   <data name="Retry saving" xml:space="preserve">
     <value>إعادة محاولة الحفظ</value>
   </data>
@@ -242,6 +245,9 @@
   </data>
   <data name="That move cannot be played in the current position." xml:space="preserve">
     <value>لا يمكن لعب هذه النقلة في الوضع الحالي.</value>
+  </data>
+  <data name="The computer could not choose a move. Retry when ready." xml:space="preserve">
+    <value>تعذّر على الكمبيوتر اختيار نقلة. أعد المحاولة عندما تكون مستعدًا.</value>
   </data>
   <data name="The draw offer is no longer available." xml:space="preserve">
     <value>لم يعد عرض التعادل متاحًا.</value>

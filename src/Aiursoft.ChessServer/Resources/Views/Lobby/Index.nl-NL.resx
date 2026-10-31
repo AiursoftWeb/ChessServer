@@ -93,6 +93,12 @@
   <data name="Increment per move" xml:space="preserve">
     <value>Tijdstoeslag per zet</value>
   </data>
+  <data name="LLM — Play a language model" xml:space="preserve">
+    <value>LLM — Speel tegen een taalmodel</value>
+  </data>
+  <data name="Model" xml:space="preserve">
+    <value>Model</value>
+  </data>
   <data name="My games" xml:space="preserve">
     <value>Mijn partijen</value>
   </data>
