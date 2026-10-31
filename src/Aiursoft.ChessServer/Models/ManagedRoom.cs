@@ -1,3 +1,5 @@
+using Aiursoft.AiurObserver;
+
 namespace Aiursoft.ChessServer.Models;
 
 public class RoomSeat
@@ -19,7 +21,7 @@ public class RoomMember
 
 public class ManagedRoom(Player host) : Challenge(host, "Chess room", RoleRule.CreatorWhite, TimeSpan.MaxValue, ChallengePermission.Public)
 {
-    public Aiursoft.AiurObserver.AsyncObservable<ChatMessage> ChatChannel { get; } = new();
+    public AsyncObservable<ChatMessage> ChatChannel { get; } = new();
     public List<RoomMember> Members { get; set; } = [new() { Player = host }];
     public RoomSeat? White { get; set; } = new() { Player = host };
     public RoomSeat? Black { get; set; }
