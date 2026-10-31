@@ -58,16 +58,17 @@ public class ChallengeContext(AcceptedChallenge challenge, int id)
     public string[] Moves { get; } = challenge.Game.Board.MovesToSan.ToArray();
     public long Revision { get; } = challenge.Revision;
     public long SampledAt { get; } = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
-    public bool Computer { get; } = challenge.Difficulty != null;
+    public bool Computer { get; } = challenge.IsComputer;
     public int IncrementSeconds { get; } = challenge.IncrementSeconds;
     public int? InitialMinutes { get; } = challenge.IsTimed ? (int)challenge.TimeLimit.TotalMinutes : null;
-    public bool CanUndo { get; } = challenge.Difficulty != null && !challenge.Game.Board.IsEndGame && challenge.UndoPly >= 0;
+    public bool CanUndo { get; } = challenge.IsComputer && !challenge.Game.Board.IsEndGame && challenge.UndoPly >= 0;
     public Guid? RematchOfferedBy { get; } = challenge.RematchOfferedBy;
     public int? NextGameId { get; } = challenge.NextGameId;
     public bool Thinking { get; } = challenge.Game.IsThinking;
+    public string? ComputerError { get; } = challenge.Game.ComputerError;
     public string WhiteId { get; } = challenge.GetWhitePlayer().Id.ToString();
     public string BlackId { get; } = challenge.GetBlackPlayer().Id.ToString();
     public string? DrawOfferedBy { get; } = challenge.DrawOfferedBy?.ToString();
-    public double WhiteAbsentSeconds { get; } = challenge.Difficulty != null && !challenge.CreatorIsWhite ? 0 : Math.Max(0, (DateTimeOffset.UtcNow - challenge.WhiteSeenAt).TotalSeconds);
-    public double BlackAbsentSeconds { get; } = challenge.Difficulty != null && challenge.CreatorIsWhite ? 0 : Math.Max(0, (DateTimeOffset.UtcNow - challenge.BlackSeenAt).TotalSeconds);
+    public double WhiteAbsentSeconds { get; } = challenge.IsComputer && !challenge.CreatorIsWhite ? 0 : Math.Max(0, (DateTimeOffset.UtcNow - challenge.WhiteSeenAt).TotalSeconds);
+    public double BlackAbsentSeconds { get; } = challenge.IsComputer && challenge.CreatorIsWhite ? 0 : Math.Max(0, (DateTimeOffset.UtcNow - challenge.BlackSeenAt).TotalSeconds);
 }

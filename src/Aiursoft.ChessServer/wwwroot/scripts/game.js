@@ -39,6 +39,10 @@ function apply(info) {
 function render() {
     if (!state) return;
     const ended = state.Game.Ended;
+    const computerFailure = !ended && state.ComputerError && color !== 'm' && state.Game.Turn !== color;
+    element('computer-failure').hidden = !computerFailure;
+    element('computer-error').textContent = computerFailure ? text(state.ComputerError) : '';
+    element('retry-computer').disabled = aiBusy || state.Thinking;
     const elapsed = Math.max(0, performance.now() - sampledAt);
     for (const [clockId, side] of [['clock-top', color === 'b' ? 'w' : 'b'], ['clock-bottom', color === 'b' ? 'b' : 'w']]) {
         const clock = element(clockId), active = !ended && state.Game.Turn === side;
@@ -144,7 +148,7 @@ async function poll() {
         if (response.ok) apply(await response.json());
         else if (response.status === 404) element('action-error').textContent = text('unavailable');
         if (pending && performance.now() - lastSend > 2000) sendPending();
-        if (state?.Computer && !state.Game.Ended && color !== 'm' && state.Game.Turn !== color && !state.Thinking && !aiBusy && performance.now() - lastAiAttempt > 5000) {
+        if (state?.Computer && !state.Game.Ended && color !== 'm' && state.Game.Turn !== color && !state.Thinking && !state.ComputerError && !aiBusy && performance.now() - lastAiAttempt > 5000) {
             aiBusy = true; lastAiAttempt = performance.now();
             try { const wake = await post(`/games/${id}/computer`, {}); if (wake.ok) apply(await wake.json()); } finally { aiBusy = false; }
         }
@@ -165,6 +169,13 @@ element('undo').onclick = () => { element('undo-confirmation').hidden = false; }
 element('cancel-undo').onclick = () => { element('undo-confirmation').hidden = true; };
 document.querySelectorAll('[data-game-action]').forEach(button => { button.onclick = () => action(button.dataset.gameAction); });
 element('retry-save').onclick = saveGame;
+element('retry-computer').onclick = async () => {
+    if (aiBusy || !state || state.Game.Ended) return;
+    aiBusy = true; render();
+    try { const response = await post(`/games/${id}/computer`, {retry: 'true'}); if (response.ok) apply(await response.json()); }
+    catch { element('computer-error').textContent = text('computer-failed'); }
+    finally { aiBusy = false; render(); }
+};
 window.addEventListener('beforeunload', event => { if (state && !state.Game.Ended && color !== 'm') { event.preventDefault(); event.returnValue = text('leave'); } });
 window.addEventListener('pagehide', () => { stopped = true; clearInterval(heartbeat); clearInterval(clock); clearTimeout(retryTimer); socket?.close(); surface?.dispose(); }, {once: true});
 if (element('chat-form')) {

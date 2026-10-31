@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Aiursoft.ChessServer.Controllers;
 
 [Route("games")]
-public class GamesController(InMemoryDatabase database, ChessEngine engine, GameHistoryService history, GameSessionService sessions, ILogger<GamesController> logger) : ChessController
+public class GamesController(InMemoryDatabase database, ChessEngine engine, LlmChessPlayer llm, GameHistoryService history, GameSessionService sessions, ILogger<GamesController> logger) : ChessController
 {
     private sealed class SocketSendQueue
     {
@@ -36,7 +36,7 @@ public class GamesController(InMemoryDatabase database, ChessEngine engine, Game
     public IActionResult GetHtml(int id)
     {
         var room = database.GetAcceptedChallenge(id);
-        return room == null ? NotFound() : this.StackView(new RoomViewModel { Id = id, Message = room.Message, IsComputer = room.Difficulty != null });
+        return room == null ? NotFound() : this.StackView(new RoomViewModel { Id = id, Message = room.Message, IsComputer = room.IsComputer });
     }
 
     [HttpGet("{id:int}.fen")]
@@ -71,13 +71,13 @@ public class GamesController(InMemoryDatabase database, ChessEngine engine, Game
         return result.Error == null ? Ok(result.State) : Conflict(new { result.State, result.Error });
     }
 
-    [HttpPost("{id:int}/computer"), ValidateAntiForgeryToken]
-    public async Task<IActionResult> RetryComputer(int id)
+    [HttpPost("{id:int}/computer"), ValidateAntiForgeryToken, LimitPerMin]
+    public async Task<IActionResult> RetryComputer(int id, [FromForm] bool retry = false)
     {
         var room = database.GetAcceptedChallenge(id);
         if (room == null) return NotFound();
-        if (room.Difficulty == null || room.Creator.Id != PlayerId) return Forbid();
-        await RespondToMove(id, room, HttpContext.RequestAborted);
+        if (!room.IsComputer || room.Creator.Id != PlayerId) return Forbid();
+        await RespondToMove(id, room, HttpContext.RequestAborted, retry);
         return Ok(await sessions.StateAsync(id, PlayerId));
     }
 
@@ -153,17 +153,20 @@ public class GamesController(InMemoryDatabase database, ChessEngine engine, Game
         finally { room.MutationLock.Release(); }
     }
 
-    private async Task RespondToMove(int id, AcceptedChallenge room, CancellationToken token)
+    private async Task RespondToMove(int id, AcceptedChallenge room, CancellationToken token, bool retry = false)
     {
         string fen;
+        string pgn;
         int ply;
         long revision;
         using var search = CancellationTokenSource.CreateLinkedTokenSource(token, room.Lifetime);
         lock (room.Game.MovePieceLock)
         {
-            if (room.Difficulty == null || room.Game.IsThinking || room.Game.Board.IsEndGame || room.GetTurnPlayer().Id == room.Creator.Id) return;
+            if (!room.IsComputer || room.Game.IsThinking || room.Game.Board.IsEndGame || room.GetTurnPlayer().Id == room.Creator.Id) return;
+            if (room.Game.ComputerError != null && !retry) return;
+            room.Game.ComputerError = null;
             room.Game.IsThinking = true; room.Game.SearchCancellation = search;
-            fen = room.Game.Board.ToFen(); ply = room.Game.Board.MovesToSan.Count; revision = room.Revision;
+            fen = room.Game.Board.ToFen(); pgn = room.Pgn(); ply = room.Game.Board.MovesToSan.Count; revision = room.Revision;
         }
         try
         {
@@ -175,10 +178,20 @@ public class GamesController(InMemoryDatabase database, ChessEngine engine, Game
             }
             try
             {
-                var move = await engine.GetBestMoveAsync(fen, room.Difficulty.Value, budget.Token);
+                var move = room.LlmModel is { } model
+                    ? await llm.GetMoveAsync(fen, pgn, model, budget.Token)
+                    : await engine.GetBestMoveAsync(fen, room.Difficulty!.Value, budget.Token);
                 await sessions.ExecuteAsync(id, room.Accepter.Id, new GameCommand(Guid.NewGuid(), "move", ply, move, revision), computer: true);
             }
-            catch (OperationCanceledException) when (budget.IsCancellationRequested) { }
+            catch (OperationCanceledException) when (budget.IsCancellationRequested || room.LlmModel != null)
+            {
+                if (room.LlmModel != null) await sessions.ComputerFailedAsync(id, revision);
+            }
+            catch (Exception exception) when (room.LlmModel != null && exception is HttpRequestException or InvalidOperationException or Newtonsoft.Json.JsonException)
+            {
+                logger.LogWarning("The LLM opponent could not complete its turn in game {GameId} ({FailureType}).", id, exception.GetType().Name);
+                await sessions.ComputerFailedAsync(id, revision);
+            }
         }
         finally
         {

@@ -30,7 +30,7 @@ public class AcceptedChallenge : Challenge
         {
             var ply = Game.Board.MovesToSan.Count - 1;
             if ((ply % 2 == 0) != CreatorIsWhite) ply--;
-            return Difficulty != null && ply >= 0 && ply < MoveClocks.Count && MoveClocks[ply] != null ? ply : -1;
+            return IsComputer && ply >= 0 && ply < MoveClocks.Count && MoveClocks[ply] != null ? ply : -1;
         }
     }
     public bool CreatorIsWhite { get => _creatorIsWhite; set => _creatorIsWhite = value; }
@@ -66,7 +66,7 @@ public class AcceptedChallenge : Challenge
             }
             if (now > LastClockUpdate) LastClockUpdate = now;
             if (Game.Board.IsEndGame) FinishedAt ??= now;
-            if (!wasEnded && Game.Board.IsEndGame) LastActivity = now;
+            if (!wasEnded && Game.Board.IsEndGame) { LastActivity = now; Game.SearchCancellation?.Cancel(); }
             return !wasEnded && Game.Board.IsEndGame;
         }
     }
