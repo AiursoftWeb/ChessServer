@@ -28,6 +28,31 @@ public class GameSessionService(InMemoryDatabase database, TemplateDbContext con
                 // Accept can replace the waiting room while retaining this same mutation lock.
                 var room = database.GetChallenge(pair.Key);
                 if (room == null) continue;
+                if (room is ManagedRoom lobby)
+                {
+                    var member = lobby.Members.FirstOrDefault(m => m.Player.Id == guestId && m.Player.IsGuest);
+                    if (member == null) continue;
+                    if (lobby.Members.Any(m => m.Player.Id == registered.Id))
+                        throw new InvalidOperationException("This account is already in this room.");
+                    var saved = JsonSerializer.Deserialize<RoomSnapshot>(JsonSerializer.Serialize(RoomSnapshot.Capture(lobby)))!;
+                    try
+                    {
+                        member.Player = registered;
+                        if (lobby.Creator.Id == guestId) lobby.Creator = registered;
+                        if (lobby.White?.Player.Id == guestId) lobby.White.Player = registered;
+                        if (lobby.Black?.Player.Id == guestId) lobby.Black.Player = registered;
+                        lobby.Version++;
+                        await StoreAsync(pair.Key, lobby);
+                    }
+                    catch
+                    {
+                        var restored = (ManagedRoom)saved.Restore();
+                        lobby.Creator = restored.Creator; lobby.Members = restored.Members;
+                        lobby.White = restored.White; lobby.Black = restored.Black; lobby.Version = restored.Version;
+                        context.ChangeTracker.Clear(); throw;
+                    }
+                    continue;
+                }
                 var creator = room.Creator;
                 var accepted = room as AcceptedChallenge;
                 var accepter = accepted?.Accepter;
@@ -47,6 +72,9 @@ public class GameSessionService(InMemoryDatabase database, TemplateDbContext con
                         lock (accepted.Game.MovePieceLock)
                         {
                             if (claimCreator) room.Creator = registered;
+                            if (accepted.WhiteController?.Player.Id == guestId) accepted.WhiteController.Player = registered;
+                            if (accepted.BlackController?.Player.Id == guestId) accepted.BlackController.Player = registered;
+                            if (accepted.Organizer?.Id == guestId && !accepted.Game.Board.IsEndGame) accepted.Organizer = registered;
                             if (claimAccepter) accepted.Accepter = registered;
                             if (accepted.DrawOfferedBy == guestId) accepted.DrawOfferedBy = registered.Id;
                             if (accepted.RematchOfferedBy == guestId) accepted.RematchOfferedBy = registered.Id;
@@ -89,6 +117,8 @@ public class GameSessionService(InMemoryDatabase database, TemplateDbContext con
                     accepted.LastClockUpdate = now;
                 }
             }
+            if (room is ManagedRoom lobby)
+                foreach (var member in lobby.Members) member.SeenAt = DateTimeOffset.UtcNow;
             database.Restore(row.Id, room);
         }
     }
@@ -104,8 +134,9 @@ public class GameSessionService(InMemoryDatabase database, TemplateDbContext con
         row.State = JsonSerializer.Serialize(snapshot);
     }
 
-    private async Task StoreAsync(int id, Challenge room)
+    public async Task StoreAsync(int id, Challenge room)
     {
+        if (!ReferenceEquals(database.GetChallenge(id), room)) throw new InvalidOperationException("This session has closed.");
         await StageAsync(id, room);
         await context.SaveChangesAsync();
         room.IsPersisted = true;
@@ -180,7 +211,7 @@ public class GameSessionService(InMemoryDatabase database, TemplateDbContext con
     private static void Advance(AcceptedChallenge room, DateTimeOffset now)
     {
         room.UpdateClock(now);
-        if (room.Game.Board.IsEndGame) return;
+        if (room.Game.Board.IsEndGame || room.ParentRoomId != null) return;
         if (room.Game.Board.MovesToSan.Count == 0 && now > room.AbortAt)
             Finish(room, "Aborted", now);
         else if (room.IsComputer && now - (room.CreatorIsWhite ? room.WhiteSeenAt : room.BlackSeenAt) > TimeSpan.FromMinutes(2))
@@ -212,8 +243,10 @@ public class GameSessionService(InMemoryDatabase database, TemplateDbContext con
         finally { room.MutationLock.Release(); }
     }
 
-    public async Task<(ChallengeContext State, string? Error)> ExecuteAsync(int id, Guid player, GameCommand command, bool computer = false)
+    public async Task<(ChallengeContext State, string? Error)> ExecuteAsync(int id, Guid player, GameCommand command, bool computer = false, AiTurnRecord? aiTurn = null)
     {
+        if (database.GetAcceptedChallenge(id)?.ParentRoomId != null && command.Kind is "offer-rematch" or "accept-rematch" or "decline-rematch")
+            throw new InvalidOperationException("Prepare the next game in the room.");
         if (command.Kind is "offer-rematch" or "accept-rematch" or "decline-rematch")
             return await RematchAsync(id, player, command);
         var room = database.GetAcceptedChallenge(id) ?? throw new InvalidOperationException("Game not found.");
@@ -252,6 +285,7 @@ public class GameSessionService(InMemoryDatabase database, TemplateDbContext con
                             room.MoveClocks.Add(new MoveClock(room.WhiteRemaining.Ticks, room.BlackRemaining.Ticks));
                             room.Game.Board.Move(move);
                             room.Game.ComputerError = null;
+                            if (aiTurn != null) room.AiTurns.Add(aiTurn);
                             if (room.IsTimed)
                             {
                                 if (side == PieceColor.White) room.WhiteRemaining += TimeSpan.FromSeconds(room.IncrementSeconds);
@@ -262,7 +296,7 @@ public class GameSessionService(InMemoryDatabase database, TemplateDbContext con
                             break;
                         case "undo":
                             var undoPly = room.UndoPly;
-                            if (computer || !room.IsComputer || room.Creator.Id != player || undoPly < 0) { error = "cannot-undo"; break; }
+                            if (computer || !room.IsComputer || room.HumanPlayerId != player || undoPly < 0) { error = "cannot-undo"; break; }
                             var clocks = room.MoveClocks[undoPly]!;
                             var board = Game.NewBoard();
                             foreach (var san in room.Game.Board.MovesToSan.Take(undoPly)) board.Move(san);
@@ -273,6 +307,8 @@ public class GameSessionService(InMemoryDatabase database, TemplateDbContext con
                             if (undoPly == 0) room.AbortAt = database.ClockNow.AddMinutes(1);
                             room.MoveClocks.RemoveRange(undoPly, room.MoveClocks.Count - undoPly);
                             room.DrawOfferedBy = null; room.OutcomeReason = null;
+                            room.AiTurns.RemoveAll(t => t.Ply > undoPly);
+                            if (room.ParentRoomId != null) room.Interventions.Add("undo");
                             break;
                         case "resign": Finish(room, "Resigned", DateTimeOffset.UtcNow, side); break;
                         case "abort":
@@ -393,6 +429,44 @@ public class GameSessionService(InMemoryDatabase database, TemplateDbContext con
         finally { room.MutationLock.Release(); }
     }
 
+    public async Task EndManagedGameAsync(int id, bool abandoned = false, Guid? loser = null)
+    {
+        var game = database.GetAcceptedChallenge(id);
+        if (game == null) return;
+        await game.MutationLock.WaitAsync();
+        try
+        {
+            var before = RoomSnapshot.Capture(game);
+            try
+            {
+                lock (game.Game.MovePieceLock)
+                {
+                    Finish(game, loser == null ? abandoned ? "Abandoned" : "Interrupted" : "Abandonment", database.ClockNow,
+                        loser == null ? null : game.GetPlayerColor(loser.Value) == "w" ? PieceColor.White : PieceColor.Black);
+                    if (!abandoned) game.Interventions.Add("host-interruption");
+                }
+                await StoreAsync(id, game);
+                await NotifyAsync(game, new ChallengeContext(game, id));
+            }
+            catch { before.Apply(game); context.ChangeTracker.Clear(); throw; }
+        }
+        finally { game.MutationLock.Release(); }
+    }
+
+    public async Task RemoveManagedSessionAsync(int id)
+    {
+        var room = database.GetChallenge(id);
+        if (room == null) return;
+        await room.MutationLock.WaitAsync();
+        try
+        {
+            var row = await context.GameSessions.FindAsync(id);
+            if (row != null) { row.State = null; await context.SaveChangesAsync(); }
+            database.DeleteChallenge(id);
+        }
+        finally { room.MutationLock.Release(); }
+    }
+
     public async Task ComputerFailedAsync(int id, long revision)
     {
         var room = database.GetAcceptedChallenge(id);
@@ -407,6 +481,7 @@ public class GameSessionService(InMemoryDatabase database, TemplateDbContext con
                 {
                     if (room.Revision != revision || room.Game.Board.IsEndGame) return;
                     room.Game.ComputerError = "computer-failed";
+                    if (room.ParentRoomId != null) room.Interventions.Add($"computer-failed:{room.Game.Board.MovesToSan.Count}");
                 }
                 await StoreAsync(id, room);
                 await NotifyAsync(room, new ChallengeContext(room, id));

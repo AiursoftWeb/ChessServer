@@ -5,8 +5,12 @@ namespace Aiursoft.ChessServer.Entities;
 
 [Index(nameof(WhiteUserId), nameof(FinishedAt))]
 [Index(nameof(BlackUserId), nameof(FinishedAt))]
+[Index(nameof(OrganizerUserId), nameof(FinishedAt))]
 public class CompletedGame
 {
+    [MaxLength(450)] public string OrganizerUserId { get; set; } = "";
+    // ReSharper disable once EntityFramework.ModelValidation.UnlimitedStringLength
+    public string? MetadataJson { get; set; }
     [Key] public Guid Id { get; set; }
     [MaxLength(450)] public required string WhiteUserId { get; set; }
     [MaxLength(450)] public required string BlackUserId { get; set; }

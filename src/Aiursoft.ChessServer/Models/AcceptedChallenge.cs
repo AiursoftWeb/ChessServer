@@ -4,6 +4,14 @@ namespace Aiursoft.ChessServer.Models;
 
 public class AcceptedChallenge : Challenge
 {
+    public int? ParentRoomId { get; set; }
+    public Player? Organizer { get; set; }
+    public List<AiTurnRecord> AiTurns { get; set; } = [];
+    public List<string> Interventions { get; set; } = [];
+    public Guid? HumanPlayerId => ParentRoomId == null ? Creator.Id
+        : WhiteController?.IsAi == false && BlackController?.IsAi == true ? GetWhitePlayer().Id
+        : BlackController?.IsAi == false && WhiteController?.IsAi == true ? GetBlackPlayer().Id : null;
+    public RoomSeat? ControllerFor(Guid player) => GetPlayerColor(player) == "w" ? WhiteController : BlackController;
     private bool _creatorIsWhite;
     private string? _completedPgn;
     public Guid HistoryId { get; set; } = Guid.NewGuid();
@@ -29,8 +37,8 @@ public class AcceptedChallenge : Challenge
         get
         {
             var ply = Game.Board.MovesToSan.Count - 1;
-            if ((ply % 2 == 0) != CreatorIsWhite) ply--;
-            return IsComputer && ply >= 0 && ply < MoveClocks.Count && MoveClocks[ply] != null ? ply : -1;
+            if ((ply % 2 == 0) != (HumanPlayerId == GetWhitePlayer().Id)) ply--;
+            return IsComputer && HumanPlayerId != null && ply >= 0 && ply < MoveClocks.Count && MoveClocks[ply] != null ? ply : -1;
         }
     }
     public bool CreatorIsWhite { get => _creatorIsWhite; set => _creatorIsWhite = value; }
@@ -71,7 +79,7 @@ public class AcceptedChallenge : Challenge
         }
     }
 
-    public string Result => OutcomeReason is "Aborted" or "Abandoned" ? "*" : Game.Board.EndGame?.WonSide == Chess.PieceColor.White ? "1-0"
+    public string Result => OutcomeReason is "Aborted" or "Abandoned" or "Interrupted" ? "*" : Game.Board.EndGame?.WonSide == Chess.PieceColor.White ? "1-0"
         : Game.Board.EndGame?.WonSide == Chess.PieceColor.Black ? "0-1" : Game.Board.IsEndGame ? "1/2-1/2" : "*";
 
     public string Pgn()
@@ -85,8 +93,14 @@ public class AcceptedChallenge : Challenge
             Game.Board.AddHeader("Date", GameStartTime.ToString("yyyy.MM.dd", System.Globalization.CultureInfo.InvariantCulture));
             Game.Board.AddHeader("Result", Result);
             Game.Board.AddHeader("TimeControl", IsTimed ? ((int)TimeLimit.TotalSeconds).ToString(System.Globalization.CultureInfo.InvariantCulture) + (IncrementSeconds > 0 ? $"+{IncrementSeconds}" : string.Empty) : "-");
+            if (ParentRoomId != null)
+            {
+                foreach (var key in new[] { "WhiteController", "BlackController" }) Game.Board.RemoveHeader(key);
+                Game.Board.AddHeader("WhiteController", (WhiteController?.Description ?? "Human").Replace('"', '\''));
+                Game.Board.AddHeader("BlackController", (BlackController?.Description ?? "Human").Replace('"', '\''));
+            }
             var pgn = Game.Board.ToPgn();
-            if (OutcomeReason is "Aborted" or "Abandoned" && pgn.EndsWith("1/2-1/2", StringComparison.Ordinal)) pgn = pgn[..^7] + "*";
+            if (OutcomeReason is "Aborted" or "Abandoned" or "Interrupted" && pgn.EndsWith("1/2-1/2", StringComparison.Ordinal)) pgn = pgn[..^7] + "*";
             if (Game.Board.IsEndGame) _completedPgn = pgn;
             return pgn;
         }

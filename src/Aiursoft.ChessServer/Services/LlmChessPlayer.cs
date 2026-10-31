@@ -12,6 +12,9 @@ public class LlmChessPlayer(ChatClient client, IOptions<OpenAIConfiguration> opt
     private static readonly SemaphoreSlim Slots = new(2);
 
     public async Task<string> GetMoveAsync(string fen, string pgn, string model, CancellationToken cancellationToken)
+        => (await GetMoveResultAsync(fen, pgn, model, cancellationToken)).Move;
+
+    public async Task<(string Move, int Attempts)> GetMoveResultAsync(string fen, string pgn, string model, CancellationToken cancellationToken)
     {
         var configuration = options.Value;
         if (!configuration.IsConfigured) throw new InvalidOperationException("The LLM opponent is not configured.");
@@ -48,7 +51,7 @@ public class LlmChessPlayer(ChatClient client, IOptions<OpenAIConfiguration> opt
                 }, configuration.CompletionApiUrl, configuration.Token, deadline.Token);
                 // Only final content is considered; reasoning fields and unclosed think blocks cannot be moves.
                 var answer = response.GetAnswerPart().Trim().Replace('0', 'O');
-                if (legal.Contains(answer)) return answer;
+                if (legal.Contains(answer)) return (answer, attempt + 1);
             }
             throw new InvalidOperationException("The LLM did not return a legal chess move.");
         }

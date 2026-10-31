@@ -64,6 +64,7 @@ public class ChallengeContext(AcceptedChallenge challenge, int id)
     public bool CanUndo { get; } = challenge.IsComputer && !challenge.Game.Board.IsEndGame && challenge.UndoPly >= 0;
     public Guid? RematchOfferedBy { get; } = challenge.RematchOfferedBy;
     public int? NextGameId { get; } = challenge.NextGameId;
+    public int? ParentRoomId { get; } = challenge.ParentRoomId;
     public bool Thinking { get; } = challenge.Game.IsThinking;
     public string? ComputerError { get; } = challenge.Game.ComputerError;
     public string WhiteId { get; } = challenge.GetWhitePlayer().Id.ToString();

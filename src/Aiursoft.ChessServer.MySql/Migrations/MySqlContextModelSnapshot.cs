@@ -46,6 +46,14 @@ namespace Aiursoft.ChessServer.MySql.Migrations
                     b.Property<DateTime>("FinishedAt")
                         .HasColumnType("datetime(6)");
 
+                    b.Property<string>("MetadataJson")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("OrganizerUserId")
+                        .IsRequired()
+                        .HasMaxLength(450)
+                        .HasColumnType("varchar(450)");
+
                     b.Property<string>("Pgn")
                         .IsRequired()
                         .HasColumnType("longtext");
@@ -71,6 +79,8 @@ namespace Aiursoft.ChessServer.MySql.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("BlackUserId", "FinishedAt");
+
+                    b.HasIndex("OrganizerUserId", "FinishedAt");
 
                     b.HasIndex("WhiteUserId", "FinishedAt");
 

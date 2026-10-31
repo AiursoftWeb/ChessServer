@@ -41,6 +41,14 @@ namespace Aiursoft.ChessServer.Sqlite.Migrations
                     b.Property<DateTime>("FinishedAt")
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("MetadataJson")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("OrganizerUserId")
+                        .IsRequired()
+                        .HasMaxLength(450)
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("Pgn")
                         .IsRequired()
                         .HasColumnType("TEXT");
@@ -66,6 +74,8 @@ namespace Aiursoft.ChessServer.Sqlite.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("BlackUserId", "FinishedAt");
+
+                    b.HasIndex("OrganizerUserId", "FinishedAt");
 
                     b.HasIndex("WhiteUserId", "FinishedAt");
 

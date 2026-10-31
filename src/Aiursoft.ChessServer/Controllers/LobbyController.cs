@@ -7,23 +7,16 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Aiursoft.ChessServer.Controllers;
 
-public class LobbyController(InMemoryDatabase database, LlmModelCatalog catalog, Microsoft.Extensions.Options.IOptions<Configuration.OpenAIConfiguration> options) : ChessController
+public class LobbyController(InMemoryDatabase database) : ChessController
 {
     [RenderInNavBar(NavGroupName = "Features", NavGroupOrder = 1, CascadedLinksGroupName = "Chess",
         CascadedLinksIcon = "crown", CascadedLinksOrder = 1, LinkText = "Play chess", LinkOrder = 1)]
-    public async Task<IActionResult> Index()
+    public IActionResult Index() => this.StackView(new LobbyViewModel
     {
-        string[] models;
-        try { models = await catalog.GetModelsAsync(HttpContext.RequestAborted); }
-        catch (Exception exception) when (exception is HttpRequestException or OperationCanceledException or System.Text.Json.JsonException or KeyNotFoundException or InvalidOperationException)
-        { models = []; }
-        return this.StackView(new LobbyViewModel
-        {
-            LlmModels = models,
-            PreferredLlmModel = options.Value.Model,
-            MyGames = database.GetRooms().Where(p => p.Value is AcceptedChallenge game && !game.Game.Board.IsEndGame && game.GetPlayerColor(PlayerId) != "m").ToArray(),
-            OpenChallenges = database.GetPublicOpenChallenges(),
-            OngoingChallenges = database.GetOnGoingOpenChallenges()
-        });
-    }
+        RoomStates = database.GetRooms().Where(p => p.Value is ManagedRoom).ToDictionary(p => p.Key, p => ((ManagedRoom)p.Value).CurrentGameId is not { } gameId ? "waiting" : database.GetAcceptedChallenge(gameId)?.Game.Board.IsEndGame == true ? "finished" : "playing"),
+        Rooms = database.GetRooms().Where(p => p.Value is ManagedRoom room && (room.Permission == ChallengePermission.Public || room.Members.Any(m => m.Player.Id == PlayerId))).ToArray(),
+        MyGames = database.GetRooms().Where(p => p.Value is AcceptedChallenge { ParentRoomId: null } game && !game.Game.Board.IsEndGame && game.GetPlayerColor(PlayerId) != "m").ToArray(),
+        OpenChallenges = database.GetPublicOpenChallenges(),
+        OngoingChallenges = database.GetOnGoingOpenChallenges()
+    });
 }

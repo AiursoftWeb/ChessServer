@@ -16,13 +16,16 @@ public class Challenge(
     public DateTimeOffset LastActivity { get; set; } = DateTimeOffset.UtcNow;
     public int? Difficulty { get; set; }
     public string? LlmModel { get; set; }
-    public bool IsComputer => Difficulty != null || LlmModel != null;
+    public RoomSeat? WhiteController { get; set; }
+    public RoomSeat? BlackController { get; set; }
+    public bool IsComputer => Difficulty != null || LlmModel != null || WhiteController?.IsAi == true || BlackController?.IsAi == true;
     public int IncrementSeconds { get; set; }
 
     public void End()
     {
         LifetimeSource.Cancel();
         ChallengeChangedChannel.RemoveAllListeners();
+        if (this is ManagedRoom lobby) lobby.ChatChannel.RemoveAllListeners();
         if (this is AcceptedChallenge accepted)
         {
             accepted.Game.FenChangedChannel.RemoveAllListeners();

@@ -11,8 +11,16 @@ using Microsoft.AspNetCore.Mvc;
 namespace Aiursoft.ChessServer.Controllers;
 
 [Route("games")]
-public class GamesController(InMemoryDatabase database, ChessEngine engine, LlmChessPlayer llm, GameHistoryService history, GameSessionService sessions, ILogger<GamesController> logger) : ChessController
+public class GamesController(InMemoryDatabase database, ChessEngine engine, LlmChessPlayer llm, ManagedRoomService rooms, ComputerTurnCoordinator computers, GameHistoryService history, GameSessionService sessions, ILogger<GamesController> logger) : ChessController
 {
+    public override Task OnActionExecutionAsync(Microsoft.AspNetCore.Mvc.Filters.ActionExecutingContext context, Microsoft.AspNetCore.Mvc.Filters.ActionExecutionDelegate next)
+        => base.OnActionExecutionAsync(context, async () =>
+        {
+            if (context.ActionArguments.TryGetValue("id", out var value) && value is int id && rooms.Blocked(database.GetAcceptedChallenge(id)?.ParentRoomId, PlayerId))
+            { context.Result = Forbid(); return new Microsoft.AspNetCore.Mvc.Filters.ActionExecutedContext(context, context.Filters, this) { Result = context.Result }; }
+            return await next();
+        });
+
     private sealed class SocketSendQueue
     {
         public Task Tail { get; set; } = Task.CompletedTask;
@@ -36,6 +44,7 @@ public class GamesController(InMemoryDatabase database, ChessEngine engine, LlmC
     public IActionResult GetHtml(int id)
     {
         var room = database.GetAcceptedChallenge(id);
+        if (room?.ParentRoomId is { } parent && rooms.Find(parent)?.CurrentGameId == id) return RedirectToAction("Room", "Rooms", new { id = parent });
         return room == null ? NotFound() : this.StackView(new RoomViewModel { Id = id, Message = room.Message, IsComputer = room.IsComputer });
     }
 
@@ -76,6 +85,7 @@ public class GamesController(InMemoryDatabase database, ChessEngine engine, LlmC
     {
         var room = database.GetAcceptedChallenge(id);
         if (room == null) return NotFound();
+        if (room.ParentRoomId != null) return BadRequest("Use the room controls to retry the computer.");
         if (!room.IsComputer || room.Creator.Id != PlayerId) return Forbid();
         await RespondToMove(id, room, HttpContext.RequestAborted, retry);
         return Ok(await sessions.StateAsync(id, PlayerId));
@@ -95,7 +105,7 @@ public class GamesController(InMemoryDatabase database, ChessEngine engine, LlmC
         {
             // Each sender observes its own failure; later sends still wait for the previous operation to finish.
             try { await previous; } catch (Exception exception) { logger.LogDebug(exception, "The previous chess socket send failed before this update."); }
-            if (token.IsCancellationRequested) return;
+            if (token.IsCancellationRequested || rooms.Blocked(room.ParentRoomId, PlayerId)) return;
             using var deadline = CancellationTokenSource.CreateLinkedTokenSource(token);
             deadline.CancelAfter(TimeSpan.FromSeconds(5));
             await client.Send(payload, deadline.Token);
@@ -111,7 +121,7 @@ public class GamesController(InMemoryDatabase database, ChessEngine engine, LlmC
             GameCommand? command;
             try { command = JsonSerializer.Deserialize<GameCommand>(payload); }
             catch (JsonException) { return; }
-            if (command == null || command.Kind != "move") return;
+            if (command == null || command.Kind != "move" || rooms.Blocked(room.ParentRoomId, PlayerId)) return;
             var result = await sessions.ExecuteAsync(id, PlayerId, command);
             await Send(JsonSerializer.Serialize(new { result.State, CommandId = command.Id, result.Error }));
             if (result.Error == null) await RespondToMove(id, room, token);
@@ -140,7 +150,7 @@ public class GamesController(InMemoryDatabase database, ChessEngine engine, LlmC
     {
         var room = database.GetAcceptedChallenge(id);
         if (room == null) return NotFound();
-        if (room.GetPlayerColor(PlayerId) == "m") return Forbid();
+        if (room.GetPlayerColor(PlayerId) == "m" && !rooms.IsHost(room.ParentRoomId, PlayerId)) return Forbid();
         await room.MutationLock.WaitAsync();
         try
         {
@@ -155,6 +165,7 @@ public class GamesController(InMemoryDatabase database, ChessEngine engine, LlmC
 
     private async Task RespondToMove(int id, AcceptedChallenge room, CancellationToken token, bool retry = false)
     {
+        if (room.ParentRoomId != null) { computers.Wake(id); return; }
         string fen;
         string pgn;
         int ply;
