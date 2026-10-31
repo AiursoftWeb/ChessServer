@@ -187,7 +187,7 @@ public class GamesController(InMemoryDatabase database, ChessEngine engine, LlmC
             {
                 if (room.LlmModel != null) await sessions.ComputerFailedAsync(id, revision);
             }
-            catch (Exception exception) when (room.LlmModel != null && exception is HttpRequestException or InvalidOperationException or Newtonsoft.Json.JsonException)
+            catch (Exception exception) when (room.LlmModel != null)
             {
                 logger.LogWarning("The LLM opponent could not complete its turn in game {GameId} ({FailureType}).", id, exception.GetType().Name);
                 await sessions.ComputerFailedAsync(id, revision);

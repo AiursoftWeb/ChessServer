@@ -10,13 +10,19 @@ namespace Aiursoft.ChessServer.Tests.IntegrationTests;
 public class LlmGameTests : TestBase
 {
     private WebApplication? _gateway;
+    private int _completionCalls;
 
-    private async Task ConfigureLlm()
+    private async Task ConfigureLlm(string completion = "null")
     {
         var builder = WebApplication.CreateBuilder();
         builder.WebHost.UseUrls("http://127.0.0.1:0");
         _gateway = builder.Build();
         _gateway.MapGet("/v1/models", () => Results.Json(new { data = new[] { new { id = "configured-model" }, new { id = "another-model" } } }));
+        _gateway.MapPost("/v1/chat/completions", () =>
+        {
+            _completionCalls++;
+            return Results.Text(completion, "application/json");
+        });
         await _gateway.StartAsync();
         var configuration = GetService<IConfiguration>();
         configuration["OpenAI:CompletionApiUrl"] = _gateway.Urls.Single() + "/v1/chat/completions";
@@ -51,6 +57,22 @@ public class LlmGameTests : TestBase
         var response = await PostForm("/pve/new", new() { ["difficulty"] = "1" }, tokenUrl: "/Lobby");
         Assert.AreEqual(HttpStatusCode.Found, response.StatusCode);
         Assert.AreEqual(1, GetService<InMemoryDatabase>().GetGames().Single().Difficulty);
+    }
+
+    [TestMethod]
+    [DataRow("null")]
+    [DataRow("{")]
+    public async Task MalformedCompletionStopsAutomaticRetries(string completion)
+    {
+        await ConfigureLlm(completion); await RegisterAndLoginAsync();
+        var created = await PostForm("/pve/new", new() { ["difficulty"] = "llm", ["model"] = "another-model", ["roleRule"] = "1" }, tokenUrl: "/Lobby");
+        Assert.AreEqual(HttpStatusCode.Found, created.StatusCode);
+        var id = GetService<InMemoryDatabase>().GetRooms().Single().Key;
+        var response = await PostForm($"/games/{id}/computer", new(), tokenUrl: "/Lobby");
+        Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
+        Assert.AreEqual("computer-failed", GetService<InMemoryDatabase>().GetAcceptedChallenge(id)!.Game.ComputerError);
+        await PostForm($"/games/{id}/computer", new(), tokenUrl: "/Lobby");
+        Assert.AreEqual(1, _completionCalls);
     }
 
     [TestMethod]
