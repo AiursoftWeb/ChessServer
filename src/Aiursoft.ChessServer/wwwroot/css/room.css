@@ -6,3 +6,4 @@
 .advanced-game .chess-layout{grid-template-columns:minmax(0,1fr)}
 #add-room-ai{max-width:min(30rem,95vw);width:100%;border:0;border-radius:.5rem;padding:1.5rem}
 #add-room-ai::backdrop{background:#0006}
+#managed-room [hidden]{display:none!important}
