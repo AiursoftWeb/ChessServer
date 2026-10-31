@@ -8,6 +8,8 @@ public class LobbyViewModel : UiStackLayoutViewModel
     {
         PageTitle = "Chess";
     }
+    public string[] LlmModels { get; init; } = [];
+    public string PreferredLlmModel { get; init; } = string.Empty;
     public IReadOnlyCollection<KeyValuePair<int, Challenge>> OpenChallenges { get; init; } = [];
     public IReadOnlyCollection<KeyValuePair<int, Challenge>> OngoingChallenges { get; init; } = [];
     public IReadOnlyCollection<KeyValuePair<int, Challenge>> MyGames { get; init; } = [];

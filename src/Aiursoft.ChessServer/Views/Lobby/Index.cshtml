@@ -26,7 +26,19 @@
                 <option value="6">@Localizer["6 — Hard"]</option>
                 <option value="7">@Localizer["7 — Expert"]</option>
                 <option value="8">@Localizer["8 — Strongest"]</option>
+                @if (Model.LlmModels.Length > 0)
+                { <option value="llm">@Localizer["LLM — Play a language model"]</option> }
             </select>
+            @if (Model.LlmModels.Length > 0)
+            {
+                <div id="llm-model-field" hidden>
+                    <label for="llm-model" class="form-label">@Localizer["Model"]</label>
+                    <select id="llm-model" name="model" class="form-select mb-3" disabled>
+                        @foreach (var modelId in Model.LlmModels)
+                        { <option value="@modelId" selected="@(modelId == Model.PreferredLlmModel)">@modelId</option> }
+                    </select>
+                </div>
+            }
             <label for="roleRule" class="form-label">@Localizer["Your pieces"]</label>
             <select id="roleRule" name="roleRule" class="form-select mb-3">
                 <option value="0">@Localizer["White"]</option>
@@ -79,5 +91,6 @@
 
 @* ReSharper disable once Razor.SectionNotResolved *@
 @section scripts {
+    <script type="module" src="~/scripts/pve.js" asp-append-version="true"></script>
     <script type="module" src="~/scripts/time-control.js" asp-append-version="true"></script>
 }

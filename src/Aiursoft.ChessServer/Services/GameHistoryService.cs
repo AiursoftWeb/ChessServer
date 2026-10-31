@@ -24,7 +24,7 @@ public class GameHistoryService(TemplateDbContext context) : IScopedDependency
             {
                 if (room.Game.Board.IsEndGame) room.FinishedAt ??= DateTimeOffset.UtcNow;
                 if (!room.Game.Board.IsEndGame) return;
-                if (room.Creator.IsGuest && (room.Difficulty != null || room.Accepter.IsGuest)) return;
+                if (room.Creator.IsGuest && (room.IsComputer || room.Accepter.IsGuest)) return;
                 record = new CompletedGame
                 {
                     Id = room.HistoryId,

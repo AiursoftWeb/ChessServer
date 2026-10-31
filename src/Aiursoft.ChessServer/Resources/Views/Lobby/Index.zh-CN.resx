@@ -93,6 +93,12 @@
   <data name="Increment per move" xml:space="preserve">
     <value>每步加秒</value>
   </data>
+  <data name="LLM — Play a language model" xml:space="preserve">
+    <value>LLM — 与语言模型对弈</value>
+  </data>
+  <data name="Model" xml:space="preserve">
+    <value>Model</value>
+  </data>
   <data name="My games" xml:space="preserve">
     <value>我的对局</value>
   </data>

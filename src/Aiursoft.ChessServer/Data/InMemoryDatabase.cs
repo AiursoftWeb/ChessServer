@@ -63,7 +63,7 @@ public class InMemoryDatabase : ISingletonDependency
         lock (_gate)
         {
             if (_challenges.Count >= 256) throw new InvalidOperationException("All rooms are busy. Please try again later.");
-            if (challenge is not AcceptedChallenge && challenge.Difficulty == null && _challenges.Values.Any(c => c.Creator.Id == challenge.Creator.Id && c is not AcceptedChallenge))
+            if (challenge is not AcceptedChallenge && !challenge.IsComputer && _challenges.Values.Any(c => c.Creator.Id == challenge.Creator.Id && c is not AcceptedChallenge))
                 throw new InvalidOperationException("You already have an open challenge.");
             var id = ++_nextId;
             _challenges.Add(id, challenge);
@@ -81,7 +81,7 @@ public class InMemoryDatabase : ISingletonDependency
                 throw new InvalidOperationException("This challenge cannot be accepted.");
             accepted = new AcceptedChallenge(challenge.Creator, accepter, challenge.Message, challenge.RoleRule,
                 challenge.TimeLimit, challenge.Permission, challenge.ChallengeChangedChannel)
-            { Difficulty = challenge.Difficulty, IncrementSeconds = challenge.IncrementSeconds, LifetimeSource = challenge.LifetimeSource, MutationLock = challenge.MutationLock };
+            { Difficulty = challenge.Difficulty, LlmModel = challenge.LlmModel, IncrementSeconds = challenge.IncrementSeconds, LifetimeSource = challenge.LifetimeSource, MutationLock = challenge.MutationLock };
             _challenges[id] = accepted;
         }
         if (persist != null) await persist(accepted);

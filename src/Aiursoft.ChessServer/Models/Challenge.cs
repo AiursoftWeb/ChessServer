@@ -15,6 +15,8 @@ public class Challenge(
     public CancellationToken Lifetime => LifetimeSource.Token;
     public DateTimeOffset LastActivity { get; set; } = DateTimeOffset.UtcNow;
     public int? Difficulty { get; set; }
+    public string? LlmModel { get; set; }
+    public bool IsComputer => Difficulty != null || LlmModel != null;
     public int IncrementSeconds { get; set; }
 
     public void End()

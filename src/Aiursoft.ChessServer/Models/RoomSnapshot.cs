@@ -15,6 +15,8 @@ public class RoomSnapshot
     public long TimeTicks { get; set; }
     public ChallengePermission Permission { get; set; }
     public int? Difficulty { get; set; }
+    public string? LlmModel { get; set; }
+    public string? ComputerError { get; set; }
     public int IncrementSeconds { get; set; }
     public List<MoveClock?> MoveClocks { get; set; } = [];
     public Guid? RematchOfferedBy { get; set; }
@@ -42,10 +44,11 @@ public class RoomSnapshot
     {
         var snapshot = new RoomSnapshot { CreatorId = room.Creator.Id, CreatorName = room.Creator.NickName, CreatorGuest = room.Creator.IsGuest,
             Message = room.Message, Rule = room.RoleRule, TimeTicks = room.TimeLimit.Ticks, Permission = room.Permission,
-            Difficulty = room.Difficulty, IncrementSeconds = room.IncrementSeconds, Activity = room.LastActivity };
+            Difficulty = room.Difficulty, LlmModel = room.LlmModel, IncrementSeconds = room.IncrementSeconds, Activity = room.LastActivity };
         if (room is not AcceptedChallenge accepted) return snapshot;
         lock (accepted.Game.MovePieceLock)
         {
+            snapshot.ComputerError = accepted.Game.ComputerError;
             snapshot.AccepterId = accepted.Accepter.Id; snapshot.AccepterName = accepted.Accepter.NickName; snapshot.AccepterGuest = accepted.Accepter.IsGuest;
             snapshot.HistoryFinalized = accepted.Archived;
             snapshot.CompletedPgn = accepted.Game.Board.IsEndGame ? accepted.Pgn() : null;
@@ -67,10 +70,10 @@ public class RoomSnapshot
     {
         var creator = new Player(CreatorId) { NickName = CreatorName, IsGuest = CreatorGuest };
         var room = new Challenge(creator, Message, Rule, TimeSpan.FromTicks(TimeTicks), Permission)
-            { Difficulty = Difficulty, IncrementSeconds = IncrementSeconds, LastActivity = Activity };
+            { Difficulty = Difficulty, LlmModel = LlmModel, IncrementSeconds = IncrementSeconds, LastActivity = Activity };
         if (AccepterId == null) return room;
         var accepted = new AcceptedChallenge(creator, new Player(AccepterId.Value) { NickName = AccepterName!, IsGuest = AccepterGuest }, Message,
-            Rule, room.TimeLimit, Permission, room.ChallengeChangedChannel) { Difficulty = Difficulty };
+            Rule, room.TimeLimit, Permission, room.ChallengeChangedChannel) { Difficulty = Difficulty, LlmModel = LlmModel };
         Apply(accepted);
         return accepted;
     }
@@ -89,6 +92,7 @@ public class RoomSnapshot
                 else if (EndReason == "Timeout") board.EndByTimeout(Winner == "w" ? PieceColor.Black : PieceColor.White);
                 else board.Resign(Winner == "w" ? PieceColor.Black : PieceColor.White);
             }
+            room.Difficulty = Difficulty; room.LlmModel = LlmModel; room.Game.ComputerError = ComputerError;
             room.Game.Board = board; room.RestorePgn(CompletedPgn); room.Archived = HistoryFinalized; room.HistoryId = HistoryId; room.CreatorIsWhite = CreatorWhite;
             room.WhiteRemaining = TimeSpan.FromTicks(WhiteTicks); room.BlackRemaining = TimeSpan.FromTicks(BlackTicks);
             room.AbortAt = AbortAt == default ? new DateTimeOffset(StartedAt).AddMinutes(1) : AbortAt;

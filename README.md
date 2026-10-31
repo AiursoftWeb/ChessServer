@@ -80,3 +80,5 @@ We're also interested in your feedback on the future of this project. You can su
 Configure `AppSettings__OIDC__Authority`, `AppSettings__OIDC__ClientId`, and `AppSettings__OIDC__ClientSecret` for your identity provider. Register `https://<your-host>/signin-oidc` as its callback. Guests can play without signing in.
 
 Existing Docker installations must update their persisted `/data/appsettings.json` with the new database and OIDC settings before upgrading. SQLite stores accounts and chess sessions by default. Keep the database and data-protection keys to resume games after a restart.
+
+For an LLM opponent, configure `OpenAI:CompletionApiUrl` and the server-side `OpenAI:Token`. Players can choose any model listed by the compatible `/models` endpoint. The original eight engine levels remain available.

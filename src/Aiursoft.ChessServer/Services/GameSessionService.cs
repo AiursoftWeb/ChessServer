@@ -173,6 +173,7 @@ public class GameSessionService(InMemoryDatabase database, TemplateDbContext con
         if (room.Game.Board.IsEndGame) return;
         if (loser != null && MatingMaterial.CanMate(room.Game.Board.ToFen(), loser == PieceColor.White ? 'b' : 'w')) room.Game.Board.Resign(loser);
         else room.Game.Board.Draw();
+        room.Game.SearchCancellation?.Cancel();
         room.OutcomeReason = reason; room.FinishedAt = now; room.LastActivity = now; room.DrawOfferedBy = null; room.Revision++;
     }
 
@@ -182,9 +183,9 @@ public class GameSessionService(InMemoryDatabase database, TemplateDbContext con
         if (room.Game.Board.IsEndGame) return;
         if (room.Game.Board.MovesToSan.Count == 0 && now > room.AbortAt)
             Finish(room, "Aborted", now);
-        else if (room.Difficulty != null && now - (room.CreatorIsWhite ? room.WhiteSeenAt : room.BlackSeenAt) > TimeSpan.FromMinutes(2))
+        else if (room.IsComputer && now - (room.CreatorIsWhite ? room.WhiteSeenAt : room.BlackSeenAt) > TimeSpan.FromMinutes(2))
             Finish(room, "Abandonment", now, room.CreatorIsWhite ? PieceColor.White : PieceColor.Black);
-        else if (room.Difficulty == null && now - room.WhiteSeenAt > TimeSpan.FromMinutes(10) && now - room.BlackSeenAt > TimeSpan.FromMinutes(10))
+        else if (!room.IsComputer && now - room.WhiteSeenAt > TimeSpan.FromMinutes(10) && now - room.BlackSeenAt > TimeSpan.FromMinutes(10))
             Finish(room, "Abandoned", now);
     }
 
@@ -250,6 +251,7 @@ public class GameSessionService(InMemoryDatabase database, TemplateDbContext con
                             while (room.MoveClocks.Count < room.Game.Board.MovesToSan.Count) room.MoveClocks.Add(null);
                             room.MoveClocks.Add(new MoveClock(room.WhiteRemaining.Ticks, room.BlackRemaining.Ticks));
                             room.Game.Board.Move(move);
+                            room.Game.ComputerError = null;
                             if (room.IsTimed)
                             {
                                 if (side == PieceColor.White) room.WhiteRemaining += TimeSpan.FromSeconds(room.IncrementSeconds);
@@ -260,12 +262,12 @@ public class GameSessionService(InMemoryDatabase database, TemplateDbContext con
                             break;
                         case "undo":
                             var undoPly = room.UndoPly;
-                            if (computer || room.Difficulty == null || room.Creator.Id != player || undoPly < 0) { error = "cannot-undo"; break; }
+                            if (computer || !room.IsComputer || room.Creator.Id != player || undoPly < 0) { error = "cannot-undo"; break; }
                             var clocks = room.MoveClocks[undoPly]!;
                             var board = Game.NewBoard();
                             foreach (var san in room.Game.Board.MovesToSan.Take(undoPly)) board.Move(san);
                             room.Game.SearchCancellation?.Cancel();
-                            room.Game.Board = board; room.ClearPgnCache();
+                            room.Game.Board = board; room.ClearPgnCache(); room.Game.ComputerError = null;
                             room.WhiteRemaining = TimeSpan.FromTicks(clocks.WhiteTicks); room.BlackRemaining = TimeSpan.FromTicks(clocks.BlackTicks);
                             room.LastClockUpdate = database.ClockNow;
                             if (undoPly == 0) room.AbortAt = database.ClockNow.AddMinutes(1);
@@ -278,7 +280,7 @@ public class GameSessionService(InMemoryDatabase database, TemplateDbContext con
                             else Finish(room, "Aborted", DateTimeOffset.UtcNow);
                             break;
                         case "offer-draw":
-                            if (room.Difficulty != null || room.DrawOfferedBy != null) error = "cannot-offer";
+                            if (room.IsComputer || room.DrawOfferedBy != null) error = "cannot-offer";
                             else room.DrawOfferedBy = player;
                             break;
                         case "accept-draw":
@@ -291,7 +293,7 @@ public class GameSessionService(InMemoryDatabase database, TemplateDbContext con
                             break;
                         case "claim":
                             var opponentSeen = color == "w" ? room.BlackSeenAt : room.WhiteSeenAt;
-                            if (room.Difficulty != null || DateTimeOffset.UtcNow - opponentSeen < TimeSpan.FromSeconds(90)) error = "cannot-claim";
+                            if (room.IsComputer || DateTimeOffset.UtcNow - opponentSeen < TimeSpan.FromSeconds(90)) error = "cannot-claim";
                             else Finish(room, "Abandonment", DateTimeOffset.UtcNow, side == PieceColor.White ? PieceColor.Black : PieceColor.White);
                             break;
                         default: error = "invalid-command"; break;
@@ -331,7 +333,7 @@ public class GameSessionService(InMemoryDatabase database, TemplateDbContext con
             {
                 var previous = room.Receipts.FirstOrDefault(r => r.Id == command.Id);
                 var fingerprint = Fingerprint(command);
-                if (room.GetPlayerColor(player) == "m" || room.Difficulty != null && room.Creator.Id != player) error = "spectator";
+                if (room.GetPlayerColor(player) == "m" || room.IsComputer && room.Creator.Id != player) error = "spectator";
                 else if (command.Id == Guid.Empty || previous != null && previous.Fingerprint != fingerprint) error = "invalid-command";
                 else if (!room.Game.Board.IsEndGame) error = "not-ended";
                 else if (previous == null && room.NextGameId == null && command.ExpectedRevision != null && command.ExpectedRevision != room.Revision) error = "stale";
@@ -340,7 +342,7 @@ public class GameSessionService(InMemoryDatabase database, TemplateDbContext con
                     switch (command.Kind)
                     {
                         case "offer-rematch":
-                            if (room.Difficulty != null || room.RematchOfferedBy != null && room.RematchOfferedBy != player) create = true;
+                            if (room.IsComputer || room.RematchOfferedBy != null && room.RematchOfferedBy != player) create = true;
                             else room.RematchOfferedBy = player;
                             break;
                         case "accept-rematch":
@@ -364,7 +366,7 @@ public class GameSessionService(InMemoryDatabase database, TemplateDbContext con
                     var next = new AcceptedChallenge(room.Creator, room.Accepter, room.Message,
                         room.CreatorIsWhite ? RoleRule.AccepterWhite : RoleRule.CreatorWhite, room.TimeLimit,
                         room.Permission, new AsyncObservable<string>())
-                    { Difficulty = room.Difficulty, IncrementSeconds = room.IncrementSeconds, IsPersisted = false };
+                    { Difficulty = room.Difficulty, LlmModel = room.LlmModel, IncrementSeconds = room.IncrementSeconds, IsPersisted = false };
                     try { nextId = database.CreateChallenge(next); }
                     catch (InvalidOperationException)
                     {
@@ -387,6 +389,29 @@ public class GameSessionService(InMemoryDatabase database, TemplateDbContext con
             before.Apply(room); context.ChangeTracker.Clear();
             if (nextId != null) database.DeleteChallenge(nextId.Value);
             throw;
+        }
+        finally { room.MutationLock.Release(); }
+    }
+
+    public async Task ComputerFailedAsync(int id, long revision)
+    {
+        var room = database.GetAcceptedChallenge(id);
+        if (room == null) return;
+        await room.MutationLock.WaitAsync();
+        try
+        {
+            var before = RoomSnapshot.Capture(room);
+            try
+            {
+                lock (room.Game.MovePieceLock)
+                {
+                    if (room.Revision != revision || room.Game.Board.IsEndGame) return;
+                    room.Game.ComputerError = "computer-failed";
+                }
+                await StoreAsync(id, room);
+                await NotifyAsync(room, new ChallengeContext(room, id));
+            }
+            catch { before.Apply(room); context.ChangeTracker.Clear(); throw; }
         }
         finally { room.MutationLock.Release(); }
     }

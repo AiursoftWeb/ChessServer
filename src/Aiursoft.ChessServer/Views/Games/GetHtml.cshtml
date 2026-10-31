@@ -21,6 +21,7 @@
         <span data-key="draw">@Localizer["Draw"]</span>
         <span data-key="time-control">@Localizer["Time control: {0}"].Value</span>
         <span data-key="unlimited">@Localizer["Unlimited"]</span>
+        <span data-key="computer-failed">@Localizer["The computer could not choose a move. Retry when ready."]</span>
         <span data-key="thinking">@Localizer["Computer is thinking…"]</span>
         <span data-key="pending">@Localizer["Confirming your move…"]</span>
         <span data-key="guest">@Localizer["Guest"]</span>
@@ -76,6 +77,7 @@
             <div class="d-flex flex-wrap justify-content-between gap-1 small mt-2"><span id="role" class="text-muted"></span><span id="connection-status" role="status"></span></div>
             <p id="time-control" class="small text-muted mb-1"></p>
             <p id="status" class="my-2" role="status"></p>
+            <div id="computer-failure" class="mt-3" hidden><p id="computer-error" role="status"></p><button id="retry-computer" class="btn btn-outline-primary" type="button">@Localizer["Retry computer move"]</button></div>
             <p id="action-error" class="text-danger small" role="alert" hidden></p>
             <p id="opponent-status" class="text-muted small" hidden></p>
             <div id="game-actions" class="d-flex flex-wrap gap-2 mb-2" hidden>
