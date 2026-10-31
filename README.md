@@ -8,7 +8,7 @@
 [![Website](https://img.shields.io/website?url=https%3A%2F%2Fchess.aiursoft.com)](https://chess.aiursoft.com)
 [![Docker](https://img.shields.io/docker/pulls/aiursoft/chessserver.svg)](https://hub.docker.com/r/aiursoft/chessserver)
 
-ChessServer lets guests and signed-in players play against the computer or a friend, watch games, and chat. Signed-in players can replay their saved games; everyone can download PGN. Built on Aiursoft Template with eight computer difficulty levels, optional server-controlled clocks, and automatic cleanup of inactive rooms.
+ChessServer has hosted rooms with two player seats and observers. Mix humans, eight-level Lynx engines and language models in any pairing; hosts arrange players and start each game. Players can chat, and signed-in players and organizers can replay saved games and export PGN. Built on Aiursoft Template with optional server-controlled clocks.
 
 ![screenshot](./screenshot.png)
 

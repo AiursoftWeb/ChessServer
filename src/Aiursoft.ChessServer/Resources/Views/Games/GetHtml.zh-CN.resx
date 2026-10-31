@@ -99,6 +99,9 @@
   <data name="Could not confirm the saved game. Retry." xml:space="preserve">
     <value>无法确认棋局已保存。请重试。</value>
   </data>
+  <data name="Disconnects have a 60-second reconnection grace period. The room closes when everyone leaves." xml:space="preserve">
+    <value>断开连接后有 60 秒的宽限期可供重新连接。所有人离开后，房间将关闭。</value>
+  </data>
   <data name="Dismiss offer" xml:space="preserve">
     <value>撤销提议</value>
   </data>
@@ -140,6 +143,9 @@
   </data>
   <data name="Game over. {0} wins." xml:space="preserve">
     <value>游戏结束。{0}获胜。</value>
+  </data>
+  <data name="Game stopped by the host" xml:space="preserve">
+    <value>游戏已由房主终止</value>
   </data>
   <data name="Guest" xml:space="preserve">
     <value>游客</value>

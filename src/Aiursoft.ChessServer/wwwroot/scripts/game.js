@@ -34,12 +34,12 @@ function apply(info) {
     if (info.Game.Ended) { if (element('promotion-dialog').open) element('promotion-dialog').close(); clearPending(); if (!saved && !saving && element('retry-save').hidden) saveGame(); }
     render();
     if (acceptedRematch && color !== 'm') location.assign(`/games/${info.NextGameId}.html`);
-    if (justEnded) element('game-result').scrollIntoView({block: 'nearest', behavior: 'smooth'});
+    if (justEnded) { window.dispatchEvent(new Event('chess-game-ended')); element('game-result').scrollIntoView({block: 'nearest', behavior: 'smooth'}); }
 }
 function render() {
     if (!state) return;
     const ended = state.Game.Ended;
-    const computerFailure = !ended && state.ComputerError && color !== 'm' && state.Game.Turn !== color;
+    const computerFailure = !state.ParentRoomId && !ended && state.ComputerError && color !== 'm' && state.Game.Turn !== color;
     element('computer-failure').hidden = !computerFailure;
     element('computer-error').textContent = computerFailure ? text(state.ComputerError) : '';
     element('retry-computer').disabled = aiBusy || state.Thinking;
@@ -73,7 +73,7 @@ function render() {
     element('status').textContent = ended ? text('ended') : pending ? text('pending') : state.Computer && state.Game.Turn !== color && participant ? text('thinking') : format('turn', text(state.Game.Turn === 'w' ? 'white' : 'black'));
     element('game-result').hidden = !ended;
     element('game-policy').hidden = ended;
-    element('offer-rematch').hidden = !participant || !!state.RematchOfferedBy || !!state.NextGameId;
+    element('offer-rematch').hidden = !participant || !!state.ParentRoomId || !!state.RematchOfferedBy || !!state.NextGameId;
     const ownRematch = state.RematchOfferedBy === (color === 'w' ? state.WhiteId : state.BlackId);
     element('rematch-offer').hidden = !ended || !participant || !state.RematchOfferedBy || !!state.NextGameId;
     element('rematch-offer-text').textContent = text(ownRematch ? 'own-rematch' : 'their-rematch');
@@ -81,7 +81,7 @@ function render() {
     element('next-game').hidden = !participant || !state.NextGameId;
     if (participant && state.NextGameId) element('next-game').href = `/games/${state.NextGameId}.html`;
     if (ended) {
-        element('result-title').textContent = state.Result === '*' ? text(state.EndReason === 'Abandoned' ? 'Abandoned' : 'Aborted') : state.Result === '1/2-1/2' ? text('draw') : format('winner', text(state.Result === '1-0' ? 'white' : 'black'));
+        element('result-title').textContent = state.Result === '*' ? text(state.EndReason === 'Interrupted' ? 'Interrupted' : state.EndReason === 'Abandoned' ? 'Abandoned' : 'Aborted') : state.Result === '1/2-1/2' ? text('draw') : format('winner', text(state.Result === '1-0' ? 'white' : 'black'));
         const reason = text(state.EndReason);
         element('result-reason').textContent = reason === state.EndReason ? text('other-end') : reason;
     }
@@ -148,7 +148,7 @@ async function poll() {
         if (response.ok) apply(await response.json());
         else if (response.status === 404) element('action-error').textContent = text('unavailable');
         if (pending && performance.now() - lastSend > 2000) sendPending();
-        if (state?.Computer && !state.Game.Ended && color !== 'm' && state.Game.Turn !== color && !state.Thinking && !state.ComputerError && !aiBusy && performance.now() - lastAiAttempt > 5000) {
+        if (!state?.ParentRoomId && state?.Computer && !state.Game.Ended && color !== 'm' && state.Game.Turn !== color && !state.Thinking && !state.ComputerError && !aiBusy && performance.now() - lastAiAttempt > 5000) {
             aiBusy = true; lastAiAttempt = performance.now();
             try { const wake = await post(`/games/${id}/computer`, {}); if (wake.ok) apply(await wake.json()); } finally { aiBusy = false; }
         }
@@ -179,6 +179,7 @@ element('retry-computer').onclick = async () => {
 window.addEventListener('beforeunload', event => { if (state && !state.Game.Ended && color !== 'm') { event.preventDefault(); event.returnValue = text('leave'); } });
 window.addEventListener('pagehide', () => { stopped = true; clearInterval(heartbeat); clearInterval(clock); clearTimeout(retryTimer); socket?.close(); surface?.dispose(); }, {once: true});
 if (element('chat-form')) {
+    element('chat-form').hidden = color === 'm';
     const messages = element('messages-box'), input = element('chat-input');
     const chat = new WebSocket(`${location.protocol === 'https:' ? 'wss:' : 'ws:'}//${location.host}/chats/${id}.ws`);
     chat.onmessage = event => {

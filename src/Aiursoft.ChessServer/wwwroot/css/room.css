@@ -1,0 +1,8 @@
+.room-seat,.room-observers{border:1px dashed var(--bs-border-color,#adb5bd);border-radius:.4rem;padding:.75rem;min-height:5rem}
+.room-person{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem;padding:.5rem 0;overflow-wrap:anywhere}
+.room-person[draggable=true]{cursor:grab}
+.room-person .room-person-name{flex:1;min-width:0;overflow-wrap:anywhere}
+.room-person select{width:auto;max-width:100%}
+.advanced-game .chess-layout{grid-template-columns:minmax(0,1fr)}
+#add-room-ai{max-width:min(30rem,95vw);width:100%;border:0;border-radius:.5rem;padding:1.5rem}
+#add-room-ai::backdrop{background:#0006}

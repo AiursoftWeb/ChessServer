@@ -1,5 +1,5 @@
 @model Aiursoft.ChessServer.Models.ViewModels.RoomViewModel
-<partial name="_ChessIdentity" />
+@if (!Model.Embedded) { <partial name="_ChessIdentity" /> }
 @* ReSharper disable once Razor.SectionNotResolved *@
 @section styles {
     <link rel="stylesheet" href="~/node_modules/%40chrisoakman/chessboardjs/dist/chessboard-1.0.0.min.css" />
@@ -56,6 +56,7 @@
         <span data-key="TimeoutDraw">@Localizer["Time expired, but the opponent cannot checkmate."]</span>
         <span data-key="Agreement">@Localizer["Draw by agreement"]</span>
         <span data-key="Aborted">@Localizer["Game aborted before any move"]</span>
+        <span data-key="Interrupted">@Localizer["Game stopped by the host"]</span>
         <span data-key="Abandoned">@Localizer["Game ended because both players left"]</span>
         <span data-key="Abandonment">@Localizer["Game ended by abandonment"]</span>
         <span data-key="InsufficientMaterial">@Localizer["Neither side has sufficient mating material"]</span>
@@ -103,8 +104,12 @@
             </div>
             <details id="game-policy" class="small text-muted mt-2"><summary>@Localizer["Connection and game rules"]</summary>
                 <p>@Localizer["Server maintenance pauses the clocks. A player disconnecting does not."]</p>
-                <p class="mt-1">@Localizer["An unplayed game ends after one minute. Leaving does not pause the clock."]</p>
-                <p>@Localizer["After 90 seconds without your opponent, you may claim the result. A computer game ends after two minutes away; a game with both players away ends after ten minutes."]</p>
+                @if (Model.Embedded) {
+                    <p>@Localizer["Disconnects have a 60-second reconnection grace period. The room closes when everyone leaves."]</p>
+                } else {
+                    <p class="mt-1">@Localizer["An unplayed game ends after one minute. Leaving does not pause the clock."]</p>
+                    <p>@Localizer["After 90 seconds without your opponent, you may claim the result. A computer game ends after two minutes away; a game with both players away ends after ten minutes."]</p>
+                }
             </details>
             <section id="game-result" class="card mt-3" aria-live="polite" hidden><div class="card-body">
                 <h2 id="result-title" class="h4"></h2><p id="result-reason" class="mb-2"></p>
@@ -125,9 +130,9 @@
             <div class="card"><div class="card-body"><h2 class="h6">@Localizer["Moves"]</h2>
                 <div id="move-list" class="chess-move-list" aria-label="@Localizer["Move list"]"></div>
                 <button id="return-live" class="btn btn-sm btn-outline-primary mt-2" type="button" hidden>@Localizer["Return to live position"]</button>
-                <a class="d-block small mt-3" asp-action="GetPgn" asp-route-id="@Model.Id">@Localizer["Export PGN"]</a>
+                <a class="d-block small mt-3" asp-controller="Games" asp-action="GetPgn" asp-route-id="@Model.Id">@Localizer["Export PGN"]</a>
             </div></div>
-            @if (!Model.IsComputer)
+            @if (!Model.IsComputer && !Model.Embedded)
             {
                 <details class="card mt-3"><summary class="card-header">@Localizer["Chat"]</summary><div class="card-body">
                     <div id="messages-box" class="chess-messages" role="log" aria-live="polite"></div>
@@ -137,7 +142,7 @@
             }
         </aside>
     </div>
-    <form id="complete-game" asp-action="Complete" asp-route-id="@Model.Id" method="post" hidden></form>
+    <form id="complete-game" asp-controller="Games" asp-action="Complete" asp-route-id="@Model.Id" method="post" hidden></form>
     <audio src="/sounds/chess_piece_move.mp3" id="pieceMoveSound"></audio>
     <dialog id="promotion-dialog"><h2 class="h5">@Localizer["Promote pawn"]</h2>
         <div class="d-flex gap-2"><button type="button" data-promotion="q" class="btn btn-outline-primary">@Localizer["Queen"]</button><button type="button" data-promotion="r" class="btn btn-outline-primary">@Localizer["Rook"]</button><button type="button" data-promotion="b" class="btn btn-outline-primary">@Localizer["Bishop"]</button><button type="button" data-promotion="n" class="btn btn-outline-primary">@Localizer["Knight"]</button></div>

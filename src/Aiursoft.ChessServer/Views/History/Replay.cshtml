@@ -17,7 +17,8 @@
         <button id="replay-end" class="btn btn-outline-primary" type="button">@Localizer["End"]</button>
     </div>
     <p id="replay-error" class="text-danger mt-3" role="alert" hidden>@Localizer["Could not load this game. Refresh to try again."]</p>
-    <div class="d-flex gap-3 mt-3"><a asp-action="Pgn" asp-route-id="@Model.Game.Id">@Localizer["Export PGN"]</a><a asp-action="Index">@Localizer["My games"]</a></div>
+    <div class="d-flex gap-3 mt-3">@if (Model.Game.MetadataJson != null) { <a class="btn btn-outline-secondary" asp-action="Metadata" asp-route-id="@Model.Game.Id">@Localizer["Export match details"]</a> }
+    <a asp-action="Pgn" asp-route-id="@Model.Game.Id">@Localizer["Export PGN"]</a><a asp-action="Index">@Localizer["My games"]</a></div>
 </div></div>
 @* ReSharper disable once Razor.SectionNotResolved *@
 @section scripts {

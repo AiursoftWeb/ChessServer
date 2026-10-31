@@ -1,8 +1,10 @@
 @model Aiursoft.ChessServer.Models.ViewModels.HistoryViewModel
 <h1 class="h3 mb-4">@Localizer["My games"]</h1>
+<nav class="nav nav-tabs mb-3"><a class="nav-link @(Model.Organized ? "" : "active")" asp-action="Index" asp-route-organized="false">@Localizer["Games I played"]</a><a class="nav-link @(Model.Organized ? "active" : "")" asp-action="Index" asp-route-organized="true">@Localizer["Games I organized"]</a></nav>
 <div class="card"><div class="card-body">
     <form method="get" id="history-date" class="d-flex gap-2 align-items-end mb-4">
         <div><label for="date" class="form-label">@Localizer["Date"]</label><input type="date" id="date" name="date" value="@Model.Date.ToString("yyyy-MM-dd")" class="form-control" /></div>
+        <input type="hidden" name="organized" value="@Model.Organized.ToString().ToLowerInvariant()" />
         <input type="hidden" name="offsetMinutes" id="offset-minutes" value="@Model.OffsetMinutes" />
         <button class="btn btn-primary" type="submit">@Localizer["Show games"]</button>
     </form>
@@ -18,8 +20,8 @@
         </table></div>
     }
     <nav class="d-flex justify-content-between" aria-label="@Localizer["Pagination"]">
-        @if (Model.Page > 1) { <a asp-action="Index" asp-route-date="@Model.Date.ToString("yyyy-MM-dd")" asp-route-offsetMinutes="@Model.OffsetMinutes" asp-route-page="@(Model.Page - 1)">@Localizer["Previous"]</a> }
-        @if (Model.HasMore) { <a class="ms-auto" asp-action="Index" asp-route-date="@Model.Date.ToString("yyyy-MM-dd")" asp-route-offsetMinutes="@Model.OffsetMinutes" asp-route-page="@(Model.Page + 1)">@Localizer["Next"]</a> }
+        @if (Model.Page > 1) { <a asp-action="Index" asp-route-organized="@Model.Organized" asp-route-date="@Model.Date.ToString("yyyy-MM-dd")" asp-route-offsetMinutes="@Model.OffsetMinutes" asp-route-page="@(Model.Page - 1)">@Localizer["Previous"]</a> }
+        @if (Model.HasMore) { <a class="ms-auto" asp-action="Index" asp-route-organized="@Model.Organized" asp-route-date="@Model.Date.ToString("yyyy-MM-dd")" asp-route-offsetMinutes="@Model.OffsetMinutes" asp-route-page="@(Model.Page + 1)">@Localizer["Next"]</a> }
     </nav>
 </div></div>
 @* ReSharper disable once Razor.SectionNotResolved *@
