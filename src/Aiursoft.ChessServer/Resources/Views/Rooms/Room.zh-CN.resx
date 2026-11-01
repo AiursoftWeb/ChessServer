@@ -90,6 +90,12 @@
   <data name="Finished" xml:space="preserve">
     <value>已结束</value>
   </data>
+  <data name="First position" xml:space="preserve">
+    <value>初始局面</value>
+  </data>
+  <data name="Game information" xml:space="preserve">
+    <value>游戏信息</value>
+  </data>
   <data name="Host" xml:space="preserve">
     <value>房主</value>
   </data>
@@ -107,6 +113,9 @@
   </data>
   <data name="Large language model" xml:space="preserve">
     <value>大型语言模型</value>
+  </data>
+  <data name="Latest position" xml:space="preserve">
+    <value>最新棋局局面</value>
   </data>
   <data name="Leave room" xml:space="preserve">
     <value>离开房间</value>
@@ -128,6 +137,15 @@
   </data>
   <data name="Model" xml:space="preserve">
     <value>Model</value>
+  </data>
+  <data name="More" xml:space="preserve">
+    <value>更多</value>
+  </data>
+  <data name="Moves" xml:space="preserve">
+    <value>着法</value>
+  </data>
+  <data name="Next move" xml:space="preserve">
+    <value>下一步</value>
   </data>
   <data name="No increment" xml:space="preserve">
     <value>不加秒</value>
@@ -168,6 +186,9 @@
   <data name="Preparing" xml:space="preserve">
     <value>准备中</value>
   </data>
+  <data name="Previous move" xml:space="preserve">
+    <value>上一步</value>
+  </data>
   <data name="Randomize colors at start" xml:space="preserve">
     <value>开始时随机分配棋子颜色</value>
   </data>
@@ -182,6 +203,9 @@
   </data>
   <data name="Retry computer move" xml:space="preserve">
     <value>重试电脑走棋</value>
+  </data>
+  <data name="Room controls" xml:space="preserve">
+    <value>房间控制</value>
   </data>
   <data name="Room name" xml:space="preserve">
     <value>房间名称</value>

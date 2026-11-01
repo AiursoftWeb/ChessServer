@@ -43,6 +43,12 @@ export default class ChessSurface {
         this.observer = new ResizeObserver(() => this.board.resize());
         this.observer.observe(document.getElementById('board').parentElement);
         document.getElementById('return-live').onclick = () => this.show(this.moves.length);
+        document.querySelectorAll('[data-view-position]').forEach(button => {
+            button.onclick = () => {
+                const positions = {first: 0, previous: this.viewPly - 1, next: this.viewPly + 1, latest: this.moves.length};
+                this.show(Math.max(0, Math.min(this.moves.length, positions[button.dataset.viewPosition])));
+            };
+        });
     }
     canMove() {
         return this.state && !this.state.Game.Ended && this.state.Game.Turn === this.color && !this.pending && this.viewPly === this.moves.length;
@@ -59,7 +65,7 @@ export default class ChessSurface {
             for (const move of this.moves) { const played = replay.move(move); this.moveSquares.push(played); this.positions.push(replay.fen()); }
             this.buildList();
         }
-        if (wasLive) this.viewPly = this.moves.length;
+        if (wasLive || this.viewPly > this.moves.length) this.viewPly = this.moves.length;
         this.paint();
         if (played && this.sound) { this.sound.currentTime = 0; this.sound.play().catch(() => {}); }
     }
@@ -79,6 +85,10 @@ export default class ChessSurface {
         document.getElementById('return-live').hidden = this.viewPly === this.moves.length;
         const buttons = document.querySelectorAll('#move-list button');
         buttons.forEach(button => { button.classList.toggle('btn-primary', Number(button.dataset.ply) === this.viewPly); button.classList.toggle('btn-light', Number(button.dataset.ply) !== this.viewPly); });
+        document.querySelectorAll('[data-view-position]').forEach(button => {
+            const atStart = ['first', 'previous'].includes(button.dataset.viewPosition);
+            button.disabled = atStart ? this.viewPly === 0 : this.viewPly === this.moves.length;
+        });
         this.highlight();
     }
     highlight() {

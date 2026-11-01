@@ -80,6 +80,7 @@ function render() {
     element('status').classList.toggle('text-danger', !ended && !!state.ComputerError);
     element('status').textContent = ended ? text('ended') : state.ComputerError ? text(state.ComputerError) : pending ? text('pending')
         : state.Thinking ? thinking : format('turn', text(state.Game.Turn === 'w' ? 'white' : 'black'));
+    element('status').hidden = ended && !!state.ParentRoomId;
     element('game-result').hidden = !ended;
     element('game-policy').hidden = ended;
     element('offer-rematch').hidden = !participant || !!state.ParentRoomId || !!state.RematchOfferedBy || !!state.NextGameId;
@@ -129,11 +130,15 @@ async function action(kind) {
     } catch { element('action-error').textContent = text('error'); element('action-error').hidden = false; }
     finally { actionBusy = false; }
 }
+function connectionStatus(key) {
+    element('connection-status').textContent = text(key);
+    element('connection-status').dataset.state = key;
+}
 function connect() {
     if (stopped) return;
-    element('connection-status').textContent = text(reconnectAttempts ? 'reconnecting' : 'connecting');
+    connectionStatus(reconnectAttempts ? 'reconnecting' : 'connecting');
     socket = new WebSocket(`${location.protocol === 'https:' ? 'wss:' : 'ws:'}//${location.host}/games/${id}.ws`);
-    socket.onopen = () => { reconnectAttempts = 0; element('connection-status').textContent = text('connected'); sendPending(); };
+    socket.onopen = () => { reconnectAttempts = 0; connectionStatus('connected'); sendPending(); };
     socket.onmessage = event => {
         let message;
         try { message = JSON.parse(event.data); } catch { return; }
@@ -145,7 +150,7 @@ function connect() {
     };
     socket.onclose = () => {
         if (stopped) return;
-        element('connection-status').textContent = text('reconnecting');
+        connectionStatus('reconnecting');
         retryTimer = setTimeout(connect, Math.min(1000 * ++reconnectAttempts, 10000));
     };
 }
@@ -161,7 +166,7 @@ async function poll() {
             aiBusy = true; lastAiAttempt = performance.now();
             try { const wake = await post(`/games/${id}/computer`, {}); if (wake.ok) apply(await wake.json()); } finally { aiBusy = false; }
         }
-    } catch { element('connection-status').textContent = text('reconnecting'); }
+    } catch { connectionStatus('reconnecting'); }
     finally { polling = false; }
 }
 try {
