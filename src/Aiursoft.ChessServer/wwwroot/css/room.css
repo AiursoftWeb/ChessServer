@@ -1,12 +1,31 @@
 .room-seat,.room-observers{border:1px dashed var(--bs-border-color,#adb5bd);border-radius:.4rem;padding:.75rem;min-height:5rem}
 .room-person{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem;padding:.5rem 0;overflow-wrap:anywhere}
-.room-person[draggable=true]{cursor:grab}
+.room-person[draggable=true]{cursor:grab;border:1px solid var(--bs-border-color,#adb5bd);border-radius:.4rem;padding:.5rem;background:var(--bs-body-bg,#fff);transition:background-color .15s,box-shadow .15s,opacity .15s}
+.room-person[draggable=true]:hover{background:var(--bs-tertiary-bg,#f8f9fa);box-shadow:0 2px 8px #0002}
+.room-person[draggable=true]:active{cursor:grabbing}
+.room-drag-grip{width:.75rem;height:1.5rem;flex-shrink:0;opacity:.6;background:radial-gradient(circle,currentColor 1.5px,transparent 2px) 0 0 / 6px 6px}
+.room-person button,.room-person select{cursor:pointer}
+.room-observers{display:flex;flex-direction:column;gap:.5rem}
+.room-seat,.room-observers{transition:border-color .15s,background-color .15s,box-shadow .15s}
+.room-dragging .room-person-dragging{opacity:.35;box-shadow:none}
+.room-drag-preview{position:fixed;top:-1000px;left:0;width:16rem;padding:.75rem;border:2px solid var(--bs-primary,#0d6efd);border-radius:.5rem;background:var(--bs-body-bg,#fff);color:var(--bs-body-color,#212529);box-shadow:0 8px 24px #0003;pointer-events:none}
+.room-drop-ready{border-color:var(--bs-primary,#0d6efd);background:var(--bs-primary-bg-subtle,#cfe2ff)}
+.room-drop-ready::after{content:attr(data-drop-label);display:block;text-align:center;color:var(--bs-primary-text-emphasis,#052c65);font-size:.875rem;padding:.5rem;border:1px dashed currentColor;border-radius:.3rem;margin-top:.5rem;pointer-events:none}
+.room-drop-over{border-style:solid;box-shadow:0 0 0 3px var(--bs-primary,#0d6efd)}
+.room-drop-blocked{border-style:solid;cursor:not-allowed}
+.room-person-arrived{animation:room-arrive .3s ease-out}
+@keyframes room-arrive{from{opacity:.5;transform:translateY(-6px)}to{opacity:1;transform:translateY(0)}}
+@media(prefers-reduced-motion:reduce){.room-person[draggable=true],.room-seat,.room-observers{transition:none}.room-person-arrived{animation:none}}
+@media(hover:none){.room-drag-grip{display:none}}
 .room-person-identity{flex:1;min-width:6rem;overflow-wrap:anywhere;display:flex;flex-direction:column;align-items:flex-start;gap:.25rem}
 .room-avatar{width:3.5rem;height:3.5rem;flex-shrink:0;object-fit:cover;border-radius:50%;border:2px solid var(--bs-border-color,#adb5bd)}
 .room-host .room-avatar{border-color:#d49b22;box-shadow:0 0 0 2px #d49b2233}
 .room-host-badge{font-size:.75rem}
 .room-person select{width:auto;max-width:100%}
-.advanced-game .chess-layout{grid-template-columns:minmax(0,1fr)}
+.room-in-game .advanced-game{width:100%;flex:0 0 100%}
+.room-in-game #room-roster,.room-in-game #room-chat{max-width:55.25rem;margin-inline:auto}
+@media(min-width:992px){.advanced-game .chess-layout{grid-template-columns:minmax(0,36rem) minmax(14rem,18rem);justify-content:center}}
+.advanced-game .chess-playing-area{width:100%;max-width:36rem;margin-inline:auto}
 #add-room-ai{max-width:min(30rem,95vw);width:100%;border:0;border-radius:.5rem;padding:1.5rem}
 #add-room-ai::backdrop{background:#0006}
 #managed-room [hidden]{display:none!important}

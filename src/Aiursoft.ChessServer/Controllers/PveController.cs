@@ -14,6 +14,7 @@ public class PveController(GameSessionService sessions, LlmModelCatalog catalog)
         if (!ModelState.IsValid) return BadRequest("Choose valid game settings.");
         var llm = difficulty == "llm";
         if (!llm && (!int.TryParse(difficulty, out var number) || number is < 1 or > 8)) return BadRequest("Choose a difficulty from 1 to 8 or LLM.");
+        if (llm && CurrentPlayer().IsGuest) return StatusCode(403, "Sign in to add an LLM.");
         if (llm)
         {
             string[] models;
