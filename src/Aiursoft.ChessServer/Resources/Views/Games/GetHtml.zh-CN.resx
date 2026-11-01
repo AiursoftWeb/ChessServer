@@ -117,6 +117,9 @@
   <data name="Draw by the fifty-move rule" xml:space="preserve">
     <value>因五十回合规则和棋</value>
   </data>
+  <data name="Export FEN" xml:space="preserve">
+    <value>导出 FEN</value>
+  </data>
   <data name="Export PGN" xml:space="preserve">
     <value>导出 PGN</value>
   </data>

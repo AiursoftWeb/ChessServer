@@ -131,6 +131,7 @@ public class ManagedRoomService(InMemoryDatabase database, GameSessionService se
                     if (command.Seat == "black") room.Black = moved;
                     break;
                 case "add-ai":
+                    if (command.Ai == "llm" && actor.IsGuest) throw new InvalidOperationException("room-sign-in-required");
                     if (command.Seat is not ("white" or "black") || (command.Seat == "white" ? room.White : room.Black) != null) throw new InvalidOperationException("room-seat-occupied");
                     if (command.Ai is not ("llm" or "engine") || command.Ai == "engine" && command.Difficulty is < 1 or > 8) throw new InvalidOperationException("room-settings-invalid");
                     if (command.Ai == "llm" && (command.Model == null || !(await catalog.GetModelsAsync(CancellationToken.None)).Contains(command.Model, StringComparer.Ordinal)))

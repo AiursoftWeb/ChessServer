@@ -185,8 +185,8 @@ element('retry-computer').onclick = async () => {
 };
 window.addEventListener('beforeunload', event => { if (state && !state.Game.Ended && color !== 'm') { event.preventDefault(); event.returnValue = text('leave'); } });
 window.addEventListener('pagehide', () => { stopped = true; clearInterval(heartbeat); clearInterval(clock); clearTimeout(retryTimer); socket?.close(); surface?.dispose(); }, {once: true});
-if (element('chat-form')) {
-    element('chat-form').hidden = color === 'm';
+if (element('chat-panel') && color !== 'm') {
+    element('chat-panel').hidden = false;
     const messages = element('messages-box'), input = element('chat-input');
     const chat = new WebSocket(`${location.protocol === 'https:' ? 'wss:' : 'ws:'}//${location.host}/chats/${id}.ws`);
     chat.onmessage = event => {

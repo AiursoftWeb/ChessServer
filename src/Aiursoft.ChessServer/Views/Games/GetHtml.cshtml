@@ -73,7 +73,7 @@
     </div>
     <div class="d-flex align-items-center justify-content-between gap-2 mb-2">
         <h1 id="versus-info" class="h5 mb-0">@Model.Message</h1>
-        <a class="btn btn-sm btn-outline-secondary text-nowrap flex-shrink-0" asp-controller="Lobby" asp-action="Index">@Localizer["Lobby"]</a>
+        @if (!Model.Embedded) { <a class="btn btn-sm btn-outline-secondary text-nowrap flex-shrink-0" asp-controller="Lobby" asp-action="Index">@Localizer["Lobby"]</a> }
     </div>
     <div class="chess-layout">
         <div class="chess-playing-area">
@@ -135,11 +135,14 @@
             <div class="card"><div class="card-body"><h2 class="h6">@Localizer["Moves"]</h2>
                 <div id="move-list" class="chess-move-list" aria-label="@Localizer["Move list"]"></div>
                 <button id="return-live" class="btn btn-sm btn-outline-primary mt-2" type="button" hidden>@Localizer["Return to live position"]</button>
-                <a class="d-block small mt-3" asp-controller="Games" asp-action="GetPgn" asp-route-id="@Model.Id">@Localizer["Export PGN"]</a>
+                <div class="d-flex flex-wrap gap-2 mt-3">
+                    <a class="btn btn-sm btn-outline-secondary" download="game-@(Model.Id).pgn" asp-controller="Games" asp-action="GetPgn" asp-route-id="@Model.Id">@Localizer["Export PGN"]</a>
+                    <a class="btn btn-sm btn-outline-secondary" download="game-@(Model.Id).fen" asp-controller="Games" asp-action="GetFen" asp-route-id="@Model.Id">@Localizer["Export FEN"]</a>
+                </div>
             </div></div>
             @if (!Model.IsComputer && !Model.Embedded)
             {
-                <details class="card mt-3"><summary class="card-header">@Localizer["Chat"]</summary><div class="card-body">
+                <details id="chat-panel" class="card mt-3" hidden><summary class="card-header">@Localizer["Chat"]</summary><div class="card-body">
                     <div id="messages-box" class="chess-messages" role="log" aria-live="polite"></div>
                     <form id="chat-form" class="d-flex gap-2 mt-2"><input id="chat-input" class="form-control" maxlength="2000" aria-label="@Localizer["Message"]" autocomplete="off" /><button class="btn btn-primary" type="submit">@Localizer["Send"]</button></form>
                     <p id="chat-status" class="text-muted small" role="status"></p>

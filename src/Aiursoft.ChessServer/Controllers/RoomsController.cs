@@ -23,7 +23,7 @@ public class RoomsController(ManagedRoomService rooms, InMemoryDatabase database
         catch (InvalidOperationException) { return NotFound(); }
         var room = rooms.Find(id)!;
         string[] models;
-        try { models = await catalog.GetModelsAsync(HttpContext.RequestAborted); }
+        try { models = CurrentPlayer().IsGuest ? [] : await catalog.GetModelsAsync(HttpContext.RequestAborted); }
         catch (Exception exception) when (exception is HttpRequestException or OperationCanceledException or System.Text.Json.JsonException or InvalidOperationException or KeyNotFoundException) { models = []; }
         var game = room.CurrentGameId is { } gameId ? database.GetAcceptedChallenge(gameId) : null;
         return this.StackView(new ManagedRoomViewModel { Id = id, Message = room.Message, Models = models,
@@ -48,6 +48,7 @@ public class RoomsController(ManagedRoomService rooms, InMemoryDatabase database
             if (rooms.Find(id)?.CurrentGameId is { } gameId) computers.Wake(gameId);
             return Ok(await rooms.StateAsync(id, PlayerId));
         }
+        catch (InvalidOperationException exception) when (exception.Message == "room-sign-in-required") { return StatusCode(403, new { Error = exception.Message }); }
         catch (InvalidOperationException exception) { return Conflict(new { Error = exception.Message }); }
         catch (Exception exception) when (exception is HttpRequestException or OperationCanceledException or System.Text.Json.JsonException or KeyNotFoundException) { return StatusCode(503, new { Error = "room-model-unavailable" }); }
     }

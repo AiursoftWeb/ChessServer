@@ -66,6 +66,12 @@
   <data name="Difficulty" xml:space="preserve">
     <value>难度</value>
   </data>
+  <data name="Drag to change role" xml:space="preserve">
+    <value>拖动以更改角色</value>
+  </data>
+  <data name="Drop here" xml:space="preserve">
+    <value>放置于此</value>
+  </data>
   <data name="Empty seat" xml:space="preserve">
     <value>空座位</value>
   </data>
@@ -135,6 +141,9 @@
   <data name="Players" xml:space="preserve">
     <value>玩家</value>
   </data>
+  <data name="Players and observers" xml:space="preserve">
+    <value>玩家和观战者</value>
+  </data>
   <data name="Playing" xml:space="preserve">
     <value>进行中</value>
   </data>
@@ -170,6 +179,9 @@
   </data>
   <data name="Send" xml:space="preserve">
     <value>发送</value>
+  </data>
+  <data name="Sign in to add an LLM." xml:space="preserve">
+    <value>登录后即可添加大语言模型。</value>
   </data>
   <data name="Start game" xml:space="preserve">
     <value>开始游戏</value>

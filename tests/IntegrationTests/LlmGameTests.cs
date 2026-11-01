@@ -11,13 +11,14 @@ public class LlmGameTests : TestBase
 {
     private WebApplication? _gateway;
     private int _completionCalls;
+    private int _modelCalls;
 
     private async Task ConfigureLlm(string completion = "null", Func<int, HttpContext, Task<IResult>>? respond = null)
     {
         var builder = WebApplication.CreateBuilder();
         builder.WebHost.UseUrls("http://127.0.0.1:0");
         _gateway = builder.Build();
-        _gateway.MapGet("/v1/models", () => Results.Json(new { data = new[] { new { id = "configured-model" }, new { id = "another-model" } } }));
+        _gateway.MapGet("/v1/models", () => { _modelCalls++; return Results.Json(new { data = new[] { new { id = "configured-model" }, new { id = "another-model" } } }); });
         _gateway.MapPost("/v1/chat/completions", async (HttpContext context) =>
         {
             var call = Interlocked.Increment(ref _completionCalls);
@@ -34,6 +35,46 @@ public class LlmGameTests : TestBase
     {
         await base.CleanServer();
         if (_gateway != null) await _gateway.DisposeAsync();
+    }
+
+    [TestMethod]
+    public async Task GuestCannotAddLlmThroughRoomOrLegacyPveButCanAddAnEngine()
+    {
+        await ConfigureLlm();
+        await PostForm("/Guest", new() { ["NickName"] = "Guest host" });
+        var created = await PostForm("/rooms/create", new(), tokenUrl: "/Lobby");
+        var path = created.Headers.Location!.OriginalString;
+        var page = await (await Http.GetAsync(path)).Content.ReadAsStringAsync();
+        Assert.IsFalse(page.Contains("value=\"llm\"", StringComparison.Ordinal));
+        StringAssert.Contains(page, "Sign in to add an LLM.");
+        var room = GetService<ManagedRoomService>().Find(int.Parse(path.Split('/').Last()))!;
+        var version = room.Version;
+        var response = await PostForm(path + "/action", new() { ["Kind"] = "add-ai", ["Ai"] = "llm", ["Model"] = "configured-model", ["Seat"] = "black",
+            ["Version"] = version.ToString(), ["CommandId"] = Guid.NewGuid().ToString(), ["IsGuest"] = "false" }, tokenUrl: path);
+        Assert.AreEqual(HttpStatusCode.Forbidden, response.StatusCode);
+        StringAssert.Contains(await response.Content.ReadAsStringAsync(), "room-sign-in-required");
+        Assert.IsNull(room.Black); Assert.AreEqual(version, room.Version);
+        response = await PostForm("/pve/new", new() { ["difficulty"] = "llm", ["model"] = "configured-model" }, tokenUrl: path);
+        Assert.AreEqual(HttpStatusCode.Forbidden, response.StatusCode);
+        Assert.AreEqual(0, _modelCalls); Assert.AreEqual(0, _completionCalls);
+        response = await PostForm(path + "/action", new() { ["Kind"] = "add-ai", ["Ai"] = "engine", ["Difficulty"] = "1", ["Seat"] = "black",
+            ["Version"] = room.Version.ToString(), ["CommandId"] = Guid.NewGuid().ToString() }, tokenUrl: path);
+        Assert.AreEqual(HttpStatusCode.OK, response.StatusCode); Assert.AreEqual("engine", room.Black!.Kind);
+    }
+
+    [TestMethod]
+    public async Task SignedInHostCanListAndAddASpecificLlm()
+    {
+        await ConfigureLlm(); await RegisterAndLoginAsync();
+        var created = await PostForm("/rooms/create", new(), tokenUrl: "/Lobby");
+        var path = created.Headers.Location!.OriginalString;
+        var page = await (await Http.GetAsync(path)).Content.ReadAsStringAsync();
+        StringAssert.Contains(page, "value=\"llm\""); StringAssert.Contains(page, "another-model");
+        var room = GetService<ManagedRoomService>().Find(int.Parse(path.Split('/').Last()))!;
+        var response = await PostForm(path + "/action", new() { ["Kind"] = "add-ai", ["Ai"] = "llm", ["Model"] = "another-model", ["Seat"] = "black",
+            ["Version"] = room.Version.ToString(), ["CommandId"] = Guid.NewGuid().ToString() }, tokenUrl: path);
+        Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
+        Assert.AreEqual("llm", room.Black!.Kind); Assert.AreEqual("another-model", room.Black.Model);
     }
 
     [TestMethod]
@@ -194,7 +235,7 @@ public class LlmGameTests : TestBase
             return Results.Text("{\"choices\":[{\"message\":{\"content\":\"e5\"}}]}", "application/json");
         });
         GetService<IConfiguration>()["OpenAI:TimeoutSeconds"] = "1";
-        var host = new Player(Guid.NewGuid()) { IsGuest = true, NickName = "Host" };
+        var host = new Player(Guid.NewGuid()) { NickName = "Host" };
         var rooms = GetService<ManagedRoomService>(); var id = await rooms.CreateAsync(host);
         Task Act(string kind) => rooms.ExecuteAsync(id, host, new RoomCommand { Kind = kind, Version = rooms.Find(id)!.Version,
             CommandId = Guid.NewGuid(), Ai = "llm", Model = "configured-model", Seat = "black" });

@@ -5,6 +5,7 @@ const el = name => document.getElementById(name);
 const text = key => document.querySelector(`#room-loc [data-key="${key}"]`)?.textContent ?? textFallback;
 const textFallback = 'Could not update the room. Please try again.';
 let state, busy = false, closed = false, renderedVersion = -1, dirty = false, editingVersion, aiVersion, socket, chat;
+let drag;
 const settings = el('room-settings');
 function error(key) { el('room-error').textContent = text(key); el('room-error').hidden = false; }
 async function command(kind, fields = {}, version = state?.Version) {
@@ -25,6 +26,7 @@ async function command(kind, fields = {}, version = state?.Version) {
         }
         if (result.Left) { closed = true; location.assign('/Lobby'); return; }
         dirty = false; apply(result);
+        return true;
     } catch { error('error'); }
     finally { busy = false; }
 }
@@ -51,8 +53,25 @@ function person(member, seat, host) {
     }
     row.append(identity);
     if (!host) return row;
+    const grip = document.createElement('span'); grip.className = 'room-drag-grip';
+    grip.title = text('drag'); grip.setAttribute('aria-hidden', 'true'); row.prepend(grip);
     row.draggable = true;
-    row.ondragstart = event => { event.dataTransfer.setData('text/plain', member.Id); event.dataTransfer.effectAllowed = 'move'; };
+    row.onmousedown = event => { row.draggable = !event.target.closest('button, select, option'); };
+    row.ondragstart = event => {
+        if (busy || closed || state.Host !== state.Viewer || event.target !== row) { event.preventDefault(); return; }
+        clearDrag();
+        const preview = document.createElement('div'); preview.className = 'room-person room-drag-preview';
+        preview.append(avatar(member.AvatarUrl), identity.cloneNode(true)); document.body.append(preview);
+        drag = {id: member.Id, seat, version: state.Version, row, preview};
+        event.dataTransfer.setData('text/plain', member.Id); event.dataTransfer.effectAllowed = 'move';
+        event.dataTransfer.setDragImage(preview, 32, 32);
+        root.classList.add('room-dragging');
+        document.querySelectorAll('[data-drop-seat]').forEach(target => {
+            target.classList.toggle('room-drop-ready', canDrop(target));
+            target.classList.toggle('room-drop-blocked', !canDrop(target) && target.dataset.dropSeat !== seat);
+        });
+        requestAnimationFrame(() => { if (drag?.row === row) row.classList.add('room-person-dragging'); });
+    };
     const select = document.createElement('select'); select.className = 'form-select form-select-sm'; select.setAttribute('aria-label', member.NickName);
     for (const target of ['white', 'black', 'observer']) { const o = document.createElement('option'); o.value = target; o.textContent = text(target); select.append(o); }
     select.value = seat; select.onchange = () => command('move', {Target: member.Id, Seat: select.value}); row.append(select);
@@ -82,7 +101,12 @@ function apply(next) {
     state = next;
     if (String(state.CurrentGameId || '') !== String(embeddedGame || '')) { location.reload(); return; }
     const host = state.Host === state.Viewer;
-    el('room-chat-form').hidden = !((state.White?.Kind === 'human' && state.White.Id === state.Viewer) || (state.Black?.Kind === 'human' && state.Black.Id === state.Viewer));
+    el('room-chat').hidden = !canChat();
+    el('room-chat-form').hidden = !canChat();
+    if (canChat()) connectChat();
+    else if (chat) { const connection = chat; chat = null; connection.close(); }
+    root.classList.toggle('room-in-game', !!state.CurrentGameId);
+    el('room-settings-panel').hidden = !!state.CurrentGameId;
     el('room-name').textContent = state.Name; el('room-stage').textContent = text(state.Stage);
     document.querySelectorAll('[data-room-host]').forEach(b => { b.hidden = !host; });
     el('settings-fields').disabled = !host || state.Stage === 'playing';
@@ -94,6 +118,7 @@ function apply(next) {
     el('room-history').href = `/History/Replay/${state.HistoryId}`;
     el('swap-seats').disabled = state.Stage === 'playing';
     if (renderedVersion === state.Version) return;
+    clearDrag();
     renderedVersion = state.Version;
     drawSeat('white', state.White, host); drawSeat('black', state.Black, host);
     el('room-observers').replaceChildren(...state.Members.filter(m => m.Id !== state.White?.Id && m.Id !== state.Black?.Id).map(m => person(m, 'observer', host)));
@@ -107,7 +132,7 @@ async function refresh() {
     try {
         const response = await fetch(`/rooms/${id}.json`);
         if (!response.ok) {
-            closed = true; error('room-unavailable'); el('settings-fields').disabled = true;
+            closed = true; clearDrag(); error('room-unavailable'); el('settings-fields').disabled = true;
             document.querySelectorAll('#managed-room button').forEach(b => { b.disabled = true; });
             if (el('game-room')) el('game-room').inert = true;
             socket?.close(); chat?.close(); return;
@@ -132,9 +157,36 @@ el('copy-room-link').onclick = async () => { try { await navigator.clipboard.wri
 el('ai-kind').onchange = () => { const llm = el('ai-kind').value === 'llm'; el('ai-model-field').hidden = !llm; el('ai-difficulty-field').hidden = llm; };
 el('cancel-room-ai').onclick = () => el('add-room-ai').close();
 el('add-ai-form').onsubmit = event => { event.preventDefault(); el('add-room-ai').close(); command('add-ai', {Seat: el('ai-seat').value, Ai: el('ai-kind').value, Difficulty: el('ai-difficulty').value, Model: el('ai-model').value}, aiVersion); };
+function clearDrag() {
+    drag?.row.classList.remove('room-person-dragging'); drag?.preview.remove(); drag = null;
+    root.classList.remove('room-dragging');
+    document.querySelectorAll('[data-drop-seat]').forEach(target => target.classList.remove('room-drop-ready', 'room-drop-over', 'room-drop-blocked'));
+}
+function canDrop(target) {
+    if (!drag || busy || closed || state.Host !== state.Viewer || state.Version !== drag.version || target.dataset.dropSeat === drag.seat) return false;
+    const seat = target.dataset.dropSeat === 'white' ? state.White : target.dataset.dropSeat === 'black' ? state.Black : null;
+    return seat?.Kind !== 'human';
+}
+document.addEventListener('dragend', clearDrag);
 document.querySelectorAll('[data-drop-seat]').forEach(target => {
-    target.ondragover = event => { if (state?.Host === state?.Viewer) event.preventDefault(); };
-    target.ondrop = event => { event.preventDefault(); if (state?.Host === state?.Viewer) command('move', {Target: event.dataTransfer.getData('text/plain'), Seat: target.dataset.dropSeat}); };
+    target.dataset.dropLabel = text('drop');
+    target.ondragover = event => {
+        if (!canDrop(target)) return;
+        event.preventDefault(); event.dataTransfer.dropEffect = 'move';
+        document.querySelectorAll('.room-drop-over').forEach(other => { if (other !== target) other.classList.remove('room-drop-over'); });
+        target.classList.add('room-drop-over');
+    };
+    target.ondragleave = event => { if (!target.contains(event.relatedTarget)) target.classList.remove('room-drop-over'); };
+    target.ondrop = async event => {
+        event.preventDefault();
+        if (!canDrop(target) || event.dataTransfer.getData('text/plain') !== drag.id) { clearDrag(); return; }
+        const {id: memberId, version} = drag; clearDrag();
+        if (await command('move', {Target: memberId, Seat: target.dataset.dropSeat}, version)) {
+            const row = [...target.querySelectorAll('[data-person-id]')].find(person => person.dataset.personId === memberId);
+            row?.classList.add('room-person-arrived');
+            row?.addEventListener('animationend', () => row.classList.remove('room-person-arrived'), {once: true});
+        }
+    };
 });
 function connect() {
     if (closed) return;
@@ -142,16 +194,21 @@ function connect() {
     socket.onmessage = () => refresh();
     socket.onclose = () => { if (!closed) setTimeout(connect, 2000); };
 }
+function canChat() {
+    return state && ((state.White?.Kind === 'human' && state.White.Id === state.Viewer) || (state.Black?.Kind === 'human' && state.Black.Id === state.Viewer));
+}
 function connectChat() {
-    if (closed) return;
-    chat = new WebSocket(`${location.protocol === 'https:' ? 'wss:' : 'ws:'}//${location.host}/rooms/${id}/chat.ws`);
-    chat.onmessage = event => {
+    if (closed || chat || !canChat()) return;
+    const connection = new WebSocket(`${location.protocol === 'https:' ? 'wss:' : 'ws:'}//${location.host}/rooms/${id}/chat.ws`);
+    chat = connection;
+    connection.onmessage = event => {
+        if (!canChat()) return;
         const message = JSON.parse(event.data), row = document.createElement('div'); row.className = 'chess-message';
         const sender = document.createElement('strong'); sender.textContent = message.SenderNickName;
         const body = document.createElement('p'); body.textContent = message.Content; row.append(sender, body); el('room-messages').append(row);
         while (el('room-messages').children.length > 100) el('room-messages').firstElementChild.remove();
     };
-    chat.onclose = () => { if (!closed) setTimeout(connectChat, 2000); };
+    connection.onclose = () => { if (chat !== connection) return; chat = null; if (!closed) setTimeout(connectChat, 2000); };
 }
 el('room-chat-form').onsubmit = event => {
     event.preventDefault(); const input = el('room-chat-input');
