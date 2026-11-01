@@ -52,7 +52,7 @@ public class ManagedRoomService(InMemoryDatabase database, GameSessionService se
             var avatars = await context.Users.AsNoTracking().Where(u => registeredIds.Contains(u.Id))
                 .ToDictionaryAsync(u => u.Id, u => u.AvatarRelativePath);
             string Avatar(Player player) => player.IsGuest ? "/images/avatars/anonymous.webp"
-                : storage.RelativePathToInternetUrl(avatars.GetValueOrDefault(player.Id.ToString(), Entities.User.DefaultAvatarPath)) + "?w=112&square=true";
+                : storage.RelativePathToInternetUrl(avatars.GetValueOrDefault(player.Id.ToString(), User.DefaultAvatarPath)) + "?w=112&square=true";
             object? Seat(RoomSeat? seat) => seat == null ? null : new { seat.Player.Id, Name = seat.Description, seat.Kind, seat.Difficulty, seat.Model };
             return new { Id = id, room.Version, Name = room.Message, Host = room.Creator.Id, Viewer = viewer,
                 Members = room.Members.Select(m => new { m.Player.Id, m.Player.NickName, m.Player.IsGuest, AvatarUrl = Avatar(m.Player) }).ToArray(),
