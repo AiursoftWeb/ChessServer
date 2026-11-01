@@ -98,6 +98,6 @@
 }
 
 #room-preparing-chat #room-chat{padding:1rem 0}
-#room-preparing-chat .chess-messages{height:12rem;flex:auto}
+#room-preparing-chat .chess-messages{height:12rem;flex:auto;overflow:auto}
 
 @media(max-width:575px){.room-move-navigation .btn,.room-console-footer .btn{min-height:2.5rem}.room-tab{min-height:2.75rem}}
