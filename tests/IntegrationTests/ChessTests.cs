@@ -1,4 +1,5 @@
 using Aiursoft.AiurObserver;
+using System.Diagnostics;
 using System.Net;
 using System.Net.WebSockets;
 using System.Text;
@@ -125,8 +126,10 @@ public class ChessTests : TestBase
         var board = new ChessBoard();
         board.Move("e4");
         using var deadline = new CancellationTokenSource(TimeSpan.FromSeconds(10));
+        var clock = Stopwatch.StartNew();
         var move = await GetService<ChessEngine>().GetBestMoveAsync(board.ToFen(), difficulty, deadline.Token);
         Assert.IsTrue(board.IsValidMove(move), move);
+        Assert.IsTrue(clock.ElapsedMilliseconds >= 2000, "Every engine turn must take at least two seconds.");
     }
 
     [TestMethod]
@@ -238,11 +241,15 @@ public class ChessTests : TestBase
     }
 
     [TestMethod]
-    public async Task CancelledEngineSearchDoesNotKeepWorking()
+    [DataRow(true)]
+    [DataRow(false)]
+    public async Task CancelledEngineSearchDoesNotKeepWorking(bool alreadyCancelled)
     {
         using var cancellation = new CancellationTokenSource();
-        await cancellation.CancelAsync();
-        await Assert.ThrowsAsync<OperationCanceledException>(() => GetService<ChessEngine>().GetBestMoveAsync(new ChessBoard().ToFen(), 8, cancellation.Token));
+        if (alreadyCancelled) await cancellation.CancelAsync();
+        else cancellation.CancelAfter(TimeSpan.FromMilliseconds(250));
+        await Assert.ThrowsAsync<OperationCanceledException>(() => GetService<ChessEngine>()
+            .GetBestMoveAsync(new ChessBoard().ToFen(), 1, cancellation.Token).WaitAsync(TimeSpan.FromSeconds(2)));
     }
 
     [TestMethod]

@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using System.Threading.Channels;
 using Aiursoft.Scanner.Abstractions;
 using Lynx;
@@ -23,9 +24,11 @@ public class ChessEngine(Random? random = null) : ISingletonDependency, IDisposa
     public async Task<string> GetBestMoveAsync(string fen, int difficulty, CancellationToken token)
     {
         await _slots.WaitAsync(token);
+        var clock = Stopwatch.StartNew();
+        string move;
         try
         {
-            return await Task.Run(() =>
+            move = await Task.Run(() =>
         {
             token.ThrowIfCancellationRequested();
             var (depth, milliseconds) = Limits(difficulty);
@@ -42,6 +45,12 @@ public class ChessEngine(Random? random = null) : ISingletonDependency, IDisposa
         }, token);
         }
         finally { _slots.Release(); }
+        // Pace every engine turn, including instant training moves, without holding a search slot.
+        // Timers can wake slightly early, so check the elapsed time again after each wait.
+        for (var delay = 2000 - clock.ElapsedMilliseconds; delay > 0; delay = 2000 - clock.ElapsedMilliseconds)
+            await Task.Delay(TimeSpan.FromMilliseconds(delay), token);
+        token.ThrowIfCancellationRequested();
+        return move;
     }
     private static string ChooseTrainingMove(string fen, int difficulty, Random random, CancellationToken token)
     {
