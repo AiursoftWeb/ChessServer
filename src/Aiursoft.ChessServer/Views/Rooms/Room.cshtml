@@ -8,25 +8,33 @@
     <link rel="modulepreload" href="~/scripts/chessboard/chessboard.js" asp-append-version="true" data-chess-module="board" />
     <link rel="modulepreload" href="~/node_modules/chess.js/dist/esm/chess.js" asp-append-version="true" data-chess-module="rules" />
 }
-<div id="managed-room" data-room-id="@Model.Id" data-game-id="@Model.Game?.Id">
+<div id="managed-room" class="@(Model.Game != null ? "room-in-game" : "")" data-room-id="@Model.Id" data-game-id="@Model.Game?.Id">
     <div class="d-flex justify-content-between align-items-center gap-2 mb-3"><a asp-controller="Lobby" asp-action="Index" class="btn btn-sm btn-outline-secondary">@Localizer["Lobby"]</a><h1 id="room-name" class="h3 mb-0">@Model.Message</h1><span id="room-stage" class="badge bg-secondary"></span></div>
     <div class="input-group mb-3"><input id="room-link" class="form-control" readonly aria-label="@Localizer["Invitation link"]" value="@($"{Context.Request.Scheme}://{Context.Request.Host}/rooms/{Model.Id}")" /><button id="copy-room-link" class="btn btn-outline-primary" type="button">@Localizer["Copy link"]</button></div>
     <p id="room-error" class="text-danger" role="alert" hidden></p>
+    <div class="d-flex flex-wrap gap-2 mb-3">
+            <button id="start-room" data-room-host class="btn btn-sm btn-primary" type="button">@Localizer["Start game"]</button>
+            <button id="next-room-game" data-room-host class="btn btn-sm btn-primary" type="button" hidden>@Localizer["Prepare next game"]</button>
+            <button id="retry-room-computer" data-room-host class="btn btn-sm btn-outline-primary" type="button" hidden>@Localizer["Retry computer move"]</button>
+            <button id="interrupt-room" data-room-host class="btn btn-sm btn-outline-danger" type="button" hidden>@Localizer["Stop this game"]</button>
+            <a id="room-history" class="btn btn-sm btn-outline-primary" hidden>@Localizer["Replay"]</a>
+            <button id="leave-room" class="btn btn-sm btn-outline-secondary" type="button">@Localizer["Leave room"]</button>
+    </div>
     <div class="row g-3">
         <div class="col-xl-8 advanced-game">
             @if (Model.Game != null) { @await Html.PartialAsync("~/Views/Games/GetHtml.cshtml", Model.Game) }
-            <div class="card"><div class="card-body">
+            <details id="room-roster" class="card mt-3" open="@(Model.Game == null)"><summary class="card-header">@Localizer["Players and observers"]</summary><div class="card-body">
                 <div class="d-flex justify-content-between align-items-center mb-3"><h2 class="h5 mb-0">@Localizer["Players"]</h2><button id="swap-seats" data-room-host class="btn btn-sm btn-outline-secondary" type="button">@Localizer["Swap colors"]</button></div>
                 <div class="row g-3"><div class="col-sm-6"><h3 class="h6">@Localizer["White"]</h3><div id="white-seat" class="room-seat" data-drop-seat="white"></div></div><div class="col-sm-6"><h3 class="h6">@Localizer["Black"]</h3><div id="black-seat" class="room-seat" data-drop-seat="black"></div></div></div>
                 <h2 class="h5 mt-4">@Localizer["Observers"]</h2><div id="room-observers" class="room-observers" data-drop-seat="observer"></div>
                 <p class="text-muted small mt-2 mb-0">@Localizer["Only the two players can send chat messages. The host can drag people between seats and observers."]</p>
-            </div></div>
-            <details class="card mt-3"><summary class="card-header">@Localizer["Chat"]</summary><div class="card-body">
+            </div></details>
+            <details id="room-chat" class="card mt-3" hidden><summary class="card-header">@Localizer["Chat"]</summary><div class="card-body">
                 <div id="room-messages" class="chess-messages" role="log" aria-live="polite"></div>
                 <form id="room-chat-form" class="d-flex gap-2 mt-2" hidden><input id="room-chat-input" class="form-control" maxlength="2000" aria-label="@Localizer["Message"]" autocomplete="off" /><button class="btn btn-primary" type="submit">@Localizer["Send"]</button></form>
             </div></details>
         </div>
-        <aside class="col-xl-4"><div class="card"><div class="card-body">
+        <aside id="room-settings-panel" class="col-xl-4" hidden="@(Model.Game != null)"><div class="card"><div class="card-body">
             <h2 class="h5">@Localizer["Room settings"]</h2>
             <form id="room-settings">
                 <fieldset id="settings-fields">
@@ -38,18 +46,13 @@
                     <button data-room-host class="btn btn-outline-primary mb-3" type="submit">@Localizer["Save settings"]</button>
                 </fieldset>
             </form>
-            <button id="start-room" data-room-host class="btn btn-primary w-100 mb-2" type="button">@Localizer["Start game"]</button>
-            <button id="next-room-game" data-room-host class="btn btn-primary w-100 mb-2" type="button" hidden>@Localizer["Prepare next game"]</button>
-            <button id="retry-room-computer" data-room-host class="btn btn-outline-primary w-100 mb-2" type="button" hidden>@Localizer["Retry computer move"]</button>
-            <button id="interrupt-room" data-room-host class="btn btn-outline-danger w-100 mb-2" type="button" hidden>@Localizer["Stop this game"]</button>
-            <a id="room-history" class="btn btn-outline-primary w-100 mb-2" hidden>@Localizer["Replay"]</a>
-            <button id="leave-room" class="btn btn-outline-secondary w-100" type="button">@Localizer["Leave room"]</button>
             <p class="text-muted small mt-3 mb-0">@Localizer["The next human becomes host when the host leaves. The room closes when everyone leaves. Refreshing or reconnecting has a 60-second grace period."]</p>
         </div></div></aside>
     </div>
     <dialog id="add-room-ai"><form id="add-ai-form">
         <h2 class="h5">@Localizer["Add AI"]</h2><input type="hidden" id="ai-seat" />
         <label for="ai-kind" class="form-label">@Localizer["AI type"]</label><select id="ai-kind" class="form-select mb-3"><option value="engine">@Localizer["Built-in engine — Lynx"]</option>@if (Model.Models.Length > 0) { <option value="llm">@Localizer["Large language model"]</option> }</select>
+        @if (User.Identity?.IsAuthenticated != true) { <p><a asp-controller="Account" asp-action="Login" asp-route-returnUrl="@(Context.Request.Path + Context.Request.QueryString)">@Localizer["Sign in to add an LLM."]</a></p> }
         <div id="ai-difficulty-field"><label for="ai-difficulty" class="form-label">@Localizer["Difficulty"]</label><select id="ai-difficulty" class="form-select mb-3">@foreach (var level in Enumerable.Range(1, 8)) { <option value="@level">@level</option> }</select></div>
         <div id="ai-model-field" hidden><label for="ai-model" class="form-label">@Localizer["Model"]</label><select id="ai-model" class="form-select mb-3">@foreach (var modelId in Model.Models) { <option value="@modelId">@modelId</option> }</select></div>
         <button class="btn btn-primary" type="submit">@Localizer["Add AI"]</button><button id="cancel-room-ai" class="btn btn-outline-secondary" type="button">@Localizer["Cancel"]</button>
@@ -64,6 +67,7 @@
         <span data-key="copied">@Localizer["Copied"]</span><span data-key="confirm-leave">@Localizer["Leave this room? Leaving an active game forfeits it. If everyone leaves, the room closes."]</span>
         <span data-key="confirm-interrupt">@Localizer["This will stop the current game without awarding a winner. Continue?"]</span><span data-key="confirm-replace">@Localizer["Remove this AI and replace it with the selected person?"]</span><span data-key="confirm-kick">@Localizer["Kick this person from the room? They cannot rejoin this room with the same identity."]</span>
         <span data-key="room-unavailable">@Localizer["This room has closed. Return to the lobby."]</span><span data-key="room-kicked">@Localizer["You have been removed from this room."]</span><span data-key="room-stale">@Localizer["The room changed. Review the current settings and try again."]</span>
+        <span data-key="room-sign-in-required">@Localizer["Sign in to add an LLM."]</span>
         <span data-key="room-host-only">@Localizer["Only the host can manage this room."]</span><span data-key="room-two-players">@Localizer["Fill both player seats before starting."]</span><span data-key="room-locked">@Localizer["Finish the current game before changing these settings."]</span><span data-key="room-settings-invalid">@Localizer["Choose valid room settings."]</span>
         <span data-key="room-seat-occupied">@Localizer["This seat is occupied. Move or remove its player first."]</span><span data-key="room-member-missing">@Localizer["This person has left the room."]</span><span data-key="room-model-unavailable">@Localizer["The selected model is unavailable. Refresh and try again."]</span><span data-key="error">@Localizer["Could not update the room. Please try again."]</span>
     </div>

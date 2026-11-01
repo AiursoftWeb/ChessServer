@@ -141,6 +141,9 @@
   <data name="Players" xml:space="preserve">
     <value>玩家</value>
   </data>
+  <data name="Players and observers" xml:space="preserve">
+    <value>玩家和观战者</value>
+  </data>
   <data name="Playing" xml:space="preserve">
     <value>进行中</value>
   </data>
@@ -176,6 +179,9 @@
   </data>
   <data name="Send" xml:space="preserve">
     <value>发送</value>
+  </data>
+  <data name="Sign in to add an LLM." xml:space="preserve">
+    <value>登录后即可添加大语言模型。</value>
   </data>
   <data name="Start game" xml:space="preserve">
     <value>开始游戏</value>

@@ -101,7 +101,12 @@ function apply(next) {
     state = next;
     if (String(state.CurrentGameId || '') !== String(embeddedGame || '')) { location.reload(); return; }
     const host = state.Host === state.Viewer;
-    el('room-chat-form').hidden = !((state.White?.Kind === 'human' && state.White.Id === state.Viewer) || (state.Black?.Kind === 'human' && state.Black.Id === state.Viewer));
+    el('room-chat').hidden = !canChat();
+    el('room-chat-form').hidden = !canChat();
+    if (canChat()) connectChat();
+    else if (chat) { const connection = chat; chat = null; connection.close(); }
+    root.classList.toggle('room-in-game', !!state.CurrentGameId);
+    el('room-settings-panel').hidden = !!state.CurrentGameId;
     el('room-name').textContent = state.Name; el('room-stage').textContent = text(state.Stage);
     document.querySelectorAll('[data-room-host]').forEach(b => { b.hidden = !host; });
     el('settings-fields').disabled = !host || state.Stage === 'playing';
@@ -189,16 +194,21 @@ function connect() {
     socket.onmessage = () => refresh();
     socket.onclose = () => { if (!closed) setTimeout(connect, 2000); };
 }
+function canChat() {
+    return state && ((state.White?.Kind === 'human' && state.White.Id === state.Viewer) || (state.Black?.Kind === 'human' && state.Black.Id === state.Viewer));
+}
 function connectChat() {
-    if (closed) return;
-    chat = new WebSocket(`${location.protocol === 'https:' ? 'wss:' : 'ws:'}//${location.host}/rooms/${id}/chat.ws`);
-    chat.onmessage = event => {
+    if (closed || chat || !canChat()) return;
+    const connection = new WebSocket(`${location.protocol === 'https:' ? 'wss:' : 'ws:'}//${location.host}/rooms/${id}/chat.ws`);
+    chat = connection;
+    connection.onmessage = event => {
+        if (!canChat()) return;
         const message = JSON.parse(event.data), row = document.createElement('div'); row.className = 'chess-message';
         const sender = document.createElement('strong'); sender.textContent = message.SenderNickName;
         const body = document.createElement('p'); body.textContent = message.Content; row.append(sender, body); el('room-messages').append(row);
         while (el('room-messages').children.length > 100) el('room-messages').firstElementChild.remove();
     };
-    chat.onclose = () => { if (!closed) setTimeout(connectChat, 2000); };
+    connection.onclose = () => { if (chat !== connection) return; chat = null; if (!closed) setTimeout(connectChat, 2000); };
 }
 el('room-chat-form').onsubmit = event => {
     event.preventDefault(); const input = el('room-chat-input');

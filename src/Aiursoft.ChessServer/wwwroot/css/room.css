@@ -22,7 +22,10 @@
 .room-host .room-avatar{border-color:#d49b22;box-shadow:0 0 0 2px #d49b2233}
 .room-host-badge{font-size:.75rem}
 .room-person select{width:auto;max-width:100%}
-.advanced-game .chess-layout{grid-template-columns:minmax(0,1fr)}
+.room-in-game .advanced-game{width:100%;flex:0 0 100%}
+.room-in-game #room-roster,.room-in-game #room-chat{max-width:55.25rem;margin-inline:auto}
+@media(min-width:992px){.advanced-game .chess-layout{grid-template-columns:minmax(0,36rem) minmax(14rem,18rem);justify-content:center}}
+.advanced-game .chess-playing-area{width:100%;max-width:36rem;margin-inline:auto}
 #add-room-ai{max-width:min(30rem,95vw);width:100%;border:0;border-radius:.5rem;padding:1.5rem}
 #add-room-ai::backdrop{background:#0006}
 #managed-room [hidden]{display:none!important}
