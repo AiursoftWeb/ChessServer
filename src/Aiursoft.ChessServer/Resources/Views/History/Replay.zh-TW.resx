@@ -24,6 +24,9 @@
   <data name="End" xml:space="preserve">
     <value>結束</value>
   </data>
+  <data name="Export match details" xml:space="preserve">
+    <value>匯出對局詳細資料</value>
+  </data>
   <data name="Export PGN" xml:space="preserve">
     <value>匯出 PGN</value>
   </data>

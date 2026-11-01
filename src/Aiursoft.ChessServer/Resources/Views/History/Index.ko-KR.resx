@@ -27,6 +27,12 @@
   <data name="Finished" xml:space="preserve">
     <value>종료 시각</value>
   </data>
+  <data name="Games I organized" xml:space="preserve">
+    <value>내가 주최한 경기</value>
+  </data>
+  <data name="Games I played" xml:space="preserve">
+    <value>내가 한 게임</value>
+  </data>
   <data name="My games" xml:space="preserve">
     <value>내 게임</value>
   </data>

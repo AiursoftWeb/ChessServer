@@ -99,6 +99,9 @@
   <data name="Could not confirm the saved game. Retry." xml:space="preserve">
     <value>Kon het opgeslagen spel niet bevestigen. Probeer het opnieuw.</value>
   </data>
+  <data name="Disconnects have a 60-second reconnection grace period. The room closes when everyone leaves." xml:space="preserve">
+    <value>Bij verbroken verbindingen geldt een respijtperiode van 60 seconden om opnieuw verbinding te maken. De kamer wordt gesloten zodra iedereen vertrekt.</value>
+  </data>
   <data name="Dismiss offer" xml:space="preserve">
     <value>Aanbod afwijzen</value>
   </data>
@@ -140,6 +143,9 @@
   </data>
   <data name="Game over. {0} wins." xml:space="preserve">
     <value>De partij is afgelopen. {0} wint.</value>
+  </data>
+  <data name="Game stopped by the host" xml:space="preserve">
+    <value>Spel beëindigd door de host</value>
   </data>
   <data name="Guest" xml:space="preserve">
     <value>Gast</value>

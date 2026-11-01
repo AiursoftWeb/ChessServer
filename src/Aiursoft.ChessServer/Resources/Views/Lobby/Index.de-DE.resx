@@ -84,8 +84,14 @@
   <data name="Create a challenge" xml:space="preserve">
     <value>Herausforderung erstellen</value>
   </data>
+  <data name="Create room" xml:space="preserve">
+    <value>Raum erstellen</value>
+  </data>
   <data name="Difficulty" xml:space="preserve">
     <value>Schwierigkeitsgrad</value>
+  </data>
+  <data name="Finished" xml:space="preserve">
+    <value>Abgeschlossen</value>
   </data>
   <data name="Guest" xml:space="preserve">
     <value>Gast</value>
@@ -111,6 +117,9 @@
   <data name="No open challenges." xml:space="preserve">
     <value>Keine offenen Herausforderungen.</value>
   </data>
+  <data name="No rooms yet. Create one and invite people." xml:space="preserve">
+    <value>Noch keine Räume vorhanden. Erstelle einen Raum und lade andere ein.</value>
+  </data>
   <data name="Open challenges" xml:space="preserve">
     <value>Offene Herausforderungen</value>
   </data>
@@ -123,8 +132,17 @@
   <data name="Play with a friend" xml:space="preserve">
     <value>Mit einem Freund spielen</value>
   </data>
+  <data name="Playing" xml:space="preserve">
+    <value>Läuft</value>
+  </data>
+  <data name="Preparing" xml:space="preserve">
+    <value>Wird vorbereitet</value>
+  </data>
   <data name="Random" xml:space="preserve">
     <value>Zufällig</value>
+  </data>
+  <data name="Rooms" xml:space="preserve">
+    <value>Räume</value>
   </data>
   <data name="Start game" xml:space="preserve">
     <value>Spiel starten</value>

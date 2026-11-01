@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="{0} seconds" xml:space="preserve">
+    <value>{0} 秒</value>
+  </data>
+  <data name="10 minutes" xml:space="preserve">
+    <value>10分</value>
+  </data>
+  <data name="15 minutes" xml:space="preserve">
+    <value>15分</value>
+  </data>
+  <data name="3 minutes" xml:space="preserve">
+    <value>3分</value>
+  </data>
+  <data name="5 minutes" xml:space="preserve">
+    <value>5分</value>
+  </data>
+  <data name="Add AI" xml:space="preserve">
+    <value>AIを追加</value>
+  </data>
+  <data name="AI type" xml:space="preserve">
+    <value>AIの種類</value>
+  </data>
+  <data name="Black" xml:space="preserve">
+    <value>黒</value>
+  </data>
+  <data name="Built-in engine — Lynx" xml:space="preserve">
+    <value>内蔵エンジン — Lynx</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>キャンセル</value>
+  </data>
+  <data name="Chat" xml:space="preserve">
+    <value>チャット</value>
+  </data>
+  <data name="Choose valid room settings." xml:space="preserve">
+    <value>有効なルーム設定を選択してください。</value>
+  </data>
+  <data name="Copied" xml:space="preserve">
+    <value>コピーしました</value>
+  </data>
+  <data name="Copy link" xml:space="preserve">
+    <value>リンクをコピー</value>
+  </data>
+  <data name="Could not update the room. Please try again." xml:space="preserve">
+    <value>ルームを更新できませんでした。もう一度お試しください。</value>
+  </data>
+  <data name="Difficulty" xml:space="preserve">
+    <value>難易度</value>
+  </data>
+  <data name="Empty seat" xml:space="preserve">
+    <value>空席</value>
+  </data>
+  <data name="Fill both player seats before starting." xml:space="preserve">
+    <value>開始する前に、両方のプレイヤー席を埋めてください。</value>
+  </data>
+  <data name="Finish the current game before changing these settings." xml:space="preserve">
+    <value>これらの設定を変更する前に、現在のゲームを終了してください。</value>
+  </data>
+  <data name="Finished" xml:space="preserve">
+    <value>終了</value>
+  </data>
+  <data name="Host" xml:space="preserve">
+    <value>ホスト</value>
+  </data>
+  <data name="Increment per move" xml:space="preserve">
+    <value>1手ごとの加算時間</value>
+  </data>
+  <data name="Invitation link" xml:space="preserve">
+    <value>招待リンク</value>
+  </data>
+  <data name="Kick from room" xml:space="preserve">
+    <value>ルームから退出させる</value>
+  </data>
+  <data name="Kick this person from the room? They cannot rejoin this room with the same identity." xml:space="preserve">
+    <value>この人をルームから退出させますか？同じIDではこのルームに再参加できません。</value>
+  </data>
+  <data name="Large language model" xml:space="preserve">
+    <value>大規模言語モデル</value>
+  </data>
+  <data name="Leave room" xml:space="preserve">
+    <value>ルームを退出</value>
+  </data>
+  <data name="Leave this room? Leaving an active game forfeits it. If everyone leaves, the room closes." xml:space="preserve">
+    <value>このルームを退出しますか？進行中のゲームから退出すると、そのゲームは不戦敗となります。全員が退出すると、ルームは閉鎖されます。</value>
+  </data>
+  <data name="List this room publicly" xml:space="preserve">
+    <value>このルームを公開一覧に表示する</value>
+  </data>
+  <data name="Lobby" xml:space="preserve">
+    <value>ロビー</value>
+  </data>
+  <data name="Make host" xml:space="preserve">
+    <value>ホストにする</value>
+  </data>
+  <data name="Message" xml:space="preserve">
+    <value>メッセージ</value>
+  </data>
+  <data name="Model" xml:space="preserve">
+    <value>Model</value>
+  </data>
+  <data name="No increment" xml:space="preserve">
+    <value>増分なし</value>
+  </data>
+  <data name="Observer" xml:space="preserve">
+    <value>観戦者</value>
+  </data>
+  <data name="Observers" xml:space="preserve">
+    <value>観戦者</value>
+  </data>
+  <data name="Only the host can manage this room." xml:space="preserve">
+    <value>このルームを管理できるのはホストだけです。</value>
+  </data>
+  <data name="Only the two players can send chat messages. The host can drag people between seats and observers." xml:space="preserve">
+    <value>チャットメッセージを送信できるのは対局者2人のみです。ホストは、プレイヤーを席と観戦者の間でドラッグして移動できます。</value>
+  </data>
+  <data name="Players" xml:space="preserve">
+    <value>プレイヤー</value>
+  </data>
+  <data name="Playing" xml:space="preserve">
+    <value>対局中</value>
+  </data>
+  <data name="Prepare next game" xml:space="preserve">
+    <value>次の対局を準備</value>
+  </data>
+  <data name="Preparing" xml:space="preserve">
+    <value>準備中</value>
+  </data>
+  <data name="Randomize colors at start" xml:space="preserve">
+    <value>開始時に色をランダムにする</value>
+  </data>
+  <data name="Remove AI" xml:space="preserve">
+    <value>AIを削除</value>
+  </data>
+  <data name="Remove this AI and replace it with the selected person?" xml:space="preserve">
+    <value>このAIを削除して、選択した人に置き換えますか？</value>
+  </data>
+  <data name="Replay" xml:space="preserve">
+    <value>リプレイ</value>
+  </data>
+  <data name="Retry computer move" xml:space="preserve">
+    <value>コンピューターの手を再試行</value>
+  </data>
+  <data name="Room name" xml:space="preserve">
+    <value>ルーム名</value>
+  </data>
+  <data name="Room settings" xml:space="preserve">
+    <value>ルーム設定</value>
+  </data>
+  <data name="Save settings" xml:space="preserve">
+    <value>設定を保存</value>
+  </data>
+  <data name="Send" xml:space="preserve">
+    <value>送信</value>
+  </data>
+  <data name="Start game" xml:space="preserve">
+    <value>ゲームを開始</value>
+  </data>
+  <data name="Stop this game" xml:space="preserve">
+    <value>このゲームを中止</value>
+  </data>
+  <data name="Swap colors" xml:space="preserve">
+    <value>色を入れ替える</value>
+  </data>
+  <data name="The next human becomes host when the host leaves. The room closes when everyone leaves. Refreshing or reconnecting has a 60-second grace period." xml:space="preserve">
+    <value>ホストが退出すると、次の人間のプレイヤーがホストになります。全員が退出すると、ルームは閉じられます。ページの再読み込みや再接続には、60秒間の猶予があります。</value>
+  </data>
+  <data name="The room changed. Review the current settings and try again." xml:space="preserve">
+    <value>ルームの状態が変更されました。現在の設定を確認して、もう一度お試しください。</value>
+  </data>
+  <data name="The selected model is unavailable. Refresh and try again." xml:space="preserve">
+    <value>選択したモデルは利用できません。更新して、もう一度お試しください。</value>
+  </data>
+  <data name="This person has left the room." xml:space="preserve">
+    <value>この人はルームを退出しました。</value>
+  </data>
+  <data name="This room has closed. Return to the lobby." xml:space="preserve">
+    <value>このルームは閉鎖されました。ロビーに戻ってください。</value>
+  </data>
+  <data name="This seat is occupied. Move or remove its player first." xml:space="preserve">
+    <value>この席は使用中です。先にプレイヤーを移動するか、削除してください。</value>
+  </data>
+  <data name="This will stop the current game without awarding a winner. Continue?" xml:space="preserve">
+    <value>現在のゲームを勝者を決めずに終了します。続行しますか？</value>
+  </data>
+  <data name="Time per player" xml:space="preserve">
+    <value>1人あたりの持ち時間</value>
+  </data>
+  <data name="Unlimited" xml:space="preserve">
+    <value>無制限</value>
+  </data>
+  <data name="White" xml:space="preserve">
+    <value>白</value>
+  </data>
+  <data name="You have been removed from this room." xml:space="preserve">
+    <value>このルームから退出させられました。</value>
+  </data>
+
+</root>

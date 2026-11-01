@@ -24,6 +24,9 @@
   <data name="End" xml:space="preserve">
     <value>End</value>
   </data>
+  <data name="Export match details" xml:space="preserve">
+    <value>Export match details</value>
+  </data>
   <data name="Export PGN" xml:space="preserve">
     <value>Export PGN</value>
   </data>

@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="{0} seconds" xml:space="preserve">
+    <value>{0} saniye</value>
+  </data>
+  <data name="10 minutes" xml:space="preserve">
+    <value>10 dakika</value>
+  </data>
+  <data name="15 minutes" xml:space="preserve">
+    <value>15 dakika</value>
+  </data>
+  <data name="3 minutes" xml:space="preserve">
+    <value>3 dakika</value>
+  </data>
+  <data name="5 minutes" xml:space="preserve">
+    <value>5 dakika</value>
+  </data>
+  <data name="Add AI" xml:space="preserve">
+    <value>Yapay Zekâ Ekle</value>
+  </data>
+  <data name="AI type" xml:space="preserve">
+    <value>Yapay zekâ türü</value>
+  </data>
+  <data name="Black" xml:space="preserve">
+    <value>Siyah</value>
+  </data>
+  <data name="Built-in engine — Lynx" xml:space="preserve">
+    <value>Yerleşik motor — Lynx</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>İptal</value>
+  </data>
+  <data name="Chat" xml:space="preserve">
+    <value>Sohbet</value>
+  </data>
+  <data name="Choose valid room settings." xml:space="preserve">
+    <value>Geçerli oda ayarlarını seçin.</value>
+  </data>
+  <data name="Copied" xml:space="preserve">
+    <value>Kopyalandı</value>
+  </data>
+  <data name="Copy link" xml:space="preserve">
+    <value>Bağlantıyı kopyala</value>
+  </data>
+  <data name="Could not update the room. Please try again." xml:space="preserve">
+    <value>Oda güncellenemedi. Lütfen tekrar deneyin.</value>
+  </data>
+  <data name="Difficulty" xml:space="preserve">
+    <value>Zorluk</value>
+  </data>
+  <data name="Empty seat" xml:space="preserve">
+    <value>Boş koltuk</value>
+  </data>
+  <data name="Fill both player seats before starting." xml:space="preserve">
+    <value>Başlamadan önce iki oyuncu koltuğunu da doldurun.</value>
+  </data>
+  <data name="Finish the current game before changing these settings." xml:space="preserve">
+    <value>Bu ayarları değiştirmeden önce mevcut oyunu bitirin.</value>
+  </data>
+  <data name="Finished" xml:space="preserve">
+    <value>Tamamlandı</value>
+  </data>
+  <data name="Host" xml:space="preserve">
+    <value>Oda sahibi</value>
+  </data>
+  <data name="Increment per move" xml:space="preserve">
+    <value>Her hamlede ek süre</value>
+  </data>
+  <data name="Invitation link" xml:space="preserve">
+    <value>Davet bağlantısı</value>
+  </data>
+  <data name="Kick from room" xml:space="preserve">
+    <value>Odadan çıkar</value>
+  </data>
+  <data name="Kick this person from the room? They cannot rejoin this room with the same identity." xml:space="preserve">
+    <value>Bu kişiyi odadan atmak istiyor musunuz? Aynı kimlikle bu odaya tekrar katılamaz.</value>
+  </data>
+  <data name="Large language model" xml:space="preserve">
+    <value>Büyük dil modeli</value>
+  </data>
+  <data name="Leave room" xml:space="preserve">
+    <value>Odadan ayrıl</value>
+  </data>
+  <data name="Leave this room? Leaving an active game forfeits it. If everyone leaves, the room closes." xml:space="preserve">
+    <value>Bu odadan ayrılmak istiyor musunuz? Devam eden bir oyundan ayrılırsanız oyunu kaybetmiş sayılırsınız. Herkes ayrılırsa oda kapanır.</value>
+  </data>
+  <data name="List this room publicly" xml:space="preserve">
+    <value>Bu odayı herkese açık olarak listele</value>
+  </data>
+  <data name="Lobby" xml:space="preserve">
+    <value>Lobi</value>
+  </data>
+  <data name="Make host" xml:space="preserve">
+    <value>Sunucu yap</value>
+  </data>
+  <data name="Message" xml:space="preserve">
+    <value>Mesaj</value>
+  </data>
+  <data name="Model" xml:space="preserve">
+    <value>Model</value>
+  </data>
+  <data name="No increment" xml:space="preserve">
+    <value>Artış yok</value>
+  </data>
+  <data name="Observer" xml:space="preserve">
+    <value>Gözlemci</value>
+  </data>
+  <data name="Observers" xml:space="preserve">
+    <value>İzleyiciler</value>
+  </data>
+  <data name="Only the host can manage this room." xml:space="preserve">
+    <value>Bu odayı yalnızca ev sahibi yönetebilir.</value>
+  </data>
+  <data name="Only the two players can send chat messages. The host can drag people between seats and observers." xml:space="preserve">
+    <value>Sohbet mesajlarını yalnızca iki oyuncu gönderebilir. Oda sahibi, kişileri koltuklar ve izleyiciler arasında sürükleyebilir.</value>
+  </data>
+  <data name="Players" xml:space="preserve">
+    <value>Oyuncular</value>
+  </data>
+  <data name="Playing" xml:space="preserve">
+    <value>Oynanıyor</value>
+  </data>
+  <data name="Prepare next game" xml:space="preserve">
+    <value>Sonraki oyunu hazırla</value>
+  </data>
+  <data name="Preparing" xml:space="preserve">
+    <value>Hazırlanıyor</value>
+  </data>
+  <data name="Randomize colors at start" xml:space="preserve">
+    <value>Oyun başlarken renkleri rastgele ata</value>
+  </data>
+  <data name="Remove AI" xml:space="preserve">
+    <value>Yapay zekâyı kaldır</value>
+  </data>
+  <data name="Remove this AI and replace it with the selected person?" xml:space="preserve">
+    <value>Bu yapay zekâ kaldırılsın ve yerine seçilen kişi getirilsin mi?</value>
+  </data>
+  <data name="Replay" xml:space="preserve">
+    <value>Tekrarını izle</value>
+  </data>
+  <data name="Retry computer move" xml:space="preserve">
+    <value>Bilgisayar hamlesini yeniden dene</value>
+  </data>
+  <data name="Room name" xml:space="preserve">
+    <value>Oda adı</value>
+  </data>
+  <data name="Room settings" xml:space="preserve">
+    <value>Oda ayarları</value>
+  </data>
+  <data name="Save settings" xml:space="preserve">
+    <value>Ayarları kaydet</value>
+  </data>
+  <data name="Send" xml:space="preserve">
+    <value>Gönder</value>
+  </data>
+  <data name="Start game" xml:space="preserve">
+    <value>Oyunu başlat</value>
+  </data>
+  <data name="Stop this game" xml:space="preserve">
+    <value>Bu oyunu durdur</value>
+  </data>
+  <data name="Swap colors" xml:space="preserve">
+    <value>Renkleri değiştir</value>
+  </data>
+  <data name="The next human becomes host when the host leaves. The room closes when everyone leaves. Refreshing or reconnecting has a 60-second grace period." xml:space="preserve">
+    <value>Ev sahibi ayrıldığında sıradaki insan ev sahibi olur. Herkes ayrıldığında oda kapanır. Sayfayı yenilemek veya yeniden bağlanmak için 60 saniyelik bir süre tanınır.</value>
+  </data>
+  <data name="The room changed. Review the current settings and try again." xml:space="preserve">
+    <value>Oda değişti. Mevcut ayarları gözden geçirip tekrar deneyin.</value>
+  </data>
+  <data name="The selected model is unavailable. Refresh and try again." xml:space="preserve">
+    <value>Seçilen model kullanılamıyor. Sayfayı yenileyip tekrar deneyin.</value>
+  </data>
+  <data name="This person has left the room." xml:space="preserve">
+    <value>Bu kişi odadan ayrıldı.</value>
+  </data>
+  <data name="This room has closed. Return to the lobby." xml:space="preserve">
+    <value>Bu oda kapandı. Lobiye dönün.</value>
+  </data>
+  <data name="This seat is occupied. Move or remove its player first." xml:space="preserve">
+    <value>Bu koltuk dolu. Önce oyuncuyu başka bir yere taşıyın veya kaldırın.</value>
+  </data>
+  <data name="This will stop the current game without awarding a winner. Continue?" xml:space="preserve">
+    <value>Bu, mevcut oyunu kazanan ilan etmeden sona erdirecek. Devam edilsin mi?</value>
+  </data>
+  <data name="Time per player" xml:space="preserve">
+    <value>Oyuncu başına süre</value>
+  </data>
+  <data name="Unlimited" xml:space="preserve">
+    <value>Süresiz</value>
+  </data>
+  <data name="White" xml:space="preserve">
+    <value>Beyaz</value>
+  </data>
+  <data name="You have been removed from this room." xml:space="preserve">
+    <value>Bu odadan çıkarıldınız.</value>
+  </data>
+
+</root>

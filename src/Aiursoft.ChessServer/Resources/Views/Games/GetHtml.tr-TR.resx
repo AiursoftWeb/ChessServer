@@ -99,6 +99,9 @@
   <data name="Could not confirm the saved game. Retry." xml:space="preserve">
     <value>Kaydedilen oyun doğrulanamadı. Tekrar deneyin.</value>
   </data>
+  <data name="Disconnects have a 60-second reconnection grace period. The room closes when everyone leaves." xml:space="preserve">
+    <value>Bağlantı kesilmesi durumunda yeniden bağlanmak için 60 saniyelik bir süre tanınır. Herkes ayrıldığında oda kapanır.</value>
+  </data>
   <data name="Dismiss offer" xml:space="preserve">
     <value>Teklifi reddet</value>
   </data>
@@ -140,6 +143,9 @@
   </data>
   <data name="Game over. {0} wins." xml:space="preserve">
     <value>Oyun bitti. {0} kazandı.</value>
+  </data>
+  <data name="Game stopped by the host" xml:space="preserve">
+    <value>Oyun sunucu tarafından durduruldu</value>
   </data>
   <data name="Guest" xml:space="preserve">
     <value>Misafir</value>

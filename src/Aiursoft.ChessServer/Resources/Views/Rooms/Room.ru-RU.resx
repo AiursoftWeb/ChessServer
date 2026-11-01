@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="{0} seconds" xml:space="preserve">
+    <value>{0} секунды</value>
+  </data>
+  <data name="10 minutes" xml:space="preserve">
+    <value>10 минут</value>
+  </data>
+  <data name="15 minutes" xml:space="preserve">
+    <value>15 минут</value>
+  </data>
+  <data name="3 minutes" xml:space="preserve">
+    <value>3 минуты</value>
+  </data>
+  <data name="5 minutes" xml:space="preserve">
+    <value>5 минут</value>
+  </data>
+  <data name="Add AI" xml:space="preserve">
+    <value>Добавить ИИ</value>
+  </data>
+  <data name="AI type" xml:space="preserve">
+    <value>Тип ИИ</value>
+  </data>
+  <data name="Black" xml:space="preserve">
+    <value>Чёрные</value>
+  </data>
+  <data name="Built-in engine — Lynx" xml:space="preserve">
+    <value>Встроенный движок — Lynx</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Отмена</value>
+  </data>
+  <data name="Chat" xml:space="preserve">
+    <value>Чат</value>
+  </data>
+  <data name="Choose valid room settings." xml:space="preserve">
+    <value>Выберите допустимые настройки комнаты.</value>
+  </data>
+  <data name="Copied" xml:space="preserve">
+    <value>Скопировано</value>
+  </data>
+  <data name="Copy link" xml:space="preserve">
+    <value>Скопировать ссылку</value>
+  </data>
+  <data name="Could not update the room. Please try again." xml:space="preserve">
+    <value>Не удалось обновить комнату. Пожалуйста, попробуйте ещё раз.</value>
+  </data>
+  <data name="Difficulty" xml:space="preserve">
+    <value>Сложность</value>
+  </data>
+  <data name="Empty seat" xml:space="preserve">
+    <value>Свободное место</value>
+  </data>
+  <data name="Fill both player seats before starting." xml:space="preserve">
+    <value>Перед началом заполните оба игровых места.</value>
+  </data>
+  <data name="Finish the current game before changing these settings." xml:space="preserve">
+    <value>Завершите текущую игру, прежде чем менять эти настройки.</value>
+  </data>
+  <data name="Finished" xml:space="preserve">
+    <value>Завершена</value>
+  </data>
+  <data name="Host" xml:space="preserve">
+    <value>Организатор</value>
+  </data>
+  <data name="Increment per move" xml:space="preserve">
+    <value>Добавление за ход</value>
+  </data>
+  <data name="Invitation link" xml:space="preserve">
+    <value>Ссылка-приглашение</value>
+  </data>
+  <data name="Kick from room" xml:space="preserve">
+    <value>Исключить из комнаты</value>
+  </data>
+  <data name="Kick this person from the room? They cannot rejoin this room with the same identity." xml:space="preserve">
+    <value>Удалить этого человека из комнаты? Он не сможет вернуться в эту комнату под той же учётной записью.</value>
+  </data>
+  <data name="Large language model" xml:space="preserve">
+    <value>Большая языковая модель</value>
+  </data>
+  <data name="Leave room" xml:space="preserve">
+    <value>Покинуть комнату</value>
+  </data>
+  <data name="Leave this room? Leaving an active game forfeits it. If everyone leaves, the room closes." xml:space="preserve">
+    <value>Выйти из комнаты? Если выйти во время активной игры, будет засчитано поражение. Если выйдут все, комната закроется.</value>
+  </data>
+  <data name="List this room publicly" xml:space="preserve">
+    <value>Опубликовать эту комнату в списке</value>
+  </data>
+  <data name="Lobby" xml:space="preserve">
+    <value>Лобби</value>
+  </data>
+  <data name="Make host" xml:space="preserve">
+    <value>Назначить ведущим</value>
+  </data>
+  <data name="Message" xml:space="preserve">
+    <value>Сообщение</value>
+  </data>
+  <data name="Model" xml:space="preserve">
+    <value>Model</value>
+  </data>
+  <data name="No increment" xml:space="preserve">
+    <value>Без добавочного времени</value>
+  </data>
+  <data name="Observer" xml:space="preserve">
+    <value>Наблюдатель</value>
+  </data>
+  <data name="Observers" xml:space="preserve">
+    <value>Зрители</value>
+  </data>
+  <data name="Only the host can manage this room." xml:space="preserve">
+    <value>Управлять этой комнатой может только ведущий.</value>
+  </data>
+  <data name="Only the two players can send chat messages. The host can drag people between seats and observers." xml:space="preserve">
+    <value>Отправлять сообщения в чате могут только два игрока. Хост может перетаскивать участников между игровыми местами и наблюдателями.</value>
+  </data>
+  <data name="Players" xml:space="preserve">
+    <value>Игроки</value>
+  </data>
+  <data name="Playing" xml:space="preserve">
+    <value>Играет</value>
+  </data>
+  <data name="Prepare next game" xml:space="preserve">
+    <value>Подготовить следующую партию</value>
+  </data>
+  <data name="Preparing" xml:space="preserve">
+    <value>Подготовка</value>
+  </data>
+  <data name="Randomize colors at start" xml:space="preserve">
+    <value>Случайно выбирать цвета в начале</value>
+  </data>
+  <data name="Remove AI" xml:space="preserve">
+    <value>Удалить ИИ</value>
+  </data>
+  <data name="Remove this AI and replace it with the selected person?" xml:space="preserve">
+    <value>Удалить этот ИИ и заменить его выбранным участником?</value>
+  </data>
+  <data name="Replay" xml:space="preserve">
+    <value>Повтор</value>
+  </data>
+  <data name="Retry computer move" xml:space="preserve">
+    <value>Повторить ход компьютера</value>
+  </data>
+  <data name="Room name" xml:space="preserve">
+    <value>Название комнаты</value>
+  </data>
+  <data name="Room settings" xml:space="preserve">
+    <value>Настройки комнаты</value>
+  </data>
+  <data name="Save settings" xml:space="preserve">
+    <value>Сохранить настройки</value>
+  </data>
+  <data name="Send" xml:space="preserve">
+    <value>Отправить</value>
+  </data>
+  <data name="Start game" xml:space="preserve">
+    <value>Начать игру</value>
+  </data>
+  <data name="Stop this game" xml:space="preserve">
+    <value>Остановить текущую игру</value>
+  </data>
+  <data name="Swap colors" xml:space="preserve">
+    <value>Поменять цвета</value>
+  </data>
+  <data name="The next human becomes host when the host leaves. The room closes when everyone leaves. Refreshing or reconnecting has a 60-second grace period." xml:space="preserve">
+    <value>Когда ведущий покидает комнату, его место занимает следующий человек. Комната закрывается, когда из неё выходят все. После обновления страницы или переподключения даётся 60 секунд на восстановление соединения.</value>
+  </data>
+  <data name="The room changed. Review the current settings and try again." xml:space="preserve">
+    <value>Комната изменилась. Проверьте текущие настройки и попробуйте снова.</value>
+  </data>
+  <data name="The selected model is unavailable. Refresh and try again." xml:space="preserve">
+    <value>Выбранная модель недоступна. Обновите страницу и попробуйте ещё раз.</value>
+  </data>
+  <data name="This person has left the room." xml:space="preserve">
+    <value>Этот человек покинул комнату.</value>
+  </data>
+  <data name="This room has closed. Return to the lobby." xml:space="preserve">
+    <value>Эта комната закрыта. Вернитесь в лобби.</value>
+  </data>
+  <data name="This seat is occupied. Move or remove its player first." xml:space="preserve">
+    <value>Это место занято. Сначала переместите или удалите находящегося на нём игрока.</value>
+  </data>
+  <data name="This will stop the current game without awarding a winner. Continue?" xml:space="preserve">
+    <value>Текущая игра будет остановлена без определения победителя. Продолжить?</value>
+  </data>
+  <data name="Time per player" xml:space="preserve">
+    <value>Время на игрока</value>
+  </data>
+  <data name="Unlimited" xml:space="preserve">
+    <value>Без ограничений</value>
+  </data>
+  <data name="White" xml:space="preserve">
+    <value>Белые</value>
+  </data>
+  <data name="You have been removed from this room." xml:space="preserve">
+    <value>Вас удалили из этой комнаты.</value>
+  </data>
+
+</root>

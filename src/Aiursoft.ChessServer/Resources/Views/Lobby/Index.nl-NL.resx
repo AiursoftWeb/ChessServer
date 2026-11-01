@@ -84,8 +84,14 @@
   <data name="Create a challenge" xml:space="preserve">
     <value>Maak een uitdaging aan</value>
   </data>
+  <data name="Create room" xml:space="preserve">
+    <value>Kamer aanmaken</value>
+  </data>
   <data name="Difficulty" xml:space="preserve">
     <value>Moeilijkheidsgraad</value>
+  </data>
+  <data name="Finished" xml:space="preserve">
+    <value>Voltooid</value>
   </data>
   <data name="Guest" xml:space="preserve">
     <value>Gast</value>
@@ -111,6 +117,9 @@
   <data name="No open challenges." xml:space="preserve">
     <value>Geen openstaande uitdagingen.</value>
   </data>
+  <data name="No rooms yet. Create one and invite people." xml:space="preserve">
+    <value>Nog geen kamers. Maak er een aan en nodig mensen uit.</value>
+  </data>
   <data name="Open challenges" xml:space="preserve">
     <value>Open uitdagingen</value>
   </data>
@@ -123,8 +132,17 @@
   <data name="Play with a friend" xml:space="preserve">
     <value>Speel met een vriend</value>
   </data>
+  <data name="Playing" xml:space="preserve">
+    <value>Bezig</value>
+  </data>
+  <data name="Preparing" xml:space="preserve">
+    <value>Voorbereiden</value>
+  </data>
   <data name="Random" xml:space="preserve">
     <value>Willekeurig</value>
+  </data>
+  <data name="Rooms" xml:space="preserve">
+    <value>Kamers</value>
   </data>
   <data name="Start game" xml:space="preserve">
     <value>Start spel</value>

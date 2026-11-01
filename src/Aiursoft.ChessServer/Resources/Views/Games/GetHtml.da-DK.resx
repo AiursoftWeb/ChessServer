@@ -99,6 +99,9 @@
   <data name="Could not confirm the saved game. Retry." xml:space="preserve">
     <value>Kunne ikke bekræfte det gemte spil. Prøv igen.</value>
   </data>
+  <data name="Disconnects have a 60-second reconnection grace period. The room closes when everyone leaves." xml:space="preserve">
+    <value>Ved afbrydelser er der en frist på 60 sekunder til at genoprette forbindelsen. Rummet lukkes, når alle har forladt det.</value>
+  </data>
   <data name="Dismiss offer" xml:space="preserve">
     <value>Afvis tilbud</value>
   </data>
@@ -140,6 +143,9 @@
   </data>
   <data name="Game over. {0} wins." xml:space="preserve">
     <value>Spillet er slut. {0} vinder.</value>
+  </data>
+  <data name="Game stopped by the host" xml:space="preserve">
+    <value>Spillet blev stoppet af værten</value>
   </data>
   <data name="Guest" xml:space="preserve">
     <value>Gæst</value>

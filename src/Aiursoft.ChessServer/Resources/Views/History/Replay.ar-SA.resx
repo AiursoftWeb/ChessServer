@@ -24,6 +24,9 @@
   <data name="End" xml:space="preserve">
     <value>إنهاء</value>
   </data>
+  <data name="Export match details" xml:space="preserve">
+    <value>تصدير تفاصيل المباراة</value>
+  </data>
   <data name="Export PGN" xml:space="preserve">
     <value>تصدير PGN</value>
   </data>

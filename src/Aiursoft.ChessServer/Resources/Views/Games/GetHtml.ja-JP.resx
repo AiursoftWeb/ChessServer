@@ -99,6 +99,9 @@
   <data name="Could not confirm the saved game. Retry." xml:space="preserve">
     <value>保存されたゲームを確認できませんでした。もう一度お試しください。</value>
   </data>
+  <data name="Disconnects have a 60-second reconnection grace period. The room closes when everyone leaves." xml:space="preserve">
+    <value>切断された場合、再接続できる猶予期間は60秒です。全員が退出すると、ルームは閉鎖されます。</value>
+  </data>
   <data name="Dismiss offer" xml:space="preserve">
     <value>申し出を取り下げる</value>
   </data>
@@ -140,6 +143,9 @@
   </data>
   <data name="Game over. {0} wins." xml:space="preserve">
     <value>対局終了。{0}の勝ちです。</value>
+  </data>
+  <data name="Game stopped by the host" xml:space="preserve">
+    <value>ホストによってゲームが中断されました</value>
   </data>
   <data name="Guest" xml:space="preserve">
     <value>ゲスト</value>

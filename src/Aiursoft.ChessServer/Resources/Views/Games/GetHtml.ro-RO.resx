@@ -99,6 +99,9 @@
   <data name="Could not confirm the saved game. Retry." xml:space="preserve">
     <value>Nu s-a putut confirma salvarea jocului. Încercați din nou.</value>
   </data>
+  <data name="Disconnects have a 60-second reconnection grace period. The room closes when everyone leaves." xml:space="preserve">
+    <value>Deconectările beneficiază de o perioadă de grație de 60 de secunde pentru reconectare. Camera se închide când pleacă toată lumea.</value>
+  </data>
   <data name="Dismiss offer" xml:space="preserve">
     <value>Respinge oferta</value>
   </data>
@@ -140,6 +143,9 @@
   </data>
   <data name="Game over. {0} wins." xml:space="preserve">
     <value>Jocul s-a încheiat. {0} câștigă.</value>
+  </data>
+  <data name="Game stopped by the host" xml:space="preserve">
+    <value>Partida a fost oprită de gazdă</value>
   </data>
   <data name="Guest" xml:space="preserve">
     <value>Vizitator</value>

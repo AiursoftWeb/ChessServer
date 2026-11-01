@@ -24,6 +24,9 @@
   <data name="End" xml:space="preserve">
     <value>끝</value>
   </data>
+  <data name="Export match details" xml:space="preserve">
+    <value>대국 정보 내보내기</value>
+  </data>
   <data name="Export PGN" xml:space="preserve">
     <value>PGN 내보내기</value>
   </data>
