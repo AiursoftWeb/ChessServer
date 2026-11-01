@@ -80,7 +80,7 @@ export default class ChessSurface {
     }
     show(ply) {
         this.viewPly = ply; this.selected = null; this.paint();
-        document.getElementById('room-replay-navigation')?.closest('.chess-playing-area').scrollIntoView({block: 'nearest'});
+        document.getElementById('room-replay-navigation')?.closest('.chess-playing-area').scrollIntoView({behavior: 'instant', block: 'nearest'});
     }
     paint() {
         if (!this.state) return;
