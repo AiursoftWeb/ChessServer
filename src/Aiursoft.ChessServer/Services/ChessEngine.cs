@@ -46,8 +46,9 @@ public class ChessEngine(Random? random = null) : ISingletonDependency, IDisposa
         }
         finally { _slots.Release(); }
         // Pace every engine turn, including instant training moves, without holding a search slot.
-        var delay = 2000 - clock.ElapsedMilliseconds;
-        if (delay > 0) await Task.Delay(TimeSpan.FromMilliseconds(delay), token);
+        // Timers can wake slightly early, so check the elapsed time again after each wait.
+        for (var delay = 2000 - clock.ElapsedMilliseconds; delay > 0; delay = 2000 - clock.ElapsedMilliseconds)
+            await Task.Delay(TimeSpan.FromMilliseconds(delay), token);
         token.ThrowIfCancellationRequested();
         return move;
     }
