@@ -343,4 +343,7 @@
   <data name="Waiting for a model slot" xml:space="preserve">
     <value>正在等待模型空位</value>
   </data>
+  <data name="The model service failed after three attempts. Automatic retries have stopped. The host can retry the move." xml:space="preserve">
+    <value>模型服务在尝试三次后仍然失败。自动重试已停止。主持人可以重试此次移动。</value>
+  </data>
 </root>

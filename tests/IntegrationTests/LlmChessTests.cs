@@ -132,13 +132,18 @@ public class LlmChessTests
     {
         using var http = new HttpClient();
         using var cancel = new CancellationTokenSource();
-        var client = new Answers(http, async (_, token) => { await Task.Delay(Timeout.Infinite, token); return await Text("e4"); });
-        var settings = new OpenAIConfiguration { CompletionApiUrl = Configuration.CompletionApiUrl, TimeoutSeconds = 1 };
         var retryStarted = new TaskCompletionSource(TaskCreationOptions.RunContinuationsAsynchronously);
-        var move = new LlmChessPlayer(client, Options.Create(settings)).GetMoveAsync(InitialFen, "*", "chess-model", cancel.Token,
-            progress => { if (progress.Attempt == 2) retryStarted.TrySetResult(); return Task.CompletedTask; });
+        var requests = 0;
+        var client = new Answers(http, async (_, token) =>
+        {
+            if (Interlocked.Increment(ref requests) == 2) retryStarted.TrySetResult();
+            await Task.Delay(Timeout.Infinite, token);
+            return await Text("e4");
+        });
+        var settings = new OpenAIConfiguration { CompletionApiUrl = Configuration.CompletionApiUrl, TimeoutSeconds = 1 };
+        var move = new LlmChessPlayer(client, Options.Create(settings)).GetMoveAsync(InitialFen, "*", "chess-model", cancel.Token);
         await retryStarted.Task.WaitAsync(TimeSpan.FromSeconds(5)); cancel.Cancel();
         await Assert.ThrowsAsync<OperationCanceledException>(() => move);
-        Assert.AreEqual(1, client.Requests.Count);
+        Assert.AreEqual(2, client.Requests.Count);
     }
 }

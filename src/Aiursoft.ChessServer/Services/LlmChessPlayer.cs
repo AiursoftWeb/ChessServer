@@ -73,6 +73,11 @@ public class LlmChessPlayer(ChatClient client, IOptions<OpenAIConfiguration> opt
             {
                 if (attempt == 3) throw new TimeoutException("The model gateway timed out after three attempts.", exception);
             }
+            catch (HttpRequestException exception) when (StatusCode(exception) == null || (int?)StatusCode(exception) >= 500)
+            {
+                // Gateways may report their own upstream timeout as a generic 5xx response.
+                if (attempt == 3) throw;
+            }
             finally { if (acquired) Slots.Release(); }
         }
         throw new InvalidOperationException("The LLM did not return a legal chess move.");
@@ -85,6 +90,7 @@ public class LlmChessPlayer(ChatClient client, IOptions<OpenAIConfiguration> opt
     {
         TimeoutException => "computer-timeout",
         HttpRequestException http when (int?)StatusCode(http) is >= 400 and < 500 => "computer-rejected",
+        HttpRequestException => "computer-unavailable",
         _ => "computer-failed"
     };
 

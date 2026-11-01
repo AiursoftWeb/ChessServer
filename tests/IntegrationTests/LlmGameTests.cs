@@ -215,6 +215,7 @@ public class LlmGameTests : TestBase
     [DataRow(408)]
     [DataRow(504)]
     [DataRow(400)]
+    [DataRow(503)]
     public async Task GatewayTimeoutsRetryButInvalidRequestsStopImmediately(int status)
     {
         await ConfigureLlm(respond: (_, _) => Task.FromResult(Results.StatusCode(status)));
@@ -223,7 +224,7 @@ public class LlmGameTests : TestBase
         var id = GetService<InMemoryDatabase>().GetRooms().Single().Key;
         await PostForm($"/games/{id}/computer", new(), tokenUrl: "/Lobby");
         Assert.AreEqual(status == 400 ? 1 : 3, _completionCalls);
-        Assert.AreEqual(status == 400 ? "computer-rejected" : "computer-timeout", GetService<InMemoryDatabase>().GetAcceptedChallenge(id)!.Game.ComputerError);
+        Assert.AreEqual(status == 400 ? "computer-rejected" : status == 503 ? "computer-unavailable" : "computer-timeout", GetService<InMemoryDatabase>().GetAcceptedChallenge(id)!.Game.ComputerError);
     }
 
     [TestMethod]
