@@ -29,9 +29,9 @@
 .room-heading h1{overflow-wrap:anywhere}
 .room-heading .btn{padding-inline:0;white-space:nowrap}
 .room-workspace{display:grid;grid-template-columns:minmax(0,1fr) 22rem;gap:1.25rem;align-items:stretch}
-.room-console{display:flex;flex-direction:column;min-width:0;border:1px solid var(--bs-border-color);border-radius:.6rem;background:var(--bs-body-bg);overflow:hidden}
+.room-console{display:flex;flex-direction:column;min-width:0;border:1px solid var(--bs-border-color);border-radius:.6rem;background:var(--bs-body-bg);align-self:start}
 .room-settings{padding:1.25rem;overflow:auto}
-.room-console-footer{margin-top:auto;padding:1rem;border-top:1px solid var(--bs-border-color)}
+.room-console-footer{padding:1rem;border-top:1px solid var(--bs-border-color)}
 .room-actions:empty{display:none}
 .room-actions:not(:empty){margin-top:.5rem}
 .room-actions .btn-primary{flex:1}
@@ -40,7 +40,7 @@
 .room-tools[open]>summary{margin-bottom:.75rem}
 .room-tools>button{margin-top:.75rem}
 #room-game-tools #game-exports{margin-top:0!important}
-.room-game-state{padding:1rem 1rem .5rem;overflow:auto;flex-shrink:0;max-height:38%;overflow-wrap:anywhere}
+.room-game-state{padding:1rem 1rem .5rem;overflow-wrap:anywhere}
 .room-game-state #status{font-weight:600;margin-block:.5rem!important}
 .room-game-state #game-result{margin:0!important;border:0;box-shadow:none;background:transparent}
 .room-game-state #game-result .card-body{padding:0}
@@ -49,25 +49,23 @@
 .room-in-game #connection-status[data-state=connected]{display:none}
 .room-tabs{display:flex;gap:1.25rem;padding:0 1rem;border-bottom:1px solid var(--bs-border-color);flex-shrink:0}
 .room-tab{border:0;border-bottom:2px solid transparent;padding:.65rem 0;background:transparent;color:var(--bs-secondary-color);font-weight:600;white-space:nowrap}
-.room-tab[aria-selected=true]{border-color:var(--bs-primary);color:var(--bs-body-color)}
+.room-tab[aria-expanded=true]{border-color:var(--bs-primary);color:var(--bs-body-color)}
+.room-panel-chevron{display:inline-block;width:.4rem;height:.4rem;margin-left:.6rem;vertical-align:.15rem;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg)}
+.room-tab[aria-expanded=true] .room-panel-chevron{transform:rotate(225deg);vertical-align:0}
 .room-tab:focus-visible{outline:2px solid var(--bs-primary);outline-offset:2px}
-.room-tab-panel{min-height:0;flex:1;overflow:auto;padding:1rem}
+.room-tab-panel{padding:1rem}
 #room-moves #game-moves,#room-moves .card-body{min-height:0;padding:0;border:0;box-shadow:none;background:transparent}
-#room-moves,#room-moves .card-body{display:flex;flex-direction:column}
-#room-moves #game-moves{flex:1}
 .room-move-navigation{display:flex;gap:.5rem;padding-top:.75rem;flex-shrink:0}
 .room-move-navigation .btn{flex:1;font-size:1.1rem;line-height:1.25}
 #room-moves h2{display:none}
-#room-moves .chess-move-list{max-height:none;align-content:start;flex:1;min-height:0}
+#room-moves .chess-move-list{max-height:none;overflow:visible;align-content:start}
 #room-chat{display:flex;flex-direction:column}
-#room-chat .chess-messages{height:auto;flex:1;min-height:8rem}
+#room-chat .chess-messages{height:auto;min-height:8rem;overflow:visible}
 #room-chat-form{flex-shrink:0}
 #room-game-controls #game-actions{margin-bottom:0!important}
 #room-game-controls #game-actions .btn{flex:1;white-space:nowrap}
 .room-in-game{max-width:calc(var(--room-board-size) + 23.25rem)!important}
 .room-in-game .room-workspace{grid-template-columns:minmax(0,var(--room-board-size)) minmax(19rem,22rem)}
-.room-in-game .room-console{contain:size}
-.room-in-game .room-console-footer{max-height:48%;overflow:auto;flex-shrink:0}
 .room-in-game .chess-layout{display:block}
 .room-in-game .chess-playing-area{width:100%;max-width:none;margin:0}
 .room-in-game #board{max-width:none}
@@ -87,9 +85,6 @@
 @media(max-width:991px){
     .room-workspace,.room-in-game .room-workspace{grid-template-columns:minmax(0,1fr)}
     #managed-room{max-width:38rem!important}
-    .room-in-game .room-console{contain:none;height:24rem}
-    .room-in-game .room-console-footer{max-height:55%}
-    .room-game-state{max-height:40%}
 }
 @media(max-width:575px){
     .room-toolbar{align-items:flex-start;gap:.5rem}
