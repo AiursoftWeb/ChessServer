@@ -7,6 +7,39 @@ const textFallback = 'Could not update the room. Please try again.';
 let state, busy = false, closed = false, renderedVersion = -1, dirty = false, editingVersion, aiVersion, socket, chat;
 let drag;
 const settings = el('room-settings');
+let activeTab = 'moves', unread = 0;
+function selectTab(name, focus = false) {
+    activeTab = name;
+    for (const tab of ['moves', 'chat']) {
+        const selected = tab === name;
+        el(`room-${tab}-tab`).setAttribute('aria-selected', String(selected));
+        el(`room-${tab}-tab`).tabIndex = selected ? 0 : -1;
+        el(`room-${tab}`).hidden = !selected;
+    }
+    if (name === 'chat') { unread = 0; el('room-unread').hidden = true; }
+    if (focus) el(`room-${name}-tab`).focus();
+}
+if (embeddedGame) {
+    // Move the existing controls without replacing nodes or their event handlers.
+    el('room-game-state').append(el('game-state'), el('game-result'));
+    el('room-moves').prepend(el('game-moves'));
+    el('room-game-controls').append(el('game-controls'));
+    el('room-game-tools').append(el('game-exports'), el('game-policy'));
+    el('game-room').querySelector('.chess-information').hidden = true;
+    for (const name of ['moves', 'chat']) {
+        const tab = el(`room-${name}-tab`);
+        tab.onclick = () => selectTab(name);
+        tab.onkeydown = event => {
+            if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
+            event.preventDefault();
+            const target = event.key === 'Home' ? 'moves' : event.key === 'End' ? 'chat' : activeTab === 'moves' ? 'chat' : 'moves';
+            selectTab(el(`room-${target}-tab`).hidden ? 'moves' : target, true);
+        };
+    }
+} else {
+    el('room-preparing-chat').append(el('room-chat'));
+}
+
 function error(key) { el('room-error').textContent = text(key); el('room-error').hidden = false; }
 async function command(kind, fields = {}, version = state?.Version) {
     if (busy || closed || !state) return;
@@ -122,7 +155,11 @@ function apply(next) {
     state = next;
     if (String(state.CurrentGameId || '') !== String(embeddedGame || '')) { location.reload(); return; }
     const host = state.Host === state.Viewer;
-    el('room-chat').hidden = !canChat();
+    el('room-chat-tab').hidden = !canChat() || !embeddedGame;
+    if (embeddedGame) {
+        if (!canChat() && activeTab === 'chat') selectTab('moves');
+        el('room-chat').hidden = !canChat() || activeTab !== 'chat';
+    } else { el('room-chat').hidden = !canChat(); el('room-preparing-chat').hidden = !canChat(); }
     el('room-chat-form').hidden = !canChat();
     if (canChat()) connectChat();
     else if (chat) { const connection = chat; chat = null; connection.close(); }
@@ -239,6 +276,10 @@ function connectChat() {
         const message = JSON.parse(event.data), row = document.createElement('div'); row.className = 'chess-message';
         const sender = document.createElement('strong'); sender.textContent = message.SenderNickName;
         const body = document.createElement('p'); body.textContent = message.Content; row.append(sender, body); el('room-messages').append(row);
+        if (embeddedGame && activeTab !== 'chat') {
+            unread++; el('room-unread').textContent = String(unread); el('room-unread').hidden = false;
+        }
+        el('room-messages').scrollTop = el('room-messages').scrollHeight;
         while (el('room-messages').children.length > 100) el('room-messages').firstElementChild.remove();
     };
     connection.onclose = () => { if (chat !== connection) return; chat = null; if (!closed) setTimeout(connectChat, 2000); };

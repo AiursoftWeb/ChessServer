@@ -14,15 +14,7 @@
         <div class="d-flex gap-2"><button id="show-room-people" class="btn btn-sm btn-outline-secondary" type="button" hidden>@Localizer["People"]</button><button id="share-room" class="btn btn-sm btn-outline-secondary" type="button">@Localizer["Share"]</button></div>
     </header>
     <p id="room-error" class="text-danger" role="alert" hidden></p>
-    <div class="room-actions d-flex flex-wrap gap-2 mb-3">
-            <button id="start-room" data-room-host class="btn btn-sm btn-primary" type="button">@Localizer["Start game"]</button>
-            <button id="next-room-game" data-room-host class="btn btn-sm btn-primary" type="button" hidden>@Localizer["Prepare next game"]</button>
-            <button id="retry-room-computer" data-room-host class="btn btn-sm btn-outline-primary" type="button" hidden>@Localizer["Retry computer move"]</button>
-            <button id="interrupt-room" data-room-host class="btn btn-sm btn-outline-danger" type="button" hidden>@Localizer["Stop this game"]</button>
-            <a id="room-history" class="btn btn-sm btn-outline-primary" hidden>@Localizer["Replay"]</a>
-            <button id="leave-room" class="btn btn-sm btn-outline-secondary" type="button">@Localizer["Leave room"]</button>
-    </div>
-    <div class="room-preparation">
+    <div class="room-workspace">
         <div class="advanced-game">
             @if (Model.Game != null) { @await Html.PartialAsync("~/Views/Games/GetHtml.cshtml", Model.Game) }
             <section id="room-roster" hidden="@(Model.Game != null)" aria-label="@Localizer["Players and observers"]">
@@ -31,12 +23,28 @@
                 <p id="room-color-note" class="small text-muted mt-2" hidden>@Localizer["Colors are assigned when the game starts."]</p>
                 <h2 class="h6 mt-4">@Localizer["Observers"]</h2><div id="room-observers" class="room-observers" data-drop-seat="observer"></div>
             </section>
-            <details id="room-chat" class="room-chat mt-3" hidden><summary>@Localizer["Chat"]</summary><div class="pt-2">
+            <details id="room-preparing-chat" class="mt-3" hidden><summary>@Localizer["Chat"]</summary></details>
+        </div>
+        <aside class="room-console" aria-label="@Localizer["Room controls"]">
+            <div id="room-game-state" class="room-game-state" hidden="@(Model.Game == null)"></div>
+            <div id="room-tabs" class="room-tabs" role="tablist" aria-label="@Localizer["Game information"]" hidden="@(Model.Game == null)">
+                <button id="room-moves-tab" class="room-tab" type="button" role="tab" aria-selected="true" aria-controls="room-moves">@Localizer["Moves"]</button>
+                <button id="room-chat-tab" class="room-tab" type="button" role="tab" aria-selected="false" aria-controls="room-chat" tabindex="-1" hidden>@Localizer["Chat"]<span id="room-unread" class="badge bg-primary ms-1" hidden></span></button>
+            </div>
+            <div id="room-moves" class="room-tab-panel" role="tabpanel" tabindex="0" aria-labelledby="room-moves-tab" hidden="@(Model.Game == null)">
+                <nav class="room-move-navigation" aria-label="@Localizer["Replay"]">
+                    <button class="btn btn-sm btn-outline-secondary" data-view-position="first" type="button" aria-label="@Localizer["First position"]" title="@Localizer["First position"]">|‹</button>
+                    <button class="btn btn-sm btn-outline-secondary" data-view-position="previous" type="button" aria-label="@Localizer["Previous move"]" title="@Localizer["Previous move"]">‹</button>
+                    <button class="btn btn-sm btn-outline-secondary" data-view-position="next" type="button" aria-label="@Localizer["Next move"]" title="@Localizer["Next move"]">›</button>
+                    <button class="btn btn-sm btn-outline-secondary" data-view-position="latest" type="button" aria-label="@Localizer["Latest position"]" title="@Localizer["Latest position"]">›|</button>
+                </nav>
+            </div>
+            <section id="room-chat" class="room-tab-panel" role="tabpanel" aria-labelledby="room-chat-tab" hidden>
                 <div id="room-messages" class="chess-messages" role="log" aria-live="polite"></div>
                 <form id="room-chat-form" class="d-flex gap-2 mt-2" hidden><input id="room-chat-input" class="form-control" maxlength="2000" aria-label="@Localizer["Message"]" autocomplete="off" /><button class="btn btn-primary" type="submit">@Localizer["Send"]</button></form>
-            </div></details>
-        </div>
-        <aside id="room-settings-panel" class="room-settings" hidden="@(Model.Game != null)">
+            </section>
+
+            <section id="room-settings-panel" class="room-settings" hidden="@(Model.Game != null)">
             <h2 class="h5">@Localizer["Room settings"]</h2>
             <form id="room-settings">
                 <fieldset id="settings-fields">
@@ -49,6 +57,22 @@
                 </fieldset>
             </form>
             <details class="small text-muted mt-2"><summary>@Localizer["Room rules"]</summary><p>@Localizer["Only the two players can send chat messages. The host can drag people between seats and observers."]</p><p>@Localizer["The next human becomes host when the host leaves. The room closes when everyone leaves. Refreshing or reconnecting has a 60-second grace period."]</p></details>
+            </section>
+            <footer class="room-console-footer">
+                <div id="room-game-controls"></div>
+                <div class="room-actions d-flex flex-wrap gap-2">
+            <button id="start-room" data-room-host class="btn btn-sm btn-primary" type="button">@Localizer["Start game"]</button>
+            <button id="next-room-game" data-room-host class="btn btn-sm btn-primary" type="button" hidden>@Localizer["Prepare next game"]</button>
+            <button id="retry-room-computer" data-room-host class="btn btn-sm btn-outline-primary" type="button" hidden>@Localizer["Retry computer move"]</button>
+            <a id="room-history" class="btn btn-sm btn-outline-primary" hidden>@Localizer["Replay"]</a>
+                </div>
+                <details id="room-tools" class="room-tools">
+                    <summary>@Localizer["More"]</summary>
+                    <div id="room-game-tools"></div>
+            <button id="interrupt-room" data-room-host class="btn btn-sm btn-outline-danger" type="button" hidden>@Localizer["Stop this game"]</button>
+            <button id="leave-room" class="btn btn-sm btn-outline-secondary" type="button">@Localizer["Leave room"]</button>
+                </details>
+            </footer>
         </aside>
     </div>
     <dialog id="room-share" class="room-dialog" aria-labelledby="room-share-title">
