@@ -84,8 +84,14 @@
   <data name="Create a challenge" xml:space="preserve">
     <value>Meydan okuması oluştur</value>
   </data>
+  <data name="Create room" xml:space="preserve">
+    <value>Oda oluştur</value>
+  </data>
   <data name="Difficulty" xml:space="preserve">
     <value>Zorluk</value>
+  </data>
+  <data name="Finished" xml:space="preserve">
+    <value>Tamamlandı</value>
   </data>
   <data name="Guest" xml:space="preserve">
     <value>Misafir</value>
@@ -111,6 +117,9 @@
   <data name="No open challenges." xml:space="preserve">
     <value>Açık meydan okuma yok.</value>
   </data>
+  <data name="No rooms yet. Create one and invite people." xml:space="preserve">
+    <value>Henüz oda yok. Bir tane oluşturup insanları davet edin.</value>
+  </data>
   <data name="Open challenges" xml:space="preserve">
     <value>Açık meydan okumalar</value>
   </data>
@@ -123,8 +132,17 @@
   <data name="Play with a friend" xml:space="preserve">
     <value>Bir arkadaşınla oyna</value>
   </data>
+  <data name="Playing" xml:space="preserve">
+    <value>Oynanıyor</value>
+  </data>
+  <data name="Preparing" xml:space="preserve">
+    <value>Hazırlanıyor</value>
+  </data>
   <data name="Random" xml:space="preserve">
     <value>Rastgele</value>
+  </data>
+  <data name="Rooms" xml:space="preserve">
+    <value>Odalar</value>
   </data>
   <data name="Start game" xml:space="preserve">
     <value>Oyunu başlat</value>

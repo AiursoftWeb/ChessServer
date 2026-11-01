@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="{0} seconds" xml:space="preserve">
+    <value>{0} giây</value>
+  </data>
+  <data name="10 minutes" xml:space="preserve">
+    <value>10 phút</value>
+  </data>
+  <data name="15 minutes" xml:space="preserve">
+    <value>15 phút</value>
+  </data>
+  <data name="3 minutes" xml:space="preserve">
+    <value>3 phút</value>
+  </data>
+  <data name="5 minutes" xml:space="preserve">
+    <value>5 phút</value>
+  </data>
+  <data name="Add AI" xml:space="preserve">
+    <value>Thêm AI</value>
+  </data>
+  <data name="AI type" xml:space="preserve">
+    <value>Loại AI</value>
+  </data>
+  <data name="Black" xml:space="preserve">
+    <value>Đen</value>
+  </data>
+  <data name="Built-in engine — Lynx" xml:space="preserve">
+    <value>Công cụ chơi cờ tích hợp — Lynx</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Hủy</value>
+  </data>
+  <data name="Chat" xml:space="preserve">
+    <value>Trò chuyện</value>
+  </data>
+  <data name="Choose valid room settings." xml:space="preserve">
+    <value>Vui lòng chọn cài đặt phòng hợp lệ.</value>
+  </data>
+  <data name="Copied" xml:space="preserve">
+    <value>Đã sao chép</value>
+  </data>
+  <data name="Copy link" xml:space="preserve">
+    <value>Sao chép liên kết</value>
+  </data>
+  <data name="Could not update the room. Please try again." xml:space="preserve">
+    <value>Không thể cập nhật phòng. Vui lòng thử lại.</value>
+  </data>
+  <data name="Difficulty" xml:space="preserve">
+    <value>Độ khó</value>
+  </data>
+  <data name="Empty seat" xml:space="preserve">
+    <value>Ghế trống</value>
+  </data>
+  <data name="Fill both player seats before starting." xml:space="preserve">
+    <value>Hãy bố trí đủ người chơi vào cả hai vị trí trước khi bắt đầu.</value>
+  </data>
+  <data name="Finish the current game before changing these settings." xml:space="preserve">
+    <value>Hãy kết thúc ván chơi hiện tại trước khi thay đổi các cài đặt này.</value>
+  </data>
+  <data name="Finished" xml:space="preserve">
+    <value>Đã kết thúc</value>
+  </data>
+  <data name="Host" xml:space="preserve">
+    <value>Chủ phòng</value>
+  </data>
+  <data name="Increment per move" xml:space="preserve">
+    <value>Thời gian cộng thêm sau mỗi nước đi</value>
+  </data>
+  <data name="Invitation link" xml:space="preserve">
+    <value>Liên kết mời</value>
+  </data>
+  <data name="Kick from room" xml:space="preserve">
+    <value>Mời ra khỏi phòng</value>
+  </data>
+  <data name="Kick this person from the room? They cannot rejoin this room with the same identity." xml:space="preserve">
+    <value>Xóa người này khỏi phòng? Họ không thể tham gia lại phòng này bằng cùng danh tính.</value>
+  </data>
+  <data name="Large language model" xml:space="preserve">
+    <value>Mô hình ngôn ngữ lớn</value>
+  </data>
+  <data name="Leave room" xml:space="preserve">
+    <value>Rời khỏi phòng</value>
+  </data>
+  <data name="Leave this room? Leaving an active game forfeits it. If everyone leaves, the room closes." xml:space="preserve">
+    <value>Rời khỏi phòng này? Nếu rời khỏi khi ván đấu đang diễn ra, bạn sẽ bị xử thua. Nếu tất cả mọi người đều rời đi, phòng sẽ đóng.</value>
+  </data>
+  <data name="List this room publicly" xml:space="preserve">
+    <value>Đưa phòng này vào danh sách công khai</value>
+  </data>
+  <data name="Lobby" xml:space="preserve">
+    <value>Sảnh chờ</value>
+  </data>
+  <data name="Make host" xml:space="preserve">
+    <value>Chuyển quyền chủ phòng</value>
+  </data>
+  <data name="Message" xml:space="preserve">
+    <value>Tin nhắn</value>
+  </data>
+  <data name="Model" xml:space="preserve">
+    <value>Model</value>
+  </data>
+  <data name="No increment" xml:space="preserve">
+    <value>Không cộng thêm</value>
+  </data>
+  <data name="Observer" xml:space="preserve">
+    <value>Người quan sát</value>
+  </data>
+  <data name="Observers" xml:space="preserve">
+    <value>Người quan sát</value>
+  </data>
+  <data name="Only the host can manage this room." xml:space="preserve">
+    <value>Chỉ chủ phòng mới có thể quản lý phòng này.</value>
+  </data>
+  <data name="Only the two players can send chat messages. The host can drag people between seats and observers." xml:space="preserve">
+    <value>Chỉ hai người chơi mới có thể gửi tin nhắn trò chuyện. Chủ phòng có thể kéo người chơi giữa các vị trí và khu vực khán giả.</value>
+  </data>
+  <data name="Players" xml:space="preserve">
+    <value>Người chơi</value>
+  </data>
+  <data name="Playing" xml:space="preserve">
+    <value>Đang chơi</value>
+  </data>
+  <data name="Prepare next game" xml:space="preserve">
+    <value>Chuẩn bị ván tiếp theo</value>
+  </data>
+  <data name="Preparing" xml:space="preserve">
+    <value>Đang chuẩn bị</value>
+  </data>
+  <data name="Randomize colors at start" xml:space="preserve">
+    <value>Xáo trộn màu quân cờ khi bắt đầu</value>
+  </data>
+  <data name="Remove AI" xml:space="preserve">
+    <value>Xóa AI</value>
+  </data>
+  <data name="Remove this AI and replace it with the selected person?" xml:space="preserve">
+    <value>Xóa AI này và thay bằng người đã chọn?</value>
+  </data>
+  <data name="Replay" xml:space="preserve">
+    <value>Phát lại</value>
+  </data>
+  <data name="Retry computer move" xml:space="preserve">
+    <value>Thử lại nước đi của máy tính</value>
+  </data>
+  <data name="Room name" xml:space="preserve">
+    <value>Tên phòng</value>
+  </data>
+  <data name="Room settings" xml:space="preserve">
+    <value>Cài đặt phòng</value>
+  </data>
+  <data name="Save settings" xml:space="preserve">
+    <value>Lưu cài đặt</value>
+  </data>
+  <data name="Send" xml:space="preserve">
+    <value>Gửi</value>
+  </data>
+  <data name="Start game" xml:space="preserve">
+    <value>Bắt đầu ván</value>
+  </data>
+  <data name="Stop this game" xml:space="preserve">
+    <value>Dừng ván này</value>
+  </data>
+  <data name="Swap colors" xml:space="preserve">
+    <value>Đổi màu quân cờ</value>
+  </data>
+  <data name="The next human becomes host when the host leaves. The room closes when everyone leaves. Refreshing or reconnecting has a 60-second grace period." xml:space="preserve">
+    <value>Người chơi tiếp theo sẽ trở thành chủ phòng khi chủ phòng rời đi. Phòng sẽ đóng khi tất cả mọi người rời đi. Bạn có 60 giây để tải lại trang hoặc kết nối lại.</value>
+  </data>
+  <data name="The room changed. Review the current settings and try again." xml:space="preserve">
+    <value>Phòng đã thay đổi. Vui lòng xem lại cài đặt hiện tại và thử lại.</value>
+  </data>
+  <data name="The selected model is unavailable. Refresh and try again." xml:space="preserve">
+    <value>Mô hình đã chọn hiện không khả dụng. Hãy làm mới trang rồi thử lại.</value>
+  </data>
+  <data name="This person has left the room." xml:space="preserve">
+    <value>Người này đã rời khỏi phòng.</value>
+  </data>
+  <data name="This room has closed. Return to the lobby." xml:space="preserve">
+    <value>Phòng này đã đóng. Quay lại sảnh chờ.</value>
+  </data>
+  <data name="This seat is occupied. Move or remove its player first." xml:space="preserve">
+    <value>Chỗ ngồi này đã có người. Trước tiên, hãy chuyển người chơi đó sang chỗ khác hoặc xóa họ.</value>
+  </data>
+  <data name="This will stop the current game without awarding a winner. Continue?" xml:space="preserve">
+    <value>Thao tác này sẽ dừng ván đấu hiện tại mà không xử thắng cho bên nào. Tiếp tục?</value>
+  </data>
+  <data name="Time per player" xml:space="preserve">
+    <value>Thời gian cho mỗi người chơi</value>
+  </data>
+  <data name="Unlimited" xml:space="preserve">
+    <value>Không giới hạn</value>
+  </data>
+  <data name="White" xml:space="preserve">
+    <value>Trắng</value>
+  </data>
+  <data name="You have been removed from this room." xml:space="preserve">
+    <value>Bạn đã bị xóa khỏi phòng này.</value>
+  </data>
+
+</root>

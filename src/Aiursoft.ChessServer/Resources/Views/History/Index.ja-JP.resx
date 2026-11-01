@@ -27,6 +27,12 @@
   <data name="Finished" xml:space="preserve">
     <value>終了日時</value>
   </data>
+  <data name="Games I organized" xml:space="preserve">
+    <value>自分が開催した対局</value>
+  </data>
+  <data name="Games I played" xml:space="preserve">
+    <value>対局したゲーム</value>
+  </data>
   <data name="My games" xml:space="preserve">
     <value>自分の対局</value>
   </data>

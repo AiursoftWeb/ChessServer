@@ -24,6 +24,9 @@
   <data name="End" xml:space="preserve">
     <value>最後</value>
   </data>
+  <data name="Export match details" xml:space="preserve">
+    <value>対局詳細をエクスポート</value>
+  </data>
   <data name="Export PGN" xml:space="preserve">
     <value>PGNをエクスポート</value>
   </data>

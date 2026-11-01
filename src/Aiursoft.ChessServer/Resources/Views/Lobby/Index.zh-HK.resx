@@ -84,8 +84,14 @@
   <data name="Create a challenge" xml:space="preserve">
     <value>建立挑戰</value>
   </data>
+  <data name="Create room" xml:space="preserve">
+    <value>建立房間</value>
+  </data>
   <data name="Difficulty" xml:space="preserve">
     <value>難度</value>
+  </data>
+  <data name="Finished" xml:space="preserve">
+    <value>已完成</value>
   </data>
   <data name="Guest" xml:space="preserve">
     <value>訪客</value>
@@ -111,6 +117,9 @@
   <data name="No open challenges." xml:space="preserve">
     <value>沒有可參與的挑戰。</value>
   </data>
+  <data name="No rooms yet. Create one and invite people." xml:space="preserve">
+    <value>暫時還沒有房間。建立一個並邀請其他人加入。</value>
+  </data>
   <data name="Open challenges" xml:space="preserve">
     <value>開放中的挑戰</value>
   </data>
@@ -123,8 +132,17 @@
   <data name="Play with a friend" xml:space="preserve">
     <value>與朋友對弈</value>
   </data>
+  <data name="Playing" xml:space="preserve">
+    <value>正在進行</value>
+  </data>
+  <data name="Preparing" xml:space="preserve">
+    <value>準備中</value>
+  </data>
   <data name="Random" xml:space="preserve">
     <value>隨機</value>
+  </data>
+  <data name="Rooms" xml:space="preserve">
+    <value>房間</value>
   </data>
   <data name="Start game" xml:space="preserve">
     <value>開始遊戲</value>

@@ -99,6 +99,9 @@
   <data name="Could not confirm the saved game. Retry." xml:space="preserve">
     <value>Không thể xác nhận ván cờ đã lưu. Thử lại.</value>
   </data>
+  <data name="Disconnects have a 60-second reconnection grace period. The room closes when everyone leaves." xml:space="preserve">
+    <value>Khi bị mất kết nối, người chơi có 60 giây để kết nối lại. Phòng sẽ đóng khi mọi người rời đi.</value>
+  </data>
   <data name="Dismiss offer" xml:space="preserve">
     <value>Từ chối đề nghị hòa</value>
   </data>
@@ -140,6 +143,9 @@
   </data>
   <data name="Game over. {0} wins." xml:space="preserve">
     <value>Trò chơi kết thúc. {0} thắng.</value>
+  </data>
+  <data name="Game stopped by the host" xml:space="preserve">
+    <value>Trận đấu đã bị chủ phòng dừng lại</value>
   </data>
   <data name="Guest" xml:space="preserve">
     <value>Khách</value>

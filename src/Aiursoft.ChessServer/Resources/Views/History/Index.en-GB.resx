@@ -27,6 +27,12 @@
   <data name="Finished" xml:space="preserve">
     <value>Finished</value>
   </data>
+  <data name="Games I organized" xml:space="preserve">
+    <value>Games I organised</value>
+  </data>
+  <data name="Games I played" xml:space="preserve">
+    <value>Games I played</value>
+  </data>
   <data name="My games" xml:space="preserve">
     <value>My games</value>
   </data>

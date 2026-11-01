@@ -84,8 +84,14 @@
   <data name="Create a challenge" xml:space="preserve">
     <value>Tạo thử thách</value>
   </data>
+  <data name="Create room" xml:space="preserve">
+    <value>Tạo phòng</value>
+  </data>
   <data name="Difficulty" xml:space="preserve">
     <value>Độ khó</value>
+  </data>
+  <data name="Finished" xml:space="preserve">
+    <value>Đã kết thúc</value>
   </data>
   <data name="Guest" xml:space="preserve">
     <value>Khách</value>
@@ -111,6 +117,9 @@
   <data name="No open challenges." xml:space="preserve">
     <value>Không có thử thách nào đang mở.</value>
   </data>
+  <data name="No rooms yet. Create one and invite people." xml:space="preserve">
+    <value>Chưa có phòng nào. Hãy tạo một phòng và mời mọi người.</value>
+  </data>
   <data name="Open challenges" xml:space="preserve">
     <value>Thử thách đang mở</value>
   </data>
@@ -123,8 +132,17 @@
   <data name="Play with a friend" xml:space="preserve">
     <value>Chơi cùng bạn bè</value>
   </data>
+  <data name="Playing" xml:space="preserve">
+    <value>Đang chơi</value>
+  </data>
+  <data name="Preparing" xml:space="preserve">
+    <value>Đang chuẩn bị</value>
+  </data>
   <data name="Random" xml:space="preserve">
     <value>Ngẫu nhiên</value>
+  </data>
+  <data name="Rooms" xml:space="preserve">
+    <value>Các phòng</value>
   </data>
   <data name="Start game" xml:space="preserve">
     <value>Bắt đầu trò chơi</value>

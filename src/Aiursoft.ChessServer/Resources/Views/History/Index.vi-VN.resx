@@ -27,6 +27,12 @@
   <data name="Finished" xml:space="preserve">
     <value>Thời gian kết thúc</value>
   </data>
+  <data name="Games I organized" xml:space="preserve">
+    <value>Các ván đấu tôi tổ chức</value>
+  </data>
+  <data name="Games I played" xml:space="preserve">
+    <value>Các ván tôi đã chơi</value>
+  </data>
   <data name="My games" xml:space="preserve">
     <value>Trò chơi của tôi</value>
   </data>

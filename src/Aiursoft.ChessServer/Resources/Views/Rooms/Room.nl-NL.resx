@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="{0} seconds" xml:space="preserve">
+    <value>{0} seconden</value>
+  </data>
+  <data name="10 minutes" xml:space="preserve">
+    <value>10 minuten</value>
+  </data>
+  <data name="15 minutes" xml:space="preserve">
+    <value>15 minuten</value>
+  </data>
+  <data name="3 minutes" xml:space="preserve">
+    <value>3 minuten</value>
+  </data>
+  <data name="5 minutes" xml:space="preserve">
+    <value>5 minuten</value>
+  </data>
+  <data name="Add AI" xml:space="preserve">
+    <value>AI toevoegen</value>
+  </data>
+  <data name="AI type" xml:space="preserve">
+    <value>AI-type</value>
+  </data>
+  <data name="Black" xml:space="preserve">
+    <value>Zwart</value>
+  </data>
+  <data name="Built-in engine — Lynx" xml:space="preserve">
+    <value>Ingebouwde engine — Lynx</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Annuleren</value>
+  </data>
+  <data name="Chat" xml:space="preserve">
+    <value>Chat</value>
+  </data>
+  <data name="Choose valid room settings." xml:space="preserve">
+    <value>Kies geldige kamerinstellingen.</value>
+  </data>
+  <data name="Copied" xml:space="preserve">
+    <value>Gekopieerd</value>
+  </data>
+  <data name="Copy link" xml:space="preserve">
+    <value>Link kopiëren</value>
+  </data>
+  <data name="Could not update the room. Please try again." xml:space="preserve">
+    <value>De ruimte kon niet worden bijgewerkt. Probeer het opnieuw.</value>
+  </data>
+  <data name="Difficulty" xml:space="preserve">
+    <value>Moeilijkheidsgraad</value>
+  </data>
+  <data name="Empty seat" xml:space="preserve">
+    <value>Lege stoel</value>
+  </data>
+  <data name="Fill both player seats before starting." xml:space="preserve">
+    <value>Vul beide spelersplaatsen voordat je begint.</value>
+  </data>
+  <data name="Finish the current game before changing these settings." xml:space="preserve">
+    <value>Beëindig het huidige spel voordat je deze instellingen wijzigt.</value>
+  </data>
+  <data name="Finished" xml:space="preserve">
+    <value>Afgelopen</value>
+  </data>
+  <data name="Host" xml:space="preserve">
+    <value>Organisator</value>
+  </data>
+  <data name="Increment per move" xml:space="preserve">
+    <value>Tijdtoevoeging per zet</value>
+  </data>
+  <data name="Invitation link" xml:space="preserve">
+    <value>Uitnodigingslink</value>
+  </data>
+  <data name="Kick from room" xml:space="preserve">
+    <value>Uit de kamer verwijderen</value>
+  </data>
+  <data name="Kick this person from the room? They cannot rejoin this room with the same identity." xml:space="preserve">
+    <value>Deze persoon uit de kamer verwijderen? Diegene kan met dezelfde identiteit niet opnieuw deelnemen aan deze kamer.</value>
+  </data>
+  <data name="Large language model" xml:space="preserve">
+    <value>Groot taalmodel</value>
+  </data>
+  <data name="Leave room" xml:space="preserve">
+    <value>Kamer verlaten</value>
+  </data>
+  <data name="Leave this room? Leaving an active game forfeits it. If everyone leaves, the room closes." xml:space="preserve">
+    <value>Deze ruimte verlaten? Als je een lopende partij verlaat, verlies je die. Als iedereen de ruimte verlaat, wordt deze gesloten.</value>
+  </data>
+  <data name="List this room publicly" xml:space="preserve">
+    <value>Deze kamer openbaar weergeven</value>
+  </data>
+  <data name="Lobby" xml:space="preserve">
+    <value>Spelobby</value>
+  </data>
+  <data name="Make host" xml:space="preserve">
+    <value>Host maken</value>
+  </data>
+  <data name="Message" xml:space="preserve">
+    <value>Bericht</value>
+  </data>
+  <data name="Model" xml:space="preserve">
+    <value>Model</value>
+  </data>
+  <data name="No increment" xml:space="preserve">
+    <value>Geen increment</value>
+  </data>
+  <data name="Observer" xml:space="preserve">
+    <value>Toeschouwer</value>
+  </data>
+  <data name="Observers" xml:space="preserve">
+    <value>Toeschouwers</value>
+  </data>
+  <data name="Only the host can manage this room." xml:space="preserve">
+    <value>Alleen de host kan deze kamer beheren.</value>
+  </data>
+  <data name="Only the two players can send chat messages. The host can drag people between seats and observers." xml:space="preserve">
+    <value>Alleen de twee spelers kunnen chatberichten sturen. De host kan mensen tussen de zitplaatsen en de toeschouwers verplaatsen.</value>
+  </data>
+  <data name="Players" xml:space="preserve">
+    <value>Spelers</value>
+  </data>
+  <data name="Playing" xml:space="preserve">
+    <value>Bezig</value>
+  </data>
+  <data name="Prepare next game" xml:space="preserve">
+    <value>Volgend spel voorbereiden</value>
+  </data>
+  <data name="Preparing" xml:space="preserve">
+    <value>Wordt voorbereid</value>
+  </data>
+  <data name="Randomize colors at start" xml:space="preserve">
+    <value>Kleuren willekeurig instellen bij de start</value>
+  </data>
+  <data name="Remove AI" xml:space="preserve">
+    <value>AI verwijderen</value>
+  </data>
+  <data name="Remove this AI and replace it with the selected person?" xml:space="preserve">
+    <value>Deze AI verwijderen en vervangen door de geselecteerde persoon?</value>
+  </data>
+  <data name="Replay" xml:space="preserve">
+    <value>Opnieuw afspelen</value>
+  </data>
+  <data name="Retry computer move" xml:space="preserve">
+    <value>Computerzet opnieuw proberen</value>
+  </data>
+  <data name="Room name" xml:space="preserve">
+    <value>Naam van de kamer</value>
+  </data>
+  <data name="Room settings" xml:space="preserve">
+    <value>Kamerinstellingen</value>
+  </data>
+  <data name="Save settings" xml:space="preserve">
+    <value>Instellingen opslaan</value>
+  </data>
+  <data name="Send" xml:space="preserve">
+    <value>Versturen</value>
+  </data>
+  <data name="Start game" xml:space="preserve">
+    <value>Spel starten</value>
+  </data>
+  <data name="Stop this game" xml:space="preserve">
+    <value>Stop dit spel</value>
+  </data>
+  <data name="Swap colors" xml:space="preserve">
+    <value>Wissel de kleuren om</value>
+  </data>
+  <data name="The next human becomes host when the host leaves. The room closes when everyone leaves. Refreshing or reconnecting has a 60-second grace period." xml:space="preserve">
+    <value>De volgende menselijke speler wordt host zodra de host vertrekt. De kamer wordt gesloten zodra iedereen vertrokken is. Na vernieuwen of opnieuw verbinden geldt een respijtperiode van 60 seconden.</value>
+  </data>
+  <data name="The room changed. Review the current settings and try again." xml:space="preserve">
+    <value>De kamer is gewijzigd. Controleer de huidige instellingen en probeer het opnieuw.</value>
+  </data>
+  <data name="The selected model is unavailable. Refresh and try again." xml:space="preserve">
+    <value>Het geselecteerde model is niet beschikbaar. Vernieuw de pagina en probeer het opnieuw.</value>
+  </data>
+  <data name="This person has left the room." xml:space="preserve">
+    <value>Deze persoon heeft de kamer verlaten.</value>
+  </data>
+  <data name="This room has closed. Return to the lobby." xml:space="preserve">
+    <value>Deze kamer is gesloten. Keer terug naar de lobby.</value>
+  </data>
+  <data name="This seat is occupied. Move or remove its player first." xml:space="preserve">
+    <value>Deze plek is bezet. Verplaats of verwijder de speler eerst.</value>
+  </data>
+  <data name="This will stop the current game without awarding a winner. Continue?" xml:space="preserve">
+    <value>Hiermee wordt de huidige partij beëindigd zonder een winnaar aan te wijzen. Doorgaan?</value>
+  </data>
+  <data name="Time per player" xml:space="preserve">
+    <value>Tijd per speler</value>
+  </data>
+  <data name="Unlimited" xml:space="preserve">
+    <value>Onbeperkt</value>
+  </data>
+  <data name="White" xml:space="preserve">
+    <value>Wit</value>
+  </data>
+  <data name="You have been removed from this room." xml:space="preserve">
+    <value>Je bent uit deze kamer verwijderd.</value>
+  </data>
+
+</root>

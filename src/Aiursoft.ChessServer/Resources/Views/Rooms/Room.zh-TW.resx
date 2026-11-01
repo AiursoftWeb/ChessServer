@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="{0} seconds" xml:space="preserve">
+    <value>{0} 秒</value>
+  </data>
+  <data name="10 minutes" xml:space="preserve">
+    <value>10 分鐘</value>
+  </data>
+  <data name="15 minutes" xml:space="preserve">
+    <value>15 分鐘</value>
+  </data>
+  <data name="3 minutes" xml:space="preserve">
+    <value>3 分鐘</value>
+  </data>
+  <data name="5 minutes" xml:space="preserve">
+    <value>5 分鐘</value>
+  </data>
+  <data name="Add AI" xml:space="preserve">
+    <value>新增 AI</value>
+  </data>
+  <data name="AI type" xml:space="preserve">
+    <value>AI 類型</value>
+  </data>
+  <data name="Black" xml:space="preserve">
+    <value>黑方</value>
+  </data>
+  <data name="Built-in engine — Lynx" xml:space="preserve">
+    <value>內建引擎 — Lynx</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>取消</value>
+  </data>
+  <data name="Chat" xml:space="preserve">
+    <value>聊天</value>
+  </data>
+  <data name="Choose valid room settings." xml:space="preserve">
+    <value>請選擇有效的房間設定。</value>
+  </data>
+  <data name="Copied" xml:space="preserve">
+    <value>已複製</value>
+  </data>
+  <data name="Copy link" xml:space="preserve">
+    <value>複製連結</value>
+  </data>
+  <data name="Could not update the room. Please try again." xml:space="preserve">
+    <value>無法更新房間，請再試一次。</value>
+  </data>
+  <data name="Difficulty" xml:space="preserve">
+    <value>難度</value>
+  </data>
+  <data name="Empty seat" xml:space="preserve">
+    <value>空位</value>
+  </data>
+  <data name="Fill both player seats before starting." xml:space="preserve">
+    <value>開始前請先讓兩個玩家座位都有人。</value>
+  </data>
+  <data name="Finish the current game before changing these settings." xml:space="preserve">
+    <value>請先完成目前的遊戲，再變更這些設定。</value>
+  </data>
+  <data name="Finished" xml:space="preserve">
+    <value>已完成</value>
+  </data>
+  <data name="Host" xml:space="preserve">
+    <value>主持人</value>
+  </data>
+  <data name="Increment per move" xml:space="preserve">
+    <value>每步加秒數</value>
+  </data>
+  <data name="Invitation link" xml:space="preserve">
+    <value>邀請連結</value>
+  </data>
+  <data name="Kick from room" xml:space="preserve">
+    <value>從房間中踢除</value>
+  </data>
+  <data name="Kick this person from the room? They cannot rejoin this room with the same identity." xml:space="preserve">
+    <value>要將此人移出房間嗎？他們將無法以相同的身分重新加入此房間。</value>
+  </data>
+  <data name="Large language model" xml:space="preserve">
+    <value>大型語言模型</value>
+  </data>
+  <data name="Leave room" xml:space="preserve">
+    <value>離開房間</value>
+  </data>
+  <data name="Leave this room? Leaving an active game forfeits it. If everyone leaves, the room closes." xml:space="preserve">
+    <value>要離開此房間嗎？離開進行中的遊戲將視同棄權。若所有人都離開，房間將關閉。</value>
+  </data>
+  <data name="List this room publicly" xml:space="preserve">
+    <value>將此房間公開列出</value>
+  </data>
+  <data name="Lobby" xml:space="preserve">
+    <value>大廳</value>
+  </data>
+  <data name="Make host" xml:space="preserve">
+    <value>設為房主</value>
+  </data>
+  <data name="Message" xml:space="preserve">
+    <value>訊息</value>
+  </data>
+  <data name="Model" xml:space="preserve">
+    <value>Model</value>
+  </data>
+  <data name="No increment" xml:space="preserve">
+    <value>不增加秒數</value>
+  </data>
+  <data name="Observer" xml:space="preserve">
+    <value>觀戰者</value>
+  </data>
+  <data name="Observers" xml:space="preserve">
+    <value>旁觀者</value>
+  </data>
+  <data name="Only the host can manage this room." xml:space="preserve">
+    <value>只有房主可以管理這個房間。</value>
+  </data>
+  <data name="Only the two players can send chat messages. The host can drag people between seats and observers." xml:space="preserve">
+    <value>只有兩位玩家可以傳送聊天訊息。房主可以將玩家拖曳到不同座位或觀戰者區。</value>
+  </data>
+  <data name="Players" xml:space="preserve">
+    <value>玩家</value>
+  </data>
+  <data name="Playing" xml:space="preserve">
+    <value>進行中</value>
+  </data>
+  <data name="Prepare next game" xml:space="preserve">
+    <value>準備下一局</value>
+  </data>
+  <data name="Preparing" xml:space="preserve">
+    <value>準備中</value>
+  </data>
+  <data name="Randomize colors at start" xml:space="preserve">
+    <value>開始時隨機分配棋子顏色</value>
+  </data>
+  <data name="Remove AI" xml:space="preserve">
+    <value>移除 AI</value>
+  </data>
+  <data name="Remove this AI and replace it with the selected person?" xml:space="preserve">
+    <value>移除此 AI，並以所選的人取代嗎？</value>
+  </data>
+  <data name="Replay" xml:space="preserve">
+    <value>重播</value>
+  </data>
+  <data name="Retry computer move" xml:space="preserve">
+    <value>重試電腦走棋</value>
+  </data>
+  <data name="Room name" xml:space="preserve">
+    <value>房間名稱</value>
+  </data>
+  <data name="Room settings" xml:space="preserve">
+    <value>聊天室設定</value>
+  </data>
+  <data name="Save settings" xml:space="preserve">
+    <value>儲存設定</value>
+  </data>
+  <data name="Send" xml:space="preserve">
+    <value>送出</value>
+  </data>
+  <data name="Start game" xml:space="preserve">
+    <value>開始遊戲</value>
+  </data>
+  <data name="Stop this game" xml:space="preserve">
+    <value>停止這場遊戲</value>
+  </data>
+  <data name="Swap colors" xml:space="preserve">
+    <value>交換雙方棋子顏色</value>
+  </data>
+  <data name="The next human becomes host when the host leaves. The room closes when everyone leaves. Refreshing or reconnecting has a 60-second grace period." xml:space="preserve">
+    <value>主持人離開後，下一位真人玩家會接任主持人。所有人離開後，房間就會關閉。重新整理或重新連線有 60 秒的寬限時間。</value>
+  </data>
+  <data name="The room changed. Review the current settings and try again." xml:space="preserve">
+    <value>房間已變更。請檢查目前的設定並再試一次。</value>
+  </data>
+  <data name="The selected model is unavailable. Refresh and try again." xml:space="preserve">
+    <value>所選模型目前無法使用。請重新整理後再試一次。</value>
+  </data>
+  <data name="This person has left the room." xml:space="preserve">
+    <value>此人已離開房間。</value>
+  </data>
+  <data name="This room has closed. Return to the lobby." xml:space="preserve">
+    <value>此房間已關閉。請返回大廳。</value>
+  </data>
+  <data name="This seat is occupied. Move or remove its player first." xml:space="preserve">
+    <value>此座位已有人占用。請先移動或移除該玩家。</value>
+  </data>
+  <data name="This will stop the current game without awarding a winner. Continue?" xml:space="preserve">
+    <value>這將停止目前的棋局，且不判定勝者。要繼續嗎？</value>
+  </data>
+  <data name="Time per player" xml:space="preserve">
+    <value>每位玩家的時間</value>
+  </data>
+  <data name="Unlimited" xml:space="preserve">
+    <value>不限</value>
+  </data>
+  <data name="White" xml:space="preserve">
+    <value>白方</value>
+  </data>
+  <data name="You have been removed from this room." xml:space="preserve">
+    <value>您已被移出此房間。</value>
+  </data>
+
+</root>
