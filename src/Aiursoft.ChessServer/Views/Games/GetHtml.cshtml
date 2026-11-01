@@ -66,7 +66,7 @@
         <span data-key="other-end">@Localizer["Game over"]</span>
         <span data-key="leave">@Localizer["This game is still in progress. Your clock will keep running."]</span>
     </div>
-    <div class="d-flex align-items-center justify-content-between gap-2 mb-2">
+    <div class="d-flex align-items-center justify-content-between gap-2 mb-2" hidden="@Model.Embedded">
         <h1 id="versus-info" class="h5 mb-0">@Model.Message</h1>
         @if (!Model.Embedded) { <a class="btn btn-sm btn-outline-secondary text-nowrap flex-shrink-0" asp-controller="Lobby" asp-action="Index">@Localizer["Lobby"]</a> }
     </div>

@@ -54,6 +54,12 @@
   <data name="Choose valid room settings." xml:space="preserve">
     <value>请选择有效的房间设置。</value>
   </data>
+  <data name="Close" xml:space="preserve">
+    <value>关闭</value>
+  </data>
+  <data name="Colors are assigned when the game starts." xml:space="preserve">
+    <value>开局时分配棋子颜色。</value>
+  </data>
   <data name="Copied" xml:space="preserve">
     <value>已复制</value>
   </data>
@@ -138,6 +144,15 @@
   <data name="Only the two players can send chat messages. The host can drag people between seats and observers." xml:space="preserve">
     <value>只有两位玩家可以发送聊天消息。房主可以在玩家席位和观战席之间拖动人员。</value>
   </data>
+  <data name="People" xml:space="preserve">
+    <value>成员</value>
+  </data>
+  <data name="Player 1" xml:space="preserve">
+    <value>玩家 1</value>
+  </data>
+  <data name="Player 2" xml:space="preserve">
+    <value>玩家 2</value>
+  </data>
   <data name="Players" xml:space="preserve">
     <value>玩家</value>
   </data>
@@ -171,6 +186,9 @@
   <data name="Room name" xml:space="preserve">
     <value>房间名称</value>
   </data>
+  <data name="Room rules" xml:space="preserve">
+    <value>房间规则</value>
+  </data>
   <data name="Room settings" xml:space="preserve">
     <value>房间设置</value>
   </data>
@@ -179,6 +197,12 @@
   </data>
   <data name="Send" xml:space="preserve">
     <value>发送</value>
+  </data>
+  <data name="Share" xml:space="preserve">
+    <value>分享</value>
+  </data>
+  <data name="Share room" xml:space="preserve">
+    <value>分享房间</value>
   </data>
   <data name="Sign in to add an LLM." xml:space="preserve">
     <value>登录后即可添加大语言模型。</value>
