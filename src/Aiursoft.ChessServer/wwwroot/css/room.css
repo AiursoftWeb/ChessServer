@@ -55,8 +55,9 @@
 .room-tab:focus-visible{outline:2px solid var(--bs-primary);outline-offset:2px}
 .room-tab-panel{padding:1rem}
 #room-moves #game-moves,#room-moves .card-body{min-height:0;padding:0;border:0;box-shadow:none;background:transparent}
-.room-move-navigation{display:flex;gap:.5rem;padding-top:.75rem;flex-shrink:0}
-.room-move-navigation .btn{flex:1;font-size:1.1rem;line-height:1.25}
+.room-move-navigation{display:flex;align-items:center;gap:.35rem;margin-top:.5rem;flex-shrink:0}
+.room-move-navigation .btn{flex:1;min-width:2.75rem;min-height:2.75rem;font-size:1.1rem;line-height:1.25}
+.room-move-navigation output{font-size:.8rem;font-variant-numeric:tabular-nums;white-space:nowrap;text-align:center;min-width:5ch}
 #room-moves h2{display:none}
 #room-moves .chess-move-list{max-height:none;overflow:visible;align-content:start}
 #room-chat{display:flex;flex-direction:column}
@@ -67,7 +68,8 @@
 .room-in-game{max-width:calc(var(--room-board-size) + 23.25rem)!important}
 .room-in-game .room-workspace{grid-template-columns:minmax(0,var(--room-board-size)) minmax(19rem,22rem)}
 .room-in-game .chess-layout{display:block}
-.room-in-game .chess-playing-area{width:100%;max-width:none;margin:0}
+.room-in-game .advanced-game{position:sticky;top:1rem;align-self:start}
+.room-in-game .chess-playing-area{width:100%;max-width:min(100%,calc(100dvh - 12rem));margin-inline:auto}
 .room-in-game #board{max-width:none}
 .room-in-game .chess-clock{border:0;background:transparent;padding:.4rem 0;gap:.75rem;min-height:4rem}
 .room-in-game .chess-clock-active{background:transparent}
@@ -85,6 +87,7 @@
 @media(max-width:991px){
     .room-workspace,.room-in-game .room-workspace{grid-template-columns:minmax(0,1fr)}
     #managed-room{max-width:38rem!important}
+    .room-in-game .advanced-game{position:static}
 }
 @media(max-width:575px){
     .room-toolbar{align-items:flex-start;gap:.5rem}
@@ -100,4 +103,14 @@
 #room-preparing-chat #room-chat{padding:1rem 0}
 #room-preparing-chat .chess-messages{height:12rem;flex:auto;overflow:auto}
 
-@media(max-width:575px){.room-move-navigation .btn,.room-console-footer .btn{min-height:2.5rem}.room-tab{min-height:2.75rem}}
+@media(max-width:575px){.room-console-footer .btn{min-height:2.5rem}.room-tab{min-height:2.75rem}}
+
+@media(max-height:500px){
+    .room-move-navigation{display:grid;grid-template-columns:repeat(4,minmax(2.75rem,1fr))}
+    .room-move-navigation output{grid-row:2;grid-column:1/-1}
+    .room-in-game .chess-clock{min-height:2.25rem;gap:.35rem;padding:.15rem 0}
+    .room-in-game .room-avatar{width:1.5rem;height:1.5rem}
+    .room-in-game .clock-time{font-size:.85rem;padding:.2rem .3rem}
+    .room-in-game .clock-name{font-size:.75rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .room-in-game .room-board-side{font-size:.65rem}
+}

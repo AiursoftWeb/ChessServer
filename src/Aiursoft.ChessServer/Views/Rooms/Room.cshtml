@@ -17,6 +17,15 @@
     <div class="room-workspace">
         <div class="advanced-game">
             @if (Model.Game != null) { @await Html.PartialAsync("~/Views/Games/GetHtml.cshtml", Model.Game) }
+            @if (Model.Game != null) {
+                <nav id="room-replay-navigation" class="room-move-navigation" aria-label="@Localizer["Replay"]">
+                    <button class="btn btn-sm btn-outline-secondary" data-view-position="first" type="button" aria-label="@Localizer["First position"]" title="@Localizer["First position"]">|‹</button>
+                    <button class="btn btn-sm btn-outline-secondary" data-view-position="previous" type="button" aria-label="@Localizer["Previous move"]" title="@Localizer["Previous move"]">‹</button>
+                    <output id="room-replay-position" aria-live="polite" aria-label="@Localizer["Replay"]"></output>
+                    <button class="btn btn-sm btn-outline-secondary" data-view-position="next" type="button" aria-label="@Localizer["Next move"]" title="@Localizer["Next move"]">›</button>
+                    <button class="btn btn-sm btn-outline-secondary" data-view-position="latest" type="button" aria-label="@Localizer["Latest position"]" title="@Localizer["Latest position"]">›|</button>
+                </nav>
+            }
             <section id="room-roster" hidden="@(Model.Game != null)" aria-label="@Localizer["Players and observers"]">
                 <div class="d-flex justify-content-between align-items-center mb-3"><h2 class="h5 mb-0">@Localizer["Players"]</h2><button id="swap-seats" data-room-host class="btn btn-sm btn-outline-secondary" type="button">@Localizer["Swap colors"]</button></div>
                 <div class="row g-3"><div class="col-sm-6"><h3 id="white-seat-label" class="h6">@Localizer["White"]</h3><div id="white-seat" class="room-seat" data-drop-seat="white"></div></div><div class="col-sm-6"><h3 id="black-seat-label" class="h6">@Localizer["Black"]</h3><div id="black-seat" class="room-seat" data-drop-seat="black"></div></div></div>
@@ -32,12 +41,7 @@
                 <button id="room-chat-tab" class="room-tab" type="button" aria-expanded="false" aria-controls="room-chat" hidden>@Localizer["Chat"]<span id="room-unread" class="badge bg-primary ms-1" hidden></span><span class="room-panel-chevron" aria-hidden="true"></span></button>
             </div>
             <div id="room-moves" class="room-tab-panel" role="region" aria-labelledby="room-moves-tab" hidden>
-                <nav class="room-move-navigation" aria-label="@Localizer["Replay"]">
-                    <button class="btn btn-sm btn-outline-secondary" data-view-position="first" type="button" aria-label="@Localizer["First position"]" title="@Localizer["First position"]">|‹</button>
-                    <button class="btn btn-sm btn-outline-secondary" data-view-position="previous" type="button" aria-label="@Localizer["Previous move"]" title="@Localizer["Previous move"]">‹</button>
-                    <button class="btn btn-sm btn-outline-secondary" data-view-position="next" type="button" aria-label="@Localizer["Next move"]" title="@Localizer["Next move"]">›</button>
-                    <button class="btn btn-sm btn-outline-secondary" data-view-position="latest" type="button" aria-label="@Localizer["Latest position"]" title="@Localizer["Latest position"]">›|</button>
-                </nav>
+
             </div>
             <section id="room-chat" class="room-tab-panel" role="region" aria-labelledby="room-chat-tab" hidden>
                 <div id="room-messages" class="chess-messages" role="log" aria-live="polite"></div>

@@ -9,8 +9,6 @@ let drag;
 const settings = el('room-settings');
 let activePanel = null, unread = 0;
 function selectPanel(name, focus = false) {
-    // A collapsed record must not leave the board on a hidden replay position.
-    if (activePanel === 'moves' && name !== 'moves' && !el('return-live').hidden) el('return-live').click();
     activePanel = name;
     for (const tab of ['moves', 'chat']) {
         const selected = tab === name;
@@ -24,6 +22,7 @@ if (embeddedGame) {
     // Move the existing controls without replacing nodes or their event handlers.
     el('room-game-state').append(el('game-state'), el('game-result'));
     el('room-moves').prepend(el('game-moves'));
+    root.querySelector('.chess-playing-area').append(el('room-replay-navigation'));
     el('room-game-controls').append(el('game-controls'));
     root.querySelector('.room-actions').append(el('history-link'));
     el('room-game-tools').append(el('game-exports'), el('game-policy'));
