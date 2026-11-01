@@ -63,19 +63,20 @@
             <details class="small text-muted mt-2"><summary>@Localizer["Room rules"]</summary><p>@Localizer["Only the two players can send chat messages. The host can drag people between seats and observers."]</p><p>@Localizer["The next human becomes host when the host leaves. The room closes when everyone leaves. Refreshing or reconnecting has a 60-second grace period."]</p></details>
             </section>
             <footer class="room-console-footer">
-                <div id="room-game-controls"></div>
-                <div class="room-actions d-flex flex-wrap gap-2">
-            <button id="start-room" data-room-host class="btn btn-sm btn-primary" type="button">@Localizer["Start game"]</button>
-            <button id="next-room-game" data-room-host class="btn btn-sm btn-primary" type="button" hidden>@Localizer["Prepare next game"]</button>
-            <button id="retry-room-computer" data-room-host class="btn btn-sm btn-outline-primary" type="button" hidden>@Localizer["Retry computer move"]</button>
-            <a id="room-history" class="btn btn-sm btn-outline-primary" hidden>@Localizer["Replay"]</a>
-                </div>
                 <details id="room-tools" class="room-tools">
                     <summary>@Localizer["More"]</summary>
                     <div id="room-game-tools"></div>
             <button id="interrupt-room" data-room-host class="btn btn-sm btn-outline-danger" type="button" hidden>@Localizer["Stop this game"]</button>
             <button id="leave-room" class="btn btn-sm btn-outline-secondary" type="button">@Localizer["Leave room"]</button>
                 </details>
+                <div id="room-game-controls"></div>
+                <div id="room-primary-actions" class="room-actions d-flex flex-wrap gap-2">
+            <a id="room-history" class="btn btn-sm btn-outline-primary" hidden>@Localizer["Replay"]</a>
+            <button id="start-room" data-room-host class="btn btn-sm btn-primary" type="button">@Localizer["Start game"]</button>
+            <button id="next-room-game" data-room-host class="btn btn-sm btn-primary" type="button" hidden>@Localizer["Prepare next game"]</button>
+            <button id="retry-room-computer" data-room-host class="btn btn-sm btn-outline-primary" type="button" hidden>@Localizer["Retry computer move"]</button>
+                </div>
+
             </footer>
         </aside>
     </div>
