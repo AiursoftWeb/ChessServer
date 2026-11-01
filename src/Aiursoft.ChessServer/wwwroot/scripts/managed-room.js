@@ -40,6 +40,27 @@ function avatar(url) {
     img.onerror = () => { img.onerror = null; img.src = '/images/avatars/anonymous.webp'; };
     return img;
 }
+function seatLabel(side) {
+    return text(state.RandomColors && state.Stage === 'waiting' && side !== 'observer' ? side === 'white' ? 'player-one' : 'player-two' : side);
+}
+function boardPlayers() {
+    if (!state.CurrentGameId) return;
+    const blackView = state.GameBlack?.Id === state.Viewer;
+    for (const [id, side] of [['clock-top', blackView ? 'white' : 'black'], ['clock-bottom', blackView ? 'black' : 'white']]) {
+        const clock = el(id), seat = side === 'white' ? state.GameWhite : state.GameBlack;
+        if (!clock || !seat) continue;
+        let image = clock.querySelector('.room-avatar');
+        if (!image) {
+            image = avatar(seat.AvatarUrl); clock.prepend(image);
+            const identity = document.createElement('div'); identity.className = 'room-board-identity';
+            clock.insertBefore(identity, clock.querySelector('.clock-name')); identity.append(clock.querySelector('.clock-name'));
+            const label = document.createElement('small'); label.className = 'room-board-side'; identity.append(label);
+        }
+        if (image.dataset.playerId !== seat.Id) { image.dataset.playerId = seat.Id; image.src = seat.AvatarUrl; }
+        clock.classList.toggle('room-host', seat.Id === state.Host);
+        clock.querySelector('.room-board-side').textContent = text(side) + (seat.Id === state.Host ? ` · ${text('host')}` : '');
+    }
+}
 function person(member, seat, host) {
     const row = document.createElement('div'); row.className = 'room-person'; row.dataset.personId = member.Id;
     row.append(avatar(member.AvatarUrl));
@@ -73,7 +94,7 @@ function person(member, seat, host) {
         requestAnimationFrame(() => { if (drag?.row === row) row.classList.add('room-person-dragging'); });
     };
     const select = document.createElement('select'); select.className = 'form-select form-select-sm'; select.setAttribute('aria-label', member.NickName);
-    for (const target of ['white', 'black', 'observer']) { const o = document.createElement('option'); o.value = target; o.textContent = text(target); select.append(o); }
+    for (const target of ['white', 'black', 'observer']) { const o = document.createElement('option'); o.value = target; o.textContent = seatLabel(target); select.append(o); }
     select.value = seat; select.onchange = () => command('move', {Target: member.Id, Seat: select.value}); row.append(select);
     if (member.Id !== state.Host) row.append(button('transfer', () => command('transfer', {Target: member.Id})));
     if (member.Id !== state.Viewer) row.append(button('kick', () => { if (confirm(text('confirm-kick'))) command('kick', {Target: member.Id}); }, true));
@@ -116,7 +137,15 @@ function apply(next) {
     el('interrupt-room').hidden = !host || state.Stage !== 'playing';
     el('room-history').hidden = state.Stage !== 'finished' || state.OrganizerId !== state.Viewer || state.Members.find(m => m.Id === state.Viewer)?.IsGuest !== false;
     el('room-history').href = `/History/Replay/${state.HistoryId}`;
-    el('swap-seats').disabled = state.Stage === 'playing';
+    const randomWaiting = state.RandomColors && state.Stage === 'waiting';
+    el('swap-seats').hidden = !host || randomWaiting; el('swap-seats').disabled = state.Stage === 'playing';
+    el('white-seat-label').textContent = seatLabel('white'); el('black-seat-label').textContent = seatLabel('black');
+    el('room-color-note').hidden = !randomWaiting;
+    el('show-room-people').hidden = !state.CurrentGameId;
+    if (state.CurrentGameId && el('room-roster').parentElement !== el('room-people')) {
+        el('room-people').append(el('room-roster')); el('room-roster').hidden = false;
+    }
+    boardPlayers();
     if (renderedVersion === state.Version) return;
     clearDrag();
     renderedVersion = state.Version;
@@ -153,6 +182,10 @@ el('next-room-game').onclick = () => command('next');
 el('retry-room-computer').onclick = () => command('retry');
 el('interrupt-room').onclick = () => { if (confirm(text('confirm-interrupt'))) command('interrupt', {Confirm: 'true'}); };
 el('leave-room').onclick = () => { if (confirm(text('confirm-leave'))) command('leave'); };
+el('share-room').onclick = () => el('room-share').showModal();
+el('close-room-share').onclick = () => el('room-share').close();
+el('show-room-people').onclick = () => el('room-people').showModal();
+el('close-room-people').onclick = () => el('room-people').close();
 el('copy-room-link').onclick = async () => { try { await navigator.clipboard.writeText(el('room-link').value); el('copy-room-link').textContent = text('copied'); } catch { el('room-link').select(); } };
 el('ai-kind').onchange = () => { const llm = el('ai-kind').value === 'llm'; el('ai-model-field').hidden = !llm; el('ai-difficulty-field').hidden = llm; };
 el('cancel-room-ai').onclick = () => el('add-room-ai').close();

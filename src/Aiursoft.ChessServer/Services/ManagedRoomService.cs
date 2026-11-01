@@ -48,15 +48,17 @@ public class ManagedRoomService(InMemoryDatabase database, GameSessionService se
             var member = room.Members.FirstOrDefault(m => m.Player.Id == viewer);
             if (member != null) member.SeenAt = DateTimeOffset.UtcNow;
             var game = room.CurrentGameId is { } gameId ? database.GetAcceptedChallenge(gameId) : null;
-            var registeredIds = room.Members.Where(m => !m.Player.IsGuest).Select(m => m.Player.Id.ToString()).ToArray();
+            var players = room.Members.Select(m => m.Player).Concat(game == null ? [] : new[] { game.GetWhitePlayer(), game.GetBlackPlayer() });
+            var registeredIds = players.Where(p => !p.IsGuest).Select(p => p.Id.ToString()).Distinct().ToArray();
             var avatars = await context.Users.AsNoTracking().Where(u => registeredIds.Contains(u.Id))
                 .ToDictionaryAsync(u => u.Id, u => u.AvatarRelativePath);
             string Avatar(Player player) => player.IsGuest ? "/images/avatars/anonymous.webp"
                 : storage.RelativePathToInternetUrl(avatars.GetValueOrDefault(player.Id.ToString(), User.DefaultAvatarPath)) + "?w=112&square=true";
-            object? Seat(RoomSeat? seat) => seat == null ? null : new { seat.Player.Id, Name = seat.Description, seat.Kind, seat.Difficulty, seat.Model };
+            object? Seat(RoomSeat? seat) => seat == null ? null : new { seat.Player.Id, Name = seat.Description, seat.Kind, seat.Difficulty, seat.Model,
+                AvatarUrl = seat.IsAi ? $"/images/avatars/{(seat.Kind == "llm" ? "llm" : "lynx")}.webp" : Avatar(seat.Player) };
             return new { Id = id, room.Version, Name = room.Message, Host = room.Creator.Id, Viewer = viewer,
                 Members = room.Members.Select(m => new { m.Player.Id, m.Player.NickName, m.Player.IsGuest, AvatarUrl = Avatar(m.Player) }).ToArray(),
-                White = Seat(room.White), Black = Seat(room.Black), room.CurrentGameId,
+                White = Seat(room.White), Black = Seat(room.Black), GameWhite = Seat(game?.WhiteController), GameBlack = Seat(game?.BlackController), room.CurrentGameId,
                 Stage = game == null ? "waiting" : game.Game.Board.IsEndGame ? "finished" : "playing",
                 Minutes = room.TimeLimit == TimeSpan.MaxValue ? 0 : (int)room.TimeLimit.TotalMinutes, room.IncrementSeconds,
                 Public = room.Permission == ChallengePermission.Public, room.RandomColors,

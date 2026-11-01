@@ -35,6 +35,24 @@ public class ManagedRoomTests : TestBase
     }
 
     [TestMethod]
+    public async Task FinishedGameKeepsItsPlayersWhenRoomSeatsChange()
+    {
+        var host = Human("Host"); var id = await Rooms.CreateAsync(host);
+        await AddEngine(id, host, "black"); await Act(id, host, "start");
+        var gameId = Rooms.Find(id)!.CurrentGameId!.Value;
+        await GetService<GameSessionService>().EndManagedGameAsync(gameId);
+        await Act(id, host, "swap");
+        var state = JsonSerializer.SerializeToElement(await Rooms.StateAsync(id, host.Id));
+        Assert.AreEqual("finished", state.GetProperty("Stage").GetString());
+        Assert.AreNotEqual(host.Id.ToString(), state.GetProperty("White").GetProperty("Id").GetString());
+        Assert.AreEqual(host.Id.ToString(), state.GetProperty("GameWhite").GetProperty("Id").GetString());
+        Assert.AreEqual("/images/avatars/lynx.webp", state.GetProperty("GameBlack").GetProperty("AvatarUrl").GetString());
+        await Act(id, host, "next");
+        state = JsonSerializer.SerializeToElement(await Rooms.StateAsync(id, host.Id));
+        Assert.AreEqual(JsonValueKind.Null, state.GetProperty("GameWhite").ValueKind);
+    }
+
+    [TestMethod]
     public async Task OnlyHostCanConfigureAndAiCannotBeAnObserver()
     {
         var host = Human("Host"); var visitor = Human("Visitor"); var id = await Rooms.CreateAsync(host);
