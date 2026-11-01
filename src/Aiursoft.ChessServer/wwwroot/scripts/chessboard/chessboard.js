@@ -78,11 +78,16 @@ export default class ChessSurface {
         });
         list.scrollTop = list.scrollHeight;
     }
-    show(ply) { this.viewPly = ply; this.selected = null; this.paint(); }
+    show(ply) {
+        this.viewPly = ply; this.selected = null; this.paint();
+        document.getElementById('room-replay-navigation')?.closest('.chess-playing-area').scrollIntoView({block: 'nearest'});
+    }
     paint() {
         if (!this.state) return;
         this.board.position(this.viewPly === this.moves.length ? this.state.Position : this.positions[this.viewPly], false);
         document.getElementById('return-live').hidden = this.viewPly === this.moves.length;
+        const replayPosition = document.getElementById('room-replay-position');
+        if (replayPosition) replayPosition.value = `${this.viewPly} / ${this.moves.length}`;
         const buttons = document.querySelectorAll('#move-list button');
         buttons.forEach(button => { button.classList.toggle('btn-primary', Number(button.dataset.ply) === this.viewPly); button.classList.toggle('btn-light', Number(button.dataset.ply) !== this.viewPly); });
         document.querySelectorAll('[data-view-position]').forEach(button => {
