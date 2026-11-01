@@ -56,6 +56,7 @@
     </form></dialog>
     <form id="room-antiforgery" hidden>@Html.AntiForgeryToken()</form>
     <div id="room-loc" hidden>
+        <span data-key="drag">@Localizer["Drag to change role"]</span><span data-key="drop">@Localizer["Drop here"]</span>
         <span data-key="seconds">@Localizer["{0} seconds"].Value</span>
         <span data-key="waiting">@Localizer["Preparing"]</span><span data-key="playing">@Localizer["Playing"]</span><span data-key="finished">@Localizer["Finished"]</span>
         <span data-key="empty">@Localizer["Empty seat"]</span><span data-key="observer">@Localizer["Observer"]</span><span data-key="white">@Localizer["White"]</span><span data-key="black">@Localizer["Black"]</span><span data-key="host">@Localizer["Host"]</span>

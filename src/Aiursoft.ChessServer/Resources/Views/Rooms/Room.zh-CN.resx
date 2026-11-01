@@ -66,6 +66,12 @@
   <data name="Difficulty" xml:space="preserve">
     <value>难度</value>
   </data>
+  <data name="Drag to change role" xml:space="preserve">
+    <value>拖动以更改角色</value>
+  </data>
+  <data name="Drop here" xml:space="preserve">
+    <value>放置于此</value>
+  </data>
   <data name="Empty seat" xml:space="preserve">
     <value>空座位</value>
   </data>
