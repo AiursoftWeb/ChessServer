@@ -30,7 +30,14 @@ public class Startup : IWebStartup
         // AppSettings.
         services.Configure<AppSettings>(configuration.GetSection("AppSettings"));
         services.Configure<OpenAIConfiguration>(configuration.GetSection("OpenAI"));
-        services.AddScoped<Aiursoft.GptClient.Services.ChatClient>();
+        services.AddScoped(provider =>
+        {
+            var http = provider.GetRequiredService<IHttpClientFactory>().CreateClient("chess-llm");
+            var client = new Aiursoft.GptClient.Services.ChatClient(http, provider.GetRequiredService<ILogger<Aiursoft.GptClient.Services.ChatClient>>());
+            // ChatClient defaults to five minutes; chess owns the per-attempt deadline and cancellation.
+            http.Timeout = Timeout.InfiniteTimeSpan;
+            return client;
+        });
 
         // Relational database
         var (connectionString, dbType, allowCache) = configuration.GetDbSettings();

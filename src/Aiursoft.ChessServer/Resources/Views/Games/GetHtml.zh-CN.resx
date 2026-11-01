@@ -328,4 +328,22 @@
     <value>您的对手提出再赛，并交换执棋颜色。</value>
   </data>
 
+  <data name="LLM attempt {0}/{1}: {2}. Elapsed {3}, limit {4}." xml:space="preserve">
+    <value>LLM 第 {0}/{1} 次尝试：{2}。已用时 {3}，时限 {4}。</value>
+  </data>
+  <data name="The LLM failed after three attempts: the final request timed out. Automatic retries have stopped. The host can retry the move." xml:space="preserve">
+    <value>LLM 连续尝试三次后仍失败：最后一次请求超时。自动重试已停止。房主可以重试此操作。</value>
+  </data>
+  <data name="The model gateway rejected the request. Automatic retries have stopped. Choose another model or ask the administrator to check its configuration." xml:space="preserve">
+    <value>模型网关拒绝了该请求。自动重试已停止。请选择其他模型，或请管理员检查其配置。</value>
+  </data>
+  <data name="Thinking" xml:space="preserve">
+    <value>正在思考</value>
+  </data>
+  <data name="Waiting for a model slot" xml:space="preserve">
+    <value>正在等待模型空位</value>
+  </data>
+  <data name="The model service failed after three attempts. Automatic retries have stopped. The host can retry the move." xml:space="preserve">
+    <value>模型服务在尝试三次后仍然失败。自动重试已停止。主持人可以重试此次移动。</value>
+  </data>
 </root>

@@ -13,16 +13,16 @@ public class LlmGameTests : TestBase
     private int _completionCalls;
     private int _modelCalls;
 
-    private async Task ConfigureLlm(string completion = "null")
+    private async Task ConfigureLlm(string completion = "null", Func<int, HttpContext, Task<IResult>>? respond = null)
     {
         var builder = WebApplication.CreateBuilder();
         builder.WebHost.UseUrls("http://127.0.0.1:0");
         _gateway = builder.Build();
         _gateway.MapGet("/v1/models", () => { _modelCalls++; return Results.Json(new { data = new[] { new { id = "configured-model" }, new { id = "another-model" } } }); });
-        _gateway.MapPost("/v1/chat/completions", () =>
+        _gateway.MapPost("/v1/chat/completions", async (HttpContext context) =>
         {
-            _completionCalls++;
-            return Results.Text(completion, "application/json");
+            var call = Interlocked.Increment(ref _completionCalls);
+            return respond == null ? Results.Text(completion, "application/json") : await respond(call, context);
         });
         await _gateway.StartAsync();
         var configuration = GetService<IConfiguration>();
@@ -161,8 +161,8 @@ public class LlmGameTests : TestBase
         var room = GetService<InMemoryDatabase>().GetAcceptedChallenge(id)!;
         await sessions.ExecuteAsync(id, player.Id, new GameCommand(Guid.NewGuid(), "move", 0, "e4"));
         var oldRevision = room.Revision;
-        await sessions.ComputerFailedAsync(id, oldRevision);
-        Assert.AreEqual("computer-failed", ((AcceptedChallenge)RoomSnapshot.Capture(room).Restore()).Game.ComputerError);
+        await sessions.ComputerFailedAsync(id, oldRevision, "computer-timeout");
+        Assert.AreEqual("computer-timeout", ((AcceptedChallenge)RoomSnapshot.Capture(room).Restore()).Game.ComputerError);
         Assert.IsTrue((await sessions.StateAsync(id, player.Id))!.CanUndo);
         using var search = new CancellationTokenSource(); room.Game.SearchCancellation = search;
         await sessions.ExecuteAsync(id, player.Id, new GameCommand(Guid.NewGuid(), "undo"));
@@ -185,5 +185,80 @@ public class LlmGameTests : TestBase
         await sessions.ExecuteAsync(id, player.Id, new GameCommand(Guid.NewGuid(), "resign"));
         await sessions.ComputerFailedAsync(id, revision);
         Assert.IsTrue(search.IsCancellationRequested); Assert.AreEqual("0-1", room.Result); Assert.IsNull(room.Game.ComputerError);
+    }
+
+    [TestMethod]
+    public async Task ThreeTimedOutRequestsPersistAnErrorAndExplicitRetryRecovers()
+    {
+        await ConfigureLlm(respond: async (call, context) =>
+        {
+            if (call <= 3) await Task.Delay(Timeout.Infinite, context.RequestAborted);
+            return Results.Text("{\"choices\":[{\"message\":{\"content\":\"e4\"}}]}", "application/json");
+        });
+        GetService<IConfiguration>()["OpenAI:TimeoutSeconds"] = "1";
+        await RegisterAndLoginAsync();
+        await PostForm("/pve/new", new() { ["difficulty"] = "llm", ["model"] = "configured-model", ["roleRule"] = "1" }, tokenUrl: "/Lobby");
+        var room = GetService<InMemoryDatabase>().GetGames().Single();
+        var id = GetService<InMemoryDatabase>().GetRooms().Single().Key;
+        await PostForm($"/games/{id}/computer", new(), tokenUrl: "/Lobby");
+        Assert.AreEqual(3, _completionCalls); Assert.AreEqual("computer-timeout", room.Game.ComputerError);
+        Assert.AreEqual("computer-timeout", ((AcceptedChallenge)RoomSnapshot.Capture(room).Restore()).Game.ComputerError);
+        Assert.AreEqual(0, room.Game.Board.MovesToSan.Count);
+        await PostForm($"/games/{id}/computer", new(), tokenUrl: "/Lobby");
+        Assert.AreEqual(3, _completionCalls);
+        await PostForm($"/games/{id}/computer", new() { ["retry"] = "true" }, tokenUrl: "/Lobby");
+        Assert.AreEqual(4, _completionCalls); Assert.IsNull(room.Game.ComputerError);
+        CollectionAssert.AreEqual(new[] { "e4" }, room.Game.Board.MovesToSan.ToArray());
+    }
+
+    [TestMethod]
+    [DataRow(408)]
+    [DataRow(504)]
+    [DataRow(400)]
+    [DataRow(503)]
+    public async Task GatewayTimeoutsRetryButInvalidRequestsStopImmediately(int status)
+    {
+        await ConfigureLlm(respond: (_, _) => Task.FromResult(Results.StatusCode(status)));
+        await RegisterAndLoginAsync();
+        await PostForm("/pve/new", new() { ["difficulty"] = "llm", ["model"] = "configured-model", ["roleRule"] = "1" }, tokenUrl: "/Lobby");
+        var id = GetService<InMemoryDatabase>().GetRooms().Single().Key;
+        await PostForm($"/games/{id}/computer", new(), tokenUrl: "/Lobby");
+        Assert.AreEqual(status == 400 ? 1 : 3, _completionCalls);
+        Assert.AreEqual(status == 400 ? "computer-rejected" : status == 503 ? "computer-unavailable" : "computer-timeout", GetService<InMemoryDatabase>().GetAcceptedChallenge(id)!.Game.ComputerError);
+    }
+
+    [TestMethod]
+    public async Task ManagedRoomReportsRetriesToObserversAndRequiresExplicitRecoveryAfterFailure()
+    {
+        await ConfigureLlm(respond: async (call, context) =>
+        {
+            if (call <= 3) await Task.Delay(Timeout.Infinite, context.RequestAborted);
+            return Results.Text("{\"choices\":[{\"message\":{\"content\":\"e5\"}}]}", "application/json");
+        });
+        GetService<IConfiguration>()["OpenAI:TimeoutSeconds"] = "1";
+        var host = new Player(Guid.NewGuid()) { NickName = "Host" };
+        var rooms = GetService<ManagedRoomService>(); var id = await rooms.CreateAsync(host);
+        Task Act(string kind) => rooms.ExecuteAsync(id, host, new RoomCommand { Kind = kind, Version = rooms.Find(id)!.Version,
+            CommandId = Guid.NewGuid(), Ai = "llm", Model = "configured-model", Seat = "black" });
+        await Act("add-ai"); await Act("start");
+        var gameId = rooms.Find(id)!.CurrentGameId!.Value;
+        var game = GetService<InMemoryDatabase>().GetAcceptedChallenge(gameId)!;
+        var sessions = GetService<GameSessionService>(); var computer = GetService<ComputerTurnCoordinator>();
+        await sessions.ExecuteAsync(gameId, host.Id, new GameCommand(Guid.NewGuid(), "move", 0, "e4"));
+        computer.Wake(gameId);
+        using var deadline = new CancellationTokenSource(TimeSpan.FromSeconds(15));
+        while (game.Game.ComputerProgress?.Attempt != 2) await Task.Delay(10, deadline.Token);
+        var observerState = await sessions.StateAsync(gameId, Guid.NewGuid());
+        Assert.AreEqual(2, observerState!.ComputerProgress!.Attempt);
+        Assert.AreEqual(3, observerState.ComputerProgress.MaxAttempts);
+        Assert.AreEqual(1, observerState.ComputerProgress.TimeoutSeconds);
+        while (game.Game.ComputerError == null || game.Game.IsThinking) await Task.Delay(10, deadline.Token);
+        Assert.AreEqual("computer-timeout", game.Game.ComputerError); Assert.AreEqual(3, _completionCalls);
+        computer.Wake(gameId); await Task.Delay(100, deadline.Token); Assert.AreEqual(3, _completionCalls);
+        await Act("retry"); computer.Wake(gameId);
+        while (game.Game.Board.MovesToSan.Count < 2) await Task.Delay(10, deadline.Token);
+        Assert.AreEqual(4, _completionCalls); Assert.IsNull(game.Game.ComputerError); Assert.IsNull(game.Game.ComputerProgress);
+        Assert.AreEqual(1, game.AiTurns.Single().Attempts);
+        await Act("leave");
     }
 }

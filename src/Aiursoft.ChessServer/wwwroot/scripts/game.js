@@ -72,7 +72,14 @@ function render() {
     element('opponent-status').hidden = !offline;
     element('opponent-status').textContent = absent >= 90 ? text('claim-ready') : format('opponent-offline', Math.ceil(90 - absent));
     element('claim').hidden = !offline || absent < 90;
-    element('status').textContent = ended ? text('ended') : pending ? text('pending') : state.Computer && state.Game.Turn !== color && participant ? text('thinking') : format('turn', text(state.Game.Turn === 'w' ? 'white' : 'black'));
+    const progress = state.Thinking && state.ComputerProgress;
+    const duration = seconds => `${Math.floor(seconds / 60)}:${String(seconds % 60).padStart(2, '0')}`;
+    const values = progress ? [progress.Attempt, progress.MaxAttempts, text(progress.Queued ? 'llm-queued' : 'llm-thinking'),
+        duration(Math.max(0, Math.floor((state.SampledAt - Date.parse(progress.StartedAt) + elapsed) / 1000))), duration(progress.TimeoutSeconds)] : [];
+    const thinking = progress ? text('llm-attempt').replace(/\{(\d+)\}/g, (_, index) => String(values[index])) : text('thinking');
+    element('status').classList.toggle('text-danger', !ended && !!state.ComputerError);
+    element('status').textContent = ended ? text('ended') : state.ComputerError ? text(state.ComputerError) : pending ? text('pending')
+        : state.Thinking ? thinking : format('turn', text(state.Game.Turn === 'w' ? 'white' : 'black'));
     element('game-result').hidden = !ended;
     element('game-policy').hidden = ended;
     element('offer-rematch').hidden = !participant || !!state.ParentRoomId || !!state.RematchOfferedBy || !!state.NextGameId;
