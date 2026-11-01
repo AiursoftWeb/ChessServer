@@ -117,6 +117,9 @@
   <data name="Draw by the fifty-move rule" xml:space="preserve">
     <value>Nulle par la règle des 50 coups</value>
   </data>
+  <data name="Export FEN" xml:space="preserve">
+    <value>Exporter le FEN</value>
+  </data>
   <data name="Export PGN" xml:space="preserve">
     <value>Exporter au format PGN</value>
   </data>
@@ -152,6 +155,9 @@
   </data>
   <data name="Knight" xml:space="preserve">
     <value>Cavalier</value>
+  </data>
+  <data name="LLM attempt {0}/{1}: {2}. Elapsed {3}, limit {4}." xml:space="preserve">
+    <value>Tentative LLM {0}/{1} : {2}. Temps écoulé : {3}, limite : {4}.</value>
   </data>
   <data name="Lobby" xml:space="preserve">
     <value>Salon de jeu</value>
@@ -261,11 +267,23 @@
   <data name="The game has started. You can resign instead." xml:space="preserve">
     <value>La partie a commencé. Vous pouvez abandonner à la place.</value>
   </data>
+  <data name="The LLM failed after three attempts: the final request timed out. Automatic retries have stopped. The host can retry the move." xml:space="preserve">
+    <value>Le LLM a échoué après trois tentatives : la dernière requête a expiré. Les nouvelles tentatives automatiques ont cessé. L’hôte peut réessayer le coup.</value>
+  </data>
+  <data name="The model gateway rejected the request. Automatic retries have stopped. Choose another model or ask the administrator to check its configuration." xml:space="preserve">
+    <value>La passerelle du modèle a rejeté la requête. Les nouvelles tentatives automatiques ont cessé. Choisissez un autre modèle ou demandez à l’administrateur de vérifier sa configuration.</value>
+  </data>
+  <data name="The model service failed after three attempts. Automatic retries have stopped. The host can retry the move." xml:space="preserve">
+    <value>Le service du modèle a échoué après trois tentatives. Les nouvelles tentatives automatiques ont été arrêtées. L’hôte peut réessayer le coup.</value>
+  </data>
   <data name="The position changed. Your board has been synchronized." xml:space="preserve">
     <value>La position a changé. Votre échiquier a été synchronisé.</value>
   </data>
   <data name="The rematch offer is no longer available." xml:space="preserve">
     <value>L’offre de revanche n’est plus disponible.</value>
+  </data>
+  <data name="Thinking" xml:space="preserve">
+    <value>Réflexion</value>
   </data>
   <data name="This action could not be confirmed. Refresh to synchronize." xml:space="preserve">
     <value>Cette action n’a pas pu être confirmée. Actualisez la page pour synchroniser.</value>
@@ -290,6 +308,9 @@
   </data>
   <data name="Unlimited" xml:space="preserve">
     <value>Illimité</value>
+  </data>
+  <data name="Waiting for a model slot" xml:space="preserve">
+    <value>En attente d’une place pour le modèle</value>
   </data>
   <data name="White" xml:space="preserve">
     <value>Blancs</value>

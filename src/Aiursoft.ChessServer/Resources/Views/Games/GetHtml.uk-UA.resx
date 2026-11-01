@@ -117,6 +117,9 @@
   <data name="Draw by the fifty-move rule" xml:space="preserve">
     <value>Нічия за правилом 50 ходів</value>
   </data>
+  <data name="Export FEN" xml:space="preserve">
+    <value>Експортувати FEN</value>
+  </data>
   <data name="Export PGN" xml:space="preserve">
     <value>Експортувати PGN</value>
   </data>
@@ -152,6 +155,9 @@
   </data>
   <data name="Knight" xml:space="preserve">
     <value>Кінь</value>
+  </data>
+  <data name="LLM attempt {0}/{1}: {2}. Elapsed {3}, limit {4}." xml:space="preserve">
+    <value>Спроба LLM {0}/{1}: {2}. Минуло {3}, обмеження — {4}.</value>
   </data>
   <data name="Lobby" xml:space="preserve">
     <value>Лобі</value>
@@ -261,11 +267,23 @@
   <data name="The game has started. You can resign instead." xml:space="preserve">
     <value>Гру розпочато. Натомість ви можете здатися.</value>
   </data>
+  <data name="The LLM failed after three attempts: the final request timed out. Automatic retries have stopped. The host can retry the move." xml:space="preserve">
+    <value>LLM не вдалося виконати запит після трьох спроб: час очікування на останній запит вичерпано. Автоматичні повторні спроби припинено. Ведучий може повторити хід.</value>
+  </data>
+  <data name="The model gateway rejected the request. Automatic retries have stopped. Choose another model or ask the administrator to check its configuration." xml:space="preserve">
+    <value>Шлюз моделі відхилив запит. Автоматичні повторні спроби припинено. Виберіть іншу модель або попросіть адміністратора перевірити її конфігурацію.</value>
+  </data>
+  <data name="The model service failed after three attempts. Automatic retries have stopped. The host can retry the move." xml:space="preserve">
+    <value>Служба моделі не змогла виконати запит після трьох спроб. Автоматичні повторні спроби припинено. Ведучий може повторити хід.</value>
+  </data>
   <data name="The position changed. Your board has been synchronized." xml:space="preserve">
     <value>Позицію змінено. Вашу дошку синхронізовано.</value>
   </data>
   <data name="The rematch offer is no longer available." xml:space="preserve">
     <value>Пропозиція на реванш більше недоступна.</value>
+  </data>
+  <data name="Thinking" xml:space="preserve">
+    <value>Думає</value>
   </data>
   <data name="This action could not be confirmed. Refresh to synchronize." xml:space="preserve">
     <value>Не вдалося підтвердити цю дію. Оновіть сторінку, щоб синхронізувати дані.</value>
@@ -290,6 +308,9 @@
   </data>
   <data name="Unlimited" xml:space="preserve">
     <value>Без обмежень</value>
+  </data>
+  <data name="Waiting for a model slot" xml:space="preserve">
+    <value>Очікування на вільне місце для моделі</value>
   </data>
   <data name="White" xml:space="preserve">
     <value>Білі</value>

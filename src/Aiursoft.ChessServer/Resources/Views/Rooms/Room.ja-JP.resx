@@ -54,6 +54,12 @@
   <data name="Choose valid room settings." xml:space="preserve">
     <value>有効なルーム設定を選択してください。</value>
   </data>
+  <data name="Close" xml:space="preserve">
+    <value>閉じる</value>
+  </data>
+  <data name="Colors are assigned when the game starts." xml:space="preserve">
+    <value>色はゲーム開始時に割り当てられます。</value>
+  </data>
   <data name="Copied" xml:space="preserve">
     <value>コピーしました</value>
   </data>
@@ -66,6 +72,12 @@
   <data name="Difficulty" xml:space="preserve">
     <value>難易度</value>
   </data>
+  <data name="Drag to change role" xml:space="preserve">
+    <value>ドラッグして役割を変更</value>
+  </data>
+  <data name="Drop here" xml:space="preserve">
+    <value>ここにドロップ</value>
+  </data>
   <data name="Empty seat" xml:space="preserve">
     <value>空席</value>
   </data>
@@ -77,6 +89,12 @@
   </data>
   <data name="Finished" xml:space="preserve">
     <value>終了</value>
+  </data>
+  <data name="First position" xml:space="preserve">
+    <value>最初の局面</value>
+  </data>
+  <data name="Game information" xml:space="preserve">
+    <value>ゲーム情報</value>
   </data>
   <data name="Host" xml:space="preserve">
     <value>ホスト</value>
@@ -95,6 +113,9 @@
   </data>
   <data name="Large language model" xml:space="preserve">
     <value>大規模言語モデル</value>
+  </data>
+  <data name="Latest position" xml:space="preserve">
+    <value>最新の局面</value>
   </data>
   <data name="Leave room" xml:space="preserve">
     <value>ルームを退出</value>
@@ -117,6 +138,15 @@
   <data name="Model" xml:space="preserve">
     <value>Model</value>
   </data>
+  <data name="More" xml:space="preserve">
+    <value>その他</value>
+  </data>
+  <data name="Moves" xml:space="preserve">
+    <value>指し手</value>
+  </data>
+  <data name="Next move" xml:space="preserve">
+    <value>次の指し手</value>
+  </data>
   <data name="No increment" xml:space="preserve">
     <value>増分なし</value>
   </data>
@@ -132,8 +162,20 @@
   <data name="Only the two players can send chat messages. The host can drag people between seats and observers." xml:space="preserve">
     <value>チャットメッセージを送信できるのは対局者2人のみです。ホストは、プレイヤーを席と観戦者の間でドラッグして移動できます。</value>
   </data>
+  <data name="People" xml:space="preserve">
+    <value>参加者</value>
+  </data>
+  <data name="Player 1" xml:space="preserve">
+    <value>プレイヤー1</value>
+  </data>
+  <data name="Player 2" xml:space="preserve">
+    <value>プレイヤー2</value>
+  </data>
   <data name="Players" xml:space="preserve">
     <value>プレイヤー</value>
+  </data>
+  <data name="Players and observers" xml:space="preserve">
+    <value>プレイヤーと観戦者</value>
   </data>
   <data name="Playing" xml:space="preserve">
     <value>対局中</value>
@@ -143,6 +185,9 @@
   </data>
   <data name="Preparing" xml:space="preserve">
     <value>準備中</value>
+  </data>
+  <data name="Previous move" xml:space="preserve">
+    <value>前の手</value>
   </data>
   <data name="Randomize colors at start" xml:space="preserve">
     <value>開始時に色をランダムにする</value>
@@ -159,8 +204,14 @@
   <data name="Retry computer move" xml:space="preserve">
     <value>コンピューターの手を再試行</value>
   </data>
+  <data name="Room controls" xml:space="preserve">
+    <value>ルーム操作</value>
+  </data>
   <data name="Room name" xml:space="preserve">
     <value>ルーム名</value>
+  </data>
+  <data name="Room rules" xml:space="preserve">
+    <value>ルームのルール</value>
   </data>
   <data name="Room settings" xml:space="preserve">
     <value>ルーム設定</value>
@@ -170,6 +221,15 @@
   </data>
   <data name="Send" xml:space="preserve">
     <value>送信</value>
+  </data>
+  <data name="Share" xml:space="preserve">
+    <value>共有</value>
+  </data>
+  <data name="Share room" xml:space="preserve">
+    <value>ルームを共有</value>
+  </data>
+  <data name="Sign in to add an LLM." xml:space="preserve">
+    <value>LLMを追加するにはサインインしてください。</value>
   </data>
   <data name="Start game" xml:space="preserve">
     <value>ゲームを開始</value>

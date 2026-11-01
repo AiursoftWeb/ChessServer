@@ -54,6 +54,12 @@
   <data name="Choose valid room settings." xml:space="preserve">
     <value>اختر إعدادات صالحة للغرفة.</value>
   </data>
+  <data name="Close" xml:space="preserve">
+    <value>إغلاق</value>
+  </data>
+  <data name="Colors are assigned when the game starts." xml:space="preserve">
+    <value>يتم تحديد الألوان عند بدء اللعبة.</value>
+  </data>
   <data name="Copied" xml:space="preserve">
     <value>تم النسخ</value>
   </data>
@@ -66,6 +72,12 @@
   <data name="Difficulty" xml:space="preserve">
     <value>مستوى الصعوبة</value>
   </data>
+  <data name="Drag to change role" xml:space="preserve">
+    <value>اسحب لتغيير الدور</value>
+  </data>
+  <data name="Drop here" xml:space="preserve">
+    <value>أفلِت هنا</value>
+  </data>
   <data name="Empty seat" xml:space="preserve">
     <value>مقعد شاغر</value>
   </data>
@@ -77,6 +89,12 @@
   </data>
   <data name="Finished" xml:space="preserve">
     <value>مكتملة</value>
+  </data>
+  <data name="First position" xml:space="preserve">
+    <value>الموضع الأول</value>
+  </data>
+  <data name="Game information" xml:space="preserve">
+    <value>معلومات اللعبة</value>
   </data>
   <data name="Host" xml:space="preserve">
     <value>المضيف</value>
@@ -95,6 +113,9 @@
   </data>
   <data name="Large language model" xml:space="preserve">
     <value>نموذج لغوي كبير</value>
+  </data>
+  <data name="Latest position" xml:space="preserve">
+    <value>أحدث وضعية</value>
   </data>
   <data name="Leave room" xml:space="preserve">
     <value>مغادرة الغرفة</value>
@@ -117,6 +138,15 @@
   <data name="Model" xml:space="preserve">
     <value>Model</value>
   </data>
+  <data name="More" xml:space="preserve">
+    <value>المزيد</value>
+  </data>
+  <data name="Moves" xml:space="preserve">
+    <value>النقلات</value>
+  </data>
+  <data name="Next move" xml:space="preserve">
+    <value>النقلة التالية</value>
+  </data>
   <data name="No increment" xml:space="preserve">
     <value>دون زيادة</value>
   </data>
@@ -132,8 +162,20 @@
   <data name="Only the two players can send chat messages. The host can drag people between seats and observers." xml:space="preserve">
     <value>لا يمكن إرسال رسائل الدردشة إلا للاعبين الاثنين. ويمكن للمضيف سحب الأشخاص ونقلهم بين المقاعد والمشاهدين.</value>
   </data>
+  <data name="People" xml:space="preserve">
+    <value>الأشخاص</value>
+  </data>
+  <data name="Player 1" xml:space="preserve">
+    <value>اللاعب 1</value>
+  </data>
+  <data name="Player 2" xml:space="preserve">
+    <value>اللاعب 2</value>
+  </data>
   <data name="Players" xml:space="preserve">
     <value>اللاعبون</value>
+  </data>
+  <data name="Players and observers" xml:space="preserve">
+    <value>اللاعبون والمشاهدون</value>
   </data>
   <data name="Playing" xml:space="preserve">
     <value>جارٍ اللعب</value>
@@ -143,6 +185,9 @@
   </data>
   <data name="Preparing" xml:space="preserve">
     <value>جارٍ التحضير</value>
+  </data>
+  <data name="Previous move" xml:space="preserve">
+    <value>النقلة السابقة</value>
   </data>
   <data name="Randomize colors at start" xml:space="preserve">
     <value>اختيار الألوان عشوائيًا عند بدء اللعبة</value>
@@ -159,8 +204,14 @@
   <data name="Retry computer move" xml:space="preserve">
     <value>إعادة محاولة النقلة بالكمبيوتر</value>
   </data>
+  <data name="Room controls" xml:space="preserve">
+    <value>عناصر التحكم في الغرفة</value>
+  </data>
   <data name="Room name" xml:space="preserve">
     <value>اسم الغرفة</value>
+  </data>
+  <data name="Room rules" xml:space="preserve">
+    <value>قواعد الغرفة</value>
   </data>
   <data name="Room settings" xml:space="preserve">
     <value>إعدادات الغرفة</value>
@@ -170,6 +221,15 @@
   </data>
   <data name="Send" xml:space="preserve">
     <value>إرسال</value>
+  </data>
+  <data name="Share" xml:space="preserve">
+    <value>مشاركة</value>
+  </data>
+  <data name="Share room" xml:space="preserve">
+    <value>مشاركة الغرفة</value>
+  </data>
+  <data name="Sign in to add an LLM." xml:space="preserve">
+    <value>سجّل الدخول لإضافة نموذج لغوي كبير.</value>
   </data>
   <data name="Start game" xml:space="preserve">
     <value>ابدأ اللعبة</value>

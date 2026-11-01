@@ -117,6 +117,9 @@
   <data name="Draw by the fifty-move rule" xml:space="preserve">
     <value>Ничья по правилу 50 ходов</value>
   </data>
+  <data name="Export FEN" xml:space="preserve">
+    <value>Экспортировать FEN</value>
+  </data>
   <data name="Export PGN" xml:space="preserve">
     <value>Экспорт PGN</value>
   </data>
@@ -152,6 +155,9 @@
   </data>
   <data name="Knight" xml:space="preserve">
     <value>Конь</value>
+  </data>
+  <data name="LLM attempt {0}/{1}: {2}. Elapsed {3}, limit {4}." xml:space="preserve">
+    <value>Попытка LLM {0}/{1}: {2}. Прошло {3}, лимит — {4}.</value>
   </data>
   <data name="Lobby" xml:space="preserve">
     <value>Лобби</value>
@@ -261,11 +267,23 @@
   <data name="The game has started. You can resign instead." xml:space="preserve">
     <value>Игра уже началась. Вместо этого вы можете сдаться.</value>
   </data>
+  <data name="The LLM failed after three attempts: the final request timed out. Automatic retries have stopped. The host can retry the move." xml:space="preserve">
+    <value>Сбой LLM после трёх попыток: истекло время ожидания последнего запроса. Автоматические повторные попытки остановлены. Хозяин может повторить ход.</value>
+  </data>
+  <data name="The model gateway rejected the request. Automatic retries have stopped. Choose another model or ask the administrator to check its configuration." xml:space="preserve">
+    <value>Шлюз модели отклонил запрос. Автоматические повторные попытки прекращены. Выберите другую модель или попросите администратора проверить её настройки.</value>
+  </data>
+  <data name="The model service failed after three attempts. Automatic retries have stopped. The host can retry the move." xml:space="preserve">
+    <value>Сервис модели завершил работу с ошибкой после трёх попыток. Автоматические повторы остановлены. Хост может повторить ход.</value>
+  </data>
   <data name="The position changed. Your board has been synchronized." xml:space="preserve">
     <value>Позиция изменилась. Ваша доска синхронизирована.</value>
   </data>
   <data name="The rematch offer is no longer available." xml:space="preserve">
     <value>Предложение сыграть ещё раз больше недоступно.</value>
+  </data>
+  <data name="Thinking" xml:space="preserve">
+    <value>Думает</value>
   </data>
   <data name="This action could not be confirmed. Refresh to synchronize." xml:space="preserve">
     <value>Не удалось подтвердить это действие. Обновите страницу для синхронизации.</value>
@@ -290,6 +308,9 @@
   </data>
   <data name="Unlimited" xml:space="preserve">
     <value>Без ограничений</value>
+  </data>
+  <data name="Waiting for a model slot" xml:space="preserve">
+    <value>Ожидание свободного слота для модели</value>
   </data>
   <data name="White" xml:space="preserve">
     <value>Белые</value>

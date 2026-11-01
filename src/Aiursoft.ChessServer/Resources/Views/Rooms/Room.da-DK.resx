@@ -54,6 +54,12 @@
   <data name="Choose valid room settings." xml:space="preserve">
     <value>Vælg gyldige rumindstillinger.</value>
   </data>
+  <data name="Close" xml:space="preserve">
+    <value>Luk</value>
+  </data>
+  <data name="Colors are assigned when the game starts." xml:space="preserve">
+    <value>Farverne tildeles, når spillet starter.</value>
+  </data>
   <data name="Copied" xml:space="preserve">
     <value>Kopieret</value>
   </data>
@@ -66,6 +72,12 @@
   <data name="Difficulty" xml:space="preserve">
     <value>Sværhedsgrad</value>
   </data>
+  <data name="Drag to change role" xml:space="preserve">
+    <value>Træk for at ændre rolle</value>
+  </data>
+  <data name="Drop here" xml:space="preserve">
+    <value>Slip her</value>
+  </data>
   <data name="Empty seat" xml:space="preserve">
     <value>Ledig plads</value>
   </data>
@@ -77,6 +89,12 @@
   </data>
   <data name="Finished" xml:space="preserve">
     <value>Afsluttet</value>
+  </data>
+  <data name="First position" xml:space="preserve">
+    <value>Første position</value>
+  </data>
+  <data name="Game information" xml:space="preserve">
+    <value>Spiloplysninger</value>
   </data>
   <data name="Host" xml:space="preserve">
     <value>Vært</value>
@@ -95,6 +113,9 @@
   </data>
   <data name="Large language model" xml:space="preserve">
     <value>Stor sprogmodel</value>
+  </data>
+  <data name="Latest position" xml:space="preserve">
+    <value>Seneste stilling</value>
   </data>
   <data name="Leave room" xml:space="preserve">
     <value>Forlad rummet</value>
@@ -117,6 +138,15 @@
   <data name="Model" xml:space="preserve">
     <value>Model</value>
   </data>
+  <data name="More" xml:space="preserve">
+    <value>Mere</value>
+  </data>
+  <data name="Moves" xml:space="preserve">
+    <value>Træk</value>
+  </data>
+  <data name="Next move" xml:space="preserve">
+    <value>Næste træk</value>
+  </data>
   <data name="No increment" xml:space="preserve">
     <value>Intet tillæg</value>
   </data>
@@ -132,8 +162,20 @@
   <data name="Only the two players can send chat messages. The host can drag people between seats and observers." xml:space="preserve">
     <value>Kun de to spillere kan sende chatbeskeder. Værten kan trække personer mellem pladserne og tilskuerne.</value>
   </data>
+  <data name="People" xml:space="preserve">
+    <value>Personer</value>
+  </data>
+  <data name="Player 1" xml:space="preserve">
+    <value>Spiller 1</value>
+  </data>
+  <data name="Player 2" xml:space="preserve">
+    <value>Spiller 2</value>
+  </data>
   <data name="Players" xml:space="preserve">
     <value>Spillere</value>
+  </data>
+  <data name="Players and observers" xml:space="preserve">
+    <value>Spillere og tilskuere</value>
   </data>
   <data name="Playing" xml:space="preserve">
     <value>Spiller</value>
@@ -143,6 +185,9 @@
   </data>
   <data name="Preparing" xml:space="preserve">
     <value>Forbereder</value>
+  </data>
+  <data name="Previous move" xml:space="preserve">
+    <value>Forrige træk</value>
   </data>
   <data name="Randomize colors at start" xml:space="preserve">
     <value>Gør farverne tilfældige ved spillets start</value>
@@ -159,8 +204,14 @@
   <data name="Retry computer move" xml:space="preserve">
     <value>Prøv computertrækket igen</value>
   </data>
+  <data name="Room controls" xml:space="preserve">
+    <value>Rumkontroller</value>
+  </data>
   <data name="Room name" xml:space="preserve">
     <value>Rumnavn</value>
+  </data>
+  <data name="Room rules" xml:space="preserve">
+    <value>Regler for rummet</value>
   </data>
   <data name="Room settings" xml:space="preserve">
     <value>Indstillinger for rum</value>
@@ -170,6 +221,15 @@
   </data>
   <data name="Send" xml:space="preserve">
     <value>Send</value>
+  </data>
+  <data name="Share" xml:space="preserve">
+    <value>Del</value>
+  </data>
+  <data name="Share room" xml:space="preserve">
+    <value>Del rum</value>
+  </data>
+  <data name="Sign in to add an LLM." xml:space="preserve">
+    <value>Log ind for at tilføje en LLM.</value>
   </data>
   <data name="Start game" xml:space="preserve">
     <value>Start spil</value>

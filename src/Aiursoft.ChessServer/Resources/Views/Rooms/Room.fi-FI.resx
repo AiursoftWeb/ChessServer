@@ -54,6 +54,12 @@
   <data name="Choose valid room settings." xml:space="preserve">
     <value>Valitse kelvolliset huoneasetukset.</value>
   </data>
+  <data name="Close" xml:space="preserve">
+    <value>Sulje</value>
+  </data>
+  <data name="Colors are assigned when the game starts." xml:space="preserve">
+    <value>Värit määräytyvät pelin alkaessa.</value>
+  </data>
   <data name="Copied" xml:space="preserve">
     <value>Kopioitu</value>
   </data>
@@ -66,6 +72,12 @@
   <data name="Difficulty" xml:space="preserve">
     <value>Vaikeustaso</value>
   </data>
+  <data name="Drag to change role" xml:space="preserve">
+    <value>Muuta roolia vetämällä</value>
+  </data>
+  <data name="Drop here" xml:space="preserve">
+    <value>Pudota tähän</value>
+  </data>
   <data name="Empty seat" xml:space="preserve">
     <value>Tyhjä paikka</value>
   </data>
@@ -77,6 +89,12 @@
   </data>
   <data name="Finished" xml:space="preserve">
     <value>Valmis</value>
+  </data>
+  <data name="First position" xml:space="preserve">
+    <value>Ensimmäinen asema</value>
+  </data>
+  <data name="Game information" xml:space="preserve">
+    <value>Pelitiedot</value>
   </data>
   <data name="Host" xml:space="preserve">
     <value>Järjestäjä</value>
@@ -95,6 +113,9 @@
   </data>
   <data name="Large language model" xml:space="preserve">
     <value>Suuri kielimalli</value>
+  </data>
+  <data name="Latest position" xml:space="preserve">
+    <value>Uusin asema</value>
   </data>
   <data name="Leave room" xml:space="preserve">
     <value>Poistu huoneesta</value>
@@ -117,6 +138,15 @@
   <data name="Model" xml:space="preserve">
     <value>Model</value>
   </data>
+  <data name="More" xml:space="preserve">
+    <value>Lisää</value>
+  </data>
+  <data name="Moves" xml:space="preserve">
+    <value>Siirrot</value>
+  </data>
+  <data name="Next move" xml:space="preserve">
+    <value>Seuraava siirto</value>
+  </data>
   <data name="No increment" xml:space="preserve">
     <value>Ei lisäaikaa</value>
   </data>
@@ -132,8 +162,20 @@
   <data name="Only the two players can send chat messages. The host can drag people between seats and observers." xml:space="preserve">
     <value>Vain kaksi pelaajaa voi lähettää chat-viestejä. Isäntä voi siirtää pelaajia vetämällä heidät pelipaikoille ja katsojiksi.</value>
   </data>
+  <data name="People" xml:space="preserve">
+    <value>Ihmiset</value>
+  </data>
+  <data name="Player 1" xml:space="preserve">
+    <value>Pelaaja 1</value>
+  </data>
+  <data name="Player 2" xml:space="preserve">
+    <value>Pelaaja 2</value>
+  </data>
   <data name="Players" xml:space="preserve">
     <value>Pelaajat</value>
+  </data>
+  <data name="Players and observers" xml:space="preserve">
+    <value>Pelaajat ja katsojat</value>
   </data>
   <data name="Playing" xml:space="preserve">
     <value>Pelaa</value>
@@ -143,6 +185,9 @@
   </data>
   <data name="Preparing" xml:space="preserve">
     <value>Valmistellaan</value>
+  </data>
+  <data name="Previous move" xml:space="preserve">
+    <value>Edellinen siirto</value>
   </data>
   <data name="Randomize colors at start" xml:space="preserve">
     <value>Arvo värit pelin alkaessa</value>
@@ -159,8 +204,14 @@
   <data name="Retry computer move" xml:space="preserve">
     <value>Yritä tietokoneen siirtoa uudelleen</value>
   </data>
+  <data name="Room controls" xml:space="preserve">
+    <value>Huoneen ohjaimet</value>
+  </data>
   <data name="Room name" xml:space="preserve">
     <value>Huoneen nimi</value>
+  </data>
+  <data name="Room rules" xml:space="preserve">
+    <value>Huoneen säännöt</value>
   </data>
   <data name="Room settings" xml:space="preserve">
     <value>Huoneen asetukset</value>
@@ -170,6 +221,15 @@
   </data>
   <data name="Send" xml:space="preserve">
     <value>Lähetä</value>
+  </data>
+  <data name="Share" xml:space="preserve">
+    <value>Jaa</value>
+  </data>
+  <data name="Share room" xml:space="preserve">
+    <value>Jaa huone</value>
+  </data>
+  <data name="Sign in to add an LLM." xml:space="preserve">
+    <value>Kirjaudu sisään lisätäksesi kielimallin.</value>
   </data>
   <data name="Start game" xml:space="preserve">
     <value>Aloita peli</value>

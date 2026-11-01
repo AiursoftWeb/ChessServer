@@ -117,6 +117,9 @@
   <data name="Draw by the fifty-move rule" xml:space="preserve">
     <value>पचास चालों के नियम के तहत ड्रॉ</value>
   </data>
+  <data name="Export FEN" xml:space="preserve">
+    <value>FEN निर्यात करें</value>
+  </data>
   <data name="Export PGN" xml:space="preserve">
     <value>PGN निर्यात करें</value>
   </data>
@@ -152,6 +155,9 @@
   </data>
   <data name="Knight" xml:space="preserve">
     <value>घोड़ा</value>
+  </data>
+  <data name="LLM attempt {0}/{1}: {2}. Elapsed {3}, limit {4}." xml:space="preserve">
+    <value>LLM प्रयास {0}/{1}: {2}। बीता समय {3}, सीमा {4}।</value>
   </data>
   <data name="Lobby" xml:space="preserve">
     <value>प्रतीक्षालय</value>
@@ -258,11 +264,23 @@
   <data name="The game has started. You can resign instead." xml:space="preserve">
     <value>खेल शुरू हो चुका है। आप इसके बजाय हार मान सकते हैं।</value>
   </data>
+  <data name="The LLM failed after three attempts: the final request timed out. Automatic retries have stopped. The host can retry the move." xml:space="preserve">
+    <value>तीन प्रयासों के बाद LLM विफल हो गया: अंतिम अनुरोध का समय समाप्त हो गया। स्वचालित पुनः प्रयास रोक दिए गए हैं। होस्ट इस चाल को फिर से आज़मा सकता है।</value>
+  </data>
+  <data name="The model gateway rejected the request. Automatic retries have stopped. Choose another model or ask the administrator to check its configuration." xml:space="preserve">
+    <value>मॉडल गेटवे ने अनुरोध अस्वीकार कर दिया। स्वचालित पुनः प्रयास रोक दिए गए हैं। कोई दूसरा मॉडल चुनें या व्यवस्थापक से उसका कॉन्फ़िगरेशन जाँचने के लिए कहें।</value>
+  </data>
+  <data name="The model service failed after three attempts. Automatic retries have stopped. The host can retry the move." xml:space="preserve">
+    <value>तीन प्रयासों के बाद मॉडल सेवा विफल हो गई। स्वचालित पुनः प्रयास बंद हो गए हैं। होस्ट चाल को फिर से आज़मा सकता है।</value>
+  </data>
   <data name="The position changed. Your board has been synchronized." xml:space="preserve">
     <value>स्थिति बदल गई है। आपका बोर्ड सिंक्रनाइज़ हो गया है।</value>
   </data>
   <data name="The rematch offer is no longer available." xml:space="preserve">
     <value>रीमैच का प्रस्ताव अब उपलब्ध नहीं है।</value>
+  </data>
+  <data name="Thinking" xml:space="preserve">
+    <value>सोच रहा है</value>
   </data>
   <data name="This action could not be confirmed. Refresh to synchronize." xml:space="preserve">
     <value>इस कार्रवाई की पुष्टि नहीं हो सकी। सिंक्रनाइज़ करने के लिए रीफ़्रेश करें।</value>
@@ -287,6 +305,9 @@
   </data>
   <data name="Unlimited" xml:space="preserve">
     <value>असीमित</value>
+  </data>
+  <data name="Waiting for a model slot" xml:space="preserve">
+    <value>मॉडल स्लॉट की प्रतीक्षा हो रही है</value>
   </data>
   <data name="White" xml:space="preserve">
     <value>सफ़ेद</value>

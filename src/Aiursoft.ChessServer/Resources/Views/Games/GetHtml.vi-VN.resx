@@ -117,6 +117,9 @@
   <data name="Draw by the fifty-move rule" xml:space="preserve">
     <value>Hòa theo luật 50 nước đi</value>
   </data>
+  <data name="Export FEN" xml:space="preserve">
+    <value>Xuất FEN</value>
+  </data>
   <data name="Export PGN" xml:space="preserve">
     <value>Xuất PGN</value>
   </data>
@@ -152,6 +155,9 @@
   </data>
   <data name="Knight" xml:space="preserve">
     <value>Mã</value>
+  </data>
+  <data name="LLM attempt {0}/{1}: {2}. Elapsed {3}, limit {4}." xml:space="preserve">
+    <value>Lần thử LLM {0}/{1}: {2}. Đã trôi qua {3}, giới hạn {4}.</value>
   </data>
   <data name="Lobby" xml:space="preserve">
     <value>Sảnh chờ</value>
@@ -261,11 +267,23 @@
   <data name="The game has started. You can resign instead." xml:space="preserve">
     <value>Ván đấu đã bắt đầu. Bạn có thể xin thua.</value>
   </data>
+  <data name="The LLM failed after three attempts: the final request timed out. Automatic retries have stopped. The host can retry the move." xml:space="preserve">
+    <value>LLM đã thất bại sau ba lần thử: yêu cầu cuối cùng đã hết thời gian chờ. Đã dừng tự động thử lại. Chủ phòng có thể thử lại nước đi.</value>
+  </data>
+  <data name="The model gateway rejected the request. Automatic retries have stopped. Choose another model or ask the administrator to check its configuration." xml:space="preserve">
+    <value>Cổng kết nối mô hình đã từ chối yêu cầu. Đã dừng tự động thử lại. Hãy chọn mô hình khác hoặc yêu cầu quản trị viên kiểm tra cấu hình.</value>
+  </data>
+  <data name="The model service failed after three attempts. Automatic retries have stopped. The host can retry the move." xml:space="preserve">
+    <value>Dịch vụ mô hình đã gặp lỗi sau ba lần thử. Đã dừng tự động thử lại. Chủ phòng có thể thử lại nước đi.</value>
+  </data>
   <data name="The position changed. Your board has been synchronized." xml:space="preserve">
     <value>Vị trí đã thay đổi. Bàn cờ của bạn đã được đồng bộ hóa.</value>
   </data>
   <data name="The rematch offer is no longer available." xml:space="preserve">
     <value>Lời đề nghị tái đấu không còn khả dụng.</value>
+  </data>
+  <data name="Thinking" xml:space="preserve">
+    <value>Đang suy nghĩ</value>
   </data>
   <data name="This action could not be confirmed. Refresh to synchronize." xml:space="preserve">
     <value>Không thể xác nhận thao tác này. Hãy làm mới để đồng bộ hóa.</value>
@@ -290,6 +308,9 @@
   </data>
   <data name="Unlimited" xml:space="preserve">
     <value>Không giới hạn</value>
+  </data>
+  <data name="Waiting for a model slot" xml:space="preserve">
+    <value>Đang chờ một lượt xử lý của mô hình</value>
   </data>
   <data name="White" xml:space="preserve">
     <value>Trắng</value>
