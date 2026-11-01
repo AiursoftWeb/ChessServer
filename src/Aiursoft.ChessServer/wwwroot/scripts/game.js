@@ -30,6 +30,7 @@ function apply(info) {
     surface.update(info);
     if (info.Moves.length > previousMoves) element('pieceMoveSound').play().catch(() => {});
     element('versus-info').textContent = `${playerName(info.WhitePlayer, info.WhiteGuest)} — ${playerName(info.BlackPlayer, info.BlackGuest)}`;
+    element('role').hidden = !!info.ParentRoomId && color !== 'm';
     element('role').textContent = text(color === 'w' ? 'playing-white' : color === 'b' ? 'playing-black' : 'watching');
     if (info.Game.Ended) { if (element('promotion-dialog').open) element('promotion-dialog').close(); clearPending(); if (!saved && !saving && element('retry-save').hidden) saveGame(); }
     render();
@@ -52,6 +53,7 @@ function render() {
         const seconds = Math.ceil(Math.max(0, ms - (active ? elapsed : 0)) / 1000);
         clock.querySelector('.clock-time').textContent = state.Timed ? `${Math.floor(seconds / 60)}:${String(seconds % 60).padStart(2, '0')}` : text('unlimited');
     }
+    element('time-control').hidden = !!state.ParentRoomId && !state.Timed;
     element('time-control').textContent = state.Timed ? format('time-control', `${state.InitialMinutes}+${state.IncrementSeconds}`) : text('unlimited');
     const participant = color !== 'm';
     element('game-actions').hidden = ended || !participant;

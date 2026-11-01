@@ -1,5 +1,5 @@
 @model Aiursoft.ChessServer.Models.ViewModels.ManagedRoomViewModel
-<partial name="_ChessIdentity" />
+@if (Model.Game == null) { <partial name="_ChessIdentity" /> }
 @* ReSharper disable once Razor.SectionNotResolved *@
 @section styles {
     <link rel="stylesheet" href="~/node_modules/%40chrisoakman/chessboardjs/dist/chessboard-1.0.0.min.css" />
@@ -30,7 +30,6 @@
                 <div class="row g-3"><div class="col-sm-6"><h3 id="white-seat-label" class="h6">@Localizer["White"]</h3><div id="white-seat" class="room-seat" data-drop-seat="white"></div></div><div class="col-sm-6"><h3 id="black-seat-label" class="h6">@Localizer["Black"]</h3><div id="black-seat" class="room-seat" data-drop-seat="black"></div></div></div>
                 <p id="room-color-note" class="small text-muted mt-2" hidden>@Localizer["Colors are assigned when the game starts."]</p>
                 <h2 class="h6 mt-4">@Localizer["Observers"]</h2><div id="room-observers" class="room-observers" data-drop-seat="observer"></div>
-                <p class="text-muted small mt-2 mb-0">@Localizer["Only the two players can send chat messages. The host can drag people between seats and observers."]</p>
             </section>
             <details id="room-chat" class="room-chat mt-3" hidden><summary>@Localizer["Chat"]</summary><div class="pt-2">
                 <div id="room-messages" class="chess-messages" role="log" aria-live="polite"></div>
@@ -49,7 +48,7 @@
                     <button data-room-host class="btn btn-outline-primary mb-3" type="submit">@Localizer["Save settings"]</button>
                 </fieldset>
             </form>
-            <details class="small text-muted mt-2"><summary>@Localizer["Room rules"]</summary><p>@Localizer["The next human becomes host when the host leaves. The room closes when everyone leaves. Refreshing or reconnecting has a 60-second grace period."]</p></details>
+            <details class="small text-muted mt-2"><summary>@Localizer["Room rules"]</summary><p>@Localizer["Only the two players can send chat messages. The host can drag people between seats and observers."]</p><p>@Localizer["The next human becomes host when the host leaves. The room closes when everyone leaves. Refreshing or reconnecting has a 60-second grace period."]</p></details>
         </aside>
     </div>
     <dialog id="room-share" class="room-dialog" aria-labelledby="room-share-title">
