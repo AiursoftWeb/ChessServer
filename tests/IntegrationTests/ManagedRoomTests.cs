@@ -140,8 +140,9 @@ public class ManagedRoomTests : TestBase
         GetService<ComputerTurnCoordinator>().Wake(gameId);
         var game = Database.GetAcceptedChallenge(gameId)!;
         using var deadline = new CancellationTokenSource(TimeSpan.FromSeconds(25));
-        while (game.Game.Board.MovesToSan.Count < 2) await Task.Delay(25, deadline.Token);
-        Assert.IsTrue(game.AiTurns.Count >= 2); Assert.AreEqual("engine", game.WhiteController!.Kind);
+        while (game.Game.Board.MovesToSan.Count < 4) await Task.Delay(25, deadline.Token);
+        Assert.IsTrue(game.AiTurns.Count >= 4); Assert.AreEqual("engine", game.WhiteController!.Kind);
+        Assert.IsTrue(game.AiTurns.All(turn => turn.Milliseconds >= 2000));
         await Act(id, host, "leave");
     }
     [TestMethod]
