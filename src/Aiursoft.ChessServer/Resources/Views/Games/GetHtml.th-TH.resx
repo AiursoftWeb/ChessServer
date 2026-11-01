@@ -117,6 +117,9 @@
   <data name="Draw by the fifty-move rule" xml:space="preserve">
     <value>เสมอตามกฎเดินครบ 50 ครั้ง</value>
   </data>
+  <data name="Export FEN" xml:space="preserve">
+    <value>ส่งออก FEN</value>
+  </data>
   <data name="Export PGN" xml:space="preserve">
     <value>ส่งออก PGN</value>
   </data>
@@ -152,6 +155,9 @@
   </data>
   <data name="Knight" xml:space="preserve">
     <value>ม้า</value>
+  </data>
+  <data name="LLM attempt {0}/{1}: {2}. Elapsed {3}, limit {4}." xml:space="preserve">
+    <value>ความพยายามครั้งที่ {0}/{1} ของ LLM: {2} ใช้เวลาไปแล้ว {3} จากเวลาสูงสุด {4}.</value>
   </data>
   <data name="Lobby" xml:space="preserve">
     <value>ล็อบบี้</value>
@@ -261,11 +267,23 @@
   <data name="The game has started. You can resign instead." xml:space="preserve">
     <value>เกมเริ่มแล้ว คุณสามารถยอมแพ้แทนได้</value>
   </data>
+  <data name="The LLM failed after three attempts: the final request timed out. Automatic retries have stopped. The host can retry the move." xml:space="preserve">
+    <value>LLM ทำงานล้มเหลวหลังจากลองสามครั้ง: คำขอครั้งสุดท้ายหมดเวลา ระบบหยุดลองซ้ำโดยอัตโนมัติ ผู้ดูแลห้องสามารถลองเดินหมากอีกครั้งได้</value>
+  </data>
+  <data name="The model gateway rejected the request. Automatic retries have stopped. Choose another model or ask the administrator to check its configuration." xml:space="preserve">
+    <value>เกตเวย์ของโมเดลปฏิเสธคำขอ ระบบหยุดลองใหม่โดยอัตโนมัติแล้ว โปรดเลือกโมเดลอื่น หรือขอให้ผู้ดูแลระบบตรวจสอบการตั้งค่า</value>
+  </data>
+  <data name="The model service failed after three attempts. Automatic retries have stopped. The host can retry the move." xml:space="preserve">
+    <value>บริการโมเดลล้มเหลวหลังจากลองสามครั้ง ระบบหยุดลองใหม่โดยอัตโนมัติแล้ว โฮสต์สามารถลองเดินหมากอีกครั้งได้</value>
+  </data>
   <data name="The position changed. Your board has been synchronized." xml:space="preserve">
     <value>ตำแหน่งเปลี่ยนไปแล้ว กระดานของคุณได้รับการซิงค์แล้ว</value>
   </data>
   <data name="The rematch offer is no longer available." xml:space="preserve">
     <value>ข้อเสนอขอแข่งใหม่ไม่มีผลแล้ว</value>
+  </data>
+  <data name="Thinking" xml:space="preserve">
+    <value>กำลังคิด</value>
   </data>
   <data name="This action could not be confirmed. Refresh to synchronize." xml:space="preserve">
     <value>ไม่สามารถยืนยันการดำเนินการนี้ได้ โปรดรีเฟรชเพื่อซิงโครไนซ์</value>
@@ -290,6 +308,9 @@
   </data>
   <data name="Unlimited" xml:space="preserve">
     <value>ไม่จำกัด</value>
+  </data>
+  <data name="Waiting for a model slot" xml:space="preserve">
+    <value>กำลังรอช่องว่างสำหรับโมเดล</value>
   </data>
   <data name="White" xml:space="preserve">
     <value>ขาว</value>

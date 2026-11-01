@@ -54,6 +54,12 @@
   <data name="Choose valid room settings." xml:space="preserve">
     <value>Elige una configuración válida para la sala.</value>
   </data>
+  <data name="Close" xml:space="preserve">
+    <value>Cerrar</value>
+  </data>
+  <data name="Colors are assigned when the game starts." xml:space="preserve">
+    <value>Los colores se asignan cuando empieza la partida.</value>
+  </data>
   <data name="Copied" xml:space="preserve">
     <value>Copiado</value>
   </data>
@@ -66,6 +72,12 @@
   <data name="Difficulty" xml:space="preserve">
     <value>Dificultad</value>
   </data>
+  <data name="Drag to change role" xml:space="preserve">
+    <value>Arrastra para cambiar de rol</value>
+  </data>
+  <data name="Drop here" xml:space="preserve">
+    <value>Soltar aquí</value>
+  </data>
   <data name="Empty seat" xml:space="preserve">
     <value>Asiento vacío</value>
   </data>
@@ -77,6 +89,12 @@
   </data>
   <data name="Finished" xml:space="preserve">
     <value>Finalizada</value>
+  </data>
+  <data name="First position" xml:space="preserve">
+    <value>Primera posición</value>
+  </data>
+  <data name="Game information" xml:space="preserve">
+    <value>Información de la partida</value>
   </data>
   <data name="Host" xml:space="preserve">
     <value>Anfitrión</value>
@@ -95,6 +113,9 @@
   </data>
   <data name="Large language model" xml:space="preserve">
     <value>Modelo de lenguaje grande</value>
+  </data>
+  <data name="Latest position" xml:space="preserve">
+    <value>Última posición</value>
   </data>
   <data name="Leave room" xml:space="preserve">
     <value>Salir de la sala</value>
@@ -117,6 +138,15 @@
   <data name="Model" xml:space="preserve">
     <value>Model</value>
   </data>
+  <data name="More" xml:space="preserve">
+    <value>Más</value>
+  </data>
+  <data name="Moves" xml:space="preserve">
+    <value>Movimientos</value>
+  </data>
+  <data name="Next move" xml:space="preserve">
+    <value>Siguiente movimiento</value>
+  </data>
   <data name="No increment" xml:space="preserve">
     <value>Sin incremento</value>
   </data>
@@ -132,8 +162,20 @@
   <data name="Only the two players can send chat messages. The host can drag people between seats and observers." xml:space="preserve">
     <value>Solo los dos jugadores pueden enviar mensajes por el chat. El anfitrión puede arrastrar a los participantes entre los puestos y la zona de espectadores.</value>
   </data>
+  <data name="People" xml:space="preserve">
+    <value>Personas</value>
+  </data>
+  <data name="Player 1" xml:space="preserve">
+    <value>Jugador 1</value>
+  </data>
+  <data name="Player 2" xml:space="preserve">
+    <value>Jugador 2</value>
+  </data>
   <data name="Players" xml:space="preserve">
     <value>Jugadores</value>
+  </data>
+  <data name="Players and observers" xml:space="preserve">
+    <value>Jugadores y espectadores</value>
   </data>
   <data name="Playing" xml:space="preserve">
     <value>En curso</value>
@@ -143,6 +185,9 @@
   </data>
   <data name="Preparing" xml:space="preserve">
     <value>Preparando</value>
+  </data>
+  <data name="Previous move" xml:space="preserve">
+    <value>Jugada anterior</value>
   </data>
   <data name="Randomize colors at start" xml:space="preserve">
     <value>Aleatorizar los colores al comenzar</value>
@@ -159,8 +204,14 @@
   <data name="Retry computer move" xml:space="preserve">
     <value>Reintentar jugada del ordenador</value>
   </data>
+  <data name="Room controls" xml:space="preserve">
+    <value>Controles de la sala</value>
+  </data>
   <data name="Room name" xml:space="preserve">
     <value>Nombre de la sala</value>
+  </data>
+  <data name="Room rules" xml:space="preserve">
+    <value>Normas de la sala</value>
   </data>
   <data name="Room settings" xml:space="preserve">
     <value>Ajustes de la sala</value>
@@ -170,6 +221,15 @@
   </data>
   <data name="Send" xml:space="preserve">
     <value>Enviar</value>
+  </data>
+  <data name="Share" xml:space="preserve">
+    <value>Compartir</value>
+  </data>
+  <data name="Share room" xml:space="preserve">
+    <value>Compartir sala</value>
+  </data>
+  <data name="Sign in to add an LLM." xml:space="preserve">
+    <value>Inicia sesión para añadir un modelo de lenguaje grande.</value>
   </data>
   <data name="Start game" xml:space="preserve">
     <value>Iniciar partida</value>

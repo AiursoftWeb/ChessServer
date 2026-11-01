@@ -54,6 +54,12 @@
   <data name="Choose valid room settings." xml:space="preserve">
     <value>Виберіть правильні налаштування кімнати.</value>
   </data>
+  <data name="Close" xml:space="preserve">
+    <value>Закрити</value>
+  </data>
+  <data name="Colors are assigned when the game starts." xml:space="preserve">
+    <value>Кольори призначаються після початку гри.</value>
+  </data>
   <data name="Copied" xml:space="preserve">
     <value>Скопійовано</value>
   </data>
@@ -66,6 +72,12 @@
   <data name="Difficulty" xml:space="preserve">
     <value>Складність</value>
   </data>
+  <data name="Drag to change role" xml:space="preserve">
+    <value>Перетягніть, щоб змінити роль</value>
+  </data>
+  <data name="Drop here" xml:space="preserve">
+    <value>Перетягніть сюди</value>
+  </data>
   <data name="Empty seat" xml:space="preserve">
     <value>Вільне місце</value>
   </data>
@@ -77,6 +89,12 @@
   </data>
   <data name="Finished" xml:space="preserve">
     <value>Завершено</value>
+  </data>
+  <data name="First position" xml:space="preserve">
+    <value>Перша позиція</value>
+  </data>
+  <data name="Game information" xml:space="preserve">
+    <value>Інформація про гру</value>
   </data>
   <data name="Host" xml:space="preserve">
     <value>Організатор</value>
@@ -95,6 +113,9 @@
   </data>
   <data name="Large language model" xml:space="preserve">
     <value>Велика мовна модель</value>
+  </data>
+  <data name="Latest position" xml:space="preserve">
+    <value>Остання позиція</value>
   </data>
   <data name="Leave room" xml:space="preserve">
     <value>Покинути кімнату</value>
@@ -117,6 +138,15 @@
   <data name="Model" xml:space="preserve">
     <value>Model</value>
   </data>
+  <data name="More" xml:space="preserve">
+    <value>Більше</value>
+  </data>
+  <data name="Moves" xml:space="preserve">
+    <value>Ходи</value>
+  </data>
+  <data name="Next move" xml:space="preserve">
+    <value>Наступний хід</value>
+  </data>
   <data name="No increment" xml:space="preserve">
     <value>Без додавання</value>
   </data>
@@ -132,8 +162,20 @@
   <data name="Only the two players can send chat messages. The host can drag people between seats and observers." xml:space="preserve">
     <value>Лише двоє гравців можуть надсилати повідомлення в чаті. Організатор може перетягувати учасників між місцями гравців і спостерігачами.</value>
   </data>
+  <data name="People" xml:space="preserve">
+    <value>Люди</value>
+  </data>
+  <data name="Player 1" xml:space="preserve">
+    <value>Гравець 1</value>
+  </data>
+  <data name="Player 2" xml:space="preserve">
+    <value>Гравець 2</value>
+  </data>
   <data name="Players" xml:space="preserve">
     <value>Гравці</value>
+  </data>
+  <data name="Players and observers" xml:space="preserve">
+    <value>Гравці та спостерігачі</value>
   </data>
   <data name="Playing" xml:space="preserve">
     <value>Грає</value>
@@ -143,6 +185,9 @@
   </data>
   <data name="Preparing" xml:space="preserve">
     <value>Підготовка</value>
+  </data>
+  <data name="Previous move" xml:space="preserve">
+    <value>Попередній хід</value>
   </data>
   <data name="Randomize colors at start" xml:space="preserve">
     <value>Випадково визначати кольори на початку</value>
@@ -159,8 +204,14 @@
   <data name="Retry computer move" xml:space="preserve">
     <value>Повторити хід комп’ютера</value>
   </data>
+  <data name="Room controls" xml:space="preserve">
+    <value>Елементи керування кімнатою</value>
+  </data>
   <data name="Room name" xml:space="preserve">
     <value>Назва кімнати</value>
+  </data>
+  <data name="Room rules" xml:space="preserve">
+    <value>Правила кімнати</value>
   </data>
   <data name="Room settings" xml:space="preserve">
     <value>Налаштування кімнати</value>
@@ -170,6 +221,15 @@
   </data>
   <data name="Send" xml:space="preserve">
     <value>Надіслати</value>
+  </data>
+  <data name="Share" xml:space="preserve">
+    <value>Поділитися</value>
+  </data>
+  <data name="Share room" xml:space="preserve">
+    <value>Поділитися кімнатою</value>
+  </data>
+  <data name="Sign in to add an LLM." xml:space="preserve">
+    <value>Увійдіть, щоб додати велику мовну модель.</value>
   </data>
   <data name="Start game" xml:space="preserve">
     <value>Розпочати гру</value>

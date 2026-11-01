@@ -117,6 +117,9 @@
   <data name="Draw by the fifty-move rule" xml:space="preserve">
     <value>50手ルールによる引き分け</value>
   </data>
+  <data name="Export FEN" xml:space="preserve">
+    <value>FENをエクスポート</value>
+  </data>
   <data name="Export PGN" xml:space="preserve">
     <value>PGNをエクスポート</value>
   </data>
@@ -152,6 +155,9 @@
   </data>
   <data name="Knight" xml:space="preserve">
     <value>ナイト</value>
+  </data>
+  <data name="LLM attempt {0}/{1}: {2}. Elapsed {3}, limit {4}." xml:space="preserve">
+    <value>LLM 試行 {0}/{1}: {2}。経過時間 {3}、制限時間 {4}。</value>
   </data>
   <data name="Lobby" xml:space="preserve">
     <value>ロビー</value>
@@ -261,11 +267,23 @@
   <data name="The game has started. You can resign instead." xml:space="preserve">
     <value>対局が始まっています。代わりに投了できます。</value>
   </data>
+  <data name="The LLM failed after three attempts: the final request timed out. Automatic retries have stopped. The host can retry the move." xml:space="preserve">
+    <value>LLMは3回試行しましたが失敗しました。最後のリクエストがタイムアウトしました。自動再試行は停止しました。ホストは手を再試行できます。</value>
+  </data>
+  <data name="The model gateway rejected the request. Automatic retries have stopped. Choose another model or ask the administrator to check its configuration." xml:space="preserve">
+    <value>モデルゲートウェイによってリクエストが拒否されました。自動再試行は停止しました。別のモデルを選択するか、管理者に設定を確認するよう依頼してください。</value>
+  </data>
+  <data name="The model service failed after three attempts. Automatic retries have stopped. The host can retry the move." xml:space="preserve">
+    <value>モデルサービスは3回試行しましたが失敗しました。自動再試行は停止しました。ホストはその手を再試行できます。</value>
+  </data>
   <data name="The position changed. Your board has been synchronized." xml:space="preserve">
     <value>局面が変わりました。盤面が同期されました。</value>
   </data>
   <data name="The rematch offer is no longer available." xml:space="preserve">
     <value>再戦の申し込みは受け付けられなくなりました。</value>
+  </data>
+  <data name="Thinking" xml:space="preserve">
+    <value>考え中</value>
   </data>
   <data name="This action could not be confirmed. Refresh to synchronize." xml:space="preserve">
     <value>この操作を確認できませんでした。同期するには再読み込みしてください。</value>
@@ -290,6 +308,9 @@
   </data>
   <data name="Unlimited" xml:space="preserve">
     <value>無制限</value>
+  </data>
+  <data name="Waiting for a model slot" xml:space="preserve">
+    <value>モデルの空き枠を待っています</value>
   </data>
   <data name="White" xml:space="preserve">
     <value>白</value>

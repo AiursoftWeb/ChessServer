@@ -117,6 +117,9 @@
   <data name="Draw by the fifty-move rule" xml:space="preserve">
     <value>Draw by the fifty-move rule</value>
   </data>
+  <data name="Export FEN" xml:space="preserve">
+    <value>Export FEN</value>
+  </data>
   <data name="Export PGN" xml:space="preserve">
     <value>Export PGN</value>
   </data>
@@ -152,6 +155,9 @@
   </data>
   <data name="Knight" xml:space="preserve">
     <value>Knight</value>
+  </data>
+  <data name="LLM attempt {0}/{1}: {2}. Elapsed {3}, limit {4}." xml:space="preserve">
+    <value>LLM attempt {0}/{1}: {2}. Time elapsed {3}, limit {4}.</value>
   </data>
   <data name="Lobby" xml:space="preserve">
     <value>Lobby</value>
@@ -261,11 +267,23 @@
   <data name="The game has started. You can resign instead." xml:space="preserve">
     <value>The game has started. You can resign instead.</value>
   </data>
+  <data name="The LLM failed after three attempts: the final request timed out. Automatic retries have stopped. The host can retry the move." xml:space="preserve">
+    <value>The LLM failed after three attempts: the final request timed out. Automatic retries have stopped. The host can retry the move.</value>
+  </data>
+  <data name="The model gateway rejected the request. Automatic retries have stopped. Choose another model or ask the administrator to check its configuration." xml:space="preserve">
+    <value>Model gateway rejected the request. Automatic retries have stopped. Choose another model or ask the administrator to check its configuration.</value>
+  </data>
+  <data name="The model service failed after three attempts. Automatic retries have stopped. The host can retry the move." xml:space="preserve">
+    <value>The model service failed after three attempts. Automatic retries have stopped. The host can retry the move.</value>
+  </data>
   <data name="The position changed. Your board has been synchronized." xml:space="preserve">
     <value>The position has changed. Your board has been synchronised.</value>
   </data>
   <data name="The rematch offer is no longer available." xml:space="preserve">
     <value>The rematch offer is no longer available.</value>
+  </data>
+  <data name="Thinking" xml:space="preserve">
+    <value>Thinking</value>
   </data>
   <data name="This action could not be confirmed. Refresh to synchronize." xml:space="preserve">
     <value>This action could not be confirmed. Refresh to synchronise.</value>
@@ -290,6 +308,9 @@
   </data>
   <data name="Unlimited" xml:space="preserve">
     <value>Unlimited</value>
+  </data>
+  <data name="Waiting for a model slot" xml:space="preserve">
+    <value>Waiting for a model slot</value>
   </data>
   <data name="White" xml:space="preserve">
     <value>White</value>

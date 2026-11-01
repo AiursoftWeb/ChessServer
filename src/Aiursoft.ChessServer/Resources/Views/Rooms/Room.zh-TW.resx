@@ -54,6 +54,12 @@
   <data name="Choose valid room settings." xml:space="preserve">
     <value>請選擇有效的房間設定。</value>
   </data>
+  <data name="Close" xml:space="preserve">
+    <value>關閉</value>
+  </data>
+  <data name="Colors are assigned when the game starts." xml:space="preserve">
+    <value>遊戲開始時會分配棋子的顏色。</value>
+  </data>
   <data name="Copied" xml:space="preserve">
     <value>已複製</value>
   </data>
@@ -66,6 +72,12 @@
   <data name="Difficulty" xml:space="preserve">
     <value>難度</value>
   </data>
+  <data name="Drag to change role" xml:space="preserve">
+    <value>拖曳以變更角色</value>
+  </data>
+  <data name="Drop here" xml:space="preserve">
+    <value>放置於此處</value>
+  </data>
   <data name="Empty seat" xml:space="preserve">
     <value>空位</value>
   </data>
@@ -77,6 +89,12 @@
   </data>
   <data name="Finished" xml:space="preserve">
     <value>已完成</value>
+  </data>
+  <data name="First position" xml:space="preserve">
+    <value>第一個棋局位置</value>
+  </data>
+  <data name="Game information" xml:space="preserve">
+    <value>遊戲資訊</value>
   </data>
   <data name="Host" xml:space="preserve">
     <value>主持人</value>
@@ -95,6 +113,9 @@
   </data>
   <data name="Large language model" xml:space="preserve">
     <value>大型語言模型</value>
+  </data>
+  <data name="Latest position" xml:space="preserve">
+    <value>最新局面</value>
   </data>
   <data name="Leave room" xml:space="preserve">
     <value>離開房間</value>
@@ -117,6 +138,15 @@
   <data name="Model" xml:space="preserve">
     <value>Model</value>
   </data>
+  <data name="More" xml:space="preserve">
+    <value>更多</value>
+  </data>
+  <data name="Moves" xml:space="preserve">
+    <value>棋步</value>
+  </data>
+  <data name="Next move" xml:space="preserve">
+    <value>下一步棋</value>
+  </data>
   <data name="No increment" xml:space="preserve">
     <value>不增加秒數</value>
   </data>
@@ -132,8 +162,20 @@
   <data name="Only the two players can send chat messages. The host can drag people between seats and observers." xml:space="preserve">
     <value>只有兩位玩家可以傳送聊天訊息。房主可以將玩家拖曳到不同座位或觀戰者區。</value>
   </data>
+  <data name="People" xml:space="preserve">
+    <value>人員</value>
+  </data>
+  <data name="Player 1" xml:space="preserve">
+    <value>玩家 1</value>
+  </data>
+  <data name="Player 2" xml:space="preserve">
+    <value>玩家 2</value>
+  </data>
   <data name="Players" xml:space="preserve">
     <value>玩家</value>
+  </data>
+  <data name="Players and observers" xml:space="preserve">
+    <value>玩家與觀戰者</value>
   </data>
   <data name="Playing" xml:space="preserve">
     <value>進行中</value>
@@ -143,6 +185,9 @@
   </data>
   <data name="Preparing" xml:space="preserve">
     <value>準備中</value>
+  </data>
+  <data name="Previous move" xml:space="preserve">
+    <value>上一步棋</value>
   </data>
   <data name="Randomize colors at start" xml:space="preserve">
     <value>開始時隨機分配棋子顏色</value>
@@ -159,8 +204,14 @@
   <data name="Retry computer move" xml:space="preserve">
     <value>重試電腦走棋</value>
   </data>
+  <data name="Room controls" xml:space="preserve">
+    <value>房間控制項</value>
+  </data>
   <data name="Room name" xml:space="preserve">
     <value>房間名稱</value>
+  </data>
+  <data name="Room rules" xml:space="preserve">
+    <value>房間規則</value>
   </data>
   <data name="Room settings" xml:space="preserve">
     <value>聊天室設定</value>
@@ -170,6 +221,15 @@
   </data>
   <data name="Send" xml:space="preserve">
     <value>送出</value>
+  </data>
+  <data name="Share" xml:space="preserve">
+    <value>分享</value>
+  </data>
+  <data name="Share room" xml:space="preserve">
+    <value>分享房間</value>
+  </data>
+  <data name="Sign in to add an LLM." xml:space="preserve">
+    <value>登入以新增大型語言模型。</value>
   </data>
   <data name="Start game" xml:space="preserve">
     <value>開始遊戲</value>

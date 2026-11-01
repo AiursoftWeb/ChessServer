@@ -117,6 +117,9 @@
   <data name="Draw by the fifty-move rule" xml:space="preserve">
     <value>Ισοπαλία με τον κανόνα των 50 κινήσεων</value>
   </data>
+  <data name="Export FEN" xml:space="preserve">
+    <value>Εξαγωγή FEN</value>
+  </data>
   <data name="Export PGN" xml:space="preserve">
     <value>Εξαγωγή PGN</value>
   </data>
@@ -152,6 +155,9 @@
   </data>
   <data name="Knight" xml:space="preserve">
     <value>Ίππος</value>
+  </data>
+  <data name="LLM attempt {0}/{1}: {2}. Elapsed {3}, limit {4}." xml:space="preserve">
+    <value>Προσπάθεια LLM {0}/{1}: {2}. Χρόνος που πέρασε {3}, όριο {4}.</value>
   </data>
   <data name="Lobby" xml:space="preserve">
     <value>Αίθουσα αναμονής</value>
@@ -258,11 +264,23 @@
   <data name="The game has started. You can resign instead." xml:space="preserve">
     <value>Η παρτίδα έχει ξεκινήσει. Μπορείτε να εγκαταλείψετε αντ’ αυτού.</value>
   </data>
+  <data name="The LLM failed after three attempts: the final request timed out. Automatic retries have stopped. The host can retry the move." xml:space="preserve">
+    <value>Το LLM απέτυχε έπειτα από τρεις προσπάθειες: το τελευταίο αίτημα έληξε λόγω χρονικού ορίου. Οι αυτόματες επαναλήψεις σταμάτησαν. Ο οικοδεσπότης μπορεί να επαναλάβει την κίνηση.</value>
+  </data>
+  <data name="The model gateway rejected the request. Automatic retries have stopped. Choose another model or ask the administrator to check its configuration." xml:space="preserve">
+    <value>Η πύλη του μοντέλου απέρριψε το αίτημα. Οι αυτόματες επαναλήψεις έχουν σταματήσει. Επιλέξτε άλλο μοντέλο ή ζητήστε από τον διαχειριστή να ελέγξει τις ρυθμίσεις του.</value>
+  </data>
+  <data name="The model service failed after three attempts. Automatic retries have stopped. The host can retry the move." xml:space="preserve">
+    <value>Η υπηρεσία μοντέλου απέτυχε μετά από τρεις προσπάθειες. Οι αυτόματες επαναλήψεις σταμάτησαν. Ο οικοδεσπότης μπορεί να δοκιμάσει ξανά την κίνηση.</value>
+  </data>
   <data name="The position changed. Your board has been synchronized." xml:space="preserve">
     <value>Η θέση άλλαξε. Η σκακιέρα σας συγχρονίστηκε.</value>
   </data>
   <data name="The rematch offer is no longer available." xml:space="preserve">
     <value>Η πρόταση για ρεβάνς δεν είναι πλέον διαθέσιμη.</value>
+  </data>
+  <data name="Thinking" xml:space="preserve">
+    <value>Σκέφτεται</value>
   </data>
   <data name="This action could not be confirmed. Refresh to synchronize." xml:space="preserve">
     <value>Δεν ήταν δυνατή η επιβεβαίωση αυτής της ενέργειας. Ανανεώστε τη σελίδα για να γίνει συγχρονισμός.</value>
@@ -287,6 +305,9 @@
   </data>
   <data name="Unlimited" xml:space="preserve">
     <value>Χωρίς περιορισμό</value>
+  </data>
+  <data name="Waiting for a model slot" xml:space="preserve">
+    <value>Αναμονή για διαθέσιμη θέση μοντέλου</value>
   </data>
   <data name="White" xml:space="preserve">
     <value>Λευκά</value>

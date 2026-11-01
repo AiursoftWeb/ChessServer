@@ -117,6 +117,9 @@
   <data name="Draw by the fifty-move rule" xml:space="preserve">
     <value>依五十步規則和棋</value>
   </data>
+  <data name="Export FEN" xml:space="preserve">
+    <value>匯出 FEN</value>
+  </data>
   <data name="Export PGN" xml:space="preserve">
     <value>匯出 PGN</value>
   </data>
@@ -152,6 +155,9 @@
   </data>
   <data name="Knight" xml:space="preserve">
     <value>騎士</value>
+  </data>
+  <data name="LLM attempt {0}/{1}: {2}. Elapsed {3}, limit {4}." xml:space="preserve">
+    <value>大型語言模型第 {0}/{1} 次嘗試：{2}。已耗時 {3}，上限 {4}。</value>
   </data>
   <data name="Lobby" xml:space="preserve">
     <value>大廳</value>
@@ -261,11 +267,23 @@
   <data name="The game has started. You can resign instead." xml:space="preserve">
     <value>遊戲已經開始。您可以選擇認輸。</value>
   </data>
+  <data name="The LLM failed after three attempts: the final request timed out. Automatic retries have stopped. The host can retry the move." xml:space="preserve">
+    <value>大型語言模型嘗試三次後仍失敗：最後一次請求逾時。已停止自動重試。房主可以重新嘗試這步棋。</value>
+  </data>
+  <data name="The model gateway rejected the request. Automatic retries have stopped. Choose another model or ask the administrator to check its configuration." xml:space="preserve">
+    <value>模型閘道拒絕了此請求。已停止自動重試。請選擇其他模型，或請管理員檢查其設定。</value>
+  </data>
+  <data name="The model service failed after three attempts. Automatic retries have stopped. The host can retry the move." xml:space="preserve">
+    <value>模型服務嘗試三次後仍失敗。已停止自動重試。主持人可以重試這一步。</value>
+  </data>
   <data name="The position changed. Your board has been synchronized." xml:space="preserve">
     <value>棋局已變更，棋盤已同步。</value>
   </data>
   <data name="The rematch offer is no longer available." xml:space="preserve">
     <value>再賽邀請已失效。</value>
+  </data>
+  <data name="Thinking" xml:space="preserve">
+    <value>思考中</value>
   </data>
   <data name="This action could not be confirmed. Refresh to synchronize." xml:space="preserve">
     <value>此操作無法確認。請重新整理以同步。</value>
@@ -290,6 +308,9 @@
   </data>
   <data name="Unlimited" xml:space="preserve">
     <value>無限制</value>
+  </data>
+  <data name="Waiting for a model slot" xml:space="preserve">
+    <value>正在等待模型時段</value>
   </data>
   <data name="White" xml:space="preserve">
     <value>白方</value>

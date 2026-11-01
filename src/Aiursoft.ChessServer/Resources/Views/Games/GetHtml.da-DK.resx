@@ -117,6 +117,9 @@
   <data name="Draw by the fifty-move rule" xml:space="preserve">
     <value>Remis efter 50-træksreglen</value>
   </data>
+  <data name="Export FEN" xml:space="preserve">
+    <value>Eksportér FEN</value>
+  </data>
   <data name="Export PGN" xml:space="preserve">
     <value>Eksportér PGN</value>
   </data>
@@ -152,6 +155,9 @@
   </data>
   <data name="Knight" xml:space="preserve">
     <value>Springer</value>
+  </data>
+  <data name="LLM attempt {0}/{1}: {2}. Elapsed {3}, limit {4}." xml:space="preserve">
+    <value>LLM-forsøg {0}/{1}: {2}. Forløbet tid {3}, grænse {4}.</value>
   </data>
   <data name="Lobby" xml:space="preserve">
     <value>Lobby</value>
@@ -261,11 +267,23 @@
   <data name="The game has started. You can resign instead." xml:space="preserve">
     <value>Spillet er startet. Du kan i stedet opgive.</value>
   </data>
+  <data name="The LLM failed after three attempts: the final request timed out. Automatic retries have stopped. The host can retry the move." xml:space="preserve">
+    <value>LLM&apos;en mislykkedes efter tre forsøg: Den sidste anmodning fik timeout. Automatiske genforsøg er stoppet. Værten kan prøve at udføre trækket igen.</value>
+  </data>
+  <data name="The model gateway rejected the request. Automatic retries have stopped. Choose another model or ask the administrator to check its configuration." xml:space="preserve">
+    <value>Modelgatewayen afviste anmodningen. Automatiske genforsøg er stoppet. Vælg en anden model, eller bed administratoren om at kontrollere konfigurationen.</value>
+  </data>
+  <data name="The model service failed after three attempts. Automatic retries have stopped. The host can retry the move." xml:space="preserve">
+    <value>Modeltjenesten mislykkedes efter tre forsøg. Automatiske genforsøg er stoppet. Værten kan prøve trækket igen.</value>
+  </data>
   <data name="The position changed. Your board has been synchronized." xml:space="preserve">
     <value>Positionen er ændret. Dit bræt er blevet synkroniseret.</value>
   </data>
   <data name="The rematch offer is no longer available." xml:space="preserve">
     <value>Tilbuddet om revanche er ikke længere tilgængeligt.</value>
+  </data>
+  <data name="Thinking" xml:space="preserve">
+    <value>Tænker</value>
   </data>
   <data name="This action could not be confirmed. Refresh to synchronize." xml:space="preserve">
     <value>Denne handling kunne ikke bekræftes. Opdater siden for at synkronisere.</value>
@@ -290,6 +308,9 @@
   </data>
   <data name="Unlimited" xml:space="preserve">
     <value>Ubegrænset</value>
+  </data>
+  <data name="Waiting for a model slot" xml:space="preserve">
+    <value>Venter på en modelplads</value>
   </data>
   <data name="White" xml:space="preserve">
     <value>Hvid</value>

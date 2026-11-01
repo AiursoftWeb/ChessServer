@@ -117,6 +117,9 @@
   <data name="Draw by the fifty-move rule" xml:space="preserve">
     <value>Remis berdasarkan aturan lima puluh langkah</value>
   </data>
+  <data name="Export FEN" xml:space="preserve">
+    <value>Ekspor FEN</value>
+  </data>
   <data name="Export PGN" xml:space="preserve">
     <value>Ekspor PGN</value>
   </data>
@@ -152,6 +155,9 @@
   </data>
   <data name="Knight" xml:space="preserve">
     <value>Kuda</value>
+  </data>
+  <data name="LLM attempt {0}/{1}: {2}. Elapsed {3}, limit {4}." xml:space="preserve">
+    <value>Percobaan LLM {0}/{1}: {2}. Waktu berlalu {3}, batas {4}.</value>
   </data>
   <data name="Lobby" xml:space="preserve">
     <value>Lobi</value>
@@ -261,11 +267,23 @@
   <data name="The game has started. You can resign instead." xml:space="preserve">
     <value>Permainan telah dimulai. Anda dapat menyerah.</value>
   </data>
+  <data name="The LLM failed after three attempts: the final request timed out. Automatic retries have stopped. The host can retry the move." xml:space="preserve">
+    <value>LLM gagal setelah tiga kali percobaan: permintaan terakhir mengalami batas waktu. Percobaan ulang otomatis telah dihentikan. Host dapat mencoba kembali langkah tersebut.</value>
+  </data>
+  <data name="The model gateway rejected the request. Automatic retries have stopped. Choose another model or ask the administrator to check its configuration." xml:space="preserve">
+    <value>Gateway model menolak permintaan. Percobaan ulang otomatis telah dihentikan. Pilih model lain atau minta administrator memeriksa konfigurasinya.</value>
+  </data>
+  <data name="The model service failed after three attempts. Automatic retries have stopped. The host can retry the move." xml:space="preserve">
+    <value>Layanan model gagal setelah tiga kali percobaan. Percobaan ulang otomatis telah dihentikan. Host dapat mencoba lagi menjalankan langkah tersebut.</value>
+  </data>
   <data name="The position changed. Your board has been synchronized." xml:space="preserve">
     <value>Posisi telah berubah. Papan Anda telah disinkronkan.</value>
   </data>
   <data name="The rematch offer is no longer available." xml:space="preserve">
     <value>Tawaran pertandingan ulang sudah tidak tersedia.</value>
+  </data>
+  <data name="Thinking" xml:space="preserve">
+    <value>Sedang berpikir</value>
   </data>
   <data name="This action could not be confirmed. Refresh to synchronize." xml:space="preserve">
     <value>Tindakan ini tidak dapat dikonfirmasi. Muat ulang untuk menyinkronkan.</value>
@@ -290,6 +308,9 @@
   </data>
   <data name="Unlimited" xml:space="preserve">
     <value>Tanpa Batas</value>
+  </data>
+  <data name="Waiting for a model slot" xml:space="preserve">
+    <value>Menunggu slot model</value>
   </data>
   <data name="White" xml:space="preserve">
     <value>Putih</value>

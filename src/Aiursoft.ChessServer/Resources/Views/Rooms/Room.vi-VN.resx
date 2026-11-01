@@ -54,6 +54,12 @@
   <data name="Choose valid room settings." xml:space="preserve">
     <value>Vui lòng chọn cài đặt phòng hợp lệ.</value>
   </data>
+  <data name="Close" xml:space="preserve">
+    <value>Đóng</value>
+  </data>
+  <data name="Colors are assigned when the game starts." xml:space="preserve">
+    <value>Màu quân cờ được phân khi ván đấu bắt đầu.</value>
+  </data>
   <data name="Copied" xml:space="preserve">
     <value>Đã sao chép</value>
   </data>
@@ -66,6 +72,12 @@
   <data name="Difficulty" xml:space="preserve">
     <value>Độ khó</value>
   </data>
+  <data name="Drag to change role" xml:space="preserve">
+    <value>Kéo để thay đổi vai trò</value>
+  </data>
+  <data name="Drop here" xml:space="preserve">
+    <value>Thả vào đây</value>
+  </data>
   <data name="Empty seat" xml:space="preserve">
     <value>Ghế trống</value>
   </data>
@@ -77,6 +89,12 @@
   </data>
   <data name="Finished" xml:space="preserve">
     <value>Đã kết thúc</value>
+  </data>
+  <data name="First position" xml:space="preserve">
+    <value>Vị trí đầu tiên</value>
+  </data>
+  <data name="Game information" xml:space="preserve">
+    <value>Thông tin trò chơi</value>
   </data>
   <data name="Host" xml:space="preserve">
     <value>Chủ phòng</value>
@@ -95,6 +113,9 @@
   </data>
   <data name="Large language model" xml:space="preserve">
     <value>Mô hình ngôn ngữ lớn</value>
+  </data>
+  <data name="Latest position" xml:space="preserve">
+    <value>Vị trí mới nhất</value>
   </data>
   <data name="Leave room" xml:space="preserve">
     <value>Rời khỏi phòng</value>
@@ -117,6 +138,15 @@
   <data name="Model" xml:space="preserve">
     <value>Model</value>
   </data>
+  <data name="More" xml:space="preserve">
+    <value>Thêm</value>
+  </data>
+  <data name="Moves" xml:space="preserve">
+    <value>Nước đi</value>
+  </data>
+  <data name="Next move" xml:space="preserve">
+    <value>Nước đi tiếp theo</value>
+  </data>
   <data name="No increment" xml:space="preserve">
     <value>Không cộng thêm</value>
   </data>
@@ -132,8 +162,20 @@
   <data name="Only the two players can send chat messages. The host can drag people between seats and observers." xml:space="preserve">
     <value>Chỉ hai người chơi mới có thể gửi tin nhắn trò chuyện. Chủ phòng có thể kéo người chơi giữa các vị trí và khu vực khán giả.</value>
   </data>
+  <data name="People" xml:space="preserve">
+    <value>Mọi người</value>
+  </data>
+  <data name="Player 1" xml:space="preserve">
+    <value>Người chơi 1</value>
+  </data>
+  <data name="Player 2" xml:space="preserve">
+    <value>Người chơi 2</value>
+  </data>
   <data name="Players" xml:space="preserve">
     <value>Người chơi</value>
+  </data>
+  <data name="Players and observers" xml:space="preserve">
+    <value>Người chơi và người xem</value>
   </data>
   <data name="Playing" xml:space="preserve">
     <value>Đang chơi</value>
@@ -143,6 +185,9 @@
   </data>
   <data name="Preparing" xml:space="preserve">
     <value>Đang chuẩn bị</value>
+  </data>
+  <data name="Previous move" xml:space="preserve">
+    <value>Nước đi trước</value>
   </data>
   <data name="Randomize colors at start" xml:space="preserve">
     <value>Xáo trộn màu quân cờ khi bắt đầu</value>
@@ -159,8 +204,14 @@
   <data name="Retry computer move" xml:space="preserve">
     <value>Thử lại nước đi của máy tính</value>
   </data>
+  <data name="Room controls" xml:space="preserve">
+    <value>Điều khiển phòng</value>
+  </data>
   <data name="Room name" xml:space="preserve">
     <value>Tên phòng</value>
+  </data>
+  <data name="Room rules" xml:space="preserve">
+    <value>Quy tắc phòng</value>
   </data>
   <data name="Room settings" xml:space="preserve">
     <value>Cài đặt phòng</value>
@@ -170,6 +221,15 @@
   </data>
   <data name="Send" xml:space="preserve">
     <value>Gửi</value>
+  </data>
+  <data name="Share" xml:space="preserve">
+    <value>Chia sẻ</value>
+  </data>
+  <data name="Share room" xml:space="preserve">
+    <value>Chia sẻ phòng</value>
+  </data>
+  <data name="Sign in to add an LLM." xml:space="preserve">
+    <value>Đăng nhập để thêm một mô hình ngôn ngữ lớn (LLM).</value>
   </data>
   <data name="Start game" xml:space="preserve">
     <value>Bắt đầu ván</value>

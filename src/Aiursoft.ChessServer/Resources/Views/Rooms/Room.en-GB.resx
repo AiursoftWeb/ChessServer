@@ -54,6 +54,12 @@
   <data name="Choose valid room settings." xml:space="preserve">
     <value>Choose valid room settings.</value>
   </data>
+  <data name="Close" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="Colors are assigned when the game starts." xml:space="preserve">
+    <value>Colours are assigned when the game starts.</value>
+  </data>
   <data name="Copied" xml:space="preserve">
     <value>Copied</value>
   </data>
@@ -66,6 +72,12 @@
   <data name="Difficulty" xml:space="preserve">
     <value>Difficulty</value>
   </data>
+  <data name="Drag to change role" xml:space="preserve">
+    <value>Drag to change role</value>
+  </data>
+  <data name="Drop here" xml:space="preserve">
+    <value>Drop here</value>
+  </data>
   <data name="Empty seat" xml:space="preserve">
     <value>Empty seat</value>
   </data>
@@ -77,6 +89,12 @@
   </data>
   <data name="Finished" xml:space="preserve">
     <value>Finished</value>
+  </data>
+  <data name="First position" xml:space="preserve">
+    <value>First position</value>
+  </data>
+  <data name="Game information" xml:space="preserve">
+    <value>Game information</value>
   </data>
   <data name="Host" xml:space="preserve">
     <value>Host</value>
@@ -95,6 +113,9 @@
   </data>
   <data name="Large language model" xml:space="preserve">
     <value>Large language model</value>
+  </data>
+  <data name="Latest position" xml:space="preserve">
+    <value>Latest position</value>
   </data>
   <data name="Leave room" xml:space="preserve">
     <value>Leave room</value>
@@ -117,6 +138,15 @@
   <data name="Model" xml:space="preserve">
     <value>Model</value>
   </data>
+  <data name="More" xml:space="preserve">
+    <value>More</value>
+  </data>
+  <data name="Moves" xml:space="preserve">
+    <value>Moves</value>
+  </data>
+  <data name="Next move" xml:space="preserve">
+    <value>Next move</value>
+  </data>
   <data name="No increment" xml:space="preserve">
     <value>No increment</value>
   </data>
@@ -132,8 +162,20 @@
   <data name="Only the two players can send chat messages. The host can drag people between seats and observers." xml:space="preserve">
     <value>Only the two players can send chat messages. The host can drag people between seats and spectators.</value>
   </data>
+  <data name="People" xml:space="preserve">
+    <value>People</value>
+  </data>
+  <data name="Player 1" xml:space="preserve">
+    <value>Player 1</value>
+  </data>
+  <data name="Player 2" xml:space="preserve">
+    <value>Player 2</value>
+  </data>
   <data name="Players" xml:space="preserve">
     <value>Players</value>
+  </data>
+  <data name="Players and observers" xml:space="preserve">
+    <value>Players and observers</value>
   </data>
   <data name="Playing" xml:space="preserve">
     <value>In progress</value>
@@ -143,6 +185,9 @@
   </data>
   <data name="Preparing" xml:space="preserve">
     <value>Preparing</value>
+  </data>
+  <data name="Previous move" xml:space="preserve">
+    <value>Previous move</value>
   </data>
   <data name="Randomize colors at start" xml:space="preserve">
     <value>Randomise colours at the start</value>
@@ -159,8 +204,14 @@
   <data name="Retry computer move" xml:space="preserve">
     <value>Retry computer move</value>
   </data>
+  <data name="Room controls" xml:space="preserve">
+    <value>Room controls</value>
+  </data>
   <data name="Room name" xml:space="preserve">
     <value>Room name</value>
+  </data>
+  <data name="Room rules" xml:space="preserve">
+    <value>Room rules</value>
   </data>
   <data name="Room settings" xml:space="preserve">
     <value>Room settings</value>
@@ -170,6 +221,15 @@
   </data>
   <data name="Send" xml:space="preserve">
     <value>Send</value>
+  </data>
+  <data name="Share" xml:space="preserve">
+    <value>Share</value>
+  </data>
+  <data name="Share room" xml:space="preserve">
+    <value>Share room</value>
+  </data>
+  <data name="Sign in to add an LLM." xml:space="preserve">
+    <value>Sign in to add an LLM.</value>
   </data>
   <data name="Start game" xml:space="preserve">
     <value>Start game</value>
