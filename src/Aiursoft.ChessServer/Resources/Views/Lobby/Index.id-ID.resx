@@ -84,8 +84,14 @@
   <data name="Create a challenge" xml:space="preserve">
     <value>Buat tantangan</value>
   </data>
+  <data name="Create room" xml:space="preserve">
+    <value>Buat ruang</value>
+  </data>
   <data name="Difficulty" xml:space="preserve">
     <value>Tingkat kesulitan</value>
+  </data>
+  <data name="Finished" xml:space="preserve">
+    <value>Selesai</value>
   </data>
   <data name="Guest" xml:space="preserve">
     <value>Tamu</value>
@@ -111,6 +117,9 @@
   <data name="No open challenges." xml:space="preserve">
     <value>Tidak ada tantangan yang terbuka.</value>
   </data>
+  <data name="No rooms yet. Create one and invite people." xml:space="preserve">
+    <value>Belum ada ruangan. Buat ruangan dan undang orang-orang.</value>
+  </data>
   <data name="Open challenges" xml:space="preserve">
     <value>Tantangan Terbuka</value>
   </data>
@@ -123,8 +132,17 @@
   <data name="Play with a friend" xml:space="preserve">
     <value>Bermain dengan teman</value>
   </data>
+  <data name="Playing" xml:space="preserve">
+    <value>Sedang bermain</value>
+  </data>
+  <data name="Preparing" xml:space="preserve">
+    <value>Menyiapkan</value>
+  </data>
   <data name="Random" xml:space="preserve">
     <value>Acak</value>
+  </data>
+  <data name="Rooms" xml:space="preserve">
+    <value>Ruangan</value>
   </data>
   <data name="Start game" xml:space="preserve">
     <value>Mulai permainan</value>

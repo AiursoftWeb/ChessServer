@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="{0} seconds" xml:space="preserve">
+    <value>{0} detik</value>
+  </data>
+  <data name="10 minutes" xml:space="preserve">
+    <value>10 menit</value>
+  </data>
+  <data name="15 minutes" xml:space="preserve">
+    <value>15 menit</value>
+  </data>
+  <data name="3 minutes" xml:space="preserve">
+    <value>3 menit</value>
+  </data>
+  <data name="5 minutes" xml:space="preserve">
+    <value>5 menit</value>
+  </data>
+  <data name="Add AI" xml:space="preserve">
+    <value>Tambahkan AI</value>
+  </data>
+  <data name="AI type" xml:space="preserve">
+    <value>Jenis AI</value>
+  </data>
+  <data name="Black" xml:space="preserve">
+    <value>Hitam</value>
+  </data>
+  <data name="Built-in engine — Lynx" xml:space="preserve">
+    <value>Mesin bawaan — Lynx</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Batal</value>
+  </data>
+  <data name="Chat" xml:space="preserve">
+    <value>Obrolan</value>
+  </data>
+  <data name="Choose valid room settings." xml:space="preserve">
+    <value>Pilih pengaturan ruang yang valid.</value>
+  </data>
+  <data name="Copied" xml:space="preserve">
+    <value>Disalin</value>
+  </data>
+  <data name="Copy link" xml:space="preserve">
+    <value>Salin tautan</value>
+  </data>
+  <data name="Could not update the room. Please try again." xml:space="preserve">
+    <value>Tidak dapat memperbarui ruangan. Silakan coba lagi.</value>
+  </data>
+  <data name="Difficulty" xml:space="preserve">
+    <value>Tingkat kesulitan</value>
+  </data>
+  <data name="Empty seat" xml:space="preserve">
+    <value>Kursi kosong</value>
+  </data>
+  <data name="Fill both player seats before starting." xml:space="preserve">
+    <value>Isi kedua kursi pemain sebelum memulai.</value>
+  </data>
+  <data name="Finish the current game before changing these settings." xml:space="preserve">
+    <value>Selesaikan permainan yang sedang berlangsung sebelum mengubah pengaturan ini.</value>
+  </data>
+  <data name="Finished" xml:space="preserve">
+    <value>Selesai</value>
+  </data>
+  <data name="Host" xml:space="preserve">
+    <value>Tuan rumah</value>
+  </data>
+  <data name="Increment per move" xml:space="preserve">
+    <value>Penambahan waktu per langkah</value>
+  </data>
+  <data name="Invitation link" xml:space="preserve">
+    <value>Tautan undangan</value>
+  </data>
+  <data name="Kick from room" xml:space="preserve">
+    <value>Keluarkan dari ruangan</value>
+  </data>
+  <data name="Kick this person from the room? They cannot rejoin this room with the same identity." xml:space="preserve">
+    <value>Keluarkan orang ini dari ruangan? Mereka tidak dapat bergabung kembali ke ruangan ini dengan identitas yang sama.</value>
+  </data>
+  <data name="Large language model" xml:space="preserve">
+    <value>Model bahasa besar</value>
+  </data>
+  <data name="Leave room" xml:space="preserve">
+    <value>Keluar dari ruang</value>
+  </data>
+  <data name="Leave this room? Leaving an active game forfeits it. If everyone leaves, the room closes." xml:space="preserve">
+    <value>Keluar dari ruangan ini? Jika Anda keluar saat permainan sedang berlangsung, Anda dianggap kalah. Jika semua orang keluar, ruangan akan ditutup.</value>
+  </data>
+  <data name="List this room publicly" xml:space="preserve">
+    <value>Tampilkan ruang ini secara publik</value>
+  </data>
+  <data name="Lobby" xml:space="preserve">
+    <value>Lobi</value>
+  </data>
+  <data name="Make host" xml:space="preserve">
+    <value>Jadikan host</value>
+  </data>
+  <data name="Message" xml:space="preserve">
+    <value>Pesan</value>
+  </data>
+  <data name="Model" xml:space="preserve">
+    <value>Model</value>
+  </data>
+  <data name="No increment" xml:space="preserve">
+    <value>Tanpa penambahan waktu</value>
+  </data>
+  <data name="Observer" xml:space="preserve">
+    <value>Pengamat</value>
+  </data>
+  <data name="Observers" xml:space="preserve">
+    <value>Pengamat</value>
+  </data>
+  <data name="Only the host can manage this room." xml:space="preserve">
+    <value>Hanya host yang dapat mengelola ruangan ini.</value>
+  </data>
+  <data name="Only the two players can send chat messages. The host can drag people between seats and observers." xml:space="preserve">
+    <value>Hanya kedua pemain yang dapat mengirim pesan obrolan. Tuan rumah dapat memindahkan orang dengan menyeret mereka antara kursi pemain dan daftar penonton.</value>
+  </data>
+  <data name="Players" xml:space="preserve">
+    <value>Pemain</value>
+  </data>
+  <data name="Playing" xml:space="preserve">
+    <value>Sedang bermain</value>
+  </data>
+  <data name="Prepare next game" xml:space="preserve">
+    <value>Siapkan permainan berikutnya</value>
+  </data>
+  <data name="Preparing" xml:space="preserve">
+    <value>Menyiapkan</value>
+  </data>
+  <data name="Randomize colors at start" xml:space="preserve">
+    <value>Acak warna saat memulai</value>
+  </data>
+  <data name="Remove AI" xml:space="preserve">
+    <value>Hapus AI</value>
+  </data>
+  <data name="Remove this AI and replace it with the selected person?" xml:space="preserve">
+    <value>Hapus AI ini dan ganti dengan orang yang dipilih?</value>
+  </data>
+  <data name="Replay" xml:space="preserve">
+    <value>Putar ulang</value>
+  </data>
+  <data name="Retry computer move" xml:space="preserve">
+    <value>Ulangi langkah komputer</value>
+  </data>
+  <data name="Room name" xml:space="preserve">
+    <value>Nama ruangan</value>
+  </data>
+  <data name="Room settings" xml:space="preserve">
+    <value>Pengaturan Ruangan</value>
+  </data>
+  <data name="Save settings" xml:space="preserve">
+    <value>Simpan pengaturan</value>
+  </data>
+  <data name="Send" xml:space="preserve">
+    <value>Kirim</value>
+  </data>
+  <data name="Start game" xml:space="preserve">
+    <value>Mulai permainan</value>
+  </data>
+  <data name="Stop this game" xml:space="preserve">
+    <value>Hentikan permainan ini</value>
+  </data>
+  <data name="Swap colors" xml:space="preserve">
+    <value>Tukar warna</value>
+  </data>
+  <data name="The next human becomes host when the host leaves. The room closes when everyone leaves. Refreshing or reconnecting has a 60-second grace period." xml:space="preserve">
+    <value>Orang berikutnya menjadi host saat host keluar. Ruangan ditutup saat semua orang keluar. Memuat ulang atau menyambungkan kembali diberi masa tenggang 60 detik.</value>
+  </data>
+  <data name="The room changed. Review the current settings and try again." xml:space="preserve">
+    <value>Ruangan telah berubah. Periksa pengaturan saat ini dan coba lagi.</value>
+  </data>
+  <data name="The selected model is unavailable. Refresh and try again." xml:space="preserve">
+    <value>Model yang dipilih tidak tersedia. Muat ulang dan coba lagi.</value>
+  </data>
+  <data name="This person has left the room." xml:space="preserve">
+    <value>Orang ini telah meninggalkan ruangan.</value>
+  </data>
+  <data name="This room has closed. Return to the lobby." xml:space="preserve">
+    <value>Ruangan ini telah ditutup. Kembali ke lobi.</value>
+  </data>
+  <data name="This seat is occupied. Move or remove its player first." xml:space="preserve">
+    <value>Kursi ini sudah ditempati. Pindahkan atau keluarkan pemainnya terlebih dahulu.</value>
+  </data>
+  <data name="This will stop the current game without awarding a winner. Continue?" xml:space="preserve">
+    <value>Ini akan menghentikan permainan yang sedang berlangsung tanpa menentukan pemenang. Lanjutkan?</value>
+  </data>
+  <data name="Time per player" xml:space="preserve">
+    <value>Waktu per pemain</value>
+  </data>
+  <data name="Unlimited" xml:space="preserve">
+    <value>Tanpa batas</value>
+  </data>
+  <data name="White" xml:space="preserve">
+    <value>Putih</value>
+  </data>
+  <data name="You have been removed from this room." xml:space="preserve">
+    <value>Anda telah dikeluarkan dari ruangan ini.</value>
+  </data>
+
+</root>

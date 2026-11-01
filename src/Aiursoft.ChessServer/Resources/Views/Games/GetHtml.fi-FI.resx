@@ -99,6 +99,9 @@
   <data name="Could not confirm the saved game. Retry." xml:space="preserve">
     <value>Tallennettua peliä ei voitu vahvistaa. Yritä uudelleen.</value>
   </data>
+  <data name="Disconnects have a 60-second reconnection grace period. The room closes when everyone leaves." xml:space="preserve">
+    <value>Yhteyden katketessa uudelleenyhdistämiseen on 60 sekunnin armonaika. Huone sulkeutuu, kun kaikki poistuvat.</value>
+  </data>
   <data name="Dismiss offer" xml:space="preserve">
     <value>Hylkää tarjous</value>
   </data>
@@ -140,6 +143,9 @@
   </data>
   <data name="Game over. {0} wins." xml:space="preserve">
     <value>Peli päättyi. {0} voitti.</value>
+  </data>
+  <data name="Game stopped by the host" xml:space="preserve">
+    <value>Pelin isäntä keskeytti</value>
   </data>
   <data name="Guest" xml:space="preserve">
     <value>Vieras</value>

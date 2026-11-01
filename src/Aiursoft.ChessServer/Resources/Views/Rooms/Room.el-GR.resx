@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="{0} seconds" xml:space="preserve">
+    <value>{0} δευτερόλεπτα</value>
+  </data>
+  <data name="10 minutes" xml:space="preserve">
+    <value>10 λεπτά</value>
+  </data>
+  <data name="15 minutes" xml:space="preserve">
+    <value>15 λεπτά</value>
+  </data>
+  <data name="3 minutes" xml:space="preserve">
+    <value>3 λεπτά</value>
+  </data>
+  <data name="5 minutes" xml:space="preserve">
+    <value>5 λεπτά</value>
+  </data>
+  <data name="Add AI" xml:space="preserve">
+    <value>Προσθήκη AI</value>
+  </data>
+  <data name="AI type" xml:space="preserve">
+    <value>Τύπος ΤΝ</value>
+  </data>
+  <data name="Black" xml:space="preserve">
+    <value>Μαύρα</value>
+  </data>
+  <data name="Built-in engine — Lynx" xml:space="preserve">
+    <value>Ενσωματωμένη μηχανή — Lynx</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Ακύρωση</value>
+  </data>
+  <data name="Chat" xml:space="preserve">
+    <value>Συνομιλία</value>
+  </data>
+  <data name="Choose valid room settings." xml:space="preserve">
+    <value>Επιλέξτε έγκυρες ρυθμίσεις δωματίου.</value>
+  </data>
+  <data name="Copied" xml:space="preserve">
+    <value>Αντιγράφηκε</value>
+  </data>
+  <data name="Copy link" xml:space="preserve">
+    <value>Αντιγραφή συνδέσμου</value>
+  </data>
+  <data name="Could not update the room. Please try again." xml:space="preserve">
+    <value>Δεν ήταν δυνατή η ενημέρωση του δωματίου. Δοκιμάστε ξανά.</value>
+  </data>
+  <data name="Difficulty" xml:space="preserve">
+    <value>Δυσκολία</value>
+  </data>
+  <data name="Empty seat" xml:space="preserve">
+    <value>Κενή θέση</value>
+  </data>
+  <data name="Fill both player seats before starting." xml:space="preserve">
+    <value>Συμπληρώστε και τις δύο θέσεις παικτών πριν ξεκινήσετε.</value>
+  </data>
+  <data name="Finish the current game before changing these settings." xml:space="preserve">
+    <value>Ολοκληρώστε την τρέχουσα παρτίδα πριν αλλάξετε αυτές τις ρυθμίσεις.</value>
+  </data>
+  <data name="Finished" xml:space="preserve">
+    <value>Ολοκληρώθηκε</value>
+  </data>
+  <data name="Host" xml:space="preserve">
+    <value>Οικοδεσπότης</value>
+  </data>
+  <data name="Increment per move" xml:space="preserve">
+    <value>Προσαύξηση ανά κίνηση</value>
+  </data>
+  <data name="Invitation link" xml:space="preserve">
+    <value>Σύνδεσμος πρόσκλησης</value>
+  </data>
+  <data name="Kick from room" xml:space="preserve">
+    <value>Απομάκρυνση από το δωμάτιο</value>
+  </data>
+  <data name="Kick this person from the room? They cannot rejoin this room with the same identity." xml:space="preserve">
+    <value>Να αφαιρεθεί αυτό το άτομο από το δωμάτιο; Δεν θα μπορεί να ξαναμπεί σε αυτό το δωμάτιο με την ίδια ταυτότητα.</value>
+  </data>
+  <data name="Large language model" xml:space="preserve">
+    <value>Μεγάλο γλωσσικό μοντέλο</value>
+  </data>
+  <data name="Leave room" xml:space="preserve">
+    <value>Έξοδος από το δωμάτιο</value>
+  </data>
+  <data name="Leave this room? Leaving an active game forfeits it. If everyone leaves, the room closes." xml:space="preserve">
+    <value>Να αποχωρήσετε από αυτό το δωμάτιο; Αν αποχωρήσετε ενώ η παρτίδα βρίσκεται σε εξέλιξη, χάνετε την παρτίδα. Αν αποχωρήσουν όλοι, το δωμάτιο κλείνει.</value>
+  </data>
+  <data name="List this room publicly" xml:space="preserve">
+    <value>Να εμφανίζεται δημόσια αυτή η αίθουσα</value>
+  </data>
+  <data name="Lobby" xml:space="preserve">
+    <value>Αίθουσα αναμονής</value>
+  </data>
+  <data name="Make host" xml:space="preserve">
+    <value>Ορισμός ως οικοδεσπότη</value>
+  </data>
+  <data name="Message" xml:space="preserve">
+    <value>Μήνυμα</value>
+  </data>
+  <data name="Model" xml:space="preserve">
+    <value>Model</value>
+  </data>
+  <data name="No increment" xml:space="preserve">
+    <value>Χωρίς προσαύξηση</value>
+  </data>
+  <data name="Observer" xml:space="preserve">
+    <value>Παρατηρητής</value>
+  </data>
+  <data name="Observers" xml:space="preserve">
+    <value>Παρατηρητές</value>
+  </data>
+  <data name="Only the host can manage this room." xml:space="preserve">
+    <value>Μόνο ο οικοδεσπότης μπορεί να διαχειριστεί αυτή την αίθουσα.</value>
+  </data>
+  <data name="Only the two players can send chat messages. The host can drag people between seats and observers." xml:space="preserve">
+    <value>Μόνο οι δύο παίκτες μπορούν να στέλνουν μηνύματα συνομιλίας. Ο οικοδεσπότης μπορεί να σύρει άτομα μεταξύ των θέσεων των παικτών και των παρατηρητών.</value>
+  </data>
+  <data name="Players" xml:space="preserve">
+    <value>Παίκτες</value>
+  </data>
+  <data name="Playing" xml:space="preserve">
+    <value>Σε εξέλιξη</value>
+  </data>
+  <data name="Prepare next game" xml:space="preserve">
+    <value>Προετοιμασία επόμενης παρτίδας</value>
+  </data>
+  <data name="Preparing" xml:space="preserve">
+    <value>Προετοιμασία</value>
+  </data>
+  <data name="Randomize colors at start" xml:space="preserve">
+    <value>Τυχαία επιλογή χρωμάτων κατά την έναρξη</value>
+  </data>
+  <data name="Remove AI" xml:space="preserve">
+    <value>Αφαίρεση AI</value>
+  </data>
+  <data name="Remove this AI and replace it with the selected person?" xml:space="preserve">
+    <value>Να αφαιρεθεί αυτή η τεχνητή νοημοσύνη και να αντικατασταθεί από το επιλεγμένο άτομο;</value>
+  </data>
+  <data name="Replay" xml:space="preserve">
+    <value>Επανάληψη</value>
+  </data>
+  <data name="Retry computer move" xml:space="preserve">
+    <value>Επανάληψη κίνησης του υπολογιστή</value>
+  </data>
+  <data name="Room name" xml:space="preserve">
+    <value>Όνομα δωματίου</value>
+  </data>
+  <data name="Room settings" xml:space="preserve">
+    <value>Ρυθμίσεις δωματίου</value>
+  </data>
+  <data name="Save settings" xml:space="preserve">
+    <value>Αποθήκευση ρυθμίσεων</value>
+  </data>
+  <data name="Send" xml:space="preserve">
+    <value>Αποστολή</value>
+  </data>
+  <data name="Start game" xml:space="preserve">
+    <value>Έναρξη παιχνιδιού</value>
+  </data>
+  <data name="Stop this game" xml:space="preserve">
+    <value>Διακοπή αυτού του παιχνιδιού</value>
+  </data>
+  <data name="Swap colors" xml:space="preserve">
+    <value>Εναλλαγή χρωμάτων</value>
+  </data>
+  <data name="The next human becomes host when the host leaves. The room closes when everyone leaves. Refreshing or reconnecting has a 60-second grace period." xml:space="preserve">
+    <value>Ο επόμενος άνθρωπος γίνεται οικοδεσπότης όταν αποχωρήσει ο οικοδεσπότης. Το δωμάτιο κλείνει όταν αποχωρήσουν όλοι. Η ανανέωση της σελίδας ή η επανασύνδεση έχουν περίοδο χάριτος 60 δευτερολέπτων.</value>
+  </data>
+  <data name="The room changed. Review the current settings and try again." xml:space="preserve">
+    <value>Η αίθουσα άλλαξε. Ελέγξτε τις τρέχουσες ρυθμίσεις και δοκιμάστε ξανά.</value>
+  </data>
+  <data name="The selected model is unavailable. Refresh and try again." xml:space="preserve">
+    <value>Το επιλεγμένο μοντέλο δεν είναι διαθέσιμο. Ανανεώστε τη σελίδα και δοκιμάστε ξανά.</value>
+  </data>
+  <data name="This person has left the room." xml:space="preserve">
+    <value>Αυτό το άτομο έχει φύγει από το δωμάτιο.</value>
+  </data>
+  <data name="This room has closed. Return to the lobby." xml:space="preserve">
+    <value>Αυτό το δωμάτιο έκλεισε. Επιστρέψτε στο λόμπι.</value>
+  </data>
+  <data name="This seat is occupied. Move or remove its player first." xml:space="preserve">
+    <value>Αυτή η θέση είναι κατειλημμένη. Μετακινήστε ή αφαιρέστε πρώτα τον παίκτη που βρίσκεται σε αυτήν.</value>
+  </data>
+  <data name="This will stop the current game without awarding a winner. Continue?" xml:space="preserve">
+    <value>Αυτό θα τερματίσει την τρέχουσα παρτίδα χωρίς να ανακηρυχθεί νικητής. Συνέχεια;</value>
+  </data>
+  <data name="Time per player" xml:space="preserve">
+    <value>Χρόνος ανά παίκτη</value>
+  </data>
+  <data name="Unlimited" xml:space="preserve">
+    <value>Χωρίς όριο</value>
+  </data>
+  <data name="White" xml:space="preserve">
+    <value>Λευκά</value>
+  </data>
+  <data name="You have been removed from this room." xml:space="preserve">
+    <value>Αφαιρεθήκατε από αυτό το δωμάτιο.</value>
+  </data>
+
+</root>
