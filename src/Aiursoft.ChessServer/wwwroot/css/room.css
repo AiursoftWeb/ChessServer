@@ -1,7 +1,10 @@
 .room-seat,.room-observers{border:1px dashed var(--bs-border-color,#adb5bd);border-radius:.4rem;padding:.75rem;min-height:5rem}
 .room-person{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem;padding:.5rem 0;overflow-wrap:anywhere}
 .room-person[draggable=true]{cursor:grab}
-.room-person .room-person-name{flex:1;min-width:0;overflow-wrap:anywhere}
+.room-person-identity{flex:1;min-width:6rem;overflow-wrap:anywhere;display:flex;flex-direction:column;align-items:flex-start;gap:.25rem}
+.room-avatar{width:3.5rem;height:3.5rem;flex-shrink:0;object-fit:cover;border-radius:50%;border:2px solid var(--bs-border-color,#adb5bd)}
+.room-host .room-avatar{border-color:#d49b22;box-shadow:0 0 0 2px #d49b2233}
+.room-host-badge{font-size:.75rem}
 .room-person select{width:auto;max-width:100%}
 .advanced-game .chess-layout{grid-template-columns:minmax(0,1fr)}
 #add-room-ai{max-width:min(30rem,95vw);width:100%;border:0;border-radius:.5rem;padding:1.5rem}
