@@ -99,6 +99,9 @@
   <data name="Could not confirm the saved game. Retry." xml:space="preserve">
     <value>Δεν ήταν δυνατή η επιβεβαίωση της αποθηκευμένης παρτίδας. Δοκιμάστε ξανά.</value>
   </data>
+  <data name="Disconnects have a 60-second reconnection grace period. The room closes when everyone leaves." xml:space="preserve">
+    <value>Οι αποσυνδέσεις συνοδεύονται από περίοδο χάριτος 60 δευτερολέπτων για επανασύνδεση. Το δωμάτιο κλείνει όταν αποχωρήσουν όλοι.</value>
+  </data>
   <data name="Dismiss offer" xml:space="preserve">
     <value>Απόρριψη προσφοράς</value>
   </data>
@@ -140,6 +143,9 @@
   </data>
   <data name="Game over. {0} wins." xml:space="preserve">
     <value>Τέλος παιχνιδιού. Κερδίζει ο/η {0}.</value>
+  </data>
+  <data name="Game stopped by the host" xml:space="preserve">
+    <value>Το παιχνίδι διακόπηκε από τον διοργανωτή</value>
   </data>
   <data name="Guest" xml:space="preserve">
     <value>Επισκέπτης</value>
