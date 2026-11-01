@@ -24,6 +24,7 @@ if (embeddedGame) {
     el('room-game-state').append(el('game-state'), el('game-result'));
     el('room-moves').prepend(el('game-moves'));
     el('room-game-controls').append(el('game-controls'));
+    root.querySelector('.room-actions').append(el('history-link'));
     el('room-game-tools').append(el('game-exports'), el('game-policy'));
     el('game-room').querySelector('.chess-information').hidden = true;
     for (const name of ['moves', 'chat']) {
@@ -172,7 +173,7 @@ function apply(next) {
     el('next-room-game').hidden = !host || state.Stage !== 'finished';
     el('retry-room-computer').hidden = !host || !state.ComputerError || state.Stage !== 'playing';
     el('interrupt-room').hidden = !host || state.Stage !== 'playing';
-    el('room-history').hidden = state.Stage !== 'finished' || state.OrganizerId !== state.Viewer || state.Members.find(m => m.Id === state.Viewer)?.IsGuest !== false;
+    el('room-history').hidden = state.Stage !== 'finished' || state.OrganizerId !== state.Viewer || state.Members.find(m => m.Id === state.Viewer)?.IsGuest !== false || [state.GameWhite?.Id, state.GameBlack?.Id].includes(state.Viewer);
     el('room-history').href = `/History/Replay/${state.HistoryId}`;
     const randomWaiting = state.RandomColors && state.Stage === 'waiting';
     el('swap-seats').hidden = !host || randomWaiting; el('swap-seats').disabled = state.Stage === 'playing';
