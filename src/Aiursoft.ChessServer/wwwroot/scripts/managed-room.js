@@ -7,17 +7,18 @@ const textFallback = 'Could not update the room. Please try again.';
 let state, busy = false, closed = false, renderedVersion = -1, dirty = false, editingVersion, aiVersion, socket, chat;
 let drag;
 const settings = el('room-settings');
-let activeTab = 'moves', unread = 0;
-function selectTab(name, focus = false) {
-    activeTab = name;
+let activePanel = null, unread = 0;
+function selectPanel(name, focus = false) {
+    // A collapsed record must not leave the board on a hidden replay position.
+    if (activePanel === 'moves' && name !== 'moves' && !el('return-live').hidden) el('return-live').click();
+    activePanel = name;
     for (const tab of ['moves', 'chat']) {
         const selected = tab === name;
-        el(`room-${tab}-tab`).setAttribute('aria-selected', String(selected));
-        el(`room-${tab}-tab`).tabIndex = selected ? 0 : -1;
+        el(`room-${tab}-tab`).setAttribute('aria-expanded', String(selected));
         el(`room-${tab}`).hidden = !selected;
     }
     if (name === 'chat') { unread = 0; el('room-unread').hidden = true; }
-    if (focus) el(`room-${name}-tab`).focus();
+    if (focus && name) el(`room-${name}-tab`).focus();
 }
 if (embeddedGame) {
     // Move the existing controls without replacing nodes or their event handlers.
@@ -29,12 +30,12 @@ if (embeddedGame) {
     el('game-room').querySelector('.chess-information').hidden = true;
     for (const name of ['moves', 'chat']) {
         const tab = el(`room-${name}-tab`);
-        tab.onclick = () => selectTab(name);
+        tab.onclick = () => selectPanel(activePanel === name ? null : name);
         tab.onkeydown = event => {
             if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
             event.preventDefault();
-            const target = event.key === 'Home' ? 'moves' : event.key === 'End' ? 'chat' : activeTab === 'moves' ? 'chat' : 'moves';
-            selectTab(el(`room-${target}-tab`).hidden ? 'moves' : target, true);
+            const target = event.key === 'Home' ? 'moves' : event.key === 'End' ? 'chat' : name === 'moves' ? 'chat' : 'moves';
+            selectPanel(el(`room-${target}-tab`).hidden ? 'moves' : target, true);
         };
     }
 } else {
@@ -158,8 +159,8 @@ function apply(next) {
     const host = state.Host === state.Viewer;
     el('room-chat-tab').hidden = !canChat() || !embeddedGame;
     if (embeddedGame) {
-        if (!canChat() && activeTab === 'chat') selectTab('moves');
-        el('room-chat').hidden = !canChat() || activeTab !== 'chat';
+        if (!canChat() && activePanel === 'chat') selectPanel(null);
+        el('room-chat').hidden = !canChat() || activePanel !== 'chat';
     } else { el('room-chat').hidden = !canChat(); el('room-preparing-chat').hidden = !canChat(); }
     el('room-chat-form').hidden = !canChat();
     if (canChat()) connectChat();
@@ -277,7 +278,7 @@ function connectChat() {
         const message = JSON.parse(event.data), row = document.createElement('div'); row.className = 'chess-message';
         const sender = document.createElement('strong'); sender.textContent = message.SenderNickName;
         const body = document.createElement('p'); body.textContent = message.Content; row.append(sender, body); el('room-messages').append(row);
-        if (embeddedGame && activeTab !== 'chat') {
+        if (embeddedGame && activePanel !== 'chat') {
             unread++; el('room-unread').textContent = String(unread); el('room-unread').hidden = false;
         }
         el('room-messages').scrollTop = el('room-messages').scrollHeight;

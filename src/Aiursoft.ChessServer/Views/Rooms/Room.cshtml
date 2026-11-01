@@ -27,11 +27,11 @@
         </div>
         <aside class="room-console" aria-label="@Localizer["Room controls"]">
             <div id="room-game-state" class="room-game-state" hidden="@(Model.Game == null)"></div>
-            <div id="room-tabs" class="room-tabs" role="tablist" aria-label="@Localizer["Game information"]" hidden="@(Model.Game == null)">
-                <button id="room-moves-tab" class="room-tab" type="button" role="tab" aria-selected="true" aria-controls="room-moves">@Localizer["Moves"]</button>
-                <button id="room-chat-tab" class="room-tab" type="button" role="tab" aria-selected="false" aria-controls="room-chat" tabindex="-1" hidden>@Localizer["Chat"]<span id="room-unread" class="badge bg-primary ms-1" hidden></span></button>
+            <div id="room-tabs" class="room-tabs" role="group" aria-label="@Localizer["Game information"]" hidden="@(Model.Game == null)">
+                <button id="room-moves-tab" class="room-tab" type="button" aria-expanded="false" aria-controls="room-moves">@Localizer["Moves"]<span class="room-panel-chevron" aria-hidden="true"></span></button>
+                <button id="room-chat-tab" class="room-tab" type="button" aria-expanded="false" aria-controls="room-chat" hidden>@Localizer["Chat"]<span id="room-unread" class="badge bg-primary ms-1" hidden></span><span class="room-panel-chevron" aria-hidden="true"></span></button>
             </div>
-            <div id="room-moves" class="room-tab-panel" role="tabpanel" tabindex="0" aria-labelledby="room-moves-tab" hidden="@(Model.Game == null)">
+            <div id="room-moves" class="room-tab-panel" role="region" aria-labelledby="room-moves-tab" hidden>
                 <nav class="room-move-navigation" aria-label="@Localizer["Replay"]">
                     <button class="btn btn-sm btn-outline-secondary" data-view-position="first" type="button" aria-label="@Localizer["First position"]" title="@Localizer["First position"]">|‹</button>
                     <button class="btn btn-sm btn-outline-secondary" data-view-position="previous" type="button" aria-label="@Localizer["Previous move"]" title="@Localizer["Previous move"]">‹</button>
@@ -39,7 +39,7 @@
                     <button class="btn btn-sm btn-outline-secondary" data-view-position="latest" type="button" aria-label="@Localizer["Latest position"]" title="@Localizer["Latest position"]">›|</button>
                 </nav>
             </div>
-            <section id="room-chat" class="room-tab-panel" role="tabpanel" aria-labelledby="room-chat-tab" hidden>
+            <section id="room-chat" class="room-tab-panel" role="region" aria-labelledby="room-chat-tab" hidden>
                 <div id="room-messages" class="chess-messages" role="log" aria-live="polite"></div>
                 <form id="room-chat-form" class="d-flex gap-2 mt-2" hidden><input id="room-chat-input" class="form-control" maxlength="2000" aria-label="@Localizer["Message"]" autocomplete="off" /><button class="btn btn-primary" type="submit">@Localizer["Send"]</button></form>
             </section>
