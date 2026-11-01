@@ -93,6 +93,12 @@
   <data name="Increment per move" xml:space="preserve">
     <value>प्रति चाल अतिरिक्त समय</value>
   </data>
+  <data name="LLM — Play a language model" xml:space="preserve">
+    <value>LLM — भाषा मॉडल के विरुद्ध खेलें</value>
+  </data>
+  <data name="Model" xml:space="preserve">
+    <value>Model</value>
+  </data>
   <data name="My games" xml:space="preserve">
     <value>मेरे खेल</value>
   </data>

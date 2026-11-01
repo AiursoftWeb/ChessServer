@@ -204,6 +204,9 @@
   <data name="Resignation" xml:space="preserve">
     <value>Đầu hàng</value>
   </data>
+  <data name="Retry computer move" xml:space="preserve">
+    <value>Thử lại nước đi của máy tính</value>
+  </data>
   <data name="Retry saving" xml:space="preserve">
     <value>Thử lưu lại</value>
   </data>
@@ -242,6 +245,9 @@
   </data>
   <data name="That move cannot be played in the current position." xml:space="preserve">
     <value>Nước đi đó không thể thực hiện ở thế cờ hiện tại.</value>
+  </data>
+  <data name="The computer could not choose a move. Retry when ready." xml:space="preserve">
+    <value>Máy tính không thể chọn nước đi. Hãy thử lại khi sẵn sàng.</value>
   </data>
   <data name="The draw offer is no longer available." xml:space="preserve">
     <value>Đề nghị hòa không còn khả dụng.</value>

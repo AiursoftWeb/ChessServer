@@ -204,6 +204,9 @@
   <data name="Resignation" xml:space="preserve">
     <value>認輸</value>
   </data>
+  <data name="Retry computer move" xml:space="preserve">
+    <value>重試電腦走棋</value>
+  </data>
   <data name="Retry saving" xml:space="preserve">
     <value>重新儲存</value>
   </data>
@@ -242,6 +245,9 @@
   </data>
   <data name="That move cannot be played in the current position." xml:space="preserve">
     <value>目前的局面下不能走這一步。</value>
+  </data>
+  <data name="The computer could not choose a move. Retry when ready." xml:space="preserve">
+    <value>電腦未能選擇棋步。準備好後請重試。</value>
   </data>
   <data name="The draw offer is no longer available." xml:space="preserve">
     <value>和棋提議已不再有效。</value>

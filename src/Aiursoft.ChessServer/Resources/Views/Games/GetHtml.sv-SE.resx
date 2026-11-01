@@ -204,6 +204,9 @@
   <data name="Resignation" xml:space="preserve">
     <value>Parti</value>
   </data>
+  <data name="Retry computer move" xml:space="preserve">
+    <value>Försök datorns drag igen</value>
+  </data>
   <data name="Retry saving" xml:space="preserve">
     <value>Försök spara igen</value>
   </data>
@@ -242,6 +245,9 @@
   </data>
   <data name="That move cannot be played in the current position." xml:space="preserve">
     <value>Det draget kan inte spelas i den aktuella ställningen.</value>
+  </data>
+  <data name="The computer could not choose a move. Retry when ready." xml:space="preserve">
+    <value>Datorn kunde inte välja ett drag. Försök igen när du är redo.</value>
   </data>
   <data name="The draw offer is no longer available." xml:space="preserve">
     <value>Utbudet om oavgjort är inte längre tillgängligt.</value>

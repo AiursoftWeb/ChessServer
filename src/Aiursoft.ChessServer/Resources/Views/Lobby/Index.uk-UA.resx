@@ -93,6 +93,12 @@
   <data name="Increment per move" xml:space="preserve">
     <value>Додатковий час за кожен хід</value>
   </data>
+  <data name="LLM — Play a language model" xml:space="preserve">
+    <value>LLM — Грати проти мовної моделі</value>
+  </data>
+  <data name="Model" xml:space="preserve">
+    <value>Model</value>
+  </data>
   <data name="My games" xml:space="preserve">
     <value>Мої партії</value>
   </data>

@@ -204,6 +204,9 @@
   <data name="Resignation" xml:space="preserve">
     <value>การยอมแพ้</value>
   </data>
+  <data name="Retry computer move" xml:space="preserve">
+    <value>ลองให้คอมพิวเตอร์เดินอีกครั้ง</value>
+  </data>
   <data name="Retry saving" xml:space="preserve">
     <value>ลองบันทึกใหม่</value>
   </data>
@@ -242,6 +245,9 @@
   </data>
   <data name="That move cannot be played in the current position." xml:space="preserve">
     <value>ตานี้ไม่สามารถเล่นได้ในตำแหน่งปัจจุบัน</value>
+  </data>
+  <data name="The computer could not choose a move. Retry when ready." xml:space="preserve">
+    <value>คอมพิวเตอร์ไม่สามารถเลือกเดินหมากได้ โปรดลองอีกครั้งเมื่อพร้อม</value>
   </data>
   <data name="The draw offer is no longer available." xml:space="preserve">
     <value>ข้อเสนอเสมอไม่มีให้ใช้อีกต่อไปแล้ว</value>

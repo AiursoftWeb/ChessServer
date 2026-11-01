@@ -93,6 +93,12 @@
   <data name="Increment per move" xml:space="preserve">
     <value>الزيادة الزمنية لكل نقلة</value>
   </data>
+  <data name="LLM — Play a language model" xml:space="preserve">
+    <value>نموذج لغوي كبير — العب ضد نموذج لغوي</value>
+  </data>
+  <data name="Model" xml:space="preserve">
+    <value>Model</value>
+  </data>
   <data name="My games" xml:space="preserve">
     <value>ألعابي</value>
   </data>

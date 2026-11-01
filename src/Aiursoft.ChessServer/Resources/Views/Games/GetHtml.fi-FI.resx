@@ -201,6 +201,9 @@
   <data name="Resignation" xml:space="preserve">
     <value>Luovutus</value>
   </data>
+  <data name="Retry computer move" xml:space="preserve">
+    <value>Yritä tietokoneen siirtoa uudelleen</value>
+  </data>
   <data name="Retry saving" xml:space="preserve">
     <value>Yritä tallentaa uudelleen</value>
   </data>
@@ -239,6 +242,9 @@
   </data>
   <data name="That move cannot be played in the current position." xml:space="preserve">
     <value>Tuota siirtoä ei voi tehdä nykyisessä asemassa.</value>
+  </data>
+  <data name="The computer could not choose a move. Retry when ready." xml:space="preserve">
+    <value>Tietokone ei voinut valita siirtoa. Yritä uudelleen, kun olet valmis.</value>
   </data>
   <data name="The draw offer is no longer available." xml:space="preserve">
     <value>Tasapelitarjous ei ole enää voimassa.</value>

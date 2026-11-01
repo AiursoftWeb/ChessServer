@@ -93,6 +93,12 @@
   <data name="Increment per move" xml:space="preserve">
     <value>1手ごとの加算時間</value>
   </data>
+  <data name="LLM — Play a language model" xml:space="preserve">
+    <value>LLM — 言語モデルと対局</value>
+  </data>
+  <data name="Model" xml:space="preserve">
+    <value>Model</value>
+  </data>
   <data name="My games" xml:space="preserve">
     <value>自分の対局</value>
   </data>
