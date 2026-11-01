@@ -66,6 +66,7 @@ public class ChallengeContext(AcceptedChallenge challenge, int id)
     public int? NextGameId { get; } = challenge.NextGameId;
     public int? ParentRoomId { get; } = challenge.ParentRoomId;
     public bool Thinking { get; } = challenge.Game.IsThinking;
+    public ComputerProgress? ComputerProgress { get; } = challenge.Game.ComputerProgress;
     public string? ComputerError { get; } = challenge.Game.ComputerError;
     public string WhiteId { get; } = challenge.GetWhitePlayer().Id.ToString();
     public string BlackId { get; } = challenge.GetBlackPlayer().Id.ToString();

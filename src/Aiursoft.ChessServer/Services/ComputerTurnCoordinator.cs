@@ -16,7 +16,7 @@ public class ComputerTurnCoordinator(InMemoryDatabase database, IServiceScopeFac
         {
             if (game.Game.IsThinking || game.Game.Board.IsEndGame || game.Game.ComputerError != null || game.ControllerFor(game.GetTurnPlayer().Id)?.IsAi != true) return;
             search = CancellationTokenSource.CreateLinkedTokenSource(game.Lifetime, lifetime.ApplicationStopping);
-            game.Game.IsThinking = true; game.Game.SearchCancellation = search;
+            game.Game.IsThinking = true; game.Game.ComputerProgress = null; game.Game.SearchCancellation = search;
         }
         _ = RunAsync(id, game, search);
     }
@@ -38,14 +38,15 @@ public class ComputerTurnCoordinator(InMemoryDatabase database, IServiceScopeFac
                 using var scope = scopes.CreateScope();
                 var sessions = scope.ServiceProvider.GetRequiredService<GameSessionService>();
                 using var budget = CancellationTokenSource.CreateLinkedTokenSource(search.Token);
-                budget.CancelAfter(game.IsTimed ? remaining > TimeSpan.Zero ? remaining : TimeSpan.FromMilliseconds(1) : TimeSpan.FromMinutes(5));
+                if (game.IsTimed) budget.CancelAfter(remaining > TimeSpan.Zero ? remaining : TimeSpan.FromMilliseconds(1));
+                else if (controller.Kind != "llm") budget.CancelAfter(TimeSpan.FromMinutes(5));
                 var clock = Stopwatch.StartNew();
                 try
                 {
                     string move; var attempts = 1;
                     if (controller.Kind == "llm")
                     {
-                        var chosen = await scope.ServiceProvider.GetRequiredService<LlmChessPlayer>().GetMoveResultAsync(fen, pgn, controller.Model!, budget.Token);
+                        var chosen = await scope.ServiceProvider.GetRequiredService<LlmChessPlayer>().GetMoveResultAsync(fen, pgn, controller.Model!, budget.Token, progress => sessions.ReportComputerProgressAsync(id, revision, progress));
                         move = chosen.Move; attempts = chosen.Attempts;
                     }
                     else move = await scope.ServiceProvider.GetRequiredService<ChessEngine>().GetBestMoveAsync(fen, controller.Difficulty!.Value, budget.Token);
@@ -57,7 +58,7 @@ public class ComputerTurnCoordinator(InMemoryDatabase database, IServiceScopeFac
                 catch (Exception exception)
                 {
                     logger.LogWarning("Computer turn failed in game {GameId} ({FailureType}).", id, exception.GetType().Name);
-                    await sessions.ComputerFailedAsync(id, revision); return;
+                    await sessions.ComputerFailedAsync(id, revision, LlmChessPlayer.FailureCode(exception)); return;
                 }
             }
         }
@@ -65,7 +66,7 @@ public class ComputerTurnCoordinator(InMemoryDatabase database, IServiceScopeFac
         finally
         {
             lock (game.Game.MovePieceLock)
-                if (game.Game.SearchCancellation == search) { game.Game.IsThinking = false; game.Game.SearchCancellation = null; }
+                if (game.Game.SearchCancellation == search) { game.Game.IsThinking = false; game.Game.ComputerProgress = null; game.Game.SearchCancellation = null; }
             search.Dispose();
         }
     }

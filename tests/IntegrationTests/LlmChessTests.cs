@@ -1,4 +1,5 @@
 using Aiursoft.ChessServer.Configuration;
+using Aiursoft.ChessServer.Models;
 using Aiursoft.ChessServer.Services;
 using Aiursoft.GptClient.Abstractions;
 using Aiursoft.GptClient.Services;
@@ -91,7 +92,53 @@ public class LlmChessTests
         using var http = new HttpClient();
         var client = new Answers(http, async (_, token) => { await Task.Delay(Timeout.Infinite, token); return await Text("e4"); });
         var settings = new OpenAIConfiguration { CompletionApiUrl = Configuration.CompletionApiUrl, Model = "chess-model", TimeoutSeconds = 1 };
-        await Assert.ThrowsAsync<OperationCanceledException>(() => new LlmChessPlayer(client, Options.Create(settings)).GetMoveAsync(InitialFen, "*", "chess-model", CancellationToken.None));
+        var progress = new List<ComputerProgress>();
+        await Assert.ThrowsExactlyAsync<TimeoutException>(() => new LlmChessPlayer(client, Options.Create(settings)).GetMoveAsync(InitialFen, "*", "chess-model", CancellationToken.None,
+            update => { progress.Add(update); return Task.CompletedTask; }));
+        Assert.AreEqual(3, client.Requests.Count);
+        CollectionAssert.AreEqual(new[] { 1, 2, 3 }, progress.Where(p => !p.Queued).Select(p => p.Attempt).ToArray());
+    }
+
+    [TestMethod]
+    public async Task TimedOutAttemptCanRetryAndReturnOneLegalMove()
+    {
+        using var http = new HttpClient();
+        var attempts = 0;
+        var client = new Answers(http, async (_, token) =>
+        {
+            if (++attempts == 1) await Task.Delay(Timeout.Infinite, token);
+            return await Text("e4");
+        });
+        var settings = new OpenAIConfiguration { CompletionApiUrl = Configuration.CompletionApiUrl, TimeoutSeconds = 1 };
+        var result = await new LlmChessPlayer(client, Options.Create(settings)).GetMoveResultAsync(InitialFen, "*", "chess-model", CancellationToken.None);
+        Assert.AreEqual("e4", result.Move); Assert.AreEqual(2, result.Attempts);
+    }
+
+    [TestMethod]
+    public async Task CancelledGameDoesNotRetryOrCommitALateAnswer()
+    {
+        using var http = new HttpClient();
+        using var cancel = new CancellationTokenSource();
+        var answer = new TaskCompletionSource<CompletionData>(TaskCreationOptions.RunContinuationsAsynchronously);
+        var client = new Answers(http, (_, _) => answer.Task);
+        var move = new LlmChessPlayer(client, Options.Create(Configuration)).GetMoveAsync(InitialFen, "*", "chess-model", cancel.Token);
+        cancel.Cancel(); answer.SetResult(await Text("e4"));
+        await Assert.ThrowsAsync<OperationCanceledException>(() => move);
+        Assert.AreEqual(1, client.Requests.Count);
+    }
+
+    [TestMethod]
+    public async Task GameCancellationDuringRetryStopsImmediately()
+    {
+        using var http = new HttpClient();
+        using var cancel = new CancellationTokenSource();
+        var client = new Answers(http, async (_, token) => { await Task.Delay(Timeout.Infinite, token); return await Text("e4"); });
+        var settings = new OpenAIConfiguration { CompletionApiUrl = Configuration.CompletionApiUrl, TimeoutSeconds = 1 };
+        var retryStarted = new TaskCompletionSource(TaskCreationOptions.RunContinuationsAsynchronously);
+        var move = new LlmChessPlayer(client, Options.Create(settings)).GetMoveAsync(InitialFen, "*", "chess-model", cancel.Token,
+            progress => { if (progress.Attempt == 2) retryStarted.TrySetResult(); return Task.CompletedTask; });
+        await retryStarted.Task.WaitAsync(TimeSpan.FromSeconds(5)); cancel.Cancel();
+        await Assert.ThrowsAsync<OperationCanceledException>(() => move);
         Assert.AreEqual(1, client.Requests.Count);
     }
 }

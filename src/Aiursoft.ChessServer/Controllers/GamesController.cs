@@ -176,7 +176,7 @@ public class GamesController(InMemoryDatabase database, ChessEngine engine, LlmC
             if (!room.IsComputer || room.Game.IsThinking || room.Game.Board.IsEndGame || room.GetTurnPlayer().Id == room.Creator.Id) return;
             if (room.Game.ComputerError != null && !retry) return;
             room.Game.ComputerError = null;
-            room.Game.IsThinking = true; room.Game.SearchCancellation = search;
+            room.Game.IsThinking = true; room.Game.ComputerProgress = null; room.Game.SearchCancellation = search;
             fen = room.Game.Board.ToFen(); pgn = room.Pgn(); ply = room.Game.Board.MovesToSan.Count; revision = room.Revision;
         }
         try
@@ -190,7 +190,7 @@ public class GamesController(InMemoryDatabase database, ChessEngine engine, LlmC
             try
             {
                 var move = room.LlmModel is { } model
-                    ? await llm.GetMoveAsync(fen, pgn, model, budget.Token)
+                    ? await llm.GetMoveAsync(fen, pgn, model, budget.Token, progress => sessions.ReportComputerProgressAsync(id, revision, progress))
                     : await engine.GetBestMoveAsync(fen, room.Difficulty!.Value, budget.Token);
                 await sessions.ExecuteAsync(id, room.Accepter.Id, new GameCommand(Guid.NewGuid(), "move", ply, move, revision), computer: true);
             }
@@ -201,14 +201,14 @@ public class GamesController(InMemoryDatabase database, ChessEngine engine, LlmC
             catch (Exception exception) when (room.LlmModel != null)
             {
                 logger.LogWarning("The LLM opponent could not complete its turn in game {GameId} ({FailureType}).", id, exception.GetType().Name);
-                await sessions.ComputerFailedAsync(id, revision);
+                await sessions.ComputerFailedAsync(id, revision, LlmChessPlayer.FailureCode(exception));
             }
         }
         finally
         {
             lock (room.Game.MovePieceLock)
             {
-                if (room.Game.SearchCancellation == search) { room.Game.IsThinking = false; room.Game.SearchCancellation = null; }
+                if (room.Game.SearchCancellation == search) { room.Game.IsThinking = false; room.Game.ComputerProgress = null; room.Game.SearchCancellation = null; }
             }
         }
     }

@@ -284,7 +284,7 @@ public class GameSessionService(InMemoryDatabase database, TemplateDbContext con
                             while (room.MoveClocks.Count < room.Game.Board.MovesToSan.Count) room.MoveClocks.Add(null);
                             room.MoveClocks.Add(new MoveClock(room.WhiteRemaining.Ticks, room.BlackRemaining.Ticks));
                             room.Game.Board.Move(move);
-                            room.Game.ComputerError = null;
+                            room.Game.ComputerProgress = null; room.Game.ComputerError = null;
                             if (aiTurn != null) room.AiTurns.Add(aiTurn);
                             if (room.IsTimed)
                             {
@@ -301,7 +301,7 @@ public class GameSessionService(InMemoryDatabase database, TemplateDbContext con
                             var board = Game.NewBoard();
                             foreach (var san in room.Game.Board.MovesToSan.Take(undoPly)) board.Move(san);
                             room.Game.SearchCancellation?.Cancel();
-                            room.Game.Board = board; room.ClearPgnCache(); room.Game.ComputerError = null;
+                            room.Game.Board = board; room.ClearPgnCache(); room.Game.ComputerProgress = null; room.Game.ComputerError = null;
                             room.WhiteRemaining = TimeSpan.FromTicks(clocks.WhiteTicks); room.BlackRemaining = TimeSpan.FromTicks(clocks.BlackTicks);
                             room.LastClockUpdate = database.ClockNow;
                             if (undoPly == 0) room.AbortAt = database.ClockNow.AddMinutes(1);
@@ -467,7 +467,19 @@ public class GameSessionService(InMemoryDatabase database, TemplateDbContext con
         finally { room.MutationLock.Release(); }
     }
 
-    public async Task ComputerFailedAsync(int id, long revision)
+    public async Task ReportComputerProgressAsync(int id, long revision, ComputerProgress progress)
+    {
+        var room = database.GetAcceptedChallenge(id);
+        if (room == null) return;
+        lock (room.Game.MovePieceLock)
+        {
+            if (room.Revision != revision || room.Game.Board.IsEndGame || room.Game.SearchCancellation?.IsCancellationRequested != false) return;
+            room.Game.ComputerProgress = progress;
+        }
+        await NotifyAsync(room, new ChallengeContext(room, id));
+    }
+
+    public async Task ComputerFailedAsync(int id, long revision, string error = "computer-failed")
     {
         var room = database.GetAcceptedChallenge(id);
         if (room == null) return;
@@ -480,7 +492,7 @@ public class GameSessionService(InMemoryDatabase database, TemplateDbContext con
                 lock (room.Game.MovePieceLock)
                 {
                     if (room.Revision != revision || room.Game.Board.IsEndGame) return;
-                    room.Game.ComputerError = "computer-failed";
+                    room.Game.ComputerError = error;
                     if (room.ParentRoomId != null) room.Interventions.Add($"computer-failed:{room.Game.Board.MovesToSan.Count}");
                 }
                 await StoreAsync(id, room);
