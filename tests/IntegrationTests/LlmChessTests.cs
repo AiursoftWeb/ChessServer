@@ -42,10 +42,13 @@ public class LlmChessTests
         var request = client.Requests.Single();
         Assert.AreEqual("saved-model", request.Model);
         Assert.IsNull(request.Temperature); Assert.IsNull(request.PresencePenalty);
-        Assert.AreEqual(1, request.Messages.Count);
-        StringAssert.Contains(request.Messages.Single().Content, InitialFen);
-        StringAssert.Contains(request.Messages.Single().Content, "[Result \"*\"]");
-        StringAssert.Contains(request.Messages.Single().Content, "Legal SAN moves:");
+        Assert.AreEqual(2, request.Messages.Count);
+        Assert.AreEqual("system", request.Messages[0].Role);
+        StringAssert.Contains(request.Messages[0].Content, "Return exactly one entry");
+        Assert.AreEqual("user", request.Messages[1].Role);
+        StringAssert.Contains(request.Messages[1].Content, InitialFen);
+        StringAssert.Contains(request.Messages[1].Content, "[Result \"*\"]");
+        StringAssert.Contains(request.Messages[1].Content, "Legal SAN moves:");
     }
 
     [TestMethod]
@@ -55,8 +58,11 @@ public class LlmChessTests
         var client = new Answers(http, (_, _) => Text(attempt++ == 0 ? "Ke9" : "d4"));
         Assert.AreEqual("d4", await new LlmChessPlayer(client, Options.Create(Configuration)).GetMoveAsync(InitialFen, "*", "chess-model", CancellationToken.None));
         Assert.AreEqual(2, client.Requests.Count);
-        Assert.IsTrue(client.Requests.All(r => r.Messages.Count == 1));
-        StringAssert.Contains(client.Requests[1].Messages[0].Content, "previous final answer");
+        Assert.IsTrue(client.Requests.All(r => r.Messages.Count == 2));
+        Assert.AreEqual(client.Requests[0].Messages[0].Content, client.Requests[1].Messages[0].Content);
+        Assert.AreEqual("system", client.Requests[1].Messages[0].Role);
+        Assert.AreEqual("user", client.Requests[1].Messages[1].Role);
+        StringAssert.Contains(client.Requests[1].Messages[1].Content, "previous final answer");
     }
 
     [TestMethod]
