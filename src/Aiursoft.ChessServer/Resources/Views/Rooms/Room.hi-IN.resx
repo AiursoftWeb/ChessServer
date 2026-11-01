@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="{0} seconds" xml:space="preserve">
+    <value>{0} सेकंड</value>
+  </data>
+  <data name="10 minutes" xml:space="preserve">
+    <value>10 मिनट</value>
+  </data>
+  <data name="15 minutes" xml:space="preserve">
+    <value>15 मिनट</value>
+  </data>
+  <data name="3 minutes" xml:space="preserve">
+    <value>3 मिनट</value>
+  </data>
+  <data name="5 minutes" xml:space="preserve">
+    <value>5 मिनट</value>
+  </data>
+  <data name="Add AI" xml:space="preserve">
+    <value>AI जोड़ें</value>
+  </data>
+  <data name="AI type" xml:space="preserve">
+    <value>AI का प्रकार</value>
+  </data>
+  <data name="Black" xml:space="preserve">
+    <value>काला</value>
+  </data>
+  <data name="Built-in engine — Lynx" xml:space="preserve">
+    <value>अंतर्निर्मित इंजन — Lynx</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>रद्द करें</value>
+  </data>
+  <data name="Chat" xml:space="preserve">
+    <value>चैट</value>
+  </data>
+  <data name="Choose valid room settings." xml:space="preserve">
+    <value>मान्य कक्ष सेटिंग चुनें।</value>
+  </data>
+  <data name="Copied" xml:space="preserve">
+    <value>कॉपी किया गया</value>
+  </data>
+  <data name="Copy link" xml:space="preserve">
+    <value>लिंक कॉपी करें</value>
+  </data>
+  <data name="Could not update the room. Please try again." xml:space="preserve">
+    <value>रूम अपडेट नहीं हो सका। कृपया फिर से कोशिश करें।</value>
+  </data>
+  <data name="Difficulty" xml:space="preserve">
+    <value>कठिनाई</value>
+  </data>
+  <data name="Empty seat" xml:space="preserve">
+    <value>खाली सीट</value>
+  </data>
+  <data name="Fill both player seats before starting." xml:space="preserve">
+    <value>शुरू करने से पहले, दोनों खिलाड़ी स्थान भरें।</value>
+  </data>
+  <data name="Finish the current game before changing these settings." xml:space="preserve">
+    <value>इन सेटिंग्स को बदलने से पहले मौजूदा गेम पूरा करें।</value>
+  </data>
+  <data name="Finished" xml:space="preserve">
+    <value>समाप्त</value>
+  </data>
+  <data name="Host" xml:space="preserve">
+    <value>होस्ट</value>
+  </data>
+  <data name="Increment per move" xml:space="preserve">
+    <value>प्रति चाल वृद्धि</value>
+  </data>
+  <data name="Invitation link" xml:space="preserve">
+    <value>आमंत्रण लिंक</value>
+  </data>
+  <data name="Kick from room" xml:space="preserve">
+    <value>कमरे से बाहर निकालें</value>
+  </data>
+  <data name="Kick this person from the room? They cannot rejoin this room with the same identity." xml:space="preserve">
+    <value>क्या इस व्यक्ति को कमरे से हटाएँ? वे इसी पहचान के साथ इस कमरे में दोबारा शामिल नहीं हो पाएँगे।</value>
+  </data>
+  <data name="Large language model" xml:space="preserve">
+    <value>बड़ा भाषा मॉडल</value>
+  </data>
+  <data name="Leave room" xml:space="preserve">
+    <value>कमरा छोड़ें</value>
+  </data>
+  <data name="Leave this room? Leaving an active game forfeits it. If everyone leaves, the room closes." xml:space="preserve">
+    <value>क्या इस कमरे से बाहर जाएँ? चल रहे खेल को छोड़ने पर वह हार मान लिया जाएगा। यदि सभी लोग चले जाते हैं, तो कमरा बंद हो जाएगा।</value>
+  </data>
+  <data name="List this room publicly" xml:space="preserve">
+    <value>इस कमरे को सार्वजनिक सूची में दिखाएँ</value>
+  </data>
+  <data name="Lobby" xml:space="preserve">
+    <value>लॉबी</value>
+  </data>
+  <data name="Make host" xml:space="preserve">
+    <value>होस्ट बनाएँ</value>
+  </data>
+  <data name="Message" xml:space="preserve">
+    <value>संदेश</value>
+  </data>
+  <data name="Model" xml:space="preserve">
+    <value>Model</value>
+  </data>
+  <data name="No increment" xml:space="preserve">
+    <value>कोई वृद्धि नहीं</value>
+  </data>
+  <data name="Observer" xml:space="preserve">
+    <value>पर्यवेक्षक</value>
+  </data>
+  <data name="Observers" xml:space="preserve">
+    <value>दर्शक</value>
+  </data>
+  <data name="Only the host can manage this room." xml:space="preserve">
+    <value>इस कमरे का प्रबंधन केवल होस्ट ही कर सकता है।</value>
+  </data>
+  <data name="Only the two players can send chat messages. The host can drag people between seats and observers." xml:space="preserve">
+    <value>केवल दोनों खिलाड़ी ही चैट संदेश भेज सकते हैं। होस्ट लोगों को खिलाड़ियों की सीटों और दर्शकों के बीच खींचकर ले जा सकता है।</value>
+  </data>
+  <data name="Players" xml:space="preserve">
+    <value>खिलाड़ी</value>
+  </data>
+  <data name="Playing" xml:space="preserve">
+    <value>खेल जारी है</value>
+  </data>
+  <data name="Prepare next game" xml:space="preserve">
+    <value>अगले खेल की तैयारी करें</value>
+  </data>
+  <data name="Preparing" xml:space="preserve">
+    <value>तैयारी हो रही है</value>
+  </data>
+  <data name="Randomize colors at start" xml:space="preserve">
+    <value>शुरुआत में रंगों का यादृच्छिकीकरण करें</value>
+  </data>
+  <data name="Remove AI" xml:space="preserve">
+    <value>AI हटाएँ</value>
+  </data>
+  <data name="Remove this AI and replace it with the selected person?" xml:space="preserve">
+    <value>क्या इस AI को हटाकर इसकी जगह चुने हुए व्यक्ति को रखें?</value>
+  </data>
+  <data name="Replay" xml:space="preserve">
+    <value>फिर से देखें</value>
+  </data>
+  <data name="Retry computer move" xml:space="preserve">
+    <value>कंप्यूटर की चाल का पुनः प्रयास करें</value>
+  </data>
+  <data name="Room name" xml:space="preserve">
+    <value>कमरे का नाम</value>
+  </data>
+  <data name="Room settings" xml:space="preserve">
+    <value>कक्ष की सेटिंग</value>
+  </data>
+  <data name="Save settings" xml:space="preserve">
+    <value>सेटिंग्स सहेजें</value>
+  </data>
+  <data name="Send" xml:space="preserve">
+    <value>भेजें</value>
+  </data>
+  <data name="Start game" xml:space="preserve">
+    <value>खेल शुरू करें</value>
+  </data>
+  <data name="Stop this game" xml:space="preserve">
+    <value>यह गेम रोकें</value>
+  </data>
+  <data name="Swap colors" xml:space="preserve">
+    <value>रंग बदलें</value>
+  </data>
+  <data name="The next human becomes host when the host leaves. The room closes when everyone leaves. Refreshing or reconnecting has a 60-second grace period." xml:space="preserve">
+    <value>होस्ट के जाने पर अगला व्यक्ति होस्ट बन जाता है। सभी के चले जाने पर कमरा बंद हो जाता है। पेज रीफ़्रेश करने या फिर से कनेक्ट करने के लिए 60 सेकंड की छूट अवधि है।</value>
+  </data>
+  <data name="The room changed. Review the current settings and try again." xml:space="preserve">
+    <value>कमरे में बदलाव हुआ है। वर्तमान सेटिंग्स की समीक्षा करें और फिर से प्रयास करें।</value>
+  </data>
+  <data name="The selected model is unavailable. Refresh and try again." xml:space="preserve">
+    <value>चुना गया मॉडल उपलब्ध नहीं है। पृष्ठ को रीफ़्रेश करें और फिर से कोशिश करें।</value>
+  </data>
+  <data name="This person has left the room." xml:space="preserve">
+    <value>यह व्यक्ति कमरा छोड़ चुका है।</value>
+  </data>
+  <data name="This room has closed. Return to the lobby." xml:space="preserve">
+    <value>कमरा बंद हो गया है। लॉबी में वापस जाएँ।</value>
+  </data>
+  <data name="This seat is occupied. Move or remove its player first." xml:space="preserve">
+    <value>यह स्थान भरा हुआ है। पहले इसके खिलाड़ी को हटाएँ या किसी दूसरे स्थान पर ले जाएँ।</value>
+  </data>
+  <data name="This will stop the current game without awarding a winner. Continue?" xml:space="preserve">
+    <value>इससे मौजूदा खेल बिना किसी विजेता के समाप्त हो जाएगा। जारी रखें?</value>
+  </data>
+  <data name="Time per player" xml:space="preserve">
+    <value>प्रति खिलाड़ी समय</value>
+  </data>
+  <data name="Unlimited" xml:space="preserve">
+    <value>असीमित</value>
+  </data>
+  <data name="White" xml:space="preserve">
+    <value>सफ़ेद</value>
+  </data>
+  <data name="You have been removed from this room." xml:space="preserve">
+    <value>आपको इस कमरे से हटा दिया गया है।</value>
+  </data>
+
+</root>

@@ -99,6 +99,9 @@
   <data name="Could not confirm the saved game. Retry." xml:space="preserve">
     <value>सहेजे गए गेम की पुष्टि नहीं हो सकी। फिर से कोशिश करें।</value>
   </data>
+  <data name="Disconnects have a 60-second reconnection grace period. The room closes when everyone leaves." xml:space="preserve">
+    <value>कनेक्शन टूटने पर दोबारा जुड़ने के लिए 60 सेकंड की छूट अवधि मिलती है। सभी के चले जाने पर कमरा बंद हो जाता है।</value>
+  </data>
   <data name="Dismiss offer" xml:space="preserve">
     <value>ऑफ़र अस्वीकार करें</value>
   </data>
@@ -140,6 +143,9 @@
   </data>
   <data name="Game over. {0} wins." xml:space="preserve">
     <value>खेल समाप्त। {0} जीत गया।</value>
+  </data>
+  <data name="Game stopped by the host" xml:space="preserve">
+    <value>मेज़बान ने खेल रोक दिया</value>
   </data>
   <data name="Guest" xml:space="preserve">
     <value>अतिथि</value>

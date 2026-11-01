@@ -99,6 +99,9 @@
   <data name="Could not confirm the saved game. Retry." xml:space="preserve">
     <value>Tidak dapat mengonfirmasi permainan yang tersimpan. Coba lagi.</value>
   </data>
+  <data name="Disconnects have a 60-second reconnection grace period. The room closes when everyone leaves." xml:space="preserve">
+    <value>Jika koneksi terputus, tersedia masa tenggang 60 detik untuk menyambung kembali. Ruangan akan ditutup saat semua orang keluar.</value>
+  </data>
   <data name="Dismiss offer" xml:space="preserve">
     <value>Tolak tawaran</value>
   </data>
@@ -140,6 +143,9 @@
   </data>
   <data name="Game over. {0} wins." xml:space="preserve">
     <value>Permainan berakhir. {0} menang.</value>
+  </data>
+  <data name="Game stopped by the host" xml:space="preserve">
+    <value>Permainan dihentikan oleh host</value>
   </data>
   <data name="Guest" xml:space="preserve">
     <value>Tamu</value>
