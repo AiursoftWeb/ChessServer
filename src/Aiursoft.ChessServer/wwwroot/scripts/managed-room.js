@@ -32,10 +32,24 @@ function button(key, handler, danger = false) {
     const b = document.createElement('button'); b.type = 'button'; b.className = `btn btn-sm btn-outline-${danger ? 'danger' : 'secondary'}`;
     b.textContent = text(key); b.onclick = handler; return b;
 }
+function avatar(url) {
+    const img = document.createElement('img'); img.className = 'room-avatar';
+    img.src = url; img.alt = ''; img.width = 56; img.height = 56; img.draggable = false;
+    img.onerror = () => { img.onerror = null; img.src = '/images/avatars/anonymous.webp'; };
+    return img;
+}
 function person(member, seat, host) {
     const row = document.createElement('div'); row.className = 'room-person'; row.dataset.personId = member.Id;
+    row.append(avatar(member.AvatarUrl));
+    const identity = document.createElement('div'); identity.className = 'room-person-identity';
     const name = document.createElement('strong'); name.className = 'room-person-name';
-    name.textContent = member.NickName + (member.Id === state.Host ? ` · ${text('host')}` : ''); row.append(name);
+    name.textContent = member.NickName; identity.append(name);
+    if (member.Id === state.Host) {
+        row.classList.add('room-host');
+        const badge = document.createElement('span'); badge.className = 'badge bg-warning text-dark room-host-badge';
+        badge.textContent = `★ ${text('host')}`; identity.append(badge);
+    }
+    row.append(identity);
     if (!host) return row;
     row.draggable = true;
     row.ondragstart = event => { event.dataTransfer.setData('text/plain', member.Id); event.dataTransfer.effectAllowed = 'move'; };
@@ -55,8 +69,11 @@ function drawSeat(side, seat, host) {
         const member = state.Members.find(m => m.Id === seat.Id);
         if (member) container.append(person(member, side, host));
     } else {
-        const label = document.createElement('strong'); label.textContent = seat.Name; container.append(label);
-        if (host && state.Stage !== 'playing') container.append(button('remove-ai', () => command('remove-ai', {Seat: side}), true));
+        const row = document.createElement('div'); row.className = 'room-person room-ai';
+        row.append(avatar(`/images/avatars/${seat.Kind === 'llm' ? 'llm' : 'lynx'}.webp`));
+        const label = document.createElement('strong'); label.className = 'room-person-identity'; label.textContent = seat.Name; row.append(label);
+        if (host && state.Stage !== 'playing') row.append(button('remove-ai', () => command('remove-ai', {Seat: side}), true));
+        container.append(row);
     }
 }
 function apply(next) {

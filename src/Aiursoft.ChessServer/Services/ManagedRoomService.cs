@@ -3,12 +3,14 @@ using Aiursoft.AiurObserver;
 using Aiursoft.ChessServer.Data;
 using Aiursoft.ChessServer.Entities;
 using Aiursoft.ChessServer.Models;
+using Aiursoft.ChessServer.Services.FileStorage;
 using Aiursoft.Scanner.Abstractions;
+using Microsoft.EntityFrameworkCore;
 
 namespace Aiursoft.ChessServer.Services;
 
 public class ManagedRoomService(InMemoryDatabase database, GameSessionService sessions, LlmModelCatalog catalog,
-    TemplateDbContext context, ILogger<ManagedRoomService> logger) : IScopedDependency
+    TemplateDbContext context, ILogger<ManagedRoomService> logger, StorageService storage) : IScopedDependency
 {
     public ManagedRoom? Find(int id) => database.GetChallenge(id) as ManagedRoom;
     public bool Blocked(int? id, Guid player) => id != null && Find(id.Value)?.Kicked.Contains(player) == true;
@@ -46,9 +48,14 @@ public class ManagedRoomService(InMemoryDatabase database, GameSessionService se
             var member = room.Members.FirstOrDefault(m => m.Player.Id == viewer);
             if (member != null) member.SeenAt = DateTimeOffset.UtcNow;
             var game = room.CurrentGameId is { } gameId ? database.GetAcceptedChallenge(gameId) : null;
+            var registeredIds = room.Members.Where(m => !m.Player.IsGuest).Select(m => m.Player.Id.ToString()).ToArray();
+            var avatars = await context.Users.AsNoTracking().Where(u => registeredIds.Contains(u.Id))
+                .ToDictionaryAsync(u => u.Id, u => u.AvatarRelativePath);
+            string Avatar(Player player) => player.IsGuest ? "/images/avatars/anonymous.webp"
+                : storage.RelativePathToInternetUrl(avatars.GetValueOrDefault(player.Id.ToString(), Entities.User.DefaultAvatarPath)) + "?w=112&square=true";
             object? Seat(RoomSeat? seat) => seat == null ? null : new { seat.Player.Id, Name = seat.Description, seat.Kind, seat.Difficulty, seat.Model };
             return new { Id = id, room.Version, Name = room.Message, Host = room.Creator.Id, Viewer = viewer,
-                Members = room.Members.Select(m => new { m.Player.Id, m.Player.NickName, m.Player.IsGuest }).ToArray(),
+                Members = room.Members.Select(m => new { m.Player.Id, m.Player.NickName, m.Player.IsGuest, AvatarUrl = Avatar(m.Player) }).ToArray(),
                 White = Seat(room.White), Black = Seat(room.Black), room.CurrentGameId,
                 Stage = game == null ? "waiting" : game.Game.Board.IsEndGame ? "finished" : "playing",
                 Minutes = room.TimeLimit == TimeSpan.MaxValue ? 0 : (int)room.TimeLimit.TotalMinutes, room.IncrementSeconds,
