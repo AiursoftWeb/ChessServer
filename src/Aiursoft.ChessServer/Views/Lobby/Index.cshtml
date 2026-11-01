@@ -12,66 +12,14 @@
         { <a class="btn btn-primary me-2 mb-2" asp-controller="Games" asp-action="GetHtml" asp-route-id="@game.Key">@Localizer["Continue game"] — @game.Value.Message</a> }
     </div></div>
 }
-<div class="row g-4">
-    <div class="col-md-6"><div class="card h-100"><div class="card-body">
-        <h2 class="h4">@Localizer["Play against computer"]</h2>
-        <form asp-controller="Pve" asp-action="New" method="post">
-            <label for="difficulty" class="form-label">@Localizer["Difficulty"]</label>
-            <select id="difficulty" name="difficulty" class="form-select mb-3">
-                <option value="1">@Localizer["1 — Beginner"]</option>
-                <option value="2">@Localizer["2 — Easy"]</option>
-                <option value="3">@Localizer["3 — Casual"]</option>
-                <option value="4">@Localizer["4 — Intermediate"]</option>
-                <option value="5">@Localizer["5 — Challenging"]</option>
-                <option value="6">@Localizer["6 — Hard"]</option>
-                <option value="7">@Localizer["7 — Expert"]</option>
-                <option value="8">@Localizer["8 — Strongest"]</option>
-                @if (Model.LlmModels.Length > 0)
-                { <option value="llm">@Localizer["LLM — Play a language model"]</option> }
-            </select>
-            @if (Model.LlmModels.Length > 0)
-            {
-                <div id="llm-model-field" hidden>
-                    <label for="llm-model" class="form-label">@Localizer["Model"]</label>
-                    <select id="llm-model" name="model" class="form-select mb-3" disabled>
-                        @foreach (var modelId in Model.LlmModels)
-                        { <option value="@modelId" selected="@(modelId == Model.PreferredLlmModel)">@modelId</option> }
-                    </select>
-                </div>
-            }
-            <label for="roleRule" class="form-label">@Localizer["Your pieces"]</label>
-            <select id="roleRule" name="roleRule" class="form-select mb-3">
-                <option value="0">@Localizer["White"]</option>
-                <option value="1">@Localizer["Black"]</option>
-                <option value="2">@Localizer["Random"]</option>
-            </select>
-            <label for="minutes" class="form-label">@Localizer["Time per player"]</label>
-            <select id="minutes" name="minutes" class="form-select mb-3">
-        <option value="0">@Localizer["Unlimited"]</option>
-        <option value="3">@Localizer["3 minutes"]</option>
-        <option value="5">@Localizer["5 minutes"]</option>
-        <option value="10">@Localizer["10 minutes"]</option>
-        <option value="15">@Localizer["15 minutes"]</option>
-            </select>
-    <label for="incrementSeconds" class="form-label">@Localizer["Increment per move"]</label>
-    <select id="incrementSeconds" name="incrementSeconds" class="form-select mb-3" data-time-increment>
-        <option value="0">@Localizer["No increment"]</option>
-        <option value="1">@Localizer["1 second"]</option>
-        <option value="2">@Localizer["2 seconds"]</option>
-        <option value="3">@Localizer["3 seconds"]</option>
-        <option value="5">@Localizer["5 seconds"]</option>
-        <option value="10">@Localizer["10 seconds"]</option>
-        <option value="15">@Localizer["15 seconds"]</option>
-        <option value="30">@Localizer["30 seconds"]</option>
-    </select>
-            <button class="btn btn-primary" type="submit">@Localizer["Start game"]</button>
-        </form>
-    </div></div></div>
-    <div class="col-md-6"><div class="card h-100"><div class="card-body">
-        <h2 class="h4">@Localizer["Play with a friend"]</h2>
-        <a class="btn btn-primary" asp-controller="Challenges" asp-action="Create">@Localizer["Create a challenge"]</a>
-    </div></div></div>
-</div>
+<form asp-controller="Rooms" asp-action="Create" method="post" class="mb-4"><button class="btn btn-primary" type="submit">@Localizer["Create room"]</button></form>
+<div class="card mb-4"><div class="card-body"><h2 class="h5">@Localizer["Rooms"]</h2>
+    @if (Model.Rooms.Count == 0) { <p class="text-muted mb-0">@Localizer["No rooms yet. Create one and invite people."]</p> }
+    @foreach (var item in Model.Rooms) {
+        var room = (Aiursoft.ChessServer.Models.ManagedRoom)item.Value;
+        <a class="d-block py-2" asp-controller="Rooms" asp-action="Room" asp-route-id="@item.Key">@room.Message — @room.Creator.NickName · @((room.White == null ? 0 : 1) + (room.Black == null ? 0 : 1))/2 · @if (Model.RoomStates[item.Key] == "waiting") { @Localizer["Preparing"] } else if (Model.RoomStates[item.Key] == "playing") { @Localizer["Playing"] } else { @Localizer["Finished"] }</a>
+    }
+</div></div>
 <div class="card mt-4"><div class="card-body">
     <h2 class="h4">@Localizer["Open challenges"]</h2>
     @if (Model.OpenChallenges.Count == 0) { <p class="text-muted mb-0">@Localizer["No open challenges."]</p> }

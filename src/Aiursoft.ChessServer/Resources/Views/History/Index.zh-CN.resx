@@ -27,6 +27,12 @@
   <data name="Finished" xml:space="preserve">
     <value>完成时间</value>
   </data>
+  <data name="Games I organized" xml:space="preserve">
+    <value>我组织的对局</value>
+  </data>
+  <data name="Games I played" xml:space="preserve">
+    <value>我玩过的游戏</value>
+  </data>
   <data name="My games" xml:space="preserve">
     <value>我的对局</value>
   </data>

@@ -41,8 +41,7 @@ public class LlmGameTests : TestBase
     {
         await ConfigureLlm(); await RegisterAndLoginAsync();
         var page = await (await Http.GetAsync("/Lobby")).Content.ReadAsStringAsync();
-        StringAssert.Contains(page, "value=\"configured-model\"");
-        StringAssert.Contains(page, "value=\"another-model\"");
+        StringAssert.Contains(page, "/rooms/create");
         var response = await PostForm("/pve/new", new() { ["difficulty"] = "llm", ["model"] = "forged-model" }, tokenUrl: "/Lobby");
         Assert.AreEqual(HttpStatusCode.BadRequest, response.StatusCode);
         Assert.AreEqual(0, GetService<InMemoryDatabase>().GetGames().Length);
@@ -93,7 +92,7 @@ public class LlmGameTests : TestBase
     {
         await ConfigureLlm(); await RegisterAndLoginAsync();
         var page = await (await Http.GetAsync("/Lobby")).Content.ReadAsStringAsync();
-        StringAssert.Contains(page, "value=\"llm\"");
+        StringAssert.Contains(page, "/rooms/create");
         var response = await PostForm("/pve/new", new() { ["difficulty"] = "llm", ["model"] = "another-model", ["roleRule"] = pieces, ["minutes"] = "3", ["incrementSeconds"] = "2" }, tokenUrl: "/Lobby");
         Assert.AreEqual(HttpStatusCode.Found, response.StatusCode);
         var database = GetService<InMemoryDatabase>(); var room = database.GetGames().Single();

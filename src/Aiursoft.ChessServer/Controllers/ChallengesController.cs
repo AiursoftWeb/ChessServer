@@ -20,7 +20,7 @@ public class ChallengesController(InMemoryDatabase database, GameSessionService 
     }
 
     [HttpGet("create")]
-    public IActionResult Create() => this.StackView(new CreateChallengeViewModel());
+    public IActionResult Create() => RedirectToAction("Index", "Lobby");
 
     [HttpPost("create"), ValidateAntiForgeryToken, LimitPerMin]
     public async Task<IActionResult> Create(CreateChallengeViewModel model)
@@ -44,6 +44,7 @@ public class ChallengesController(InMemoryDatabase database, GameSessionService 
     {
         var room = database.GetChallenge(id);
         if (room == null) return NotFound();
+        if (room is ManagedRoom) return RedirectToAction("Room", "Rooms", new { id });
         if (room is AcceptedChallenge) return RedirectToAction(nameof(GamesController.GetHtml), "Games", new { id });
         return this.StackView(new RoomViewModel { Id = id, IsCreator = room.Creator.Id == PlayerId, Message = room.Message, IncrementSeconds = room.IncrementSeconds, PreferredMinutes = room.TimeLimit == TimeSpan.MaxValue ? null : (int)room.TimeLimit.TotalMinutes });
     }
@@ -53,6 +54,7 @@ public class ChallengesController(InMemoryDatabase database, GameSessionService 
     {
         var room = database.GetChallenge(id);
         if (room == null) return NotFound();
+        if (room is ManagedRoom) return BadRequest("Use the room controls to leave this room.");
         if (room.Creator.Id != PlayerId) return Forbid();
         if (room is AcceptedChallenge) return BadRequest("Use the game controls to end this game.");
         await sessions.DeleteAsync(id);

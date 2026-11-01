@@ -4,6 +4,13 @@ namespace Aiursoft.ChessServer.Models;
 
 public class RoomSnapshot
 {
+    public ManagedRoomSnapshot? Lobby { get; set; }
+    public int? ParentRoomId { get; set; }
+    public Player? Organizer { get; set; }
+    public RoomSeat? WhiteController { get; set; }
+    public RoomSeat? BlackController { get; set; }
+    public List<AiTurnRecord> AiTurns { get; set; } = [];
+    public List<string> Interventions { get; set; } = [];
     public required Guid CreatorId { get; set; }
     public required string CreatorName { get; set; }
     public bool CreatorGuest { get; set; }
@@ -45,7 +52,14 @@ public class RoomSnapshot
         var snapshot = new RoomSnapshot { CreatorId = room.Creator.Id, CreatorName = room.Creator.NickName, CreatorGuest = room.Creator.IsGuest,
             Message = room.Message, Rule = room.RoleRule, TimeTicks = room.TimeLimit.Ticks, Permission = room.Permission,
             Difficulty = room.Difficulty, LlmModel = room.LlmModel, IncrementSeconds = room.IncrementSeconds, Activity = room.LastActivity };
+        if (room is ManagedRoom lobby)
+            snapshot.Lobby = new ManagedRoomSnapshot { Members = lobby.Members.ToList(), White = lobby.White, Black = lobby.Black,
+                Kicked = lobby.Kicked.ToHashSet(), CurrentGameId = lobby.CurrentGameId, RandomColors = lobby.RandomColors,
+                Version = lobby.Version, Commands = lobby.Commands.ToList() };
         if (room is not AcceptedChallenge accepted) return snapshot;
+        snapshot.ParentRoomId = accepted.ParentRoomId; snapshot.Organizer = accepted.Organizer;
+        snapshot.WhiteController = accepted.WhiteController; snapshot.BlackController = accepted.BlackController;
+        snapshot.AiTurns = accepted.AiTurns.ToList(); snapshot.Interventions = accepted.Interventions.ToList();
         lock (accepted.Game.MovePieceLock)
         {
             snapshot.ComputerError = accepted.Game.ComputerError;
@@ -69,6 +83,10 @@ public class RoomSnapshot
     public Challenge Restore()
     {
         var creator = new Player(CreatorId) { NickName = CreatorName, IsGuest = CreatorGuest };
+        if (Lobby is { } lobby) return new ManagedRoom(creator) { Message = Message, TimeLimit = TimeSpan.FromTicks(TimeTicks),
+            Permission = Permission, IncrementSeconds = IncrementSeconds, LastActivity = Activity, Members = lobby.Members,
+            White = lobby.White, Black = lobby.Black, Kicked = lobby.Kicked, CurrentGameId = lobby.CurrentGameId,
+            RandomColors = lobby.RandomColors, Version = lobby.Version, Commands = lobby.Commands };
         var room = new Challenge(creator, Message, Rule, TimeSpan.FromTicks(TimeTicks), Permission)
             { Difficulty = Difficulty, LlmModel = LlmModel, IncrementSeconds = IncrementSeconds, LastActivity = Activity };
         if (AccepterId == null) return room;
@@ -82,6 +100,9 @@ public class RoomSnapshot
     {
         lock (room.Game.MovePieceLock)
         {
+            room.ParentRoomId = ParentRoomId; room.Organizer = Organizer;
+            room.WhiteController = WhiteController; room.BlackController = BlackController;
+            room.AiTurns = AiTurns.ToList(); room.Interventions = Interventions.ToList();
             room.Creator = new Player(CreatorId) { NickName = CreatorName, IsGuest = CreatorGuest };
             room.Accepter = new Player(AccepterId!.Value) { NickName = AccepterName!, IsGuest = AccepterGuest };
             var board = Game.NewBoard();

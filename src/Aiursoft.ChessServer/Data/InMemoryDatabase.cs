@@ -21,17 +21,17 @@ public class InMemoryDatabase : ISingletonDependency
 
     public IReadOnlyCollection<KeyValuePair<int, Challenge>> GetPublicOpenChallenges()
     {
-        lock (_gate) return _challenges.Where(p => p.Value.IsPersisted && p.Value is not AcceptedChallenge && p.Value.Permission == ChallengePermission.Public).ToArray();
+        lock (_gate) return _challenges.Where(p => p.Value.IsPersisted && p.Value is not ManagedRoom && p.Value is not AcceptedChallenge && p.Value.Permission == ChallengePermission.Public).ToArray();
     }
 
     public IReadOnlyCollection<KeyValuePair<int, Challenge>> GetOnGoingOpenChallenges()
     {
-        lock (_gate) return _challenges.Where(p => p.Value.IsPersisted && p.Value is AcceptedChallenge accepted && !accepted.Game.Board.IsEndGame && p.Value.Permission == ChallengePermission.Public).ToArray();
+        lock (_gate) return _challenges.Where(p => p.Value.IsPersisted && p.Value is AcceptedChallenge { ParentRoomId: null } accepted && !accepted.Game.Board.IsEndGame && p.Value.Permission == ChallengePermission.Public).ToArray();
     }
 
     public int? GetMyOpenChallenge(Guid playerId)
     {
-        lock (_gate) return _challenges.Where(p => p.Value.Creator.Id == playerId && p.Value is not AcceptedChallenge).Select(p => (int?)p.Key).FirstOrDefault();
+        lock (_gate) return _challenges.Where(p => p.Value.Creator.Id == playerId && p.Value is not ManagedRoom && p.Value is not AcceptedChallenge).Select(p => (int?)p.Key).FirstOrDefault();
     }
 
     public KeyValuePair<int, Challenge>[] GetRooms()
@@ -63,7 +63,7 @@ public class InMemoryDatabase : ISingletonDependency
         lock (_gate)
         {
             if (_challenges.Count >= 256) throw new InvalidOperationException("All rooms are busy. Please try again later.");
-            if (challenge is not AcceptedChallenge && !challenge.IsComputer && _challenges.Values.Any(c => c.Creator.Id == challenge.Creator.Id && c is not AcceptedChallenge))
+            if (challenge is not ManagedRoom && challenge is not AcceptedChallenge && !challenge.IsComputer && _challenges.Values.Any(c => c.Creator.Id == challenge.Creator.Id && c is not AcceptedChallenge))
                 throw new InvalidOperationException("You already have an open challenge.");
             var id = ++_nextId;
             _challenges.Add(id, challenge);
@@ -77,7 +77,7 @@ public class InMemoryDatabase : ISingletonDependency
         lock (_gate)
         {
             var challenge = _challenges.GetValueOrDefault(id) ?? throw new InvalidOperationException("Challenge not found.");
-            if (challenge is AcceptedChallenge || challenge.Creator.Id == accepter.Id)
+            if (challenge is ManagedRoom || challenge is AcceptedChallenge || challenge.Creator.Id == accepter.Id)
                 throw new InvalidOperationException("This challenge cannot be accepted.");
             accepted = new AcceptedChallenge(challenge.Creator, accepter, challenge.Message, challenge.RoleRule,
                 challenge.TimeLimit, challenge.Permission, challenge.ChallengeChangedChannel)
@@ -102,6 +102,7 @@ public class InMemoryDatabase : ISingletonDependency
         {
             foreach (var pair in _challenges.ToArray())
             {
+                if (pair.Value is ManagedRoom || pair.Value is AcceptedChallenge { ParentRoomId: not null }) continue;
                 // Serialize the expiry decision with moves so a resumed game cannot be removed from an old timestamp.
                 var activityGate = pair.Value is AcceptedChallenge game ? game.Game.MovePieceLock : _gate;
                 lock (activityGate)

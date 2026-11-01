@@ -6,6 +6,7 @@ namespace Aiursoft.ChessServer.Models.ViewModels;
 public class HistoryViewModel : UiStackLayoutViewModel
 {
     public HistoryViewModel() { PageTitle = "My games"; }
+    public bool Organized { get; init; }
     public required DateOnly Date { get; init; }
     public int OffsetMinutes { get; init; }
     public int Page { get; init; }

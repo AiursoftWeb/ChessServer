@@ -10,7 +10,7 @@ public class GameHistoryService(TemplateDbContext context) : IScopedDependency
     public Task<bool> BelongsToAsync(Guid historyId, Guid player)
     {
         var userId = player.ToString();
-        return context.CompletedGames.AnyAsync(g => g.Id == historyId && (g.WhiteUserId == userId || g.BlackUserId == userId));
+        return context.CompletedGames.AnyAsync(g => g.Id == historyId && (g.WhiteUserId == userId || g.BlackUserId == userId || g.OrganizerUserId == userId));
     }
 
     public async Task SaveAsync(AcceptedChallenge room, bool deferCommit = false)
@@ -24,12 +24,16 @@ public class GameHistoryService(TemplateDbContext context) : IScopedDependency
             {
                 if (room.Game.Board.IsEndGame) room.FinishedAt ??= DateTimeOffset.UtcNow;
                 if (!room.Game.Board.IsEndGame) return;
-                if (room.Creator.IsGuest && (room.IsComputer || room.Accepter.IsGuest)) return;
+                if (room.ParentRoomId == null && room.Creator.IsGuest && (room.IsComputer || room.Accepter.IsGuest)) return;
                 record = new CompletedGame
                 {
                     Id = room.HistoryId,
-                    WhiteUserId = room.GetWhitePlayer().IsGuest ? "" : room.GetWhitePlayer().Id.ToString(),
-                    BlackUserId = room.GetBlackPlayer().IsGuest ? "" : room.GetBlackPlayer().Id.ToString(),
+                    OrganizerUserId = room.Organizer is { IsGuest: false } organizer ? organizer.Id.ToString() : "",
+                    MetadataJson = room.ParentRoomId == null ? null : System.Text.Json.JsonSerializer.Serialize(new {
+                        White = room.WhiteController, Black = room.BlackController, EngineVersion = typeof(Lynx.Engine).Assembly.GetName().Version?.ToString(),
+                        room.AiTurns, room.Interventions }),
+                    WhiteUserId = room.GetWhitePlayer().IsGuest || room.WhiteController?.IsAi == true ? "" : room.GetWhitePlayer().Id.ToString(),
+                    BlackUserId = room.GetBlackPlayer().IsGuest || room.BlackController?.IsAi == true ? "" : room.GetBlackPlayer().Id.ToString(),
                     WhiteName = room.GetWhitePlayer().NickName + (room.GetWhitePlayer().IsGuest ? " (Guest)" : ""),
                     BlackName = room.GetBlackPlayer().NickName + (room.GetBlackPlayer().IsGuest ? " (Guest)" : ""),
                     Result = room.Result, EndReason = room.OutcomeReason ?? room.Game.Board.EndGame!.EndgameType.ToString(),
