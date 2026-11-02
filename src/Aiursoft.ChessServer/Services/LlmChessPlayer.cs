@@ -67,6 +67,8 @@ public class LlmChessPlayer(ChatClient client, IOptions<OpenAIConfiguration> opt
         var prompt = $"""
             You are playing {(board.Turn == PieceColor.White ? "White" : "Black")}.
             FEN: {fen}
+            ASCII board (uppercase = White, lowercase = Black, . = empty):
+            {board.ToAscii()}
             PGN:
             {pgn}
             Legal SAN moves: {string.Join(", ", legal.Order(StringComparer.Ordinal))}
