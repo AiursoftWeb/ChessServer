@@ -5,7 +5,8 @@ const el = name => document.getElementById(name);
 const text = key => document.querySelector(`#room-loc [data-key="${key}"]`)?.textContent ?? textFallback;
 const textFallback = 'Could not update the room. Please try again.';
 let state, busy = false, closed = false, renderedVersion = -1, dirty = false, editingVersion, aiVersion, socket, chat;
-let drag;
+let drag, settingsTimer, savingSettings, starting = false, editRevision = 0;
+let pendingCommand = Promise.resolve();
 const settings = el('room-settings');
 let activePanel = null, unread = 0;
 function selectPanel(name, focus = false) {
@@ -43,8 +44,13 @@ if (embeddedGame) {
 }
 
 function error(key) { el('room-error').textContent = text(key); el('room-error').hidden = false; }
-async function command(kind, fields = {}, version = state?.Version) {
-    if (busy || closed || !state) return;
+function command(kind, fields = {}, version, revision) {
+    const pending = pendingCommand.then(() => sendCommand(kind, fields, version ?? (kind === 'settings' ? editingVersion : state?.Version), revision));
+    pendingCommand = pending.catch(() => {});
+    return pending;
+}
+async function sendCommand(kind, fields, version, revision) {
+    if (closed || !state) return;
     busy = true; el('room-error').hidden = true;
     try {
         const payload = new URLSearchParams({Kind: kind, Version: version, CommandId: crypto.randomUUID(), ...fields});
@@ -54,13 +60,16 @@ async function command(kind, fields = {}, version = state?.Version) {
             if (result.Error === 'room-confirm-interruption' || result.Error === 'room-confirm-replace-ai') {
                 const accepted = confirm(text(result.Error === 'room-confirm-interruption' ? 'confirm-interrupt' : 'confirm-replace'));
                 busy = false;
-                if (accepted) return command(kind, {...fields, Confirm: 'true'}, version);
+                if (accepted) return sendCommand(kind, {...fields, Confirm: 'true'}, version, revision);
             } else error(result.Error || 'error');
-            if (result.Error === 'room-stale') dirty = false;
-            await refresh(); return;
+            await refresh();
+            if (dirty) editingVersion = state.Version;
+            return;
         }
         if (result.Left) { closed = true; location.assign('/Lobby'); return; }
-        dirty = false; apply(result);
+        if (kind === 'settings') dirty = revision !== editRevision;
+        if (dirty) editingVersion = result.Version;
+        apply(result);
         return true;
     } catch { error('error'); }
     finally { busy = false; }
@@ -169,8 +178,9 @@ function apply(next) {
     el('room-settings-panel').hidden = !!state.CurrentGameId;
     el('room-name').textContent = state.Name; el('room-stage').textContent = text(state.Stage);
     document.querySelectorAll('[data-room-host]').forEach(b => { b.hidden = !host; });
-    el('settings-fields').disabled = !host || state.Stage === 'playing';
-    el('start-room').hidden = !host || state.Stage !== 'waiting'; el('start-room').disabled = !state.CanStart || dirty;
+    el('settings-fields').disabled = !host || state.Stage === 'playing' || starting;
+    el('start-room').hidden = !host || state.Stage !== 'waiting'; el('start-room').disabled = !state.CanStart || starting;
+    el('room-start-hint').hidden = !host || state.Stage !== 'waiting' || state.CanStart;
     el('next-room-game').hidden = !host || state.Stage !== 'finished';
     if (embeddedGame) el('play-another-game').hidden = state.Stage !== 'finished';
     el('retry-room-computer').hidden = !host || !state.ComputerError || state.Stage !== 'playing';
@@ -209,14 +219,40 @@ async function refresh() {
         apply(await response.json());
     } catch { error('error'); }
 }
-settings.addEventListener('input', () => { if (!dirty) editingVersion = state.Version; dirty = true; el('start-room').disabled = true; });
-settings.onsubmit = event => {
-    event.preventDefault(); const values = Object.fromEntries(new FormData(settings));
-    values.Public = el('room-public').checked; values.RandomColors = el('room-random').checked;
-    command('settings', values, editingVersion);
+async function saveSettings() {
+    clearTimeout(settingsTimer);
+    if (savingSettings) return savingSettings;
+    savingSettings = (async () => {
+        while (dirty && !closed) {
+            if (!settings.checkValidity() || !el('room-title').value.trim()) { error('room-settings-invalid'); return false; }
+            const revision = editRevision;
+            const values = {Name: el('room-title').value, Minutes: el('room-minutes').value,
+                IncrementSeconds: el('room-increment').value, Public: el('room-public').checked, RandomColors: el('room-random').checked};
+            if (!await command('settings', values, undefined, revision)) return false;
+        }
+        return !closed;
+    })();
+    try { return await savingSettings; }
+    finally { savingSettings = null; }
+}
+settings.addEventListener('input', () => {
+    if (!state || state.Host !== state.Viewer || starting) return;
+    if (!dirty) editingVersion = state.Version;
+    dirty = true; editRevision++;
+    clearTimeout(settingsTimer);
+    settingsTimer = setTimeout(saveSettings, 350);
+});
+settings.addEventListener('change', () => {
+    if (el('room-minutes').value === '0') el('room-increment').value = '0';
+    if (dirty) saveSettings();
+});
+settings.onsubmit = event => { event.preventDefault(); saveSettings(); };
+el('start-room').onclick = async () => {
+    if (starting) return;
+    starting = true; apply(state);
+    try { if (await saveSettings()) await command('start'); }
+    finally { starting = false; apply(state); }
 };
-el('room-minutes').onchange = () => { if (el('room-minutes').value === '0') el('room-increment').value = '0'; };
-el('start-room').onclick = () => command('start');
 el('swap-seats').onclick = () => command('swap');
 el('next-room-game').onclick = () => command('next');
 el('retry-room-computer').onclick = () => command('retry');
@@ -294,4 +330,4 @@ el('room-chat-form').onsubmit = event => {
 await refresh(); connect(); connectChat();
 window.addEventListener('chess-game-ended', refresh);
 const timer = setInterval(refresh, 5000);
-window.addEventListener('pagehide', () => { closed = true; clearInterval(timer); socket?.close(); chat?.close(); }, {once: true});
+window.addEventListener('pagehide', () => { closed = true; clearTimeout(settingsTimer); clearInterval(timer); socket?.close(); chat?.close(); }, {once: true});
