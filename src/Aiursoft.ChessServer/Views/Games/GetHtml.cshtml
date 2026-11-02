@@ -133,7 +133,7 @@
                     <button id="accept-rematch" class="btn btn-primary" data-game-action="accept-rematch" type="button">@Localizer["Accept rematch"]</button>
                     <button class="btn btn-outline-secondary" data-game-action="decline-rematch" type="button">@Localizer["Dismiss offer"]</button>
                 </div>
-                <a class="btn btn-outline-primary" asp-controller="Lobby" asp-action="Index">@Localizer["Play another game"]</a>
+                <a id="play-another-game" class="btn btn-outline-primary" asp-controller="Lobby" asp-action="Index" hidden="@Model.Embedded">@Localizer["Play another game"]</a>
             </div></section>
         </div>
         <aside class="chess-information">

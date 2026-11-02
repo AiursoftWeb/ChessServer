@@ -24,7 +24,8 @@ if (embeddedGame) {
     el('room-moves').prepend(el('game-moves'));
     root.querySelector('.chess-playing-area').append(el('room-replay-navigation'));
     el('room-game-controls').append(el('game-controls'));
-    root.querySelector('.room-actions').append(el('history-link'));
+    el('room-primary-actions').prepend(el('history-link'), el('play-another-game'));
+    el('history-link').classList.replace('btn-primary', 'btn-outline-secondary');
     el('room-game-tools').append(el('game-exports'), el('game-policy'));
     el('game-room').querySelector('.chess-information').hidden = true;
     for (const name of ['moves', 'chat']) {
@@ -171,6 +172,7 @@ function apply(next) {
     el('settings-fields').disabled = !host || state.Stage === 'playing';
     el('start-room').hidden = !host || state.Stage !== 'waiting'; el('start-room').disabled = !state.CanStart || dirty;
     el('next-room-game').hidden = !host || state.Stage !== 'finished';
+    if (embeddedGame) el('play-another-game').hidden = state.Stage !== 'finished';
     el('retry-room-computer').hidden = !host || !state.ComputerError || state.Stage !== 'playing';
     el('interrupt-room').hidden = !host || state.Stage !== 'playing';
     el('room-history').hidden = state.Stage !== 'finished' || state.OrganizerId !== state.Viewer || state.Members.find(m => m.Id === state.Viewer)?.IsGuest !== false || [state.GameWhite?.Id, state.GameBlack?.Id].includes(state.Viewer);

@@ -34,8 +34,8 @@
 .room-console-footer{padding:1rem;border-top:1px solid var(--bs-border-color)}
 .room-actions:empty{display:none}
 .room-actions:not(:empty){margin-top:.5rem}
-.room-actions .btn-primary{flex:1}
-.room-tools{margin-top:.75rem;font-size:.875rem}
+.room-actions .btn-primary{flex:1 0 100%}
+.room-tools{margin-top:0;font-size:.875rem}
 .room-tools>summary{color:var(--bs-secondary-color);cursor:pointer;width:fit-content}
 .room-tools[open]>summary{margin-bottom:.75rem}
 .room-tools>button{margin-top:.75rem}
@@ -63,7 +63,7 @@
 #room-chat{display:flex;flex-direction:column}
 #room-chat .chess-messages{height:auto;min-height:8rem;overflow:visible}
 #room-chat-form{flex-shrink:0}
-#room-game-controls #game-actions{margin-bottom:0!important}
+#room-game-controls #game-actions{margin-top:.75rem;margin-bottom:0!important}
 #room-game-controls #game-actions .btn{flex:1;white-space:nowrap}
 .room-in-game{max-width:calc(var(--room-board-size) + 23.25rem)!important}
 .room-in-game .room-workspace{grid-template-columns:minmax(0,var(--room-board-size)) minmax(19rem,22rem)}
