@@ -47,6 +47,9 @@ public class LlmChessTests
         StringAssert.Contains(request.Messages[0].Content, "Return exactly one entry");
         Assert.AreEqual("user", request.Messages[1].Role);
         StringAssert.Contains(request.Messages[1].Content, InitialFen);
+        StringAssert.Contains(request.Messages[1].Content, "ASCII board (uppercase = White, lowercase = Black, . = empty):");
+        StringAssert.Contains(request.Messages[1].Content, "8 │ r  n  b  q  k  b  n  r │");
+        StringAssert.Contains(request.Messages[1].Content, "1 │ R  N  B  Q  K  B  N  R │");
         StringAssert.Contains(request.Messages[1].Content, "[Result \"*\"]");
         StringAssert.Contains(request.Messages[1].Content, "Legal SAN moves:");
     }
@@ -63,6 +66,21 @@ public class LlmChessTests
         Assert.AreEqual("system", client.Requests[1].Messages[0].Role);
         Assert.AreEqual("user", client.Requests[1].Messages[1].Role);
         StringAssert.Contains(client.Requests[1].Messages[1].Content, "previous final answer");
+        StringAssert.Contains(client.Requests[1].Messages[1].Content, "8 │ r  n  b  q  k  b  n  r │");
+    }
+
+    [TestMethod]
+    public async Task AsciiBoardShowsTheCurrentPositionForBlack()
+    {
+        const string fen = "4k3/8/8/3pP3/8/8/8/4K3 b - - 0 2";
+        using var http = new HttpClient();
+        var client = new Answers(http, (_, _) => Text("d4"));
+        Assert.AreEqual("d4", await new LlmChessPlayer(client, Options.Create(Configuration)).GetMoveAsync(fen, "*", "chess-model", CancellationToken.None));
+        var prompt = client.Requests.Single().Messages[1].Content;
+        StringAssert.Contains(prompt, "You are playing Black.");
+        StringAssert.Contains(prompt, "8 │ .  .  .  .  k  .  .  . │");
+        StringAssert.Contains(prompt, "5 │ .  .  .  p  P  .  .  . │");
+        StringAssert.Contains(prompt, "1 │ .  .  .  .  K  .  .  . │");
     }
 
     [TestMethod]
