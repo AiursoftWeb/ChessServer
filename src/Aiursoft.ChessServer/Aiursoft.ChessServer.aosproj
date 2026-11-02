@@ -1,7 +1,7 @@
 <Project Sdk="Aiursoft.Apkg.Sdk">
   <PropertyGroup>
     <PackageName>aiursoft-chessserver</PackageName>
-    <PackageVersion>1.0.0</PackageVersion>
+    <PackageVersion>1.0.1</PackageVersion>
     <PackageAuthors>Anduin Xue &lt;anduin@aiursoft.com&gt;</PackageAuthors>
     <PackageDescription>Aiursoft ChessServer Web Application</PackageDescription>
     <TargetDistro>anduinos</TargetDistro>
