@@ -100,7 +100,13 @@ public class LlmChessPlayer(ChatClient client, IOptions<OpenAIConfiguration> opt
                 cancellationToken.ThrowIfCancellationRequested();
                 // Only final content is considered; reasoning fields and unclosed think blocks cannot be moves.
                 var answer = response.GetAnswerPart().Trim().Replace('0', 'O');
-                if (legal.Contains(answer)) return (answer, attempt);
+                if (!answer.Contains("<think>", StringComparison.OrdinalIgnoreCase))
+                {
+                    var lines = answer.Split('\n', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
+                    // Some models put prose before a standalone final move. Never search that prose for SAN.
+                    if (lines.Length > 0 && legal.Contains(lines[^1]) && !lines[..^1].Any(legal.Contains))
+                        return (lines[^1], attempt);
+                }
                 if (++illegalAnswers >= 2) throw new InvalidOperationException("The LLM did not return a legal chess move.");
             }
             catch (OperationCanceledException exception) when (!cancellationToken.IsCancellationRequested)
