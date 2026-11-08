@@ -12,7 +12,7 @@ ChessServer has hosted rooms with two player seats and observers. Mix humans, ei
 
 ![screenshot](./screenshot.png)
 
-Play with a guest nickname, or sign in through OIDC to save your games; see [Configuration](#configuration).
+Play with a guest nickname, or sign in with a local account or OIDC to save your games; see [Configuration](#configuration).
 
 ## Try
 
@@ -77,8 +77,10 @@ We're also interested in your feedback on the future of this project. You can su
 
 ## Configuration
 
-Configure `AppSettings__OIDC__Authority`, `AppSettings__OIDC__ClientId`, and `AppSettings__OIDC__ClientSecret` for your identity provider. Register `https://<your-host>/signin-oidc` as its callback. Guests can play without signing in.
+Local accounts and passwords are enabled by default. For production OIDC sign-in, set the environment variable `AppSettings__AuthProvider=OIDC` and configure `AppSettings__OIDC__Authority`, `AppSettings__OIDC__ClientId`, and `AppSettings__OIDC__ClientSecret` for your identity provider. Register `https://<your-host>/signin-oidc` as its callback. Guests can play without signing in.
 
-Existing Docker installations must update their persisted `/data/appsettings.json` with the new database and OIDC settings before upgrading. SQLite stores accounts and chess sessions by default. Keep the database and data-protection keys to resume games after a restart.
+SQLite stores accounts and chess sessions by default. Existing Docker installations retain `/data/appsettings.json` when upgrading; to switch an existing OIDC installation to local sign-in, set `AppSettings__AuthProvider=Local` or update `AppSettings:AuthProvider` in that file. Keep the database and data-protection keys to resume games after a restart.
 
-For an LLM opponent, configure `OpenAI:CompletionApiUrl` and the server-side `OpenAI:Token`. Players can choose any model listed by the compatible `/models` endpoint. The original eight engine levels remain available.
+For an LLM opponent, set `OpenAI:CompletionApiUrl` to the full Chat Completions URL, such as `https://your-service-address/v1/chat/completions`, and configure the server-side `OpenAI:Token` in `appsettings.json` (or use `OpenAI__CompletionApiUrl` and `OpenAI__Token` environment variables). A hostname or `/v1` base URL alone is insufficient. The same service must support `GET https://your-service-address/v1/models` with that token; its model IDs populate the choices. `OpenAI:Model` is an optional preferred model, not a replacement for the models endpoint.
+
+Restart the application after changing these settings, sign in, then create a room and select **Add AI → LLM → model**. The original eight engine levels remain available.
