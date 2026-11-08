@@ -55,6 +55,21 @@ public class LlmChessTests
     }
 
     [TestMethod]
+    [DataRow("This is the Closed Ruy Lopez; the standard move here is c3.\n\nc3", "c3")]
+    [DataRow("Standard Ruy Lopez closed; compare c3, a4 and h3. Choose a4.\n\na4", "a4")]
+    [DataRow("Compare c3 and a4.\r\n  a4  \r\n\r\n", "a4")]
+    public async Task AnalysisBeforeStandaloneFinalMoveDoesNotRequireARetry(string answer, string expected)
+    {
+        const string fen = "r1bq1rk1/2ppbppp/p1n2n2/1p2p3/4P3/1B3N2/PPPP1PPP/RNBQR1K1 w - - 2 8";
+        using var http = new HttpClient();
+        var client = new Answers(http, (_, _) => Text(answer));
+        var result = await new LlmChessPlayer(client, Options.Create(Configuration)).GetMoveResultAsync(fen, "*", "chess-model", CancellationToken.None);
+        Assert.AreEqual(expected, result.Move);
+        Assert.AreEqual(1, result.Attempts);
+        Assert.AreEqual(1, client.Requests.Count);
+    }
+
+    [TestMethod]
     public async Task IllegalAnswerGetsOneStatelessCorrection()
     {
         using var http = new HttpClient(); var attempt = 0;
@@ -87,6 +102,10 @@ public class LlmChessTests
     [DataRow("")]
     [DataRow("<think>e4")]
     [DataRow("e4 e5")]
+    [DataRow("e4\nd4")]
+    [DataRow("<think>Still considering.\ne4")]
+    [DataRow("Consider e4.\nKe9")]
+    [DataRow("Consider e4.\ne4 or d4")]
     [DataRow("1. e4")]
     [DataRow("The best move is e4.")]
     [DataRow("```\ne4\n```")]
