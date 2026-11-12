@@ -1,3 +1,4 @@
+using System.Globalization;
 using System.Net;
 using Aiursoft.DbTools;
 using Aiursoft.ChessServer.Configuration;
@@ -12,6 +13,69 @@ namespace Aiursoft.ChessServer.Tests.IntegrationTests;
 [TestClass]
 public class GlobalSettingsTests : TestBase
 {
+    [TestMethod]
+    [DataRow("en-US")]
+    [DataRow("de-DE")]
+    [DataRow("tr-TR")]
+    public async Task NumericSettingsKeepInvariantValuesAcrossCultures(string cultureName)
+    {
+        var originalCulture = CultureInfo.CurrentCulture;
+        try
+        {
+            CultureInfo.CurrentCulture = CultureInfo.GetCultureInfo(cultureName);
+            using var scope = Server!.Services.CreateScope();
+            var settings = scope.ServiceProvider.GetRequiredService<GlobalSettingsService>();
+            await settings.UpdateSettingAsync(SettingsMap.DummyNumber, "123.45");
+
+            var db = scope.ServiceProvider.GetRequiredService<TemplateDbContext>();
+            var stored = await db.GlobalSettings.AsNoTracking()
+                .SingleAsync(setting => setting.Key == SettingsMap.DummyNumber);
+            Assert.AreEqual("123.45", stored.Value);
+
+            CultureInfo.CurrentCulture = CultureInfo.GetCultureInfo("fr-FR");
+            Assert.AreEqual("123.45", await settings.GetSettingValueAsync(SettingsMap.DummyNumber));
+            await LoginAsAdmin();
+            var html = await Http.GetStringAsync("/GlobalSettings/Index");
+            Assert.Contains("type=\"number\" step=\"any\" name=\"Value\" value=\"123.45\"", html);
+
+            await settings.UpdateSettingAsync(SettingsMap.DummyNumber, "123");
+            Assert.AreEqual(123, await settings.GetIntSettingAsync(SettingsMap.DummyNumber));
+        }
+        finally
+        {
+            CultureInfo.CurrentCulture = originalCulture;
+        }
+    }
+
+    [TestMethod]
+    [DataRow("123,45")]
+    [DataRow("1,234")]
+    [DataRow("NaN")]
+    [DataRow("Infinity")]
+    [DataRow("-Infinity")]
+    [DataRow("1e309")]
+    public async Task InvalidNumericSettingsDoNotReplaceStoredValues(string value)
+    {
+        var originalCulture = CultureInfo.CurrentCulture;
+        try
+        {
+            using var scope = Server!.Services.CreateScope();
+            var settings = scope.ServiceProvider.GetRequiredService<GlobalSettingsService>();
+            await settings.UpdateSettingAsync(SettingsMap.DummyNumber, "12.5");
+            foreach (var cultureName in new[] { "en-US", "de-DE" })
+            {
+                CultureInfo.CurrentCulture = CultureInfo.GetCultureInfo(cultureName);
+                await Assert.ThrowsExactlyAsync<InvalidOperationException>(() =>
+                    settings.UpdateSettingAsync(SettingsMap.DummyNumber, value));
+                Assert.AreEqual("12.5", await settings.GetSettingValueAsync(SettingsMap.DummyNumber));
+            }
+        }
+        finally
+        {
+            CultureInfo.CurrentCulture = originalCulture;
+        }
+    }
+
     [TestMethod]
     public async Task SecretSettingsAreEncryptedHiddenAndRespectConfigurationOverrides()
     {
