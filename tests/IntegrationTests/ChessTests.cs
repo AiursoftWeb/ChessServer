@@ -1,3 +1,4 @@
+using System.Globalization;
 using Aiursoft.AiurObserver;
 using System.Diagnostics;
 using System.Net;
@@ -357,7 +358,7 @@ public class ChessTests : TestBase
         Assert.AreEqual(HttpStatusCode.OK, (await Http.GetAsync($"/History/Replay/{room.HistoryId}")).StatusCode);
         var exported = await (await Http.GetAsync($"/History/Pgn/{room.HistoryId}")).Content.ReadAsStringAsync();
         Assert.AreEqual(pgn, exported);
-        var yesterday = DateTime.UtcNow.AddDays(-1).ToString("yyyy-MM-dd");
+        var yesterday = DateTime.UtcNow.AddDays(-1).ToString("yyyy-MM-dd", CultureInfo.InvariantCulture);
         var old = await (await Http.GetAsync($"/History?date={yesterday}")).Content.ReadAsStringAsync();
         Assert.IsTrue(old.Contains("No completed games on this date.", StringComparison.Ordinal));
         await LoginAsAdmin();
