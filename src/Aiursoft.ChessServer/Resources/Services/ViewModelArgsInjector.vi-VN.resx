@@ -60,14 +60,14 @@
   <data name="Click to login" xml:space="preserve">
     <value>Nhấp để đăng nhập</value>
   </data>
-  <data name="Create a challenge" xml:space="preserve">
-    <value>Tạo thử thách</value>
-  </data>
   <data name="Create Role" xml:space="preserve">
     <value>Tạo Vai Trò</value>
   </data>
   <data name="Create User" xml:space="preserve">
     <value>Tạo Người Dùng</value>
+  </data>
+  <data name="Create a challenge" xml:space="preserve">
+    <value>Tạo thử thách</value>
   </data>
   <data name="Dashboard" xml:space="preserve">
     <value>Bảng điều khiển</value>

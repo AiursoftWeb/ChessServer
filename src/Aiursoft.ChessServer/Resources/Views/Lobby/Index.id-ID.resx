@@ -18,11 +18,11 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="1 — Beginner" xml:space="preserve">
-    <value>1 — Pemula</value>
-  </data>
-  <data name="1 second" xml:space="preserve">
+      <data name="1 second" xml:space="preserve">
     <value>1 detik</value>
+  </data>
+  <data name="1 — Beginner" xml:space="preserve">
+    <value>1 — Pemula</value>
   </data>
   <data name="10 minutes" xml:space="preserve">
     <value>10 menit</value>
@@ -36,14 +36,11 @@
   <data name="15 seconds" xml:space="preserve">
     <value>15 detik</value>
   </data>
-  <data name="2 — Easy" xml:space="preserve">
-    <value>2 — Mudah</value>
-  </data>
   <data name="2 seconds" xml:space="preserve">
     <value>2 detik</value>
   </data>
-  <data name="3 — Casual" xml:space="preserve">
-    <value>3 — Santai</value>
+  <data name="2 — Easy" xml:space="preserve">
+    <value>2 — Mudah</value>
   </data>
   <data name="3 minutes" xml:space="preserve">
     <value>3 menit</value>
@@ -51,20 +48,23 @@
   <data name="3 seconds" xml:space="preserve">
     <value>3 detik</value>
   </data>
+  <data name="3 — Casual" xml:space="preserve">
+    <value>3 — Santai</value>
+  </data>
   <data name="30 seconds" xml:space="preserve">
     <value>30 detik</value>
   </data>
   <data name="4 — Intermediate" xml:space="preserve">
     <value>4 — Menengah</value>
   </data>
-  <data name="5 — Challenging" xml:space="preserve">
-    <value>5 — Menantang</value>
-  </data>
   <data name="5 minutes" xml:space="preserve">
     <value>5 menit</value>
   </data>
   <data name="5 seconds" xml:space="preserve">
     <value>5 detik</value>
+  </data>
+  <data name="5 — Challenging" xml:space="preserve">
+    <value>5 — Menantang</value>
   </data>
   <data name="6 — Hard" xml:space="preserve">
     <value>6 — Sulit</value>

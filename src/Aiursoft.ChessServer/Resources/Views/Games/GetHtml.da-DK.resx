@@ -18,16 +18,7 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="{0} is in check" xml:space="preserve">
-    <value>{0} er i skak</value>
-  </data>
-  <data name="{0} to move" xml:space="preserve">
-    <value>{0} skal spille</value>
-  </data>
-  <data name="{0} wins" xml:space="preserve">
-    <value>{0} vinder</value>
-  </data>
-  <data name="A draw cannot be offered now." xml:space="preserve">
+      <data name="A draw cannot be offered now." xml:space="preserve">
     <value>Der kan ikke tilbydes remis nu.</value>
   </data>
   <data name="Abort game" xml:space="preserve">
@@ -258,6 +249,9 @@
   <data name="That move cannot be played in the current position." xml:space="preserve">
     <value>Det træk kan ikke spilles i den aktuelle stilling.</value>
   </data>
+  <data name="The LLM failed after three attempts: the final request timed out. Automatic retries have stopped. The host can retry the move." xml:space="preserve">
+    <value>LLM&apos;en mislykkedes efter tre forsøg: Den sidste anmodning fik timeout. Automatiske genforsøg er stoppet. Værten kan prøve at udføre trækket igen.</value>
+  </data>
   <data name="The computer could not choose a move. Retry when ready." xml:space="preserve">
     <value>Computeren kunne ikke vælge et træk. Prøv igen, når du er klar.</value>
   </data>
@@ -266,9 +260,6 @@
   </data>
   <data name="The game has started. You can resign instead." xml:space="preserve">
     <value>Spillet er startet. Du kan i stedet opgive.</value>
-  </data>
-  <data name="The LLM failed after three attempts: the final request timed out. Automatic retries have stopped. The host can retry the move." xml:space="preserve">
-    <value>LLM&apos;en mislykkedes efter tre forsøg: Den sidste anmodning fik timeout. Automatiske genforsøg er stoppet. Værten kan prøve at udføre trækket igen.</value>
   </data>
   <data name="The model gateway rejected the request. Automatic retries have stopped. Choose another model or ask the administrator to check its configuration." xml:space="preserve">
     <value>Modelgatewayen afviste anmodningen. Automatiske genforsøg er stoppet. Vælg en anden model, eller bed administratoren om at kontrollere konfigurationen.</value>
@@ -341,6 +332,15 @@
   </data>
   <data name="Your opponent offers a rematch with colors reversed." xml:space="preserve">
     <value>Din modstander tilbyder en revanchekamp med ombyttede farver.</value>
+  </data>
+  <data name="{0} is in check" xml:space="preserve">
+    <value>{0} er i skak</value>
+  </data>
+  <data name="{0} to move" xml:space="preserve">
+    <value>{0} skal spille</value>
+  </data>
+  <data name="{0} wins" xml:space="preserve">
+    <value>{0} vinder</value>
   </data>
 
 </root>

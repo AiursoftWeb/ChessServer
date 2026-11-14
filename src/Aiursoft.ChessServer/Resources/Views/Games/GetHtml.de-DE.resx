@@ -18,16 +18,7 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="{0} is in check" xml:space="preserve">
-    <value>{0} steht im Schach</value>
-  </data>
-  <data name="{0} to move" xml:space="preserve">
-    <value>{0} am Zug</value>
-  </data>
-  <data name="{0} wins" xml:space="preserve">
-    <value>{0} gewinnt</value>
-  </data>
-  <data name="A draw cannot be offered now." xml:space="preserve">
+      <data name="A draw cannot be offered now." xml:space="preserve">
     <value>Ein Remis kann derzeit nicht angeboten werden.</value>
   </data>
   <data name="Abort game" xml:space="preserve">
@@ -258,6 +249,9 @@
   <data name="That move cannot be played in the current position." xml:space="preserve">
     <value>Dieser Zug kann in der aktuellen Stellung nicht ausgeführt werden.</value>
   </data>
+  <data name="The LLM failed after three attempts: the final request timed out. Automatic retries have stopped. The host can retry the move." xml:space="preserve">
+    <value>Das LLM ist nach drei Versuchen fehlgeschlagen: Die letzte Anfrage hat das Zeitlimit überschritten. Automatische Wiederholungsversuche wurden beendet. Der Host kann den Zug erneut versuchen.</value>
+  </data>
   <data name="The computer could not choose a move. Retry when ready." xml:space="preserve">
     <value>Der Computer konnte keinen Zug auswählen. Versuchen Sie es erneut, wenn Sie bereit sind.</value>
   </data>
@@ -266,9 +260,6 @@
   </data>
   <data name="The game has started. You can resign instead." xml:space="preserve">
     <value>Die Partie hat begonnen. Du kannst stattdessen aufgeben.</value>
-  </data>
-  <data name="The LLM failed after three attempts: the final request timed out. Automatic retries have stopped. The host can retry the move." xml:space="preserve">
-    <value>Das LLM ist nach drei Versuchen fehlgeschlagen: Die letzte Anfrage hat das Zeitlimit überschritten. Automatische Wiederholungsversuche wurden beendet. Der Host kann den Zug erneut versuchen.</value>
   </data>
   <data name="The model gateway rejected the request. Automatic retries have stopped. Choose another model or ask the administrator to check its configuration." xml:space="preserve">
     <value>Das Modell-Gateway hat die Anfrage abgelehnt. Automatische Wiederholungsversuche wurden beendet. Wählen Sie ein anderes Modell oder bitten Sie den Administrator, die Konfiguration zu überprüfen.</value>
@@ -341,6 +332,15 @@
   </data>
   <data name="Your opponent offers a rematch with colors reversed." xml:space="preserve">
     <value>Dein Gegner bietet eine Revanche mit vertauschten Farben an.</value>
+  </data>
+  <data name="{0} is in check" xml:space="preserve">
+    <value>{0} steht im Schach</value>
+  </data>
+  <data name="{0} to move" xml:space="preserve">
+    <value>{0} am Zug</value>
+  </data>
+  <data name="{0} wins" xml:space="preserve">
+    <value>{0} gewinnt</value>
   </data>
 
 </root>

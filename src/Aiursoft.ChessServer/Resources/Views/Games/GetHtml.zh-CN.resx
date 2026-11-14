@@ -18,16 +18,7 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="{0} is in check" xml:space="preserve">
-    <value>{0}正在被将军</value>
-  </data>
-  <data name="{0} to move" xml:space="preserve">
-    <value>轮到{0}走棋</value>
-  </data>
-  <data name="{0} wins" xml:space="preserve">
-    <value>{0}获胜</value>
-  </data>
-  <data name="A draw cannot be offered now." xml:space="preserve">
+      <data name="A draw cannot be offered now." xml:space="preserve">
     <value>现在无法提出和棋。</value>
   </data>
   <data name="Abort game" xml:space="preserve">
@@ -261,6 +252,9 @@
   <data name="That move cannot be played in the current position." xml:space="preserve">
     <value>当前局面下无法走这一步。</value>
   </data>
+  <data name="The LLM failed after three attempts: the final request timed out. Automatic retries have stopped. The host can retry the move." xml:space="preserve">
+    <value>LLM 连续尝试三次后仍失败：最后一次请求超时。自动重试已停止。房主可以重试此操作。</value>
+  </data>
   <data name="The computer could not choose a move. Retry when ready." xml:space="preserve">
     <value>电脑无法选择着法。准备好后请重试。</value>
   </data>
@@ -269,9 +263,6 @@
   </data>
   <data name="The game has started. You can resign instead." xml:space="preserve">
     <value>对局已经开始。你可以选择认输。</value>
-  </data>
-  <data name="The LLM failed after three attempts: the final request timed out. Automatic retries have stopped. The host can retry the move." xml:space="preserve">
-    <value>LLM 连续尝试三次后仍失败：最后一次请求超时。自动重试已停止。房主可以重试此操作。</value>
   </data>
   <data name="The model gateway rejected the request. Automatic retries have stopped. Choose another model or ask the administrator to check its configuration." xml:space="preserve">
     <value>模型网关拒绝了该请求。自动重试已停止。请选择其他模型，或请管理员检查其配置。</value>
@@ -344,6 +335,15 @@
   </data>
   <data name="Your opponent offers a rematch with colors reversed." xml:space="preserve">
     <value>您的对手提出再赛，并交换执棋颜色。</value>
+  </data>
+  <data name="{0} is in check" xml:space="preserve">
+    <value>{0}正在被将军</value>
+  </data>
+  <data name="{0} to move" xml:space="preserve">
+    <value>轮到{0}走棋</value>
+  </data>
+  <data name="{0} wins" xml:space="preserve">
+    <value>{0}获胜</value>
   </data>
 
 </root>

@@ -24,11 +24,11 @@
   <data name="End" xml:space="preserve">
     <value>Τέλος</value>
   </data>
-  <data name="Export match details" xml:space="preserve">
-    <value>Εξαγωγή λεπτομερειών παρτίδας</value>
-  </data>
   <data name="Export PGN" xml:space="preserve">
     <value>Εξαγωγή PGN</value>
+  </data>
+  <data name="Export match details" xml:space="preserve">
+    <value>Εξαγωγή λεπτομερειών παρτίδας</value>
   </data>
   <data name="My games" xml:space="preserve">
     <value>Τα παιχνίδια μου</value>

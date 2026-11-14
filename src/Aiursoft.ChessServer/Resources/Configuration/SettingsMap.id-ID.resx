@@ -54,11 +54,11 @@
   <data name="Project Name" xml:space="preserve">
     <value>Nama Proyek</value>
   </data>
-  <data name="The brand name displayed in the footer." xml:space="preserve">
-    <value>Nama merek yang ditampilkan di bagian footer.</value>
-  </data>
   <data name="The ICP license number for China mainland users. Leave empty to hide." xml:space="preserve">
     <value>Nomor izin ICP untuk pengguna daratan Tiongkok. Biarkan kosong untuk menyembunyikan.</value>
+  </data>
+  <data name="The brand name displayed in the footer." xml:space="preserve">
+    <value>Nama merek yang ditampilkan di bagian footer.</value>
   </data>
   <data name="The logo of the project displayed in the navbar and footer. Support jpg, png, svg." xml:space="preserve">
     <value>Logo proyek yang ditampilkan di navbar dan footer. Mendukung jpg, png, svg.</value>

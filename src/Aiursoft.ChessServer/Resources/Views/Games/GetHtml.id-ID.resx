@@ -18,16 +18,7 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="{0} is in check" xml:space="preserve">
-    <value>{0} sedang di-skak</value>
-  </data>
-  <data name="{0} to move" xml:space="preserve">
-    <value>Giliran {0}</value>
-  </data>
-  <data name="{0} wins" xml:space="preserve">
-    <value>{0} menang</value>
-  </data>
-  <data name="A draw cannot be offered now." xml:space="preserve">
+      <data name="A draw cannot be offered now." xml:space="preserve">
     <value>Seri tidak dapat ditawarkan sekarang.</value>
   </data>
   <data name="Abort game" xml:space="preserve">
@@ -258,6 +249,9 @@
   <data name="That move cannot be played in the current position." xml:space="preserve">
     <value>Langkah tersebut tidak dapat dimainkan pada posisi saat ini.</value>
   </data>
+  <data name="The LLM failed after three attempts: the final request timed out. Automatic retries have stopped. The host can retry the move." xml:space="preserve">
+    <value>LLM gagal setelah tiga kali percobaan: permintaan terakhir mengalami batas waktu. Percobaan ulang otomatis telah dihentikan. Host dapat mencoba kembali langkah tersebut.</value>
+  </data>
   <data name="The computer could not choose a move. Retry when ready." xml:space="preserve">
     <value>Komputer tidak dapat memilih langkah. Coba lagi saat siap.</value>
   </data>
@@ -266,9 +260,6 @@
   </data>
   <data name="The game has started. You can resign instead." xml:space="preserve">
     <value>Permainan telah dimulai. Anda dapat menyerah.</value>
-  </data>
-  <data name="The LLM failed after three attempts: the final request timed out. Automatic retries have stopped. The host can retry the move." xml:space="preserve">
-    <value>LLM gagal setelah tiga kali percobaan: permintaan terakhir mengalami batas waktu. Percobaan ulang otomatis telah dihentikan. Host dapat mencoba kembali langkah tersebut.</value>
   </data>
   <data name="The model gateway rejected the request. Automatic retries have stopped. Choose another model or ask the administrator to check its configuration." xml:space="preserve">
     <value>Gateway model menolak permintaan. Percobaan ulang otomatis telah dihentikan. Pilih model lain atau minta administrator memeriksa konfigurasinya.</value>
@@ -341,6 +332,15 @@
   </data>
   <data name="Your opponent offers a rematch with colors reversed." xml:space="preserve">
     <value>Lawan Anda menawarkan pertandingan ulang dengan warna yang ditukar.</value>
+  </data>
+  <data name="{0} is in check" xml:space="preserve">
+    <value>{0} sedang di-skak</value>
+  </data>
+  <data name="{0} to move" xml:space="preserve">
+    <value>Giliran {0}</value>
+  </data>
+  <data name="{0} wins" xml:space="preserve">
+    <value>{0} menang</value>
   </data>
 
 </root>

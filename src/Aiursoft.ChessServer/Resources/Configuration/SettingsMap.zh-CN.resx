@@ -54,11 +54,11 @@
   <data name="Project Name" xml:space="preserve">
     <value>项目名称</value>
   </data>
-  <data name="The brand name displayed in the footer." xml:space="preserve">
-    <value>页脚中显示的品牌名称。</value>
-  </data>
   <data name="The ICP license number for China mainland users. Leave empty to hide." xml:space="preserve">
     <value>中国大陆用户使用的 ICP 备案号。留空以隐藏。</value>
+  </data>
+  <data name="The brand name displayed in the footer." xml:space="preserve">
+    <value>页脚中显示的品牌名称。</value>
   </data>
   <data name="The logo of the project displayed in the navbar and footer. Support jpg, png, svg." xml:space="preserve">
     <value>项目在导航栏和页脚中显示的logo。支持jpg、png、svg格式。</value>

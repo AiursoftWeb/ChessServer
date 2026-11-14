@@ -39,15 +39,6 @@
   <data name="A modern, feature-rich, and highly extensible foundation for your next web application." xml:space="preserve">
     <value>モダンで機能豊富、かつ高度に拡張可能な基盤を、あなたの次のWebアプリケーションに提供します。</value>
   </data>
-  <data name="Achieve more with Aiursoft Template" xml:space="preserve">
-    <value>Aiursoft Templateでさらに多くのことを実現</value>
-  </data>
-  <data name="Actuator health endpoints built-in" xml:space="preserve">
-    <value>組み込みのアクチュエータヘルスエンドポイント</value>
-  </data>
-  <data name="Admin site included" xml:space="preserve">
-    <value>管理サイトが含まれています</value>
-  </data>
   <data name="AI Driven Translation" xml:space="preserve">
     <value>AI 駆動翻訳</value>
   </data>
@@ -56,6 +47,15 @@
   </data>
   <data name="AI-Powered Translations" xml:space="preserve">
     <value>AIによる翻訳</value>
+  </data>
+  <data name="Achieve more with Aiursoft Template" xml:space="preserve">
+    <value>Aiursoft Templateでさらに多くのことを実現</value>
+  </data>
+  <data name="Actuator health endpoints built-in" xml:space="preserve">
+    <value>組み込みのアクチュエータヘルスエンドポイント</value>
+  </data>
+  <data name="Admin site included" xml:space="preserve">
+    <value>管理サイトが含まれています</value>
   </data>
   <data name="Aiursoft Template" xml:space="preserve">
     <value>Aiursoft Template</value>
@@ -78,11 +78,11 @@
   <data name="Authentik &amp; Okta" xml:space="preserve">
     <value>Authentik &amp; Okta</value>
   </data>
-  <data name="Auto compression and privacy" xml:space="preserve">
-    <value>自動圧縮とプライバシー保護</value>
-  </data>
   <data name="Auto Deployment" xml:space="preserve">
     <value>自動デプロイ</value>
+  </data>
+  <data name="Auto compression and privacy" xml:space="preserve">
+    <value>自動圧縮とプライバシー保護</value>
   </data>
   <data name="Automatic AI translation into 28 languages." xml:space="preserve">
     <value>28言語への自動AI翻訳</value>
@@ -141,17 +141,11 @@
   <data name="Built-in" xml:space="preserve">
     <value>組み込み</value>
   </data>
-  <data name="Built-in administration panel" xml:space="preserve">
-    <value>内蔵管理パネル</value>
-  </data>
   <data name="Built-in Auth" xml:space="preserve">
     <value>組み込み認証</value>
   </data>
   <data name="Built-in Job Queue GUI" xml:space="preserve">
     <value>内蔵ジョブキューGUI</value>
-  </data>
-  <data name="Built-in method-level security" xml:space="preserve">
-    <value>組み込みメソッドレベルのセキュリティ</value>
   </data>
   <data name="Built-in OAuth2/OIDC client support" xml:space="preserve">
     <value>OAuth2/OIDC クライアントサポート内蔵</value>
@@ -165,14 +159,20 @@
   <data name="Built-in Roslyn Analyzers" xml:space="preserve">
     <value>組み込み Roslyn アナライザー</value>
   </data>
+  <data name="Built-in User Management" xml:space="preserve">
+    <value>組み込みユーザー管理</value>
+  </data>
+  <data name="Built-in administration panel" xml:space="preserve">
+    <value>内蔵管理パネル</value>
+  </data>
+  <data name="Built-in method-level security" xml:space="preserve">
+    <value>組み込みメソッドレベルのセキュリティ</value>
+  </data>
   <data name="Built-in timezone configuration" xml:space="preserve">
     <value>内蔵タイムゾーン設定</value>
   </data>
   <data name="Built-in timezone support with USE_TZ" xml:space="preserve">
     <value>USE_TZによる組み込みタイムゾーンサポート</value>
-  </data>
-  <data name="Built-in User Management" xml:space="preserve">
-    <value>組み込みユーザー管理</value>
   </data>
   <data name="Challenge a friend" xml:space="preserve">
     <value>友達に対戦を挑む</value>
@@ -240,14 +240,14 @@
   <data name="Custom development required" xml:space="preserve">
     <value>カスタム開発が必要です</value>
   </data>
+  <data name="Dashboard Website" xml:space="preserve">
+    <value>ダッシュボードウェブサイト</value>
+  </data>
   <data name="Dashboard for background and scheduled tasks" xml:space="preserve">
     <value>バックグラウンドおよびスケジュールされたタスクのダッシュボード</value>
   </data>
   <data name="Dashboard for background tasks" xml:space="preserve">
     <value>バックグラウンドタスクのダッシュボード</value>
-  </data>
-  <data name="Dashboard Website" xml:space="preserve">
-    <value>ダッシュボードウェブサイト</value>
   </data>
   <data name="Day 1 Compliance &amp; Security." xml:space="preserve">
     <value>Day 1 コンプライアンス &amp; セキュリティ。</value>
@@ -273,14 +273,14 @@
   <data name="Dev &amp; Prod" xml:space="preserve">
     <value>開発 &amp; 本番</value>
   </data>
+  <data name="DevOps Native" xml:space="preserve">
+    <value>DevOpsネイティブ</value>
+  </data>
   <data name="Develop exclusively in UTC while the system automatically converts and displays dates in the user&apos;s local time zone." xml:space="preserve">
     <value>開発はUTCで行うだけで、システムが自動的に日付をユーザーのローカルタイムゾーンに変換して表示します。</value>
   </data>
   <data name="Developer Experience" xml:space="preserve">
     <value>開発者体験</value>
-  </data>
-  <data name="DevOps Native" xml:space="preserve">
-    <value>DevOpsネイティブ</value>
   </data>
   <data name="Discussions page" xml:space="preserve">
     <value>ディスカッションページ</value>
@@ -339,9 +339,6 @@
   <data name="FAQ" xml:space="preserve">
     <value>よくある質問</value>
   </data>
-  <data name="faster" xml:space="preserve">
-    <value>より迅速に</value>
-  </data>
   <data name="Feature tests available" xml:space="preserve">
     <value>機能テスト利用可能</value>
   </data>
@@ -369,9 +366,6 @@
   <data name="Follow public games as they happen. Spectators can watch without changing the board." xml:space="preserve">
     <value>公開対局の進行をリアルタイムで追いかけましょう。観戦者は盤面を変更せずに対局を観戦できます。</value>
   </data>
-  <data name="for any inquiries or to report issues." xml:space="preserve">
-    <value>お問い合わせや問題の報告はこちらへ。</value>
-  </data>
   <data name="Founder &amp; Architect at Aiursoft" xml:space="preserve">
     <value>Founder &amp; Architect at Aiursoft</value>
   </data>
@@ -381,11 +375,11 @@
   <data name="Free" xml:space="preserve">
     <value>無料</value>
   </data>
-  <data name="Free for Commercial Use" xml:space="preserve">
-    <value>商用利用に無料</value>
-  </data>
   <data name="Free Software" xml:space="preserve">
     <value>フリーソフトウェア</value>
+  </data>
+  <data name="Free for Commercial Use" xml:space="preserve">
+    <value>商用利用に無料</value>
   </data>
   <data name="Frequently asked questions" xml:space="preserve">
     <value>よくある質問</value>
@@ -405,11 +399,11 @@
   <data name="Fully Offline" xml:space="preserve">
     <value>オフライン完全対応</value>
   </data>
-  <data name="Generic configuration" xml:space="preserve">
-    <value>汎用設定</value>
-  </data>
   <data name="Generic Dockerfile only" xml:space="preserve">
     <value>一般的な Dockerfile のみ</value>
+  </data>
+  <data name="Generic configuration" xml:space="preserve">
+    <value>汎用設定</value>
   </data>
   <data name="GitLab CI" xml:space="preserve">
     <value>GitLab CI</value>
@@ -435,14 +429,14 @@
   <data name="Handwritten based on Policies" xml:space="preserve">
     <value>ポリシーに基づく手動実装</value>
   </data>
-  <data name="Health check package available" xml:space="preserve">
-    <value>ヘルスチェックパッケージが利用可能</value>
-  </data>
   <data name="Health Checks &amp; Probes" xml:space="preserve">
     <value>ヘルスチェックとプローブ</value>
   </data>
   <data name="Health Checks middleware available" xml:space="preserve">
     <value>Health Checks ミドルウェア利用可能</value>
+  </data>
+  <data name="Health check package available" xml:space="preserve">
+    <value>ヘルスチェックパッケージが利用可能</value>
   </data>
   <data name="Hello World!" xml:space="preserve">
     <value>こんにちは、世界！</value>
@@ -480,11 +474,11 @@
   <data name="Included" xml:space="preserve">
     <value>含まれる</value>
   </data>
-  <data name="Includes extensive documentation and practical examples to get you started quickly." xml:space="preserve">
-    <value>豊富なドキュメントと実用的な例を含んでいるため、すぐに使い始めることができます。</value>
-  </data>
   <data name="Includes Tutorials" xml:space="preserve">
     <value>チュートリアルを含む</value>
+  </data>
+  <data name="Includes extensive documentation and practical examples to get you started quickly." xml:space="preserve">
+    <value>豊富なドキュメントと実用的な例を含んでいるため、すぐに使い始めることができます。</value>
   </data>
   <data name="Integrated File Management" xml:space="preserve">
     <value>統合ファイル管理</value>
@@ -498,14 +492,8 @@
   <data name="Interoperability" xml:space="preserve">
     <value>相互運用性</value>
   </data>
-  <data name="is Free Software" xml:space="preserve">
-    <value>はフリー・ソフトウェアです</value>
-  </data>
   <data name="Is it free to use Aiursoft Template?" xml:space="preserve">
     <value>Aiursoft Templateは無料で使用できますか？</value>
-  </data>
-  <data name="java.time API available" xml:space="preserve">
-    <value>java.time API 利用可能</value>
   </data>
   <data name="Job Queue &amp; Scheduling GUI" xml:space="preserve">
     <value>ジョブキュー＆スケジューリングGUI</value>
@@ -528,6 +516,12 @@
   <data name="Lint Check" xml:space="preserve">
     <value>Lintチェック</value>
   </data>
+  <data name="MIT Licence" xml:space="preserve">
+    <value>MITライセンス</value>
+  </data>
+  <data name="MIT License" xml:space="preserve">
+    <value>MITライセンス</value>
+  </data>
   <data name="Maintain High Code Quality" xml:space="preserve">
     <value>高品質なコードを維持する</value>
   </data>
@@ -539,12 +533,6 @@
   </data>
   <data name="Markdown To HTML" xml:space="preserve">
     <value>MarkdownからHTMLへ</value>
-  </data>
-  <data name="MIT Licence" xml:space="preserve">
-    <value>MITライセンス</value>
-  </data>
-  <data name="MIT License" xml:space="preserve">
-    <value>MITライセンス</value>
   </data>
   <data name="Models are validated on both client and server sides based on data annotations." xml:space="preserve">
     <value>モデルはデータ注釈に基づいて、クライアントおよびサーバーの両方で検証されます。</value>
@@ -570,15 +558,6 @@
   <data name="Needs Celery + Flower" xml:space="preserve">
     <value>Celery と Flower が必要です</value>
   </data>
-  <data name="Needs complex authentication logic" xml:space="preserve">
-    <value>複雑な認証ロジックが必要です</value>
-  </data>
-  <data name="Needs config/plugins" xml:space="preserve">
-    <value>設定またはプラグインが必要です</value>
-  </data>
-  <data name="Needs django-health-check package" xml:space="preserve">
-    <value>django-health-check パッケージが必要です</value>
-  </data>
   <data name="Needs ESLint/Prettier setup" xml:space="preserve">
     <value>ESLint/Prettier の設定が必要です</value>
   </data>
@@ -587,9 +566,6 @@
   </data>
   <data name="Needs Laravel Sail" xml:space="preserve">
     <value>Laravel Sail が必要です</value>
-  </data>
-  <data name="Needs manual configuration" xml:space="preserve">
-    <value>手動設定が必要です</value>
   </data>
   <data name="Needs Medialibrary" xml:space="preserve">
     <value>MediaLibrary が必要です</value>
@@ -603,20 +579,35 @@
   <data name="Needs Spring Security config" xml:space="preserve">
     <value>Spring Security の設定が必要です</value>
   </data>
-  <data name="Needs third-party plugins" xml:space="preserve">
-    <value>サードパーティ製プラグインが必要です</value>
-  </data>
   <data name="Needs TypeORM or similar" xml:space="preserve">
     <value>TypeORM または同等のものが必要です</value>
+  </data>
+  <data name="Needs complex authentication logic" xml:space="preserve">
+    <value>複雑な認証ロジックが必要です</value>
+  </data>
+  <data name="Needs config/plugins" xml:space="preserve">
+    <value>設定またはプラグインが必要です</value>
+  </data>
+  <data name="Needs django-health-check package" xml:space="preserve">
+    <value>django-health-check パッケージが必要です</value>
+  </data>
+  <data name="Needs manual configuration" xml:space="preserve">
+    <value>手動設定が必要です</value>
+  </data>
+  <data name="Needs third-party plugins" xml:space="preserve">
+    <value>サードパーティ製プラグインが必要です</value>
   </data>
   <data name="No dependency on any cloud vendor. Run anywhere, any time." xml:space="preserve">
     <value>クラウドベンダーへの依存なし。どこでも、いつでも実行可能。</value>
   </data>
-  <data name="Offline Capable" xml:space="preserve">
-    <value>オフライン対応</value>
-  </data>
   <data name="OIDC &amp; SSO" xml:space="preserve">
     <value>OIDC &amp; SSO</value>
+  </data>
+  <data name="ORM &amp; Migrations" xml:space="preserve">
+    <value>ORM とマイグレーション</value>
+  </data>
+  <data name="Offline Capable" xml:space="preserve">
+    <value>オフライン対応</value>
   </data>
   <data name="One Click Start" xml:space="preserve">
     <value>ワンクリックスタート</value>
@@ -635,9 +626,6 @@
   </data>
   <data name="Optimized Docker &amp; K8s config" xml:space="preserve">
     <value>最適化された Docker &amp; K8s 設定</value>
-  </data>
-  <data name="ORM &amp; Migrations" xml:space="preserve">
-    <value>ORM とマイグレーション</value>
   </data>
   <data name="Out-of-the-box" xml:space="preserve">
     <value>すぐに使える</value>
@@ -663,11 +651,11 @@
   <data name="Pre-configured /healthz and readiness probes" xml:space="preserve">
     <value>事前設定済み /healthz および準備状態プローブ</value>
   </data>
-  <data name="Pre-configured and tested" xml:space="preserve">
-    <value>事前設定済みかつテスト済み</value>
-  </data>
   <data name="Pre-configured CI/CD pipelines specifically for GitLab." xml:space="preserve">
     <value>GitLab専用に事前設定されたCI/CDパイプライン</value>
+  </data>
+  <data name="Pre-configured and tested" xml:space="preserve">
+    <value>事前設定済みかつテスト済み</value>
   </data>
   <data name="Pre-configured pipelines for dev/prod" xml:space="preserve">
     <value>開発/本番環境用の事前設定済みパイプライン</value>
@@ -735,17 +723,17 @@
   <data name="Smart dark mode that automatically adapts to the user&apos;s system settings." xml:space="preserve">
     <value>ユーザーのシステム設定に自動的に適応するスマートダークモード。</value>
   </data>
-  <data name="Standard implementation. Switch providers without compilation." xml:space="preserve">
-    <value>標準実装。コンパイルなしでプロバイダを切り替えられます。</value>
-  </data>
   <data name="Standard OpenID" xml:space="preserve">
     <value>Standard OpenID</value>
   </data>
-  <data name="Start a new project" xml:space="preserve">
-    <value>新規プロジェクトを開始</value>
+  <data name="Standard implementation. Switch providers without compilation." xml:space="preserve">
+    <value>標準実装。コンパイルなしでプロバイダを切り替えられます。</value>
   </data>
   <data name="Start Shipping Value." xml:space="preserve">
     <value>価値を迅速に提供し始めましょう。</value>
+  </data>
+  <data name="Start a new project" xml:space="preserve">
+    <value>新規プロジェクトを開始</value>
   </data>
   <data name="Start with a single &apos;docker run&apos; command." xml:space="preserve">
     <value>1つの &apos;docker run&apos; コマンドで開始します。</value>
@@ -759,23 +747,23 @@
   <data name="Strict Lint Rules" xml:space="preserve">
     <value>厳格なLintルール</value>
   </data>
+  <data name="Strict Unit Testing" xml:space="preserve">
+    <value>厳格なユニットテスト</value>
+  </data>
   <data name="Strict linting rules and zero warnings by default." xml:space="preserve">
     <value>厳格なLintルールとデフォルトで警告ゼロ</value>
   </data>
   <data name="Strict linting rules with 0 warnings in the default project." xml:space="preserve">
     <value>デフォルトプロジェクトでは厳格なLintルールと0件の警告です。</value>
   </data>
-  <data name="Strict Unit Testing" xml:space="preserve">
-    <value>厳格なユニットテスト</value>
-  </data>
   <data name="Strongly Consistent Linting" xml:space="preserve">
     <value>強力で一貫したLintチェック</value>
   </data>
-  <data name="Supports both environment variables and database-backed settings, with automatic priority given to environment variables for seamless overrides." xml:space="preserve">
-    <value>環境変数とデータベースベースの設定の両方をサポートしており、環境変数に自動的に優先順位が与えられ、スムーズな上書きが可能になります。</value>
-  </data>
   <data name="Supports JetBrains Rider for easy code style fixes." xml:space="preserve">
     <value>JetBrains Rider のサポートにより、コードスタイルの修正が簡単に行えます。</value>
+  </data>
+  <data name="Supports both environment variables and database-backed settings, with automatic priority given to environment variables for seamless overrides." xml:space="preserve">
+    <value>環境変数とデータベースベースの設定の両方をサポートしており、環境変数に自動的に優先順位が与えられ、スムーズな上書きが可能になります。</value>
   </data>
   <data name="Talk with the players and spectators while the game unfolds." xml:space="preserve">
     <value>対局の進行中に、プレイヤーや観戦者とチャットできます。</value>
@@ -798,14 +786,14 @@
   <data name="Testing module available" xml:space="preserve">
     <value>テストモジュール利用可能</value>
   </data>
+  <data name="The Philosophy" xml:space="preserve">
+    <value>哲学</value>
+  </data>
   <data name="The definitive, battle-tested .NET enterprise foundation. From Auth to AI, we&apos;ve solved the hard parts so you don&apos;t have to." xml:space="preserve">
     <value>決定的な、実戦で検証された .NET エンタープライズ基盤。認証から AI まで、難しい部分はすべて解決済みなので、あなたはそれらを心配する必要がありません。</value>
   </data>
   <data name="The navigation bar automatically adjusts based on user roles and permissions." xml:space="preserve">
     <value>ナビゲーションバーは、ユーザーの役割と権限に基づいて自動的に調整されます。</value>
-  </data>
-  <data name="The Philosophy" xml:space="preserve">
-    <value>哲学</value>
   </data>
   <data name="The template is built for easy deployment. It includes full Docker support, so you can containerize your app and run it anywhere. You can also deploy it directly to IIS, Azure App Service, or any server that supports ASP.NET Core." xml:space="preserve">
     <value>このテンプレートは簡単なデプロイを実現するために構築されています。完全なDockerサポートを含んでいるため、アプリをコンテナ化してどこでも実行できます。また、IIS、Azure App Service、またはASP.NET Coreをサポートする任意のサーバーに直接デプロイすることも可能です。</value>
@@ -816,11 +804,11 @@
   <data name="This is a template project, where we start the voyager..." xml:space="preserve">
     <value>これはテンプレートプロジェクトであり、ここからボイジャーの旅が始まります...</value>
   </data>
-  <data name="Timezone-aware fields" xml:space="preserve">
-    <value>タイムゾーン対応フィールド</value>
-  </data>
   <data name="TimeZoneInfo API available" xml:space="preserve">
     <value>TimeZoneInfo API 利用可能</value>
+  </data>
+  <data name="Timezone-aware fields" xml:space="preserve">
+    <value>タイムゾーン対応フィールド</value>
   </data>
   <data name="Trusted by production-grade applications including AnduinOS, StatHub, and Warp. We don&apos;t just share this code; we run our entire business on it." xml:space="preserve">
     <value>AnduinOS、StatHub、Warpを含むプロダクショングレードのアプリケーションに信頼されています。このコードを単に共有するだけでなく、私たちのビジネス全体をこのコードで運用しています。</value>
@@ -896,6 +884,18 @@
   </data>
   <data name="Zero Tolerance Lint" xml:space="preserve">
     <value>ゼロ許容リンティング</value>
+  </data>
+  <data name="faster" xml:space="preserve">
+    <value>より迅速に</value>
+  </data>
+  <data name="for any inquiries or to report issues." xml:space="preserve">
+    <value>お問い合わせや問題の報告はこちらへ。</value>
+  </data>
+  <data name="is Free Software" xml:space="preserve">
+    <value>はフリー・ソフトウェアです</value>
+  </data>
+  <data name="java.time API available" xml:space="preserve">
+    <value>java.time API 利用可能</value>
   </data>
 
 </root>

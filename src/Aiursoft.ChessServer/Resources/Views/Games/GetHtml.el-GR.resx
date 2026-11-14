@@ -18,16 +18,7 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="{0} is in check" xml:space="preserve">
-    <value>Ο/Η {0} είναι σε σαχ.</value>
-  </data>
-  <data name="{0} to move" xml:space="preserve">
-    <value>Σειρά του/της {0} για κίνηση</value>
-  </data>
-  <data name="{0} wins" xml:space="preserve">
-    <value>Τα {0} κερδίζουν</value>
-  </data>
-  <data name="A draw cannot be offered now." xml:space="preserve">
+      <data name="A draw cannot be offered now." xml:space="preserve">
     <value>Δεν μπορεί να προσφερθεί ισοπαλία τώρα.</value>
   </data>
   <data name="Abort game" xml:space="preserve">
@@ -255,6 +246,9 @@
   <data name="That move cannot be played in the current position." xml:space="preserve">
     <value>Αυτή η κίνηση δεν μπορεί να παιχτεί στη τρέχουσα θέση.</value>
   </data>
+  <data name="The LLM failed after three attempts: the final request timed out. Automatic retries have stopped. The host can retry the move." xml:space="preserve">
+    <value>Το LLM απέτυχε έπειτα από τρεις προσπάθειες: το τελευταίο αίτημα έληξε λόγω χρονικού ορίου. Οι αυτόματες επαναλήψεις σταμάτησαν. Ο οικοδεσπότης μπορεί να επαναλάβει την κίνηση.</value>
+  </data>
   <data name="The computer could not choose a move. Retry when ready." xml:space="preserve">
     <value>Ο υπολογιστής δεν μπόρεσε να επιλέξει μια κίνηση. Δοκιμάστε ξανά όταν είστε έτοιμοι.</value>
   </data>
@@ -263,9 +257,6 @@
   </data>
   <data name="The game has started. You can resign instead." xml:space="preserve">
     <value>Η παρτίδα έχει ξεκινήσει. Μπορείτε να εγκαταλείψετε αντ’ αυτού.</value>
-  </data>
-  <data name="The LLM failed after three attempts: the final request timed out. Automatic retries have stopped. The host can retry the move." xml:space="preserve">
-    <value>Το LLM απέτυχε έπειτα από τρεις προσπάθειες: το τελευταίο αίτημα έληξε λόγω χρονικού ορίου. Οι αυτόματες επαναλήψεις σταμάτησαν. Ο οικοδεσπότης μπορεί να επαναλάβει την κίνηση.</value>
   </data>
   <data name="The model gateway rejected the request. Automatic retries have stopped. Choose another model or ask the administrator to check its configuration." xml:space="preserve">
     <value>Η πύλη του μοντέλου απέρριψε το αίτημα. Οι αυτόματες επαναλήψεις έχουν σταματήσει. Επιλέξτε άλλο μοντέλο ή ζητήστε από τον διαχειριστή να ελέγξει τις ρυθμίσεις του.</value>
@@ -338,6 +329,15 @@
   </data>
   <data name="Your opponent offers a rematch with colors reversed." xml:space="preserve">
     <value>Ο αντίπαλός σας προτείνει ρεβάνς με αντίστροφα χρώματα.</value>
+  </data>
+  <data name="{0} is in check" xml:space="preserve">
+    <value>Ο/Η {0} είναι σε σαχ.</value>
+  </data>
+  <data name="{0} to move" xml:space="preserve">
+    <value>Σειρά του/της {0} για κίνηση</value>
+  </data>
+  <data name="{0} wins" xml:space="preserve">
+    <value>Τα {0} κερδίζουν</value>
   </data>
 
 </root>

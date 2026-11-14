@@ -57,14 +57,14 @@
   <data name="Click to login" xml:space="preserve">
     <value>Clique para iniciar sessão</value>
   </data>
-  <data name="Create a challenge" xml:space="preserve">
-    <value>Criar um desafio</value>
-  </data>
   <data name="Create Role" xml:space="preserve">
     <value>Criar Função</value>
   </data>
   <data name="Create User" xml:space="preserve">
     <value>Criar Utilizador</value>
+  </data>
+  <data name="Create a challenge" xml:space="preserve">
+    <value>Criar um desafio</value>
   </data>
   <data name="Dashboard" xml:space="preserve">
     <value>Painel de Controle</value>

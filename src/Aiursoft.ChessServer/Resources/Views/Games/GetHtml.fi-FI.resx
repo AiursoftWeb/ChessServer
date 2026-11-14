@@ -18,16 +18,7 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="{0} is in check" xml:space="preserve">
-    <value>{0} on shakissa</value>
-  </data>
-  <data name="{0} to move" xml:space="preserve">
-    <value>{0} siirtää seuraavaksi</value>
-  </data>
-  <data name="{0} wins" xml:space="preserve">
-    <value>{0} voittaa</value>
-  </data>
-  <data name="A draw cannot be offered now." xml:space="preserve">
+      <data name="A draw cannot be offered now." xml:space="preserve">
     <value>Tasapeliä ei voi tarjota nyt.</value>
   </data>
   <data name="Abort game" xml:space="preserve">
@@ -255,6 +246,9 @@
   <data name="That move cannot be played in the current position." xml:space="preserve">
     <value>Tuota siirtoä ei voi tehdä nykyisessä asemassa.</value>
   </data>
+  <data name="The LLM failed after three attempts: the final request timed out. Automatic retries have stopped. The host can retry the move." xml:space="preserve">
+    <value>LLM epäonnistui kolmen yrityksen jälkeen: viimeisen pyynnön aikakatkaisu ylittyi. Automaattiset uudelleenyritykset on lopetettu. Pelin isäntä voi yrittää siirtoa uudelleen.</value>
+  </data>
   <data name="The computer could not choose a move. Retry when ready." xml:space="preserve">
     <value>Tietokone ei voinut valita siirtoa. Yritä uudelleen, kun olet valmis.</value>
   </data>
@@ -263,9 +257,6 @@
   </data>
   <data name="The game has started. You can resign instead." xml:space="preserve">
     <value>Peli on alkanut. Voit sen sijaan luovuttaa.</value>
-  </data>
-  <data name="The LLM failed after three attempts: the final request timed out. Automatic retries have stopped. The host can retry the move." xml:space="preserve">
-    <value>LLM epäonnistui kolmen yrityksen jälkeen: viimeisen pyynnön aikakatkaisu ylittyi. Automaattiset uudelleenyritykset on lopetettu. Pelin isäntä voi yrittää siirtoa uudelleen.</value>
   </data>
   <data name="The model gateway rejected the request. Automatic retries have stopped. Choose another model or ask the administrator to check its configuration." xml:space="preserve">
     <value>Malliyhdyskäytävä hylkäsi pyynnön. Automaattiset uudelleenyritykset on lopetettu. Valitse toinen malli tai pyydä järjestelmänvalvojaa tarkistamaan sen määritykset.</value>
@@ -338,6 +329,15 @@
   </data>
   <data name="Your opponent offers a rematch with colors reversed." xml:space="preserve">
     <value>Vastustajasi tarjoaa uusintapeliä käänteisin välein.</value>
+  </data>
+  <data name="{0} is in check" xml:space="preserve">
+    <value>{0} on shakissa</value>
+  </data>
+  <data name="{0} to move" xml:space="preserve">
+    <value>{0} siirtää seuraavaksi</value>
+  </data>
+  <data name="{0} wins" xml:space="preserve">
+    <value>{0} voittaa</value>
   </data>
 
 </root>

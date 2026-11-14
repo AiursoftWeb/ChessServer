@@ -18,16 +18,7 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="{0} is in check" xml:space="preserve">
-    <value>{0} jest szachowany</value>
-  </data>
-  <data name="{0} to move" xml:space="preserve">
-    <value>Ruch: {0}</value>
-  </data>
-  <data name="{0} wins" xml:space="preserve">
-    <value>Wygrywa: {0}</value>
-  </data>
-  <data name="A draw cannot be offered now." xml:space="preserve">
+      <data name="A draw cannot be offered now." xml:space="preserve">
     <value>Nie można teraz zaproponować remisu.</value>
   </data>
   <data name="Abort game" xml:space="preserve">
@@ -258,6 +249,9 @@
   <data name="That move cannot be played in the current position." xml:space="preserve">
     <value>Tego ruchu nie można wykonać w obecnej pozycji.</value>
   </data>
+  <data name="The LLM failed after three attempts: the final request timed out. Automatic retries have stopped. The host can retry the move." xml:space="preserve">
+    <value>Model LLM nie powiódł się po trzech próbach: ostatnie żądanie przekroczyło limit czasu. Automatyczne ponawianie prób zostało zatrzymane. Gospodarz może ponowić ruch.</value>
+  </data>
   <data name="The computer could not choose a move. Retry when ready." xml:space="preserve">
     <value>Komputer nie mógł wybrać ruchu. Spróbuj ponownie, gdy będzie gotowy.</value>
   </data>
@@ -266,9 +260,6 @@
   </data>
   <data name="The game has started. You can resign instead." xml:space="preserve">
     <value>Gra już się rozpoczęła. Możesz się poddać.</value>
-  </data>
-  <data name="The LLM failed after three attempts: the final request timed out. Automatic retries have stopped. The host can retry the move." xml:space="preserve">
-    <value>Model LLM nie powiódł się po trzech próbach: ostatnie żądanie przekroczyło limit czasu. Automatyczne ponawianie prób zostało zatrzymane. Gospodarz może ponowić ruch.</value>
   </data>
   <data name="The model gateway rejected the request. Automatic retries have stopped. Choose another model or ask the administrator to check its configuration." xml:space="preserve">
     <value>Brama modelu odrzuciła żądanie. Automatyczne ponawianie prób zostało wstrzymane. Wybierz inny model lub poproś administratora o sprawdzenie jego konfiguracji.</value>
@@ -341,6 +332,15 @@
   </data>
   <data name="Your opponent offers a rematch with colors reversed." xml:space="preserve">
     <value>Twój przeciwnik proponuje rewanż, ale zamieniacie się kolorami.</value>
+  </data>
+  <data name="{0} is in check" xml:space="preserve">
+    <value>{0} jest szachowany</value>
+  </data>
+  <data name="{0} to move" xml:space="preserve">
+    <value>Ruch: {0}</value>
+  </data>
+  <data name="{0} wins" xml:space="preserve">
+    <value>Wygrywa: {0}</value>
   </data>
 
 </root>

@@ -57,14 +57,14 @@
   <data name="Click to login" xml:space="preserve">
     <value>लॉगिन करने के लिए क्लिक करें</value>
   </data>
-  <data name="Create a challenge" xml:space="preserve">
-    <value>एक चुनौती बनाएँ</value>
-  </data>
   <data name="Create Role" xml:space="preserve">
     <value>भूमिका बनाएं</value>
   </data>
   <data name="Create User" xml:space="preserve">
     <value>उपयोगकर्ता बनाएं</value>
+  </data>
+  <data name="Create a challenge" xml:space="preserve">
+    <value>एक चुनौती बनाएँ</value>
   </data>
   <data name="Dashboard" xml:space="preserve">
     <value>डैशबोर्ड</value>

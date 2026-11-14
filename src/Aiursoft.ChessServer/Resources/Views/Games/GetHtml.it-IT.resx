@@ -18,16 +18,7 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="{0} is in check" xml:space="preserve">
-    <value>{0} è sotto scacco</value>
-  </data>
-  <data name="{0} to move" xml:space="preserve">
-    <value>Tocca a {0} muovere</value>
-  </data>
-  <data name="{0} wins" xml:space="preserve">
-    <value>Vince {0}</value>
-  </data>
-  <data name="A draw cannot be offered now." xml:space="preserve">
+      <data name="A draw cannot be offered now." xml:space="preserve">
     <value>Ora non è possibile offrire la patta.</value>
   </data>
   <data name="Abort game" xml:space="preserve">
@@ -258,6 +249,9 @@
   <data name="That move cannot be played in the current position." xml:space="preserve">
     <value>Quella mossa non può essere giocata nella posizione attuale.</value>
   </data>
+  <data name="The LLM failed after three attempts: the final request timed out. Automatic retries have stopped. The host can retry the move." xml:space="preserve">
+    <value>Il modello linguistico di grandi dimensioni ha fallito dopo tre tentativi: la richiesta finale è scaduta. I tentativi automatici sono stati interrotti. Il responsabile della partita può riprovare a effettuare la mossa.</value>
+  </data>
   <data name="The computer could not choose a move. Retry when ready." xml:space="preserve">
     <value>Il computer non è riuscito a scegliere una mossa. Riprova quando vuoi.</value>
   </data>
@@ -266,9 +260,6 @@
   </data>
   <data name="The game has started. You can resign instead." xml:space="preserve">
     <value>La partita è iniziata. Puoi abbandonarla.</value>
-  </data>
-  <data name="The LLM failed after three attempts: the final request timed out. Automatic retries have stopped. The host can retry the move." xml:space="preserve">
-    <value>Il modello linguistico di grandi dimensioni ha fallito dopo tre tentativi: la richiesta finale è scaduta. I tentativi automatici sono stati interrotti. Il responsabile della partita può riprovare a effettuare la mossa.</value>
   </data>
   <data name="The model gateway rejected the request. Automatic retries have stopped. Choose another model or ask the administrator to check its configuration." xml:space="preserve">
     <value>Il gateway del modello ha rifiutato la richiesta. I tentativi automatici sono stati interrotti. Scegli un altro modello oppure chiedi all&apos;amministratore di verificarne la configurazione.</value>
@@ -341,6 +332,15 @@
   </data>
   <data name="Your opponent offers a rematch with colors reversed." xml:space="preserve">
     <value>Il tuo avversario propone una rivincita con i colori invertiti.</value>
+  </data>
+  <data name="{0} is in check" xml:space="preserve">
+    <value>{0} è sotto scacco</value>
+  </data>
+  <data name="{0} to move" xml:space="preserve">
+    <value>Tocca a {0} muovere</value>
+  </data>
+  <data name="{0} wins" xml:space="preserve">
+    <value>Vince {0}</value>
   </data>
 
 </root>

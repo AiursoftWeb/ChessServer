@@ -57,14 +57,14 @@
   <data name="Click to login" xml:space="preserve">
     <value>انقر لتسجيل الدخول</value>
   </data>
-  <data name="Create a challenge" xml:space="preserve">
-    <value>أنشئ تحديًا</value>
-  </data>
   <data name="Create Role" xml:space="preserve">
     <value>إنشاء دور</value>
   </data>
   <data name="Create User" xml:space="preserve">
     <value>إنشاء مستخدم</value>
+  </data>
+  <data name="Create a challenge" xml:space="preserve">
+    <value>أنشئ تحديًا</value>
   </data>
   <data name="Dashboard" xml:space="preserve">
     <value>لوحة التحكم</value>

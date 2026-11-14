@@ -18,11 +18,11 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="1 — Beginner" xml:space="preserve">
-    <value>1 — Початківець</value>
-  </data>
-  <data name="1 second" xml:space="preserve">
+      <data name="1 second" xml:space="preserve">
     <value>1 секунда</value>
+  </data>
+  <data name="1 — Beginner" xml:space="preserve">
+    <value>1 — Початківець</value>
   </data>
   <data name="10 minutes" xml:space="preserve">
     <value>10 хвилин</value>
@@ -36,14 +36,11 @@
   <data name="15 seconds" xml:space="preserve">
     <value>15 секунд</value>
   </data>
-  <data name="2 — Easy" xml:space="preserve">
-    <value>2 — Легкий</value>
-  </data>
   <data name="2 seconds" xml:space="preserve">
     <value>2 секунди</value>
   </data>
-  <data name="3 — Casual" xml:space="preserve">
-    <value>3 — Невимушений</value>
+  <data name="2 — Easy" xml:space="preserve">
+    <value>2 — Легкий</value>
   </data>
   <data name="3 minutes" xml:space="preserve">
     <value>3 хвилини</value>
@@ -51,20 +48,23 @@
   <data name="3 seconds" xml:space="preserve">
     <value>3 секунди</value>
   </data>
+  <data name="3 — Casual" xml:space="preserve">
+    <value>3 — Невимушений</value>
+  </data>
   <data name="30 seconds" xml:space="preserve">
     <value>30 секунд</value>
   </data>
   <data name="4 — Intermediate" xml:space="preserve">
     <value>4 — Середній</value>
   </data>
-  <data name="5 — Challenging" xml:space="preserve">
-    <value>5 — Складний</value>
-  </data>
   <data name="5 minutes" xml:space="preserve">
     <value>5 хвилин</value>
   </data>
   <data name="5 seconds" xml:space="preserve">
     <value>5 секунд</value>
+  </data>
+  <data name="5 — Challenging" xml:space="preserve">
+    <value>5 — Складний</value>
   </data>
   <data name="6 — Hard" xml:space="preserve">
     <value>6 — Важко</value>
