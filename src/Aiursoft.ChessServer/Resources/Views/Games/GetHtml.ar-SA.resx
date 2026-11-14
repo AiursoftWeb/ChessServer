@@ -18,16 +18,7 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="{0} is in check" xml:space="preserve">
-    <value>الملك مهدد عند {0}</value>
-  </data>
-  <data name="{0} to move" xml:space="preserve">
-    <value>حان دور {0} للتحرك</value>
-  </data>
-  <data name="{0} wins" xml:space="preserve">
-    <value>يفوز {0}</value>
-  </data>
-  <data name="A draw cannot be offered now." xml:space="preserve">
+      <data name="A draw cannot be offered now." xml:space="preserve">
     <value>لا يمكن عرض التعادل الآن.</value>
   </data>
   <data name="Abort game" xml:space="preserve">
@@ -258,6 +249,9 @@
   <data name="That move cannot be played in the current position." xml:space="preserve">
     <value>لا يمكن لعب هذه النقلة في الوضع الحالي.</value>
   </data>
+  <data name="The LLM failed after three attempts: the final request timed out. Automatic retries have stopped. The host can retry the move." xml:space="preserve">
+    <value>فشل نموذج اللغة الكبير (LLM) بعد ثلاث محاولات: انتهت مهلة الطلب الأخير. توقفت إعادة المحاولة تلقائيًا. يمكن لمضيف الغرفة إعادة المحاولة لتنفيذ النقلة.</value>
+  </data>
   <data name="The computer could not choose a move. Retry when ready." xml:space="preserve">
     <value>تعذّر على الكمبيوتر اختيار نقلة. أعد المحاولة عندما تكون مستعدًا.</value>
   </data>
@@ -266,9 +260,6 @@
   </data>
   <data name="The game has started. You can resign instead." xml:space="preserve">
     <value>بدأت المباراة. يمكنك الاستسلام بدلًا من ذلك.</value>
-  </data>
-  <data name="The LLM failed after three attempts: the final request timed out. Automatic retries have stopped. The host can retry the move." xml:space="preserve">
-    <value>فشل نموذج اللغة الكبير (LLM) بعد ثلاث محاولات: انتهت مهلة الطلب الأخير. توقفت إعادة المحاولة تلقائيًا. يمكن لمضيف الغرفة إعادة المحاولة لتنفيذ النقلة.</value>
   </data>
   <data name="The model gateway rejected the request. Automatic retries have stopped. Choose another model or ask the administrator to check its configuration." xml:space="preserve">
     <value>رفضت بوابة النموذج الطلب. توقفت محاولات إعادة الإرسال التلقائية. اختر نموذجًا آخر أو اطلب من المسؤول التحقق من إعداداته.</value>
@@ -341,6 +332,15 @@
   </data>
   <data name="Your opponent offers a rematch with colors reversed." xml:space="preserve">
     <value>خصمك يعرض إعادة المباراة مع تبادل اللونين.</value>
+  </data>
+  <data name="{0} is in check" xml:space="preserve">
+    <value>الملك مهدد عند {0}</value>
+  </data>
+  <data name="{0} to move" xml:space="preserve">
+    <value>حان دور {0} للتحرك</value>
+  </data>
+  <data name="{0} wins" xml:space="preserve">
+    <value>يفوز {0}</value>
   </data>
 
 </root>

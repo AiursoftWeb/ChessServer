@@ -18,16 +18,7 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="{0} is in check" xml:space="preserve">
-    <value>{0} शह में है</value>
-  </data>
-  <data name="{0} to move" xml:space="preserve">
-    <value>अगली चाल {0} की है</value>
-  </data>
-  <data name="{0} wins" xml:space="preserve">
-    <value>{0} जीतता है</value>
-  </data>
-  <data name="A draw cannot be offered now." xml:space="preserve">
+      <data name="A draw cannot be offered now." xml:space="preserve">
     <value>अभी ड्रॉ की पेशकश नहीं की जा सकती।</value>
   </data>
   <data name="Abort game" xml:space="preserve">
@@ -255,6 +246,9 @@
   <data name="That move cannot be played in the current position." xml:space="preserve">
     <value>इस स्थिति में यह चाल नहीं चली जा सकती।</value>
   </data>
+  <data name="The LLM failed after three attempts: the final request timed out. Automatic retries have stopped. The host can retry the move." xml:space="preserve">
+    <value>तीन प्रयासों के बाद LLM विफल हो गया: अंतिम अनुरोध का समय समाप्त हो गया। स्वचालित पुनः प्रयास रोक दिए गए हैं। होस्ट इस चाल को फिर से आज़मा सकता है।</value>
+  </data>
   <data name="The computer could not choose a move. Retry when ready." xml:space="preserve">
     <value>कंप्यूटर चाल नहीं चुन सका। तैयार होने पर फिर से प्रयास करें।</value>
   </data>
@@ -263,9 +257,6 @@
   </data>
   <data name="The game has started. You can resign instead." xml:space="preserve">
     <value>खेल शुरू हो चुका है। आप इसके बजाय हार मान सकते हैं।</value>
-  </data>
-  <data name="The LLM failed after three attempts: the final request timed out. Automatic retries have stopped. The host can retry the move." xml:space="preserve">
-    <value>तीन प्रयासों के बाद LLM विफल हो गया: अंतिम अनुरोध का समय समाप्त हो गया। स्वचालित पुनः प्रयास रोक दिए गए हैं। होस्ट इस चाल को फिर से आज़मा सकता है।</value>
   </data>
   <data name="The model gateway rejected the request. Automatic retries have stopped. Choose another model or ask the administrator to check its configuration." xml:space="preserve">
     <value>मॉडल गेटवे ने अनुरोध अस्वीकार कर दिया। स्वचालित पुनः प्रयास रोक दिए गए हैं। कोई दूसरा मॉडल चुनें या व्यवस्थापक से उसका कॉन्फ़िगरेशन जाँचने के लिए कहें।</value>
@@ -338,6 +329,15 @@
   </data>
   <data name="Your opponent offers a rematch with colors reversed." xml:space="preserve">
     <value>आपका प्रतिद्वंद्वी रंगों की अदला-बदली के साथ फिर से खेलने का प्रस्ताव दे रहा है।</value>
+  </data>
+  <data name="{0} is in check" xml:space="preserve">
+    <value>{0} शह में है</value>
+  </data>
+  <data name="{0} to move" xml:space="preserve">
+    <value>अगली चाल {0} की है</value>
+  </data>
+  <data name="{0} wins" xml:space="preserve">
+    <value>{0} जीतता है</value>
   </data>
 
 </root>

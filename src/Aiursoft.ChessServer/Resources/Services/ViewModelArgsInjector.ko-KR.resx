@@ -60,14 +60,14 @@
   <data name="Click to login" xml:space="preserve">
     <value>로그인하려면 클릭</value>
   </data>
-  <data name="Create a challenge" xml:space="preserve">
-    <value>도전 과제 만들기</value>
-  </data>
   <data name="Create Role" xml:space="preserve">
     <value>역할 생성</value>
   </data>
   <data name="Create User" xml:space="preserve">
     <value>사용자 생성</value>
+  </data>
+  <data name="Create a challenge" xml:space="preserve">
+    <value>도전 과제 만들기</value>
   </data>
   <data name="Dashboard" xml:space="preserve">
     <value>대시보드</value>

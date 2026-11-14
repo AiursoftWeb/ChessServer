@@ -54,11 +54,11 @@
   <data name="Project Name" xml:space="preserve">
     <value>Proje Adı</value>
   </data>
-  <data name="The brand name displayed in the footer." xml:space="preserve">
-    <value>Footer&apos;da gösterilen marka adı.</value>
-  </data>
   <data name="The ICP license number for China mainland users. Leave empty to hide." xml:space="preserve">
     <value>Çin ana karasında kullanıcılar için ICP lisans numarası. Gizlemek için boş bırakın.</value>
+  </data>
+  <data name="The brand name displayed in the footer." xml:space="preserve">
+    <value>Footer&apos;da gösterilen marka adı.</value>
   </data>
   <data name="The logo of the project displayed in the navbar and footer. Support jpg, png, svg." xml:space="preserve">
     <value>Projenin logosu navbar ve footer&apos;da gösterilir. jpg, png, svg desteklenir.</value>

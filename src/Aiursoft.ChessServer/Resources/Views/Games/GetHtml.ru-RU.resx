@@ -18,16 +18,7 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="{0} is in check" xml:space="preserve">
-    <value>Шаху объявлен {0}</value>
-  </data>
-  <data name="{0} to move" xml:space="preserve">
-    <value>Ход {0}</value>
-  </data>
-  <data name="{0} wins" xml:space="preserve">
-    <value>{0} побеждает</value>
-  </data>
-  <data name="A draw cannot be offered now." xml:space="preserve">
+      <data name="A draw cannot be offered now." xml:space="preserve">
     <value>Сейчас нельзя предложить ничью.</value>
   </data>
   <data name="Abort game" xml:space="preserve">
@@ -258,6 +249,9 @@
   <data name="That move cannot be played in the current position." xml:space="preserve">
     <value>Этот ход нельзя сделать в текущей позиции.</value>
   </data>
+  <data name="The LLM failed after three attempts: the final request timed out. Automatic retries have stopped. The host can retry the move." xml:space="preserve">
+    <value>Сбой LLM после трёх попыток: истекло время ожидания последнего запроса. Автоматические повторные попытки остановлены. Хозяин может повторить ход.</value>
+  </data>
   <data name="The computer could not choose a move. Retry when ready." xml:space="preserve">
     <value>Компьютер не смог выбрать ход. Повторите попытку, когда будете готовы.</value>
   </data>
@@ -266,9 +260,6 @@
   </data>
   <data name="The game has started. You can resign instead." xml:space="preserve">
     <value>Игра уже началась. Вместо этого вы можете сдаться.</value>
-  </data>
-  <data name="The LLM failed after three attempts: the final request timed out. Automatic retries have stopped. The host can retry the move." xml:space="preserve">
-    <value>Сбой LLM после трёх попыток: истекло время ожидания последнего запроса. Автоматические повторные попытки остановлены. Хозяин может повторить ход.</value>
   </data>
   <data name="The model gateway rejected the request. Automatic retries have stopped. Choose another model or ask the administrator to check its configuration." xml:space="preserve">
     <value>Шлюз модели отклонил запрос. Автоматические повторные попытки прекращены. Выберите другую модель или попросите администратора проверить её настройки.</value>
@@ -341,6 +332,15 @@
   </data>
   <data name="Your opponent offers a rematch with colors reversed." xml:space="preserve">
     <value>Ваш соперник предлагает сыграть матч-реванш, поменявшись цветами фигур.</value>
+  </data>
+  <data name="{0} is in check" xml:space="preserve">
+    <value>Шаху объявлен {0}</value>
+  </data>
+  <data name="{0} to move" xml:space="preserve">
+    <value>Ход {0}</value>
+  </data>
+  <data name="{0} wins" xml:space="preserve">
+    <value>{0} побеждает</value>
   </data>
 
 </root>

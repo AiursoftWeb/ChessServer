@@ -39,15 +39,6 @@
   <data name="A modern, feature-rich, and highly extensible foundation for your next web application." xml:space="preserve">
     <value>一个现代化、功能丰富且高度可扩展的基础框架，为您的下一个Web应用程序提供强大支持。</value>
   </data>
-  <data name="Achieve more with Aiursoft Template" xml:space="preserve">
-    <value>借助 Aiursoft Template 成就更多可能</value>
-  </data>
-  <data name="Actuator health endpoints built-in" xml:space="preserve">
-    <value>内置执行器健康端点</value>
-  </data>
-  <data name="Admin site included" xml:space="preserve">
-    <value>包含管理站点</value>
-  </data>
   <data name="AI Driven Translation" xml:space="preserve">
     <value>AI 驱动的翻译</value>
   </data>
@@ -56,6 +47,15 @@
   </data>
   <data name="AI-Powered Translations" xml:space="preserve">
     <value>AI 驱动翻译</value>
+  </data>
+  <data name="Achieve more with Aiursoft Template" xml:space="preserve">
+    <value>借助 Aiursoft Template 成就更多可能</value>
+  </data>
+  <data name="Actuator health endpoints built-in" xml:space="preserve">
+    <value>内置执行器健康端点</value>
+  </data>
+  <data name="Admin site included" xml:space="preserve">
+    <value>包含管理站点</value>
   </data>
   <data name="Aiursoft Template" xml:space="preserve">
     <value>Aiursoft Template</value>
@@ -78,11 +78,11 @@
   <data name="Authentik &amp; Okta" xml:space="preserve">
     <value>Authentik &amp; Okta</value>
   </data>
-  <data name="Auto compression and privacy" xml:space="preserve">
-    <value>自动压缩与隐私保护</value>
-  </data>
   <data name="Auto Deployment" xml:space="preserve">
     <value>自动部署</value>
+  </data>
+  <data name="Auto compression and privacy" xml:space="preserve">
+    <value>自动压缩与隐私保护</value>
   </data>
   <data name="Automatic AI translation into 28 languages." xml:space="preserve">
     <value>自动 AI 翻译至 28 种语言。</value>
@@ -144,17 +144,11 @@
   <data name="Built-in" xml:space="preserve">
     <value>内置</value>
   </data>
-  <data name="Built-in administration panel" xml:space="preserve">
-    <value>内置管理面板</value>
-  </data>
   <data name="Built-in Auth" xml:space="preserve">
     <value>内置认证</value>
   </data>
   <data name="Built-in Job Queue GUI" xml:space="preserve">
     <value>内置作业队列图形界面</value>
-  </data>
-  <data name="Built-in method-level security" xml:space="preserve">
-    <value>内置方法级安全</value>
   </data>
   <data name="Built-in OAuth2/OIDC client support" xml:space="preserve">
     <value>内置 OAuth2/OIDC 客户端支持</value>
@@ -168,14 +162,20 @@
   <data name="Built-in Roslyn Analyzers" xml:space="preserve">
     <value>内置 Roslyn 分析器</value>
   </data>
+  <data name="Built-in User Management" xml:space="preserve">
+    <value>内置用户管理</value>
+  </data>
+  <data name="Built-in administration panel" xml:space="preserve">
+    <value>内置管理面板</value>
+  </data>
+  <data name="Built-in method-level security" xml:space="preserve">
+    <value>内置方法级安全</value>
+  </data>
   <data name="Built-in timezone configuration" xml:space="preserve">
     <value>内置时区配置</value>
   </data>
   <data name="Built-in timezone support with USE_TZ" xml:space="preserve">
     <value>内置 USE_TZ 时区支持</value>
-  </data>
-  <data name="Built-in User Management" xml:space="preserve">
-    <value>内置用户管理</value>
   </data>
   <data name="Challenge a friend" xml:space="preserve">
     <value>挑战好友</value>
@@ -243,14 +243,14 @@
   <data name="Custom development required" xml:space="preserve">
     <value>需要定制开发</value>
   </data>
+  <data name="Dashboard Website" xml:space="preserve">
+    <value>仪表板网站</value>
+  </data>
   <data name="Dashboard for background and scheduled tasks" xml:space="preserve">
     <value>后台任务和计划任务的仪表板</value>
   </data>
   <data name="Dashboard for background tasks" xml:space="preserve">
     <value>后台任务仪表盘</value>
-  </data>
-  <data name="Dashboard Website" xml:space="preserve">
-    <value>仪表板网站</value>
   </data>
   <data name="Day 1 Compliance &amp; Security." xml:space="preserve">
     <value>起步即合规，安全无死角。</value>
@@ -276,14 +276,14 @@
   <data name="Dev &amp; Prod" xml:space="preserve">
     <value>开发与生产</value>
   </data>
+  <data name="DevOps Native" xml:space="preserve">
+    <value>DevOps 原生</value>
+  </data>
   <data name="Develop exclusively in UTC while the system automatically converts and displays dates in the user&apos;s local time zone." xml:space="preserve">
     <value>在 UTC 中进行开发，而系统会自动将日期转换并显示为用户的本地时区。</value>
   </data>
   <data name="Developer Experience" xml:space="preserve">
     <value>开发者体验</value>
-  </data>
-  <data name="DevOps Native" xml:space="preserve">
-    <value>DevOps 原生</value>
   </data>
   <data name="Discussions page" xml:space="preserve">
     <value>讨论页面</value>
@@ -342,9 +342,6 @@
   <data name="FAQ" xml:space="preserve">
     <value>常见问题解答</value>
   </data>
-  <data name="faster" xml:space="preserve">
-    <value>更快</value>
-  </data>
   <data name="Feature tests available" xml:space="preserve">
     <value>提供功能测试</value>
   </data>
@@ -372,9 +369,6 @@
   <data name="Follow public games as they happen. Spectators can watch without changing the board." xml:space="preserve">
     <value>关注正在进行的公开对局。观众可以旁观，不会影响棋盘。</value>
   </data>
-  <data name="for any inquiries or to report issues." xml:space="preserve">
-    <value>如有任何疑问或报告问题。</value>
-  </data>
   <data name="Founder &amp; Architect at Aiursoft" xml:space="preserve">
     <value>创始人兼架构师 | Aiursoft</value>
   </data>
@@ -384,11 +378,11 @@
   <data name="Free" xml:space="preserve">
     <value>免费</value>
   </data>
-  <data name="Free for Commercial Use" xml:space="preserve">
-    <value>商业用途免费</value>
-  </data>
   <data name="Free Software" xml:space="preserve">
     <value>自由软件</value>
+  </data>
+  <data name="Free for Commercial Use" xml:space="preserve">
+    <value>商业用途免费</value>
   </data>
   <data name="Frequently asked questions" xml:space="preserve">
     <value>常见问题</value>
@@ -408,11 +402,11 @@
   <data name="Fully Offline" xml:space="preserve">
     <value>完全离线</value>
   </data>
-  <data name="Generic configuration" xml:space="preserve">
-    <value>通用配置</value>
-  </data>
   <data name="Generic Dockerfile only" xml:space="preserve">
     <value>仅提供通用 Dockerfile</value>
+  </data>
+  <data name="Generic configuration" xml:space="preserve">
+    <value>通用配置</value>
   </data>
   <data name="GitLab CI" xml:space="preserve">
     <value>GitLab CI</value>
@@ -438,14 +432,14 @@
   <data name="Handwritten based on Policies" xml:space="preserve">
     <value>基于策略手动编写</value>
   </data>
-  <data name="Health check package available" xml:space="preserve">
-    <value>可用健康检查包</value>
-  </data>
   <data name="Health Checks &amp; Probes" xml:space="preserve">
     <value>健康检查与探针</value>
   </data>
   <data name="Health Checks middleware available" xml:space="preserve">
     <value>提供健康检查中间件</value>
+  </data>
+  <data name="Health check package available" xml:space="preserve">
+    <value>可用健康检查包</value>
   </data>
   <data name="Hello World!" xml:space="preserve">
     <value>你好，世界！</value>
@@ -483,11 +477,11 @@
   <data name="Included" xml:space="preserve">
     <value>包含</value>
   </data>
-  <data name="Includes extensive documentation and practical examples to get you started quickly." xml:space="preserve">
-    <value>包含详尽的文档和实用示例，助您快速上手。</value>
-  </data>
   <data name="Includes Tutorials" xml:space="preserve">
     <value>包含教程</value>
+  </data>
+  <data name="Includes extensive documentation and practical examples to get you started quickly." xml:space="preserve">
+    <value>包含详尽的文档和实用示例，助您快速上手。</value>
   </data>
   <data name="Integrated File Management" xml:space="preserve">
     <value>集成文件管理</value>
@@ -501,14 +495,8 @@
   <data name="Interoperability" xml:space="preserve">
     <value>互操作性</value>
   </data>
-  <data name="is Free Software" xml:space="preserve">
-    <value>是自由软件</value>
-  </data>
   <data name="Is it free to use Aiursoft Template?" xml:space="preserve">
     <value>使用 Aiursoft Template 是否免费？</value>
-  </data>
-  <data name="java.time API available" xml:space="preserve">
-    <value>提供 java.time API</value>
   </data>
   <data name="Job Queue &amp; Scheduling GUI" xml:space="preserve">
     <value>作业队列与调度 GUI</value>
@@ -531,6 +519,12 @@
   <data name="Lint Check" xml:space="preserve">
     <value>Lint 检查</value>
   </data>
+  <data name="MIT Licence" xml:space="preserve">
+    <value>MIT 许可证</value>
+  </data>
+  <data name="MIT License" xml:space="preserve">
+    <value>MIT 许可证</value>
+  </data>
   <data name="Maintain High Code Quality" xml:space="preserve">
     <value>保持高代码质量</value>
   </data>
@@ -542,12 +536,6 @@
   </data>
   <data name="Markdown To HTML" xml:space="preserve">
     <value>Markdown 转 HTML</value>
-  </data>
-  <data name="MIT Licence" xml:space="preserve">
-    <value>MIT 许可证</value>
-  </data>
-  <data name="MIT License" xml:space="preserve">
-    <value>MIT 许可证</value>
   </data>
   <data name="Models are validated on both client and server sides based on data annotations." xml:space="preserve">
     <value>基于数据注解 (Data Annotations)，自动实现客户端与服务端的双重逻辑验证。</value>
@@ -573,15 +561,6 @@
   <data name="Needs Celery + Flower" xml:space="preserve">
     <value>需要 Celery + Flower</value>
   </data>
-  <data name="Needs complex authentication logic" xml:space="preserve">
-    <value>需要复杂的认证逻辑</value>
-  </data>
-  <data name="Needs config/plugins" xml:space="preserve">
-    <value>需要配置/插件</value>
-  </data>
-  <data name="Needs django-health-check package" xml:space="preserve">
-    <value>需要 django-health-check 包</value>
-  </data>
   <data name="Needs ESLint/Prettier setup" xml:space="preserve">
     <value>需要配置 ESLint/Prettier</value>
   </data>
@@ -590,9 +569,6 @@
   </data>
   <data name="Needs Laravel Sail" xml:space="preserve">
     <value>需要 Laravel Sail</value>
-  </data>
-  <data name="Needs manual configuration" xml:space="preserve">
-    <value>需要手动配置</value>
   </data>
   <data name="Needs Medialibrary" xml:space="preserve">
     <value>需要 Medialibrary</value>
@@ -606,20 +582,35 @@
   <data name="Needs Spring Security config" xml:space="preserve">
     <value>需要配置 Spring Security</value>
   </data>
-  <data name="Needs third-party plugins" xml:space="preserve">
-    <value>需要第三方插件</value>
-  </data>
   <data name="Needs TypeORM or similar" xml:space="preserve">
     <value>需要 TypeORM 或类似库</value>
+  </data>
+  <data name="Needs complex authentication logic" xml:space="preserve">
+    <value>需要复杂的认证逻辑</value>
+  </data>
+  <data name="Needs config/plugins" xml:space="preserve">
+    <value>需要配置/插件</value>
+  </data>
+  <data name="Needs django-health-check package" xml:space="preserve">
+    <value>需要 django-health-check 包</value>
+  </data>
+  <data name="Needs manual configuration" xml:space="preserve">
+    <value>需要手动配置</value>
+  </data>
+  <data name="Needs third-party plugins" xml:space="preserve">
+    <value>需要第三方插件</value>
   </data>
   <data name="No dependency on any cloud vendor. Run anywhere, any time." xml:space="preserve">
     <value>无需依赖任何云服务提供商。随时随地运行。</value>
   </data>
-  <data name="Offline Capable" xml:space="preserve">
-    <value>离线可用</value>
-  </data>
   <data name="OIDC &amp; SSO" xml:space="preserve">
     <value>OIDC &amp; SSO</value>
+  </data>
+  <data name="ORM &amp; Migrations" xml:space="preserve">
+    <value>ORM 与迁移</value>
+  </data>
+  <data name="Offline Capable" xml:space="preserve">
+    <value>离线可用</value>
   </data>
   <data name="One Click Start" xml:space="preserve">
     <value>一键启动</value>
@@ -638,9 +629,6 @@
   </data>
   <data name="Optimized Docker &amp; K8s config" xml:space="preserve">
     <value>优化的 Docker &amp; K8s 配置</value>
-  </data>
-  <data name="ORM &amp; Migrations" xml:space="preserve">
-    <value>ORM 与迁移</value>
   </data>
   <data name="Out-of-the-box" xml:space="preserve">
     <value>开箱即用</value>
@@ -666,11 +654,11 @@
   <data name="Pre-configured /healthz and readiness probes" xml:space="preserve">
     <value>预配置的 /healthz 和就绪探针</value>
   </data>
-  <data name="Pre-configured and tested" xml:space="preserve">
-    <value>预配置且已测试</value>
-  </data>
   <data name="Pre-configured CI/CD pipelines specifically for GitLab." xml:space="preserve">
     <value>为 GitLab 专门预配置的 CI/CD 流水线</value>
+  </data>
+  <data name="Pre-configured and tested" xml:space="preserve">
+    <value>预配置且已测试</value>
   </data>
   <data name="Pre-configured pipelines for dev/prod" xml:space="preserve">
     <value>预配置的 Dev/Prod 流水线</value>
@@ -738,17 +726,17 @@
   <data name="Smart dark mode that automatically adapts to the user&apos;s system settings." xml:space="preserve">
     <value>智能深色模式，可自动适应用户的系统设置。</value>
   </data>
-  <data name="Standard implementation. Switch providers without compilation." xml:space="preserve">
-    <value>标准实现。无需重新编译即可切换提供者。</value>
-  </data>
   <data name="Standard OpenID" xml:space="preserve">
     <value>标准 OpenID</value>
   </data>
-  <data name="Start a new project" xml:space="preserve">
-    <value>开始新项目</value>
+  <data name="Standard implementation. Switch providers without compilation." xml:space="preserve">
+    <value>标准实现。无需重新编译即可切换提供者。</value>
   </data>
   <data name="Start Shipping Value." xml:space="preserve">
     <value>专注于核心价值交付。</value>
+  </data>
+  <data name="Start a new project" xml:space="preserve">
+    <value>开始新项目</value>
   </data>
   <data name="Start with a single &apos;docker run&apos; command." xml:space="preserve">
     <value>从一个单一的 &apos;docker run&apos; 命令开始。</value>
@@ -762,23 +750,23 @@
   <data name="Strict Lint Rules" xml:space="preserve">
     <value>严格代码检查规则</value>
   </data>
+  <data name="Strict Unit Testing" xml:space="preserve">
+    <value>严格单元测试</value>
+  </data>
   <data name="Strict linting rules and zero warnings by default." xml:space="preserve">
     <value>实施严格的 Lint 规则，默认项目必须达到 0 警告 (Zero Warnings) 标准。</value>
   </data>
   <data name="Strict linting rules with 0 warnings in the default project." xml:space="preserve">
     <value>严格的代码检查规则，默认项目中无警告。</value>
   </data>
-  <data name="Strict Unit Testing" xml:space="preserve">
-    <value>严格单元测试</value>
-  </data>
   <data name="Strongly Consistent Linting" xml:space="preserve">
     <value>零容忍代码检查</value>
   </data>
-  <data name="Supports both environment variables and database-backed settings, with automatic priority given to environment variables for seamless overrides." xml:space="preserve">
-    <value>支持环境变量与数据库配置双重驱动，环境变量自动拥有更高优先级，实现无缝覆盖。</value>
-  </data>
   <data name="Supports JetBrains Rider for easy code style fixes." xml:space="preserve">
     <value>支持 JetBrains Rider，轻松修复代码样式。</value>
+  </data>
+  <data name="Supports both environment variables and database-backed settings, with automatic priority given to environment variables for seamless overrides." xml:space="preserve">
+    <value>支持环境变量与数据库配置双重驱动，环境变量自动拥有更高优先级，实现无缝覆盖。</value>
   </data>
   <data name="Talk with the players and spectators while the game unfolds." xml:space="preserve">
     <value>在对局进行过程中，与棋手和观众交流。</value>
@@ -801,14 +789,14 @@
   <data name="Testing module available" xml:space="preserve">
     <value>测试模块可用</value>
   </data>
+  <data name="The Philosophy" xml:space="preserve">
+    <value>哲学</value>
+  </data>
   <data name="The definitive, battle-tested .NET enterprise foundation. From Auth to AI, we&apos;ve solved the hard parts so you don&apos;t have to." xml:space="preserve">
     <value>权威的、经过实战检验的 .NET 企业级开发基座。从身份认证到 AI 集成，我们已为您扫清基础设施障碍，助您开箱即用。</value>
   </data>
   <data name="The navigation bar automatically adjusts based on user roles and permissions." xml:space="preserve">
     <value>导航栏会根据用户角色和权限自动调整显示内容。</value>
-  </data>
-  <data name="The Philosophy" xml:space="preserve">
-    <value>哲学</value>
   </data>
   <data name="The template is built for easy deployment. It includes full Docker support, so you can containerize your app and run it anywhere. You can also deploy it directly to IIS, Azure App Service, or any server that supports ASP.NET Core." xml:space="preserve">
     <value>该模板专为简化部署而设计，内置完整的Docker支持，您可以将应用容器化后随处运行。也可直接部署到IIS、Azure应用服务或任何支持ASP.NET Core的服务器。</value>
@@ -819,11 +807,11 @@
   <data name="This is a template project, where we start the voyager..." xml:space="preserve">
     <value>这是一个模板项目，我们将从这里开启探索之旅...</value>
   </data>
-  <data name="Timezone-aware fields" xml:space="preserve">
-    <value>感知时区的字段</value>
-  </data>
   <data name="TimeZoneInfo API available" xml:space="preserve">
     <value>提供 TimeZoneInfo API</value>
+  </data>
+  <data name="Timezone-aware fields" xml:space="preserve">
+    <value>感知时区的字段</value>
   </data>
   <data name="Trusted by production-grade applications including AnduinOS, StatHub, and Warp. We don&apos;t just share this code; we run our entire business on it." xml:space="preserve">
     <value>深受生产级应用信赖，包括 AnduinOS、StatHub 和 Warp。我们不仅分享代码，我们的核心业务也完全构建于此。</value>
@@ -899,6 +887,18 @@
   </data>
   <data name="Zero Tolerance Lint" xml:space="preserve">
     <value>零容忍代码检查</value>
+  </data>
+  <data name="faster" xml:space="preserve">
+    <value>更快</value>
+  </data>
+  <data name="for any inquiries or to report issues." xml:space="preserve">
+    <value>如有任何疑问或报告问题。</value>
+  </data>
+  <data name="is Free Software" xml:space="preserve">
+    <value>是自由软件</value>
+  </data>
+  <data name="java.time API available" xml:space="preserve">
+    <value>提供 java.time API</value>
   </data>
 
 </root>

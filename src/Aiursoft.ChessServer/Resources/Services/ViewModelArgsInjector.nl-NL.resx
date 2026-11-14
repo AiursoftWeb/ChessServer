@@ -57,14 +57,14 @@
   <data name="Click to login" xml:space="preserve">
     <value>Klik om in te loggen</value>
   </data>
-  <data name="Create a challenge" xml:space="preserve">
-    <value>Maak een uitdaging aan</value>
-  </data>
   <data name="Create Role" xml:space="preserve">
     <value>Rol aanmaken</value>
   </data>
   <data name="Create User" xml:space="preserve">
     <value>Gebruiker aanmaken</value>
+  </data>
+  <data name="Create a challenge" xml:space="preserve">
+    <value>Maak een uitdaging aan</value>
   </data>
   <data name="Dashboard" xml:space="preserve">
     <value>Dashboard</value>

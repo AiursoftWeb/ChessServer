@@ -18,16 +18,7 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="{0} is in check" xml:space="preserve">
-    <value>{0} este în șah</value>
-  </data>
-  <data name="{0} to move" xml:space="preserve">
-    <value>Rândul lui {0} să mute</value>
-  </data>
-  <data name="{0} wins" xml:space="preserve">
-    <value>{0} câștigă</value>
-  </data>
-  <data name="A draw cannot be offered now." xml:space="preserve">
+      <data name="A draw cannot be offered now." xml:space="preserve">
     <value>Nu se poate propune remiză acum.</value>
   </data>
   <data name="Abort game" xml:space="preserve">
@@ -258,6 +249,9 @@
   <data name="That move cannot be played in the current position." xml:space="preserve">
     <value>Această mutare nu poate fi jucată în poziția actuală.</value>
   </data>
+  <data name="The LLM failed after three attempts: the final request timed out. Automatic retries have stopped. The host can retry the move." xml:space="preserve">
+    <value>LLM-ul a eșuat după trei încercări: ultima solicitare a expirat. Reîncercările automate au fost oprite. Gazda poate încerca din nou mutarea.</value>
+  </data>
   <data name="The computer could not choose a move. Retry when ready." xml:space="preserve">
     <value>Computerul nu a putut alege o mutare. Încercați din nou când sunteți gata.</value>
   </data>
@@ -266,9 +260,6 @@
   </data>
   <data name="The game has started. You can resign instead." xml:space="preserve">
     <value>Jocul a început. Poți abandona partida.</value>
-  </data>
-  <data name="The LLM failed after three attempts: the final request timed out. Automatic retries have stopped. The host can retry the move." xml:space="preserve">
-    <value>LLM-ul a eșuat după trei încercări: ultima solicitare a expirat. Reîncercările automate au fost oprite. Gazda poate încerca din nou mutarea.</value>
   </data>
   <data name="The model gateway rejected the request. Automatic retries have stopped. Choose another model or ask the administrator to check its configuration." xml:space="preserve">
     <value>Gateway-ul modelului a respins solicitarea. Reîncercările automate au fost oprite. Alegeți un alt model sau cereți administratorului să-i verifice configurația.</value>
@@ -341,6 +332,15 @@
   </data>
   <data name="Your opponent offers a rematch with colors reversed." xml:space="preserve">
     <value>Adversarul tău propune o revanșă cu culorile inversate.</value>
+  </data>
+  <data name="{0} is in check" xml:space="preserve">
+    <value>{0} este în șah</value>
+  </data>
+  <data name="{0} to move" xml:space="preserve">
+    <value>Rândul lui {0} să mute</value>
+  </data>
+  <data name="{0} wins" xml:space="preserve">
+    <value>{0} câștigă</value>
   </data>
 
 </root>

@@ -24,11 +24,11 @@
   <data name="End" xml:space="preserve">
     <value>Bitiş</value>
   </data>
-  <data name="Export match details" xml:space="preserve">
-    <value>Maç ayrıntılarını dışa aktar</value>
-  </data>
   <data name="Export PGN" xml:space="preserve">
     <value>PGN Dışa Aktar</value>
+  </data>
+  <data name="Export match details" xml:space="preserve">
+    <value>Maç ayrıntılarını dışa aktar</value>
   </data>
   <data name="My games" xml:space="preserve">
     <value>Oyunlarım</value>

@@ -18,16 +18,7 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="{0} is in check" xml:space="preserve">
-    <value>{0} đang bị chiếu</value>
-  </data>
-  <data name="{0} to move" xml:space="preserve">
-    <value>Đến lượt {0} đi</value>
-  </data>
-  <data name="{0} wins" xml:space="preserve">
-    <value>{0} thắng</value>
-  </data>
-  <data name="A draw cannot be offered now." xml:space="preserve">
+      <data name="A draw cannot be offered now." xml:space="preserve">
     <value>Hiện không thể đề nghị hòa.</value>
   </data>
   <data name="Abort game" xml:space="preserve">
@@ -258,6 +249,9 @@
   <data name="That move cannot be played in the current position." xml:space="preserve">
     <value>Nước đi đó không thể thực hiện ở thế cờ hiện tại.</value>
   </data>
+  <data name="The LLM failed after three attempts: the final request timed out. Automatic retries have stopped. The host can retry the move." xml:space="preserve">
+    <value>LLM đã thất bại sau ba lần thử: yêu cầu cuối cùng đã hết thời gian chờ. Đã dừng tự động thử lại. Chủ phòng có thể thử lại nước đi.</value>
+  </data>
   <data name="The computer could not choose a move. Retry when ready." xml:space="preserve">
     <value>Máy tính không thể chọn nước đi. Hãy thử lại khi sẵn sàng.</value>
   </data>
@@ -266,9 +260,6 @@
   </data>
   <data name="The game has started. You can resign instead." xml:space="preserve">
     <value>Ván đấu đã bắt đầu. Bạn có thể xin thua.</value>
-  </data>
-  <data name="The LLM failed after three attempts: the final request timed out. Automatic retries have stopped. The host can retry the move." xml:space="preserve">
-    <value>LLM đã thất bại sau ba lần thử: yêu cầu cuối cùng đã hết thời gian chờ. Đã dừng tự động thử lại. Chủ phòng có thể thử lại nước đi.</value>
   </data>
   <data name="The model gateway rejected the request. Automatic retries have stopped. Choose another model or ask the administrator to check its configuration." xml:space="preserve">
     <value>Cổng kết nối mô hình đã từ chối yêu cầu. Đã dừng tự động thử lại. Hãy chọn mô hình khác hoặc yêu cầu quản trị viên kiểm tra cấu hình.</value>
@@ -341,6 +332,15 @@
   </data>
   <data name="Your opponent offers a rematch with colors reversed." xml:space="preserve">
     <value>Đối thủ của bạn đề nghị đấu lại, đổi màu quân cờ.</value>
+  </data>
+  <data name="{0} is in check" xml:space="preserve">
+    <value>{0} đang bị chiếu</value>
+  </data>
+  <data name="{0} to move" xml:space="preserve">
+    <value>Đến lượt {0} đi</value>
+  </data>
+  <data name="{0} wins" xml:space="preserve">
+    <value>{0} thắng</value>
   </data>
 
 </root>

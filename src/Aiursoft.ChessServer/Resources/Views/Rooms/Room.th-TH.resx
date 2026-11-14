@@ -18,10 +18,7 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="{0} seconds" xml:space="preserve">
-    <value>{0} วินาที</value>
-  </data>
-  <data name="10 minutes" xml:space="preserve">
+      <data name="10 minutes" xml:space="preserve">
     <value>10 นาที</value>
   </data>
   <data name="15 minutes" xml:space="preserve">
@@ -33,11 +30,11 @@
   <data name="5 minutes" xml:space="preserve">
     <value>5 นาที</value>
   </data>
-  <data name="Add AI" xml:space="preserve">
-    <value>เพิ่ม AI</value>
-  </data>
   <data name="AI type" xml:space="preserve">
     <value>ประเภท AI</value>
+  </data>
+  <data name="Add AI" xml:space="preserve">
+    <value>เพิ่ม AI</value>
   </data>
   <data name="Black" xml:space="preserve">
     <value>สีดำ</value>
@@ -272,6 +269,9 @@
   </data>
   <data name="You have been removed from this room." xml:space="preserve">
     <value>คุณถูกนำออกจากห้องนี้แล้ว</value>
+  </data>
+  <data name="{0} seconds" xml:space="preserve">
+    <value>{0} วินาที</value>
   </data>
 
 </root>

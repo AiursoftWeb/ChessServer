@@ -18,16 +18,7 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="{0} is in check" xml:space="preserve">
-    <value>{0} はチェックされています</value>
-  </data>
-  <data name="{0} to move" xml:space="preserve">
-    <value>{0}の手番</value>
-  </data>
-  <data name="{0} wins" xml:space="preserve">
-    <value>{0}の勝ち</value>
-  </data>
-  <data name="A draw cannot be offered now." xml:space="preserve">
+      <data name="A draw cannot be offered now." xml:space="preserve">
     <value>現在、引き分けを提案できません。</value>
   </data>
   <data name="Abort game" xml:space="preserve">
@@ -258,6 +249,9 @@
   <data name="That move cannot be played in the current position." xml:space="preserve">
     <value>その手は現在の局面では指せません。</value>
   </data>
+  <data name="The LLM failed after three attempts: the final request timed out. Automatic retries have stopped. The host can retry the move." xml:space="preserve">
+    <value>LLMは3回試行しましたが失敗しました。最後のリクエストがタイムアウトしました。自動再試行は停止しました。ホストは手を再試行できます。</value>
+  </data>
   <data name="The computer could not choose a move. Retry when ready." xml:space="preserve">
     <value>コンピューターが指し手を選べませんでした。準備ができたら再試行してください。</value>
   </data>
@@ -266,9 +260,6 @@
   </data>
   <data name="The game has started. You can resign instead." xml:space="preserve">
     <value>対局が始まっています。代わりに投了できます。</value>
-  </data>
-  <data name="The LLM failed after three attempts: the final request timed out. Automatic retries have stopped. The host can retry the move." xml:space="preserve">
-    <value>LLMは3回試行しましたが失敗しました。最後のリクエストがタイムアウトしました。自動再試行は停止しました。ホストは手を再試行できます。</value>
   </data>
   <data name="The model gateway rejected the request. Automatic retries have stopped. Choose another model or ask the administrator to check its configuration." xml:space="preserve">
     <value>モデルゲートウェイによってリクエストが拒否されました。自動再試行は停止しました。別のモデルを選択するか、管理者に設定を確認するよう依頼してください。</value>
@@ -341,6 +332,15 @@
   </data>
   <data name="Your opponent offers a rematch with colors reversed." xml:space="preserve">
     <value>対戦相手から、先後を入れ替えて再戦する申し出がありました。</value>
+  </data>
+  <data name="{0} is in check" xml:space="preserve">
+    <value>{0} はチェックされています</value>
+  </data>
+  <data name="{0} to move" xml:space="preserve">
+    <value>{0}の手番</value>
+  </data>
+  <data name="{0} wins" xml:space="preserve">
+    <value>{0}の勝ち</value>
   </data>
 
 </root>

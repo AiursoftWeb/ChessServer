@@ -18,16 +18,7 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="{0} is in check" xml:space="preserve">
-    <value>{0} is in check</value>
-  </data>
-  <data name="{0} to move" xml:space="preserve">
-    <value>{0} to play</value>
-  </data>
-  <data name="{0} wins" xml:space="preserve">
-    <value>{0} wins</value>
-  </data>
-  <data name="A draw cannot be offered now." xml:space="preserve">
+      <data name="A draw cannot be offered now." xml:space="preserve">
     <value>A draw cannot be offered at this time.</value>
   </data>
   <data name="Abort game" xml:space="preserve">
@@ -258,6 +249,9 @@
   <data name="That move cannot be played in the current position." xml:space="preserve">
     <value>That move cannot be played in the current position.</value>
   </data>
+  <data name="The LLM failed after three attempts: the final request timed out. Automatic retries have stopped. The host can retry the move." xml:space="preserve">
+    <value>The LLM failed after three attempts: the final request timed out. Automatic retries have stopped. The host can retry the move.</value>
+  </data>
   <data name="The computer could not choose a move. Retry when ready." xml:space="preserve">
     <value>The computer could not select a move. Try again when ready.</value>
   </data>
@@ -266,9 +260,6 @@
   </data>
   <data name="The game has started. You can resign instead." xml:space="preserve">
     <value>The game has started. You can resign instead.</value>
-  </data>
-  <data name="The LLM failed after three attempts: the final request timed out. Automatic retries have stopped. The host can retry the move." xml:space="preserve">
-    <value>The LLM failed after three attempts: the final request timed out. Automatic retries have stopped. The host can retry the move.</value>
   </data>
   <data name="The model gateway rejected the request. Automatic retries have stopped. Choose another model or ask the administrator to check its configuration." xml:space="preserve">
     <value>Model gateway rejected the request. Automatic retries have stopped. Choose another model or ask the administrator to check its configuration.</value>
@@ -341,6 +332,15 @@
   </data>
   <data name="Your opponent offers a rematch with colors reversed." xml:space="preserve">
     <value>Your opponent offers a rematch with the colours reversed.</value>
+  </data>
+  <data name="{0} is in check" xml:space="preserve">
+    <value>{0} is in check</value>
+  </data>
+  <data name="{0} to move" xml:space="preserve">
+    <value>{0} to play</value>
+  </data>
+  <data name="{0} wins" xml:space="preserve">
+    <value>{0} wins</value>
   </data>
 
 </root>
