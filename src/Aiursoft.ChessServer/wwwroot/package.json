@@ -8,7 +8,7 @@
     "dropify": "^0.2.2",
     "chess.js": "^1.4.0",
     "@chrisoakman/chessboardjs": "^1.0.0",
-    "jquery": "^3.7.1"
+    "jquery": "^3.8.0"
   },
   "keep": {
     "dropify": "dist",
