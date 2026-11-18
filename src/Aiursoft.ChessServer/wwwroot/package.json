@@ -5,12 +5,14 @@
   "author": "Anduin Xue",
   "license": "MIT",
   "dependencies": {
+    "@aiursoft/uistack": "^2.0.25",
     "dropify": "^0.2.2",
     "chess.js": "^1.4.0",
     "@chrisoakman/chessboardjs": "^1.0.0",
     "jquery": "^3.8.0"
   },
   "keep": {
+    "@aiursoft/uistack": "dist",
     "dropify": "dist",
     "chess.js": "dist",
     "@chrisoakman/chessboardjs": "dist",
