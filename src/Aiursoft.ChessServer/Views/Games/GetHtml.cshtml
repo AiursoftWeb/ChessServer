@@ -141,7 +141,7 @@
                 <div id="move-list" class="chess-move-list" aria-label="@Localizer["Move list"]"></div>
                 <button id="return-live" class="btn btn-sm btn-outline-primary mt-2" type="button" hidden>@Localizer["Return to live position"]</button>
                 <div id="game-exports" class="d-flex flex-wrap gap-2 mt-3">
-                    <a class="btn btn-sm btn-outline-secondary" download="game-@(Model.Id).pgn" asp-controller="Games" asp-action="GetPgn" asp-route-id="@Model.Id">@Localizer["Export PGN"]</a>
+                    <a class="btn btn-sm btn-outline-secondary" asp-controller="Games" asp-action="GetPgn" asp-route-id="@Model.Id" asp-route-download="true">@Localizer["Export PGN"]</a>
                     <a class="btn btn-sm btn-outline-secondary" download="game-@(Model.Id).fen" asp-controller="Games" asp-action="GetFen" asp-route-id="@Model.Id">@Localizer["Export FEN"]</a>
                 </div>
             </div></div>
