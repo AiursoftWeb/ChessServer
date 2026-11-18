@@ -56,10 +56,11 @@ public class GamesController(InMemoryDatabase database, ChessEngine engine, LlmC
     }
 
     [HttpGet("{id:int}.pgn")]
-    public async Task<IActionResult> GetPgn(int id)
+    public async Task<IActionResult> GetPgn(int id, bool download = false)
     {
         if (await sessions.StateAsync(id, PlayerId) == null) return NotFound();
-        return Content(database.GetAcceptedChallenge(id)!.Pgn());
+        var pgn = database.GetAcceptedChallenge(id)!.Pgn();
+        return download ? File(PgnDownload.Encode(pgn), PgnDownload.ContentType, $"game-{id}.pgn") : Content(pgn);
     }
 
     [HttpGet("{id:int}.ascii")]

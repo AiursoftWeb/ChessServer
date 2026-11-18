@@ -36,7 +36,7 @@ public class HistoryController(TemplateDbContext context) : ChessController
     public async Task<IActionResult> Pgn(Guid id)
     {
         var game = await FindMine(id);
-        return game == null ? NotFound() : File(System.Text.Encoding.UTF8.GetBytes(game.Pgn), "application/x-chess-pgn", $"{game.Id}.pgn");
+        return game == null ? NotFound() : File(PgnDownload.Encode(game.Pgn), PgnDownload.ContentType, $"{game.Id}.pgn");
     }
 
     public async Task<IActionResult> Metadata(Guid id)
