@@ -1,3 +1,4 @@
+@using Aiursoft.WebTools
 @using System.Globalization
 @model Aiursoft.ChessServer.Models.ViewModels.HistoryViewModel
 <h1 class="h3 mb-4">@Localizer["My games"]</h1>
@@ -16,7 +17,7 @@
             <thead><tr><th>@Localizer["Finished"]</th><th>@Localizer["White"]</th><th>@Localizer["Black"]</th><th>@Localizer["Result"]</th><th></th></tr></thead>
             <tbody>@foreach (var game in Model.Games)
             {
-                <tr><td><time class="history-time" datetime="@game.FinishedAt.ToString("O", CultureInfo.InvariantCulture)">@game.FinishedAt.ToString("HH:mm", CultureInfo.CurrentCulture)</time></td><td>@game.WhiteName</td><td>@game.BlackName</td><td>@game.Result</td><td><a asp-action="Replay" asp-route-id="@game.Id">@Localizer["Replay"]</a></td></tr>
+                <tr><td><span data-utc-time="@game.FinishedAt.ToHtmlDateTime()"></span></td><td>@game.WhiteName</td><td>@game.BlackName</td><td>@game.Result</td><td><a asp-action="Replay" asp-route-id="@game.Id">@Localizer["Replay"]</a></td></tr>
             }</tbody>
         </table></div>
     }
