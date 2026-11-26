@@ -11,6 +11,7 @@ public abstract class TestBase
     protected readonly HttpClient Http;
     protected readonly CookieContainer Cookies = new();
     protected IHost? Server;
+    private string? _storagePath;
 
     protected TestBase()
     {
@@ -27,9 +28,11 @@ public abstract class TestBase
     {
         using var reservation = new TestPortReservation();
         Http.BaseAddress = new Uri($"http://localhost:{reservation.Port}");
-        Server = await AppAsync<Startup>(["--AppSettings:AuthProvider=Local"], port: reservation.Port);
+        var storagePath = Directory.CreateTempSubdirectory("AiursoftTests-").FullName;
+        _storagePath = storagePath;
         try
         {
+            Server = await AppAsync<Startup>(["--AppSettings:AuthProvider=Local", $"--Storage:Path={storagePath}"], port: reservation.Port);
             reservation.ConfigureServer(Server);
             await Server.UpdateDbAsync<TemplateDbContext>();
             await Server.SeedAsync();
@@ -44,8 +47,9 @@ public abstract class TestBase
         }
         catch
         {
-            Server.Dispose();
+            Server?.Dispose();
             Server = null;
+            DeleteTestStorage();
             throw;
         }
     }
@@ -53,9 +57,28 @@ public abstract class TestBase
     [TestCleanup]
     public virtual async Task CleanServer()
     {
-        if (Server == null) return;
-        await Server.StopAsync();
-        Server.Dispose();
+        try
+        {
+            if (Server != null)
+            {
+                await Server.StopAsync();
+            }
+        }
+        finally
+        {
+            Server?.Dispose();
+            Server = null;
+            DeleteTestStorage();
+        }
+    }
+
+    private void DeleteTestStorage()
+    {
+        if (_storagePath != null)
+        {
+            Directory.Delete(_storagePath, recursive: true);
+            _storagePath = null;
+        }
     }
 
     protected async Task<string> GetAntiCsrfToken(string url)
