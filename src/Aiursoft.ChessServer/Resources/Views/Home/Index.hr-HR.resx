@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="A game for every kind of player." xml:space="preserve">
+    <value>Igra za svakog igrača.</value>
+  </data>
+  <data name="Challenge a friend" xml:space="preserve">
+    <value>Izazovi prijatelja</value>
+  </data>
+  <data name="Chat at the board" xml:space="preserve">
+    <value>Razgovor uz ploču</value>
+  </data>
+  <data name="ChessServer computer game" xml:space="preserve">
+    <value>Računalna igra ChessServer</value>
+  </data>
+  <data name="Choose a nickname to play, or sign in to save your games." xml:space="preserve">
+    <value>Odaberite nadimak za igru ili se prijavite kako biste spremali svoje partije.</value>
+  </data>
+  <data name="Choose from eight levels, from beginner practice to deeper engine searches." xml:space="preserve">
+    <value>Odaberite između osam razina, od početne vježbe do dubljih pretraga motorom.</value>
+  </data>
+  <data name="Create a public or unlisted challenge, share the link, and choose your side." xml:space="preserve">
+    <value>Kreirajte javni ili neobjavljeni izazov, podijelite poveznicu i odaberite svoju stranu.</value>
+  </data>
+  <data name="Explore the features" xml:space="preserve">
+    <value>Istražite značajke</value>
+  </data>
+  <data name="Export the game as PGN to review the moves in your favorite chess tool." xml:space="preserve">
+    <value>Izvezite partiju u PGN formatu kako biste pregledali poteze u omiljenom šahovskom alatu.</value>
+  </data>
+  <data name="Follow public games as they happen. Spectators can watch without changing the board." xml:space="preserve">
+    <value>Pratite javne partije dok se odvijaju. Promatrači mogu gledati bez mijenjanja ploče.</value>
+  </data>
+  <data name="Free" xml:space="preserve">
+    <value>Besplatno</value>
+  </data>
+  <data name="Keep the moves" xml:space="preserve">
+    <value>Sačuvaj poteze</value>
+  </data>
+  <data name="MIT Licence" xml:space="preserve">
+    <value>MIT licence</value>
+  </data>
+  <data name="Make your move" xml:space="preserve">
+    <value>Napravite potez</value>
+  </data>
+  <data name="One familiar sign-in" xml:space="preserve">
+    <value>Jedno poznato prijavljivanje</value>
+  </data>
+  <data name="Open Source" xml:space="preserve">
+    <value>Otvoreni izvor</value>
+  </data>
+  <data name="Open the lobby to start a computer game, create a challenge, or find a game to watch." xml:space="preserve">
+    <value>Otvorite lobby kako biste započeli igru s računalom, stvorili izazov ili pronašli igru za gledanje.</value>
+  </data>
+  <data name="Play against the computer, challenge a friend, or watch a game. All in your browser." xml:space="preserve">
+    <value>Igrajte protiv računala, izazovite prijatelja ili promatrajte partiju. Sve u vašem pregledniku.</value>
+  </data>
+  <data name="Play chess" xml:space="preserve">
+    <value>Igraj šah</value>
+  </data>
+  <data name="Play the computer" xml:space="preserve">
+    <value>Igraj protiv računala</value>
+  </data>
+  <data name="Ready for a game?" xml:space="preserve">
+    <value>Spremni za partiju?</value>
+  </data>
+  <data name="Talk with the players and spectators while the game unfolds." xml:space="preserve">
+    <value>Razgovarajte s igračima i promatračima dok se igra odvijaju.</value>
+  </data>
+  <data name="Use your organization account. Your identity stays with you across games." xml:space="preserve">
+    <value>Koristite svoj organizacijski račun. Vaš identitet ostaje s vama kroz sve partije.</value>
+  </data>
+  <data name="Watch live games" xml:space="preserve">
+    <value>Promatraj užive partije</value>
+  </data>
+  <data name="Your next challenge." xml:space="preserve">
+    <value>Vaš sljedeći izazov.</value>
+  </data>
+  <data name="Your next move." xml:space="preserve">
+    <value>Vaš sljedeći potez.</value>
+  </data>
+
+</root>

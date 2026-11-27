@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="A draw cannot be offered now." xml:space="preserve">
+    <value>Ponuda remija sada nije moguća.</value>
+  </data>
+  <data name="Abort game" xml:space="preserve">
+    <value>Prekini partiju</value>
+  </data>
+  <data name="Accept draw" xml:space="preserve">
+    <value>Prihvati remi</value>
+  </data>
+  <data name="Accept rematch" xml:space="preserve">
+    <value>Prihvati revanš</value>
+  </data>
+  <data name="After 90 seconds without your opponent, you may claim the result. A computer game ends after two minutes away; a game with both players away ends after ten minutes." xml:space="preserve">
+    <value>Nakon 90 sekundi bez protivnika, možete tražiti rezultat. Igra s računalom završava nakon dvije minute odsutnosti; igra s oba igrača odsutna završava nakon deset minuta.</value>
+  </data>
+  <data name="All rooms are busy. Please try again later." xml:space="preserve">
+    <value>Sve su sobe zauzete. Pokušajte ponovno kasnije.</value>
+  </data>
+  <data name="An unplayed game ends after one minute. Leaving does not pause the clock." xml:space="preserve">
+    <value>Partija koja se nije odigrala završava nakon jedne minute. Napuštanje ne zaustavlja sat.</value>
+  </data>
+  <data name="Bishop" xml:space="preserve">
+    <value>Top</value>
+  </data>
+  <data name="Black" xml:space="preserve">
+    <value>Crna</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Odustani</value>
+  </data>
+  <data name="Chat" xml:space="preserve">
+    <value>Razgovor</value>
+  </data>
+  <data name="Checkmate" xml:space="preserve">
+    <value>Šah-mat</value>
+  </data>
+  <data name="Claim result" xml:space="preserve">
+    <value>Zatraži rezultat</value>
+  </data>
+  <data name="Computer is thinking…" xml:space="preserve">
+    <value>Računalo razmišlja…</value>
+  </data>
+  <data name="Confirm resignation" xml:space="preserve">
+    <value>Potvrdi predaju</value>
+  </data>
+  <data name="Confirming your move…" xml:space="preserve">
+    <value>Potvrđivanje vašeg poteza…</value>
+  </data>
+  <data name="Connected" xml:space="preserve">
+    <value>Povezano</value>
+  </data>
+  <data name="Connecting…" xml:space="preserve">
+    <value>Povezivanje…</value>
+  </data>
+  <data name="Connection and game rules" xml:space="preserve">
+    <value>Povezivanje i pravila igre</value>
+  </data>
+  <data name="Continue to rematch" xml:space="preserve">
+    <value>Nastavi s revanšom</value>
+  </data>
+  <data name="Could not complete the action. Reconnecting to the server…" xml:space="preserve">
+    <value>Akcija se nije mogla dovršiti. Povezivanje s poslužiteljem…</value>
+  </data>
+  <data name="Could not confirm the saved game. Retry." xml:space="preserve">
+    <value>Nije moguće potvrditi spremlu igru. Pokušajte ponovno.</value>
+  </data>
+  <data name="Disconnects have a 60-second reconnection grace period. The room closes when everyone leaves." xml:space="preserve">
+    <value>Prekid veze ima 60-sekundno razdoblje za ponovno spajanje. Sobna se zatvara kada svi napuste igru.</value>
+  </data>
+  <data name="Dismiss offer" xml:space="preserve">
+    <value>Odbij ponudu</value>
+  </data>
+  <data name="Draw" xml:space="preserve">
+    <value>Pobjeda</value>
+  </data>
+  <data name="Draw by agreement" xml:space="preserve">
+    <value>Pobjeda sporazumom</value>
+  </data>
+  <data name="Draw by repetition" xml:space="preserve">
+    <value>Polaonica ponavljanjem</value>
+  </data>
+  <data name="Draw by the fifty-move rule" xml:space="preserve">
+    <value>Polačica po pravilu 50 poteza</value>
+  </data>
+  <data name="Export FEN" xml:space="preserve">
+    <value>Izvezi FEN</value>
+  </data>
+  <data name="Export PGN" xml:space="preserve">
+    <value>Izvezi PGN</value>
+  </data>
+  <data name="Finish this game before requesting a rematch." xml:space="preserve">
+    <value>Završite ovu partiju prije nego što zatražite revanš.</value>
+  </data>
+  <data name="Game aborted before any move" xml:space="preserve">
+    <value>Partija prekinuta prije bilo kojeg poteza</value>
+  </data>
+  <data name="Game ended because both players left" xml:space="preserve">
+    <value>Partija je završena jer su oba igrača napustila</value>
+  </data>
+  <data name="Game ended by abandonment" xml:space="preserve">
+    <value>Partija završena napuštanjem</value>
+  </data>
+  <data name="Game finished. Download the PGN to keep it; guest games are not saved to a personal history." xml:space="preserve">
+    <value>Partija je završena. Preuzmite PGN kako biste je zadržali; partije gostiju se ne spremaju u osobnu povijest.</value>
+  </data>
+  <data name="Game over" xml:space="preserve">
+    <value>Kraj partije</value>
+  </data>
+  <data name="Game stopped by the host" xml:space="preserve">
+    <value>Partija prekinuta od strane domaćina</value>
+  </data>
+  <data name="Guest" xml:space="preserve">
+    <value>Gost</value>
+  </data>
+  <data name="Knight" xml:space="preserve">
+    <value>Konj</value>
+  </data>
+  <data name="LLM attempt {0}/{1}: {2}. Elapsed {3}, limit {4}." xml:space="preserve">
+    <value>LLM pokušaj {0}/{1}: {2}. Proteklo {3}, limit {4}.</value>
+  </data>
+  <data name="Lobby" xml:space="preserve">
+    <value>Lobi</value>
+  </data>
+  <data name="Message" xml:space="preserve">
+    <value>Poruka</value>
+  </data>
+  <data name="Move list" xml:space="preserve">
+    <value>Popis poteza</value>
+  </data>
+  <data name="Moves" xml:space="preserve">
+    <value>Potezi</value>
+  </data>
+  <data name="Neither side has sufficient mating material" xml:space="preserve">
+    <value>Nijedna strana nema dovoljno materijala za mat</value>
+  </data>
+  <data name="Offer draw" xml:space="preserve">
+    <value>Ponudi remi</value>
+  </data>
+  <data name="Only the players can perform this action." xml:space="preserve">
+    <value>Samo igrači mogu izvršiti ovu akciju.</value>
+  </data>
+  <data name="Opponent disconnected. Reconnection time remaining: {0}s." xml:space="preserve">
+    <value>Protivnik je odspojen. Preostalo vrijeme za ponovno povezivanje: {0} s.</value>
+  </data>
+  <data name="Play another game" xml:space="preserve">
+    <value>Igraj drugu partiju</value>
+  </data>
+  <data name="Promote pawn" xml:space="preserve">
+    <value>Promocija pješaka</value>
+  </data>
+  <data name="Queen" xml:space="preserve">
+    <value>Kraljica</value>
+  </data>
+  <data name="Reconnecting… Your clock keeps running." xml:space="preserve">
+    <value>Ponovno se povezuje… Vaš sat i dalje radi.</value>
+  </data>
+  <data name="Rematch" xml:space="preserve">
+    <value>Revanš</value>
+  </data>
+  <data name="Rematch requested. Waiting for your opponent…" xml:space="preserve">
+    <value>Zatražena revanš. Čekam na vašeg protivnika…</value>
+  </data>
+  <data name="Replay" xml:space="preserve">
+    <value>Ponovno pogledaj</value>
+  </data>
+  <data name="Resign" xml:space="preserve">
+    <value>Predaja</value>
+  </data>
+  <data name="Resign this game?" xml:space="preserve">
+    <value>Otpustiti ovu partiju?</value>
+  </data>
+  <data name="Resignation" xml:space="preserve">
+    <value>Odustajanje</value>
+  </data>
+  <data name="Retry computer move" xml:space="preserve">
+    <value>Ponovno pokreni potez računala</value>
+  </data>
+  <data name="Retry saving" xml:space="preserve">
+    <value>Ponovno pokušaj spremanje</value>
+  </data>
+  <data name="Return to live position" xml:space="preserve">
+    <value>Vrati se na trenutni položaj</value>
+  </data>
+  <data name="Rook" xml:space="preserve">
+    <value>Top</value>
+  </data>
+  <data name="Room unavailable. Return to the lobby." xml:space="preserve">
+    <value>Soba nije dostupna. Vratite se u lobby.</value>
+  </data>
+  <data name="Saved to My games." xml:space="preserve">
+    <value>Spremljeno u Moje igre.</value>
+  </data>
+  <data name="Saving game…" xml:space="preserve">
+    <value>Spremanje igre…</value>
+  </data>
+  <data name="Send" xml:space="preserve">
+    <value>Pošalji</value>
+  </data>
+  <data name="Server maintenance pauses the clocks. A player disconnecting does not." xml:space="preserve">
+    <value>Održavanje poslužitelja zaustavlja satove. Odspojavanje igrača to ne radi.</value>
+  </data>
+  <data name="Stalemate" xml:space="preserve">
+    <value>Paton</value>
+  </data>
+  <data name="Take back" xml:space="preserve">
+    <value>Povuci</value>
+  </data>
+  <data name="Take back your last move and the computer reply? The position and clocks will be restored." xml:space="preserve">
+    <value>Povuci svoj zadnji potez i odgovor računala? Položaj i satovi bit će vraćeni.</value>
+  </data>
+  <data name="That move cannot be played in the current position." xml:space="preserve">
+    <value>Ta poteza se ne može odigrati u trenutnom položaju.</value>
+  </data>
+  <data name="The LLM failed after three attempts: the final request timed out. Automatic retries have stopped. The host can retry the move." xml:space="preserve">
+    <value>LLM je neuspjela nakon tri pokušaja: zadnji zahtjev je istekao. Automatski ponovni pokušaji su zaustavljeni. Dugodavatelj može ponovno pokušati potez.</value>
+  </data>
+  <data name="The computer could not choose a move. Retry when ready." xml:space="preserve">
+    <value>Računalo nije moglo odabrati potez. Pokušajte ponovno kad budete spremni.</value>
+  </data>
+  <data name="The draw offer is no longer available." xml:space="preserve">
+    <value>Ponuda za remi više nije dostupna.</value>
+  </data>
+  <data name="The game has started. You can resign instead." xml:space="preserve">
+    <value>Partija je započela. Umjesto toga možete odustati.</value>
+  </data>
+  <data name="The model gateway rejected the request. Automatic retries have stopped. Choose another model or ask the administrator to check its configuration." xml:space="preserve">
+    <value>Modelni gateway odbio je zahtjev. Automatsko ponavljanje je zaustavljeno. Odaberite drugi model ili zamolite administratora da provjeri njegovu konfiguraciju.</value>
+  </data>
+  <data name="The model service failed after three attempts. Automatic retries have stopped. The host can retry the move." xml:space="preserve">
+    <value>Usluga modela nije uspjela nakon tri pokušaja. Automatsko ponovno pokretanje je zaustavljeno. Dugodavatelj može ponoviti potez.</value>
+  </data>
+  <data name="The position changed. Your board has been synchronized." xml:space="preserve">
+    <value>Položaj se promijenio. Vaša ploča je sinhronizirana.</value>
+  </data>
+  <data name="The rematch offer is no longer available." xml:space="preserve">
+    <value>Ponuda za revanš više nije dostupna.</value>
+  </data>
+  <data name="Thinking" xml:space="preserve">
+    <value>Razmišlja</value>
+  </data>
+  <data name="This action could not be confirmed. Refresh to synchronize." xml:space="preserve">
+    <value>Ova akcija nije mogla biti potvrđena. Osvežite za sinkronizaciju.</value>
+  </data>
+  <data name="This game has ended." xml:space="preserve">
+    <value>Ova partija je završena.</value>
+  </data>
+  <data name="This game is still in progress. Your clock will keep running." xml:space="preserve">
+    <value>Ova partija je još u tijeku. Vaš sat će nastaviti raditi.</value>
+  </data>
+  <data name="Time control: {0}" xml:space="preserve">
+    <value>Kontrola vremena: {0}</value>
+  </data>
+  <data name="Time expired" xml:space="preserve">
+    <value>Vrijeme je isteklo</value>
+  </data>
+  <data name="Time expired, but the opponent cannot checkmate." xml:space="preserve">
+    <value>Vrijeme je isteklo, ali protivnik ne može postići šah-mat.</value>
+  </data>
+  <data name="Unlimited" xml:space="preserve">
+    <value>Neograničeno</value>
+  </data>
+  <data name="Waiting for a model slot" xml:space="preserve">
+    <value>Čekanje na slot modela</value>
+  </data>
+  <data name="White" xml:space="preserve">
+    <value>Bijela</value>
+  </data>
+  <data name="You are playing Black." xml:space="preserve">
+    <value>Igrate crne.</value>
+  </data>
+  <data name="You are playing White." xml:space="preserve">
+    <value>Igrate bijelom bojom.</value>
+  </data>
+  <data name="You are watching this game." xml:space="preserve">
+    <value>Gledate ovu partiju.</value>
+  </data>
+  <data name="You can only take back your own last move in an active computer game." xml:space="preserve">
+    <value>U aktivnoj partiji s računalom možete povući samo svoju zadnju potez.</value>
+  </data>
+  <data name="You offered a draw." xml:space="preserve">
+    <value>Ponudili ste remi.</value>
+  </data>
+  <data name="Your opponent can still reconnect." xml:space="preserve">
+    <value>Vaš protivnik se još uvijek može ponovno povezati.</value>
+  </data>
+  <data name="Your opponent has not reconnected. You may claim the result or keep waiting." xml:space="preserve">
+    <value>Vaš protivnik se nije ponovno povezan. Možete zahtijevati rezultat ili nastaviti čekati.</value>
+  </data>
+  <data name="Your opponent offers a draw." xml:space="preserve">
+    <value>Vaš protivnik nudi remi.</value>
+  </data>
+  <data name="Your opponent offers a rematch with colors reversed." xml:space="preserve">
+    <value>Vaš protivnik nudi revanš s izmijenjenim bojama.</value>
+  </data>
+  <data name="{0} to move" xml:space="preserve">
+    <value>Na potezu: {0}</value>
+  </data>
+  <data name="{0} wins" xml:space="preserve">
+    <value>{0} pobjeđuje</value>
+  </data>
+
+</root>
