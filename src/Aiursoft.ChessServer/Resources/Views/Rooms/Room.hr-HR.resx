@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="10 minutes" xml:space="preserve">
+    <value>10 minuta</value>
+  </data>
+  <data name="15 minutes" xml:space="preserve">
+    <value>15 minuta</value>
+  </data>
+  <data name="3 minutes" xml:space="preserve">
+    <value>3 minute</value>
+  </data>
+  <data name="5 minutes" xml:space="preserve">
+    <value>5 minuta</value>
+  </data>
+  <data name="AI type" xml:space="preserve">
+    <value>Vrsta AI-ja</value>
+  </data>
+  <data name="Add AI" xml:space="preserve">
+    <value>Dodaj AI</value>
+  </data>
+  <data name="Black" xml:space="preserve">
+    <value>Crni</value>
+  </data>
+  <data name="Built-in engine — Lynx" xml:space="preserve">
+    <value>Ugrađeni motor — Lynx</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Odustani</value>
+  </data>
+  <data name="Chat" xml:space="preserve">
+    <value>Chat</value>
+  </data>
+  <data name="Choose valid room settings." xml:space="preserve">
+    <value>Odaberite ispravne postavke sobe.</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>Zatvori</value>
+  </data>
+  <data name="Colors are assigned when the game starts." xml:space="preserve">
+    <value>Boje se dodjeljuju kada igra počne.</value>
+  </data>
+  <data name="Copied" xml:space="preserve">
+    <value>Kopirano</value>
+  </data>
+  <data name="Copy link" xml:space="preserve">
+    <value>Kopiraj poveznicu</value>
+  </data>
+  <data name="Could not update the room. Please try again." xml:space="preserve">
+    <value>Nije moguće ažurirati sobu. Pokušajte ponovno.</value>
+  </data>
+  <data name="Difficulty" xml:space="preserve">
+    <value>Težina</value>
+  </data>
+  <data name="Drag to change role" xml:space="preserve">
+    <value>Povucite za promjenu uloge</value>
+  </data>
+  <data name="Drop here" xml:space="preserve">
+    <value>Ispusti ovdje</value>
+  </data>
+  <data name="Empty seat" xml:space="preserve">
+    <value>Prazno mjesto</value>
+  </data>
+  <data name="Fill both player seats before starting." xml:space="preserve">
+    <value>Popunite oba sjedala igrača prije početka.</value>
+  </data>
+  <data name="Finish the current game before changing these settings." xml:space="preserve">
+    <value>Završite trenutnu igru prije promjene ovih postavki.</value>
+  </data>
+  <data name="Finished" xml:space="preserve">
+    <value>Završeno</value>
+  </data>
+  <data name="First position" xml:space="preserve">
+    <value>Prva pozicija</value>
+  </data>
+  <data name="Game information" xml:space="preserve">
+    <value>Informacije o igri</value>
+  </data>
+  <data name="Host" xml:space="preserve">
+    <value>Domaćin</value>
+  </data>
+  <data name="Increment per move" xml:space="preserve">
+    <value>Pridatak po potezu</value>
+  </data>
+  <data name="Invitation link" xml:space="preserve">
+    <value>Pozivna poveznica</value>
+  </data>
+  <data name="Kick from room" xml:space="preserve">
+    <value>Izbači iz sobe</value>
+  </data>
+  <data name="Kick this person from the room? They cannot rejoin this room with the same identity." xml:space="preserve">
+    <value>Izbaciti ovu osobu iz sobe? Ne mogu se ponovno pridružiti ovoj sobi s istim identitetom.</value>
+  </data>
+  <data name="Large language model" xml:space="preserve">
+    <value>Veliki jezični model</value>
+  </data>
+  <data name="Latest position" xml:space="preserve">
+    <value>Zadnja pozicija</value>
+  </data>
+  <data name="Leave room" xml:space="preserve">
+    <value>Napusti sobu</value>
+  </data>
+  <data name="Leave this room? Leaving an active game forfeits it. If everyone leaves, the room closes." xml:space="preserve">
+    <value>Napustiti ovaj sobu? Napuštanje aktivne partije znači njezin gubitak. Ako svi napuste, soba se zatvara.</value>
+  </data>
+  <data name="List this room publicly" xml:space="preserve">
+    <value>Javno prikazi ovu sobu</value>
+  </data>
+  <data name="Lobby" xml:space="preserve">
+    <value>Lobi</value>
+  </data>
+  <data name="Make host" xml:space="preserve">
+    <value>Napravi domaćina</value>
+  </data>
+  <data name="Message" xml:space="preserve">
+    <value>Poruka</value>
+  </data>
+  <data name="Model" xml:space="preserve">
+    <value>Model</value>
+  </data>
+  <data name="More" xml:space="preserve">
+    <value>Više</value>
+  </data>
+  <data name="Moves" xml:space="preserve">
+    <value>Potezi</value>
+  </data>
+  <data name="Next move" xml:space="preserve">
+    <value>Sljedeći potez</value>
+  </data>
+  <data name="No increment" xml:space="preserve">
+    <value>Bez inkrementa</value>
+  </data>
+  <data name="Observer" xml:space="preserve">
+    <value>Posmatrač</value>
+  </data>
+  <data name="Observers" xml:space="preserve">
+    <value>Promatrači</value>
+  </data>
+  <data name="Only the host can manage this room." xml:space="preserve">
+    <value>Samo domaćin može upravljati ovom sobom.</value>
+  </data>
+  <data name="Only the two players can send chat messages. The host can drag people between seats and observers." xml:space="preserve">
+    <value>Samo dva igrača mogu slati poruke u chatu. Domaćin može povući ljude između mjesta i promatrača.</value>
+  </data>
+  <data name="People" xml:space="preserve">
+    <value>Ljudi</value>
+  </data>
+  <data name="Player 1" xml:space="preserve">
+    <value>Igrač 1</value>
+  </data>
+  <data name="Player 2" xml:space="preserve">
+    <value>Igrač 2</value>
+  </data>
+  <data name="Players" xml:space="preserve">
+    <value>Igrači</value>
+  </data>
+  <data name="Players and observers" xml:space="preserve">
+    <value>Igrači i promatrači</value>
+  </data>
+  <data name="Playing" xml:space="preserve">
+    <value>Igra se</value>
+  </data>
+  <data name="Prepare next game" xml:space="preserve">
+    <value>Pripremi sljedeću igru</value>
+  </data>
+  <data name="Preparing" xml:space="preserve">
+    <value>Priprema</value>
+  </data>
+  <data name="Previous move" xml:space="preserve">
+    <value>Prethodni potez</value>
+  </data>
+  <data name="Randomize colors at start" xml:space="preserve">
+    <value>Nasumično dodijeli boje na početku</value>
+  </data>
+  <data name="Remove AI" xml:space="preserve">
+    <value>Ukloni AI</value>
+  </data>
+  <data name="Remove this AI and replace it with the selected person?" xml:space="preserve">
+    <value>Ukloniti ovaj AI i zamijeniti ga odabranom osobom?</value>
+  </data>
+  <data name="Replay" xml:space="preserve">
+    <value>Ponovno puštanje</value>
+  </data>
+  <data name="Retry computer move" xml:space="preserve">
+    <value>Ponovi potez računala</value>
+  </data>
+  <data name="Room controls" xml:space="preserve">
+    <value>Upravljanje sobom</value>
+  </data>
+  <data name="Room name" xml:space="preserve">
+    <value>Naziv sobe</value>
+  </data>
+  <data name="Room rules" xml:space="preserve">
+    <value>Pravila sobe</value>
+  </data>
+  <data name="Room settings" xml:space="preserve">
+    <value>Postavke sobe</value>
+  </data>
+  <data name="Send" xml:space="preserve">
+    <value>Pošalji</value>
+  </data>
+  <data name="Share" xml:space="preserve">
+    <value>Podijeli</value>
+  </data>
+  <data name="Share room" xml:space="preserve">
+    <value>Podijeli sobu</value>
+  </data>
+  <data name="Sign in to add an LLM." xml:space="preserve">
+    <value>Prijavite se da biste dodali LLM.</value>
+  </data>
+  <data name="Start game" xml:space="preserve">
+    <value>Započni igru</value>
+  </data>
+  <data name="Stop this game" xml:space="preserve">
+    <value>Zaustavi ovu igru</value>
+  </data>
+  <data name="Swap colors" xml:space="preserve">
+    <value>Zamijeni boje</value>
+  </data>
+  <data name="The next human becomes host when the host leaves. The room closes when everyone leaves. Refreshing or reconnecting has a 60-second grace period." xml:space="preserve">
+    <value>Sljedeća osoba postaje domaćin kada domaćin ode. Soba se zatvara kada svi odu. Osvježavanje ili ponovno povezivanje ima razdoblje od 60 sekundi.</value>
+  </data>
+  <data name="The room changed. Review the current settings and try again." xml:space="preserve">
+    <value>Soba se promijenila. Pregledajte trenutna postavke i pokušajte ponovno.</value>
+  </data>
+  <data name="The selected model is unavailable. Refresh and try again." xml:space="preserve">
+    <value>Odabrani model nije dostupan. Osvježite i pokušajte ponovno.</value>
+  </data>
+  <data name="This person has left the room." xml:space="preserve">
+    <value>Ova osoba je napustila sobu.</value>
+  </data>
+  <data name="This room has closed. Return to the lobby." xml:space="preserve">
+    <value>Ova soba je zatvorena. Vratite se u lobby.</value>
+  </data>
+  <data name="This seat is occupied. Move or remove its player first." xml:space="preserve">
+    <value>Ovo mjesto je zauzeto. Prvo premjestite ili uklonite njegovog igrača.</value>
+  </data>
+  <data name="This will stop the current game without awarding a winner. Continue?" xml:space="preserve">
+    <value>Ovo će zaustaviti trenutnu igru bez dodjele pobjednika. Nastaviti?</value>
+  </data>
+  <data name="Time per player" xml:space="preserve">
+    <value>Vrijeme po igraču</value>
+  </data>
+  <data name="Unlimited" xml:space="preserve">
+    <value>Neograničeno</value>
+  </data>
+  <data name="White" xml:space="preserve">
+    <value>Bijela</value>
+  </data>
+  <data name="You have been removed from this room." xml:space="preserve">
+    <value>Uklonjeni ste iz ove sobe.</value>
+  </data>
+  <data name="{0} seconds" xml:space="preserve">
+    <value>{0} sekundi</value>
+  </data>
+
+</root>
